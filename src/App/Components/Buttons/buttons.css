@@ -1,0 +1,17 @@
+.comment_count {
+    margin: 0 1rem;
+}
+
+.comment_button{
+    padding: 2px;
+    background-color: aqua;
+}
+
+.like_count {
+    margin: 0 1rem;
+}
+
+.like_button{
+    padding: 2px;
+    background-color: deeppink;
+}

@@ -1,0 +1,9 @@
+#main_container{
+    max-width: 1000px;
+    min-width: 768px;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
