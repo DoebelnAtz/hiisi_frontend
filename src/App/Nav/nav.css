@@ -5,3 +5,17 @@
 .nav_item i{
     margin: 0 1rem;
 }
+
+.nav_item.inactive:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+.nav_item.active:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.active{
+    background-color: cornflowerblue;
+}
