@@ -7,7 +7,6 @@ import './nav.css'
 class SideNav extends React.Component{
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Home stuff={this.props}/>

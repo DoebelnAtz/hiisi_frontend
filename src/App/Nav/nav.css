@@ -1,5 +1,6 @@
 .nav_item{
     margin: 1rem 0;
+    text-decoration: none;
 }
 
 .nav_item i{
@@ -9,11 +10,14 @@
 .nav_item.inactive:hover{
     background-color: blue;
     cursor: pointer;
+    text-decoration: none;
+
 }
 
 .nav_item.active:hover{
     background-color: lightblue;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .active{

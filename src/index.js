@@ -7,6 +7,8 @@ import thunk from 'redux-thunk'
 import App from './App/App'
 import reducers from './reducers';
 
+// Support for redux devtools, install the chrome extension to use
+
 const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
