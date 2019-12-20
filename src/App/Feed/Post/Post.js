@@ -13,8 +13,7 @@ const Post = props => {
         let minute = date.slice(14, 16);
         return day + '.' + month + '.' + year + ' at ' + hour + ':' + minute
     };
-    console.log(props);
-        return (
+    return (
             <div className={'container feed_item'}>
                 <div className={'col'}>
                     <PostTitle title={props.content.title}
