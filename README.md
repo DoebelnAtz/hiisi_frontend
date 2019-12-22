@@ -31,3 +31,31 @@ What is a rest API?:
 https://www.youtube.com/watch?v=7YcW25PHnAA&t=307s
 
 
+<h3>API documentation:</h3>
+
+<h5>Endpoints:</h5>
+
+make sure you're running the backend on 127/0.0.1:8002
+
+base URL: http://127.0.0.1:8002/api/
+
+profiles: /profiles/
+
+blogs: /blogs/
+
+events: /events/
+
+comments: /comments/
+
+login: /auth/login
+
+    data=
+    {username: "username", password: "password"}
+
+registration: /auth/register/
+
+    data = 
+    {username: "username", password: "password"}
+
+
+

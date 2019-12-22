@@ -9,7 +9,7 @@ export const requestLogin = (username, password) => async dispatch => {
                 password: password
             }
             );
-        console.log(response.data)
+        console.log(response.data);
         window.localStorage.setItem('token', JSON.stringify(
             {id: response.data.user.id, token: response.data.token
             }));
