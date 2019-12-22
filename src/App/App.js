@@ -12,8 +12,9 @@ class App extends React.Component {
     render () {
         return (
             <BrowserRouter>
+                <Switch>
                 <Route exact path={'/login/'} component={Login}/>
-
+                <Route path={'/'}>
                 <div id={'main_container'} className={'container'}>
                     <div className={'row'}>
                         <div className={'col-1 col-md-3'}>
@@ -21,11 +22,14 @@ class App extends React.Component {
                         </div>
                         <div className={'col-11 col-md-9'}>
                             <Header/>
-                            <Route exact path={'/'} component={Feed}/>
+
+                            <Route exact path={'/home'} component={Feed}/>
                             <Route exact path={'/profile/'} component={Profile}/>
                         </div>
                     </div>
                 </div>
+                </Route>
+                </Switch>
             </BrowserRouter>
         );
     }

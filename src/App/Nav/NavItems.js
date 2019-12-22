@@ -8,7 +8,7 @@ export const Home = (props) => {
     };
     return (
         <Link
-            to={'/'}
+            to={'/home'}
             className={`row nav_item ${props.stuff.nav === 'home' ? 'active' : 'inactive'}`}
             onClick={setNavHome}
         >

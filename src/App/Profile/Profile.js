@@ -8,7 +8,7 @@ import './profile.css'
 class Profile extends React.Component {
 
     componentDidMount() {
-        this.props.fetchProfile();
+        this.props.fetchProfile(JSON.parse(window.localStorage.getItem('token')).id);
         this.props.currentNav('profile');
     }
 

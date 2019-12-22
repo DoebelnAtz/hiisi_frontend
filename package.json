@@ -13,6 +13,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "redux": "^4.0.4",
+    "redux-react-session": "^2.6.1",
     "redux-session": "^1.0.5",
     "redux-thunk": "^2.3.0"
   },

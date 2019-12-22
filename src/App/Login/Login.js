@@ -13,7 +13,12 @@ class Login extends React.Component {
     requestLogin = async (e) => {
         e.preventDefault();
         await this.props.requestLogin(this.state.username, this.state.password);
-        console.log(this.props.login)
+        console.log(this.props.login);
+        if (this.props.login !== 'ERROR')
+        {
+            this.props.history.push('/');
+        }
+
     };
 
     render() {
