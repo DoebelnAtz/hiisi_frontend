@@ -1,10 +1,18 @@
 .nav_item{
     margin: 1rem 0;
     text-decoration: none;
+    min-width: 90%;
+}
+
+.side_nav{
+    min-width: 100%;
+    #background-color: lightcoral;
 }
 
 .nav_item i{
-    margin: 0 1rem;
+    margin-right: 1rem;
+    font-size: 24px;
+
 }
 
 .nav_item.inactive:hover{

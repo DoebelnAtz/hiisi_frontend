@@ -21,7 +21,7 @@ class Feed extends React.Component {
     render() {
         if (this.props.posts)
             return (
-                <div id={'feed'}>
+                <div id={'feed ml-0'}>
                     {this.renderList()}
                 </div>
             );
