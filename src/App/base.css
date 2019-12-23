@@ -1,6 +1,7 @@
 :root{
     --color1: black;
     --color2: pink;
+    --postBG: gainsboro;
 }
 
 #main_container{
@@ -10,14 +11,22 @@
 }
 
 #header_logout{
-    margin-left: 4rem;
+    float: right;
     cursor: pointer;
+    margin-top: 5px !important;
+}
+
+#header_nav_title{
+    margin-right: 4rem;
+    cursor: pointer;
+    margin-top: 5px !important;
 }
 
 .header_nav{
     height: 40px;
     border-bottom: 2px solid gainsboro;
     margin: 2px 0;
+
 }
 
 body {

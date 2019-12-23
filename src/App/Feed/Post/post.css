@@ -2,12 +2,20 @@
     margin: 0 1rem;
 }
 
+.feed_item{
+    box-shadow: 2px 2px 3px gray;
+    margin: 1rem 0;
+    background-color: var(--postBG);
+}
+
 .feed_title{
-    background-color: aliceblue;
+    padding: 0.4rem;
+    border-bottom: 2px solid gray;
 }
 
 .post_content{
-    background-color: antiquewhite;
+    padding: 0.4rem;
+    border-bottom: 2px solid gray;
 }
 
 .continer{
