@@ -1,18 +1,12 @@
 import React from 'react'
 
+import { formatDate} from "../../../utils/utils";
 import PostTitle from './PostTitle'
 import PostContent from './PostContent'
 import ButtonRow from './PostButtonRow'
 
 const Post = props => {
-    const formatDate = (date) => {
-        let year = date.slice(0,4);
-        let month = date.slice(5, 7);
-        let day = date.slice(8, 10);
-        let hour = date.slice(11,13);
-        let minute = date.slice(14, 16);
-        return day + '.' + month + '.' + year + ' at ' + hour + ':' + minute
-    };
+
     return (
             <div className={'container feed_item'}>
                 <div className={'col'}>

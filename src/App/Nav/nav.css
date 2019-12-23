@@ -1,12 +1,13 @@
 .nav_item{
-    margin: 1rem 0;
+    padding: 0.3rem;
+    margin: 0.2rem 0;
     text-decoration: none!important;
     min-width: 90%;
 }
 
 .nav_logo{
     border-bottom: 2px solid gainsboro;
-    height: 30px;
+    height: 40px;
 }
 
 .side_nav{
@@ -17,6 +18,7 @@
 
 .nav_item i{
     margin-right: 1rem;
+    color: var(--color1);
     font-size: 24px;
 
 }

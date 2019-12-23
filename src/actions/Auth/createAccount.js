@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-export const requestLogin = (username, password) => async dispatch => {
+export const requestCreate = (username, password) => async dispatch => {
     try {
         const response = await axios.post(
-            "http://127.0.0.1:8002/api/auth/login/",
+            "http://127.0.0.1:8002/api/auth/register/",
             {
                 username: username,
                 password: password
             }
-            );
+        );
         console.log(response.data);
         window.localStorage.setItem('token', JSON.stringify(
             {id: response.data.user.id, token: response.data.token
@@ -22,5 +22,3 @@ export const requestLogin = (username, password) => async dispatch => {
     }
 
 };
-
-

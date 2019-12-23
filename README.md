@@ -18,7 +18,10 @@ example:
             <div>App</div>
         );<-
     }
-
+    
+When styling colors in css, use variables found in ./src/App/base.css
+this way, if we decide to use another color palette we don't have to change it in every
+.css file.
 
 <h3>Resources:</h3>
 
@@ -30,6 +33,9 @@ What is a rest API?:
 
 https://www.youtube.com/watch?v=7YcW25PHnAA&t=307s
 
+React good practices:
+
+https://www.youtube.com/watch?v=BncMF2aTL0w
 
 <h3>API documentation:</h3>
 
