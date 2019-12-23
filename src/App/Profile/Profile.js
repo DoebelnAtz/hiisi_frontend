@@ -8,8 +8,13 @@ import './profile.css'
 class Profile extends React.Component {
 
     componentDidMount() {
-        this.props.fetchProfile(JSON.parse(window.localStorage.getItem('token')).id);
-        this.props.currentNav('profile');
+        if (localStorage.getItem('token')) {
+            this.props.fetchProfile(JSON.parse(window.localStorage.getItem('token')).id);
+            this.props.currentNav('profile');
+        }
+        else{
+            this.props.history.push('login')
+        }
     }
 
     render() {

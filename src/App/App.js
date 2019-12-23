@@ -5,7 +5,7 @@ import Header from './Header'
 import SideNav from './Nav/SideNav'
 import Feed from './Feed/Feed'
 import Profile from './Profile/Profile'
-import Login from './Login/Login'
+import Login from './Auth/Login'
 import './base.css'
 
 class App extends React.Component {

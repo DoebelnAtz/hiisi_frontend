@@ -2,6 +2,24 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
 
+export const Logo = (props) => {
+    const setNavHome = () => {
+        props.stuff.currentNav('home')
+    };
+    return (
+        <Link
+            to={'/home'}
+            className={'row nav_item nav_logo'}
+            onClick={setNavHome}
+        >
+            <i className="fas fa-home"> </i><span
+            id={'home_nav'}
+            className={'d-none d-md-block'}>
+            Hivemind</span>
+        </Link>
+    )
+};
+
 export const Home = (props) => {
     const setNavHome = () => {
         props.stuff.currentNav('home')

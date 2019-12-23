@@ -4,6 +4,16 @@
     height: 100%;
 }
 
+#header_logout{
+    margin-left: 4rem;
+}
+
+.header_nav{
+    height: 30px;
+    border-bottom: 2px solid gainsboro;
+    margin: 1rem 0;
+}
+
 body {
     min-height: 100%;
 }

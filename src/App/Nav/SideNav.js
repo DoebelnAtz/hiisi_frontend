@@ -1,15 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Profile, Notification, Coalition, Messages, Home } from './NavItems'
+import { withRouter } from 'react-router-dom'
+import { Profile, Notification, Coalition, Messages, Home, Logo } from './NavItems'
 import { currentNav } from '../../actions/index'
 import './nav.css'
 
 class SideNav extends React.Component{
 
+    componentDidMount() {
+        if (localStorage.getItem('token')) {
+            console.log('authenticated')
+        }
+        else{
+            this.props.history.push('login')
+        }
+    }
+
     render() {
         return (
             <div className={'side_nav'}>
-
+                <Logo stuff={this.props}/>
                 <Home stuff={this.props}/>
                 <Profile stuff={this.props}/>
                 <Notification stuff={this.props}/>
@@ -26,4 +36,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { currentNav })(SideNav)
+export default withRouter(connect(mapStateToProps, { currentNav })(SideNav))

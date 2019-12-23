@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { withRouter } from 'react-router-dom'
 import { requestLogin } from '../../actions/Auth/login'
 
 class Login extends React.Component {
@@ -13,7 +13,7 @@ class Login extends React.Component {
     requestLogin = async (e) => {
         e.preventDefault();
         await this.props.requestLogin(this.state.username, this.state.password);
-        console.log(this.props.login);
+        console.log(this.props);
         if (this.props.login !== 'ERROR')
         {
             this.props.history.push('/');
@@ -61,4 +61,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {requestLogin})(Login)
+export default withRouter(connect(mapStateToProps, {requestLogin})(Login))
