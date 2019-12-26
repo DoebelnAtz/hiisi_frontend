@@ -20,9 +20,16 @@ class Profile extends React.Component {
     render() {
         console.log(this.props);
         return (
-            <div>
-                {this.props.profile.username}
-                <img id={'profile_profile_pic'} src={this.props.profile.profile_pic}/>
+            <div id={'profile_page'} className={'container'}>
+                <div className={'row justify-content-center'}>
+                    <img id={'profile_profile_pic'} src={this.props.profile.profile_pic}/>
+                </div>
+                <div className={'row justify-content-center'}>
+                        {this.props.profile.username}
+                </div>
+                <div className={'container'}>
+                    <div className={'row'}></div>
+                </div>
             </div>
         );
     }
