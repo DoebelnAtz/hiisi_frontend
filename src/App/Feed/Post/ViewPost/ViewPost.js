@@ -3,13 +3,18 @@ import {connect} from 'react-redux';
 
 class ViewPost extends Component {
 
-    renderComments() {
+    renderComments(comment=this.props.content.comments) {
         return(
 
-        this.props.content.comments.map((child) => {
+        comment.map((child) => {
             return(
               <div className={'row'} key={child.id}>
                   <p>{child.comment}</p>
+                  <div className={'container'}>
+                      <div className={'row'}>
+                        {this.renderComments(child.children)}
+                      </div>
+                  </div>
               </div>
             )
         }
