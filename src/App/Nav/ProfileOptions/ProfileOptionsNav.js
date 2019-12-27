@@ -5,13 +5,13 @@ import '../nav.css'
 export const NavSlots = (props) => {
 
     const setNavSlots = () => {
-        props.stuff.currentNav('profile / slots')
+        props.setCurrentNav('profile / slots')
     };
 
     return (
         <Link
             to={'/profile/slots'}
-            className={`row nav_item sub_item ${props.stuff.nav === 'profile / slots' ? 'active' : 'inactive'}`}
+            className={`row nav_item sub_item ${props.currentNav === 'profile / slots' ? 'active' : 'inactive'}`}
             onClick={setNavSlots}
         >
             <i className="fas fa-chalkboard-teacher"></i><span
@@ -20,5 +20,4 @@ export const NavSlots = (props) => {
             Slots</span>
         </Link>
     )
-
 };

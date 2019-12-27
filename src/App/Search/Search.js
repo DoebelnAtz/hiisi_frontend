@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import  { currentNav } from '../../actions'
+import React, { useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import './search.css'
 
-class Search extends Component {
+const Search = () => {
 
-    constructor(props) {
-        super(props);
-        this.state = {search_val: '', results: []}
-    }
+    const [searchVal, setSearchVal] = useState('');
+    const [results, setResults] = useState([]);
 
-    handleChange = async(e) => {
+    const handleChange = async(e) => {
         let val = e.target.value;
         let resp = await axios({
             method: 'post',
@@ -22,15 +18,11 @@ class Search extends Component {
                     search: val
                 }
         });
-        this.setState(
-            {
-                search_val: val,
-                results: resp.data
-            }
-        );
+        setResults(resp.data)
+        setSearchVal(val);
     };
 
-    renderResults(results) {
+    const renderResults = (results) => {
         if (results) {
             return (
                 results.map((result) => {
@@ -49,28 +41,16 @@ class Search extends Component {
         }
     };
 
-    componentDidMount() {
-        this.props.currentNav('search');
-    }
-
-    render() {
-        return (
-            <div className={'container'}>
-                <input  value={this.state.search_val}
-                        onChange={this.handleChange}
-                />
-                <div>
-                    {this.renderResults(this.state.results)}
-                </div>
+    return (
+        <div className={'container'}>
+            <input  value={searchVal}
+                    onChange={handleChange}
+            />
+            <div>
+                {renderResults(results)}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-function mapStateToProps(state) {
-    return {};
-}
-
-export default connect(
-    mapStateToProps, { currentNav }
-)(Search);
+export default Search;

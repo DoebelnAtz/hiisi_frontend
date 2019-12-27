@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { fetchPosts } from "../../actions/Posts/fetchPosts";
 import Post from './Post/Post'
 import { makeRequest } from '../Api/Api'
 

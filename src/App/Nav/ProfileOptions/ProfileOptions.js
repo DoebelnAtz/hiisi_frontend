@@ -4,24 +4,13 @@ import { Link } from 'react-router-dom'
 
 import { NavSlots } from './ProfileOptionsNav'
 
-class ProfileOptions extends Component {
+const ProfileOptions = (props) => {
 
-    render() {
-        return (
-            <div>
-                <NavSlots stuff={this.props.stuff}/>
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <NavSlots currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
+        </div>
+    );
+};
 
-function mapStateToProps(state) {
-
-    return {
-        nav: state.nav,
-    };
-}
-
-export default connect(
-    mapStateToProps,
-)(ProfileOptions);
+export default ProfileOptions;

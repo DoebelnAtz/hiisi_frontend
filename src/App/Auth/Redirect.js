@@ -1,15 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios'
 import { getUrlParam, } from "../../utils/utils";
-class MyComponent extends Component {
 
-    componentDidMount (){
-        this.connect();
+const Redirect = (props) => {
 
-    }
-
-    async connect() {
+    const connect = async() => {
         let code = getUrlParam('code', '');
         console.log(code);
         let resp = await axios({
@@ -23,22 +18,19 @@ class MyComponent extends Component {
             }
         });
         localStorage.setItem('resp', JSON.stringify(resp));
-        this.props.history.push('/');
+        props.history.push('/');
     };
 
-    render() {
+    useEffect(() => {
+        connect()
+    }, []);
+
         return (
             <div>
 
             </div>
         );
-    }
-}
 
-function mapStateToProps(state) {
-    return {};
-}
+};
 
-export default connect(
-    mapStateToProps,
-)(MyComponent);
+export default Redirect;

@@ -7,6 +7,8 @@ React component files and function have to be Capitalized and follow camelCase, 
 Don't put all .js files in the same directory, try to split 
 them up into subdirectories by function
 
+Prefer functional components with react hooks
+
 Enclose function arguments in parenthesis even  if it only takes
 one arguments, return statements should always be
 multiline.
