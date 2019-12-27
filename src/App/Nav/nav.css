@@ -30,6 +30,10 @@
 
 }
 
+.sub_item {
+    margin-left: 1rem;
+}
+
 .nav_item.active:hover{
     background-color: lightblue;
     cursor: pointer;

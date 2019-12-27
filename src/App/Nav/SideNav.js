@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { Profile, Notification, Coalition, Messages, Home, Logo } from './NavItems'
+import { Route, withRouter } from 'react-router-dom'
+import {Profile, Notification, Coalition, Messages, Home, Logo, ConnectToIntra} from './NavItems'
 import { currentNav } from '../../actions/index'
 import './nav.css'
+import  ProfileOptions from './ProfileOptions/ProfileOptions'
 
 class SideNav extends React.Component{
 
@@ -22,9 +23,13 @@ class SideNav extends React.Component{
                 <Logo stuff={this.props}/>
                 <Home stuff={this.props}/>
                 <Profile stuff={this.props}/>
+                <Route exact path={['/profile', '/profile/slots']}>
+                    <ProfileOptions stuff={this.props}/>
+                </Route>
                 <Notification stuff={this.props}/>
                 <Coalition stuff={this.props}/>
                 <Messages stuff={this.props}/>
+                <ConnectToIntra/>
             </div>
         );
     }
