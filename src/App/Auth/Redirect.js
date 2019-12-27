@@ -4,6 +4,11 @@ import axios from 'axios'
 import { getUrlParam, } from "../../utils/utils";
 class MyComponent extends Component {
 
+    componentDidMount (){
+        this.connect();
+
+    }
+
     async connect() {
         let code = getUrlParam('code', '');
         console.log(code);
@@ -21,10 +26,6 @@ class MyComponent extends Component {
         this.props.history.push('/');
     };
 
-    componentDidMount (){
-        this.connect();
-
-    }
     render() {
         return (
             <div>

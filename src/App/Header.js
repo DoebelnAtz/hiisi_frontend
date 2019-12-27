@@ -7,12 +7,10 @@ class Header extends React.Component {
 
     requestLogout = () => {
         localStorage.clear();
-
         this.props.history.push('/login')
     };
 
     render() {
-        console.log(this.props);
         return (
             <div className={'row header_nav'}>
                 <div id={'header_nav_title'}>{this.props.nav}</div>

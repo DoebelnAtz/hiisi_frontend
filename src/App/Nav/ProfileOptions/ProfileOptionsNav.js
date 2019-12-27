@@ -7,6 +7,7 @@ export const NavSlots = (props) => {
     const setNavSlots = () => {
         props.stuff.currentNav('profile / slots')
     };
+
     return (
         <Link
             to={'/profile/slots'}

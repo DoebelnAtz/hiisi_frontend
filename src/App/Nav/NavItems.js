@@ -90,11 +90,10 @@ export const Messages = (props) => {
 };
 
 export const Coalition = (props) => {
+
     const setNavCoalition = () => {
         props.stuff.currentNav('coalition')
     };
-
-
 
     return (
         <Link
@@ -108,6 +107,7 @@ export const Coalition = (props) => {
 };
 
 export const Search = (props) => {
+
     const setNavSearch = () => {
         props.stuff.currentNav('search')
     };
@@ -125,7 +125,6 @@ export const Search = (props) => {
 };
 
 export const ConnectToIntra = (props) => {
-
 
       return (
           <a

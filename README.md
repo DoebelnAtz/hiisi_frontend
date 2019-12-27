@@ -19,6 +19,20 @@ example:
         );<-
     }
     
+One newline separating class methods
+
+No newline for first bracket
+
+example:
+
+    const func = () => ->{<-
+        return(
+            <div>Hello World</div>
+        )
+    }
+
+
+
 When styling colors in css, use variables found in ./src/App/base.css
 this way, if we decide to use another color palette we don't have to change it in every
 .css file.

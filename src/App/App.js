@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
-import  { useParams } from 'react-router-dom'
 
-import { GetUserPage } from "./User/UserPage";
 import Redirect from './Auth/Redirect'
 import Header from './Header'
 import UserPage from './User/UserPage'
@@ -33,7 +31,7 @@ const App =  () => {
                             <Route exact path={'/profile/'} component={Profile}/>
                             <Route exact path={'/search'} component={Search}/>
                             <Route exact path={'/search/user/:id'}>
-                                <GetUserPage/>
+                                <UserPage/>
                             </Route>
                         </div>
                     </div>

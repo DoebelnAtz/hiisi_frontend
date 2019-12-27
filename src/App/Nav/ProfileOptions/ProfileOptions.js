@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { NavSlots } from './ProfileOptionsNav'
 
 class ProfileOptions extends Component {
+
     render() {
         return (
             <div>
@@ -15,6 +16,7 @@ class ProfileOptions extends Component {
 }
 
 function mapStateToProps(state) {
+
     return {
         nav: state.nav,
     };

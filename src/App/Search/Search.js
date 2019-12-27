@@ -28,11 +28,9 @@ class Search extends Component {
                 results: resp.data
             }
         );
-        console.log(this.state.results)
     };
 
     renderResults(results) {
-        console.log(this.state);
         if (results) {
             return (
                 results.map((result) => {

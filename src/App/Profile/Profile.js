@@ -1,30 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import connect from "react-redux/es/connect/connect";
-import {fetchProfile} from "../../actions/Profile/fetchProfile";
 import {currentNav} from "../../actions";
 import ProfilePage from './ProfilePage'
+import { makeRequest } from '../Api/Api'
 import './profile.css'
 
-class Profile extends React.Component {
+const Profile = (props) => {
 
-    componentDidMount() {
+    const [profile, setProfile] = useState({});
+
+    const getProfile = async () => {
         if (localStorage.getItem('token')) {
-            this.props.fetchProfile(JSON.parse(window.localStorage.getItem('token')).id);
-            this.props.currentNav('profile');
+            let resp = await makeRequest(`profiles/${JSON.parse(window.localStorage.getItem('token')).id}`, 'get', {});
+            setProfile(resp.data);
+            props.currentNav('profile');
         }
         else{
-            this.props.history.push('login')
+            props.history.push('login')
         }
-    }
+    };
 
-    render() {
-        console.log(this.props);
-        return (
-            <ProfilePage profile={this.props.profile}/>
-        );
-    }
+    useEffect(() => {
+        getProfile()
+    }, []);
 
-}
+
+    return (
+        <ProfilePage profile={profile}/>
+    );
+
+};
 
 const mapStateToProps = (state) => {
     return {
@@ -33,4 +38,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchProfile, currentNav})(Profile)
+export default connect(mapStateToProps, { currentNav})(Profile)

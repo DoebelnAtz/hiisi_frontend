@@ -5,7 +5,6 @@ import DatePicker from '../../Components/DatePicker/DatePicker'
 
 class Slots extends Component {
 
-
     componentDidMount() {
         this.props.currentNav('profile / slots')
     }
@@ -20,6 +19,7 @@ class Slots extends Component {
 }
 
 function mapStateToProps(state) {
+
     return {
         nav: state.nav
     };

@@ -1,56 +1,32 @@
-import React, {Component} from 'react';
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import { makeRequest } from '../Api/Api'
 import { useParams } from 'react-router-dom'
-import connect from "react-redux/es/connect/connect";
-
-import { currentNav } from "../../actions";
 import ProfilePage from '../Profile/ProfilePage'
 
-export const GetUserPage = () => {
+
+const UserPage = () => {
+
+    const [user, setUser] = useState({});
     let { id } = useParams();
-    console.log(id);
-    return (<UserPage id={id}/>)
-};
 
-class UserPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {user: {}}
-    }
-
-    async getUser(id) {
-        let user = await axios({
-            method: 'get',
-            url: "http://127.0.0.1:8002/api/profiles/" + id,
-
-        });
-        return (user.data);
-    }
-
-    async componentDidMount() {
-
-        this.setState(
-            {
-                user: await this.getUser(this.props.id)
-            }
+    const getUser = async(id) => {
+        let resp = await makeRequest(
+            `profiles/${id}`,
+            'get',
+            {}
         );
-
-    }
-
-    render() {
-
-        return (
-            <div>
-                <ProfilePage profile={this.state.user}/>
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        nav: state.nav
+        setUser(resp.data);
     };
+
+    useEffect(() => {
+        getUser(id)
+    }, []);
+
+    return (
+        <div>
+            <ProfilePage profile={user}/>
+        </div>
+    );
 };
 
-export default connect(mapStateToProps, { currentNav })(UserPage)
+export default UserPage

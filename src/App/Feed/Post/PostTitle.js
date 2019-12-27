@@ -3,6 +3,7 @@ import React from 'react'
 import './post.css'
 
 const PostTitle = props => {
+
   return (
       <div className={'row feed_title'}>
           <span className={'post_title'}>{props.title}</span>

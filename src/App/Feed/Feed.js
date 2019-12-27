@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchPosts } from "../../actions/Posts/fetchPosts";
 import Post from './Post/Post'
+import { makeRequest } from '../Api/Api'
 
-class Feed extends React.Component {
-    componentDidMount() {
-        this.props.fetchPosts();
-    }
-    renderList() {
+const Feed = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    const getPosts = async () => {
+        const resp = await makeRequest('blogs', 'get', {});
+        setPosts(resp.data)
+    };
+
+    useEffect(() => {
+        getPosts();
+    }, []);
+
+
+    const renderList = () => {
+            console.log(posts);
         return (
-            this.props.posts.map((post) => {
+            posts.map((post) => {
                 return (
                     <div id={'feed'} key={post.id}>
                         <Post content={post}/>
@@ -17,29 +29,22 @@ class Feed extends React.Component {
                 )
             })
         )
-    }
-    render() {
-        if (this.props.posts)
-            return (
-                <div id={'feed ml-0'}>
-                    {this.renderList()}
-                </div>
-            );
-        else{
-            return (
-                <div id={'feed'}>
-                    Loading..
-                </div>
-            )
-        }
-    }
-
-}
-
-const mapStateToProps = (state) => {
-    return {
-        posts: state.posts,
     };
+
+    if (posts)
+        return (
+            <div id={'feed ml-0'}>
+                {renderList()}
+            </div>
+        );
+    else{
+        return (
+            <div id={'feed'}>
+                Loading..
+            </div>
+        )
+    }
+
 };
 
-export default connect(mapStateToProps, { fetchPosts })(Feed)
+export default Feed
