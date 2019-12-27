@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+
+import './viewpost.css'
+
 class ViewPost extends Component {
 
     renderComments(comment=this.props.content.comments) {
@@ -8,21 +11,18 @@ class ViewPost extends Component {
 
         comment.map((child) => {
             return(
-              <div className={'row'} key={child.id}>
+              <li className={'comment_item'} key={child.id}>
                   <p>{child.comment}</p>
-                  <div className={'container'}>
-                      <div className={'row'}>
+                  <ul className={'comment_thread'}>
                         {this.renderComments(child.children)}
-                      </div>
-                  </div>
-              </div>
+                  </ul>
+              </li>
             )
         }
         ))
     }
 
     render() {
-        console.log(this.props.content);
         return (
             <div id={'view_post_container'} className={'container'}>
                 <div className={'row'}>
@@ -34,7 +34,7 @@ class ViewPost extends Component {
                 <div className={'row'}>
                     {this.props.content.author}
                 </div>
-                <div className={'container'}>
+                <div className={'container-fluid comment_section'}>
                     {this.renderComments()}
                 </div>
             </div>
