@@ -28,7 +28,7 @@ const Search = () => {
                 results.map((result) => {
                     return (
                         <div className={'row my-2'} key={result.id}>
-                            <img className={'profile_pic'} src={result.profile_pic}/>
+                            <img className={'profile_pic'} src={result.profile_pic} alt={result.username} />
                             <Link
                                 to={'/search/user/' + result.id}
                                 className={'ml-2 mt-2'}

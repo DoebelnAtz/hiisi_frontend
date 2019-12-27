@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import Redirect from './Auth/Redirect'
@@ -13,8 +13,6 @@ import Login from './Auth/Login'
 import './base.css'
 
 const App =  () => {
-
-    const [nav, setNav] = useState('home');
 
     return (
         <BrowserRouter>

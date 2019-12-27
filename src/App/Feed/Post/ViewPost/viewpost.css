@@ -1,0 +1,17 @@
+.comment_item{
+    list-style: none;
+}
+
+.comment_thread {
+    border-left: 2px solid var(--colorsecondary);
+}
+
+.comment_section{
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--colorsecondary );
+}
+
+#view_post_container{
+    background-color: var(--postBG);
+}

@@ -27,7 +27,7 @@ const SideNav = (props) => {
     };
 
     useEffect(() => {
-        checkAuth()
+        checkAuth() // eslint-disable-next-line
     }, []);
 
     return (

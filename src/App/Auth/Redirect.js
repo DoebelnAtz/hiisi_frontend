@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import axios from 'axios'
 import { getUrlParam, } from "../../utils/utils";
 
@@ -22,15 +22,14 @@ const Redirect = (props) => {
     };
 
     useEffect(() => {
-        connect()
+        connect() // eslint-disable-next-line
     }, []);
 
         return (
             <div>
-
+                <p>You are being redirected...</p>
             </div>
         );
-
 };
 
 export default Redirect;

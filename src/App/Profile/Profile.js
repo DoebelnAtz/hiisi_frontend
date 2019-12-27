@@ -16,9 +16,9 @@ const Profile = (props) => {
             props.history.push('login')
         }
     };
-
     useEffect(() => {
-        getProfile()
+
+        getProfile() // eslint-disable-next-line
     }, []);
 
     return (

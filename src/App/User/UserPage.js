@@ -19,7 +19,7 @@ const UserPage = () => {
     };
 
     useEffect(() => {
-        getUser(id)
+        getUser(id) // eslint-disable-next-line
     }, []);
 
     return (
