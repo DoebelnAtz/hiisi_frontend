@@ -1,16 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, withRouter } from 'react-router-dom'
-import {Profile, Notification, Coalition, Messages, Home, Logo, ConnectToIntra} from './NavItems'
+import {Profile, Notification, Coalition, Messages, Home, Logo, ConnectToIntra, Search} from './NavItems'
 import { currentNav } from '../../actions/index'
 import './nav.css'
 import  ProfileOptions from './ProfileOptions/ProfileOptions'
 
 class SideNav extends React.Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {connected_intra: false, connect_text: 'Connect to Intra'}
+    }
+
     componentDidMount() {
         if (localStorage.getItem('token')) {
-            console.log('authenticated')
+            console.log('authenticated');
+            if (localStorage.getItem('resp')) {
+                let token = JSON.parse(localStorage.getItem('resp'));
+                if (token.data.access_token) {
+                    this.setState({connected_intra: true, connect_text: 'Connected'})
+
+                }
+            }
         }
         else{
             this.props.history.push('login')
@@ -29,7 +41,8 @@ class SideNav extends React.Component{
                 <Notification stuff={this.props}/>
                 <Coalition stuff={this.props}/>
                 <Messages stuff={this.props}/>
-                <ConnectToIntra/>
+                <Search stuff={this.props}/>
+                <ConnectToIntra disabled={this.state.connected_intra} text={this.state.connect_text}/>
             </div>
         );
     }

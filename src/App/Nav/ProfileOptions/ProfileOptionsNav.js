@@ -13,7 +13,7 @@ export const NavSlots = (props) => {
             className={`row nav_item sub_item ${props.stuff.nav === 'profile / slots' ? 'active' : 'inactive'}`}
             onClick={setNavSlots}
         >
-            <i className="fas fa-user"> </i><span
+            <i className="fas fa-chalkboard-teacher"></i><span
             id={'profile_nav'}
             className={`d-none d-md-block`}>
             Slots</span>

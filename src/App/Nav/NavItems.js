@@ -107,13 +107,33 @@ export const Coalition = (props) => {
     )
 };
 
+export const Search = (props) => {
+    const setNavSearch = () => {
+        props.stuff.currentNav('search')
+    };
+
+    return (
+        <Link
+            to={'/search'}
+            className={`row nav_item ${props.stuff.nav === 'search' ? 'active' : 'inactive'}`}
+            onClick={setNavSearch}
+        >
+            <i className="fas fa-search"></i>
+            <span id={'profile_coalition'} className={'d-none d-md-block'}>Search</span>
+        </Link>
+    )
+};
+
 export const ConnectToIntra = (props) => {
 
 
       return (
           <a
               href="https://api.intra.42.fr/oauth/authorize?client_id=520cf2ed25a517e352458db17ec06a2f0791b65cf99fc851ef0dea579908f158&scope=public%20projects%20profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000/redirect&response_type=code"
-          >Connect To Intra</a>
+          >
+          <button disabled={props.disabled}>
+              {props.text}
+          </button></a>
       )
 };
 

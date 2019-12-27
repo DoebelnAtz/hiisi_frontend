@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { currentNav } from '../../../actions/index'
-
-import  Datetime  from 'react-datetime'
+import DatePicker from '../../Components/DatePicker/DatePicker'
 
 class Slots extends Component {
 
@@ -14,7 +13,7 @@ class Slots extends Component {
     render() {
         return (
             <div>
-                <Datetime/>
+                <DatePicker/>
             </div>
         );
     }
