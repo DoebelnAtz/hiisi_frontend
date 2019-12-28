@@ -17,34 +17,30 @@
     left: 25%;
     right: 25%;
     top: 25%;
-    bottom: 25%;
+    bottom: 35%;
+    border: 5px solid var(--buttonColor);
+    border-radius: 2px;
     margin: auto;
     background: white;
     overflow: auto;
     z-index: 2!important;
 }
 
-#title_input{
-    width: 70%;
-    height: 2rem;
-    max-height: 4rem;
+.title_area{
 
+    max-height: 4rem;
 }
 
-#content_input{
-    margin-top: 1rem;
-    height: 20vh;
+.content_area{
+
     max-height: 30vh;
-    width: 70%;
+
 }
 
 .continer{
     margin-left: 5px;
 }
 
-.counter{
-    margin-left: 13%;
-}
 
 .feed_item{
     margin-top: 1rem;

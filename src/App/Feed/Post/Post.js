@@ -9,11 +9,11 @@ const Post = (props) => {
     const content = props.content;
 
     const expand = () => { // toggle expand
-        if (expanded){
-            setExpanded(false)
+        if (!expanded){
+            setExpanded(true)
         }
         else {
-            setExpanded(true)
+            setExpanded(false)
         }
     };
 

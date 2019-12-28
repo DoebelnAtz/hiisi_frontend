@@ -56,6 +56,10 @@ by order of specificity
 
 <h3>Resources:</h3>
 
+Arrow functions explained:
+
+https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
+
 React redux short tutorial:
 
 https://www.youtube.com/watch?v=CVpUuw9XSjY

@@ -1,0 +1,21 @@
+.textarea_cont {
+    outline: none;
+    border: 1px solid var(--textAreaColor);
+    width: 100%;
+    height: 100%;
+    float: left;
+
+}
+
+.area_div{
+    border-top: 1rem solid var(--textAreaColor);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+}
+.textarea_div {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+

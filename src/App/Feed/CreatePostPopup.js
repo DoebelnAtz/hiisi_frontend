@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { makeRequest } from '../Api/Api'
 import Button from '../Components/Buttons/Button'
+import TextArea from '../Components/TextArea'
 
 const CreatePostPopup = (props) => {
 
@@ -54,25 +55,30 @@ const CreatePostPopup = (props) => {
             >
                 <div id={'popup_cont'}>
                     <div className={'container'}>
-                        <div className={'row justify-content-center'}>
+                        <div className={'row justify-content-center my-2'}>
                             Create Post
                         </div>
                         <div className={'row justify-content-center'}>
-                            <textarea id={'title_input'} placeholder={'title'}
-                                   onChange={(e) => handleChange(e, setTitle)}
-                                   value={title}/>
-                        </div>
-                        <div className={'row counter'}>
-                            <p style={{color: title.length > 30 ? 'red' : 'black'}}>{title.length}/30</p>
+                            <TextArea
+                                customStyle={{maxHeight: '5vh', height: '3vh'}}
+                                id={'title_input'}
+                                placeholder={'Title'}
+                                onChange={(e) => handleChange(e, setTitle)}
+                                count={title.length}
+                                max={30}
+                            />
                         </div>
                         <div className={'row justify-content-center'}>
-                            <textarea id={'content_input'} placeholder={'content'}
-                                      onChange={(e) => handleChange(e, setContent)}
-                                      value={content} />
+                            <TextArea
+                                customStyle={{maxHeight: '25vh', height: '20vh'}}
+                                id={'content_input'}
+                                placeholder={'Content'}
+                                onChange={(e) => handleChange(e, setContent)}
+                                count={content.length}
+                                max={500}
+                            />
                         </div>
-                        <div className={'row counter'}>
-                            <p style={{color: content.length > 300 ? 'red' : 'black'}}>{content.length}/300</p>
-                        </div>
+
                         <div className={'row justify-content-center btn_row mt-2'}>
                             <Button
                                 text={'Back'}
