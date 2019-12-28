@@ -8,7 +8,6 @@ const SideNav = (props) => {
 
     const [connected, setConnected] = useState(false);
     const [connectText, setConnectText] = useState('Connect to Intra');
-    const [currentNav, setCurrentNav] = useState('home');
 
     const checkAuth = () => {
         if (localStorage.getItem('token')) {
@@ -32,20 +31,20 @@ const SideNav = (props) => {
 
     return (
         <div className={'side_nav'}>
-            <Logo currentNav={currentNav} setCurrentNav={setCurrentNav}/>
-            <NavItem currentNav={currentNav} setCurrentNav={setCurrentNav}
+            <Logo currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'home'} name={'home'} icon={'fas fa-home'}/>
-            <Profile currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+            <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             <Route exact path={['/profile', '/profile/slots']}>
-                <ProfileOptions currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+                <ProfileOptions currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             </Route>
-            <NavItem currentNav={currentNav} setCurrentNav={setCurrentNav}
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'notifications'} name={'notifications'} icon={'fas fa-bell'}/>
-            <NavItem currentNav={currentNav} setCurrentNav={setCurrentNav}
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'messages'} name={'messages'} icon={'fas fa-comment-alt'}/>
-            <NavItem currentNav={currentNav} setCurrentNav={setCurrentNav}
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'coalition'} name={'coalition'} icon={'fas fa-shield-alt'}/>
-            <NavItem currentNav={currentNav} setCurrentNav={setCurrentNav}
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'search'} name={'search'} icon={'fas fa-search'}/>
             <ConnectToIntra disabled={connected} text={connectText} setConnectedText={setConnectText}/>
         </div>

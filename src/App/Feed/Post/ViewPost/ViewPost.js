@@ -1,7 +1,10 @@
 import React from 'react';
 
-
+import PostTitle from '../PostTitle'
+import PostContent from '../PostContent'
+import PostButtonRow from '../PostButtonRow'
 import './viewpost.css'
+import {formatDate} from "../../../../utils/utils";
 
 const ViewPost = (props) => {
 
@@ -22,15 +25,6 @@ const ViewPost = (props) => {
 
     return (
         <div id={'view_post_container'} className={'container'}>
-            <div className={'row'}>
-                {props.content.title}
-            </div>
-            <div className={'row'}>
-                {props.content.post}
-            </div>
-            <div className={'row'}>
-                {props.content.author}
-            </div>
             <div className={'container-fluid comment_section'}>
                 {renderComments()}
             </div>

@@ -4,7 +4,7 @@ export const formatDate = (date) => {
     let day = date.slice(8, 10);
     let hour = date.slice(11,13);
     let minute = date.slice(14, 16);
-    return day + '.' + month + '.' + year + ' at ' + hour + ':' + minute
+    return day + '.' + month + '.' + year + ' at ' + (parseInt(hour, 10) + 2) + ':' + minute
 };
 
 export const  getUrlVars = () => {

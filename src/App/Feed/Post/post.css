@@ -3,8 +3,8 @@
 }
 
 .feed_item{
+    margin-top: 1rem;
     box-shadow: 2px 2px 3px gray;
-    margin: 1rem 0;
     background-color: var(--postBG);
 }
 

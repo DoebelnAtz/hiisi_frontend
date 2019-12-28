@@ -1,4 +1,4 @@
-import React  from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import Redirect from './Auth/Redirect'
@@ -14,6 +14,8 @@ import './base.css'
 
 const App =  () => {
 
+    const [currentNav, setCurrentNav] = useState('home');
+
     return (
         <BrowserRouter>
             <Switch>
@@ -23,14 +25,22 @@ const App =  () => {
             <div id={'main_container'} className={'container'}>
                 <div className={'row'}>
                     <div className={'col-1 col-md-3'}>
-                        <SideNav/>
+                        <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                     </div>
                     <div className={'col-11 col-md-9'}>
-                        <Header/>
+                        <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                         <Route exact path={'/profile/slots'} component={Slots}/>
                         <Route exact path={'/home'} component={Feed}/>
-                        <Route exact path={'/profile/'} component={Profile}/>
-                        <Route exact path={'/search'} component={Search}/>
+                        <Route exact path={'/profile/'}
+                               render={(props) =>
+                                   <Profile {...props} setCurrentNav={setCurrentNav}/>
+                               }
+                        />
+                        <Route exact path={'/search'}
+                               render={(props) =>
+                                   <Search {...props} setCurrentNav={setCurrentNav}/>
+                               }
+                        />
                         <Route exact path={'/search/user/:id'}>
                             <UserPage/>
                         </Route>
