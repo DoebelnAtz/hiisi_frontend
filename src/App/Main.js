@@ -7,8 +7,6 @@ import Slots from "./Slots/Slots";
 import Search from "./Search/Search";
 import UserPage from "./User/UserPage";
 import {useTransition, animated} from "react-spring";
-import SideNav from "./Nav/SideNav";
-
 
 export default (prop) => {
     const location = useLocation();

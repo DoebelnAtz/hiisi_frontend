@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import {Profile, Logo, ConnectToIntra, NavItem} from './NavItems'
 import './nav.css'
@@ -8,7 +8,6 @@ const SideNav = (props) => {
 
     const [connected, setConnected] = useState(false);
     const [connectText, setConnectText] = useState('Connect to Intra');
-    const [profileOptions, setProfileOptions] = useState(false);
 
     const checkAuth = () => {
         if (localStorage.getItem('token')) {
