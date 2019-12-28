@@ -1,3 +1,16 @@
+.basic_button {
+    padding: 5px 7px;
+    background-color: var(--buttonColor);
+    border: 1px solid var(--buttonColor);
+    border-radius: 5px;
+}
+
+.basic_button:hover {
+    padding: 5px 7px;
+    background-color: var(--buttonColor);
+    opacity: 0.8;
+}
+
 .comment_button{
     padding: 2px;
     background-color: aqua;

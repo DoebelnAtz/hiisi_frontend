@@ -2,13 +2,22 @@ import React, { useState, useEffect } from 'react'
 import Post from './Post/Post'
 import { makeRequest } from '../Api/Api'
 
+import CreatePostPopup from './CreatePostPopup'
+
 const Feed = () => {
 
     const [posts, setPosts] = useState([]);
+    const [popup, setPopup] = useState(true);
 
     const getPosts = async () => {
         const resp = await makeRequest('blogs', 'get', {});
         setPosts(resp.data)
+    };
+
+    const renderPopup = () => {
+        return (
+            <CreatePostPopup popup={popup} setPopup={setPopup}/>
+        )
     };
 
     useEffect(() => {
@@ -35,7 +44,8 @@ const Feed = () => {
 
     return (
         <div id={'feed ml-0'}>
-            <button id={'create_post_btn'} className={'mt-2'}>Create Post</button>
+            {renderPopup()}
+
             {renderList()}
         </div>
     );

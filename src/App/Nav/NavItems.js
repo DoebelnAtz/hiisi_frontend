@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
 
+import Button from '../Components/Buttons/Button'
+
 export const Logo = (props) => {
     const setNavHome = () => {
         props.setCurrentNav('home')
@@ -59,11 +61,12 @@ export const ConnectToIntra = (props) => {
           <a
               href="https://api.intra.42.fr/oauth/authorize?client_id=520cf2ed25a517e352458db17ec06a2f0791b65cf99fc851ef0dea579908f158&scope=public%20projects%20profile&redirect_uri=http%3A%2F%2Flocalhost%3A3000/redirect&response_type=code"
           >
-          <button disabled={props.disabled}
+          <Button disabled={props.disabled}
                   onClick={() => props.setConnectedText('Connecting...')}
+                  text={props.text}
           >
-              {props.text}
-          </button>
+
+          </Button>
           </a>
       )
 };
