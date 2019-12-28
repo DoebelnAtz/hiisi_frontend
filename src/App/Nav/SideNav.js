@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Route, withRouter } from 'react-router-dom'
+
 import {Profile, Logo, ConnectToIntra, NavItem} from './NavItems'
 import './nav.css'
-import  ProfileOptions from './ProfileOptions/ProfileOptions'
 
 const SideNav = (props) => {
 
     const [connected, setConnected] = useState(false);
     const [connectText, setConnectText] = useState('Connect to Intra');
+    const [profileOptions, setProfileOptions] = useState(false);
 
     const checkAuth = () => {
         if (localStorage.getItem('token')) {
@@ -34,10 +35,10 @@ const SideNav = (props) => {
             <Logo currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'home'} name={'Home'} icon={'fas fa-home'}/>
-            <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
-            <Route exact path={['/profile', '/profile/slots']}>
-                <ProfileOptions currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
-            </Route>
+            <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
+            />
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
+                     path={'slots'} name={'Slots'} icon={'fas fa-chalkboard-teacher'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'notifications'} name={'Notifications'} icon={'fas fa-bell'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}

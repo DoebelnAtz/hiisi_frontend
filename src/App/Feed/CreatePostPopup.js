@@ -31,7 +31,7 @@ const CreatePostPopup = (props) => {
     };
 
     useEffect(() => {
-        validateInput();
+        validateInput(); // eslint-disable-next-line
     }, [title.length, content.length]);
 
 
