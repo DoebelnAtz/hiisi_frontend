@@ -1,15 +1,9 @@
 import React, {useState} from "react";
-import { Route, Switch, useLocation} from 'react-router-dom'
-import { useTransition, animated } from 'react-spring'
+import { Route, Switch } from 'react-router-dom'
 
 import Redirect from './Auth/Redirect'
 import Header from './Header'
-import UserPage from './User/UserPage'
 import SideNav from './Nav/SideNav'
-import Feed from './Feed/Feed'
-import Search from './Search/Search'
-import Slots from './Profile/Slots/Slots'
-import Profile from './Profile/Profile'
 import Main from './Main'
 import Login from './Auth/Login'
 import './base.css'

@@ -27,27 +27,43 @@ const Feed = () => {
     }, []);
 
     const renderList = () => {
-        return (
-            posts.map((post) => {
-                return (
-                    <div id={'feed'} key={post.id}>
-                        <Post content={post}/>
-                    </div>
-                )
-            })
-        )
-    };
+        if (posts.length) {
+            return (
+                posts.map((post) => {
+                    return (
+                        <div id={'feed'} key={post.id}>
+                            <Post content={post}/>
+                        </div>
+                    )
+                })
+            )
+        }
+        else{
+            return(
+                <div>
 
-    return (
-        <div id={'feed ml-0'}>
-            <Button text={'Create Post'}
-                    onClick={() => setPopup(true)}
-            >
-            </Button>
-            {renderPopup()}
-            {renderList()}
-        </div>
-    );
+                </div>
+            )
+        }
+    };
+    if (posts.length) {
+        return (
+            <div id={'feed ml-0'}>
+                <Button text={'Create Post'}
+                        onClick={() => setPopup(true)}
+                >
+                </Button>
+                {renderPopup()}
+                {renderList()}
+            </div>
+        );
+    } else {
+        return(
+            <div>
+
+            </div>
+        )
+    }
 };
 
 export default Feed

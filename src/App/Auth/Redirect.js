@@ -18,7 +18,7 @@ const Redirect = (props) => {
             }
         });
         localStorage.setItem('resp', JSON.stringify(resp));
-        props.history.push('/');
+        props.history.push('/home');
     };
 
     useEffect(() => {

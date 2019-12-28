@@ -12,9 +12,9 @@ import {useTransition, animated} from "react-spring";
 export default (prop) => {
     const location = useLocation();
     const transitions = useTransition(location, location => location.pathname, {
-        from: { display: 'none', opacity: 1, transform: 'translateX(100%)' },
+        from: { display: 'none', opacity: 0, transform: 'translateX(50%)' },
         enter: { display:'block', position: 'absolute', opacity: 1, transform: 'translateX(0%)' },
-        leave: { display: 'none', position: 'absolute', opacity: 0, transform: 'translateX(-100%)' },
+        leave: { display: 'none', position: 'absolute', opacity: 0, transform: 'translateX(0%)' },
     });
 
     return transitions.map(({ item, props, key }) => (
