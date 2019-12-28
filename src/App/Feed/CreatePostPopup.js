@@ -24,24 +24,29 @@ const CreatePostPopup = (props) => {
         console.log(props.posts);
         resp.data['comments'] = [];
         resp.data['likes'] = 0;
-        props.setPosts([...(props.posts), resp.data]);
-        props.setPopup(false);
+        if (props.isMounted) {
+            console.log('updating');
+            props.setPosts([...(props.posts), resp.data]);
+            props.setPopup(false);
+        }
         setTitle('');
         setContent('');
+
     };
 
     useEffect(() => {
-        validateInput(); // eslint-disable-next-line
+        if (props.isMounted) {
+            validateInput(); // eslint-disable-next-line
+        }
     }, [title.length, content.length]);
 
 
     const handleChange = (e, func) => {
         func(e.target.value);
-
     };
 
     const validateInput = () => {
-        if ((title.length && content.length) && title.length <= 30 && content.length <= 300) {
+        if ((title.length && content.length) && title.length <= 80 && content.length <= 500) {
             setSubmitDisabled(false)
         } else {
             setSubmitDisabled(true)
@@ -59,11 +64,10 @@ const CreatePostPopup = (props) => {
     const propHolder = props; // react-springs overwrites props? temporary fix
 
     return ReactDOM.createPortal(
-        slideIn.map(({ item, key, props }) => item &&
-        <animated.div style={fadeIn} id={'popup_background'}
-
+        slideIn.map(({ item, key, props }, i) => item &&
+        <animated.div key={i} style={fadeIn} id={'popup_background'}
         >
-            <animated.div key={key}
+            <animated.div
                           style={props} id={'popup_cont'}>
                 <div className={'container'}>
                     <div className={'row justify-content-center my-2'}>
@@ -76,12 +80,12 @@ const CreatePostPopup = (props) => {
                             placeholder={'Title'}
                             onChange={(e) => handleChange(e, setTitle)}
                             count={title.length}
-                            max={30}
+                            max={80}
                         />
                     </div>
                     <div className={'row justify-content-center'}>
                         <TextArea
-                            customStyle={{maxHeight: '25vh', height: '20vh'}}
+                            customStyle={{maxHeight: '15vh', height: '15vh'}}
                             id={'content_input'}
                             placeholder={'Content'}
                             onChange={(e) => handleChange(e, setContent)}

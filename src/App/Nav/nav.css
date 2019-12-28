@@ -1,5 +1,6 @@
-.active{
+.nav_item.active{
     background-color: cornflowerblue;
+    min-width: 33px;
 }
 
 .fas {

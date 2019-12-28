@@ -16,25 +16,14 @@
     position: absolute;
     left: 25%;
     right: 25%;
-    top: 25%;
-    bottom: 35%;
+    top: 15%;
+    bottom: 45%;
     border: 5px solid var(--buttonColor);
     border-radius: 2px;
     margin: auto;
     background: white;
     overflow: auto;
     z-index: 2!important;
-}
-
-.title_area{
-
-    max-height: 4rem;
-}
-
-.content_area{
-
-    max-height: 30vh;
-
 }
 
 .continer{
@@ -44,6 +33,7 @@
 
 .feed_item{
     margin-top: 1rem;
+    margin-right: 1rem;
     box-shadow: 2px 2px 3px gray;
     background-color: var(--postBG);
 }

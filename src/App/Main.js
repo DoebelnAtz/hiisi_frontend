@@ -1,6 +1,6 @@
 import Feed from "./Feed/Feed";
 import Profile from "./Profile/Profile";
-import React from "react";
+import React, {useRef} from "react";
 
 import { Route, Switch, useLocation } from 'react-router-dom'
 import Slots from "./Slots/Slots";
@@ -16,6 +16,8 @@ export default (prop) => {
         leave: { display: 'none', position: 'absolute', opacity: 0, transform: 'translateX(0%)' },
     });
 
+    const renderCount = useRef(1);
+
     return transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
             <Switch location={location}>
@@ -25,7 +27,9 @@ export default (prop) => {
                        }
 
                 />
-                <Route exact path={'/home'} component={Feed}/>
+                <Route exact path={'/home'} render={
+                    (props) => <Feed renderCount={renderCount}/>
+                }/>
                 <Route exact path={'/profile/'}
                        render={(props) =>
                            <Profile {...props} setCurrentNav={prop.setCurrentNav}/>

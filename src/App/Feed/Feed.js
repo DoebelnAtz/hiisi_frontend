@@ -1,30 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Post from './Post/Post'
-import { makeRequest } from '../Api/Api'
+import { makeRequest, useFetch } from '../Api/Api'
 import {useSprings, useTransition, useTrail, animated} from 'react-spring'
 import CreatePostPopup from './CreatePostPopup'
 import Button from "../Components/Buttons/Button";
 
-const Feed = () => {
+const Feed = (prop) => {
 
     const [posts, setPosts] = useState([]);
     const [popup, setPopup] = useState(false);
 
+    const isMounted = useRef(true);
+
     const getPosts = async () => {
+        console.log(prop.renderCount.current);
         const resp = await makeRequest('blogs', 'get', {});
-        setPosts(resp.data)
-    };
+        if(isMounted.current) // make sure we aren't updating an unmounted component
+            setPosts(resp.data);};
 
-    const renderPopup = () => {
-        return (
-            <CreatePostPopup popup={popup} setPopup={setPopup}
-                             setPosts={setPosts} posts={posts}/>
-        )
-    };
-
-    useEffect(() => {
-        getPosts();
-    }, []);
+    (useFetch( 'blogs', setPosts ));
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 
@@ -33,7 +27,7 @@ const Feed = () => {
         opacity: posts.length ? 1 : 0,
         x: posts.length ? 0 : 20,
         height: posts.length ? 80 : 0,
-        from: {opacity: 0, x: 20, height: 0},
+        from: {opacity: 0, x: 50, height: 0},
     });
 
     const renderList = () => {
@@ -57,7 +51,10 @@ const Feed = () => {
                         onClick={() => setPopup(true)}
                 >
                 </Button>
-                {renderPopup()}
+                <CreatePostPopup popup={popup} setPopup={setPopup}
+                                 setPosts={setPosts} posts={posts}
+                                 isMounted={isMounted}
+                />
                 {renderList()}
             </div>
         );

@@ -24,7 +24,7 @@ const App =  () => {
                         <div className={'col-1 col-md-3'}>
                             <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                         </div>
-                        <div className={'col-11 col-md-9'}>
+                        <div id={'main_page'} className={'col-11 col-md-9'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                             <Main setCurrentNav={setCurrentNav}/>
                         </div>

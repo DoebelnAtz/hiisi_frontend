@@ -8,8 +8,13 @@
 
 #main_container{
     max-width: 1000px;
-    min-width: 768px;
+    min-width: 568px;
     height: 100%;
+}
+
+#main_page
+{
+    padding-right: 1rem;
 }
 
 #header_logout{
