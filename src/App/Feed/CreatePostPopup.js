@@ -48,23 +48,23 @@ const CreatePostPopup = (props) => {
         }
     };
 
-    const fadeIn = useTransition(props.popup, null, {
-        from: {opacity: 0},
-        enter: {opacity: 1},
-        leave: {opacity: 0}
+    const slideIn = useTransition(props.popup, null, {
+        from: {transform: 'translateY(100%)'},
+        enter: {transform: 'translateY(0%)'},
+        leave: {transform: 'translateY(-200px)'}
     });
 
-    const slideIn = useSpring({transition: props.popup ? 'translateY(100)' : 'translateY(100)'});
+    const fadeIn = useSpring({opacity: props.popup ? 1 : 0});
 
     const propHolder = props; // react-springs overwrites props? temporary fix
 
     return ReactDOM.createPortal(
-        fadeIn.map(({ item, key, props }) => item &&
-        <animated.div id={'popup_background'}
-                      key={key}
-                      style={props}
+        slideIn.map(({ item, key, props }) => item &&
+        <animated.div style={fadeIn} id={'popup_background'}
+
         >
-            <animated.div style={slideIn} id={'popup_cont'}>
+            <animated.div key={key}
+                          style={props} id={'popup_cont'}>
                 <div className={'container'}>
                     <div className={'row justify-content-center my-2'}>
                         Create Post
