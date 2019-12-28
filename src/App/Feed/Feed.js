@@ -16,7 +16,8 @@ const Feed = () => {
 
     const renderPopup = () => {
         return (
-            <CreatePostPopup popup={popup} setPopup={setPopup}/>
+            <CreatePostPopup popup={popup} setPopup={setPopup}
+                             setPosts={setPosts} posts={posts}/>
         )
     };
 
@@ -45,7 +46,6 @@ const Feed = () => {
     return (
         <div id={'feed ml-0'}>
             {renderPopup()}
-
             {renderList()}
         </div>
     );

@@ -9,6 +9,7 @@
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
+    z-index: 1;
 }
 
 #popup_cont {
@@ -19,11 +20,30 @@
     bottom: 25%;
     margin: auto;
     background: white;
+    overflow: auto;
     z-index: 2!important;
+}
+
+#title_input{
+    width: 70%;
+    height: 2rem;
+    max-height: 4rem;
+
+}
+
+#content_input{
+    margin-top: 1rem;
+    height: 20vh;
+    max-height: 30vh;
+    width: 70%;
 }
 
 .continer{
     margin-left: 5px;
+}
+
+.counter{
+    margin-left: 13%;
 }
 
 .feed_item{
