@@ -3,11 +3,12 @@ import Post from './Post/Post'
 import { makeRequest } from '../Api/Api'
 
 import CreatePostPopup from './CreatePostPopup'
+import Button from "../Components/Buttons/Button";
 
 const Feed = () => {
 
     const [posts, setPosts] = useState([]);
-    const [popup, setPopup] = useState(true);
+    const [popup, setPopup] = useState(false);
 
     const getPosts = async () => {
         const resp = await makeRequest('blogs', 'get', {});
@@ -26,29 +27,27 @@ const Feed = () => {
     }, []);
 
     const renderList = () => {
-        console.log(posts);
-        if (posts.length) {
-            return (
-                posts.map((post) => {
-                    return (
-                        <div id={'feed'} key={post.id}>
-                            <Post content={post}/>
-                        </div>
-                    )
-                })
-            )
-        }
-        else{
-            return(<div>Loading...</div>)
-        }
+        return (
+            posts.map((post) => {
+                return (
+                    <div id={'feed'} key={post.id}>
+                        <Post content={post}/>
+                    </div>
+                )
+            })
+        )
     };
 
     return (
         <div id={'feed ml-0'}>
+            <Button text={'Create Post'}
+                    onClick={() => setPopup(true)}
+            >
+            </Button>
             {renderPopup()}
             {renderList()}
         </div>
     );
-}
+};
 
 export default Feed

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import { Route, Switch, useLocation} from 'react-router-dom'
+import { useTransition, animated } from 'react-spring'
 
 import Redirect from './Auth/Redirect'
 import Header from './Header'
@@ -9,6 +10,7 @@ import Feed from './Feed/Feed'
 import Search from './Search/Search'
 import Slots from './Profile/Slots/Slots'
 import Profile from './Profile/Profile'
+import Main from './Main'
 import Login from './Auth/Login'
 import './base.css'
 
@@ -16,41 +18,28 @@ const App =  () => {
 
     const [currentNav, setCurrentNav] = useState('home');
 
+
     return (
-        <BrowserRouter>
+        <div>
             <Switch>
-            <Route exact path={'/login/'} component={Login}/>
-                <Route exact path={'/redirect/'} component={Redirect}/>
-            <Route path={'/'}>
-            <div id={'main_container'} className={'container'}>
-                <div className={'row'}>
-                    <div className={'col-1 col-md-3'}>
-                        <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
-                    </div>
-                    <div className={'col-11 col-md-9'}>
-                        <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
-                        <Route exact path={'/profile/slots'} component={Slots}/>
-                        <Route exact path={'/home'} component={Feed}/>
-                        <Route exact path={'/profile/'}
-                               render={(props) =>
-                                   <Profile {...props} setCurrentNav={setCurrentNav}/>
-                               }
-                        />
-                        <Route exact path={'/search'}
-                               render={(props) =>
-                                   <Search {...props} setCurrentNav={setCurrentNav}/>
-                               }
-                        />
-                        <Route exact path={'/search/user/:id'}>
-                            <UserPage/>
-                        </Route>
+                <Route exact path={'/login/'} component={Login}/>
+                    <Route exact path={'/redirect/'} component={Redirect}/>
+                <Route path={'/'}>
+                <div id={'main_container'} className={'container'}>
+                    <div className={'row'}>
+                        <div className={'col-1 col-md-3'}>
+                            <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+                        </div>
+                        <div className={'col-11 col-md-9'}>
+                            <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+                            <Main setCurrentNav={setCurrentNav}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </Route>
+                </Route>
             </Switch>
-        </BrowserRouter>
-    );
+        </div>
+    )
 };
 
 export default App;

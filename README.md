@@ -68,6 +68,10 @@ What is a rest API?:
 
 https://www.youtube.com/watch?v=7YcW25PHnAA&t=307s
 
+react-spring:
+
+https://www.react-spring.io/docs/hooks/
+
 React good practices:
 
 https://www.youtube.com/watch?v=BncMF2aTL0w
