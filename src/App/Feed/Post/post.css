@@ -1,5 +1,5 @@
-.post_author{
-    margin: 0 1rem;
+.continer{
+    margin-left: 5px;
 }
 
 .feed_item{
@@ -13,12 +13,14 @@
     border-bottom: 2px solid gray;
 }
 
+.post_author{
+    margin: 0 1rem;
+}
+
 .post_content{
     padding: 0.4rem;
     border-bottom: 2px solid gray;
 }
 
-.continer{
-    margin-left: 5px;
-}
+
 

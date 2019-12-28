@@ -33,19 +33,19 @@ const SideNav = (props) => {
         <div className={'side_nav'}>
             <Logo currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'home'} name={'home'} icon={'fas fa-home'}/>
+                     path={'home'} name={'Home'} icon={'fas fa-home'}/>
             <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             <Route exact path={['/profile', '/profile/slots']}>
                 <ProfileOptions currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
             </Route>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'notifications'} name={'notifications'} icon={'fas fa-bell'}/>
+                     path={'notifications'} name={'Notifications'} icon={'fas fa-bell'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'messages'} name={'messages'} icon={'fas fa-comment-alt'}/>
+                     path={'messages'} name={'Messages'} icon={'fas fa-comment-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'coalition'} name={'coalition'} icon={'fas fa-shield-alt'}/>
+                     path={'coalition'} name={'Coalition'} icon={'fas fa-shield-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'search'} name={'search'} icon={'fas fa-search'}/>
+                     path={'search'} name={'Search'} icon={'fas fa-search'}/>
             <ConnectToIntra disabled={connected} text={connectText} setConnectedText={setConnectText}/>
         </div>
     );

@@ -23,7 +23,7 @@ const Search = (props) => {
     };
 
     useEffect(() => {
-        props.setCurrentNav('search') // set nav to search when refreshing page
+        props.setCurrentNav('search') // eslint-disable-next-line
     }, []);
 
 

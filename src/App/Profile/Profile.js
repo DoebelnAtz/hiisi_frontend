@@ -18,10 +18,7 @@ const Profile = (props) => {
         }
     };
     useEffect(() => {
-
         getProfile() // eslint-disable-next-line
-        // the comment on the line above disables missing dependency warning, another option would be
-        // to move the function into useEffect but this feels cleaner.
     }, []);
 
     return (

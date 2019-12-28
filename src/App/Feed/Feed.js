@@ -15,34 +15,30 @@ const Feed = () => {
         getPosts();
     }, []);
 
-
     const renderList = () => {
-            console.log(posts);
-        return (
-            posts.map((post) => {
-                return (
-                    <div id={'feed'} key={post.id}>
-                        <Post content={post}/>
-                    </div>
-                )
-            })
-        )
+        console.log(posts);
+        if (posts.length) {
+            return (
+                posts.map((post) => {
+                    return (
+                        <div id={'feed'} key={post.id}>
+                            <Post content={post}/>
+                        </div>
+                    )
+                })
+            )
+        }
+        else{
+            return(<div>Loading...</div>)
+        }
     };
 
-    if (posts)
-        return (
-            <div id={'feed ml-0'}>
-                {renderList()}
-            </div>
-        );
-    else{
-        return (
-            <div id={'feed'}>
-                Loading..
-            </div>
-        )
-    }
-
-};
+    return (
+        <div id={'feed ml-0'}>
+            <button id={'create_post_btn'} className={'mt-2'}>Create Post</button>
+            {renderList()}
+        </div>
+    );
+}
 
 export default Feed

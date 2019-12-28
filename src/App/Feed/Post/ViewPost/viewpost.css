@@ -1,3 +1,7 @@
+#view_post_container{
+    background-color: var(--postBG);
+}
+
 .comment_item{
     list-style: none;
 }
@@ -11,6 +15,6 @@
     border-top: 2px solid var(--colorsecondary );
 }
 
-#view_post_container{
-    background-color: var(--postBG);
+ul {
+    padding-inline-start: 30px;
 }

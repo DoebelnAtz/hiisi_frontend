@@ -1,10 +1,10 @@
-.comment_count {
-    margin: 0 1rem;
-}
-
 .comment_button{
     padding: 2px;
     background-color: aqua;
+}
+
+.comment_count {
+    margin: 0 1rem;
 }
 
 .like_count {

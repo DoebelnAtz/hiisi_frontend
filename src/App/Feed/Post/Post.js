@@ -8,7 +8,7 @@ const Post = (props) => {
     const [expanded, setExpanded] = useState(false);
     const content = props.content;
 
-    const expand = () => {
+    const expand = () => { // toggle expand
         if (expanded){
             setExpanded(false)
         }

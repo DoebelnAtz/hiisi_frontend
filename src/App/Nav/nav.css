@@ -1,8 +1,36 @@
+.active{
+    background-color: cornflowerblue;
+}
+
+.fas {
+    width: 20px;
+}
+
 .nav_item{
     padding: 0.3rem;
     margin: 0.2rem 0;
     text-decoration: none!important;
     min-width: 90%;
+}
+
+.nav_item.active:hover{
+    background-color: lightblue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav_item i{
+    margin-right: 1rem;
+    color: var(--colorprimary);
+    font-size: 24px;
+
+}
+
+.nav_item.inactive:hover{
+    background-color: blue;
+    cursor: pointer;
+    text-decoration: none;
+
 }
 
 .nav_logo{
@@ -16,30 +44,9 @@
     text-decoration: none;
 }
 
-.nav_item i{
-    margin-right: 1rem;
-    color: var(--color1);
-    font-size: 24px;
-
-}
-
-.nav_item.inactive:hover{
-    background-color: blue;
-    cursor: pointer;
-    text-decoration: none;
-
-}
-
 .sub_item {
     margin-left: 1rem;
 }
 
-.nav_item.active:hover{
-    background-color: lightblue;
-    cursor: pointer;
-    text-decoration: none;
-}
 
-.active{
-    background-color: cornflowerblue;
-}
+
