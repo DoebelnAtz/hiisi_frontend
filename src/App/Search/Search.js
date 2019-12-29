@@ -14,7 +14,7 @@ const Search = (props) => {
         let val = e.target.value;
         let resp = await axios({ // make request to search endpoint, it will return a list of matched users
             method: 'post',
-            url: "http://127.0.0.1:8002/api/search/",
+            url: "http://134.209.227.11/api/search/",
             data:
                 {
                     search: val
