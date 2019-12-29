@@ -26,7 +26,7 @@ const CreatePostPopup = (props) => {
         resp.data['likes'] = 0;
         if (props.isMounted) {
             console.log('updating');
-            props.setPosts([...(props.posts), resp.data]);
+            props.setPosts([resp.data, ...(props.posts)]);
             props.setPopup(false);
         }
         setTitle('');

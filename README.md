@@ -102,5 +102,14 @@ registration: /auth/register/
     data = 
     {username: "username", password: "password"}
 
+create_comment: /api/create_comment/
+    
+    data = {
+        user_id: "", 
+        comment_text: "",
+        blog_id: (null or blog_id), 
+        comment_parent: (null or comment id), 
+        published_date: (ISO datetime string)
+    }
 
 

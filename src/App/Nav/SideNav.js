@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import {Profile, Logo, ConnectToIntra, NavItem} from './NavItems'
+import { ToggleButton } from "../Components/Buttons/Toggle";
+import {Profile, Logo, NavItem} from './NavItems'
 import './nav.css'
 
 const SideNav = (props) => {
@@ -11,7 +12,6 @@ const SideNav = (props) => {
 
     const checkAuth = () => {
         if (localStorage.getItem('token')) {
-            console.log('authenticated');
             if (localStorage.getItem('resp')) {
                 let token = JSON.parse(localStorage.getItem('resp'));
                 if (token.data.access_token) {
@@ -46,7 +46,7 @@ const SideNav = (props) => {
                      path={'coalition'} name={'Coalition'} icon={'fas fa-shield-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'search'} name={'Search'} icon={'fas fa-search'}/>
-            <ConnectToIntra disabled={connected} text={connectText} setConnectedText={setConnectText}/>
+            <ToggleButton connected={connected} setConnected={setConnected}/>
         </div>
     );
 };

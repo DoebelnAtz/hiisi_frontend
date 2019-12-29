@@ -22,3 +22,11 @@ export const getUrlParam = (parameter, defaultValue) => {
     }
     return urlParameter;
 };
+
+export const countComments = (comments, count = 0) => {
+    for (var i=0; i < comments.length; i++)
+    {
+        count = countComments(comments[i].children, ++count)
+    }
+    return(count)
+};

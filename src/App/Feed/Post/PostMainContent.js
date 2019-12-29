@@ -8,6 +8,7 @@ import ButtonRow from "./PostButtonRow";
 
 
 const PostMainContent = (props) => {
+    console.log(props.content);
     let content = props.content;
     return (
         <div

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import { Link } from 'react-router-dom'
-import './search.css'
 import {useTrail, animated} from "react-spring";
-import Post from "../Feed/Post/Post";
+
+import {makeRequest} from "../Api/Api";
+import './search.css'
 
 const Search = (props) => {
 
@@ -12,14 +12,13 @@ const Search = (props) => {
 
     const handleChange = async(e) => {
         let val = e.target.value;
-        let resp = await axios({ // make request to search endpoint, it will return a list of matched users
-            method: 'post',
-            url: "http://134.209.227.11/api/search/",
-            data:
-                {
-                    search: val
-                }
-        });
+        let resp = await makeRequest( // make request to search endpoint, it will return a list of matched users
+            "search/",
+            'post',
+            {
+                search: val
+            }
+        );
         setResults(resp.data);
         setSearchVal(val);
     };

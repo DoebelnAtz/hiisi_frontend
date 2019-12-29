@@ -1,22 +1,23 @@
 import React, { useEffect} from 'react';
 import axios from 'axios'
 import { getUrlParam, } from "../../utils/utils";
+import { makeRequest } from "../Api/Api";
 
 const Redirect = (props) => {
 
     const connect = async() => {
         let code = getUrlParam('code', '');
         console.log(code);
-        let resp = await axios({
-            method: 'post',
-            url: "http://127.0.0.1:8002/api/auth/connect/",
-            data: {
+        let resp = await makeRequest(
+            "auth/connect/",
+            'post',
+            {
                 code: code
             },
-            headers:{
+            {
                 'Content-Type': 'application/json'
             }
-        });
+        );
         localStorage.setItem('resp', JSON.stringify(resp));
         props.history.push('/home');
     };

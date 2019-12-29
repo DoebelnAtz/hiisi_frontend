@@ -28,3 +28,21 @@
     padding: 2px;
     background-color: deeppink;
 }
+
+.toggle_button {
+    height: 22px;
+    width: 50px;
+    background-color: gainsboro;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.toggle_background {
+    margin-top: 1rem;
+    height: 28px;
+    width: 76px;
+    border-radius: 8px;
+    border: 3px solid black;
+    background: linear-gradient(90deg, #ff7777 50%, #55ff55 50%);
+
+}
