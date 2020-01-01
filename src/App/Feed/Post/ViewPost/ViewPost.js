@@ -10,21 +10,26 @@ import {useFetch} from "../../../Hooks/Hooks";
 const ViewPost = (props) => {
 
     const [comments, setComments] = useState([]);
-
-    useFetch(`comment_threads/${props.content.thread.id}`, setComments);
+    console.log(props.content);
+    useFetch(`comment_threads/${props.content.thread}`, setComments);
 
     const renderComments = (comment=comments.comment, isExpanded=true) => {
-        return(
-            comment.map((child) => {
-                return (
-                    <div key={child.id}>
-                        <Comment isExpanded={isExpanded} child={child} renderComments={renderComments}/>
-                    </div>
-                )
+        console.log(comments);
+        if (comment) {
+            return (
+                comment.map((child) => {
+                        return (
+                            <div key={child.id}>
+                                <Comment isExpanded={isExpanded} child={child} renderComments={renderComments}/>
+                            </div>
+                        )
 
-            }
+                    }
+                )
             )
-        )
+        } else {
+            return <div>Loading...</div>
+        }
     };
 
     return (
