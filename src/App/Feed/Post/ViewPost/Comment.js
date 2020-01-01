@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Reply} from "./Reply";
+import { formatDate } from "../../../../utils/utils";
 
 export const Comment = ({child,  renderComments, isExpanded}) => {
     const [expanded, setExpanded] = useState(isExpanded);
@@ -10,6 +11,7 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                 <div className={'comment_head'}>
                     <img className={'comment_profile_pic'} src={child.creator.profile_pic}/>
                     <span> {child.creator.username}</span>
+                    <span> {formatDate(child.published_date)}</span>
                 </div>
                 <div className={'comment_body'}>
                     <p>{child.comment}</p>
@@ -22,7 +24,9 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
         )
     } else {
         return (
-            <button onClick={() => setExpanded(!expanded)}>SHOW</button>
+            <div  className={'parent_comment'}>
+                <button onClick={() => setExpanded(!expanded)}>SHOW</button>
+            </div>
         )
     }
 };

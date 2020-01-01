@@ -10,7 +10,7 @@ export const Reply = (props) => {
     const submitPost = async () => {
         let now = new Date().toISOString();
         if (commentText.length > 2) {
-            await makeRequest('create_comment/', 'post',
+            let resp = await makeRequest('create_comment/', 'post',
                 {
                     comment_text: commentText,
                     user_id: JSON.parse(localStorage.getItem('token')).id,
