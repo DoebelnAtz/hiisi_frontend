@@ -7,12 +7,10 @@ import ButtonRow from "./PostButtonRow";
 
 
 
-const PostMainContent = (props) => {
-    console.log(props.content);
-    let content = props.content;
+const PostMainContent = ({content, expand}) => {
     return (
         <div
-             onClick={props.expand}>
+             onClick={expand}>
             <div className={'col'}>
                 <PostTitle title={content.title}
                            author={(content.creator) ? content.creator.username : 'Event'}

@@ -3,10 +3,9 @@ import React, { useState } from 'react'
 import ViewPost from './ViewPost/ViewPost'
 import PostMainContent from './PostMainContent'
 
-const Post = (props) => {
+const Post = ({content}) => {
 
     const [expanded, setExpanded] = useState(false);
-    const content = props.content;
 
     const expand = () => { // toggle expand
         if (!expanded){

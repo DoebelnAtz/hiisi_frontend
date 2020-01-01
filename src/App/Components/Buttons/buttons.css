@@ -34,7 +34,7 @@
     width: 50px;
     background-color: gainsboro;
     cursor: pointer;
-    border-radius: 5px;
+        border-radius: 4px;
 }
 
 .toggle_background {

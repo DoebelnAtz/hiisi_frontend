@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Post from './Post/Post'
-import { makeRequest, useFetch } from '../Api/Api'
-import {useSprings, useTransition, useTrail, animated} from 'react-spring'
+import { useFetch } from './../Hooks/Hooks'
+import {useTrail, animated} from 'react-spring'
 import CreatePostPopup from './CreatePostPopup'
 import Button from "../Components/Buttons/Button";
 
@@ -11,12 +11,6 @@ const Feed = (prop) => {
     const [popup, setPopup] = useState(false);
 
     const isMounted = useRef(true);
-
-    const getPosts = async () => {
-        console.log(prop.renderCount.current);
-        const resp = await makeRequest('blogs', 'get', {});
-        if(isMounted.current) // make sure we aren't updating an unmounted component
-            setPosts(resp.data);};
 
     (useFetch( 'blogs', setPosts ));
 

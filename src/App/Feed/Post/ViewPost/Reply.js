@@ -33,10 +33,14 @@ export const Reply = (props) => {
         )
     } else {
         return (
-            <div>
-                <textarea className={'comment_textarea'} value={commentText}
-                          onChange={(e) => setCommentText(e.target.value)}/>
-                <button onClick={() => submitPost()}>Reply</button>
+            <div className={'container'}>
+                <div className={'row'}>
+                    <textarea className={'comment_textarea'} value={commentText}
+                              onChange={(e) => setCommentText(e.target.value)}/>
+                </div>
+                <div className={'row'}>
+                    <button onClick={() => submitPost()}>Reply</button>
+                </div>
             </div>
         )
     }

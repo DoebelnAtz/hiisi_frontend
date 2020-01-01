@@ -4,6 +4,7 @@ import {useTrail, animated} from "react-spring";
 
 import {makeRequest} from "../Api/Api";
 import './search.css'
+import {useNav} from "../Hooks/Hooks";
 
 const Search = (props) => {
 
@@ -23,9 +24,7 @@ const Search = (props) => {
         setSearchVal(val);
     };
 
-    useEffect(() => {
-        props.setCurrentNav('search') // eslint-disable-next-line
-    }, []);
+    useNav('search', props.setCurrentNav);
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 

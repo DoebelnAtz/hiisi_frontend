@@ -7,6 +7,9 @@ import Slots from "./Slots/Slots";
 import Search from "./Search/Search";
 import UserPage from "./User/UserPage";
 import {useTransition, animated} from "react-spring";
+import Coalition from "./Coalition/Coalition";
+import Messages from "./Messages/Messages";
+import Notifications from "./Notifications/Notifications";
 
 export default (prop) => {
     const location = useLocation();
@@ -33,6 +36,21 @@ export default (prop) => {
                 <Route exact path={'/profile/'}
                        render={(props) =>
                            <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
+                       }
+                />
+                <Route exact path={'/notifications/'}
+                       render={(props) =>
+                           <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
+                       }
+                />
+                <Route exact path={'/messages/'}
+                       render={(props) =>
+                           <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
+                       }
+                />
+                <Route exact path={'/coalition/'}
+                       render={(props) =>
+                           <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
                        }
                 />
                 <Route exact path={'/search'}

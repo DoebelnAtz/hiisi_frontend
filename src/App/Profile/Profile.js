@@ -15,6 +15,7 @@ const Profile = (props) => {
             let resp = await makeRequest(`profiles/${JSON.parse(window.localStorage.getItem('token')).id}`, 'get', {});
             if (isMounted.current)
                 setProfile(resp.data); // make request to profiles endpoint and get current user by id
+            console.log(resp.data);
         }
         else {
             props.history.push('login') // if user not found, redirect to login page
@@ -31,7 +32,6 @@ const Profile = (props) => {
     useEffect(() => {
         getProfile() // eslint-disable-next-line
     }, []);
-
     return (
         <ProfilePage profile={profile}/>
     );
