@@ -7,6 +7,11 @@ export const makeRequest = async (url, method, data, headers={}) => {
         method: method,
         data: data,
         headers: headers
+    }).catch(function (error) {
+        if (error.response.status === 401) {
+            localStorage.clear();
+            window.location.replace("http://localhost:3000/login")
+        }
     });
     return (resp);
 };

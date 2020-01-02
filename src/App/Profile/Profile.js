@@ -1,7 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, useContext} from 'react'
 import ProfilePage from './ProfilePage'
 import { makeRequest } from '../Api/Api'
 import './profile.css'
+import UserContext from '../Context/UserContext'
 
 const Profile = (props) => {
 
@@ -12,7 +13,7 @@ const Profile = (props) => {
     const getProfile = async () => {
         props.setCurrentNav('profile'); // if page is refreshed, set nav to profile
         if (localStorage.getItem('token')) {
-            let resp = await makeRequest(`profiles/${JSON.parse(window.localStorage.getItem('token')).id}`, 'get', {});
+            let resp = await makeRequest(`profiles/${JSON.parse(window.localStorage.getItem('token')).user.id}`, 'get', {});
             if (isMounted.current)
                 setProfile(resp.data); // make request to profiles endpoint and get current user by id
         }

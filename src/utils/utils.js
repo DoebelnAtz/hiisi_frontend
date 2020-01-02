@@ -30,3 +30,13 @@ export const countComments = (comments, count = 0) => {
     }
     return(count)
 };
+
+export const checkFriendList = (profile, username) => {
+    let friendList = profile.friends;
+    for (var i = 0; i < friendList.length; i++) {
+        if (friendList[i].username === username){
+            return false
+        }
+    }
+    return true;
+};

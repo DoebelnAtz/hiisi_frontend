@@ -1,13 +1,49 @@
 import React from 'react';
 import {useFetch, useNav} from "../Hooks/Hooks";
+import Button from "../Components/Buttons/Button";
+import {makeRequest} from "../Api/Api";
+import _ from 'lodash'
 
 const Notifications = (props) => {
 
     useNav('notifications', props.setCurrentNav);
 
+    let profile = JSON.parse(localStorage.getItem("currentUser"));
+
+    const respondRequest = async (target, accept) => {
+        let resp = await makeRequest('respond_friend/', 'post', {
+            target_id: target.id,
+            sender_id: profile.id,
+            accept: accept
+        });
+        let prof = _.remove(profile.friend_requests, function (request) {
+            return (request.username === target.username);
+        });
+        localStorage.setItem('currentUser', JSON.stringify(prof))
+    };
+
+    const renderFriendRequests = () => {
+        return (
+            profile.friend_requests.map((friend) => {
+                return (
+                    <div className={'row'} key={friend.id}>
+                        <img style={{height: "30px"}} src={friend.profile_pic}/><span className={'friend_request_username'}>{friend.username}</span>
+                        <Button onClick={() => respondRequest(friend, true)} id={'accept'} text={"accept"}/>
+                        <Button onClick={() => respondRequest(friend, false)} id={"decline"} text={"decline"}/>
+                    </div>
+                )
+            })
+        )
+    };
+
     return (
         <div>
             Notifications page
+            <div>
+                Friend Requests:
+                {renderFriendRequests()}
+            </div>
+
         </div>
     )
 };

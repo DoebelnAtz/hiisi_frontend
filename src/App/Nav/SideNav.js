@@ -4,19 +4,35 @@ import { withRouter } from 'react-router-dom'
 import { ToggleButton } from "../Components/Buttons/Toggle";
 import {Profile, Logo, NavItem} from './NavItems'
 import './nav.css'
+import {makeRequest} from "../Api/Api";
 
 const SideNav = (props) => {
 
     const [connected, setConnected] = useState(false);
     const [connectText, setConnectText] = useState('Connect to Intra');
 
-    const checkAuth = () => {
+    const checkAuth = async () => {
         if (localStorage.getItem('token')) {
-            if (localStorage.getItem('resp')) {
-                let token = JSON.parse(localStorage.getItem('resp'));
-                if (token.data.access_token) {
-                    setConnected(true);
-                    setConnectText('Connected');
+            let token = JSON.parse(localStorage.getItem('token')).token;
+
+            let resp = await makeRequest('auth/user/', 'get', {}, {
+                "Content-Type": "application/json",
+                Authorization: "Token " + token,
+            });
+            if (resp.status === 401)
+            {
+                console.log("failed");
+                props.history.push('login');
+                localStorage.clear();
+            }
+            else {
+                localStorage.setItem('currentUser', JSON.stringify(resp.data))
+                if (localStorage.getItem('resp')) {
+                    let token = JSON.parse(localStorage.getItem('resp'));
+                    if (token.data.access_token) {
+                        setConnected(true);
+                        setConnectText('Connected');
+                    }
                 }
             }
         }
@@ -24,10 +40,10 @@ const SideNav = (props) => {
             props.history.push('login')
         }
     };
-
-    useEffect(() => {
-        checkAuth() // eslint-disable-next-line
-    }, []);
+    checkAuth();
+    // useEffect(() => {
+    //     checkAuth() // eslint-disable-next-line
+    // }, []);
 
     return (
         <div className={'side_nav'}>

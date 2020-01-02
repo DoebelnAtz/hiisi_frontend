@@ -1,4 +1,5 @@
 import React from 'react';
+import AddFriend from "../Components/Buttons/AddFriend";
 
 const ProfilePage = ({profile}) => {
     
@@ -18,6 +19,7 @@ const ProfilePage = ({profile}) => {
                 <p>location: {profile.location}</p>
                 <p>coalition points: {profile.score}</p>
                 <p>wallet: {profile.wallet}</p>
+                <AddFriend target={profile}/>
             </div>
             <div className={'container'}>
                 <div className={'row'}></div>

@@ -21,47 +21,88 @@ export default (prop) => {
 
     const renderCount = useRef(1);
 
-    return transitions.map(({ item, props, key }) => (
-        <animated.div key={key} style={props}>
-            <Switch location={location}>
-                <Route exact path={'/slots'}
-                       render={(props) =>
-                           <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
-                       }
+    // return transitions.map(({ item, props, key }) => (
+    //     <animated.div key={key} style={props}>
+    //         <Switch location={location}>
+    //             <Route exact path={'/slots'}
+    //                    render={(props) =>
+    //                        <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
+    //                    }
+    //
+    //             />
+    //             <Route exact path={'/home'} render={
+    //                 (props) => <Feed renderCount={renderCount}/>
+    //             }/>
+    //             <Route exact path={'/profile/'}
+    //                    render={(props) =>
+    //                        <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
+    //                    }
+    //             />
+    //             <Route exact path={'/notifications/'}
+    //                    render={(props) =>
+    //                        <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
+    //                    }
+    //             />
+    //             <Route exact path={'/messages/'}
+    //                    render={(props) =>
+    //                        <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
+    //                    }
+    //             />
+    //             <Route exact path={'/coalition/'}
+    //                    render={(props) =>
+    //                        <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
+    //                    }
+    //             />
+    //             <Route exact path={'/search'}
+    //             render={(props) =>
+    //             <Search {...props} setCurrentNav={prop.setCurrentNav}/>
+    //             }
+    //             />
+    //             <Route exact path={'/search/user/:id'}>
+    //                 <UserPage/>
+    //             </Route>
+    //         </Switch>
+    //     </animated.div>
+    // ))
+    return (
+        <Switch location={location}>
+            <Route exact path={'/slots'}
+                   render={(props) =>
+                       <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
 
-                />
-                <Route exact path={'/home'} render={
-                    (props) => <Feed renderCount={renderCount}/>
-                }/>
-                <Route exact path={'/profile/'}
-                       render={(props) =>
-                           <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
-                       }
-                />
-                <Route exact path={'/notifications/'}
-                       render={(props) =>
-                           <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
-                       }
-                />
-                <Route exact path={'/messages/'}
-                       render={(props) =>
-                           <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
-                       }
-                />
-                <Route exact path={'/coalition/'}
-                       render={(props) =>
-                           <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
-                       }
-                />
-                <Route exact path={'/search'}
-                render={(props) =>
-                <Search {...props} setCurrentNav={prop.setCurrentNav}/>
-                }
-                />
-                <Route exact path={'/search/user/:id'}>
-                    <UserPage/>
-                </Route>
-            </Switch>
-        </animated.div>
-    ))
+            />
+            <Route exact path={'/home'} render={
+                (props) => <Feed renderCount={renderCount}/>
+            }/>
+            <Route exact path={'/profile/'}
+                   render={(props) =>
+                       <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/notifications/'}
+                   render={(props) =>
+                       <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/messages/'}
+                   render={(props) =>
+                       <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/coalition/'}
+                   render={(props) =>
+                       <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/search'}
+                   render={(props) =>
+                       <Search {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/search/user/:id'}>
+                <UserPage/>
+            </Route>
+        </Switch>
+    );
 }

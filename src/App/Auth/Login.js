@@ -16,7 +16,7 @@ const Login = (props) => {
             },);
         if (resp.data.user)
         {
-            localStorage.setItem('token', JSON.stringify(resp.data.user));
+            localStorage.setItem('token', JSON.stringify(resp.data));
             props.history.push('/home');
         }
 
