@@ -4,10 +4,9 @@ import { countComments } from "../../../utils/utils";
 import './buttons.css'
 
 export default (props) => {
-    console.log(props);
     return (
-        <div className={'comment_button'}>
-            <i className="fas fa-comment-alt"></i><span className={'comment_count'}>{props.comment_count}</span>
+        <div onClick={props.expand} className={'comment_button'}>
+            <i className="fas fa-comment-alt"></i><span className={'comment_count'}>Comment</span>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useFetch, useNav} from "../Hooks/Hooks";
 
 import DatePicker from '../Components/DatePicker/DatePicker'
-
+import SlotSchedule from './SlotSchedule'
 const Slots = (props) => {
 
     useNav('slots', props.setCurrentNav);
@@ -10,6 +10,7 @@ const Slots = (props) => {
     return (
         <div>
             <DatePicker/>
+            <SlotSchedule/>
         </div>
     );
 };

@@ -10,11 +10,9 @@ import {useFetch} from "../../../Hooks/Hooks";
 const ViewPost = (props) => {
 
     const [comments, setComments] = useState([]);
-    console.log(props.content);
     useFetch(`comment_threads/${props.content.thread}`, setComments);
 
     const renderComments = (comment=comments.comment, isExpanded=true) => {
-        console.log(comments);
         if (comment) {
             return (
                 comment.map((child) => {

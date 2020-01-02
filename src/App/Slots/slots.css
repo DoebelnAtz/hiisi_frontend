@@ -1,0 +1,30 @@
+.schedule_container {
+    display: grid;
+    grid-template-columns:[monday]10vw[tuesday]10vw[wednesday]10vw[thursday]10vw[friday]10vw[saturday]10vw[sunday]10vw[end];
+    grid-template-rows:[t0000]10px[t0015]10px[t0030]10px[t0045]10px[t0100]10px[t0115]10px[t0130]10px[t0145]10px[t0200]10px[t0215]10px[t0230]10px[t0245]10px[t0300]10px[t0315]10px[t0330]10px[t0345]10px[t0400]10px[t0415]10px[t0430]10px[t0445]10px[t0500]10px[t0515]10px[t0530]10px[t0545]10px[t0600]10px[t0615]10px[t0630]10px[t0645]10px[t0700]10px[t0715]10px[t0730]10px[t0745]10px[t0800]10px[t0815]10px[t0830]10px[t0845]10px[t0900]10px[t0915]10px[t0930]10px[t0945]10px[t1000]10px[t1015]10px[t1030]10px[t1045]10px[t1100]10px[t1115]10px[t1130]10px[t1145]10px[t1200]10px[t1215]10px[t1230]10px[t1245]10px[t1300]10px[t1315]10px[t1330]10px[t1345]10px[t1400]10px[t1415]10px[t1430]10px[t1445]10px[t1500]10px[t1515]10px[t1530]10px[t1545]10px[t1600]10px[t1615]10px[t1630]10px[t1645]10px[t1700]10px[t1715]10px[t1730]10px[t1745]10px[t1800]10px[t1815]10px[t1830]10px[t1845]10px[t1900]10px[t1915]10px[t1930]10px[t1945]10px[t2000]10px[t2015]10px[t2030]10px[t2045]10px[t2100]10px[t2115]10px[t2130]10px[t2145]10px[t2200]10px[t2215]10px[t2230]10px[t2245]10px[t2300]10px[t2315]10px[t2330]10px[t2345]10px[t2400]10px[end];
+    border: 2px solid grey;
+}
+
+.day_grid_cont {
+    display: grid;
+    grid-template-columns: [day]10vw[end];
+    grid-template-rows:[t0000]10px[t0015]10px[t0030]10px[t0045]10px[t0100]10px[t0115]10px[t0130]10px[t0145]10px[t0200]10px[t0215]10px[t0230]10px[t0245]10px[t0300]10px[t0315]10px[t0330]10px[t0345]10px[t0400]10px[t0415]10px[t0430]10px[t0445]10px[t0500]10px[t0515]10px[t0530]10px[t0545]10px[t0600]10px[t0615]10px[t0630]10px[t0645]10px[t0700]10px[t0715]10px[t0730]10px[t0745]10px[t0800]10px[t0815]10px[t0830]10px[t0845]10px[t0900]10px[t0915]10px[t0930]10px[t0945]10px[t1000]10px[t1015]10px[t1030]10px[t1045]10px[t1100]10px[t1115]10px[t1130]10px[t1145]10px[t1200]10px[t1215]10px[t1230]10px[t1245]10px[t1300]10px[t1315]10px[t1330]10px[t1345]10px[t1400]10px[t1415]10px[t1430]10px[t1445]10px[t1500]10px[t1515]10px[t1530]10px[t1545]10px[t1600]10px[t1615]10px[t1630]10px[t1645]10px[t1700]10px[t1715]10px[t1730]10px[t1745]10px[t1800]10px[t1815]10px[t1830]10px[t1845]10px[t1900]10px[t1915]10px[t1930]10px[t1945]10px[t2000]10px[t2015]10px[t2030]10px[t2045]10px[t2100]10px[t2115]10px[t2130]10px[t2145]10px[t2200]10px[t2215]10px[t2230]10px[t2245]10px[t2300]10px[t2315]10px[t2330]10px[t2345]10px[t2400]10px[end];
+
+}
+
+.schedule_cont {
+    table-layout: fixed;
+    width: 100%;
+    height: 70vh;
+    overflow: auto;
+}
+
+.table_col {
+    background-color: grey;
+    height: 960px;
+}
+
+.time {
+    background-color: gainsboro;
+    height: 960px;
+}

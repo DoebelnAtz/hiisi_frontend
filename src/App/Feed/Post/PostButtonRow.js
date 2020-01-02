@@ -4,11 +4,11 @@ import './post.css'
 import CommentButton from '../../Components/Buttons/CommentButton'
 import LikeButton from '../../Components/Buttons/LikeButton'
 
-const ButtonRow = ({content}) => {
+const ButtonRow = ({content, expand}) => {
 
         return (
             <div className={'row'}>
-                <CommentButton comment_count={content.comment_count}/>
+                <CommentButton expand={expand} comment_count={content.comment_count}/>
                 <LikeButton likes={content.likes} />
             </div>
         );
