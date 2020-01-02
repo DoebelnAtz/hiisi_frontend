@@ -1,8 +1,22 @@
 #profile_page{
     margin-top: 2rem;
+    position: center;
 }
 
 .profile_profile_pic{
-    height: 66px;
-    width: 66px;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    border-style: solid;
+    border-color: white;
+}
+
+.BackgroundPic{
+    height: 300px;
+    width: 100%;
+    
 }

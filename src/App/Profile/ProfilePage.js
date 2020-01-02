@@ -1,11 +1,13 @@
 import React from 'react';
 import AddFriend from "../Components/Buttons/AddFriend";
+import Background from "../../img/bg.png"
 
 const ProfilePage = ({profile}) => {
     
     return (
         <div id={'profile_page'} className={'container'}>
             <div className={'row justify-content-center'}>
+                <img className={'BackgroundPic'} src={Background} />
                 <img className={'profile_profile_pic'} src={profile.profile_pic} alt={profile.username}/>
             </div>
             <div>
