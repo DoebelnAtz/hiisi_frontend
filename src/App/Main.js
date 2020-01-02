@@ -10,7 +10,7 @@ import {useTransition, animated} from "react-spring";
 import Coalition from "./Coalition/Coalition";
 import Messages from "./Messages/Messages";
 import Notifications from "./Notifications/Notifications";
-
+import MessageHome from "./Messages/MessageHome";
 export default (prop) => {
     const location = useLocation();
     const transitions = useTransition(location, location => location.pathname, {
@@ -85,7 +85,12 @@ export default (prop) => {
                        <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
                    }
             />
-            <Route exact path={'/messages/'}
+            <Route exact path={'/message_home/'}
+                   render={(props) =>
+                       <MessageHome {...props} setCurrentNav={prop.setCurrentNav}/>
+                   }
+            />
+            <Route exact path={'/messages/:user'}
                    render={(props) =>
                        <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
                    }

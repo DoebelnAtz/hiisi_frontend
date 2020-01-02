@@ -57,7 +57,7 @@ const SideNav = (props) => {
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'notifications'} name={'Notifications'} icon={'fas fa-bell'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'messages'} name={'Messages'} icon={'fas fa-comment-alt'}/>
+                     path={'message_home'} name={'Messages'} icon={'fas fa-comment-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'coalition'} name={'Coalition'} icon={'fas fa-shield-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}

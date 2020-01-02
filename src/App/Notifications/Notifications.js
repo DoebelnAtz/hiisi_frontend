@@ -22,6 +22,8 @@ const Notifications = (props) => {
         prof.friend_requests = _.remove(profile.friend_requests, function (request) {
             return (request.username !== target.username);
         });
+        if (accept)
+            prof.friends = [...prof.friends, target];
         setFriendRequests(prof.friend_requests);
         console.log(friendRequests);
         localStorage.setItem('currentUser', JSON.stringify(prof))
