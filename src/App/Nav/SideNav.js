@@ -40,10 +40,10 @@ const SideNav = (props) => {
             props.history.push('login')
         }
     };
-    checkAuth();
-    // useEffect(() => {
-    //     checkAuth() // eslint-disable-next-line
-    // }, []);
+
+    useEffect(() => {
+        checkAuth() // eslint-disable-next-line
+    }, [localStorage.getItem('token')]);
 
     return (
         <div className={'side_nav'}>

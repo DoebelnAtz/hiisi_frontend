@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useFetch, useNav} from "../Hooks/Hooks";
 import Button from "../Components/Buttons/Button";
 import {makeRequest} from "../Api/Api";
@@ -10,21 +10,26 @@ const Notifications = (props) => {
 
     let profile = JSON.parse(localStorage.getItem("currentUser"));
 
+    const [friendRequests, setFriendRequests] = useState(profile.friend_requests);
+
     const respondRequest = async (target, accept) => {
         let resp = await makeRequest('respond_friend/', 'post', {
             target_id: target.id,
             sender_id: profile.id,
             accept: accept
         });
-        let prof = _.remove(profile.friend_requests, function (request) {
-            return (request.username === target.username);
+        var prof = profile;
+        prof.friend_requests = _.remove(profile.friend_requests, function (request) {
+            return (request.username !== target.username);
         });
+        setFriendRequests(prof.friend_requests);
+        console.log(friendRequests);
         localStorage.setItem('currentUser', JSON.stringify(prof))
     };
 
-    const renderFriendRequests = () => {
+    const renderFriendRequests = (friends) => {
         return (
-            profile.friend_requests.map((friend) => {
+            friends.map((friend) => {
                 return (
                     <div className={'row'} key={friend.id}>
                         <img style={{height: "30px"}} src={friend.profile_pic}/><span className={'friend_request_username'}>{friend.username}</span>
@@ -41,7 +46,7 @@ const Notifications = (props) => {
             Notifications page
             <div>
                 Friend Requests:
-                {renderFriendRequests()}
+                {renderFriendRequests(friendRequests)}
             </div>
 
         </div>
