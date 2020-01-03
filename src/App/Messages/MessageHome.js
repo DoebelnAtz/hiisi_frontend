@@ -6,7 +6,6 @@ const MessageHome = (props) => {
     let profile = JSON.parse(localStorage.getItem("currentUser"));
 
     const renderFriends = () => {
-        console.log(profile);
         return (
             profile.friends.map((friend) => {
                 return (
@@ -17,7 +16,6 @@ const MessageHome = (props) => {
             })
         )
     };
-    console.log(profile);
     return (
         <div>
             {renderFriends()}

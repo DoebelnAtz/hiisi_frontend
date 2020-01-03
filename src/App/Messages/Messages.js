@@ -20,7 +20,7 @@ const Messages = (props) => {
     const [inputVal, setInputVal] = useState('');
     let profile = JSON.parse(localStorage.getItem("currentUser"));
     let { user } = useParams();
-    var url = 'ws://127.0.0.1:8002/messages/' + user + '/?user=' + profile.username;
+    var url = 'ws://134.209.227.11/messages/' + user + '/?user=' + profile.username;
 
     var socket = memoizedSocket(url);
 
@@ -29,7 +29,6 @@ const Messages = (props) => {
             username: profile.username,
             other_user: user
         };
-        console.log(data);
         let resp = await makeRequest('message_thread/', 'POST',data,{
             "Content-Type": "application/json"
         });
