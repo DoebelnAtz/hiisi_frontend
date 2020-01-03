@@ -6,20 +6,24 @@ import Button from "../Components/Buttons/Button";
 import { useParams } from "react-router-dom";
 import {makeRequest} from "../Api/Api";
 import _ from 'lodash'
+
+const getSocket = (u) => {
+    return new WebSocket(u)
+};
+const memoizedSocket = _.memoize(getSocket);
+
 const Messages = (props) => {
 
     useNav('messages', props.setCurrentNav);
-    let profile = JSON.parse(localStorage.getItem("currentUser"));
-    let { user } = useParams();
+
     const [messages, setMessages] = useState([]);
     const [inputVal, setInputVal] = useState('');
-    var loc = 'ws://127.0.0.1:8002/messages/' + user + '/?user=' + profile.username;
-    var getSocket = (url) => {
-        return new WebSocket(loc);
-    };
-    getSocket = _.memoize(getSocket);
-    var socket = getSocket(loc);
-    //var socket = new WebSocket('ws://127.0.0.1:8002/messages/' + user + '/?user=' + profile.username);
+    let profile = JSON.parse(localStorage.getItem("currentUser"));
+    let { user } = useParams();
+    var url = 'ws://127.0.0.1:8002/messages/' + user + '/?user=' + profile.username;
+
+    var socket = memoizedSocket(url);
+
     const getMessages = async () => {
         let data = {
             username: profile.username,
@@ -32,37 +36,42 @@ const Messages = (props) => {
         console.log(resp.data);
         if (resp.data)
             setMessages(resp.data.messages);
-        console.log(messages)
     };
+
+
     useEffect(() => {
         getMessages()
     }, []);
 
-
-    socket.onmessage = function (event) {
-        console.log("message", event);
-        var data = JSON.parse(event.data);
-        setMessages([...messages, data]);
-    };
-    socket.onopen = function (event) {
-        console.log("open", event);
-    };
-
-    socket.onclose = function (event) {
-        console.log("close", event)
-    };
-
-    socket.onerror = function (event) {
-        console.log("error", event)
-    };
-
-
-    const handleClick = async(event) => {
-        event.preventDefault();
-        var final_data = {
-            'message': inputVal,
+    if (socket) {
+        socket.onmessage = function (event) {
+            console.log("message", event);
+            var data = JSON.parse(event.data);
+            setMessages([...messages, data]);
         };
-        await socket.send(JSON.stringify(final_data));
+        socket.onopen = function (event) {
+            console.log("open", event);
+        };
+
+        socket.onclose = function (event) {
+            console.log("close", event)
+        };
+
+        socket.onerror = function (event) {
+            console.log("error", event)
+        };
+    }
+
+
+    const handleClick = async (event) => {
+        event.preventDefault();
+        if (socket) {
+            var final_data = {
+                'message': inputVal,
+            };
+            await socket.send(JSON.stringify(final_data));
+
+        }
         setInputVal('');
     };
 
