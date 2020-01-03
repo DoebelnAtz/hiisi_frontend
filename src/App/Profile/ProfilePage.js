@@ -9,9 +9,9 @@ const ProfilePage = ({profile}) => {
             <div className={'row justify-content-center'}>
                 <img className={'BackgroundPic'} src={Background} />
                 <img className={'profile_profile_pic'} src={profile.profile_pic} alt={profile.username}/>
-            </div>
-            <div>
-                <p>username: {profile.username}</p>
+            
+            <div className={'stats'}>
+                <p>{profile.username}</p>
                 <p>achievement points: {profile.points}</p>
                 <p>grade: {profile.grade}</p>
                 <p>class of: {profile.class_of}</p>
@@ -21,7 +21,8 @@ const ProfilePage = ({profile}) => {
                 <p>location: {profile.location}</p>
                 <p>coalition points: {profile.score}</p>
                 <p>wallet: {profile.wallet}</p>
-                <AddFriend target={profile}/>
+                <AddFriend target={profile} />
+            </div>
             </div>
             <div className={'container'}>
                 <div className={'row'}></div>

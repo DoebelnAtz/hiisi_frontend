@@ -21,7 +21,7 @@ const AddFriend = ({target}) => {
     }
     else if (!(target.username === profile.username) && target.username && checkFriendList(profile, target.username)) {
         return (
-            <Button text={'Add Friend'} onClick={sendFriendRequest}/>
+            <Button text={'Add friend'} onClick={sendFriendRequest} />
         );
     }
     else{
