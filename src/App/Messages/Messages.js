@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import {makeRequest} from "../Api/Api";
 import _ from 'lodash'
 
+import './messages.css'
+
 const getSocket = (u) => {
     return new WebSocket(u)
 };
@@ -32,7 +34,6 @@ const Messages = (props) => {
         let resp = await makeRequest('message_thread/', 'POST',data,{
             "Content-Type": "application/json"
         });
-        console.log(resp.data);
         if (resp.data)
             setMessages(resp.data.messages);
     };
@@ -61,7 +62,6 @@ const Messages = (props) => {
         };
     }
 
-
     const handleClick = async (event) => {
         event.preventDefault();
         if (socket) {
@@ -74,12 +74,18 @@ const Messages = (props) => {
         setInputVal('');
     };
 
+    const handleEnter = (event) => {
+        if (event.key === "Enter") {
+            handleClick(event);
+        }
+    };
+
     const renderMessages = () => {
         return (
             messages.map((message) => {
                 return (
-                    <div key={message.timestamp}>
-                        {message.text}
+                    <div key={message.timestamp} className={(message.sender === profile.username) ? "sent" : "received"}>
+                        <img style={{height: "30px", marginRight: "5px"}} src={"https://cdn.intra.42.fr/users/small_" + message.sender + ".jpg"}/><span className={"message_text"}>{message.text}</span>
                     </div>
                 )
             })
@@ -89,8 +95,10 @@ const Messages = (props) => {
     return (
         <div>
             <div className={'message_cont container'}>
-                {renderMessages()}
-                <textarea value={inputVal} onChange={(e) => setInputVal(e.target.value)}>
+                <div className={"message_feed"}>
+                    {renderMessages()}
+                </div>
+                <textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>
                 </textarea>
                 <Button onClick={(e) => handleClick(e)} text={'SEND'}/>
             </div>
