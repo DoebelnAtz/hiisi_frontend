@@ -13,7 +13,7 @@ export const Reply = (props) => {
             let resp = await makeRequest('create_comment/', 'post',
                 {
                     comment_text: commentText,
-                    user_id: JSON.parse(localStorage.getItem('token')).id,
+                    user_id: JSON.parse(localStorage.getItem('token')).user.id,
                     blog_id: props.blog_id,
                     comment_parent: props.comment_id,
                     published_date: now
