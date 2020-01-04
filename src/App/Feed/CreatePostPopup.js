@@ -15,7 +15,7 @@ const CreatePostPopup = (props) => {
         let now = new Date().toISOString();
         console.log(now);
         let resp = await makeRequest('blogs/', 'post', {
-            creator: JSON.parse(localStorage.getItem('token')).id,
+            creator: JSON.parse(localStorage.getItem('token')).user.id,
             post: content,
             title: title,
             event: false,

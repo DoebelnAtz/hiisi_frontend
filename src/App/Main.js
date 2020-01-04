@@ -12,6 +12,7 @@ import Messages from "./Messages/Messages";
 import Notifications from "./Notifications/Notifications";
 import MessageHome from "./Messages/MessageHome";
 export default (prop) => {
+
     const location = useLocation();
     const transitions = useTransition(location, location => location.pathname, {
         from: { display: 'none', opacity: 0, transform: 'translateX(50%)' },

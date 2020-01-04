@@ -1,20 +1,29 @@
 import React, {useState} from "react";
 import { Route, Switch } from 'react-router-dom'
 
+import IntraContext from "./Context/IntraContext";
+import UserContext  from './Context/UserContext'
 import Redirect from './Auth/Redirect'
 import Header from './Header'
 import SideNav from './Nav/SideNav'
 import Main from './Main'
 import Login from './Auth/Login'
 import './base.css'
+import {makeRequest} from "./Api/Api";
+
+
 
 const App =  () => {
 
     const [currentNav, setCurrentNav] = useState('home');
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
+    const [intra, setIntra] = useState(false);
+
 
 
     return (
-        <div>
+        <IntraContext.Provider value={{intra, setIntra}}>
+        <UserContext.Provider value={{currentUser, setCurrentUser}}>
             <Switch>
                 <Route exact path={'/login/'} component={Login}/>
                     <Route exact path={'/redirect/'} component={Redirect}/>
@@ -32,7 +41,8 @@ const App =  () => {
                 </div>
                 </Route>
             </Switch>
-        </div>
+        </UserContext.Provider>
+        </IntraContext.Provider>
     )
 };
 

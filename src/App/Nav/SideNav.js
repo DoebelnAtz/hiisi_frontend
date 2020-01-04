@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 
+import IntraContext from "../Context/IntraContext";
+import UserContext from "../Context/UserContext";
 import { ToggleButton } from "../Components/Buttons/Toggle";
 import {Profile, Logo, NavItem} from './NavItems'
 import './nav.css'
@@ -10,6 +12,10 @@ const SideNav = (props) => {
 
     const [connected, setConnected] = useState(false);
     const [connectText, setConnectText] = useState('Connect to Intra');
+    const {currentUser, setCurrentUser} = useContext(UserContext);
+    const {intra, setIntra} = useContext(IntraContext);
+
+    console.log(currentUser);
 
     const checkAuth = async () => {
         if (localStorage.getItem('token')) {
@@ -23,28 +29,24 @@ const SideNav = (props) => {
             {
                 console.log("failed");
                 props.history.push('login');
+                setCurrentUser({authorized: false});
                 localStorage.clear();
             }
             else {
-                localStorage.setItem('currentUser', JSON.stringify(resp.data))
+                localStorage.setItem('currentUser', JSON.stringify(resp.data));
+                setCurrentUser(resp.data);
                 if (localStorage.getItem('resp')) {
                     let token = JSON.parse(localStorage.getItem('resp'));
                     if (token.data.access_token) {
-                        setConnected(true);
-                        setConnectText('Connected');
+                        setIntra(true)
                     }
                 }
             }
         }
-        else{
+        else {
             props.history.push('login')
         }
     };
-
-    useEffect(() => {
-        checkAuth() // eslint-disable-next-line
-    }, [localStorage.getItem('token')]);
-
     return (
         <div className={'side_nav'}>
             <Logo currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
@@ -62,7 +64,7 @@ const SideNav = (props) => {
                      path={'coalition'} name={'Coalition'} icon={'fas fa-shield-alt'}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'search'} name={'Search'} icon={'fas fa-search'}/>
-            <ToggleButton connected={connected} setConnected={setConnected}/>
+            <ToggleButton connected={intra} setConnected={setIntra}/>
         </div>
     );
 };
