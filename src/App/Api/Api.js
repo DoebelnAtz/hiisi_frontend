@@ -12,7 +12,7 @@ export const makeRequest = async (url, method, data, headers={}) => {
         if (!error.response) {
             window.location.replace("http://localhost:3000/505")
         }
-        if (error.response.status === 401) {
+        if (error.response.status === 401 || error.response.status === 400) {
             localStorage.clear();
             window.location.replace("http://localhost:3000/login")
         }

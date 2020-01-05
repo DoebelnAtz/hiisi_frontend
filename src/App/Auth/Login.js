@@ -9,17 +9,17 @@ const Login = (props) => {
 
     const requestLogin = async (e) => {
         e.preventDefault();
-        let resp = await makeRequest('auth/login/', 'post',
-            {
-                username: username,
-                password: password,
-            },);
-        if (resp.data.user)
-        {
-            localStorage.setItem('token', JSON.stringify(resp.data));
-            props.history.push('/home');
+        if (password.length && username.length) {
+            let resp = await makeRequest('auth/login/', 'post',
+                {
+                    username: username,
+                    password: password,
+                },);
+            if (resp.data.user) {
+                localStorage.setItem('token', JSON.stringify(resp.data));
+                props.history.push('/home');
+            }
         }
-
     };
 
     return (

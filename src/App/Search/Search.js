@@ -64,6 +64,7 @@ const Search = (props) => {
         <div className={'container'}>
             <input  value={searchVal}
                     onChange={handleChange}
+                    placeholder={'username'}
             />
             <div>
                 {renderResults(results)}

@@ -4,6 +4,7 @@
     --buttonColor: lightblue;
     --textAreaColor: lightblue;
     --postBG: gainsboro;
+    --navTextColor: rgb(50, 158, 221);
 }
 
 #main_container{
@@ -19,6 +20,7 @@
 
 #header_logout{
     font-size: 20px;
+    color: var(--navTextColor);
     font-family: 'Share Tech', sans-serif;
     cursor: pointer;
     margin-top: 1rem;
@@ -26,6 +28,7 @@
 
 #header_nav_title{
     font-size: 20px;
+    color: var(--navTextColor);
     font-family: 'Share Tech', sans-serif;
     margin-right: 4rem;
     cursor: pointer;
