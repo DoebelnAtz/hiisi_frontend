@@ -27,23 +27,16 @@ const SideNav = (props) => {
                 "Content-Type": "application/json",
                 Authorization: "Token " + token,
             });
-            if (resp.status === 401)
-            {
-                console.log("failed");
-                props.history.push('login');
-                setCurrentUser({authorized: false});
-                localStorage.clear();
-            }
-            else {
-                localStorage.setItem('currentUser', JSON.stringify(resp.data));
-                setCurrentUser(resp.data);
-                if (localStorage.getItem('resp')) {
-                    let token = JSON.parse(localStorage.getItem('resp'));
-                    if (token.data.access_token) {
-                        setIntra(true)
-                    }
+            
+            localStorage.setItem('currentUser', JSON.stringify(resp.data));
+            setCurrentUser(resp.data);
+            if (localStorage.getItem('resp')) {
+                let token = JSON.parse(localStorage.getItem('resp'));
+                if (token.data.access_token) {
+                    setIntra(true)
                 }
             }
+
         }
         else {
             props.history.push('login')

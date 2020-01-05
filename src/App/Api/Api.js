@@ -9,6 +9,9 @@ export const makeRequest = async (url, method, data, headers={}) => {
         data: data,
         headers: headers
     }).catch(function (error) {
+        if (!error.response) {
+            window.location.replace("http://localhost:3000/505")
+        }
         if (error.response.status === 401) {
             localStorage.clear();
             window.location.replace("http://localhost:3000/login")

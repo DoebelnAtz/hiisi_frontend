@@ -8,7 +8,7 @@ const AddFriend = ({target}) => {
     let profile =  JSON.parse(localStorage.getItem("currentUser"));
 
     const sendFriendRequest = async() => {
-        let resp = await makeRequest('send_friend/', 'post', {
+        await makeRequest('send_friend/', 'post', {
             target_id: target.id,
             sender_id: profile.id,
         })

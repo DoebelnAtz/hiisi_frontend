@@ -11,6 +11,7 @@ import Login from './Auth/Login'
 import './base.css'
 import {makeRequest} from "./Api/Api";
 import Messages from "./Messages/Messages";
+import ServerDown from "./ErrorPages/ServerDown";
 
 
 
@@ -20,12 +21,14 @@ const App =  () => {
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const [intra, setIntra] = useState(false);
 
-
+    // Weird interaction in mobile view, don't know why.
+    // TODO: fix this bug
 
     return (
         <IntraContext.Provider value={{intra, setIntra}}>
         <UserContext.Provider value={{currentUser, setCurrentUser}}>
             <Switch>
+                <Route exact path={'/505/'} component={ServerDown}/>
                 <Route exact path={'/login/'} component={Login}/>
                     <Route exact path={'/redirect/'} component={Redirect}/>
                 <Route path={'/'}>
