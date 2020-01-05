@@ -94,13 +94,17 @@ comments: /comments/
 
 login: /auth/login
 
-    data=
-    {username: "username", password: "password"}
+    data = {
+        username: "username", 
+        password: "password"
+    }
 
 registration: /auth/register/
 
-    data = 
-    {username: "username", password: "password"}
+    data = {
+        username: "username", 
+        password: "password"
+    }
 
 create_comment: /api/create_comment/
     
@@ -112,4 +116,22 @@ create_comment: /api/create_comment/
         published_date: (ISO datetime string)
     }
 
+create blogpost: /api/blogs
 
+    data = {
+        creator: user.id,
+        post: string,
+        title: string,
+        event: boolean,
+        published_date: (ISO datetime string),
+    }
+
+like blog/comment
+
+    data = {
+        target_id: (blog or comment id),
+        user_id: (user id number),
+        target: ("Blog" or "Comment"),
+        change: (number, 1 for like -1 for dislike),
+    }
+    
