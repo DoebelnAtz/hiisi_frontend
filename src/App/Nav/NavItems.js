@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
+import logo from './navIcons/hivemind.png'
 
+import profileIcon from './navIcons/profile_nav.png'
 import Button from '../Components/Buttons/Button'
 
 export const Logo = (props) => {
@@ -14,9 +16,9 @@ export const Logo = (props) => {
             className={'row nav_item nav_logo'}
             onClick={setNavHome}
         >
-            <i className="fas fa-home"> </i><span
+            <img className={"nav_icon"} src={logo}/><span
             id={'home_nav'}
-            className={'d-none d-md-block'}>
+            className={'d-none d-md-block nav_item_text'}>
             Hivemind</span>
         </Link>
     )
@@ -29,9 +31,9 @@ export const NavItem = (props) => {
             className={`row nav_item ${props.currentNav === props.path ? 'active' : 'inactive'}`}
             onClick={() => props.setCurrentNav(props.path)}
         >
-            <i className={props.icon}> </i><span
+            <img className={'nav_icon'} src={props.icon}/><span
             id={`${props.name}_nav`}
-            className={'d-none d-md-block'}>
+            className={'nav_item_text d-none d-md-block'}>
             {props.name}</span>
         </Link>
     )
@@ -47,9 +49,9 @@ export const Profile = (props) => {
             className={`row nav_item ${props.currentNav === 'profile' ? 'active' : 'inactive'}`}
             onClick={setNavProfile}
         >
-            <i className="fas fa-user"> </i><span
+            <img className={'nav_icon'} src={profileIcon}/><span
             id={'profile_nav'}
-            className={`d-none d-md-block`}>
+            className={`d-none d-md-block nav_item_text`}>
             Profile</span>
         </Link>
     )

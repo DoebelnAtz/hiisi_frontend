@@ -10,6 +10,7 @@ import Main from './Main'
 import Login from './Auth/Login'
 import './base.css'
 import {makeRequest} from "./Api/Api";
+import Messages from "./Messages/Messages";
 
 
 
@@ -36,6 +37,11 @@ const App =  () => {
                         <div id={'main_page'} className={'col-11 col-md-9'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                             <Main setCurrentNav={setCurrentNav}/>
+                            <Route exact path={'/messages/:user'} // useTransition in main causes a UI bug
+                                   render={(props) =>             // in this component, moved here for now
+                                       <Messages {...props} setCurrentNav={setCurrentNav}/>
+                                   }
+                            />
                         </div>
                     </div>
                 </div>

@@ -18,19 +18,22 @@
 }
 
 #header_logout{
-    float: right;
+    font-size: 20px;
+    font-family: 'Share Tech', sans-serif;
     cursor: pointer;
-    margin-top: 5px !important;
+    margin-top: 1rem;
 }
 
 #header_nav_title{
+    font-size: 20px;
+    font-family: 'Share Tech', sans-serif;
     margin-right: 4rem;
     cursor: pointer;
-    margin-top: 5px !important;
+    margin-top: 1rem;
 }
 
 .header_nav{
-    height: 40px;
+    height: 60px;
     border-bottom: 2px solid gainsboro;
     margin: 2px 0;
 
@@ -47,4 +50,8 @@
 
 body {
     min-height: 100%;
+}
+
+html {
+    overflow-y: scroll;
 }

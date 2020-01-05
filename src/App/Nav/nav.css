@@ -1,10 +1,6 @@
 .nav_item.active{
-    background-color: cornflowerblue;
-    min-width: 33px;
-}
-
-.fas {
-    width: 20px;
+    background-color: #fcc6c0;
+    min-width: 52px;
 }
 
 .nav_item{
@@ -15,7 +11,7 @@
 }
 
 .nav_item.active:hover{
-    background-color: lightblue;
+    background-color: #dbaaa4;
     cursor: pointer;
     text-decoration: none;
 }
@@ -27,16 +23,37 @@
 
 }
 
+.nav_item_text {
+    font-size: 24px;
+    font-family: 'Share Tech', sans-serif;
+    color: rgb(50, 158, 221);
+    margin-left: 12px;
+    margin-top: 6px;
+}
+
+.nav_icon {
+    height: 45px;
+    width: 43px;
+}
+
 .nav_item.inactive:hover{
-    background-color: blue;
+    background-color: #dbaaa4;
     cursor: pointer;
     text-decoration: none;
+    min-width: 52px;
 
 }
 
 .nav_logo{
     border-bottom: 2px solid gainsboro;
-    height: 40px;
+    height: 60px;
+}
+
+.nav_logo_text {
+    font-size: 24px;
+    font-family: 'Share Tech', sans-serif;
+    color: rgb(50, 158, 221);
+    margin-left: 12px;
 }
 
 .side_nav{

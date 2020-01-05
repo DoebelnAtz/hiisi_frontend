@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './viewpost.css'
 import {Reply} from "./Reply";
 import {Comment} from "./Comment";
 import {useFetch} from "../../../Hooks/Hooks";
-
-// TODO: Render comments dynamically, fetch comments from api only after user expands post.
+import {makeRequest} from "../../../Api/Api";
 
 const ViewPost = (props) => {
 
     const [comments, setComments] = useState([]);
-    useFetch(`comment_threads/${props.content.thread}`, setComments);
+    //useFetch(`comment_threads/${props.content.thread}`, setComments);
 
-    const renderComments = (comment=comments.comment, isExpanded=true) => {
+    const getComments = async() => {
+        let resp = await makeRequest(`comment_threads/${props.content.thread}`, 'get', {});
+
+        setComments(resp.data.comment);
+    };
+
+    useEffect(() => {
+        getComments()
+    }, []);
+
+    const renderComments = (comment=comments, isExpanded=true) => {
         if (comment) {
             return (
                 comment.map((child) => {
@@ -32,7 +41,7 @@ const ViewPost = (props) => {
 
     return (
         <div id={'view_post_container'} className={'container pb-1'}>
-            <Reply comment_id={null} blog_id={props.content.id} />
+            <Reply commentThread={comments} setCommentThread={setComments} comment_id={null} blog_id={props.content.id} />
             <div className={'comment_section'}>
                 {renderComments()}
             </div>

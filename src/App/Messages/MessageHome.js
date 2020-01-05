@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import {useNav} from "../Hooks/Hooks";
 
 const MessageHome = (props) => {
 
     let profile = JSON.parse(localStorage.getItem("currentUser"));
+
+    useNav('message_home', props.setCurrentNav);
 
     const renderFriends = () => {
         return (

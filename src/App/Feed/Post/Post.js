@@ -5,6 +5,8 @@ import PostMainContent from './PostMainContent'
 
 const Post = ({content}) => {
 
+    //  TODO: refactor the code for this component, too many child components.
+
     const [expanded, setExpanded] = useState(false);
 
     const expand = () => { // toggle expand

@@ -4,6 +4,9 @@ import { formatDate } from "../../../../utils/utils";
 
 export const Comment = ({child,  renderComments, isExpanded}) => {
     const [expanded, setExpanded] = useState(isExpanded);
+    const [commentThread, setCommentThread] = useState(child.children);
+
+
     if(expanded) {
         return (
             <div  className={'parent_comment'} key={child.id}>
@@ -16,9 +19,9 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                 <div className={'comment_body'}>
                     <p>{child.comment}</p>
                 </div>
-                <Reply comment_id={child.id} blog_id={null}/>
+                <Reply commentThread={commentThread} setCommentThread={setCommentThread} comment_id={child.id} blog_id={null}/>
                 <div className={'children'}>
-                    {renderComments(child.children, expanded)}
+                    {renderComments(commentThread, expanded)}
                 </div>
             </div>
         )

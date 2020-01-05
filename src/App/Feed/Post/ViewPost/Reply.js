@@ -22,8 +22,15 @@ export const Reply = (props) => {
                     'Content-Type': 'application/json'
                 }
             );
+            props.setCommentThread([...props.commentThread, resp.data]);
         }
         setOpened(false)
+    };
+
+    const handleEnterPress = (event) => {
+        if (event.key === "Enter") {
+            submitPost();
+        }
     };
     if (!opened){
         return (
@@ -36,10 +43,13 @@ export const Reply = (props) => {
             <div className={'container'}>
                 <div className={'row'}>
                     <textarea className={'comment_textarea'} value={commentText}
-                              onChange={(e) => setCommentText(e.target.value)}/>
+                              onChange={(e) => setCommentText(e.target.value)}
+                              onKeyDown={(e) => handleEnterPress(e)}
+                    />
                 </div>
                 <div className={'row'}>
                     <button onClick={() => submitPost()}>Reply</button>
+                    <button onClick={() => setOpened(false)}>Cancel</button>
                 </div>
             </div>
         )

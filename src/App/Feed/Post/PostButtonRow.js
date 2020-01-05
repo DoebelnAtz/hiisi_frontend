@@ -9,7 +9,7 @@ const ButtonRow = ({content, expand}) => {
         return (
             <div className={'row noselect'}>
                 <CommentButton expand={expand} comment_count={content.comment_count}/>
-                <LikeButton likes={content.likes} />
+                <LikeButton content={content} />
             </div>
         );
 };
