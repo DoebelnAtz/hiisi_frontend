@@ -10,9 +10,9 @@ const Header = (props) => {
     };
 
     return (
-        <div className={'row header_nav'}>
+        <div className={'d-flex header_nav'}>
             <div id={'header_nav_title'}>{props.currentNav}</div>
-            <div id={'header_logout'}
+            <div className={'ml-auto'} id={'header_logout'}
                 onClick={requestLogout}
             >Logout</div>
         </div>

@@ -24,15 +24,16 @@
     font-family: 'Share Tech', sans-serif;
     cursor: pointer;
     margin-top: 1rem;
+    margin-right: 1rem;
 }
 
 #header_nav_title{
     font-size: 20px;
     color: var(--navTextColor);
     font-family: 'Share Tech', sans-serif;
-    margin-right: 4rem;
     cursor: pointer;
     margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 .header_nav{
