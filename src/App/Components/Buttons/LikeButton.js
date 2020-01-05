@@ -21,6 +21,8 @@ export default ({content}) => {
                     "Content-Type": "application/json"
                 }
                 );
+            profile.liked_posts.push({id: content.id});
+            localStorage.setItem("currentUser", JSON.stringify(profile));
             setLikes(likes + 1);
         }
     };
