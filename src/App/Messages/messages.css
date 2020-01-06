@@ -6,6 +6,23 @@
     overflow-y: auto;
 }
 
+.message_friend_item {
+    margin-top: 1rem;
+    margin-left: 15px;
+    min-width: 100%;
+    padding: 5px;
+    background-color: var(--colorSecondary);
+    cursor: pointer;
+}
+
+.message_friend_item:hover {
+    background-color: var(--colorSecondaryShade);
+}
+
+.message_friend_list {
+    min-width: 100%;
+}
+
 .message_img {
     height: 30px;
     margin-right: 5px;
@@ -16,8 +33,17 @@
     max-width: 20%;
 }
 
-.message_content_div {
-    max-width: 80%;
+.message_content {
+    margin-top: 5px;
+}
+
+.message_info {
+    font-size: 14px;
+}
+
+.message_info_time {
+    margin-right: 5px;
+    margin-left: auto;
 }
 
 .message_row {

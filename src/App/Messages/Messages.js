@@ -93,11 +93,11 @@ const Messages = (props) => {
                 return (
                     <div key={message.timestamp} className={(message.sender === profile.username) ? "sent" : "received"}>
                         <div className={'container-fluid'}>
-                        <div className={'row'}>
+                        <div className={'row message_info'}>
                             <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.sender + ".jpg"}/>
-                            <span>{calculateTimeSince(message.timestamp)}</span>
+                            <span className={'message_info_time'}>{calculateTimeSince(message.timestamp)}</span>
                         </div>
-                        <div className={'row'}>
+                        <div className={'row message_content'}>
                             <span className={"message_text"}>{message.text}</span>
                         </div>
                         </div>

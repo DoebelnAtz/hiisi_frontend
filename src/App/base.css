@@ -21,6 +21,7 @@
     padding-right: 1rem;
 }
 
+
 #header_logout{
     font-size: 20px;
     color: var(--navTextColor);
@@ -37,6 +38,18 @@
     cursor: pointer;
     margin-top: 1rem;
     margin-left: 1rem;
+}
+
+.avatar_sm {
+    height: 20px;
+}
+
+.avatar_md {
+    height: 30px;
+}
+
+.avatar_lg {
+    height: 50px;
 }
 
 .header_nav{
