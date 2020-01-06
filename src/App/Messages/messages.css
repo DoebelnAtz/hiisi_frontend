@@ -3,11 +3,33 @@
     height: 70vh;
     margin-top: 10px;
     padding: 20px;
+    overflow-y: auto;
+}
+
+.message_img {
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+.message_image_div {
+    max-width: 20%;
+}
+
+.message_content_div {
+    max-width: 80%;
+}
+
+.message_row {
+    margin: 0;
 }
 
 .received {
     background-color: var(--navTextColor);
-    width: 40%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 45%;
     padding: 5px;
 
     margin-top: 10px;
@@ -15,7 +37,10 @@
 }
 
 .sent {
-    margin-left: 60%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: 55%;
     padding: 5px;
     margin-top: 10px;
     background-color: var(--colorSecondaryShade);

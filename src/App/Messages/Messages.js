@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useFetch, useNav } from "../Hooks/Hooks";
 import ReconnectingWebSocket from 'reconnecting-websocket';
 import TextArea from "../Components/TextArea";
@@ -8,6 +8,7 @@ import {makeRequest} from "../Api/Api";
 import _ from 'lodash'
 
 import './messages.css'
+import {calculateTimeSince} from "../../utils/utils";
 
 const getSocket = (u) => {
     return new WebSocket(u)
@@ -17,6 +18,7 @@ const memoizedSocket = _.memoize(getSocket);
 const Messages = (props) => {
 
     useNav('messages', props.setCurrentNav);
+    const messageEnd = useRef();
 
     const [messages, setMessages] = useState([]);
     const [inputVal, setInputVal] = useState('');
@@ -38,6 +40,7 @@ const Messages = (props) => {
             setMessages(resp.data.messages);
     };
 
+    useEffect(() => {messageEnd.current.scrollIntoView({behavior: "smooth"})}, [messages]);
 
     useEffect(() => {
         getMessages()
@@ -47,6 +50,9 @@ const Messages = (props) => {
         socket.onmessage = function (event) {
             console.log("message", event);
             var data = JSON.parse(event.data);
+            var dt = new Date(data.timestamp);
+            dt.setHours( dt.getHours() + 2 ); // format incoming timestamp to gmt + 2
+            data.timestamp = dt.toISOString();
             setMessages([...messages, data]);
         };
         socket.onopen = function (event) {
@@ -83,9 +89,18 @@ const Messages = (props) => {
     const renderMessages = () => {
         return (
             messages.map((message) => {
+                calculateTimeSince(message.timestamp);
                 return (
                     <div key={message.timestamp} className={(message.sender === profile.username) ? "sent" : "received"}>
-                        <img style={{height: "30px", marginRight: "5px"}} src={"https://cdn.intra.42.fr/users/small_" + message.sender + ".jpg"}/><span className={"message_text"}>{message.text}</span>
+                        <div className={'container-fluid'}>
+                        <div className={'row'}>
+                            <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.sender + ".jpg"}/>
+                            <span>{calculateTimeSince(message.timestamp)}</span>
+                        </div>
+                        <div className={'row'}>
+                            <span className={"message_text"}>{message.text}</span>
+                        </div>
+                        </div>
                     </div>
                 )
             })
@@ -97,6 +112,7 @@ const Messages = (props) => {
             <div className={'message_cont container'}>
                 <div className={"message_feed"}>
                     {renderMessages()}
+                    <div ref={messageEnd}> </div>
                 </div>
                 <div className={''}>
                     <textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>

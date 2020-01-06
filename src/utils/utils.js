@@ -41,6 +41,34 @@ export const checkFriendList = (profile, username) => {
     return true;
 };
 
+export const calculateTimeSince = (isoString) => {
+    let then = new Date(isoString);
+    var seconds = Math.floor((new Date() - then) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years ago";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months ago";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days ago";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours ago";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes ago";
+    }
+    return Math.floor(seconds) + " seconds ago";
+};
+
 export const checkLikedPosts = (profile, blogPost) => {
     for (var i = 0; i < profile.liked_posts.length; i++) {
         if (profile.liked_posts[i].id === blogPost.id) {
