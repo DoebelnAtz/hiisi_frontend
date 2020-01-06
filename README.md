@@ -1,6 +1,7 @@
-Demo Login:
-username: morko
-password: 94502491Morko
+<h3>Demo Login:</h2>
+
+    username: morko
+    password: 94502491Morko
 
 <h2>NORM RULES FOR HIVEMIND:</h2>
 
