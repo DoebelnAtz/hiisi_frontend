@@ -12,6 +12,8 @@ import './base.css'
 import {makeRequest} from "./Api/Api";
 import Messages from "./Messages/Messages";
 import ServerDown from "./ErrorPages/ServerDown";
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 
 
@@ -25,6 +27,7 @@ const App =  () => {
     // TODO: fix this bug
 
     return (
+        <MuiPickersUtilsProvider utils={MomentUtils}>
         <IntraContext.Provider value={{intra, setIntra}}>
         <UserContext.Provider value={{currentUser, setCurrentUser}}>
             <Switch>
@@ -52,6 +55,7 @@ const App =  () => {
             </Switch>
         </UserContext.Provider>
         </IntraContext.Provider>
+        </MuiPickersUtilsProvider>
     )
 };
 

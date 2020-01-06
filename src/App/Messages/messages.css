@@ -1,3 +1,7 @@
+.message_content {
+    margin-top: 5px;
+}
+
 .message_feed {
     background-color: rgba(0,0,0, 0.1);
     height: 70vh;
@@ -31,10 +35,6 @@
 
 .message_image_div {
     max-width: 20%;
-}
-
-.message_content {
-    margin-top: 5px;
 }
 
 .message_info {

@@ -1,16 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useFetch, useNav} from "../Hooks/Hooks";
-
-import DatePicker from '../Components/DatePicker/DatePicker'
+import DateFnsUtils from '@date-io/moment'; // choose your lib
+import {
+    DatePicker,
+    TimePicker,
+    DateTimePicker,
+    MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+import moment from 'moment'
 import SlotSchedule from './SlotSchedule'
+
 const Slots = (props) => {
 
     useNav('slots', props.setCurrentNav);
-
+    const [selectedDate, setSelectedDate] = useState(moment());
+    console.log(selectedDate._d.toISOString());
     return (
         <div>
-            <DatePicker/>
-            <SlotSchedule/>
+            <DateTimePicker value={selectedDate} onChange={setSelectedDate}/>
+
         </div>
     );
 };
