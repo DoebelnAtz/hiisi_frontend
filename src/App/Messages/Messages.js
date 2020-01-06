@@ -98,9 +98,11 @@ const Messages = (props) => {
                 <div className={"message_feed"}>
                     {renderMessages()}
                 </div>
-                <textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>
-                </textarea>
-                <Button onClick={(e) => handleClick(e)} text={'SEND'}/>
+                <div className={''}>
+                    <textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>
+                    </textarea>
+                    <Button onClick={(e) => handleClick(e)} text={'SEND'}/>
+                </div>
             </div>
         </div>
     )

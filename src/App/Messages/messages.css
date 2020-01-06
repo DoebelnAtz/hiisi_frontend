@@ -6,9 +6,10 @@
 }
 
 .received {
-    background-color: red;
+    background-color: var(--navTextColor);
     width: 40%;
     padding: 5px;
+
     margin-top: 10px;
 
 }
@@ -17,5 +18,5 @@
     margin-left: 60%;
     padding: 5px;
     margin-top: 10px;
-    background-color: green;
+    background-color: var(--colorSecondaryShade);
 }

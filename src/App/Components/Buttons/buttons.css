@@ -14,13 +14,13 @@
 }
 
 .comment_button{
-    padding: 2px;
+    padding: 2px 2px 2px 10px;
     background-color: var(--navTextColor);
 }
 
 .comment_button:hover {
-    padding: 2px;
     background-color: lightskyblue;
+    cursor: pointer;
 }
 
 .comment_count {
@@ -32,12 +32,12 @@
 }
 
 .like_button{
-    padding: 2px;
+    padding: 2px 2px 2px 10px;
     background-color: var(--colorSecondary);
 }
 
 .like_button:hover{
-
+    cursor: pointer;
     background-color: var(--colorSecondaryShade);
 }
 
