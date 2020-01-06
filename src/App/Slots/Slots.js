@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {useFetch, useNav} from "../Hooks/Hooks";
 import DateFnsUtils from '@date-io/moment'; // choose your lib
 import {
@@ -12,12 +12,20 @@ import SlotSchedule from './SlotSchedule'
 
 const Slots = (props) => {
 
+    const pickTime = useRef();
     useNav('slots', props.setCurrentNav);
     const [selectedDate, setSelectedDate] = useState(moment());
-    console.log(selectedDate._d.toISOString());
+    console.log(selectedDate);
     return (
         <div>
-            <DateTimePicker value={selectedDate} onChange={setSelectedDate}/>
+            <div className={'slots_datetimepicker'}>
+            <DateTimePicker
+                inputVariant="outlined"
+                ampm={false}
+                disablePast
+                value={selectedDate}
+                onChange={setSelectedDate}/>
+            </div>
 
         </div>
     );
