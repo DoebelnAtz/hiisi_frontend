@@ -8,14 +8,14 @@
 }
 
 .comment_thread {
-    border-left: 2px solid var(--colorsecondary);
+    border-left: 2px solid var(--colorSecondary);
 }
 
 .comment_section{
     margin-top: 1rem;
     margin-bottom: 1rem;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border-right: 2px solid var(--colorThird);
+    border-bottom: 2px solid var(--colorThird);
 
 }
 
@@ -30,8 +30,8 @@
 
 .parent_comment {
     padding-left: 1rem;
-    border-top: 1px solid grey;
-    border-left: 1px solid grey;
+    border-top: 1px solid var(--colorThird);
+    border-left: 1px solid var(--colorThird);
 
 
 

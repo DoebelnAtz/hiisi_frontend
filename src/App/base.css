@@ -2,10 +2,11 @@
     --colorprimary: black;
     --colorSecondary: #fcc6c0;
     --colorSecondaryShade: #e3b2ad;
-
+    --colorThird: #7D82B8;
+    --colorFourth: #002642;
     --buttonColor: rgb(200, 232, 249);
-    --textAreaColor: lightblue;
-    --postBG: rgb(200, 232, 249);
+    --textAreaColor: rgb(200, 232, 253);
+    --postBG: rgb(210, 242, 255);
     --navTextColor: rgb(50, 158, 221);
 }
 
