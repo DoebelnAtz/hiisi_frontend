@@ -1,9 +1,11 @@
 :root{
     --colorprimary: black;
-    --colorsecondary: pink;
-    --buttonColor: lightblue;
+    --colorSecondary: #fcc6c0;
+    --colorSecondaryShade: #e3b2ad;
+
+    --buttonColor: rgb(200, 232, 249);
     --textAreaColor: lightblue;
-    --postBG: gainsboro;
+    --postBG: rgb(200, 232, 249);
     --navTextColor: rgb(50, 158, 221);
 }
 

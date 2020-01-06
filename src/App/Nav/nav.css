@@ -11,14 +11,14 @@
 }
 
 .nav_item.active:hover{
-    background-color: #dbaaa4;
+    background-color: var(--colorSecondaryShade);
     cursor: pointer;
     text-decoration: none;
 }
 
 .nav_item i{
     margin-right: 1rem;
-    color: var(--colorsecondary);
+    color: var(--colorSecondary);
     font-size: 24px;
 
 }
