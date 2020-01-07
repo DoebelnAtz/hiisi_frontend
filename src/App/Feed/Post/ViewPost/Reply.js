@@ -35,7 +35,7 @@ export const Reply = (props) => {
     if (!opened){
         return (
             <div>
-                <button onClick={() => setOpened(true)}>Reply</button>
+                <button onClick={() => setOpened(true)}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Reply</button>
             </div>
         )
     } else {
@@ -48,7 +48,7 @@ export const Reply = (props) => {
                     />
                 </div>
                 <div className={'row'}>
-                    <button onClick={() => submitPost()}>Reply</button>
+                    <button onClick={() => submitPost()}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Send</button>
                     <button onClick={() => setOpened(false)}>Cancel</button>
                 </div>
             </div>

@@ -75,6 +75,8 @@ export const calculateTimeSince = (isoString) => {
 };
 
 export const checkLikedPosts = (profile, blogPost) => {
+    if (!profile || !blogPost)
+        return true;
     for (var i = 0; i < profile.liked_posts.length; i++) {
         if (profile.liked_posts[i].id === blogPost.id) {
             return false
