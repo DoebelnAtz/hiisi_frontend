@@ -37,7 +37,7 @@
 }
 
 .nav_item.inactive:hover{
-    background-color: #dbaaa4;
+    background-color: var(--colorSecondary);
     cursor: pointer;
     text-decoration: none;
     min-width: 52px;

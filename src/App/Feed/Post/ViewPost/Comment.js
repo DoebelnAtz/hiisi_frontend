@@ -10,7 +10,7 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
     if(expanded) {
         return (
             <div  className={'parent_comment'} key={child.id}>
-                <button onClick={() => setExpanded(!expanded)} >HIDE</button>
+                <button onClick={() => setExpanded(!expanded)} >-</button>
                 <div className={'comment_head'}>
                     <img className={'comment_profile_pic'} src={child.creator.profile_pic}/>
                     <span> {child.creator.username}</span>
@@ -28,7 +28,7 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
     } else {
         return (
             <div  className={'parent_comment'}>
-                <button onClick={() => setExpanded(!expanded)}>SHOW</button>
+                <button onClick={() => setExpanded(!expanded)}>+</button>
             </div>
         )
     }
