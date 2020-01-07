@@ -35,8 +35,8 @@ const Slots = (props) => {
                 minutesStep={15}
                 disablePast
                 value={selectedDate}
-                onChange={setSelectedDate}/>
-
+                onChange={setSelectedDate}
+            />
         </ThemeProvider>
         </div>
     );

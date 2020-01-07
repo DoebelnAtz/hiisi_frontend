@@ -13,7 +13,7 @@ const PostMainContent = ({content, expand}) => {
             <div className={'col'}>
                 <PostTitle title={content.title}
                            author={(content.creator) ? content.creator.username : 'Event'}
-                           date={formatDate(content.published_date)}/>
+                           date={formatDate(content.published_date, content.event)}/>
                 <PostContent content={content.post}/>
                 <ButtonRow expand={expand} content={content}/>
             </div>
