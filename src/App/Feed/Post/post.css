@@ -40,7 +40,7 @@
 
 .feed_title{
     padding: 0.4rem;
-    border-bottom: 2px solid var(--colorThird);
+    border-bottom: 1px solid var(--logoMain);
 }
 
 .post_author{
@@ -52,7 +52,7 @@
 
 .post_content{
     padding: 0.4rem;
-    border-bottom: 2px solid var(--colorThird);
+    border-bottom: 4px solid var(--logoMain);
 }
 
 .post_date{

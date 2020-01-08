@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
-import logo from './navIcons/hivemind.png'
+import logo from './navIcons/Logo.png'
 
-import profileIcon from './navIcons/profile_nav.png'
+import profileIcon from './navIcons/Profile1.png'
 import Button from '../Components/Buttons/Button'
 
 export const Logo = (props) => {

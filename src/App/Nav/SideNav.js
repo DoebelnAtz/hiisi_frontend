@@ -6,12 +6,12 @@ import UserContext from "../Context/UserContext";
 import { ToggleButton } from "../Components/Buttons/Toggle";
 import {Profile, Logo, NavItem} from './NavItems'
 import {makeRequest} from "../Api/Api";
-import coalitionIcon from './navIcons/coalition.png'
-import searchIcon from './navIcons/search.png'
-import messageIcon from './navIcons/messages.png'
-import notificationIcon from './navIcons/notifications_old.png'
-import homeIcon from './navIcons/home.png'
-import slotsIcon from './navIcons/slots.png'
+import coalitionIcon from './navIcons/Shield.png'
+import searchIcon from './navIcons/Search.png'
+import messageIcon from './navIcons/Messages.png'
+import notificationIcon from './navIcons/Notifications.png'
+import homeIcon from './navIcons/Home.png'
+import slotsIcon from './navIcons/Slots.png'
 import './nav.css'
 
 const SideNav = (props) => {

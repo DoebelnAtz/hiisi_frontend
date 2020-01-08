@@ -29,7 +29,7 @@ export default ({content}) => {
 
     return (
         <div onClick={() => handleClick()} className={'like_button'}>
-            <i style={!checkLikedPosts(profile, content)?{color: "Red"}:{color: "Black"}} className="fas fa-heart"> </i><span className={'like_count'}>{likes}</span>
+            <i style={!checkLikedPosts(profile, content)?{color: "Red"}:{color: "White"}} className="fas fa-heart"> </i><span style={{color: "var(--logoMain)"}} className={'like_count'}>{likes}</span>
         </div>
     )
 }

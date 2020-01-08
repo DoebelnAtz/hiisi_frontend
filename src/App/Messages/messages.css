@@ -51,13 +51,14 @@
 }
 
 .received {
-    background-color: var(--navTextColor);
+    background-color: var(--logoSecondary);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     width: 45%;
     padding: 5px;
-
+    color: var(--logoMain);
+    font-size: 16px;
     margin-top: 10px;
 
 }
@@ -69,5 +70,7 @@
     margin-left: 55%;
     padding: 5px;
     margin-top: 10px;
-    background-color: var(--colorSecondaryShade);
+    color: var(--logoSecondary);
+    font-size: 16px;
+    background-color: var(--logoMain);
 }

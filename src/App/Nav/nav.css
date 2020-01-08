@@ -45,8 +45,8 @@
 }
 
 .nav_logo{
-    border-bottom: 2px solid gainsboro;
-    height: 60px;
+    border-bottom: 2px solid var(--logoSecondary);
+    height: 59px;
 }
 
 .nav_logo_text {
