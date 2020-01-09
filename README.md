@@ -3,6 +3,18 @@
     username: morko
     password: 94502491Morko
 
+<h4>Setup:</h4>
+    
+    install homebrew
+    install npm with $brew install npm
+
+<h4>To run:</h4>
+
+    1. Clone the repository
+    2. Run npm install
+    3. Run npm start
+    
+
 <h2>NORM RULES FOR HIVEMIND:</h2>
 
 <h4>Project Structure</h4>

@@ -1,28 +1,43 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
-import logo from './navIcons/Logo.png'
 
 import profileIcon from './navIcons/Profile1.png'
 import Button from '../Components/Buttons/Button'
 
 export const Logo = (props) => {
     const setNavHome = () => {
-        props.setCurrentNav('home')
+        props.setCurrentNav('Open Hive')
     };
     return (
         <Link
-            to={'/home'}
+            to={'/blog'}
             className={'row nav_item nav_logo'}
             onClick={setNavHome}
         >
-            <img className={"nav_icon"} src={logo}/><span
+            <img className={"nav_icon"} src={props.icon}/><span
             id={'home_nav'}
             className={'d-none d-md-block nav_item_text'}>
             Hivemind</span>
         </Link>
     )
 };
+
+
+export const OpenHiveNav = (props) => {
+    return (
+        <Link
+            to={`/openhive`}
+            className={`row nav_item ${props.currentNav === "Open Hive" ? 'active' : 'inactive'}`}
+            onClick={() => props.setCurrentNav("Open Hive")}
+        >
+            <img className={'nav_icon'} src={props.icon}/><span
+            id={`$open_hive_nav`}
+            className={'nav_item_text d-none d-md-block'}>
+            Open Hive</span>
+        </Link>
+    )
+}
 
 export const NavItem = (props) => {
     return (

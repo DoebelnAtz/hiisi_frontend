@@ -1,5 +1,5 @@
 .nav_item.active{
-    background-color: #fcc6c0;
+    background-color: var(--logoSecondary);
     min-width: 52px;
 }
 

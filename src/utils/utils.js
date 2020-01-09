@@ -12,6 +12,14 @@ export const formatDate = (date, event) => {
 
 };
 
+export const getLocal = (item) => {
+    return JSON.parse(localStorage.getItem(item))
+};
+
+export const setLocal = (jsonItem, name)  => {
+    localStorage.setItem(name, JSON.stringify(jsonItem))
+};
+
 export const  getUrlVars = () => {
     var vars = {};
     window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {

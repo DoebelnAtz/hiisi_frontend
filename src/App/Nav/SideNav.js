@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import IntraContext from "../Context/IntraContext";
 import UserContext from "../Context/UserContext";
 import { ToggleButton } from "../Components/Buttons/Toggle";
-import {Profile, Logo, NavItem} from './NavItems'
+import {Profile, Logo, NavItem, OpenHiveNav} from './NavItems'
 import {makeRequest} from "../Api/Api";
 import coalitionIcon from './navIcons/Shield.png'
 import searchIcon from './navIcons/Search.png'
@@ -12,6 +12,8 @@ import messageIcon from './navIcons/Messages.png'
 import notificationIcon from './navIcons/Notifications.png'
 import homeIcon from './navIcons/Home.png'
 import slotsIcon from './navIcons/Slots.png'
+import logo from './navIcons/Logo.png'
+
 import './nav.css'
 
 const SideNav = (props) => {
@@ -52,13 +54,16 @@ const SideNav = (props) => {
 
     return (
         <div className={'side_nav'}>
-            <Logo currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}/>
+            <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>
+            <OpenHiveNav currentNav={props.currentNav} icon={homeIcon} setCurrentNav={props.setCurrentNav}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'home'} name={'Home'} icon={homeIcon}/>
+                     path={'blog'} name={'blog'} icon={homeIcon}/>
             <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
             />
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'slots'} name={'Slots'} icon={slotsIcon}/>
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
+                     path={'boards'} name={'Boards'} icon={slotsIcon}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'notifications'} name={'Notifications'} icon={notificationIcon}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}

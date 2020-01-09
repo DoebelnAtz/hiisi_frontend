@@ -11,6 +11,9 @@ import Coalition from "./Coalition/Coalition";
 import Messages from "./Messages/Messages";
 import Notifications from "./Notifications/Notifications";
 import MessageHome from "./Messages/MessageHome";
+import OpenHive from  './OpenHive/OpenHive'
+import Boards from './Boards/Boards'
+
 export default (prop) => {
 
     const location = useLocation();
@@ -28,13 +31,23 @@ export default (prop) => {
     return transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
             <Switch location={location}>
+                <Route exact path={'/openhive'}
+                       render={(props) =>
+                           <OpenHive {...props} setCurrentNav={prop.setCurrentNav}/>
+                       }
+                />
+                <Route exact path={'/boards'}
+                       render={(props) =>
+                           <Boards {...props} setCurrentNav={prop.setCurrentNav}/>
+                       }
+                />
                 <Route exact path={'/slots'}
                        render={(props) =>
                            <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
                        }
 
                 />
-                <Route exact path={'/home'} render={
+                <Route exact path={'/blog'} render={
                     (props) => <Feed renderCount={renderCount}/>
                 }/>
                 <Route exact path={'/profile/'}
