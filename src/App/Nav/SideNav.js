@@ -6,6 +6,8 @@ import UserContext from "../Context/UserContext";
 import { ToggleButton } from "../Components/Buttons/Toggle";
 import {Profile, Logo, NavItem, OpenHiveNav} from './NavItems'
 import {makeRequest} from "../Api/Api";
+import {getLocal, setLocal} from "../../utils/utils";
+
 import coalitionIcon from './navIcons/Shield.png'
 import searchIcon from './navIcons/Search.png'
 import messageIcon from './navIcons/Messages.png'
@@ -22,18 +24,18 @@ const SideNav = (props) => {
     const {intra, setIntra} = useContext(IntraContext);
 
     const checkAuth = async () => {
-        if (localStorage.getItem('token')) {
-            let token = JSON.parse(localStorage.getItem('token')).token;
+        if (getLocal('token')) {
+            let token = getLocal('token').token;
 
             let resp = await makeRequest('auth/user/', 'get', {}, {
                 "Content-Type": "application/json",
                 Authorization: "Token " + token,
             });
             
-            localStorage.setItem('currentUser', JSON.stringify(resp.data));
+            setLocal('currentUser', resp.data);
             setCurrentUser(resp.data);
-            if (localStorage.getItem('resp')) {
-                let token = JSON.parse(localStorage.getItem('resp'));
+            if (getLocal('intra')) {
+                let token = getLocal('intra');
                 if (token.data.access_token) {
                     setIntra(true)
                 }

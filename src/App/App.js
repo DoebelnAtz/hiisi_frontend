@@ -19,12 +19,9 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 const App =  () => {
 
-    const [currentNav, setCurrentNav] = useState('home');
+    const [currentNav, setCurrentNav] = useState('blog');
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const [intra, setIntra] = useState(false);
-
-    // Weird interaction in mobile view, don't know why.
-    // TODO: fix this bug
 
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -36,11 +33,11 @@ const App =  () => {
                     <Route exact path={'/redirect/'} component={Redirect}/>
                 <Route path={'/'}>
                 <div id={'main_container'} className={'container'}>
-                    <div className={'row'}>
-                        <div className={'col-1 col-md-3'}>
+                    <div id={"main_page"} className={'row'}>
+                        <div id={"nav_col"}>
                             <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                         </div>
-                        <div id={'main_page'} className={'col-11 col-md-9'}>
+                        <div id={'main_view'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                             <Main setCurrentNav={setCurrentNav}/>
                             <Route exact path={'/messages/:user'} // useTransition in main causes a UI bug

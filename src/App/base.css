@@ -17,15 +17,30 @@
 }
 
 #main_container{
-    max-width: 1000px;
+    max-width: 1400px;
     min-width: 568px;
     height: 100%;
 }
 
 #main_page
 {
-    padding-right: 1rem;
+    max-width: 1400px;
+    min-width: 100%;
+    width: 100%;
+    margin: 0 0;
 }
+
+@media (max-width: 768px) {
+    #main_view {
+        width: 84%;
+    }
+}
+
+#main_view {
+    min-width: 74%;
+    margin-left: 1%;
+}
+
 
 
 #header_logout{
@@ -44,6 +59,11 @@
     cursor: pointer;
     margin-top: 1rem;
     margin-left: 1rem;
+}
+
+#nav_col {
+    min-width: 60px;
+    max-width: 25%;
 }
 
 .avatar_sm {

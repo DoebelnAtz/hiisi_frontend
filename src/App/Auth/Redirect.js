@@ -1,6 +1,5 @@
 import React, { useEffect} from 'react';
-import axios from 'axios'
-import { getUrlParam, } from "../../utils/utils";
+import {getUrlParam, setLocal,} from "../../utils/utils";
 import { makeRequest } from "../Api/Api";
 
 const Redirect = (props) => {
@@ -18,7 +17,7 @@ const Redirect = (props) => {
                 'Content-Type': 'application/json'
             }
         );
-        localStorage.setItem('resp', JSON.stringify(resp));
+        setLocal('intra', resp);
         props.history.push('/home');
     };
 

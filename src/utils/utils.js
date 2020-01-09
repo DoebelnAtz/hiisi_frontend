@@ -16,7 +16,7 @@ export const getLocal = (item) => {
     return JSON.parse(localStorage.getItem(item))
 };
 
-export const setLocal = (jsonItem, name)  => {
+export const setLocal = (name, jsonItem)  => {
     localStorage.setItem(name, JSON.stringify(jsonItem))
 };
 
