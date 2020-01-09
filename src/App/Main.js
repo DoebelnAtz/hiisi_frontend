@@ -19,8 +19,8 @@ export default (prop) => {
     const location = useLocation();
     const transitions = useTransition(location, location => location.pathname, {
         from: { display: 'none', opacity: 0, transform: 'translateX(50%)' },
-        enter: { display:'block', position: 'absolute', opacity: 1, transform: 'translateX(0%)' },
-        leave: { display: 'none', position: 'absolute', opacity: 0, transform: 'translateX(0%)' },
+        enter: { display:'block', position: 'relative', opacity: 1, transform: 'translateX(0%)' },
+        leave: { display: 'none', position: 'relative', opacity: 0, transform: 'translateX(0%)' },
     });
 
     //  React-spring useTransition causes a bug where a component is mounted multiple times

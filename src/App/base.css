@@ -37,8 +37,8 @@
 }
 
 #main_view {
-    min-width: 74%;
-    margin-left: 1%;
+    width: 72%;
+    margin-left: 15px;
 }
 
 
@@ -63,7 +63,7 @@
 
 #nav_col {
     min-width: 60px;
-    max-width: 25%;
+    max-width: 185px;
 }
 
 .avatar_sm {

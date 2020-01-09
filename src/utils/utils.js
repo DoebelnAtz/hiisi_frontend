@@ -36,6 +36,8 @@ export const getUrlParam = (parameter, defaultValue) => {
     return urlParameter;
 };
 
+
+
 export const countComments = (comments, count = 0) => {
     for (var i=0; i < comments.length; i++)
     {

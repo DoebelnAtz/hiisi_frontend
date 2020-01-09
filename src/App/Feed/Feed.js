@@ -40,7 +40,7 @@ const Feed = (prop) => {
 
     if (posts.length) {
         return (
-            <div id={'feed ml-0'}>
+            <div id={'feed_container'} className={'ml-0'}>
                 <Button text={'Create Post'}
                         onClick={() => setPopup(true)}
                 >

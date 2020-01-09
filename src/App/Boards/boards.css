@@ -1,0 +1,28 @@
+.board {
+    display: flex;
+    background-color: blue;
+    min-height: 15px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+.task {
+    background-color: white;
+    margin: 12px;
+    color: black;
+    cursor: pointer;
+}
+
+.board_cont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dragging {
+    opacity: 0;
+}
+
+.spacer {
+    opacity: 0;
+}
