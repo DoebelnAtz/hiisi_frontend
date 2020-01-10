@@ -43,7 +43,6 @@ export const DraggableTask = _.flow([
             hover(props, monitor) {
                 const {columnId, columnIndex} = props;
                 const draggingItem = monitor.getItem();
-                //console.log(draggingItem, columnId, columnIndex);
                 if (draggingItem.id !== props.id) {
                     props.moveTask(draggingItem.id, columnId, columnIndex);
                 }

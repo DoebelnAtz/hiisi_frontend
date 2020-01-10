@@ -12,37 +12,29 @@ const tasklist2 = [{id: 4, text:"Task #4"}, {id: 5, text: "Task #5"}, {id: 6, te
 const tasklist3 = [{id: 10, text: 'Done', spacer: true}]; // Bugfix turned into a feature
 const columnList = [{id: 1, title: 'Backlog', taskList: tasklist1.map(task => task.id)}, {id: 2, title: 'Breakdown', taskList: tasklist2.map(task => task.id)}, {id: 3, title: 'In Development', taskList: tasklist3.map(task => task.id)}];
 
-class Boards extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            tasks: [...tasklist1, ...tasklist2, ...tasklist3],
-            columns: columnList,
-        };
-    }
+export default () => {
+    const [tasks, setTasks] = useState([...tasklist1, ...tasklist2, ...tasklist3]);
+    const [columns, setColumns] = useState(columnList);
 
-    moveTask = (taskId, destColumn, index) => {
-        this.setState(state => ({
-        columns: state.columns.map(column => ({
-            ...column, taskList: _.flowRight(
+    const moveTask = (taskId, destColumn, index) => {
+        setColumns(columns.map(column => ({
+            ...column, taskList: _.flow(
+                ids => ids.filter(id => id !== taskId),
                 ids =>
                     column.id === destColumn
                         ? [...ids.slice(0, index), taskId, ...ids.slice(index)]
                         : ids,
-                ids => ids.filter(id => id !== taskId),
             )(column.taskList),
             })),
-        }));
+        );
     };
-    render () {
+
         return (
             <div id={"boards_main"}>
                 <div className={'board_cont'}>
-                    <BoardItem moveTask={this.moveTask} columns={this.state.columns} tasks={this.state.tasks} className={'board'}/>
+                    <BoardItem moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
                 </div>
             </div>
         )
-    }
-}
 
-export default Boards
+}
