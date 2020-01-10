@@ -9,11 +9,12 @@ const style = {
     width: 400,
 };
 export default (props) => {
-    const {columnList, tasks, moveTask} = props;
+    const {columns, tasks, moveTask} = props;
+
     return (
         <div className={props.className}>
-            {columnList.map((column) => (
-                <Column key={column.id} text={column.title}>
+            {columns.map((column) => (
+                <Column key={column.id} text={column.title} className={'column'}>
 
                     {column.taskList
                         .map(taskId => tasks.find(task => task.id === taskId))
@@ -21,6 +22,8 @@ export default (props) => {
                             <DraggableTask
                                 key={task.id}
                                 index={index}
+                                isSpace={task.spacer}
+                                draggable={true}
                                 className={'task'}
                                 text={task.text}
                                 columnId={column.id}
@@ -30,11 +33,6 @@ export default (props) => {
                             />
                         ))
                     }
-                    {column.taskList.length === 0 && (
-                        <DraggableTask
-                            isSpace={true}
-                            moveTask={task => moveTask(task, column.id, 0)}/>
-                    )}
                 </Column>
             ))
             }

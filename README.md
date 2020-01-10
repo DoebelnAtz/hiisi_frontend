@@ -93,6 +93,14 @@ React good practices:
 
 https://www.youtube.com/watch?v=BncMF2aTL0w
 
+Lodash docs:
+
+https://lodash.com/docs/4.17.15
+
+React DND docs:
+
+https://react-dnd.github.io/react-dnd/about
+
 <h3>API documentation:</h3>
 
 <h5>Endpoints:</h5>
