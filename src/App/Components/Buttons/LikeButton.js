@@ -10,7 +10,7 @@ export default ({content}) => {
     let profile = JSON.parse(localStorage.getItem('currentUser'));
     const handleClick = async() => {
         if (checkLikedPosts(profile, content)) {
-            let resp = await makeRequest('like/', 'post',
+            await makeRequest('like/', 'post',
                 {
                     target_id: content.id,
                     change: 1,

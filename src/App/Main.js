@@ -8,7 +8,6 @@ import Search from "./Search/Search";
 import UserPage from "./User/UserPage";
 import {useTransition, animated} from "react-spring";
 import Coalition from "./Coalition/Coalition";
-import Messages from "./Messages/Messages";
 import Notifications from "./Notifications/Notifications";
 import MessageHome from "./Messages/MessageHome";
 import OpenHive from  './OpenHive/OpenHive'

@@ -1,17 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useFetch, useNav } from "../Hooks/Hooks";
 import ReconnectingWebSocket from 'reconnecting-websocket';
-import TextArea from "../Components/TextArea";
-import Button from "../Components/Buttons/Button";
 import { useParams } from "react-router-dom";
-import {makeRequest} from "../Api/Api";
 import _ from 'lodash'
 
+import { useNav } from "../Hooks/Hooks";
+import Button from "../Components/Buttons/Button";
+import { makeRequest } from "../Api/Api";
 import './messages.css'
 import {calculateTimeSince} from "../../utils/utils";
 
 const getSocket = (u) => {
-    return new WebSocket(u)
+    return new ReconnectingWebSocket(u)
 };
 const memoizedSocket = _.memoize(getSocket);
 

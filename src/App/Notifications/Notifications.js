@@ -13,7 +13,7 @@ const Notifications = (props) => {
     const [friendRequests, setFriendRequests] = useState(profile.friend_requests);
 
     const respondRequest = async (target, accept) => {
-        let resp = await makeRequest('respond_friend/', 'post', {
+        await makeRequest('respond_friend/', 'post', {
             target_id: target.id,
             sender_id: profile.id,
             accept: accept

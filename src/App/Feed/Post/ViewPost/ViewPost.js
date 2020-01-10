@@ -3,13 +3,11 @@ import React, { useState, useEffect } from 'react';
 import './viewpost.css'
 import {Reply} from "./Reply";
 import {Comment} from "./Comment";
-import {useFetch} from "../../../Hooks/Hooks";
 import {makeRequest} from "../../../Api/Api";
 
 const ViewPost = (props) => {
 
     const [comments, setComments] = useState([]);
-    //useFetch(`comment_threads/${props.content.thread}`, setComments);
 
     const getComments = async() => {
         let resp = await makeRequest(`comment_threads/${props.content.thread}`, 'get', {});
@@ -18,7 +16,7 @@ const ViewPost = (props) => {
     };
 
     useEffect(() => {
-        getComments()
+        getComments() // eslint-disable-next-line
     }, []);
 
     const renderComments = (comment=comments, isExpanded=true) => {

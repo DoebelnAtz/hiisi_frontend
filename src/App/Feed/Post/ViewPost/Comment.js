@@ -12,7 +12,7 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
             <div  className={'parent_comment'} key={child.id}>
                 <button onClick={() => setExpanded(!expanded)} >-</button>
                 <div className={'comment_head'}>
-                    <img className={'comment_profile_pic'} src={child.creator.profile_pic}/>
+                    <img className={'comment_profile_pic'} src={child.creator.profile_pic} alt={'profile_pic'}/>
                     <span> {child.creator.username}</span>
                     <span> {formatDate(child.published_date)}</span>
                 </div>

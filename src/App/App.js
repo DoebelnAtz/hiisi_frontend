@@ -4,6 +4,7 @@ import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
+
 import IntraContext from "./Context/IntraContext";
 import UserContext  from './Context/UserContext'
 import Redirect from './Auth/Redirect'
@@ -12,7 +13,6 @@ import SideNav from './Nav/SideNav'
 import Main from './Main'
 import Login from './Auth/Login'
 import './base.css'
-import {makeRequest} from "./Api/Api";
 import Messages from "./Messages/Messages";
 import ServerDown from "./ErrorPages/ServerDown";
 

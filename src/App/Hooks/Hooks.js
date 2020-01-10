@@ -2,7 +2,6 @@ import {useEffect} from "react";
 import {makeRequest} from "../Api/Api";
 
 export const useFetch = (url, setFunc) => {
-
     // empty array as second argument equivalent to componentDidMount
     useEffect(() => {
         async function fetchData() {
@@ -10,7 +9,7 @@ export const useFetch = (url, setFunc) => {
             const json = response.data;
             setFunc(json);
         }
-        fetchData();
+        fetchData(); // eslint-disable-next-line
     }, [url]);
 };
 

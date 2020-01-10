@@ -1,8 +1,9 @@
-import React, {useState, useEffect, useRef, useContext} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+
 import ProfilePage from './ProfilePage'
 import { makeRequest } from '../Api/Api'
 import './profile.css'
-import UserContext from '../Context/UserContext'
+
 
 const Profile = (props) => {
 

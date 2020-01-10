@@ -1,13 +1,8 @@
-import React, {useCallback, useState} from 'react'
-import { useDrop } from 'react-dnd'
+import React from 'react'
 import {DraggableTask} from "./Task";
-import update from 'immutability-helper'
 
 import Column from './Column'
 
-const style = {
-    width: 400,
-};
 export default (props) => {
     const {columns, tasks, moveTask} = props;
 

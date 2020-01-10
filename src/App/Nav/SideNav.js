@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import IntraContext from "../Context/IntraContext";
@@ -20,8 +20,8 @@ import './nav.css'
 
 const SideNav = (props) => {
 
-    const {currentUser, setCurrentUser} = useContext(UserContext);
-    const {intra, setIntra} = useContext(IntraContext);
+    const { setCurrentUser } = useContext(UserContext); // not really used bc problems with refreshing page
+    const { intra, setIntra } = useContext(IntraContext);
 
     const checkAuth = async () => {
         if (getLocal('token')) {
@@ -50,9 +50,6 @@ const SideNav = (props) => {
     useEffect(() => {
         checkAuth();
     }, [localStorage.getItem('token')]);
-
-    // When refreshing on smaller devices nav icons get buggy, no idea why
-    // TODO: fix this bug
 
     return (
         <div className={'side_nav'}>

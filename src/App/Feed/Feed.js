@@ -12,7 +12,7 @@ const Feed = (prop) => {
 
     const isMounted = useRef(true);
 
-    (useFetch( 'blogs', setPosts ));
+    useFetch( 'blogs', setPosts );
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 

@@ -15,7 +15,7 @@ export const Logo = (props) => {
             className={'row nav_item nav_logo'}
             onClick={setNavHome}
         >
-            <img className={"nav_icon"} src={props.icon}/><span
+            <img className={"nav_icon"} src={props.icon} alt={'blog_icon'}/><span
             id={'home_nav'}
             className={'d-none d-md-block nav_item_text'}>
             Hivemind</span>
@@ -31,7 +31,7 @@ export const OpenHiveNav = (props) => {
             className={`row nav_item ${props.currentNav === "Open Hive" ? 'active' : 'inactive'}`}
             onClick={() => props.setCurrentNav("Open Hive")}
         >
-            <img className={'nav_icon'} src={props.icon}/><span
+            <img className={'nav_icon'} src={props.icon} alt={'OpenHive_icon'}/><span
             id={`$open_hive_nav`}
             className={'nav_item_text d-none d-md-block'}>
             Open Hive</span>
@@ -46,7 +46,7 @@ export const NavItem = (props) => {
             className={`row nav_item ${props.currentNav === props.path ? 'active' : 'inactive'}`}
             onClick={() => props.setCurrentNav(props.path)}
         >
-            <img className={'nav_icon'} src={props.icon}/><span
+            <img className={'nav_icon'} src={props.icon}  alt={`${props.name}_icon`}/><span
             id={`${props.name}_nav`}
             className={'nav_item_text d-none d-md-block'}>
             {props.name}</span>
@@ -64,7 +64,7 @@ export const Profile = (props) => {
             className={`row nav_item ${props.currentNav === 'profile' ? 'active' : 'inactive'}`}
             onClick={setNavProfile}
         >
-            <img className={'nav_icon'} src={profileIcon}/><span
+            <img className={'nav_icon'} src={profileIcon}  alt={'profile_icon'}/><span
             id={'profile_nav'}
             className={`d-none d-md-block nav_item_text`}>
             Profile</span>
