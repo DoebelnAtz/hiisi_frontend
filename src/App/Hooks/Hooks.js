@@ -5,6 +5,7 @@ export const useFetch = (url, setFunc) => {
     // empty array as second argument equivalent to componentDidMount
     useEffect(() => {
         async function fetchData() {
+            console.log(url);
             const response = await makeRequest(url, 'get', {});
             const json = response.data;
             setFunc(json);

@@ -10,9 +10,9 @@ const ViewPost = (props) => {
     const [comments, setComments] = useState([]);
 
     const getComments = async() => {
-        let resp = await makeRequest(`comment_threads/${props.content.thread}`, 'get', {});
+        let resp = await makeRequest(`blogs/commentthread/${props.content.commentthread}`, 'get', {});
 
-        setComments(resp.data.comment);
+        setComments(resp.data);
     };
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const ViewPost = (props) => {
             return (
                 comment.map((child) => {
                         return (
-                            <div key={child.id}>
+                            <div key={child.c_id}>
                                 <Comment isExpanded={isExpanded} child={child} renderComments={renderComments}/>
                             </div>
                         )
@@ -39,7 +39,7 @@ const ViewPost = (props) => {
 
     return (
         <div id={'view_post_container'} className={'container pb-1'}>
-            <Reply commentThread={comments} setCommentThread={setComments} comment_id={null} blog_id={props.content.id} />
+            {/*<Reply commentThread={comments} setCommentThread={setComments} comment_id={null} blog_id={props.content.id} />*/}
             <div className={'comment_section'}>
                 {renderComments()}
             </div>

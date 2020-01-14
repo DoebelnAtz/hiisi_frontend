@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { makeRequest} from "../Api/Api";
 import { withRouter } from 'react-router-dom'
+import {setLocal} from "../../utils/utils";
 
 const Login = (props) => {
 
@@ -10,14 +11,20 @@ const Login = (props) => {
     const requestLogin = async (e) => {
         e.preventDefault();
         if (password.length && username.length) {
-            let resp = await makeRequest('auth/login/', 'post',
+            let resp = await makeRequest('auth/login', 'post',
                 {
                     username: username,
                     password: password,
-                },);
-            if (resp.data.user) {
-                localStorage.setItem('token', JSON.stringify(resp.data));
-                props.history.push('/home');
+                },
+                {
+                    'Authorization': 'Pending'
+                });
+            console.log(resp);
+            if (resp.data.success) {
+                setLocal('token', resp.data);
+                props.history.push('/blog');
+            } else {
+                props.history.push('/login')
             }
         }
     };

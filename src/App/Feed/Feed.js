@@ -1,9 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Post from './Post/Post'
 import { useFetch } from './../Hooks/Hooks'
 import {useTrail, animated} from 'react-spring'
 import CreatePostPopup from './CreatePostPopup'
 import Button from "../Components/Buttons/Button";
+import {makeRequest} from "../Api/Api";
+import {getLocal} from "../../utils/utils";
 
 const Feed = (prop) => {
 
@@ -12,7 +14,17 @@ const Feed = (prop) => {
 
     const isMounted = useRef(true);
 
-    useFetch( 'blogs', setPosts );
+    const getPosts = async () => {
+        let resp = await makeRequest('blogs', 'post', {
+            senderId: getLocal('token').user.u_id
+        });
+        setPosts(resp.data);
+    };
+
+    useEffect(() => {
+        getPosts()
+    }, []);
+
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 
@@ -30,7 +42,7 @@ const Feed = (prop) => {
                 return (
                     <animated.div
                         style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
-                        id={'feed'} key={posts[i].id}>
+                        id={'feed'} key={posts[i].b_id}>
                         <Post content={posts[i]}/>
                     </animated.div>
                 )

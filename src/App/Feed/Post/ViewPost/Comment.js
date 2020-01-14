@@ -1,35 +1,46 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Reply} from "./Reply";
 import { formatDate } from "../../../../utils/utils";
+import {makeRequest} from "../../../Api/Api";
 
 export const Comment = ({child,  renderComments, isExpanded}) => {
-    const [expanded, setExpanded] = useState(isExpanded);
-    const [commentThread, setCommentThread] = useState(child.children);
+    const [expanded, setExpanded] = useState(false);
+    const [childThread, setChildThread] = useState([]);
+
+    const fetchReplies = async () => {
+        let resp = await makeRequest('blogs/commentthread/' + child.childthread);
+        setChildThread(resp.data);
+    };
+
+    useEffect(() => {
+        fetchReplies()
+    }, []);
 
 
-    if(expanded) {
+    if (isExpanded) {
         return (
-            <div  className={'parent_comment'} key={child.id}>
-                <button onClick={() => setExpanded(!expanded)} >-</button>
+            <div className={'parent_comment'} key={child.c_id}>
                 <div className={'comment_head'}>
-                    <img className={'comment_profile_pic'} src={child.creator.profile_pic} alt={'profile_pic'}/>
-                    <span> {child.creator.username}</span>
-                    <span> {formatDate(child.published_date)}</span>
+                    <img className={'comment_profile_pic'} src={child.profile_pic} alt={'profile_pic'}/>
+                    <span> {child.username}</span>
+                    <span> {formatDate(child.comment_date)}</span>
                 </div>
                 <div className={'comment_body'}>
-                    <p>{child.comment}</p>
+                    <p>{child.commentcontent}</p>
                 </div>
-                <Reply commentThread={commentThread} setCommentThread={setCommentThread} comment_id={child.id} blog_id={null}/>
+                {/*<Reply commentThread={childThread} setCommentThread={setChildThread} childThreadId={child.c_id}/>*/}
                 <div className={'children'}>
-                    {renderComments(commentThread, expanded)}
+                    {childThread.length ? <button onClick={() => setExpanded(!expanded)}>{childThread.length + (childThread.length == 1 ?' reply' : ' replies')}</button> : <div> </div>}
+                    {renderComments(childThread, expanded)}
                 </div>
-            </div>
-        )
-    } else {
-        return (
-            <div  className={'parent_comment'}>
-                <button onClick={() => setExpanded(!expanded)}>+</button>
             </div>
         )
     }
+    else {
+        return (
+            <div>
+            </div>
+        )
+    }
+
 };

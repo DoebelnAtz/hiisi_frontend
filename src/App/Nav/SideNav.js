@@ -27,10 +27,8 @@ const SideNav = (props) => {
         if (getLocal('token')) {
             let token = getLocal('token').token;
 
-            let resp = await makeRequest('auth/user/', 'get', {}, {
-                "Content-Type": "application/json",
-                Authorization: "Token " + token,
-            });
+            let resp = await makeRequest('users/' + getLocal('token').user.u_id, 'get', {},
+            );
             
             setLocal('currentUser', resp.data);
             setCurrentUser(resp.data);
