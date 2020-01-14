@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { makeRequest} from "../Api/Api";
 import { withRouter } from 'react-router-dom'
 import {setLocal} from "../../utils/utils";
+import axios from "axios";
 
 const Login = (props) => {
 
@@ -11,14 +12,15 @@ const Login = (props) => {
     const requestLogin = async (e) => {
         e.preventDefault();
         if (password.length && username.length) {
-            let resp = await makeRequest('auth/login', 'post',
-                {
+            let resp = await axios({
+                //url: `http://134.209.227.11/api/${url}`,
+                url: `http://localhost:5000/api/auth/login`,
+                method: 'post',
+                data: {
                     username: username,
                     password: password,
-                },
-                {
-                    'Authorization': 'Pending'
-                });
+                }
+            });
             console.log(resp);
             if (resp.data.success) {
                 setLocal('token', resp.data);

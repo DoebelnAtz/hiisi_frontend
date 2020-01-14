@@ -61,12 +61,12 @@ const SideNav = (props) => {
                      path={'slots'} name={'Slots'} icon={slotsIcon}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'boards'} name={'Boards'} icon={slotsIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'notifications'} name={'Notifications'} icon={notificationIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'message_home'} name={'Messages'} icon={messageIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>
+            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
+                     {/*path={'notifications'} name={'Notifications'} icon={notificationIcon}/>*/}
+            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
+                     {/*path={'message_home'} name={'Messages'} icon={messageIcon}/>*/}
+            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
+                     {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'search'} name={'Search'} icon={searchIcon}/>
             <ToggleButton connected={intra} setConnected={setIntra}/>

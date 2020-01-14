@@ -13,14 +13,16 @@ const Search = (props) => {
 
     const handleChange = async(e) => {
         let val = e.target.value;
-        let resp = await makeRequest( // make request to search endpoint, it will return a list of matched users
-            "search/",
-            'post',
-            {
-                search: val
-            }
-        );
-        setResults(resp.data);
+        if (val.length) {
+            let resp = await makeRequest( // make request to search endpoint, it will return a list of matched users
+                "users/search",
+                'post',
+                {
+                    search: val
+                }
+            );
+            setResults(resp.data);
+        }
         setSearchVal(val);
     };
 
@@ -43,12 +45,12 @@ const Search = (props) => {
                     return (
                         <animated.div
                             style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
-                            id={'feed'} key={results[i].id} className={'my-2'}>
+                            id={'feed'} key={results[i].u_id} className={'my-2'}>
                             <img className={'profile_pic'}
                                  src={results[i].profile_pic}
                                  alt={results[i].username} />
                             <Link
-                                to={'/search/user/' + results[i].id}
+                                to={'/search/user/' + results[i].u_id}
                                 className={'ml-2 mt-2'}
                             >
                                 {results[i].username}

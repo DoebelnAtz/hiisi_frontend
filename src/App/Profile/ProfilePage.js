@@ -2,7 +2,7 @@ import React from 'react';
 import AddFriend from "../Components/Buttons/AddFriend";
 
 const ProfilePage = ({profile}) => {
-    
+    //TODO: add friend button
     return (
         <div id={'profile_page'} className={'container'}>
             <div className={'row justify-content-center'}>
@@ -19,7 +19,7 @@ const ProfilePage = ({profile}) => {
                 <p>location: {profile.location}</p>
                 <p>coalition points: {profile.coalitionpoints}</p>
                 <p>wallet: {profile.wallet}</p>
-                <AddFriend target={profile}/>
+                {/*<AddFriend target={profile}/>*/}
             </div>
             <div className={'container'}>
                 <div className={'row'}></div>

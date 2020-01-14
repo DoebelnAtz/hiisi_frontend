@@ -11,7 +11,7 @@ const UserPage = () => {
 
     const getUser = async(id) => {
         let resp = await makeRequest(
-            `profiles/${id}`,
+            `users/${id}`,
             'get',
             {}
         );
