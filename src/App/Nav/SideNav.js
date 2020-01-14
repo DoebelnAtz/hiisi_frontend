@@ -63,8 +63,8 @@ const SideNav = (props) => {
                      path={'boards'} name={'Boards'} icon={slotsIcon}/>
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
                      {/*path={'notifications'} name={'Notifications'} icon={notificationIcon}/>*/}
-            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
-                     {/*path={'message_home'} name={'Messages'} icon={messageIcon}/>*/}
+            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
+                     path={'message_home'} name={'Messages'} icon={messageIcon}/>
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
                      {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}

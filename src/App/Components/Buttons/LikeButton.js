@@ -2,28 +2,27 @@ import React, { useState } from 'react'
 
 import './buttons.css'
 import {makeRequest} from "../../Api/Api";
-import {checkLikedPosts} from "../../../utils/utils";
+import {checkLikedPosts, getLocal} from "../../../utils/utils";
 
 export default ({content}) => {
-
+    console.log(content);
     const [likes, setLikes] = useState(content.likes);
-    let profile = JSON.parse(localStorage.getItem('currentUser'));
+    let profile = getLocal('currentUser');
     const handleClick = async() => {
-        if (checkLikedPosts(profile, content)) {
-            await makeRequest('like/', 'post',
+        if (!content.liked) {
+            let resp = await makeRequest('blogs/like_post', 'post',
                 {
-                    target_id: content.id,
-                    change: 1,
-                    target: "Blog",
-                    user_id: profile.id,
+                    blogId: content.b_id,
+                    userId: profile.u_id
                 },
                 {
                     "Content-Type": "application/json"
                 }
                 );
-            profile.liked_posts.push({id: content.id});
-            localStorage.setItem("currentUser", JSON.stringify(profile));
-            setLikes(likes + 1);
+            if (resp.success) {
+                content.liked = true;
+                setLikes(likes + 1);
+            }
         }
     };
 

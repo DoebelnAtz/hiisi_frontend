@@ -12,8 +12,8 @@ const PostMainContent = ({content, expand}) => {
             <div className={'col'}>
                 <div className={'row feed_title'}>
                     <span className={'post_title'}>{content.title}</span>
-                    <span className={'post_author'}>{content.author}</span>
-                    <span className={'post_date'}>{content.date}</span>
+                    <span className={'post_author'}>{content.username}</span>
+                    <span className={'post_date'}>{formatDate(content.published_date)}</span>
                 </div>
                 <div className={'row post_content'}>
                     <span>{content.content}</span>

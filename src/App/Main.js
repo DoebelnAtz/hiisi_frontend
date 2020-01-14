@@ -44,7 +44,6 @@ export default (prop) => {
                        render={(props) =>
                            <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
                        }
-
                 />
                 <Route exact path={'/blog'} render={
                     (props) => <Feed renderCount={renderCount}/>

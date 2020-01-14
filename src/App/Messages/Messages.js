@@ -22,21 +22,16 @@ const Messages = (props) => {
     const [messages, setMessages] = useState([]);
     const [inputVal, setInputVal] = useState('');
     let profile = JSON.parse(localStorage.getItem("currentUser"));
-    let { user } = useParams();
-    let url = 'ws://134.209.227.11/messages/' + user + '/?user=' + profile.username;
+    let { tid } = useParams();
+    console.log(useParams());
+    let url = 'ws://134.209.227.11/messages/lsjoberg/?user=' + profile.username;
 
     let socket = memoizedSocket(url);
 
     const getMessages = async () => {
-        let data = {
-            username: profile.username,
-            other_user: user
-        };
-        let resp = await makeRequest('message_thread/', 'POST',data,{
-            "Content-Type": "application/json"
-        });
+        let resp = await makeRequest('messages/threads/' + tid, 'GET',);
         if (resp.data)
-            setMessages(resp.data.messages);
+            setMessages(resp.data);
     };
 
     useEffect(() => {messageEnd.current.scrollIntoView({behavior: "smooth"})}, [messages]);
@@ -90,14 +85,14 @@ const Messages = (props) => {
             messages.map((message) => {
                 calculateTimeSince(message.timestamp);
                 return (
-                    <div key={message.timestamp} className={(message.sender === profile.username) ? "sent" : "received"}>
+                    <div key={message.timestamp} className={(message.username === profile.username) ? "sent" : "received"}>
                         <div className={'container-fluid'}>
                         <div className={'row message_info'}>
-                            <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.sender + ".jpg"}/>
-                            <span className={'message_info_time'}>{calculateTimeSince(message.timestamp)}</span>
+                            <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.username + ".jpg"}/>
+                            <span className={'message_info_time'}>{calculateTimeSince(message.time_sent)}</span>
                         </div>
                         <div className={'row message_content'}>
-                            <span className={"message_text"}>{message.text}</span>
+                            <span className={"message_text"}>{message.message}</span>
                         </div>
                         </div>
                     </div>
@@ -114,9 +109,9 @@ const Messages = (props) => {
                     <div ref={messageEnd}> </div>
                 </div>
                 <div className={''}>
-                    <textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>
-                    </textarea>
-                    <Button onClick={(e) => handleClick(e)} text={'SEND'}/>
+                    {/*<textarea onKeyDown={(e) => handleEnter(e)} value={inputVal} onChange={(e) => setInputVal(e.target.value)}>*/}
+                    {/*</textarea>*/}
+                    {/*<Button onClick={(e) => handleClick(e)} text={'SEND'}/>*/}
                 </div>
             </div>
         </div>

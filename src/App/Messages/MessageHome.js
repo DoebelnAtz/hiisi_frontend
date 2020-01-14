@@ -1,21 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import {useNav} from "../Hooks/Hooks";
 
 import './messages.css'
+import {makeRequest} from "../Api/Api";
+import {getLocal} from "../../utils/utils";
 
 const MessageHome = (props) => {
 
     let profile = JSON.parse(localStorage.getItem("currentUser"));
-
+    const [threads, setThreads] = useState([]);
     useNav('message_home', props.setCurrentNav);
+
+    const getThreads = async () => {
+        let resp = await makeRequest('messages/users/' + getLocal('token').user.u_id)
+        setThreads(resp.data);
+    };
+
+    useEffect(() => {
+        getThreads();
+    }, []);
+
 
     const renderFriends = () => {
         return (
-            profile.friends.map((friend) => {
+            threads.map((thread) => {
                 return (
-                    <div onClick={() => props.history.push('messages/'+friend.username)} className={'row message_friend_item'} key={friend.id}>
-                        <img className={'avatar_lg mr-2'} src={friend.profile_pic}/><span>{friend.username}</span>
+                    <div  className={'row message_friend_item'} key={thread.thread_id}>
+                        <Link to={'/messages/' + thread.thread_id}>Thread</Link>
+                        <span>{thread.thread_id}</span>
                     </div>
                 )
             })

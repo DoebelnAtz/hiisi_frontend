@@ -4,6 +4,7 @@ import {useSpring, useTransition, animated} from 'react-spring'
 import { makeRequest } from '../Api/Api'
 import Button from '../Components/Buttons/Button'
 import TextArea from '../Components/TextArea'
+import {getLocal} from "../../utils/utils";
 
 const CreatePostPopup = (props) => {
 
@@ -14,16 +15,14 @@ const CreatePostPopup = (props) => {
     const createPost = async (title, content) => {
         let now = new Date().toISOString();
         console.log(now);
-        let resp = await makeRequest('blogs/', 'post', {
-            creator: JSON.parse(localStorage.getItem('token')).user.id,
-            post: content,
-            title: title,
-            event: false,
-            published_date: now,
+        let resp = await makeRequest('blogs/create_blog', 'post', {
+            authorId: getLocal('token').user.u_id,
+            content,
+            title,
+            published_date: now
         });
         console.log(props.posts);
-        resp.data['comments'] = [];
-        resp.data['likes'] = 0;
+
         if (props.isMounted) {
             console.log('updating');
             props.setPosts([resp.data, ...(props.posts)]);

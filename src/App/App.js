@@ -42,7 +42,7 @@ const App =  () => {
                         <div id={'main_view'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                             <Main setCurrentNav={setCurrentNav}/>
-                            <Route exact path={'/messages/:user'} // useTransition in main causes a UI bug
+                            <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
                                    render={(props) =>             // in this component, moved here for now
                                        <Messages {...props} setCurrentNav={setCurrentNav}/>
                                    }
