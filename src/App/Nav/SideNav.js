@@ -23,32 +23,6 @@ const SideNav = (props) => {
     const { setCurrentUser } = useContext(UserContext); // not really used bc problems with refreshing page
     const { intra, setIntra } = useContext(IntraContext);
 
-    const checkAuth = async () => {
-        if (getLocal('token')) {
-            let token = getLocal('token').token;
-
-            let resp = await makeRequest('users/' + getLocal('token').user.u_id, 'get', {},
-            );
-            
-            setLocal('currentUser', resp.data);
-            setCurrentUser(resp.data);
-            if (getLocal('intra')) {
-                let token = getLocal('intra');
-                if (token.data.access_token) {
-                    setIntra(true)
-                }
-            }
-
-        }
-        else {
-            props.history.push('login')
-        }
-    };
-
-    useEffect(() => {
-        checkAuth();
-    }, [localStorage.getItem('token')]);
-
     return (
         <div className={'side_nav'}>
             <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>

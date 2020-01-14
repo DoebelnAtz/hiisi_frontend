@@ -5,7 +5,6 @@ import {makeRequest} from "../../Api/Api";
 import {checkLikedPosts, getLocal} from "../../../utils/utils";
 
 export default ({content}) => {
-    console.log(content);
     const [likes, setLikes] = useState(content.likes);
     let profile = getLocal('currentUser');
     const handleClick = async() => {

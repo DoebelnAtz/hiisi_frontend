@@ -23,7 +23,6 @@ const Messages = (props) => {
     const [inputVal, setInputVal] = useState('');
     let profile = JSON.parse(localStorage.getItem("currentUser"));
     let { tid } = useParams();
-    console.log(useParams());
     let url = 'ws://134.209.227.11/messages/lsjoberg/?user=' + profile.username;
 
     let socket = memoizedSocket(url);
@@ -83,9 +82,8 @@ const Messages = (props) => {
     const renderMessages = () => {
         return (
             messages.map((message) => {
-                calculateTimeSince(message.timestamp);
                 return (
-                    <div key={message.timestamp} className={(message.username === profile.username) ? "sent" : "received"}>
+                    <div key={message.m_id} className={(message.username === profile.username) ? "sent" : "received"}>
                         <div className={'container-fluid'}>
                         <div className={'row message_info'}>
                             <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.username + ".jpg"}/>
