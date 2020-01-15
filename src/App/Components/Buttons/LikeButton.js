@@ -18,7 +18,8 @@ export default ({content}) => {
                     "Content-Type": "application/json"
                 }
                 );
-            if (resp.success) {
+            if (resp.data.success) {
+
                 content.liked = true;
                 setLikes(likes + 1);
             }

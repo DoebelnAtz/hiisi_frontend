@@ -15,9 +15,7 @@ const Feed = (prop) => {
     const isMounted = useRef(true);
 
     const getPosts = async () => {
-        let resp = await makeRequest('blogs', 'post', {
-            senderId: getLocal('token').user.u_id
-        });
+        let resp = await makeRequest('blogs', 'get');
         setPosts(resp.data);
     };
 
