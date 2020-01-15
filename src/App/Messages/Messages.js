@@ -7,7 +7,7 @@ import { useNav } from "../Hooks/Hooks";
 import Button from "../Components/Buttons/Button";
 import { makeRequest } from "../Api/Api";
 import './messages.css'
-import {calculateTimeSince} from "../../utils/utils";
+import {calculateTimeSince, getLocal} from "../../utils/utils";
 
 import socketIOClient from "socket.io-client";
 
@@ -23,20 +23,35 @@ class Messages extends React.Component {
     }
 
     profile = JSON.parse(localStorage.getItem("currentUser"));
-
-    getMessages = async () => {
-        let resp = await makeRequest('messages/threads/' + this.props.match.params.tid, 'GET',);
-        this.setState({messages: resp.data});
-        console.log(this.state.messages);
-    };
-
     socket;
-
+    tid = this.props.match.params.tid;
     componentDidMount() {
-        this.socket = socketIOClient('http://localhost:5000');
+        this.socket = socketIOClient('http://localhost:5010', {
+            transportOptions: {
+                polling: {
+                    extraHeaders: {
+                        "Authorization": "Bearer " + getLocal('token').token
+                    }
+                }
+
+            }
+        });
         this.getMessages();
         this.connectToRoom();
+        this.scrollToBottom();
     }
+
+    componentWillUnmount() {
+        this.socket.disconnect()
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom = () => {
+        this.scrollDown.scrollIntoView({ behavior: "smooth"})
+    };
 
     appendMessages = (message) => {
         console.log(this.state.messages);
@@ -44,10 +59,18 @@ class Messages extends React.Component {
 
     };
 
+    getMessages = async () => {
+        let resp = await makeRequest('messages/threads/' + this.tid, 'GET',);
+        this.setState({messages: resp.data});
+        console.log(this.state.messages);
+    };
+
+
     connectToRoom = () => {
         console.log(this.state.messages);
         this.socket.on('chat-message', (message) => {
             this.appendMessages(message);
+            this.scrollDown.scrollIntoView({ behavior: "smooth"});
         });
     };
 
@@ -61,7 +84,7 @@ class Messages extends React.Component {
                 message: this.state.inputVal,
                 username: this.profile.username,
                 time_sent: new Date().toISOString(),
-                m_id: 2});
+                t_id: this.tid});
         }
         this.setState({ inputVal: ''});
     };
@@ -79,7 +102,7 @@ class Messages extends React.Component {
                     <div key={message.m_id} className={(message.username === this.profile.username) ? "sent" : "received"}>
                         <div className={'container-fluid'}>
                         <div className={'row message_info'}>
-                            <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.username + ".jpg"}/>
+                            <img className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + message.username + (message.username === 'marvin' ? ".png" : ".jpg")}/>
                             <span className={'message_info_time'}>{calculateTimeSince(message.time_sent)}</span>
                         </div>
                         <div className={'row message_content'}>
@@ -98,7 +121,7 @@ class Messages extends React.Component {
                 <div className={'message_cont container'}>
                     <div className={"message_feed"}>
                         {this.renderMessages()}
-                        <div ref={this.scrollDown}></div>
+                        <div ref={(el) => this.scrollDown = el}> </div>
                     </div>
                     <div className={''}>
                     <textarea onKeyDown={(e) =>this.handleEnter(e)} value={this.state.inputVal}
