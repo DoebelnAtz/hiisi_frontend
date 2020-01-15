@@ -30,7 +30,7 @@ const SideNav = (props) => {
 
     useEffect(() => {
         checkAuth();
-    }, [getLocal('token').token, getLocal('currentUser')]);
+    }, [JSON.stringify(getLocal('token')), JSON.stringify(getLocal('currentUser'))]);
 
     return (
         <div className={'side_nav'}>
