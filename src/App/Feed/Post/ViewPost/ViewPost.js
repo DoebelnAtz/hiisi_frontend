@@ -10,7 +10,7 @@ const ViewPost = (props) => {
     const [comments, setComments] = useState([]);
 
     const getComments = async() => {
-        let resp = await makeRequest(`blogs/commentthread/${props.content.commentthread}`, 'get', {});
+        let resp = await makeRequest(`blogs/commentthread/${props.content.commentthread}`, 'get');
 
         setComments(resp.data);
     };

@@ -37,7 +37,7 @@ const SideNav = (props) => {
             <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>
             <OpenHiveNav currentNav={props.currentNav} icon={homeIcon} setCurrentNav={props.setCurrentNav}/>
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'blog'} name={'blog'} icon={homeIcon}/>
+                     path={'blog'} name={'Blog'} icon={homeIcon}/>
             <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
             />
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}

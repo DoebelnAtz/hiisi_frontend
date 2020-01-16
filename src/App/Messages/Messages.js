@@ -17,7 +17,10 @@ class Messages extends React.Component {
         super(props);
         this.state = {
             messages: [],
-            inputVal: ''
+            inputVal: '',
+            addUserInputVal: '',
+            searchResults: {},
+            connectedUsers: []
         };
         this.scrollDown = React.createRef();
     }
@@ -39,6 +42,7 @@ class Messages extends React.Component {
         this.getMessages();
         this.connectToRoom();
         this.scrollToBottom();
+        this.getUsersConnected();
     }
 
     componentWillUnmount() {
@@ -95,6 +99,55 @@ class Messages extends React.Component {
         }
     };
 
+    handleSearchChange = async(e) => {
+        this.setState({
+
+            searchResults: [],
+        });
+        let val = e.target.value;
+        console.log(val);
+        if (val.length) {
+            let resp = await makeRequest(
+                "users/search",
+                'post',
+                {
+                    search: val
+                }
+            );
+            if (resp.data.length)
+            {
+                this.setState({
+                    searchResults: resp.data[0],
+                })
+
+            }
+        }
+        this.setState({
+            addUserInputVal: val,
+        })
+    };
+
+    addUser = async (e) => {
+        if (e.key === "Enter") {
+            if (this.state.searchResults) {
+                let resp = await makeRequest('messages/threads/add_user', 'post',
+                    {
+                        threadId: this.tid,
+                        targetId: this.state.searchResults.u_id
+                    });
+                if (resp.data)  this.setState({connectedUsers: [...this.state.connectedUsers, resp.data] });
+            }
+            this.setState({ addUserInputVal: '', searchResults: {}})
+        }
+    };
+
+    getUsersConnected = async () => {
+        let resp = await makeRequest('messages/threads/' + this.tid + '/users');
+        if (resp.data) {
+            this.setState({ connectedUsers: resp.data })
+        }
+    };
+
     renderMessages = () => {
         return (
             this.state.messages.map((message) => {
@@ -119,6 +172,10 @@ class Messages extends React.Component {
         return (
             <div>
                 <div className={'message_cont container'}>
+                    <div>{this.state.connectedUsers.map(user => <img key={user.u_id} className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + user.username  + ".jpg"}/>)}</div>
+                    <input onKeyDown={(e) => this.addUser(e)} value={this.state.addUserInputVal} onChange={(e) => this.handleSearchChange(e)} placeholder={'add user'}/>
+                    <span className={'ml-2'}>{this.state.searchResults ? this.state.searchResults.username : ''}</span>
+
                     <div className={"message_feed"}>
                         {this.renderMessages()}
                         <div ref={(el) => this.scrollDown = el}> </div>

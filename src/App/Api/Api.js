@@ -8,7 +8,7 @@ export const makeRequest = async (url, method, data, headers={}) => {
         url: `http://localhost:5000/api/${url}`,
         method: method,
         data: data,
-        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + getLocal('token').token }
+        headers: {"Content-Type": "application/json", "Authorization": "Bearer " + (localStorage.getItem('token') ? getLocal('token').token : '') }
     }).catch(function (error) {
         console.log(error);
         if (!error.response) {

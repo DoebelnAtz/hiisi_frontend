@@ -12,6 +12,7 @@ const Search = (props) => {
     const [results, setResults] = useState([]);
 
     const handleChange = async(e) => {
+        setResults([]);
         let val = e.target.value;
         if (val.length) {
             let resp = await makeRequest( // make request to search endpoint, it will return a list of matched users
