@@ -10,6 +10,10 @@ import './messages.css'
 import {calculateTimeSince, getLocal} from "../../utils/utils";
 
 import socketIOClient from "socket.io-client";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import withStyles from "@material-ui/core/styles/withStyles";
+import AddToChat from "../Components/Buttons/AddToChat";
+
 
 class Messages extends React.Component {
 
@@ -17,10 +21,12 @@ class Messages extends React.Component {
         super(props);
         this.state = {
             messages: [],
+            connected: false,
             inputVal: '',
             addUserInputVal: '',
             searchResults: {},
-            connectedUsers: []
+            connectedUsers: [],
+            activeUsers: [],
         };
         this.scrollDown = React.createRef();
     }
@@ -28,6 +34,8 @@ class Messages extends React.Component {
     profile = JSON.parse(localStorage.getItem("currentUser"));
     socket;
     tid = this.props.match.params.tid;
+
+
     componentDidMount() {
         this.socket = socketIOClient('http://localhost:5010', {
             transportOptions: {
@@ -72,15 +80,28 @@ class Messages extends React.Component {
 
     connectToRoom = () => {
         console.log(this.state.messages);
-        this.socket.on('chat-message', (message) => {
-            this.appendMessages(message);
-            this.scrollDown.scrollIntoView({ behavior: "smooth"});
-        });
+        try {
+            this.socket.on('connect', () => {
+                this.setState({connected: true});
+            });
+            this.socket.on('joined-room', (user) => {
+                this.setState({activeUsers: [...this.state.activeUsers, user.username]});
+            });
+            this.socket.on('left-room', (user) => {
+                console.log('left-room' + user.username)
+            });
+            this.socket.on('chat-message', (message) => {
+                this.appendMessages(message);
+                this.scrollDown.scrollIntoView({ behavior: "smooth"});
+            });
+        } catch (e) {
+            console.log('Socket ERROR: ' + e);
+        }
     };
 
     handleClick = async (event) => {
         event.preventDefault();
-        if (this.socket) {
+        if (this.socket && this.state.inputVal.length) {
             var final_data = {
                 'message': this.state.inputVal,
             };
@@ -167,24 +188,46 @@ class Messages extends React.Component {
             })
         )
     };
+
+    renderConnectedUsers = () => { // TODO: the status dot only shows the logged in user as active; fix this.
+        return (
+            this.state.connectedUsers.map((user) => {
+                return (
+                    <div>
+                        <img
+                            key={user.u_id}
+                            className={'message_img'}
+                            src={"https://cdn.intra.42.fr/users/small_" + user.username  + ".jpg"}
+                        />
+                        <div
+                            className={'connected_' +
+                            ((user.username === getLocal('token').user.username || this.state.activeUsers.includes(user.username)) ? "active" : "inactive")
+                            + '_dot'}>
+                        </div>
+                    </div>
+                    )
+            })
+        )
+    }
+
     render() {
-        console.log('rendered');
         return (
             <div>
                 <div className={'message_cont container'}>
-                    <div>{this.state.connectedUsers.map(user => <img key={user.u_id} className={'message_img'} src={"https://cdn.intra.42.fr/users/small_" + user.username  + ".jpg"}/>)}</div>
-                    <input onKeyDown={(e) => this.addUser(e)} value={this.state.addUserInputVal} onChange={(e) => this.handleSearchChange(e)} placeholder={'add user'}/>
-                    <span className={'ml-2'}>{this.state.searchResults ? this.state.searchResults.username : ''}</span>
+                    <div className={'row ml-0'}>{this.renderConnectedUsers()}</div>
+                    <div className={'row ml-0'}>
+                        <AddToChat  searchResults={this.state.searchResults} onKeyDown={(e) => this.addUser(e)} value={this.state.addUserInputVal} onChange={(e) => this.handleSearchChange(e)} placeholder={'add user'}/>
+                    </div>
 
                     <div className={"message_feed"}>
                         {this.renderMessages()}
                         <div ref={(el) => this.scrollDown = el}> </div>
                     </div>
                     <div className={''}>
-                    <textarea onKeyDown={(e) =>this.handleEnter(e)} value={this.state.inputVal}
+                    <textarea id={'chat_input'} onKeyDown={(e) =>this.handleEnter(e)} value={this.state.inputVal}
                               onChange={(e) => this.setState({inputVal: e.target.value})}>
                     </textarea>
-                        <Button onClick={(e) => this.handleClick(e)} text={'SEND'}/>
+                        <button id={'send_button'} onClick={(e) => this.handleClick(e)}>{(this.state.connected ? 'send' : <CircularProgress size={20} />)}</button>
                     </div>
                 </div>
             </div>

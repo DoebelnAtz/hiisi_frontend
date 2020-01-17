@@ -1,3 +1,60 @@
+#chat_input {
+    margin-top: 15px;
+    height: 6vh;
+
+    min-height: 20px;
+    width: 100%;
+}
+
+#send_button {
+    font-size: 18px;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    background-color: var(--logoSecondary);
+    color: var(--logoMain);
+}
+
+#send_button:hover{
+
+    background-color: var(--logoSecondaryS1);
+    color: var(--logoMain);
+}
+
+.add_user_result {
+    background-color: lightgreen;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0;
+    position: relative;
+    left: 4px;
+    top: 2px;
+    height: 26px;
+    border-radius: 4px;
+    width: inherit !important;
+
+}
+
+.connected_active_dot {
+    background-color: lightgreen;
+    height: 8px;
+    width: 8px;
+    position: relative;
+    bottom: 6px;
+    left: 24px;
+    border-radius: 4px;
+}
+
+.connected_inactive_dot {
+    background-color: gray;
+    height: 8px;
+    width: 8px;
+    position: relative;
+    bottom: 6px;
+    left: 24px;
+    border-radius: 4px;
+}
+
 .message_content {
     margin-top: 5px;
 }
@@ -5,7 +62,7 @@
 .message_feed {
     background-color: rgba(0,0,0, 0.1);
     height: 70vh;
-    margin-top: 10px;
+    margin-top: 1px;
     padding: 20px;
     overflow-y: auto;
 }

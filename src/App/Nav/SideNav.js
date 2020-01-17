@@ -40,8 +40,8 @@ const SideNav = (props) => {
                      path={'blog'} name={'Blog'} icon={homeIcon}/>
             <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
             />
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'slots'} name={'Slots'} icon={slotsIcon}/>
+            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
+                     {/*path={'slots'} name={'Slots'} icon={slotsIcon}/>*/}
             <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
                      path={'boards'} name={'Boards'} icon={slotsIcon}/>
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
