@@ -9,7 +9,8 @@ export function Task(props) {
             key={props.key}
             className={cn('task', {
                 'dragging': props.isDragging,
-                'spacer': props.isSpace
+                'spacer': props.isSpace,
+                'empty_spacer': props.isEmpty
             })
 
             }

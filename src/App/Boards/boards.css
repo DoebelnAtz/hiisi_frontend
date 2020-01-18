@@ -2,7 +2,7 @@
     display: flex;
     min-height: 15px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1500px;
     justify-content: space-between;
 }
 
@@ -23,6 +23,8 @@
     height: 100%;
     flex-direction: column;
     background-color: blue;
+    margin: 0 3px;
+
     width: 205px;
     color: white;
 }
@@ -34,8 +36,13 @@
 }
 
 .spacer {
-    min-height: 20px;
+    height: 0px;
     opacity: 1;
     background-color: green;
     cursor: default;
+}
+
+.spacer.empty_spacer {
+    min-height: 20px;
+    background-color: blue;
 }

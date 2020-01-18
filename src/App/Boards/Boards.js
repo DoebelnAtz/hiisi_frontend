@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import BoardItem from './BoardItem'
 import _ from 'lodash'
 import { Task } from './Task'
@@ -6,6 +6,7 @@ import { Task } from './Task'
 
 
 import './boards.css'
+import {makeRequest} from "../Api/Api";
 
 const tasklist1 = [{id: 1, text:"Task #1"}, {id: 2, text: "Task #2"}, {id: 3, text: "Task #3"}, {id: 8, text: 'Done', spacer: true}];
 const tasklist2 = [{id: 4, text:"Task #4"}, {id: 5, text: "Task #5"}, {id: 6, text: "Task #6"}, {id: 7, text: "Task #7"}, {id: 9, text: 'Done', spacer: true}];
@@ -21,15 +22,34 @@ const columnList = [
     ];
 
 export default () => {
-    const [tasks, setTasks] = useState([...tasklist1, ...tasklist2, ...tasklist3, ...tasklist4, ...tasklist5]);
-    const [columns, setColumns] = useState(columnList);
+    const [tasks, setTasks] = useState([]);
+    const [columns, setColumns] = useState([]);
+
+    const getTasks = async () => {
+        let resp = await makeRequest('projects/boards/7', 'get');
+        if (resp.data) { // TODO: data doesn't really arrive in optimal format, could be improved.
+            let t = [];
+            resp.data.columns.map(col => {
+                t = ([...t, ...col.taskList])
+            }); // first get a long array with all the tasks across columns
+            setTasks(t);
+            setColumns(resp.data.columns.map(col => { // make sure every column has a taskList with ID:s
+                return ({...col, taskList: col.taskList.map(task => task.task_id)});
+            }));
+        }
+    };
+
+    useEffect(() => {
+        getTasks();
+    }, []);
+
 
     const moveTask = (taskId, destColumn, index) => {
         setColumns(columns.map(column => ({
             ...column, taskList: _.flow(
                 ids => ids.filter(id => id !== taskId),
                 ids =>
-                    column.id === destColumn
+                    column.column_id === destColumn
                         ? [...ids.slice(0, index), taskId, ...ids.slice(index)]
                         : ids,
             )(column.taskList),
@@ -37,12 +57,12 @@ export default () => {
         );
     };
 
-        return (
-            <div id={"boards_main"}>
-                <div className={'board_cont'}>
-                    <BoardItem moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
-                </div>
+    return (
+        <div id={"boards_main"}>
+            <div className={'board_cont'}>
+                <BoardItem moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
             </div>
-        )
+        </div>
+    )
 
 }

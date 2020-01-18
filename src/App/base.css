@@ -17,14 +17,14 @@
 }
 
 #main_container{
-    max-width: 1400px;
+    max-width: 1600px;
     min-width: 568px;
     height: 100%;
 }
 
 #main_page
 {
-    max-width: 1400px;
+    max-width: 1600px;
     min-width: 100%;
     width: 100%;
     margin: 0 0;
@@ -37,7 +37,8 @@
 }
 
 #main_view {
-    width: 72%;
+    width: 75%;
+
     margin-left: 15px;
 }
 
