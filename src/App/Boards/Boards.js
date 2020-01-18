@@ -43,10 +43,29 @@ export default () => {
         getTasks();
     }, []);
 
+    const addTask = async (destColumn, taskTitle) => {
+        let resp = await makeRequest('projects/boards/add_task', 'post', {
+            taskTitle: taskTitle,
+            taskColumnId: destColumn
+        });
+        if (resp.data) {
+            setTasks([...tasks, resp.data]);// make sure we update tasks before columns
+            console.log(resp.data);
+               setColumns(columns.map(col => {
+                   console.log(columns, col);
+                   if (col.column_id === destColumn) {
+                       return ({...col, taskList: [resp.data.task_id, ...col.taskList]})
+                   } else {
+                       return (col);
+                   }
+               }
+               ));
+        }
+    };
 
     const moveTask = (taskId, destColumn, index) => {
         setColumns(columns.map(column => ({
-            ...column, taskList: _.flow(
+            ...column, taskList: _.flow( // check Lodash docs on flow.
                 ids => ids.filter(id => id !== taskId),
                 ids =>
                     column.column_id === destColumn
@@ -57,10 +76,20 @@ export default () => {
         );
     };
 
+    const saveBoardState = async () => {
+        const resp = await makeRequest('projects/boards/save_board', 'post', {
+            boardState: columns
+        });
+        if (resp.data) {
+           console.log('success')
+        }
+    };
+
     return (
         <div id={"boards_main"}>
+            <button onClick={() => saveBoardState()}>SAVE</button>
             <div className={'board_cont'}>
-                <BoardItem moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
+                <BoardItem addTask={addTask} moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
             </div>
         </div>
     )

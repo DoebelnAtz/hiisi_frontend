@@ -30,14 +30,15 @@
     margin: 0 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 765px) {
     #main_view {
-        width: 84%;
+        width: calc(100% - 100px)!important;
+
     }
 }
 
 #main_view {
-    width: 75%;
+    width: calc(100% - 185px);
 
     margin-left: 15px;
 }

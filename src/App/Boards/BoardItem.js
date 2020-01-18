@@ -5,11 +5,14 @@ import Column from './Column'
 
 export default (props) => {
     const {columns, tasks, moveTask} = props;
-    //console.log(columns, tasks);
     return (
         <div className={props.className}>
             {columns.map((column) => (
-                <Column key={column.column_id} text={column.title} className={'column'}>
+                <Column addTask={props.addTask}
+                        key={column.column_id}
+                        columnId={column.column_id}
+                        text={column.title}
+                        className={'column'}>
 
                     {column.taskList
                         .map(taskId => tasks.find(task => {
