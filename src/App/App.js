@@ -37,7 +37,8 @@ const App =  () => {
                 <div id={'main_container'} className={'container'}>
                     <div id={"main_page"} className={'row'}>
                         <div id={"nav_col"}>
-                            <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+                                <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+
                         </div>
                         <div id={'main_view'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>

@@ -58,6 +58,7 @@ class Messages extends React.Component {
     }
 
     componentDidUpdate() {
+
         this.scrollToBottom();
     }
 
@@ -193,9 +194,9 @@ class Messages extends React.Component {
         return (
             this.state.connectedUsers.map((user) => {
                 return (
-                    <div>
+                    <div key={user.u_id}>
                         <img
-                            key={user.u_id}
+
                             className={'message_img'}
                             src={"https://cdn.intra.42.fr/users/small_" + user.username  + ".jpg"}
                         />

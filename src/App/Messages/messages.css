@@ -21,6 +21,10 @@
     color: var(--logoMain);
 }
 
+.add_thread_input {
+    margin-left: 15px;
+}
+
 .add_user_result {
     background-color: lightgreen;
     padding-left: 8px;
@@ -67,10 +71,10 @@
     overflow-y: auto;
 }
 
-.message_friend_item {
+.message_thread_item {
     margin-top: 1rem;
     margin-left: 15px;
-    min-width: 100%;
+    width: 85%;
     padding: 5px;
     background-color: var(--colorSecondary);
     cursor: pointer;
@@ -80,8 +84,11 @@
     background-color: var(--colorSecondaryShade);
 }
 
-.message_friend_list {
-    min-width: 100%;
+.message_thread_list {
+    width: 90%;
+    margin-left: 2px;
+    border-left: 2px solid var(--colorSecondary);
+    border-right: 2px solid var(--colorSecondary);
 }
 
 .message_img {

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import { withRouter } from 'react-router-dom'
 
 import IntraContext from "../Context/IntraContext";
@@ -17,11 +17,14 @@ import slotsIcon from './navIcons/Slots.png'
 import logo from './navIcons/Logo.png'
 
 import './nav.css'
+import NavIcons from "./NavIcons";
+import NavDisplay from "./NavDisplay";
 
 const SideNav = (props) => {
 
     const { setCurrentUser } = useContext(UserContext); // not really used bc problems with refreshing page
     const { intra, setIntra } = useContext(IntraContext);
+    const [hoveredNav, setHoveredNav] = useState('');
 
     const checkAuth = async () => {
         let resp = await makeRequest(`users/me`, 'get');
@@ -35,24 +38,24 @@ const SideNav = (props) => {
     return (
         <div className={'side_nav'}>
             <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>
-            <OpenHiveNav currentNav={props.currentNav} icon={homeIcon} setCurrentNav={props.setCurrentNav}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'blog'} name={'Blog'} icon={homeIcon}/>
-            <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-            />
-            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
-                     {/*path={'slots'} name={'Slots'} icon={slotsIcon}/>*/}
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'boards'} name={'Boards'} icon={slotsIcon}/>
-            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
-                     {/*path={'notifications'} name={'Notifications'} icon={notificationIcon}/>*/}
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'message_home'} name={'Messages'} icon={messageIcon}/>
-            {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
-                     {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'search'} name={'Search'} icon={searchIcon}/>
-            <ToggleButton connected={intra} setConnected={setIntra}/>
+            <div className={'row m-0'}>
+            <div id={'nav_icons'}>
+                <NavIcons intra={intra}
+                          setHoveredNav={setHoveredNav}
+                          hoveredNav={hoveredNav}
+                          setCurrentNav={props.setCurrentNav}
+                          currentNav={props.currentNav}
+                          setIntra={setIntra}/>
+            </div>
+            <div id={'nav_view'}>
+                <NavDisplay
+                    setHoveredNav={setHoveredNav}
+                    hoveredNav={hoveredNav}
+                    setCurrentNav={props.setCurrentNav}
+                    currentNav={props.currentNav}
+                />
+            </div>
+            </div>
         </div>
     );
 };

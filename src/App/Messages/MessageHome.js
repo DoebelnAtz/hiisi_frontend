@@ -1,53 +1,45 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {useNav} from "../Hooks/Hooks";
 
 import './messages.css'
 import {makeRequest} from "../Api/Api";
 import {getLocal} from "../../utils/utils";
+import Messages from "./Messages";
 
 const MessageHome = (props) => {
 
     let profile = JSON.parse(localStorage.getItem("currentUser"));
-    const [threads, setThreads] = useState([]);
     const [inputVal, setInputVal] = useState('');
-    useNav('message_home', props.setCurrentNav);
-
-    const getThreads = async () => {
-        let resp = await makeRequest('messages/threads');
-        setThreads(resp.data);
-    };
+    const [thread, setThread] = useState({});
+    useNav('messages', props.setCurrentNav);
 
     const createThread = async () => {
+
         let resp = await makeRequest('messages/threads/create_thread', 'post', {
             threadName: inputVal
         });
-        setThreads([...threads, resp.data]);
+
+        if (resp.data) {
+            props.history.push('messages/' + resp.data.thread_id);
+        }
     };
 
-    useEffect(() => {
-        getThreads();
-    }, []);
-
-    const renderFriends = () => {
-        return (
-            threads.map((thread) => {
-                return (
-                    <div  className={'row message_friend_item'} key={thread.thread_id}>
-                        <Link to={'/messages/' + thread.thread_id}>{thread.thread_name}</Link>
-
-                    </div>
-                )
-            })
-        )
+    const getThreads = async () => {
+        let resp = await makeRequest('messages/threads');
+        if (resp.data) {
+            setThread(resp.data[0]);
+        }
+        return (<div> </div>)
     };
+
+    useEffect(() => {getThreads()}, []);
 
     return (
         <div className={'message_friend_list'}>
-            <input value={inputVal} onChange={(e) => setInputVal(e.target.value)} placeholder={'thread name'}/><button onClick={createThread}>Create thread</button>
-            {renderFriends()}
+            {thread.thread_id ? <Messages setCurrentNav={props.setCurrentNav} match={{params: {tid: thread.thread_id}}}/> : <div>No threads, create one!</div>}
         </div>
     )
 };
 
-export default MessageHome
+export default withRouter(MessageHome)
