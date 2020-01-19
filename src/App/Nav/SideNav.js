@@ -39,7 +39,7 @@ const SideNav = (props) => {
         <div className={'side_nav'}>
             <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>
             <div className={'row m-0'}>
-            <div id={'nav_icons'}>
+            <div id={`nav_icons`} className={`${props.currentNav === 'messages' ? 'hidden' : '' } `}>
                 <NavIcons intra={intra}
                           setHoveredNav={setHoveredNav}
                           hoveredNav={hoveredNav}

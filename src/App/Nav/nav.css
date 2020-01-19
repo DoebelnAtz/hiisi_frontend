@@ -6,14 +6,22 @@
     width: 240px;
 }
 
+#nav_icons.hidden {
+    padding-right: 2px;
+    border-right: 2px solid var(--colorSecondary);
+}
+
 .nav_item.active{
     background-color: var(--logoSecondary);
     min-width: 52px;
 }
 
 .nav_item{
-    padding: 4px;
-    margin: 8px;
+    padding: 4px 6px 4px 4px;
+    margin-top: 8px;
+    margin-left: 6px;
+    margin-bottom: 0;
+    margin-right: 0;
     text-decoration: none!important;
     min-width: 90%;
 }
@@ -40,18 +48,22 @@
 }
 
 .home_nav_text {
-    font-size: 24px;
+    font-size: 25px;
     font-family: 'Share Tech', sans-serif;
     color: var(--navTextColor);
-    padding-top: 9px;
+    border-bottom: 1px solid  white;
+    padding-top: 7.72px;
     padding-bottom: 8px;
     padding-left: 12px;
-    margin: 8px 8px 8px 0;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
 
 }
 
 .home_nav_text.hovered {
     background-color: var(--colorSecondaryShade);
+    border-bottom: 1px solid  var(--logoSecondary);
     cursor: pointer;
 }
 
@@ -68,12 +80,13 @@
 
 .home_nav_text.active{
     background-color: var(--logoSecondary);
+    border-bottom: 1px solid  var(--logoSecondary);
     min-width: 52px;
 }
 
 .nav_icon {
-    height: 45px;
-    width: 45px;
+    height: 46px;
+    width: 46px;
 }
 
 .nav_item.hovered{

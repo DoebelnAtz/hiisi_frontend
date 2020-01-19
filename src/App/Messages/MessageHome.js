@@ -37,7 +37,7 @@ const MessageHome = (props) => {
 
     return (
         <div className={'message_friend_list'}>
-            {thread.thread_id ? <Messages setCurrentNav={props.setCurrentNav} match={{params: {tid: thread.thread_id}}}/> : <div>No threads, create one!</div>}
+            <div>No threads, create one!</div>
         </div>
     )
 };

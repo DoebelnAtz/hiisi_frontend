@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import {Link, withRouter} from "react-router-dom";
+
 //import ReconnectingWebSocket from 'reconnecting-websocket';
 import { useParams } from "react-router-dom";
 import _ from 'lodash'
@@ -37,6 +39,7 @@ class Messages extends React.Component {
 
 
     componentDidMount() {
+        this.props.setCurrentNav('messages')
         this.socket = socketIOClient('http://localhost:5010', {
             transportOptions: {
                 polling: {
@@ -51,6 +54,20 @@ class Messages extends React.Component {
         this.connectToRoom();
         this.scrollToBottom();
         this.getUsersConnected();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.match.params.tid, this.tid);
+        if (nextProps.match.params.tid === this.tid) {
+            return;
+        } else {
+            this.tid = nextProps.match.params.tid;
+            console.log('hot');
+            this.getMessages();
+            this.connectToRoom();
+            this.scrollToBottom();
+            this.getUsersConnected();
+        }
     }
 
     componentWillUnmount() {
@@ -236,4 +253,4 @@ class Messages extends React.Component {
     }
 }
 
-export default Messages
+export default withRouter(Messages)
