@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import {useNav} from "../../Hooks/Hooks";
+
 
 import '../../Messages/messages.css'
 import {makeRequest} from "../../Api/Api";
-import {getLocal} from "../../../utils/utils";
+
 
 const MessageHome = (props) => {
-
-    let profile = JSON.parse(localStorage.getItem("currentUser"));
     const [threads, setThreads] = useState([]);
     const [inputVal, setInputVal] = useState('');
-    useNav('messages', props.setCurrentNav);
 
     const getThreads = async () => {
         let resp = await makeRequest('messages/threads');

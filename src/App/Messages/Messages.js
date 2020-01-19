@@ -1,19 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {Link, withRouter} from "react-router-dom";
+import React from 'react';
+import { withRouter } from "react-router-dom";
 
-//import ReconnectingWebSocket from 'reconnecting-websocket';
 import { useParams } from "react-router-dom";
 import _ from 'lodash'
 
-import { useNav } from "../Hooks/Hooks";
+import { useNav } from "../../Hooks/Hooks";
 import Button from "../Components/Buttons/Button";
 import { makeRequest } from "../Api/Api";
 import './messages.css'
-import {calculateTimeSince, getLocal} from "../../utils/utils";
+import { calculateTimeSince, getLocal } from "../../utils/utils";
 
 import socketIOClient from "socket.io-client";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
-import withStyles from "@material-ui/core/styles/withStyles";
 import AddToChat from "../Components/Buttons/AddToChat";
 
 
@@ -37,31 +35,24 @@ class Messages extends React.Component {
     socket;
     tid = this.props.match.params.tid;
 
-
     componentDidMount() {
-        this.props.setCurrentNav('messages')
-        this.socket = socketIOClient('http://localhost:5010', {
-            transportOptions: {
-                polling: {
-                    extraHeaders: {
-                        "Authorization": "Bearer " + getLocal('token').token
-                    }
-                }
+        this.props.setCurrentNav('messages');
 
-            }
-        });
         this.getMessages();
         this.connectToRoom();
         this.scrollToBottom();
         this.getUsersConnected();
     }
 
+    // React router doesn't remount component when new url param is given.
+    // So we need to check if we are given an updated url, we update the page.
     componentWillReceiveProps(nextProps) {
         console.log(nextProps.match.params.tid, this.tid);
         if (nextProps.match.params.tid === this.tid) {
             return;
         } else {
             this.tid = nextProps.match.params.tid;
+            this.socket.disconnect();
             console.log('hot');
             this.getMessages();
             this.connectToRoom();
@@ -97,6 +88,16 @@ class Messages extends React.Component {
 
 
     connectToRoom = () => {
+        this.socket = socketIOClient('http://localhost:5010', {
+            transportOptions: {
+                polling: {
+                    extraHeaders: {
+                        "Authorization": "Bearer " + getLocal('token').token
+                    }
+                }
+
+            }
+        });
         console.log(this.state.messages);
         try {
             this.socket.on('connect', () => {
@@ -109,6 +110,7 @@ class Messages extends React.Component {
                 console.log('left-room' + user.username)
             });
             this.socket.on('chat-message', (message) => {
+                console.log('incoming message');
                 this.appendMessages(message);
                 this.scrollDown.scrollIntoView({ behavior: "smooth"});
             });

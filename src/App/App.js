@@ -5,8 +5,9 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 
-import IntraContext from "./Context/IntraContext";
-import UserContext  from './Context/UserContext'
+import IntraContext from "../Context/IntraContext";
+import UserContext  from '../Context/UserContext'
+import CurrentNavContext from '../Context/CurrentNavContext'
 import Redirect from './Auth/Redirect'
 import Header from './Header'
 import SideNav from './Nav/SideNav'
@@ -16,7 +17,7 @@ import './base.css'
 import Messages from "./Messages/Messages";
 import ServerDown from "./ErrorPages/ServerDown";
 
-
+// TODO: some state managment system for currentNav...
 
 const App =  () => {
 
@@ -28,7 +29,7 @@ const App =  () => {
         <DndProvider backend={Backend}>
         <MuiPickersUtilsProvider utils={MomentUtils}>
         <IntraContext.Provider value={{intra, setIntra}}>
-        <UserContext.Provider value={{currentUser, setCurrentUser}}>
+        <CurrentNavContext.Provider value={{currentNav, setCurrentNav}}>
             <Switch>
                 <Route exact path={'/505/'} component={ServerDown}/>
                 <Route exact path={'/login/'} component={Login}/>
@@ -37,12 +38,12 @@ const App =  () => {
                 <div id={'main_container'} className={'container'}>
                     <div id={"main_page"} className={'row'}>
                         <div id={"nav_col"}>
-                                <SideNav currentNav={currentNav} setCurrentNav={setCurrentNav}/>
+                                <SideNav />
 
                         </div>
                         <div id={'main_view'}>
                             <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
-                            <Main setCurrentNav={setCurrentNav}/>
+                            <Main />
                             <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
                                    render={(props) =>             // in this component, moved here for now
                                        <Messages {...props} setCurrentNav={setCurrentNav}/>
@@ -53,7 +54,7 @@ const App =  () => {
                 </div>
                 </Route>
             </Switch>
-        </UserContext.Provider>
+        </CurrentNavContext.Provider>
         </IntraContext.Provider>
         </MuiPickersUtilsProvider>
         </DndProvider>

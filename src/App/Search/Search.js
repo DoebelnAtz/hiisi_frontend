@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { Link } from 'react-router-dom'
 import {useTrail, animated} from "react-spring";
 
 import {makeRequest} from "../Api/Api";
 import './search.css'
-import {useNav} from "../Hooks/Hooks";
+import {useNav} from "../../Hooks/Hooks";
+import CurrentNavContext from "../../Context/CurrentNavContext";
 
-const Search = (props) => {
+const Search = () => {
 
     const [searchVal, setSearchVal] = useState('');
     const [results, setResults] = useState([]);
+    const {setCurrentNav} = useContext(CurrentNavContext);
 
     const handleChange = async(e) => {
         setResults([]);
@@ -27,7 +29,7 @@ const Search = (props) => {
         setSearchVal(val);
     };
 
-    useNav('search', props.setCurrentNav);
+    useNav('search', setCurrentNav);
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 

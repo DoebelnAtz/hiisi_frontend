@@ -1,5 +1,5 @@
-import {useSpring, useTransition, animated} from 'react-spring'
-import React, {useState, useEffect} from 'react';
+import {useSpring, animated} from 'react-spring'
+import React, { useState } from 'react';
 
 const AddToChat = (props) => {
     const [expanded, setExpanded] = useState(false);

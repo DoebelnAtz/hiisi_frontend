@@ -1,27 +1,21 @@
-import React, {useState} from 'react'
+import React, { useContext } from 'react'
 import HomeSideView from "./SideViews/HomeSideView";
-import NavIcons from "./NavIcons";
 import MessageSideView from "./SideViews/MessageSideView";
+import CurrentNavContext from "../../Context/CurrentNavContext";
 
-export default (props) => {
+export default () => {
 
-    const [display, setDisplay] = useState('home');
+    const { currentNav } = useContext(CurrentNavContext);
 
     const selectNav = (nav) => {
         switch (nav) {
             case ('messages'):
                 return (
-                    <MessageSideView
-                        threadState={props.threadState}
-                        setCurrentNav={props.setCurrentNav}/>
+                    <MessageSideView/>
                 );
             default:
                 return (
                     <HomeSideView
-                        setHoveredNav={props.setHoveredNav}
-                        hoveredNav={props.hoveredNav}
-                        setCurrentNav={props.setCurrentNav}
-                        currentNav={props.currentNav}
                     />
                 )
         }
@@ -29,7 +23,7 @@ export default (props) => {
 
     return (
         <div>
-            {selectNav(props.currentNav)}
+            {selectNav(currentNav)}
         </div>
     )
 }

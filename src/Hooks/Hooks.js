@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {makeRequest} from "../Api/Api";
+import {makeRequest} from "../App/Api/Api";
 
 export const useFetch = (url, setFunc) => {
     // empty array as second argument equivalent to componentDidMount

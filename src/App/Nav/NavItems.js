@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
 
 import profileIcon from './navIcons/Profile1.png'
 import Button from '../Components/Buttons/Button'
+import CurrentNavContext from '../../Context/CurrentNavContext'
+import HoveredNavContext from '../../Context/HoveredNavContext'
 
 export const Logo = (props) => {
     const setNavHome = () => {
@@ -25,49 +27,36 @@ export const Logo = (props) => {
 
 
 export const OpenHiveNav = (props) => {
+    const { currentNav, setCurrentNav} = useContext(CurrentNavContext);
+    const { hoveredNav, setHoveredNav } = useContext(HoveredNavContext);
     return (
         <Link
-            onMouseOver={() => props.setHoveredNav('Open Hive')}
+            onMouseOver={() => setHoveredNav('Open Hive')}
             to={`/openhive`}
-            className={`row nav_item ${props.hoveredNav === 'Open Hive'
-                ? 'hovered' : props.hoveredNav === "Open Hive" ? 'hovered' : props.currentNav === "Open Hive" ? 'active' : 'inactive'}`}
-            onClick={() => props.setCurrentNav("Open Hive")}
+            className={`row nav_item ${hoveredNav === 'Open Hive'
+                ? 'hovered' : hoveredNav === "Open Hive" ? 'hovered' : currentNav === "Open Hive" ? 'active' : 'inactive'}`}
+            onClick={() => setCurrentNav("Open Hive")}
         >
             <img className={'nav_icon'} src={props.icon} alt={'OpenHive_icon'}/>
         </Link>
     )
-}
-
-export const NavItem = (props) => {
-    return (
-        <Link
-            onMouseOver={() => props.setHoveredNav(props.name.toLowerCase())}
-            onMouseLeave={() => props.setHoveredNav('')}
-            to={`/${props.path}`}
-            className={`row nav_item ${props.hoveredNav === props.name.toLowerCase()
-                ? 'hovered' : props.currentNav === props.name.toLowerCase()
-                    ? 'active' : 'inactive'}`}
-            onClick={() => props.setCurrentNav(props.name.toLowerCase())}
-        >
-            <img className={'nav_icon'} src={props.icon}  alt={`${props.name}_icon`}/>
-        </Link>
-    )
 };
 
-export const Profile = (props) => {
-    const setNavProfile = () => {
-        props.setCurrentNav('profile')
-    };
+export const NavItem = (props) => {
+    const { currentNav, setCurrentNav} = useContext(CurrentNavContext);
+    const { hoveredNav, setHoveredNav } = useContext(HoveredNavContext);
+
     return (
         <Link
-            onMouseOver={() => props.setHoveredNav('profile')}
-            onMouseLeave={() => props.setHoveredNav('')}
-            to={'/profile'}
-            className={`row nav_item ${props.hoveredNav === 'profile'
-                ? 'hovered' : props.currentNav === 'profile' ? 'active' : 'inactive'}`}
-            onClick={setNavProfile}
+            onMouseOver={() => setHoveredNav(props.name.toLowerCase())}
+            onMouseLeave={() => setHoveredNav('')}
+            to={`/${props.path}`}
+            className={`row nav_item ${hoveredNav === props.name.toLowerCase()
+                ? 'hovered' : currentNav === props.name.toLowerCase()
+                    ? 'active' : 'inactive'}`}
+            onClick={() => setCurrentNav(props.name.toLowerCase())}
         >
-            <img className={'nav_icon'} src={profileIcon}  alt={'profile_icon'}/>
+            <img className={'nav_icon'} src={props.icon}  alt={`${props.name}_icon`}/>
         </Link>
     )
 };
@@ -85,5 +74,7 @@ export const ConnectToIntra = (props) => {
           </a>
       )
 };
+
+
 
 

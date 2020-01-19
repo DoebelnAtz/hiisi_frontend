@@ -27,22 +27,22 @@ export default (prop) => {
 
     const renderCount = useRef(1);
 
-    return transitions.map(({ item, props, key }) => (
-        <animated.div key={key} style={props}>
+    return (//transitions.map(({ item, props, key }) => (
+        <div>
             <Switch location={location}>
                 <Route exact path={'/openhive'}
                        render={(props) =>
-                           <OpenHive {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <OpenHive {...props} />
                        }
                 />
                 <Route exact path={'/boards'}
                        render={(props) =>
-                           <Boards {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Boards {...props} />
                        }
                 />
                 <Route exact path={'/slots'}
                        render={(props) =>
-                           <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Slots {...props} />
                        }
                 />
                 <Route exact path={'/blog'} render={
@@ -50,81 +50,36 @@ export default (prop) => {
                 }/>
                 <Route exact path={'/profile/'}
                        render={(props) =>
-                           <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Profile {...props} />
                        }
                 />
                 <Route exact path={'/notifications/'}
                        render={(props) =>
-                           <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Notifications {...props} />
                        }
                 />
                 <Route exact path={'/message_home/'}
                        render={(props) =>
-                           <MessageHome {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <MessageHome {...props} />
                        }
                 />
 
                 <Route exact path={'/coalition/'}
                        render={(props) =>
-                           <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Coalition {...props} />
                        }
                 />
                 <Route exact path={'/search'}
                        render={(props) =>
-                           <Search {...props} setCurrentNav={prop.setCurrentNav}/>
+                           <Search {...props} />
                        }
                 />
+
                 <Route exact path={'/search/user/:id'}>
                     <UserPage/>
                 </Route>
             </Switch>
-        </animated.div>
-    ))
-    // return (
-    //     <Switch location={location}>
-    //         <Route exact path={'/slots'}
-    //                render={(props) =>
-    //                    <Slots {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //
-    //         />
-    //         <Route exact path={'/home'} render={
-    //             (props) => <Feed renderCount={renderCount}/>
-    //         }/>
-    //         <Route exact path={'/profile/'}
-    //                render={(props) =>
-    //                    <Profile {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/notifications/'}
-    //                render={(props) =>
-    //                    <Notifications {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/message_home/'}
-    //                render={(props) =>
-    //                    <MessageHome {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/messages/:user'}
-    //                render={(props) =>
-    //                    <Messages {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/coalition/'}
-    //                render={(props) =>
-    //                    <Coalition {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/search'}
-    //                render={(props) =>
-    //                    <Search {...props} setCurrentNav={prop.setCurrentNav}/>
-    //                }
-    //         />
-    //         <Route exact path={'/search/user/:id'}>
-    //             <UserPage/>
-    //         </Route>
-    //     </Switch>
-    // );
+        </div>
+    )
 
 }

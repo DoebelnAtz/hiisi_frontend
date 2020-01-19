@@ -1,19 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, {useState, useEffect, useRef, useContext} from 'react'
 
 import ProfilePage from './ProfilePage'
 import { makeRequest } from '../Api/Api'
 import './profile.css'
 import {getLocal} from "../../utils/utils";
+import CurrentNavContext from "../../Context/CurrentNavContext";
 
 
-const Profile = (props) => {
+const Profile = () => {
 
     const [profile, setProfile] = useState({});
 
     const isMounted = useRef(true);
+    const {setCurrentNav} = useContext(CurrentNavContext);
 
     const getProfile = async () => {
-        props.setCurrentNav('profile'); // if page is refreshed, set nav to profile
+        setCurrentNav('profile'); // if page is refreshed, set nav to profile
 
         let resp = await makeRequest(`users/${getLocal('token').user.u_id}`, 'get', {});
 

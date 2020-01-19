@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import BoardItem from './BoardItem'
 import _ from 'lodash'
 import { Task } from './Task'
@@ -7,6 +7,8 @@ import { Task } from './Task'
 
 import './boards.css'
 import {makeRequest} from "../Api/Api";
+import CurrentNavContext from "../../Context/CurrentNavContext";
+import {useNav} from "../../Hooks/Hooks";
 
 const tasklist1 = [{id: 1, text:"Task #1"}, {id: 2, text: "Task #2"}, {id: 3, text: "Task #3"}, {id: 8, text: 'Done', spacer: true}];
 const tasklist2 = [{id: 4, text:"Task #4"}, {id: 5, text: "Task #5"}, {id: 6, text: "Task #6"}, {id: 7, text: "Task #7"}, {id: 9, text: 'Done', spacer: true}];
@@ -24,7 +26,8 @@ const columnList = [
 export default () => {
     const [tasks, setTasks] = useState([]);
     const [columns, setColumns] = useState([]);
-
+    const {setCurrentNav} = useContext(CurrentNavContext);
+    useNav('boards', setCurrentNav);
     const getTasks = async () => {
         let resp = await makeRequest('projects/boards/7', 'get');
         if (resp.data) { // TODO: data doesn't really arrive in optimal format, could be improved.

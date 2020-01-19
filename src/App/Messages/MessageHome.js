@@ -1,18 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, withRouter} from "react-router-dom";
-import {useNav} from "../Hooks/Hooks";
+import {useNav} from "../../Hooks/Hooks";
 
 import './messages.css'
 import {makeRequest} from "../Api/Api";
 import {getLocal} from "../../utils/utils";
 import Messages from "./Messages";
+import CurrentNavContext from "../../Context/CurrentNavContext";
 
 const MessageHome = (props) => {
 
     let profile = JSON.parse(localStorage.getItem("currentUser"));
     const [inputVal, setInputVal] = useState('');
     const [thread, setThread] = useState({});
-    useNav('messages', props.setCurrentNav);
+    const {setCurrentNav} = useContext(CurrentNavContext);
+
+    useNav('messages', setCurrentNav);
 
     const createThread = async () => {
 

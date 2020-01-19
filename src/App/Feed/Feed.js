@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Post from './Post/Post'
-import { useFetch } from './../Hooks/Hooks'
+import { useFetch } from '../../Hooks/Hooks'
 import {useTrail, animated} from 'react-spring'
 import CreatePostPopup from './CreatePostPopup'
 import Button from "../Components/Buttons/Button";
