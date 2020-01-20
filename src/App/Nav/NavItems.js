@@ -14,13 +14,15 @@ export const Logo = (props) => {
     return (
         <Link
             to={'/blog'}
-            className={'row nav_item nav_logo'}
+            className={'nav_logo'}
             onClick={setNavHome}
         >
-            <img className={"nav_icon"} src={props.icon} alt={'blog_icon'}/><span
-            id={'home_nav'}
-            className={'nav_item_text'}>
-            Hivemind</span>
+            <img className={"logo_icon"} src={props.icon} alt={'logo'}/>
+            <span
+            className={'nav_logo_text'}
+            >
+            Hivemind
+            </span>
         </Link>
     )
 };
@@ -50,7 +52,7 @@ export const NavItem = (props) => {
         <Link
             onMouseOver={() => setHoveredNav(props.name.toLowerCase())}
             onMouseLeave={() => setHoveredNav('')}
-            to={`/${props.path}`}
+            to={`${props.path}`}
             className={`row nav_item ${hoveredNav === props.name.toLowerCase()
                 ? 'hovered' : currentNav === props.name.toLowerCase()
                     ? 'active' : 'inactive'}`}

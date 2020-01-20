@@ -8,16 +8,17 @@
 
 #send_button {
     font-size: 18px;
-    height: 30px;
+    height: 34px;
     width: 70px;
     border-radius: 5px;
-    background-color: var(--logoSecondary);
+    border: 2px solid var(--logoMain);
+    background-color: var(--siteBG3);
     color: var(--logoMain);
 }
 
 #send_button:hover{
 
-    background-color: var(--logoSecondaryS1);
+    background-color: var(--siteBG);
     color: var(--logoMain);
 }
 
@@ -115,7 +116,7 @@
 }
 
 .received {
-    background-color: var(--logoSecondary);
+    background-color: var(--siteBG3);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -136,5 +137,5 @@
     margin-top: 10px;
     color: var(--logoSecondary);
     font-size: 16px;
-    background-color: var(--logoMain);
+    background-color: var(--siteBG3);
 }

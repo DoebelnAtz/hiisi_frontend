@@ -18,10 +18,11 @@
     right: 25%;
     top: 15%;
     bottom: 45%;
-    border: 5px solid var(--buttonColor);
+    color: var(--logoMain);
+    border: 5px solid var(--siteBG2);
     border-radius: 2px;
     margin: auto;
-    background: white;
+    background: var(--siteBG3);
     overflow: auto;
     z-index: 2!important;
 }
@@ -36,10 +37,10 @@
 }
 
 .feed_item{
-    margin-top: 1rem;
-    margin-right: 1rem;
+    margin-top: var(--viewMargin);
+    margin-right: var(--viewMargin);
+    margin-left: var(--viewMargin);
     max-width: 100%;
-    box-shadow: 2px 2px 3px gray;
     background-color: var(--postBG);
 }
 
@@ -52,7 +53,7 @@
     font-size: 18px;
     margin-top: 2px;
     margin-left: 1rem;
-    color: var(--colorFourth);
+    color: var(--logoSecondary);
 }
 
 .post_content{
@@ -64,11 +65,11 @@
     font-size: 14px;
     margin-top: 6px;
     margin-left: 1rem;
-    color: var(--colorFourth);
+    color: var(--logoSecondary);
 }
 
 .post_title {
-    color: var(--colorFourth);
+    color: var(--logoSecondary);
     font-size: 20px;
 }
 

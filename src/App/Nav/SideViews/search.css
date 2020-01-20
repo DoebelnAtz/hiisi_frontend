@@ -1,0 +1,21 @@
+.profile_pic {
+    height: 50px;
+    width: 50px;
+}
+
+.search_input {
+    width: calc(100% - 6px * 2);
+    margin: 16px 6px 6px;
+    border:1px solid var(--siteBG2);
+    border-radius: 6px;
+    height: 36px;
+}
+
+.search_input:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px var(--colorFocus);
+}
+
+.search_results {
+    margin: 0 6px;
+}

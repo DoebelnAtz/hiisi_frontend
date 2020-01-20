@@ -82,7 +82,7 @@ const HomeSideNav = (props) => {
                 </Link>
             </div>
             <div
-                onClick={() => {setCurrentNav('messages'); props.history.push('message_home')}}
+                onClick={() => {setCurrentNav('messages');}}
                 onMouseOver={() => setHoveredNav('messages')}
                 onMouseLeave={() => setHoveredNav('')}
                 className={`home_nav_text ${hoveredNav === "messages"
@@ -90,7 +90,7 @@ const HomeSideNav = (props) => {
             >
                 <Link
 
-                    to={'/message_home'}
+                    to={props.location.pathname}
                     className={'home_nav_link'}
                     onClick={() => setCurrentNav('messages')}
                 >
@@ -98,7 +98,7 @@ const HomeSideNav = (props) => {
                 </Link>
             </div>
             <div
-                onClick={handleDivClick}
+                onClick={() => {setCurrentNav('search');}}
                 onMouseOver={() => setHoveredNav('search')}
                 onMouseLeave={() => setHoveredNav('')}
                 className={`home_nav_text ${hoveredNav === "search"
@@ -106,7 +106,7 @@ const HomeSideNav = (props) => {
             >
                 <Link
 
-                    to={'/search'}
+                    to={props.location.pathname}
                     className={'home_nav_link'}
                     onClick={() => setCurrentNav('search')}
                 >

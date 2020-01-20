@@ -6,28 +6,48 @@
     --colorFourth: #002642;
     --buttonColor: rgb(200, 232, 249);
     --textAreaColor: rgb(200, 232, 253);
-    --postBG: #c3dcee;
-    --navTextColor: #eb7f00;
-    --siteBG: #FDFFFC;
-    --logoMain: #eb7f00;
+    --postBG: #393939;
+    --navTextColor: #AC7BC2;
+    --siteBG: #161616;
+    --siteBG2: #272727;
+    --siteBG3: #393939;
+    --logoMain: #AC7BC2;
     --logoMainShade: #b36000;
-    --logoSecondary: #225378;
+    --logoSecondary: #E0AB79;
     --logoSecondaryS1: #1c4563;
     --logoSecondaryS-1: #337cb3;
+    --logoThird: #86D889;
+    --colorFocus: #b36000;
+    --navActive: #021629;
+    --viewMargin: 10px;
+}
+
+#root {
+    height: 100%;
 }
 
 #main_container{
     max-width: 1600px;
     min-width: 568px;
-    height: 100%;
+    margin-right: var(--viewMargin);
+    margin-left: var(--viewMargin);
+    padding: 0;
+    width: calc(100% - var(--viewMargin)* 2);
+    height: calc(100% - calc(70px + var(--viewMargin) * 2));
 }
 
 #main_page
 {
     max-width: 1600px;
     min-width: 100%;
-    width: 100%;
+    width: calc(100% - var(--viewMargin));
+    height: 100%;
     margin: 0 0;
+}
+
+#main_page_header {
+    margin: 0;
+    width: calc(100%);
 }
 
 @media (max-width: 765px) {
@@ -38,9 +58,11 @@
 }
 
 #main_view {
-    width: calc(100% - 315px);
+    width: calc(100% - 300px - var(--viewMargin));
+    background-color: var(--siteBG2);
+    margin-left: var(--viewMargin);
+    height: 100%;
 
-    margin-left: 15px;
 }
 
 
@@ -50,8 +72,8 @@
     color: var(--navTextColor);
     font-family: 'Share Tech', sans-serif;
     cursor: pointer;
-    margin-top: 14px;
-    margin-right: 1rem;
+    margin-top: 18px;
+    margin-right: var(--viewMargin);
 }
 
 #header_nav_title{
@@ -59,13 +81,15 @@
     color: var(--navTextColor);
     font-family: 'Share Tech', sans-serif;
     cursor: pointer;
-    margin-top: 14px;
-    margin-left: 1rem;
+    margin-top: 18px;
+    margin-left: var(--viewMargin);
 
 }
 
 #nav_col {
     max-width: 300px;
+    height: 100%;
+    background-color: var(--siteBG2);
 }
 
 .avatar_sm {
@@ -81,10 +105,16 @@
 }
 
 .header_nav{
-    height: 60px;
-    border-bottom: 2px solid var(--logoSecondary);
-    margin: 7px 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--siteBG2);
+    margin: var(--viewMargin) 0;
 
+}
+
+.logo_section {
+    margin-top: 9px;
+    width: 300px;
 }
 
 .noselect {
@@ -98,9 +128,13 @@
 
 body {
     min-height: 100%;
+    height: 100%;
+
     background-color: var(--siteBG);
 }
 
 html {
+    height: 100%;
+
     overflow-y: scroll;
 }

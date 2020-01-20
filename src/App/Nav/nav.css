@@ -8,11 +8,49 @@
 
 #nav_icons.hidden {
     padding-right: 2px;
-    border-right: 2px solid var(--colorSecondary);
+}
+
+.home_nav_text {
+    font-size: 25px;
+    line-height: 37px;
+    font-family: 'Share Tech', sans-serif;
+    color: var(--navTextColor);
+    padding-top: 9px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+
+}
+
+.home_nav_text.hovered {
+    background-color: var(--colorSecondaryShade);
+    cursor: pointer;
+}
+
+.home_nav_link {
+    text-decoration: none!important;
+    color: var(--navTextColor);
+}
+
+.home_nav_link:hover {
+    text-decoration: none!important;
+    color: var(--navTextColor);
+    cursor: pointer;
+}
+
+.home_nav_text.active{
+    background-color: var(--navActive);
+    min-width: 52px;
+}
+
+.logo_icon {
+    height: 52px;
 }
 
 .nav_item.active{
-    background-color: var(--logoSecondary);
+    background-color: var(--navActive);
     min-width: 52px;
 }
 
@@ -27,7 +65,7 @@
 }
 
 .nav_item.active:hover{
-    background-color: var(--colorSecondaryShade);
+    background-color: var(--navActive);
     cursor: pointer;
     text-decoration: none;
 }
@@ -44,46 +82,9 @@
     font-family: 'Share Tech', sans-serif;
     color: var(--navTextColor);
     margin-left: 12px;
-    margin-top: 4px;
 }
 
-.home_nav_text {
-    font-size: 25px;
-    line-height: 37px;
-    font-family: 'Share Tech', sans-serif;
-    color: var(--navTextColor);
-    border-bottom: 1px solid  white;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 12px;
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-bottom: 8px;
 
-}
-
-.home_nav_text.hovered {
-    background-color: var(--colorSecondaryShade);
-    border-bottom: 1px solid  var(--logoSecondary);
-    cursor: pointer;
-}
-
-.home_nav_link {
-    text-decoration: none!important;
-    color: var(--navTextColor);
-}
-
-.home_nav_link:hover {
-    text-decoration: none!important;
-    color: var(--navTextColor);
-    cursor: pointer;
-}
-
-.home_nav_text.active{
-    background-color: var(--logoSecondary);
-    border-bottom: 1px solid  var(--logoSecondary);
-    min-width: 52px;
-}
 
 .nav_icon {
     height: 46px;
@@ -100,16 +101,22 @@
 
 }
 
-.nav_logo{
-    border-bottom: 2px solid var(--logoSecondary);
-    height: 59px;
+.nav_logo {
+    margin-left: var(--viewMargin);
 }
 
 .nav_logo_text {
-    font-size: 24px;
+    font-size: 28px;
     font-family: 'Share Tech', sans-serif;
-    color: rgb(50, 158, 221);
-    margin-left: 12px;
+    color: var(--logoMain);
+    position: relative;
+    top: 6px;
+    margin-left: 22px;
+}
+
+.nav_logo_text:hover {
+    text-decoration: none;
+
 }
 
 .side_nav{

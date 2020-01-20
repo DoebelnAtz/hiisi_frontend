@@ -31,12 +31,9 @@ const SideNav = () => {
     return (
         <HoveredNavContext.Provider value={{hoveredNav, setHoveredNav}}>
         <div className={'side_nav'}>
-            <Logo currentNav={currentNav} icon={logo} setCurrentNav={setCurrentNav}/>
             <div className={'row m-0'}>
             <div id={`nav_icons`} className={`${currentNav === 'messages' ? 'hidden' : '' } `}>
-                <NavIcons intra={intra}
-
-                          setIntra={setIntra}/>
+                <NavIcons/>
             </div>
             <div id={'nav_view'}>
                 <NavDisplay

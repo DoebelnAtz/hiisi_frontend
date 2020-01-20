@@ -36,21 +36,23 @@ const App =  () => {
                     <Route exact path={'/redirect/'} component={Redirect}/>
                 <Route path={'/'}>
                 <div id={'main_container'} className={'container'}>
-                    <div id={"main_page"} className={'row'}>
-                        <div id={"nav_col"}>
-                                <SideNav />
-
-                        </div>
-                        <div id={'main_view'}>
-                            <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
-                            <Main />
-                            <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
-                                   render={(props) =>             // in this component, moved here for now
-                                       <Messages {...props} setCurrentNav={setCurrentNav}/>
-                                   }
-                            />
-                        </div>
+                    <div id={"main_page_header"} className={'row mx-0'}>
+                        <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                     </div>
+                    <div id={"main_page"} className={'row m-0'}>
+                    <div id={"nav_col"}>
+                            <SideNav />
+                    </div>
+                    <div id={'main_view'}>
+                        <Main />
+                        <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
+                               render={(props) =>             // in this component, moved here for now
+                                   <Messages {...props} setCurrentNav={setCurrentNav}/>
+                               }
+                        />
+                    </div>
+
+                </div>
                 </div>
                 </Route>
             </Switch>

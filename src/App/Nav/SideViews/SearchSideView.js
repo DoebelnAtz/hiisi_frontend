@@ -2,12 +2,12 @@ import React, {useContext, useState} from 'react';
 import { Link } from 'react-router-dom'
 import {useTrail, animated} from "react-spring";
 
-import {makeRequest} from "../Api/Api";
+import {makeRequest} from "../../Api/Api";
 import './search.css'
-import {useNav} from "../../Hooks/Hooks";
-import CurrentNavContext from "../../Context/CurrentNavContext";
+import {useNav} from "../../../Hooks/Hooks";
+import CurrentNavContext from "../../../Context/CurrentNavContext";
 
-const Search = () => {
+const SearchSideView = () => {
 
     const [searchVal, setSearchVal] = useState('');
     const [results, setResults] = useState([]);
@@ -67,9 +67,11 @@ const Search = () => {
 
     return (
         <div className={'search_box'}>
-            <input  value={searchVal}
-                    onChange={handleChange}
-                    placeholder={'username'}
+            <input
+                className={'search_input'}
+                value={searchVal}
+                onChange={handleChange}
+                placeholder={'username'}
             />
             <div className={'search_results'}>
                 {renderResults(results)}
@@ -78,4 +80,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default SearchSideView;

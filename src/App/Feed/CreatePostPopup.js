@@ -73,24 +73,34 @@ const CreatePostPopup = (props) => {
                         Create Post
                     </div>
                     <div className={'row justify-content-center'}>
-                        <TextArea
-                            customStyle={{maxHeight: '5vh', height: '3vh'}}
-                            id={'title_input'}
-                            placeholder={'Title'}
-                            onChange={(e) => handleChange(e, setTitle)}
-                            count={title.length}
-                            max={80}
-                        />
+                        <div className={'textarea_div'}>
+                            <div className={'row justify-content-center area_div'}>
+                                <textarea style={{maxHeight: '5vh', height: '3vh'}}
+                                          className={'textarea_cont'}
+                                          placeholder={'Title'}
+                                          onChange={(e) => handleChange(e, setTitle)}
+                                >
+                                        </textarea>
+                                </div>
+                                <div className={'row justify-content-center counter'}>
+                                    <p style={{color: title.length > 80 ? 'red' : 'var(--logoMain);'}}>{title.length}/{80}</p>
+                                </div>
+                        </div>
                     </div>
                     <div className={'row justify-content-center'}>
-                        <TextArea
-                            customStyle={{maxHeight: '15vh', height: '15vh'}}
-                            id={'content_input'}
-                            placeholder={'Content'}
-                            onChange={(e) => handleChange(e, setContent)}
-                            count={content.length}
-                            max={500}
-                        />
+                        <div className={'textarea_div'}>
+                            <div className={'row justify-content-center area_div'}>
+                                <textarea style={{maxHeight: '15vh', height: '15vh'}}
+                                          className={'textarea_cont'}
+                                          placeholder={'Content'}
+                                          onChange={(e) => handleChange(e, setContent)}
+                                >
+                                </textarea>
+                            </div>
+                            <div className={'row justify-content-center counter'}>
+                                <p style={{color: content.length > 500 ? 'red' : 'var(--logoMain);'}}>{content.length}/{500}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className={'row justify-content-center btn_row mt-2'}>
