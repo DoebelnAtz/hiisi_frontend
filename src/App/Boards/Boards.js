@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import BoardItem from './BoardItem'
 import _ from 'lodash'
 import { Task } from './Task'
@@ -27,6 +27,8 @@ export default () => {
     const [tasks, setTasks] = useState([]);
     const [columns, setColumns] = useState([]);
     const {setCurrentNav} = useContext(CurrentNavContext);
+    const previousHover = useRef(null);
+
     useNav('boards', setCurrentNav);
     const getTasks = async () => {
         let resp = await makeRequest('projects/boards/7', 'get');
@@ -67,6 +69,12 @@ export default () => {
     };
 
     const moveTask = (taskId, destColumn, index) => {
+        console.log(taskId, destColumn, index);
+        if(index === previousHover.current)
+            console.log(previousHover.current);
+        console.log(previousHover.current);
+        previousHover.current = index;
+
         setColumns(columns.map(column => ({
             ...column, taskList: _.flow( // check Lodash docs on flow.
                 ids => ids.filter(id => id !== taskId),

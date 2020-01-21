@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { withRouter } from 'react-router-dom'
 import './base.css'
 import {Logo} from "./Nav/NavItems";
-import logo from "./Nav/navIcons/Logo2.png";
+import logo from "./Nav/navIcons/Logo3.png";
 import CurrentNavContext from "../Context/CurrentNavContext";
 
 const Header = (props) => {

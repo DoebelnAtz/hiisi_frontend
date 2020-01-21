@@ -37,7 +37,7 @@
 }
 
 .feed_item{
-    margin-top: var(--viewMargin);
+    margin-bottom: var(--viewMargin);
     margin-right: var(--viewMargin);
     margin-left: var(--viewMargin);
     max-width: 100%;

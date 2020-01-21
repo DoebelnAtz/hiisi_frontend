@@ -12,7 +12,7 @@
 
 .home_nav_text {
     font-size: 25px;
-    line-height: 37px;
+    line-height: 37px!important;
     font-family: 'Share Tech', sans-serif;
     color: var(--navTextColor);
     padding-top: 9px;
@@ -20,7 +20,7 @@
     padding-left: 12px;
     margin-top: 8px;
     margin-right: 8px;
-    margin-bottom: 8px;
+    margin-bottom: auto;
 
 }
 
@@ -32,6 +32,7 @@
 .home_nav_link {
     text-decoration: none!important;
     color: var(--navTextColor);
+
 }
 
 .home_nav_link:hover {

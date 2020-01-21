@@ -11,20 +11,39 @@
     width: 100%;
 }
 
+.task_title {
+    white-space: inherit;
+    text-overflow: inherit;
+    overflow: inherit;
+    width: auto;
+}
+
 .task {
     background-color: white;
     margin: 2px;
+    max-height: 24px;
+    transition: max-height 800ms ease-out;
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     color: black;
-    cursor: pointer;
+    cursor: auto;
+}
+
+.task:hover {
+    max-height: 500px;
+    transition: max-height 800ms ease-in;
+    white-space: normal;
 }
 
 .column {
-    display: flex;
+
     height: 100%;
-    flex-direction: column;
     background-color: blue;
-    margin: 0 3px;
-    width: 225px;
+    margin: 0;
+    padding: 0 3px;
+    width: calc(20% - 6px);
     color: white;
 }
 
