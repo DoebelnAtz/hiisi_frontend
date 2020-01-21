@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './viewpost.css'
 import { makeRequest } from "../../../Api/Api";
 import Button from "../../../Components/Buttons/Button";
+import Input from "../../../Components/Input";
+import GroupedInput from "../../../Components/GroupedInput";
 
 export const Reply = (props) => {
 
@@ -45,17 +47,30 @@ export const Reply = (props) => {
         )
     } else {
         return (
-            <div className={'container'}>
-                <div className={'row'}>
-                    <textarea className={'comment_textarea'} value={commentText}
-                              onChange={(e) => setCommentText(e.target.value)}
-                              onKeyDown={(e) => handleEnterPress(e)}
+            <div className={'reply_expanded'}>
+                    <Button
+                        onClick={() => submitPost()}
+                        customStyle={{borderRight: '0', borderRadius: '4px 0 0 4px'}}
+                    >
+
+                        <i style={{fontSize: "13px", marginRight: "5px"}}
+                           className="fas fa-comment-alt"
+                        />
+                        Send
+                    </Button>
+                    <Input
+                        className={'comment_textarea'}
+                        valueState={commentText}
+                        customStyle={{borderRadius: '0', width: 'auto'}}
+                        setValueState={setCommentText}
+                        onKeyDown={(e) => handleEnterPress(e)}
                     />
-                </div>
-                <div className={'row'}>
-                    <button onClick={() => submitPost()}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Send</button>
-                    <button onClick={() => setOpened(false)}>Cancel</button>
-                </div>
+                    <Button
+                        onClick={() => setOpened(false)}
+                        customStyle={{borderLeft: '0', borderRadius: '0 4px 4px 0'}}
+                    >Cancel</Button>
+
+
             </div>
         )
     }

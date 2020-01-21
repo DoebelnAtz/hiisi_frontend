@@ -17,6 +17,19 @@
     outline: none;
 }
 
+.basic_input {
+    border-radius: 4px;
+    padding-left: 8px;
+    background-color: var(--siteBG2);
+    color: var(--logoMain);
+    height: 36px;
+    border: 1px solid var(--logoMain);
+}
+
+.basic_input:focus {
+    outline: none;
+}
+
 .comment_button{
     padding: 2px 2px 2px 10px;
     color: var(--siteBG);

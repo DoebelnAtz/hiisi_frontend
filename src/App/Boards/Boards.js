@@ -9,6 +9,7 @@ import './boards.css'
 import {makeRequest} from "../Api/Api";
 import CurrentNavContext from "../../Context/CurrentNavContext";
 import {useNav} from "../../Hooks/Hooks";
+import Button from "../Components/Buttons/Button";
 
 const tasklist1 = [{id: 1, text:"Task #1"}, {id: 2, text: "Task #2"}, {id: 3, text: "Task #3"}, {id: 8, text: 'Done', spacer: true}];
 const tasklist2 = [{id: 4, text:"Task #4"}, {id: 5, text: "Task #5"}, {id: 6, text: "Task #6"}, {id: 7, text: "Task #7"}, {id: 9, text: 'Done', spacer: true}];
@@ -98,7 +99,7 @@ export default () => {
 
     return (
         <div id={"boards_main"}>
-            <button onClick={() => saveBoardState()}>SAVE</button>
+            <Button customStyle={{marginBottom: 'var(--viewMargin)'}} onClick={() => saveBoardState()}>SAVE</Button>
             <div className={'board_cont'}>
                 <BoardItem addTask={addTask} moveTask={moveTask} columns={columns} tasks={tasks} className={'board'}/>
             </div>

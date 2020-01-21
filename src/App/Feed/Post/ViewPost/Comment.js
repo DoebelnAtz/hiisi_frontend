@@ -30,14 +30,14 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                     <span>{child.commentcontent}</span>
                 </div>
                 <div className={'row m-0 px-0 comment_button_row'}>
-                    <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>
                     {childThread.length ?
                     <Button
                         onClick={() => setExpanded(!expanded)}
-                        customStyle={{margin: '0 0 0 var(--viewMargin)'}}
+                        customStyle={{margin: '0 var(--viewMargin) 0 0'}}
                     >
                         {!expanded ? 'Expand' : 'Hide'}
                         </Button>: <div> </div>}
+                    <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>
                 </div>
                 <div className={'children'}>
                     {renderComments(childThread, expanded)}

@@ -42,7 +42,8 @@
     padding-left: var(--viewMargin);
     border-top: 1px solid var(--logoMain);
     border-left: 1px solid var(--logoMain);
+}
 
-
-
+.reply_expanded {
+    width: 75%;
 }
