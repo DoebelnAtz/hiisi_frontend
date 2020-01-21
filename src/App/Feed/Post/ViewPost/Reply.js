@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './viewpost.css'
 import { makeRequest } from "../../../Api/Api";
+import Button from "../../../Components/Buttons/Button";
 
 export const Reply = (props) => {
 
@@ -8,15 +9,11 @@ export const Reply = (props) => {
     const [opened, setOpened] = useState(false);
 
     const submitPost = async () => {
-        let now = new Date().toISOString();
         if (commentText.length > 2) {
-            let resp = await makeRequest('create_comment/', 'post',
+            let resp = await makeRequest('blogs/create_comment', 'post',
                 {
-                    comment_text: commentText,
-                    user_id: JSON.parse(localStorage.getItem('token')).user.id,
-                    blog_id: props.blog_id,
-                    comment_parent: props.comment_id,
-                    published_date: now
+                    content: commentText,
+                    threadId: props.childThreadId
                 },
                 {
                     'Content-Type': 'application/json'
@@ -24,6 +21,7 @@ export const Reply = (props) => {
             );
             props.setCommentThread([...props.commentThread, resp.data]);
         }
+        props.expandChildThread(true);
         setOpened(false)
     };
 
@@ -35,7 +33,14 @@ export const Reply = (props) => {
     if (!opened){
         return (
             <div>
-                <button onClick={() => setOpened(true)}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Reply</button>
+            <Button
+                onClick={() => setOpened(true)}
+            >
+                <i style={{fontSize: "13px", marginRight: "5px"}}
+                   className="fas fa-comment-alt"
+                />
+                Reply
+            </Button>
             </div>
         )
     } else {

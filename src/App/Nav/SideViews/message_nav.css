@@ -1,0 +1,38 @@
+.add_thread_input {
+    margin-top: var(--viewMargin);
+    width: 154px;
+    border: none;
+    padding-left: 4px;
+    border-radius: 2px 0 0 2px;
+    margin-left: 6px;
+}
+
+.add_thread_input:focus {
+    outline: none;
+}
+
+.message_thread_item {
+    margin-top: var(--viewMargin);
+    margin-left: 6px;
+    width: calc(100% - 11px);
+    padding: 4px;
+    color: var(--logoMain);
+    background-color: var(--siteBG3);
+    border: 2px solid var(--logoMain);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.message_thread_item:hover {
+    background-color: var(--siteBG2);
+}
+
+.message_friend_item:hover {
+    background-color: var(--colorSecondaryShade);
+}
+
+.message_thread_list {
+    width: calc(100% - 12px);
+    margin-left: 4px;
+
+}

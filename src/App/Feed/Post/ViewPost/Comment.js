@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Reply} from "./Reply";
 import { formatDate } from "../../../../utils/utils";
 import {makeRequest} from "../../../Api/Api";
+import Button from "../../../Components/Buttons/Button";
 
 export const Comment = ({child,  renderComments, isExpanded}) => {
     const [expanded, setExpanded] = useState(false);
@@ -26,11 +27,19 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                     <span> {formatDate(child.comment_date)}</span>
                 </div>
                 <div className={'comment_body'}>
-                    <p>{child.commentcontent}</p>
+                    <span>{child.commentcontent}</span>
                 </div>
-                {/*<Reply commentThread={childThread} setCommentThread={setChildThread} childThreadId={child.c_id}/>*/}
+                <div className={'row m-0 px-0 comment_button_row'}>
+                    <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>
+                    {childThread.length ?
+                    <Button
+                        onClick={() => setExpanded(!expanded)}
+                        customStyle={{margin: '0 0 0 var(--viewMargin)'}}
+                    >
+                        {!expanded ? 'Expand' : 'Hide'}
+                        </Button>: <div> </div>}
+                </div>
                 <div className={'children'}>
-                    {childThread.length ? <button onClick={() => setExpanded(!expanded)}>{childThread.length + (childThread.length == 1 ?' reply' : ' replies')}</button> : <div> </div>}
                     {renderComments(childThread, expanded)}
                 </div>
             </div>

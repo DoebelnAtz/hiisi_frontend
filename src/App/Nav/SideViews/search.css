@@ -12,9 +12,11 @@
     height: 36px;
 }
 
+
+
 .search_input:focus {
     outline: none;
-    box-shadow: 0px 0px 5px var(--colorFocus);
+    box-shadow: 0 0 5px var(--colorFocus);
 }
 
 .search_results {

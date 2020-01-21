@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 
-import '../../Messages/messages.css'
+import './message_nav.css'
 import {makeRequest} from "../../Api/Api";
+import Button from "../../Components/Buttons/Button";
 
 
 const MessageHome = (props) => {
@@ -20,6 +21,7 @@ const MessageHome = (props) => {
             threadName: inputVal
         });
         setThreads([...threads, resp.data]);
+        setInputVal('');
     };
 
     useEffect(() => {
@@ -30,9 +32,11 @@ const MessageHome = (props) => {
         return (
             threads.map((thread) => {
                 return (
-                    <div  className={'row message_thread_item'} key={thread.thread_id}>
-                        <Link to={'/messages/' + thread.thread_id}>{thread.thread_name}</Link>
-
+                    <div
+                        className={'row message_thread_item'}
+                        key={thread.thread_id}
+                        onClick={() => props.history.push('/messages/'  + thread.thread_id)}>
+                        <span>{thread.thread_name}</span>
                     </div>
                 )
             })
@@ -41,12 +45,22 @@ const MessageHome = (props) => {
 
     return (
         <div className={'message_thread_list'}>
-            <div className={'add_thread_input'}>
-                <input  value={inputVal} onChange={(e) => setInputVal(e.target.value)} placeholder={'thread name'}/><button onClick={createThread}>Create thread</button>
+            <div className={'row m-0 p-0'}>
+                <input
+                    className={'add_thread_input'}
+                    value={inputVal}
+                    onKeyDown={(e) => {if (e.key === "Enter") createThread()}}
+                    onChange={(e) => setInputVal(e.target.value)}
+                    placeholder={'thread name'}/>
+                <Button
+                    customStyle={{marginTop: 'var(--viewMargin)', borderRadius: '0 2px 2px 0'}}
+                    onClick={createThread}>
+                    Create
+                </Button>
             </div>
                 {renderFriends()}
         </div>
     )
 };
 
-export default MessageHome
+export default withRouter(MessageHome)

@@ -6,13 +6,14 @@
     --colorFourth: #002642;
     --buttonColor: rgb(200, 232, 249);
     --textAreaColor: rgb(200, 232, 253);
-    --postBG: #393939;
+    --postBG: #353535;
     --navTextColor: #AC7BC2;
     --siteBG: #161616;
     --siteBG2: #272727;
-    --siteBG3: #393939;
+    --siteBG3: #323232;
+    --siteBG4: #404040;
     --logoMain: #AC7BC2;
-    --logoMainShade: #b36000;
+    --logoMainShade: #A472BA;
     --logoSecondary: #E0AB79;
     --logoSecondaryS1: #1c4563;
     --logoSecondaryS-1: #337cb3;
@@ -20,6 +21,23 @@
     --colorFocus: #b36000;
     --navActive: #021629;
     --viewMargin: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--siteBG4);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--logoMain);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--logoMainShade);
 }
 
 #root {

@@ -9,6 +9,7 @@ const Button = (props) => {
                 disabled={props.disabled}
         >
             {props.text}
+            {props.children}
         </button>
     )
 };

@@ -38,8 +38,8 @@ const ViewPost = (props) => {
     };
 
     return (
-        <div id={'view_post_container'} className={'container pb-1'}>
-            {/*<Reply commentThread={comments} setCommentThread={setComments} comment_id={null} blog_id={props.content.id} />*/}
+        <div className={'view_post_container'}>
+            <Reply commentThread={comments} setCommentThread={setComments} childThreadId={props.content.commentthread} />
             <div className={'comment_section'}>
                 {renderComments()}
             </div>

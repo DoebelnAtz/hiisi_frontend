@@ -4,14 +4,17 @@
     color: var(--logoMain);
     border: 1px solid var(--logoMain);
     border-radius: 5px;
-    margin: var(--viewMargin);
-
+    outline: none;
 }
 
 .basic_button:hover {
     padding: 5px 7px;
-    background-color: var(--buttonColor);
+    background-color: var(--siteBG2);
     opacity: 0.8;
+}
+
+.basic_button:focus {
+    outline: none;
 }
 
 .comment_button{

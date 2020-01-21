@@ -45,19 +45,20 @@
 }
 
 .feed_title{
+    color: var(--logoMain);
     padding: 0.4rem;
-    border-bottom: 1px solid var(--logoMain);
 }
 
 .post_author{
     font-size: 18px;
     margin-top: 2px;
     margin-left: 1rem;
-    color: var(--logoSecondary);
+    color: var(--logoMain);
 }
 
 .post_content{
     padding: 0.4rem;
+    color: var(--logoMain);
     border-bottom: 4px solid var(--logoMain);
 }
 
@@ -65,11 +66,12 @@
     font-size: 14px;
     margin-top: 6px;
     margin-left: 1rem;
-    color: var(--logoSecondary);
+    color: var(--logoMain);
 }
 
 .post_title {
-    color: var(--logoSecondary);
+    color: var(--logoMain);
+
     font-size: 20px;
 }
 
