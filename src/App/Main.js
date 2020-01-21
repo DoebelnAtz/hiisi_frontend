@@ -75,7 +75,7 @@ export default (prop) => {
                        }
                 />
 
-                <Route exact path={'/search/user/:id'}>
+                <Route exact path={'/search/user/:uid'}>
                     <UserPage/>
                 </Route>
             </Switch>

@@ -5,6 +5,7 @@ import {Link, withRouter} from "react-router-dom";
 import './message_nav.css'
 import {makeRequest} from "../../Api/Api";
 import Button from "../../Components/Buttons/Button";
+import Input from "../../Components/Input";
 
 
 const MessageHome = (props) => {
@@ -45,16 +46,27 @@ const MessageHome = (props) => {
 
     return (
         <div className={'message_thread_list'}>
-            <div className={'row m-0 p-0'}>
-                <input
-                    className={'add_thread_input'}
-                    value={inputVal}
-                    onKeyDown={(e) => {if (e.key === "Enter") createThread()}}
-                    onChange={(e) => setInputVal(e.target.value)}
-                    placeholder={'thread name'}/>
+            <div className={'row_div'}>
+                <Input
+                    valueState={inputVal}
+                    onEnter={createThread}
+                    setValueState={setInputVal}
+                    placeholder={'thread name'}
+                    customStyle={{
+                        width: '143px',
+                        marginTop: 'var(--viewMargin)',
+                        marginLeft: 'var(--viewMargin)',
+                        borderTopRightRadius: '0',
+                        borderBottomRightRadius: '0',
+                        borderRight: '0'
+                    }}
+                />
                 <Button
-                    customStyle={{marginTop: 'var(--viewMargin)', borderRadius: '0 2px 2px 0'}}
-                    onClick={createThread}>
+                    customStyle={{
+                        marginTop: 'var(--viewMargin)',
+                        borderRadius: '0 2px 2px 0'}}
+                    onClick={createThread}
+                >
                     Create
                 </Button>
             </div>

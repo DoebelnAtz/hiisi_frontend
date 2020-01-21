@@ -27,8 +27,6 @@ export default () => {
     };
 
     return (
-        <div>
-            {selectNav(currentNav)}
-        </div>
+        selectNav(currentNav)
     )
 }

@@ -5,9 +5,10 @@ import { makeRequest } from '../Api/Api'
 import './profile.css'
 import {getLocal} from "../../utils/utils";
 import CurrentNavContext from "../../Context/CurrentNavContext";
+import {withRouter} from "react-router-dom";
 
 
-const Profile = () => {
+const Profile = (props) => {
 
     const [profile, setProfile] = useState({});
 
@@ -17,7 +18,7 @@ const Profile = () => {
     const getProfile = async () => {
         setCurrentNav('profile'); // if page is refreshed, set nav to profile
 
-        let resp = await makeRequest(`users/${getLocal('token').user.u_id}`, 'get', {});
+        let resp = await makeRequest(`users/me`, 'get', {});
 
         if (isMounted.current)
             setProfile(resp.data); // make request to profiles endpoint and get current user by id
@@ -25,18 +26,18 @@ const Profile = () => {
 
     useEffect(() => {
         isMounted.current = true;
+        isMounted.current && getProfile(); // eslint-disable-next-line
         return () => {
             isMounted.current = false;
         }
-    });
-
-    useEffect(() => {
-        getProfile() // eslint-disable-next-line
     }, []);
+
+
+
     return (
         <ProfilePage profile={profile}/>
     );
 };
 
 
-export default Profile
+export default withRouter(Profile);

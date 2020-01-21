@@ -4,6 +4,7 @@
 
 #nav_view {
     width: 240px;
+    height: 100%;
 }
 
 #nav_icons.hidden {
@@ -17,15 +18,16 @@
     color: var(--navTextColor);
     padding-top: 9px;
     padding-bottom: 8px;
-    padding-left: 12px;
+    padding-left: var(--viewMargin);
     margin-top: 8px;
     margin-right: 8px;
     margin-bottom: auto;
 
+
 }
 
 .home_nav_text.hovered {
-    background-color: var(--colorSecondaryShade);
+    background-color: var(--siteBG4);
     cursor: pointer;
 }
 
@@ -42,7 +44,7 @@
 }
 
 .home_nav_text.active{
-    background-color: var(--navActive);
+    background-color: var(--siteBG3);
     min-width: 52px;
 }
 
@@ -51,14 +53,14 @@
 }
 
 .nav_item.active{
-    background-color: var(--navActive);
+    background-color: var(--siteBG3);
     min-width: 52px;
 }
 
 .nav_item{
     padding: 4px 6px 4px 4px;
     margin-top: 8px;
-    margin-left: 6px;
+    margin-left: 4px;
     margin-bottom: 0;
     margin-right: 0;
     text-decoration: none!important;
@@ -69,13 +71,6 @@
     background-color: var(--navActive);
     cursor: pointer;
     text-decoration: none;
-}
-
-.nav_item i{
-    margin-right: 1rem;
-    color: var(--colorSecondary);
-    font-size: 24px;
-
 }
 
 .nav_item_text {
@@ -95,7 +90,7 @@
 }
 
 .nav_item.hovered{
-    background-color: var(--colorSecondaryShade);
+    background-color: var(--siteBG4);
     cursor: pointer;
     text-decoration: none;
     min-width: 52px;
@@ -103,7 +98,7 @@
 }
 
 .nav_logo {
-    margin-left: var(--viewMargin);
+    margin-left: 12px;
 }
 
 .nav_logo_text {
@@ -112,16 +107,20 @@
     color: var(--logoMain);
     position: relative;
     top: 6px;
-    margin-left: 22px;
+    margin-left: var(--viewMargin);
+}
+
+a.nav_logo:hover {
+    text-decoration: none!important;
 }
 
 .nav_logo_text:hover {
-    text-decoration: none;
-
+    text-decoration: none!important;
 }
 
 .side_nav{
     min-width: 100%;
+    height: calc(100%);
     text-decoration: none;
 }
 

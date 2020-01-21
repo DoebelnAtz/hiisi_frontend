@@ -9,7 +9,7 @@ import HoveredNavContext from '../../Context/HoveredNavContext'
 
 export const Logo = (props) => {
     const setNavHome = () => {
-        props.setCurrentNav('Open Hive')
+        props.setCurrentNav('blog')
     };
     return (
         <Link
@@ -35,7 +35,7 @@ export const OpenHiveNav = (props) => {
         <Link
             onMouseOver={() => setHoveredNav('Open Hive')}
             to={`/openhive`}
-            className={`row nav_item ${hoveredNav === 'Open Hive'
+            className={`row_div nav_item ${hoveredNav === 'Open Hive'
                 ? 'hovered' : hoveredNav === "Open Hive" ? 'hovered' : currentNav === "Open Hive" ? 'active' : 'inactive'}`}
             onClick={() => setCurrentNav("Open Hive")}
         >

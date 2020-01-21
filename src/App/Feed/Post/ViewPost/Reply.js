@@ -11,7 +11,7 @@ export const Reply = (props) => {
     const [opened, setOpened] = useState(false);
 
     const submitPost = async () => {
-        if (commentText.length > 2) {
+        if (commentText.length > 0) {
             let resp = await makeRequest('blogs/create_comment', 'post',
                 {
                     content: commentText,
@@ -23,7 +23,7 @@ export const Reply = (props) => {
             );
             props.setCommentThread([...props.commentThread, resp.data]);
         }
-        props.expandChildThread(true);
+        props.expandChildThread && props.expandChildThread(true);
         setOpened(false)
     };
 
@@ -63,7 +63,7 @@ export const Reply = (props) => {
                         valueState={commentText}
                         customStyle={{borderRadius: '0', width: 'auto'}}
                         setValueState={setCommentText}
-                        onKeyDown={(e) => handleEnterPress(e)}
+                        onEnter={submitPost}
                     />
                     <Button
                         onClick={() => setOpened(false)}

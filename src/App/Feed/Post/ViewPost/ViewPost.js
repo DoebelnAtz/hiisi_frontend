@@ -37,6 +37,13 @@ const ViewPost = (props) => {
         }
     };
 
+    if (!comments.length)
+        return (
+            <div className={'no_comments_container'}>
+                <Reply commentThread={comments} setCommentThread={setComments} childThreadId={props.content.commentthread} />
+            </div>
+        );
+
     return (
         <div className={'view_post_container'}>
             <Reply commentThread={comments} setCommentThread={setComments} childThreadId={props.content.commentthread} />

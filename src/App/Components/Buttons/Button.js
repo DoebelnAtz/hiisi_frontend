@@ -4,7 +4,7 @@ import './buttons.css'
 
 const Button = (props) => {
     return (
-        <button id={props.id} className={'basic_button'} style={props.customStyle}
+        <button id={props.id} className={`basic_button ${props.noRadius ? 'noRadius' : ''}`} style={props.customStyle}
                 onClick={props.onClick}
                 disabled={props.disabled}
         >

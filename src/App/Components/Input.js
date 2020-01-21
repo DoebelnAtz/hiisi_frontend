@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Buttons/buttons.css'
+import './components.css'
 
 const Input = (props) => {
     return (
@@ -10,7 +10,7 @@ const Input = (props) => {
             disabled={props.disabled}
             value={props.valueState}
             placeholder={props.placeholder}
-            onChange={(e) => {props.setValueState(e.target.value);}}
+            onChange={(e) => {props.setValueState(e.target.value); props.onChange && props.onChange();}}
             onKeyDown={(e) => {if (e.key === 'Enter' ) props.onEnter()}}
         />
     )

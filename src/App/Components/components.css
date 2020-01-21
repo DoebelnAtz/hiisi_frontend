@@ -14,6 +14,21 @@
 
 
 }
+
+.basic_input {
+    border-radius: 4px;
+    padding-left: 10px;
+    background-color: var(--siteBG2);
+    color: var(--logoMain);
+    height: 36px;
+    border: 1px solid var(--logoMain);
+}
+
+.basic_input:focus {
+    outline: none;
+    border: 1px solid var(--logoMainShade);
+}
+
 .textarea_div {
     width: 70%;
     height: 100%;

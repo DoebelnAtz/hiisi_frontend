@@ -35,7 +35,7 @@ const App =  () => {
                 <Route exact path={'/login/'} component={Login}/>
                     <Route exact path={'/redirect/'} component={Redirect}/>
                 <Route path={'/'}>
-                <div id={'main_container'} className={'container'}>
+                <div id={'main_container'}>
                     <div id={"main_page_header"} className={'row mx-0'}>
                         <Header currentNav={currentNav} setCurrentNav={setCurrentNav}/>
                     </div>

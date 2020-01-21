@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import { Link } from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import {useTrail, animated} from "react-spring";
 
 import {makeRequest} from "../../Api/Api";
@@ -7,7 +7,7 @@ import './search.css'
 import {useNav} from "../../../Hooks/Hooks";
 import CurrentNavContext from "../../../Context/CurrentNavContext";
 
-const SearchSideView = () => {
+const SearchSideView = (props) => {
 
     const [searchVal, setSearchVal] = useState('');
     const [results, setResults] = useState([]);
@@ -48,7 +48,11 @@ const SearchSideView = () => {
                     return (
                         <animated.div
                             style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
-                            id={'feed'} key={results[i].u_id} className={'my-2'}>
+                            id={'feed'}
+                            key={results[i].u_id}
+                            className={'my-2'}
+                            onClick={() => props.history.push('/search/user/' + results[i].u_id)}
+                        >
                             <img className={'profile_pic'}
                                  src={results[i].profile_pic}
                                  alt={results[i].username} />
@@ -80,4 +84,4 @@ const SearchSideView = () => {
     );
 };
 
-export default SearchSideView;
+export default withRouter(SearchSideView);

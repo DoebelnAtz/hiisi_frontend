@@ -4,7 +4,7 @@
     border: none;
     padding-left: 4px;
     border-radius: 2px 0 0 2px;
-    margin-left: 6px;
+    margin-left: var(--viewMargin);
 }
 
 .add_thread_input:focus {
@@ -13,8 +13,8 @@
 
 .message_thread_item {
     margin-top: var(--viewMargin);
-    margin-left: 6px;
-    width: calc(100% - 11px);
+    margin-left: var(--viewMargin);
+    width: calc(100% - var(--viewMargin));
     padding: 4px;
     color: var(--logoMain);
     background-color: var(--siteBG3);
@@ -33,6 +33,6 @@
 
 .message_thread_list {
     width: calc(100% - 12px);
-    margin-left: 4px;
-
+    height: 100%;
+    border-left: var(--viewMargin) solid var(--siteBG);
 }
