@@ -140,47 +140,9 @@ class Messages extends React.Component {
         }
     };
 
-    handleSearchChange = async(e) => {
-        this.setState({
 
-            searchResults: [],
-        });
-        let val = e.target.value;
-        console.log(val);
-        if (val.length) {
-            let resp = await makeRequest(
-                "users/search",
-                'post',
-                {
-                    search: val
-                }
-            );
-            if (resp.data.length)
-            {
-                this.setState({
-                    searchResults: resp.data[0],
-                })
 
-            }
-        }
-        this.setState({
-            addUserInputVal: val,
-        })
-    };
 
-    addUser = async (e) => {
-        if (e.key === "Enter") {
-            if (this.state.searchResults) {
-                let resp = await makeRequest('messages/threads/add_user', 'post',
-                    {
-                        threadId: this.tid,
-                        targetId: this.state.searchResults.u_id
-                    });
-                if (resp.data)  this.setState({connectedUsers: [...this.state.connectedUsers, resp.data] });
-            }
-            this.setState({ addUserInputVal: '', searchResults: {}})
-        }
-    };
 
     getUsersConnected = async () => {
         let resp = await makeRequest('messages/threads/' + this.tid + '/users');
@@ -236,7 +198,7 @@ class Messages extends React.Component {
                 <div className={'message_cont container'}>
                     <div className={'row ml-0'}>{this.renderConnectedUsers()}</div>
                     <div className={'row ml-0'}>
-                        <AddToChat  searchResults={this.state.searchResults} onKeyDown={(e) => this.addUser(e)} value={this.state.addUserInputVal} onChange={(e) => this.handleSearchChange(e)} placeholder={'add user'}/>
+                        <AddToChat tid={this.tid}/>
                     </div>
 
                     <div className={"message_feed"}>

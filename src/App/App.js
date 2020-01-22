@@ -4,9 +4,8 @@ import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
-
+import ErrorContext from '../Context/ErrorContext'
 import IntraContext from "../Context/IntraContext";
-import UserContext  from '../Context/UserContext'
 import CurrentNavContext from '../Context/CurrentNavContext'
 import Redirect from './Auth/Redirect'
 import Header from './Header'
@@ -16,19 +15,20 @@ import Login from './Auth/Login'
 import './base.css'
 import Messages from "./Messages/Messages";
 import ServerDown from "./ErrorPages/ServerDown";
+import ErrorMessage from "./ErrorPages/ErrorMessage";
 
-// TODO: some state managment system for currentNav...
 
 const App =  () => {
 
     const [currentNav, setCurrentNav] = useState('blog');
-    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser")));
     const [intra, setIntra] = useState(false);
+    const [error, setError] = useState(false);
 
     return (
         <DndProvider backend={Backend}>
         <MuiPickersUtilsProvider utils={MomentUtils}>
         <IntraContext.Provider value={{intra, setIntra}}>
+            <ErrorContext.Provider value={{error, setError}}>
         <CurrentNavContext.Provider value={{currentNav, setCurrentNav}}>
             <Switch>
                 <Route exact path={'/505/'} component={ServerDown}/>
@@ -44,6 +44,7 @@ const App =  () => {
                             <SideNav />
                     </div>
                     <div id={'main_view'}>
+                        {error ? <ErrorMessage/> : <div> </div>}
                         <Main />
                         <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
                                render={(props) =>             // in this component, moved here for now
@@ -57,6 +58,7 @@ const App =  () => {
                 </Route>
             </Switch>
         </CurrentNavContext.Provider>
+            </ErrorContext.Provider>
         </IntraContext.Provider>
         </MuiPickersUtilsProvider>
         </DndProvider>

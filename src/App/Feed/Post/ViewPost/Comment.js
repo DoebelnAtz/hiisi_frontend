@@ -3,20 +3,12 @@ import {Reply} from "./Reply";
 import { formatDate } from "../../../../utils/utils";
 import {makeRequest} from "../../../Api/Api";
 import Button from "../../../Components/Buttons/Button";
+import {useRequest} from "../../../../Hooks/Hooks";
 
 export const Comment = ({child,  renderComments, isExpanded}) => {
     const [expanded, setExpanded] = useState(false);
-    const [childThread, setChildThread] = useState([]);
 
-    const fetchReplies = async () => {
-        let resp = await makeRequest('blogs/commentthread/' + child.childthread);
-        setChildThread(resp.data);
-    };
-
-    useEffect(() => {
-        fetchReplies()
-    }, []);
-
+    const [childThread, setChildThread, isLoading] = useRequest('blogs/commentthread/' + child.childthread, 'get')
 
     if (isExpanded) {
         return (
@@ -37,6 +29,9 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                         onClick={() => setExpanded(!expanded)}
                         customStyle={{margin: '0 var(--viewMargin) 0 0'}}
                     >
+                        <i style={{fontSize: "13px", marginRight: "5px"}}
+                           className="fas fa-comment-alt"
+                        />
                         {!expanded ? 'Show Comments' : 'Hide'}
                         </Button>: <div> </div>}
                     <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>

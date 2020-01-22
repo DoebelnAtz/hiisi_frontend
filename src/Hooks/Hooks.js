@@ -1,21 +1,35 @@
-import {useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import {makeRequest} from "../App/Api/Api";
+import CurrentNavContext from "../Context/CurrentNavContext";
+import ErrorContext from '../Context/ErrorContext'
 
-export const useFetch = (url, setFunc) => {
-    // empty array as second argument equivalent to componentDidMount
+export const useNav = (current) => {
+    const {setCurrentNav} = useContext(CurrentNavContext);
     useEffect(() => {
-        async function fetchData() {
-            console.log(url);
-            const response = await makeRequest(url, 'get', {});
-            const json = response.data;
-            setFunc(json);
-        }
-        fetchData(); // eslint-disable-next-line
-    }, [url]);
+        setCurrentNav(current);
+    }, [current]);
 };
 
-export const useNav = (current, setFunc) => {
+export const useRequest = (url, method, body={}) => {
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const {error, setError} = useContext(ErrorContext);
+
+    let resp;
     useEffect(() => {
-        setFunc(current);
-    }, [current]);
+        async function request () {
+            try {
+                setIsLoading(true);
+                resp = await makeRequest(url, method, body);
+                setData(resp.data);
+            } catch (e) {
+                setError(JSON.stringify(e.response.status));
+
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        request();
+    }, []);
+    return [data, setData, isLoading]
 };

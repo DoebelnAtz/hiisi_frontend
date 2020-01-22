@@ -31,9 +31,10 @@ export default () => {
     const previousHover = useRef(null);
 
     useNav('boards', setCurrentNav);
+
     const getTasks = async () => {
-        let resp = await makeRequest('projects/boards/7', 'get');
-        if (resp.data) { // TODO: data doesn't really arrive in optimal format, could be improved.
+        let resp = await makeRequest('projects/boards/1', 'get');
+        if (resp?.data) { // TODO: data doesn't really arrive in optimal format, could be improved.
             let t = [];
             resp.data.columns.map(col => {
                 t = ([...t, ...col.taskList])

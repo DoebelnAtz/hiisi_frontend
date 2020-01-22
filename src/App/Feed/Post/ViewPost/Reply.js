@@ -27,20 +27,12 @@ export const Reply = (props) => {
         setOpened(false)
     };
 
-    const handleEnterPress = (event) => {
-        if (event.key === "Enter") {
-            submitPost();
-        }
-    };
     if (!opened){
         return (
             <div>
             <Button
                 onClick={() => setOpened(true)}
             >
-                <i style={{fontSize: "13px", marginRight: "5px"}}
-                   className="fas fa-comment-alt"
-                />
                 Reply
             </Button>
             </div>
@@ -52,10 +44,6 @@ export const Reply = (props) => {
                         onClick={() => submitPost()}
                         customStyle={{borderRight: '0', borderRadius: '4px 0 0 4px'}}
                     >
-
-                        <i style={{fontSize: "13px", marginRight: "5px"}}
-                           className="fas fa-comment-alt"
-                        />
                         Send
                     </Button>
                     <Input

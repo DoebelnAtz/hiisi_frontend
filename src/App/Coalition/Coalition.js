@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useFetch, useNav} from "../../Hooks/Hooks";
+import {useFetch, useNav, useRequest} from "../../Hooks/Hooks";
 
 import './coalition.css'
 
@@ -7,7 +7,7 @@ const Coalition = (props) => {
 
     const [coalition, setCoalition] = useState({});
 
-    useFetch('coalitions/1', setCoalition);
+    useRequest('coalitions/1', 'get', {}, setCoalition);
 
     useNav('coalition', props.setCurrentNav);
 

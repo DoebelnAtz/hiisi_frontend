@@ -83,7 +83,7 @@ const CreatePostPopup = (props) => {
                                         </textarea>
                                 </div>
                                 <div className={'row justify-content-center counter'}>
-                                    <p style={{color: title.length > 80 ? 'red' : 'var(--logoMain);'}}>{title.length}/{80}</p>
+                                    <p style={{color: title.length > 80 ? 'red' : 'var(--logoMain)'}}>{title.length}/{80}</p>
                                 </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ const CreatePostPopup = (props) => {
                                 </textarea>
                             </div>
                             <div className={'row justify-content-center counter'}>
-                                <p style={{color: content.length > 500 ? 'red' : 'var(--logoMain);'}}>{content.length}/{500}</p>
+                                <p style={{color: content.length > 500 ? 'red' : 'var(--logoMain)'}}>{content.length}/{500}</p>
                             </div>
                         </div>
                     </div>

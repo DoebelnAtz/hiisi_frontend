@@ -1,9 +1,15 @@
 #chat_input {
     margin-top: 15px;
     height: 6vh;
-
+    background-color: var(--siteBG2);
+    border: 2px solid var(--logoMain);
+    color: var(--logoMain);
     min-height: 20px;
     width: 100%;
+}
+
+#chat_input:focus {
+    outline: none;
 }
 
 #send_button {

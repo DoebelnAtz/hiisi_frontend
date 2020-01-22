@@ -5,13 +5,11 @@ import {useTrail, animated} from "react-spring";
 import {makeRequest} from "../Api/Api";
 import './search.css'
 import {useNav} from "../../Hooks/Hooks";
-import CurrentNavContext from "../../Context/CurrentNavContext";
 
 const Search = () => {
 
     const [searchVal, setSearchVal] = useState('');
     const [results, setResults] = useState([]);
-    const {setCurrentNav} = useContext(CurrentNavContext);
 
     const handleChange = async(e) => {
         setResults([]);
@@ -29,7 +27,7 @@ const Search = () => {
         setSearchVal(val);
     };
 
-    useNav('search', setCurrentNav);
+    useNav('search');
 
     const config = { mass: 5, tension: 2000, friction: 200 };
 

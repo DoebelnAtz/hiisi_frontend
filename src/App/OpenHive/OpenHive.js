@@ -2,19 +2,17 @@ import React, { Component, useContext, useEffect, useState } from 'react'
 
 import { makeRequest } from "../Api/Api";
 import './open_hive.css'
-import CurrentNavContext from "../../Context/CurrentNavContext";
 import { useNav } from "../../Hooks/Hooks";
 
 const Projects = (props) => {
 
 
     const [projects, setProjects] = useState([]);
-    const { setCurrentNav } = useContext(CurrentNavContext);
     useEffect(() => {
         getProjects();
     }, []);
 
-    useNav('Open Hive', setCurrentNav);
+    useNav('Open Hive');
 
 
     const getProjects = async () => {
