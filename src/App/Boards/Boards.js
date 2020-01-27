@@ -24,7 +24,7 @@ const columnList = [
     {id: 5, title: 'Implementing', taskList: tasklist5.map(task => task.id)}
     ];
 
-export default () => {
+export default (props) => {
     const [tasks, setTasks] = useState([]);
     const [columns, setColumns] = useState([]);
     const {setCurrentNav} = useContext(CurrentNavContext);
@@ -33,7 +33,7 @@ export default () => {
     useNav('boards', setCurrentNav);
 
     const getTasks = async () => {
-        let resp = await makeRequest('projects/boards/1', 'get');
+        let resp = await makeRequest('projects/boards/' + props.board_id, 'get');
         if (resp?.data) { // TODO: data doesn't really arrive in optimal format, could be improved.
             let t = [];
             resp.data.columns.map(col => {

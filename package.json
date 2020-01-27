@@ -27,7 +27,8 @@
     "reconnecting-websocket": "^4.2.0",
     "redux": "^4.0.5",
     "socket.io": "^2.3.0",
-    "socket.io-client": "latest"
+    "socket.io-client": "latest",
+    "use-socket.io-client": "^1.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

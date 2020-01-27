@@ -44,7 +44,6 @@ const App =  () => {
                             <SideNav />
                     </div>
                     <div id={'main_view'}>
-                        {error ? <ErrorMessage/> : <div> </div>}
                         <Main />
                         <Route exact path={'/messages/:tid'} // useTransition in main causes a UI bug
                                render={(props) =>             // in this component, moved here for now

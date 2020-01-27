@@ -12,6 +12,7 @@ import Notifications from "./Notifications/Notifications";
 import MessageHome from "./Messages/MessageHome";
 import OpenHive from  './OpenHive/OpenHive'
 import Boards from './Boards/Boards'
+import ProjectPage from "./OpenHive/project_page/ProjectPage";
 
 export default (prop) => {
 
@@ -22,13 +23,13 @@ export default (prop) => {
         leave: { display: 'none', position: 'relative', opacity: 0, transform: 'translateX(0%)' },
     });
 
-    //  React-spring useTransition causes a bug where a component is mounted multiple times
+    //  React-spring useTransition causes a bug where a component is
+    //  mounted multiple times, disabled for now
     //  TODO: fix this bug..
 
     const renderCount = useRef(1);
 
     return (//transitions.map(({ item, props, key }) => (
-        <div>
             <Switch location={location}>
                 <Route exact path={'/openhive'}
                        render={(props) =>
@@ -78,8 +79,12 @@ export default (prop) => {
                 <Route exact path={'/search/user/:uid'}>
                     <UserPage/>
                 </Route>
+
+                <Route exact path={'/projects/:pid'}
+                    render={(props) => <ProjectPage {...props}/>}
+                    >
+                </Route>
             </Switch>
-        </div>
     )
 
 }

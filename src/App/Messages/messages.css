@@ -64,14 +64,21 @@
     border-radius: 4px;
 }
 
+.message_cont {
+    height: 100%;
+}
+
 .message_content {
     margin-top: 5px;
 }
 
 .message_feed {
     background-color: rgba(0,0,0, 0.1);
-    height: 70vh;
+    height: 60vh;
     margin-top: 1px;
+    border-top: 1px solid var(--logoMain);
+    border-bottom: 1px solid var(--logoMain);
+
     padding: 20px;
     overflow-y: auto;
 }

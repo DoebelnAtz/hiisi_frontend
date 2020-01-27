@@ -13,13 +13,13 @@ const HomeSideNav = (props) => {
     
     const handleDivClick = () => {
         setCurrentNav(hoveredNav);
-        props.history.push(hoveredNav);
+        props.history.push('/' + hoveredNav);
     };
 
     return (
         <div>
             <div
-                onClick={() => {setCurrentNav(hoveredNav); props.history.push('openhive')}}
+                onClick={() => {setCurrentNav(hoveredNav); props.history.push('/openhive')}}
                 onMouseOver={() => setHoveredNav('Open Hive')}
                 onMouseLeave={() => setHoveredNav('')}
                 className={`home_nav_text ${hoveredNav === 'Open Hive'
