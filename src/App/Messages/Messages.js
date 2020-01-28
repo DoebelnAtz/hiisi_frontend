@@ -126,16 +126,27 @@ const Messages = (props) => {
             return (
                 messages.map((message) => {
                     return (
-                        <div key={message.m_id}
-                             className={(message.username === getLocal('currentUser').username) ? "sent" : "received"}>
+                        <div
+                            key={message.m_id}
+                            className={(message.username === getLocal('currentUser').username)
+                                ? "sent" : "received"}>
                             <div className={'container-fluid'}>
                                 <div className={'row message_info'}>
-                                    <img className={'message_img'}
-                                         src={"https://cdn.intra.42.fr/users/small_" + message.username + (message.username === 'marvin' ? ".png" : ".jpg")}/>
-                                    <span className={'message_info_time'}>{calculateTimeSince(message.time_sent)}</span>
+                                    <img
+                                        className={'message_img'}
+                                        src={"https://cdn.intra.42.fr/users/small_" +
+                                        message.username + (message.username === 'marvin' ? ".png" : ".jpg")}
+                                    />
+                                    <span
+                                        className={'message_info_time'}
+                                    >
+                                        {calculateTimeSince(message.time_sent)}
+                                    </span>
                                 </div>
                                 <div className={'row message_content'}>
-                                    <span className={"message_text"}>{message.message}</span>
+                                    <span className={"message_text"}>
+                                        {message.message}
+                                        </span>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +169,8 @@ const Messages = (props) => {
                         />
                         <div
                             className={'connected_' +
-                            ((user.username === getLocal('token').user.username || activeUsers.includes(user.username)) ? "active" : "inactive")
+                            ((user.username === getLocal('token').user.username
+                                || activeUsers.includes(user.username)) ? "active" : "inactive")
                             + '_dot'}>
                         </div>
                     </div>

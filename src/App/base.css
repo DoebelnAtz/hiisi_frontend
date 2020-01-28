@@ -13,7 +13,8 @@
     --siteBG3: #323232;
     --siteBG4: #404040;
     --siteBG7: #B6B6B6;
-    --logoMain: #AC7BC2;
+    --logoMain: #5f56c2;
+    --logoComplement: #ffe77e;
     --logoMainShade: #A472BA;
     --logoSecondary: #E0AB79;
     --logoSecondaryS1: #1c4563;
@@ -23,6 +24,8 @@
     --navActive: #021629;
     --viewMargin: 10px;
     --borderRadius: 4px;
+    --fontMain: 'Share Tech', sans-serif;
+    --fontMainLS: 2px;
 }
 
 ::-webkit-scrollbar {
@@ -156,6 +159,12 @@
 .row_div {
     display: flex;
     flex-wrap: wrap;
+}
+
+.col_div {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
 }
 
 body {

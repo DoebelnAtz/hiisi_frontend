@@ -5,6 +5,8 @@ import {withRouter} from "react-router-dom";
 import './project_page.css'
 import Boards from "../../Boards/Boards";
 import Messages from "../../Messages/Messages";
+import ViewPost from "../../Feed/Post/ViewPost/ViewPost";
+import {capitalizeFirst} from "../../../utils/utils";
 
 const ProjectPage = (props) => {
     const [pid, setPid] = useState(props.match.params.pid);
@@ -37,39 +39,46 @@ const ProjectPage = (props) => {
 
     const renderDash = () => {
         console.log(project);
-        if (dashState === 'board') {
-            return (
-                <Boards board_id={project.board_id}/>
-        )
-        } else if (dashState === 'chat') {
-            return (
-                <Messages tid={project.t_id}/>
-            )
+        switch(dashState) {
+            case('board'):
+                return (<Boards board_id={project.board_id}/>);
+            case('chat'):
+                return (<Messages tid={project.t_id}/>);
+            default:
+                return (<ViewPost focusList={{focus: project.collaborators.map(user => user.username), title: 'collaborator'}} commentthread={project.commentthread}/>)
         }
     };
 
     return (
         <div id={'project_container'}>
             <div className={'row_div'}>
-                <span className={'center'}>{project.title}</span>
+                <span className={'center project_title'}>{capitalizeFirst(project.title)}</span>
             </div>
             <div className={'row_div'}>
-                {mapCollaborators()}
+                <span className={'project_collaborators'}>Collaborators: </span>{mapCollaborators()}
             </div>
             <div className={'project_dashboard'}>
                 <div className={'project_dashboard_nav row_div'}>
                     <div
-                        className={'dashboard_nav_board row_div'}
+                        className={'dashboard_nav_board row_div col_div'}
                         onClick={() => setDashState('board')}
                     >
                         <span className={'center'}>Board</span>
                     </div>
                     <div
-                        className={'dashboard_nav_chat row_div'}
-                        onClick={() => setDashState('chat')}
+                        className={'dashboard_nav_comments row_div col_div'}
+                        onClick={() => setDashState('comments')}
+
+                    >
+                        <span className={'center'}>Comments</span>
+                    </div>
+                    {project.contributor &&
+                    <div
+                        className={'dashboard_nav_chat row_div col_div'}
+                        onClick={() => props.history.push(`/messages/${project.t_id}`)}
                     >
                         <span className={'center'}>Chat</span>
-                    </div>
+                    </div>}
                 </div>
                 {!isLoading && renderDash()}
             </div>

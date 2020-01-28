@@ -11,6 +11,11 @@ export const formatDate = (date, event) => {
     }
 };
 
+export const capitalizeFirst = (string) => {
+    if(string)
+        return string[0].toUpperCase() + string.slice(1);
+};
+
 export const getLocal = (item) => {
     return JSON.parse(localStorage.getItem(item))
 };

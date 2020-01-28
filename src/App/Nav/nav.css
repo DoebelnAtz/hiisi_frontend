@@ -21,6 +21,8 @@
     padding-left: var(--viewMargin);
     margin-top: 8px;
     margin-right: 8px;
+    letter-spacing: var(--fontMainLS);
+
     margin-bottom: auto;
 
 
@@ -107,6 +109,7 @@
     color: var(--logoMain);
     position: relative;
     top: 6px;
+    letter-spacing: var(--fontMainLS);
     margin-left: var(--viewMargin);
 }
 

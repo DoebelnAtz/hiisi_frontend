@@ -50,15 +50,15 @@ const SearchSideView = (props) => {
                             style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
                             id={'feed'}
                             key={results[i].u_id}
-                            className={'my-2'}
+                            className={'my-2 search_result_item'}
                             onClick={() => props.history.push('/search/user/' + results[i].u_id)}
                         >
-                            <img className={'profile_pic'}
+                            <img className={'search_result_avatar'}
                                  src={results[i].profile_pic}
                                  alt={results[i].username} />
                             <Link
                                 to={'/search/user/' + results[i].u_id}
-                                className={'ml-2 mt-2'}
+                                className={'search_result_name'}
                             >
                                 {results[i].username}
                             </Link>

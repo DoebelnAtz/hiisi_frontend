@@ -4,7 +4,6 @@ import React, {useRef} from "react";
 
 import { Route, Switch, useLocation } from 'react-router-dom'
 import Slots from "./Slots/Slots";
-import Search from "./Search/Search";
 import UserPage from "./User/UserPage";
 import {useTransition, animated} from "react-spring";
 import Coalition from "./Coalition/Coalition";
@@ -36,11 +35,6 @@ export default (prop) => {
                            <OpenHive {...props} />
                        }
                 />
-                <Route exact path={'/boards'}
-                       render={(props) =>
-                           <Boards {...props} />
-                       }
-                />
                 <Route exact path={'/slots'}
                        render={(props) =>
                            <Slots {...props} />
@@ -70,11 +64,7 @@ export default (prop) => {
                            <Coalition {...props} />
                        }
                 />
-                <Route exact path={'/search'}
-                       render={(props) =>
-                           <Search {...props} />
-                       }
-                />
+
 
                 <Route exact path={'/search/user/:uid'}>
                     <UserPage/>

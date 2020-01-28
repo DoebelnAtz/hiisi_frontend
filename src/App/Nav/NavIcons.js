@@ -21,7 +21,6 @@ const NavIcons = (props) => {
             />
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'slots'} name={'Slots'} icon={slotsIcon}/>*/}
-            <NavItem path={'/boards'} name={'Boards'} icon={openHiveIcon}/>
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'notifications'} name={'Notifications'} icon={notificationIcon}/>*/}
             <NavItem path={props.location.pathname} name={'Messages'} icon={messageIcon}/>

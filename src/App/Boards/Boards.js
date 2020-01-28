@@ -30,7 +30,7 @@ export default (props) => {
     const {setCurrentNav} = useContext(CurrentNavContext);
     const previousHover = useRef(null);
 
-    useNav('boards', setCurrentNav);
+    useNav('Open Hive', setCurrentNav);
 
     const getTasks = async () => {
         let resp = await makeRequest('projects/boards/' + props.board_id, 'get');

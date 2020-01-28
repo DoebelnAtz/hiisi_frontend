@@ -5,7 +5,7 @@ import {makeRequest} from "../../../Api/Api";
 import Button from "../../../Components/Buttons/Button";
 import {useRequest} from "../../../../Hooks/Hooks";
 
-export const Comment = ({child,  renderComments, isExpanded}) => {
+export const Comment = ({focusList, child,  renderComments, isExpanded}) => {
     const [expanded, setExpanded] = useState(false);
 
     const [childThread, setChildThread, isLoading] = useRequest('blogs/commentthread/' + child.childthread, 'get')
@@ -16,8 +16,11 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                 <div className={'comment_head'}>
                     <img className={'comment_profile_pic'} src={child.profile_pic} alt={'profile_pic'}/>
                     <div className={'comment_info'}>
-                        <span> {child.username}</span>
-                        <span> {formatDate(child.comment_date)}</span>
+                        <span>
+                            {child.username} | {formatDate(child.comment_date)}
+                            {(focusList.focus.includes(child.username))
+                                    ? ' | ' + focusList.title
+                                    : ''}</span>
                     </div>
                 </div>
                 <div className={'comment_body'}>
@@ -32,7 +35,7 @@ export const Comment = ({child,  renderComments, isExpanded}) => {
                         <i style={{fontSize: "13px", marginRight: "5px"}}
                            className="fas fa-comment-alt"
                         />
-                        {!expanded ? 'Show Comments' : 'Hide'}
+                        {!expanded ? 'Show Replies' : 'Hide'}
                         </Button>: <div> </div>}
                     <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>
                 </div>
