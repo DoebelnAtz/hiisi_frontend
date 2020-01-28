@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './viewpost.css'
 import { makeRequest } from "../../../Api/Api";
+import Button from "../../../Components/Buttons/Button";
+import Input from "../../../Components/Input";
+import GroupedInput from "../../../Components/GroupedInput";
 
 export const Reply = (props) => {
 
@@ -8,15 +11,11 @@ export const Reply = (props) => {
     const [opened, setOpened] = useState(false);
 
     const submitPost = async () => {
-        let now = new Date().toISOString();
-        if (commentText.length > 2) {
-            let resp = await makeRequest('create_comment/', 'post',
+        if (commentText.length > 0) {
+            let resp = await makeRequest('blogs/create_comment', 'post',
                 {
-                    comment_text: commentText,
-                    user_id: JSON.parse(localStorage.getItem('token')).user.id,
-                    blog_id: props.blog_id,
-                    comment_parent: props.comment_id,
-                    published_date: now
+                    content: commentText,
+                    threadId: props.childThreadId
                 },
                 {
                     'Content-Type': 'application/json'
@@ -24,33 +23,42 @@ export const Reply = (props) => {
             );
             props.setCommentThread([...props.commentThread, resp.data]);
         }
+        props.expandChildThread && props.expandChildThread(true);
         setOpened(false)
     };
 
-    const handleEnterPress = (event) => {
-        if (event.key === "Enter") {
-            submitPost();
-        }
-    };
     if (!opened){
         return (
             <div>
-                <button onClick={() => setOpened(true)}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Reply</button>
+            <Button
+                onClick={() => setOpened(true)}
+            >
+                Reply
+            </Button>
             </div>
         )
     } else {
         return (
-            <div className={'container'}>
-                <div className={'row'}>
-                    <textarea className={'comment_textarea'} value={commentText}
-                              onChange={(e) => setCommentText(e.target.value)}
-                              onKeyDown={(e) => handleEnterPress(e)}
+            <div className={'reply_expanded'}>
+                    <Button
+                        onClick={() => submitPost()}
+                        customStyle={{borderRight: '0', borderRadius: '4px 0 0 4px'}}
+                    >
+                        Send
+                    </Button>
+                    <Input
+                        className={'comment_textarea'}
+                        valueState={commentText}
+                        customStyle={{borderRadius: '0', width: 'auto'}}
+                        setValueState={setCommentText}
+                        onEnter={submitPost}
                     />
-                </div>
-                <div className={'row'}>
-                    <button onClick={() => submitPost()}><i style={{fontSize: "13px", marginRight: "5px"}} className="fas fa-comment-alt"/>Send</button>
-                    <button onClick={() => setOpened(false)}>Cancel</button>
-                </div>
+                    <Button
+                        onClick={() => setOpened(false)}
+                        customStyle={{borderLeft: '0', borderRadius: '0 4px 4px 0'}}
+                    >Cancel</Button>
+
+
             </div>
         )
     }

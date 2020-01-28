@@ -18,10 +18,11 @@
     right: 25%;
     top: 15%;
     bottom: 45%;
-    border: 5px solid var(--buttonColor);
+    color: var(--logoMain);
+    border: 5px solid var(--siteBG2);
     border-radius: 2px;
     margin: auto;
-    background: white;
+    background: var(--siteBG3);
     overflow: auto;
     z-index: 2!important;
 }
@@ -36,39 +37,48 @@
 }
 
 .feed_item{
-    margin-top: 1rem;
-    margin-right: 1rem;
+    margin-bottom: var(--viewMargin);
+    margin-right: var(--viewMargin);
+    margin-left: var(--viewMargin);
     max-width: 100%;
-    box-shadow: 2px 2px 3px gray;
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--logoMain);
     background-color: var(--postBG);
 }
 
 .feed_title{
+    color: var(--logoMain);
     padding: 0.4rem;
-    border-bottom: 1px solid var(--logoMain);
 }
 
 .post_author{
     font-size: 18px;
     margin-top: 2px;
     margin-left: 1rem;
-    color: var(--colorFourth);
+    color: var(--logoMain);
+}
+
+.post_button_row {
+    border-bottom: 1px solid var(--logoMain);
+
 }
 
 .post_content{
     padding: 0.4rem;
-    border-bottom: 4px solid var(--logoMain);
+    color: var(--logoMain);
+    border-bottom: 1px solid var(--logoMain);
 }
 
 .post_date{
     font-size: 14px;
     margin-top: 6px;
     margin-left: 1rem;
-    color: var(--colorFourth);
+    color: var(--logoMain);
 }
 
 .post_title {
-    color: var(--colorFourth);
+    color: var(--logoMain);
+
     font-size: 20px;
 }
 

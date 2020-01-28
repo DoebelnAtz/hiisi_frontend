@@ -1,78 +1,45 @@
-import React, { useEffect, useContext } from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import { withRouter } from 'react-router-dom'
 
-import IntraContext from "../Context/IntraContext";
-import UserContext from "../Context/UserContext";
-import { ToggleButton } from "../Components/Buttons/Toggle";
-import {Profile, Logo, NavItem, OpenHiveNav} from './NavItems'
+import IntraContext from "../../Context/IntraContext";
+import { Logo } from './NavItems'
 import {makeRequest} from "../Api/Api";
 import {getLocal, setLocal} from "../../utils/utils";
 
-import coalitionIcon from './navIcons/Shield.png'
-import searchIcon from './navIcons/Search.png'
-import messageIcon from './navIcons/Messages.png'
-import notificationIcon from './navIcons/Notifications.png'
-import homeIcon from './navIcons/Home.png'
-import slotsIcon from './navIcons/Slots.png'
 import logo from './navIcons/Logo.png'
-
+import HoveredNavContext from '../../Context/HoveredNavContext'
 import './nav.css'
+import NavIcons from "./NavIcons";
+import NavDisplay from "./NavDisplay";
+import CurrentNavContext from "../../Context/CurrentNavContext";
 
-const SideNav = (props) => {
+const SideNav = () => {
 
-    const { setCurrentUser } = useContext(UserContext); // not really used bc problems with refreshing page
     const { intra, setIntra } = useContext(IntraContext);
+    const { currentNav, setCurrentNav} = useContext(CurrentNavContext);
 
+    const [hoveredNav, setHoveredNav] = useState('');
     const checkAuth = async () => {
-        if (getLocal('token')) {
-            let token = getLocal('token').token;
-
-            let resp = await makeRequest('auth/user/', 'get', {}, {
-                "Content-Type": "application/json",
-                Authorization: "Token " + token,
-            });
-            
-            setLocal('currentUser', resp.data);
-            setCurrentUser(resp.data);
-            if (getLocal('intra')) {
-                let token = getLocal('intra');
-                if (token.data.access_token) {
-                    setIntra(true)
-                }
-            }
-
-        }
-        else {
-            props.history.push('login')
-        }
+        let resp = await makeRequest(`users/me`, 'get');
+        setLocal('currentUser', resp.data);
     };
 
     useEffect(() => {
         checkAuth();
-    }, [localStorage.getItem('token')]);
+    }, [JSON.stringify(getLocal('token')), JSON.stringify(getLocal('currentUser'))]);
 
     return (
-        <div className={'side_nav'}>
-            <Logo currentNav={props.currentNav} icon={logo} setCurrentNav={props.setCurrentNav}/>
-            <OpenHiveNav currentNav={props.currentNav} icon={homeIcon} setCurrentNav={props.setCurrentNav}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'blog'} name={'blog'} icon={homeIcon}/>
-            <Profile currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-            />
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'slots'} name={'Slots'} icon={slotsIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'boards'} name={'Boards'} icon={slotsIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'notifications'} name={'Notifications'} icon={notificationIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'message_home'} name={'Messages'} icon={messageIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>
-            <NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}
-                     path={'search'} name={'Search'} icon={searchIcon}/>
-            <ToggleButton connected={intra} setConnected={setIntra}/>
+        <HoveredNavContext.Provider value={{hoveredNav, setHoveredNav}}>
+        <div className={'side_nav row_div'}>
+            <div id={`nav_icons`} className={`${currentNav === 'messages' ? 'hidden' : '' } `}>
+                <NavIcons/>
+            </div>
+            <div id={'nav_view'}>
+                <NavDisplay
+                />
+            </div>
         </div>
+        </HoveredNavContext.Provider>
     );
 };
 

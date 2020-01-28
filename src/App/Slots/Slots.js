@@ -8,7 +8,7 @@ import {
 } from '@material-ui/pickers';
 import moment from 'moment'
 
-import { useNav } from "../Hooks/Hooks";
+import { useNav } from "../../Hooks/Hooks";
 
 const Slots = (props) => {
 

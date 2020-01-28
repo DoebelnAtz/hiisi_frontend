@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { makeRequest } from '../Api/Api'
-import { useParams } from 'react-router-dom'
+import {useParams, withRouter} from 'react-router-dom'
 import ProfilePage from '../Profile/ProfilePage'
 
 
-const UserPage = () => {
+const UserPage = (props) => {
 
     const [user, setUser] = useState({});
-    let { id } = useParams();
+    const id  = props.match.params.uid;
 
     const getUser = async(id) => {
         let resp = await makeRequest(
-            `profiles/${id}`,
+            `users/${id}`,
             'get',
             {}
         );
@@ -20,7 +20,9 @@ const UserPage = () => {
 
     useEffect(() => {
         getUser(id) // eslint-disable-next-line
-    }, []);
+    }, [props.match.params.uid]);
+
+
 
     return (
         <div>
@@ -29,4 +31,4 @@ const UserPage = () => {
     );
 };
 
-export default UserPage
+export default withRouter(UserPage);

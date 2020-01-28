@@ -5,6 +5,7 @@
       <w>devtools</w>
       <w>hivemind</w>
       <w>intra</w>
+      <w>lodash</w>
       <w>redux</w>
     </words>
   </dictionary>

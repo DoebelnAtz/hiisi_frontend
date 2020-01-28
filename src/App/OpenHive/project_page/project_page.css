@@ -1,0 +1,52 @@
+#project_container {
+    color: white;
+    width: calc(100%);
+    height: 100%;
+    border: 1px solid var(--logoMain);
+    padding: var(--viewMargin) 0;
+    background-color: var(--siteBG3);
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project_collaborators {
+    color: var(--logoMain);
+}
+
+.project_dashboard {
+    border-top: 1px solid var(--logoMain);
+    height: 60%;
+    color: var(--logoMain);
+
+
+}
+
+.project_dashboard_nav {
+    width: 100%;
+    border-bottom: 1px solid var(--logoMain);
+}
+
+.dashboard_nav_board {
+}
+
+.dashboard_nav_comments {
+    border-left: 1px solid var(--logoMain);
+}
+
+.dashboard_nav_chat {
+    border-left: 1px solid var(--logoMain);
+}
+
+.dashboard_nav_board, .dashboard_nav_chat, .dashboard_nav_comments:hover {
+    cursor: pointer;
+}
+
+.project_title {
+    color: var(--logoMain);
+    font-family: var(--fontMain);
+    font-size: 26px;
+    letter-spacing: var(--fontMainLS);
+}

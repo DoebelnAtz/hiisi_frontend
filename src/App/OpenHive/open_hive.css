@@ -1,0 +1,17 @@
+.project_list {
+    color: var(--logoMain);
+}
+
+.project_item {
+    padding: var(--viewMargin);
+    margin: var(--viewMargin);
+    border: 1px solid var(--logoMain);
+    background-color: var(--siteBG3);
+    border-radius: var(--borderRadius);
+}
+
+.collaborator_avatar {
+    height: 24px;
+    border-radius: 50%;
+    margin-right: var(--viewMargin);
+}

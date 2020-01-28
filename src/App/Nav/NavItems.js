@@ -1,73 +1,64 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from 'react-router-dom'
 import './nav.css'
 
 import profileIcon from './navIcons/Profile1.png'
 import Button from '../Components/Buttons/Button'
+import CurrentNavContext from '../../Context/CurrentNavContext'
+import HoveredNavContext from '../../Context/HoveredNavContext'
 
 export const Logo = (props) => {
     const setNavHome = () => {
-        props.setCurrentNav('Open Hive')
+        props.setCurrentNav('blog')
     };
     return (
         <Link
             to={'/blog'}
-            className={'row nav_item nav_logo'}
+            className={'nav_logo'}
             onClick={setNavHome}
         >
-            <img className={"nav_icon"} src={props.icon} alt={'blog_icon'}/><span
-            id={'home_nav'}
-            className={'d-none d-md-block nav_item_text'}>
-            Hivemind</span>
+            <img className={"logo_icon"} src={props.icon} alt={'logo'}/>
+            <span
+            className={'nav_logo_text'}
+            >
+            Hivemind
+            </span>
         </Link>
     )
 };
 
 
 export const OpenHiveNav = (props) => {
+    const { currentNav, setCurrentNav} = useContext(CurrentNavContext);
+    const { hoveredNav, setHoveredNav } = useContext(HoveredNavContext);
     return (
         <Link
+            onMouseOver={() => setHoveredNav('Open Hive')}
             to={`/openhive`}
-            className={`row nav_item ${props.currentNav === "Open Hive" ? 'active' : 'inactive'}`}
-            onClick={() => props.setCurrentNav("Open Hive")}
+            className={`row_div nav_item ${hoveredNav === 'Open Hive'
+                ? 'hovered' : hoveredNav === "Open Hive" ? 'hovered' : currentNav === "Open Hive" ? 'active' : 'inactive'}`}
+            onClick={() => setCurrentNav("Open Hive")}
         >
-            <img className={'nav_icon'} src={props.icon} alt={'OpenHive_icon'}/><span
-            id={`$open_hive_nav`}
-            className={'nav_item_text d-none d-md-block'}>
-            Open Hive</span>
-        </Link>
-    )
-}
-
-export const NavItem = (props) => {
-    return (
-        <Link
-            to={`/${props.path}`}
-            className={`row nav_item ${props.currentNav === props.path ? 'active' : 'inactive'}`}
-            onClick={() => props.setCurrentNav(props.path)}
-        >
-            <img className={'nav_icon'} src={props.icon}  alt={`${props.name}_icon`}/><span
-            id={`${props.name}_nav`}
-            className={'nav_item_text d-none d-md-block'}>
-            {props.name}</span>
+            <img className={'nav_icon'} src={props.icon} alt={'OpenHive_icon'}/>
         </Link>
     )
 };
 
-export const Profile = (props) => {
-    const setNavProfile = () => {
-        props.setCurrentNav('profile')
-    };
+export const NavItem = (props) => {
+    const { currentNav, setCurrentNav} = useContext(CurrentNavContext);
+    const { hoveredNav, setHoveredNav } = useContext(HoveredNavContext);
+
     return (
         <Link
-            to={'/profile'}
-            className={`row nav_item ${props.currentNav === 'profile' ? 'active' : 'inactive'}`}
-            onClick={setNavProfile}
+            onMouseOver={() => setHoveredNav(props.name.toLowerCase())}
+            onMouseLeave={() => setHoveredNav('')}
+            to={`${props.path}`}
+            className={`row nav_item ${hoveredNav === props.name.toLowerCase()
+                ? 'hovered' : currentNav === props.name.toLowerCase()
+                    ? 'active' : 'inactive'}`}
+            onClick={() => setCurrentNav(props.name.toLowerCase())}
         >
-            <img className={'nav_icon'} src={profileIcon}  alt={'profile_icon'}/><span
-            id={'profile_nav'}
-            className={`d-none d-md-block nav_item_text`}>
-            Profile</span>
+            <img className={'nav_icon'} src={props.icon}  alt={`${props.name}_icon`}/>
         </Link>
     )
 };
@@ -85,5 +76,7 @@ export const ConnectToIntra = (props) => {
           </a>
       )
 };
+
+
 
 

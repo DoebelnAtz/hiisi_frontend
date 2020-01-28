@@ -4,6 +4,7 @@ import {useSpring, useTransition, animated} from 'react-spring'
 import { makeRequest } from '../Api/Api'
 import Button from '../Components/Buttons/Button'
 import TextArea from '../Components/TextArea'
+import {getLocal} from "../../utils/utils";
 
 const CreatePostPopup = (props) => {
 
@@ -14,16 +15,14 @@ const CreatePostPopup = (props) => {
     const createPost = async (title, content) => {
         let now = new Date().toISOString();
         console.log(now);
-        let resp = await makeRequest('blogs/', 'post', {
-            creator: JSON.parse(localStorage.getItem('token')).user.id,
-            post: content,
-            title: title,
-            event: false,
-            published_date: now,
+        let resp = await makeRequest('blogs/create_blog', 'post', {
+            authorId: getLocal('token').user.u_id,
+            content,
+            title,
+            published_date: now
         });
         console.log(props.posts);
-        resp.data['comments'] = [];
-        resp.data['likes'] = 0;
+
         if (props.isMounted) {
             console.log('updating');
             props.setPosts([resp.data, ...(props.posts)]);
@@ -74,24 +73,34 @@ const CreatePostPopup = (props) => {
                         Create Post
                     </div>
                     <div className={'row justify-content-center'}>
-                        <TextArea
-                            customStyle={{maxHeight: '5vh', height: '3vh'}}
-                            id={'title_input'}
-                            placeholder={'Title'}
-                            onChange={(e) => handleChange(e, setTitle)}
-                            count={title.length}
-                            max={80}
-                        />
+                        <div className={'textarea_div'}>
+                            <div className={'row justify-content-center area_div'}>
+                                <textarea style={{maxHeight: '5vh', height: '3vh'}}
+                                          className={'textarea_cont'}
+                                          placeholder={'Title'}
+                                          onChange={(e) => handleChange(e, setTitle)}
+                                >
+                                        </textarea>
+                                </div>
+                                <div className={'row justify-content-center counter'}>
+                                    <p style={{color: title.length > 80 ? 'red' : 'var(--logoMain)'}}>{title.length}/{80}</p>
+                                </div>
+                        </div>
                     </div>
                     <div className={'row justify-content-center'}>
-                        <TextArea
-                            customStyle={{maxHeight: '15vh', height: '15vh'}}
-                            id={'content_input'}
-                            placeholder={'Content'}
-                            onChange={(e) => handleChange(e, setContent)}
-                            count={content.length}
-                            max={500}
-                        />
+                        <div className={'textarea_div'}>
+                            <div className={'row justify-content-center area_div'}>
+                                <textarea style={{maxHeight: '15vh', height: '15vh'}}
+                                          className={'textarea_cont'}
+                                          placeholder={'Content'}
+                                          onChange={(e) => handleChange(e, setContent)}
+                                >
+                                </textarea>
+                            </div>
+                            <div className={'row justify-content-center counter'}>
+                                <p style={{color: content.length > 500 ? 'red' : 'var(--logoMain)'}}>{content.length}/{500}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className={'row justify-content-center btn_row mt-2'}>

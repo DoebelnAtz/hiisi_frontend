@@ -9,7 +9,11 @@ export const formatDate = (date, event) => {
     } else {
         return (calculateTimeSince(date))
     }
+};
 
+export const capitalizeFirst = (string) => {
+    if(string)
+        return string[0].toUpperCase() + string.slice(1);
 };
 
 export const getLocal = (item) => {
@@ -36,8 +40,6 @@ export const getUrlParam = (parameter, defaultValue) => {
     return urlParameter;
 };
 
-
-
 export const countComments = (comments, count = 0) => {
     for (var i=0; i < comments.length; i++)
     {
@@ -58,7 +60,7 @@ export const checkFriendList = (profile, username) => {
 
 export const calculateTimeSince = (isoString) => {
     let then = new Date(isoString);
-    var seconds = Math.floor((new Date() - then) / 1000);
+    var seconds = Math.floor((new Date() - then) / 1000)  - (3600 * 2); // remove two hours for timezone...
 
     var interval = Math.floor(seconds / 31536000);
 

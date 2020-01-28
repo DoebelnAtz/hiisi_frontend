@@ -1,42 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 
 import ProfilePage from './ProfilePage'
-import { makeRequest } from '../Api/Api'
 import './profile.css'
+import {withRouter} from "react-router-dom";
+import {useNav, useRequest} from "../../Hooks/Hooks";
 
 
-const Profile = (props) => {
+const Profile = () => {
 
-    const [profile, setProfile] = useState({});
+    useNav('profile'); // if page is refreshed, set nav to profile
 
-    const isMounted = useRef(true);
+    const [profile] = useRequest(`users/me`, 'get');
 
-    const getProfile = async () => {
-        props.setCurrentNav('profile'); // if page is refreshed, set nav to profile
-        if (localStorage.getItem('token')) {
-            let resp = await makeRequest(`profiles/${JSON.parse(window.localStorage.getItem('token')).user.id}`, 'get', {});
-            if (isMounted.current)
-                setProfile(resp.data); // make request to profiles endpoint and get current user by id
-        }
-        else {
-            props.history.push('login') // if user not found, redirect to login page
-        }
-    };
-
-    useEffect(() => {
-        isMounted.current = true;
-        return () => {
-            isMounted.current = false;
-        }
-    });
-
-    useEffect(() => {
-        getProfile() // eslint-disable-next-line
-    }, []);
     return (
         <ProfilePage profile={profile}/>
     );
 };
 
 
-export default Profile
+export default withRouter(Profile);

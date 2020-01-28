@@ -4,28 +4,19 @@ import './viewpost.css'
 import {Reply} from "./Reply";
 import {Comment} from "./Comment";
 import {makeRequest} from "../../../Api/Api";
+import {useRequest} from "../../../../Hooks/Hooks";
 
 const ViewPost = (props) => {
 
-    const [comments, setComments] = useState([]);
-
-    const getComments = async() => {
-        let resp = await makeRequest(`comment_threads/${props.content.thread}`, 'get', {});
-
-        setComments(resp.data.comment);
-    };
-
-    useEffect(() => {
-        getComments() // eslint-disable-next-line
-    }, []);
+    const [comments, setComments, isLoading] = useRequest(`blogs/commentthread/${props.commentthread}`, 'get');
 
     const renderComments = (comment=comments, isExpanded=true) => {
         if (comment) {
             return (
                 comment.map((child) => {
                         return (
-                            <div key={child.id}>
-                                <Comment isExpanded={isExpanded} child={child} renderComments={renderComments}/>
+                            <div key={child.c_id}>
+                                <Comment focusList={props.focusList} isExpanded={isExpanded} child={child} renderComments={renderComments}/>
                             </div>
                         )
 
@@ -37,9 +28,16 @@ const ViewPost = (props) => {
         }
     };
 
+    if (!comments.length)
+        return (
+            <div className={'no_comments_container'}>
+                <Reply commentThread={comments} setCommentThread={setComments} childThreadId={props.commentthread} />
+            </div>
+        );
+
     return (
-        <div id={'view_post_container'} className={'container pb-1'}>
-            <Reply commentThread={comments} setCommentThread={setComments} comment_id={null} blog_id={props.content.id} />
+        <div className={'view_post_container'}>
+            <Reply commentThread={comments} setCommentThread={setComments} childThreadId={props.commentthread} />
             <div className={'comment_section'}>
                 {renderComments()}
             </div>

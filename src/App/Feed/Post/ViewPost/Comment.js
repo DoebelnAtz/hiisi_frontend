@@ -1,35 +1,55 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Reply} from "./Reply";
 import { formatDate } from "../../../../utils/utils";
+import {makeRequest} from "../../../Api/Api";
+import Button from "../../../Components/Buttons/Button";
+import {useRequest} from "../../../../Hooks/Hooks";
 
-export const Comment = ({child,  renderComments, isExpanded}) => {
-    const [expanded, setExpanded] = useState(isExpanded);
-    const [commentThread, setCommentThread] = useState(child.children);
+export const Comment = ({focusList, child,  renderComments, isExpanded}) => {
+    const [expanded, setExpanded] = useState(false);
 
+    const [childThread, setChildThread, isLoading] = useRequest('blogs/commentthread/' + child.childthread, 'get')
 
-    if(expanded) {
+    if (isExpanded) {
         return (
-            <div  className={'parent_comment'} key={child.id}>
-                <button onClick={() => setExpanded(!expanded)} >-</button>
+            <div className={'parent_comment'} key={child.c_id}>
                 <div className={'comment_head'}>
-                    <img className={'comment_profile_pic'} src={child.creator.profile_pic} alt={'profile_pic'}/>
-                    <span> {child.creator.username}</span>
-                    <span> {formatDate(child.published_date)}</span>
+                    <img className={'comment_profile_pic'} src={child.profile_pic} alt={'profile_pic'}/>
+                    <div className={'comment_info'}>
+                        <span>
+                            {child.username} | {formatDate(child.comment_date)}
+                            {(focusList.focus.includes(child.username))
+                                    ? ' | ' + focusList.title
+                                    : ''}</span>
+                    </div>
                 </div>
                 <div className={'comment_body'}>
-                    <p>{child.comment}</p>
+                    <span>{child.commentcontent}</span>
                 </div>
-                <Reply commentThread={commentThread} setCommentThread={setCommentThread} comment_id={child.id} blog_id={null}/>
-                <div className={'children'}>
-                    {renderComments(commentThread, expanded)}
+                <div className={'row mr-0 px-0 comment_button_row'}>
+                    {childThread.length ?
+                    <Button
+                        onClick={() => setExpanded(!expanded)}
+                        customStyle={{margin: '0 var(--viewMargin) 0 0'}}
+                    >
+                        <i style={{fontSize: "13px", marginRight: "5px"}}
+                           className="fas fa-comment-alt"
+                        />
+                        {!expanded ? 'Show Replies' : 'Hide'}
+                        </Button>: <div> </div>}
+                    <Reply commentThread={childThread} expandChildThread={setExpanded} setCommentThread={setChildThread} childThreadId={child.childthread}/>
                 </div>
-            </div>
-        )
-    } else {
-        return (
-            <div  className={'parent_comment'}>
-                <button onClick={() => setExpanded(!expanded)}>+</button>
+                <div className={'child_comments'}>
+                    {renderComments(childThread, expanded)}
+                </div>
             </div>
         )
     }
+    else {
+        return (
+            <div>
+            </div>
+        )
+    }
+
 };

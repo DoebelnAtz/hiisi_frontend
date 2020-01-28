@@ -1,22 +1,36 @@
 .basic_button {
     padding: 5px 7px;
-    background-color: var(--buttonColor);
-    border: 1px solid var(--buttonColor);
+    background-color: var(--siteBG3);
+    color: var(--logoMain);
+    border: 1px solid var(--logoMain);
     border-radius: 5px;
-    margin-right: 5px;
+    outline: none;
+}
 
+.basic_button.noRadius {
+    padding: 5px 7px;
+    background-color: var(--siteBG3);
+    color: var(--logoMain);
+    border-radius: 0;
+    border: 1px solid var(--logoMain);
+    outline: none;
 }
 
 .basic_button:hover {
     padding: 5px 7px;
-    background-color: var(--buttonColor);
+    background-color: var(--siteBG2);
     opacity: 0.8;
+}
+
+.basic_button:focus {
+    outline: none;
+    border: 1px solid var(--logoMainShade);
 }
 
 .comment_button{
     padding: 2px 2px 2px 10px;
-    color: var(--logoSecondary);
-    background-color: var(--navTextColor);
+    color: var(--logoMain);
+    background-color: var(--siteBG2);
 }
 
 .comment_button:hover {
