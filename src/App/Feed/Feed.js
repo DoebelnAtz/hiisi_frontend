@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import Post from './Post/Post'
 import {useFetch, useRequest} from '../../Hooks/Hooks'
 import {useTrail, animated} from 'react-spring'
-import CreatePostPopup from './CreatePostPopup'
+import CreatePostModal from './CreatePostModal'
 import Button from "../Components/Buttons/Button";
 import {makeRequest} from "../Api/Api";
 import {getLocal} from "../../utils/utils";
@@ -47,7 +47,7 @@ const Feed = (prop) => {
                     onClick={() => setPopup(true)}
             >
             </Button>
-            <CreatePostPopup popup={popup} setPopup={setPopup}
+            <CreatePostModal popup={popup} setPopup={setPopup}
                              setPosts={setPosts} posts={posts}
                              isMounted={isMounted}
             />

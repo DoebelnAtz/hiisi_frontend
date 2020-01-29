@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import ViewPost from './ViewPost/ViewPost'
+import ViewPost from './ViewPost'
 import PostMainContent from './PostMainContent'
 
 const Post = ({content}) => {

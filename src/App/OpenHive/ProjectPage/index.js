@@ -3,12 +3,12 @@ import {useNav, useRequest} from "../../../Hooks/Hooks";
 import {withRouter} from "react-router-dom";
 
 import './project_page.css'
-import Boards from "../../Boards/Boards";
+import Board from "../../Board";
 import Messages from "../../Messages/Messages";
-import ViewPost from "../../Feed/Post/ViewPost/ViewPost";
+import ViewPost from "../../Feed/Post/ViewPost";
 import {capitalizeFirst} from "../../../utils/utils";
 
-const ProjectPage = (props) => {
+const OpenHiveProjectPage = (props) => {
     const [pid, setPid] = useState(props.match.params.pid);
     const [dashState, setDashState] = useState('board');
     const [project, setProject, isLoading] = useRequest('projects/' + pid, 'get');
@@ -41,7 +41,7 @@ const ProjectPage = (props) => {
         console.log(project);
         switch(dashState) {
             case('board'):
-                return (<Boards board_id={project.board_id}/>);
+                return (<Board board_id={project.board_id}/>);
             case('chat'):
                 return (<Messages tid={project.t_id}/>);
             default:
@@ -52,7 +52,7 @@ const ProjectPage = (props) => {
     return (
         <div id={'project_container'}>
             <div className={'row_div'}>
-                <span className={'center project_title'}>{capitalizeFirst(project.title)}</span>
+                <span className={'center project_title'}>{!isLoading ? capitalizeFirst(project.title) : 'Loading...'}</span>
             </div>
             <div className={'row_div'}>
                 <span className={'project_collaborators'}>Collaborators: </span>{mapCollaborators()}
@@ -86,4 +86,4 @@ const ProjectPage = (props) => {
     )
 };
 
-export default withRouter(ProjectPage);
+export default withRouter(OpenHiveProjectPage);

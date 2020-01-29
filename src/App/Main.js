@@ -9,9 +9,9 @@ import {useTransition, animated} from "react-spring";
 import Coalition from "./Coalition/Coalition";
 import Notifications from "./Notifications/Notifications";
 import MessageHome from "./Messages/MessageHome";
-import OpenHive from  './OpenHive/OpenHive'
-import Boards from './Boards/Boards'
-import ProjectPage from "./OpenHive/project_page/ProjectPage";
+import OpenHive from './OpenHive'
+import Board from './Board'
+import ProjectPage from "./OpenHive/ProjectPage";
 
 export default (prop) => {
 

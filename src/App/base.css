@@ -13,7 +13,7 @@
     --siteBG3: #323232;
     --siteBG4: #404040;
     --siteBG7: #B6B6B6;
-    --logoMain: #5f56c2;
+    --logoMain: #AC7BC2;
     --logoComplement: #ffe77e;
     --logoMainShade: #A472BA;
     --logoSecondary: #E0AB79;
@@ -27,6 +27,7 @@
     --fontMain: 'Share Tech', sans-serif;
     --fontMainLS: 2px;
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -112,7 +113,7 @@
     font-family: 'Share Tech', sans-serif;
     cursor: pointer;
     margin-top: 22px;
-    margin-left: var(--viewMargin);
+    margin-left: calc(var(--viewMargin) * 2);
 
 }
 

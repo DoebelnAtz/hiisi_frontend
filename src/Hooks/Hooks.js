@@ -40,6 +40,26 @@ export const useSocket = (url, options, room) => {
     return {socket, connected, messages, setMessages, activeUsers}
 };
 
+export const useDismiss = (refInside, setDismissState) => {
+    const handleDismiss = (e) => {
+        if (e.keyCode === 27) {
+            setDismissState(false);
+        } else if (refInside.current?.contains(e.target))
+            return;
+        else
+            setDismissState(false);
+    };
+    useEffect(() => {
+        document.addEventListener("keydown", handleDismiss, false);
+
+        document.addEventListener('mousedown', handleDismiss);
+        return () => {
+            document.removeEventListener("keydown", handleDismiss);
+            document.removeEventListener('mousedown', handleDismiss)
+        }
+    }, [])
+};
+
 export const useRequest = (url, method, body={}) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);

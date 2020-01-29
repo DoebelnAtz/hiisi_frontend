@@ -72,10 +72,7 @@ export default (props) => {
 
     const moveTask = (taskId, destColumn, index) => {
         console.log(taskId, destColumn, index);
-        if(index === previousHover.current)
-            console.log(previousHover.current);
-        console.log(previousHover.current);
-        previousHover.current = index;
+
 
         setColumns(columns.map(column => ({
             ...column, taskList: _.flow( // check Lodash docs on flow.

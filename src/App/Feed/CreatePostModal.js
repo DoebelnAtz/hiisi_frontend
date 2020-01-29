@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom'
 import {useSpring, useTransition, animated} from 'react-spring'
 import { makeRequest } from '../Api/Api'
 import Button from '../Components/Buttons/Button'
 import TextArea from '../Components/TextArea'
 import {getLocal} from "../../utils/utils";
+import {useDismiss} from "../../Hooks/Hooks";
 
-const CreatePostPopup = (props) => {
+const CreatePostModal = (props) => {
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [submitDisabled, setSubmitDisabled] = useState(true);
+    const inside = useRef();
+
+    useDismiss(inside, props.setPopup);
 
     const createPost = async (title, content) => {
         let now = new Date().toISOString();
@@ -64,10 +68,16 @@ const CreatePostPopup = (props) => {
 
     return ReactDOM.createPortal(
         slideIn.map(({ item, key, props }, i) => item &&
-        <animated.div key={i} style={fadeIn} id={'popup_background'}
+        <animated.div
+            key={i}
+            style={fadeIn}
+            id={'popup_background'}
         >
             <animated.div
-                          style={props} id={'popup_cont'}>
+                          style={props}
+                          id={'popup_cont'}
+                          ref={inside}
+            >
                 <div className={'container'}>
                     <div className={'row justify-content-center my-2'}>
                         Create Post
@@ -123,4 +133,4 @@ const CreatePostPopup = (props) => {
     );
 
 };
-export default CreatePostPopup;
+export default CreatePostModal;
