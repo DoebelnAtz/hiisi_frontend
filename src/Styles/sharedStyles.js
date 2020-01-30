@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import Color from 'color';
 
 export const color = {
@@ -19,7 +19,11 @@ export const length = {
 };
 
 export const font = {
-    title: 'font-family: Share Tech, sans-serif;'
+    title: css`
+      font-family: Share Tech, sans-serif;
+      font-size:36px;
+      letter-spacing: 2px;
+    `
 };
 
 export const border = {
@@ -30,6 +34,21 @@ export const border = {
             border-width: ${top}px ${right}px ${bot}px ${left}px;
         `
     )
+};
+
+export const components = {
+    input: styled.input`
+        border-radius: 4px;
+        padding-left: 10px;
+        background-color: var(--siteBG2);
+        color: var(--logoMain);
+        height: 36px;
+        border: 1px solid var(--logoMain);
+        :focus {
+            outline: none;
+            border: 1px solid var(--logoMainShade);
+        }
+    `
 };
 
 export const layout = {

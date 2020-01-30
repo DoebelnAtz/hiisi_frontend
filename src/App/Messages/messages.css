@@ -65,7 +65,8 @@
 }
 
 .message_cont {
-    height: 100%;
+    padding: calc(var(--viewMargin));
+
 }
 
 .message_content {
@@ -75,7 +76,7 @@
 .message_feed {
     background-color: rgba(0,0,0, 0.1);
     height: 60vh;
-    margin-top: 1px;
+
     border-top: 1px solid var(--logoMain);
     border-bottom: 1px solid var(--logoMain);
 

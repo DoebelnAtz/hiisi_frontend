@@ -1,9 +1,17 @@
 import styled, { css } from 'styled-components';
-import {color, colorAdjust, cursor, length} from "../../../../Styles/sharedStyles";
+import {color, colorAdjust, cursor, layout, length} from "../../../../Styles/sharedStyles";
 
 export const TaskContent = styled.div`
   display: block;
-  margin-top: 0px;
+  margin-top: 0;
+`;
+
+export const TaskStatus = styled.div`
+  ${layout.row}
+  & img {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const Task = styled.div`
@@ -15,6 +23,13 @@ export const Task = styled.div`
   transition: all 0.3s;
   ${cursor.clickable};
   background-color: ${color.siteBG2};
+  
+  
+  
+  & span {
+    font-size: 16px;
+  }
+  
   &:hover {
     
     background-color: ${colorAdjust.lighten(color.siteBG2, 0)};

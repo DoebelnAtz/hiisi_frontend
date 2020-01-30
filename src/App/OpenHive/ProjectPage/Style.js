@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import {color, colorAdjust, cursor, length, layout, border} from "../../../Styles/sharedStyles";
+import {color, colorAdjust, cursor, length, layout, border, font} from "../../../Styles/sharedStyles";
 
 export const ProjectPage = styled.div`
     color: white;
@@ -15,7 +15,8 @@ export const ProjectInfo = styled.div`
 `;
 
 export const ProjectTitle = styled.div`
-    ${layout.centered}
+    ${layout.centered};
+    ${font.title};
 `;
 
 export const ProjectCollaborators = styled.div`
