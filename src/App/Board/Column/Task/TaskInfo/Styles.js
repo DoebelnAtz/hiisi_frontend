@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import  { color, colorAdjust, length } from "../../../../../Styles/sharedStyles";
+import  { color, colorAdjust, length, layout } from "../../../../../Styles/sharedStyles";
 
 export const OuterDiv = styled.div`
     position: fixed;
@@ -14,8 +14,25 @@ export const OuterDiv = styled.div`
     z-index: 1;
 `;
 
+export const TaskDescription = styled.div`
+    width: 50%;
+    height: 70%;
+`;
+
+export const TaskComments = styled.div`
+    
+`;
+
+export const TaskTitle = styled.div`
+    ${layout.row};
+    font-size: 26px;
+    margin: 0 0 14px 0;
+   
+`;
+
 export const TaskInfo = styled.div`
     position: absolute;
+    padding: ${length.margin};
     left: 20%;
     right: 20%;
     top: 15%;

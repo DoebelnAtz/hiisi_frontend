@@ -32,6 +32,23 @@ export const border = {
     )
 };
 
+export const layout = {
+    row: css`
+        display: flex;
+        flex-wrap: wrap;
+    `,
+    col: css`
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+    `,
+    centered: css`
+
+        margin-left: auto;
+        margin-right: auto;
+    `
+};
+
 export const colorAdjust = {
     darken: (color, amount) =>
         Color(color)

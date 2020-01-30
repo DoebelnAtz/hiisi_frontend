@@ -2,11 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {useNav, useRequest} from "../../../Hooks/Hooks";
 import {withRouter} from "react-router-dom";
 
-import './project_page.css'
 import Board from "../../Board";
 import Messages from "../../Messages/Messages";
 import ViewPost from "../../Feed/Post/ViewPost";
 import {capitalizeFirst} from "../../../utils/utils";
+import
+{
+    ProjectPage, ProjectInfo,
+    ProjectCollaborators, ProjectDashBoard,
+    ProjectTitle, ProjectDashboardNav, ProjectDashBoardNavItem
+} from "./Style";
 
 const OpenHiveProjectPage = (props) => {
     const [pid, setPid] = useState(props.match.params.pid);
@@ -50,39 +55,35 @@ const OpenHiveProjectPage = (props) => {
     };
 
     return (
-        <div id={'project_container'}>
-            <div className={'row_div'}>
-                <span className={'center project_title'}>{!isLoading ? capitalizeFirst(project.title) : 'Loading...'}</span>
-            </div>
-            <div className={'row_div'}>
+        <ProjectPage>
+            <ProjectInfo>
+                <ProjectTitle>{!isLoading ? capitalizeFirst(project.title) : 'Loading...'}</ProjectTitle>
+            </ProjectInfo>
+            <ProjectCollaborators>
                 <span className={'project_collaborators'}>Collaborators: </span>{mapCollaborators()}
-            </div>
-            <div className={'project_dashboard'}>
-                <div className={'project_dashboard_nav row_div'}>
-                    <div
-                        className={'dashboard_nav_board row_div col_div'}
+            </ProjectCollaborators>
+            <ProjectDashBoard>
+                <ProjectDashboardNav>
+                    <ProjectDashBoardNavItem
                         onClick={() => setDashState('board')}
                     >
-                        <span className={'center'}>Board</span>
-                    </div>
-                    <div
-                        className={'dashboard_nav_comments row_div col_div'}
+                        <span>Board</span>
+                    </ProjectDashBoardNavItem>
+                    <ProjectDashBoardNavItem
                         onClick={() => setDashState('comments')}
-
                     >
-                        <span className={'center'}>Comments</span>
-                    </div>
+                        <span>Comments</span>
+                    </ProjectDashBoardNavItem>
                     {project.contributor &&
-                    <div
-                        className={'dashboard_nav_chat row_div col_div'}
+                    <ProjectDashBoardNavItem
                         onClick={() => props.history.push(`/messages/${project.t_id}`)}
                     >
-                        <span className={'center'}>Chat</span>
-                    </div>}
-                </div>
+                        <span>Chat</span>
+                    </ProjectDashBoardNavItem>}
+                </ProjectDashboardNav>
                 {!isLoading && renderDash()}
-            </div>
-        </div>
+            </ProjectDashBoard>
+        </ProjectPage>
     )
 };
 

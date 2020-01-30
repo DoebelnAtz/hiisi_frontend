@@ -41,21 +41,27 @@ export const useSocket = (url, options, room) => {
 };
 
 export const useDismiss = (refInside, setDismissState) => {
-    const handleDismiss = (e) => {
-        if (e.keyCode === 27) {
+
+    const handleEsc = (e) => {
+        if (e.keyCode !== 27)
+            return;
+        else
             setDismissState(false);
-        } else if (refInside.current?.contains(e.target))
+    };
+
+    const handleClick = (e) => {
+
+        if (refInside.current?.contains(e.target))
             return;
         else
             setDismissState(false);
     };
     useEffect(() => {
-        document.addEventListener("keydown", handleDismiss, false);
-
-        document.addEventListener('mousedown', handleDismiss);
+        document.addEventListener("keydown", handleEsc, false);
+        document.addEventListener('mousedown', handleClick);
         return () => {
-            document.removeEventListener("keydown", handleDismiss);
-            document.removeEventListener('mousedown', handleDismiss)
+            document.removeEventListener("keydown", handleEsc);
+            document.removeEventListener('mousedown', handleClick)
         }
     }, [])
 };
