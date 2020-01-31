@@ -8,7 +8,7 @@ import Input from "../../Components/Input";
 const BoardColumn = ({addTask, columnNum, column, taskList}) => {
     const [inputVal, setInputVal] = useState('');
 
-
+    console.log(taskList);
     return (
         <Droppable key={columnNum} droppableId={columnNum.toString()}>
             {provided => (

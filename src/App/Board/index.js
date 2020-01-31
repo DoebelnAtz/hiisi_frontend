@@ -68,6 +68,7 @@ const Board = (props) => {
         let draggedTask = board.columns[srcColId].tasks[source.index];
         let targetCol = board.columns[destColId];
         let updatedTask = {...draggedTask, column_id: targetCol.column_id};
+        draggedTask.column_id = targetCol.column_id;
         console.log(draggedTask, targetCol);
         console.log(updatedTask);
         setBoard({columns: board.columns.map(column => ({

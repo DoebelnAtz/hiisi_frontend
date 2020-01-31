@@ -24,13 +24,15 @@ export const ProjectCollaborators = styled.div`
         height: 32px;
         width: 32px;
         border-radius: 50%;
-        border: 2px solid ${color.primary};
+        margin-left: -8px;
+        border: 3px solid ${color.siteBG3};
    }
    
 `;
 
 export const ProjectDashboardNav = styled.div`
   ${layout.row};
+  ${cursor.clickable};
   ${border.setBorders(1, 0 , 0, 0, color.primary)}
   & div:nth-child(2) {
     ${border.setBorders(0, 1 , 1, 1, color.primary)}

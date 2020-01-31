@@ -2,21 +2,34 @@ import React, {useRef, useState} from 'react'
 import ReactDOM from 'react-dom'
 import {useSpring, useTransition, animated} from 'react-spring'
 
-import {OuterDiv, TaskDescription, TaskInfo, TaskTitle, TaskInfoHead, PriorityInput} from "./Styles";
+import {
+    OuterDiv,
+    TaskDescription,
+    TaskInfo,
+    TaskTitle,
+    TaskInfoHead,
+    PriorityInput,
+    TaskCollaborators,
+    TaskFooter, TaskInfoBody
+} from "./Styles";
 import {useDismiss} from "../../../../../Hooks/Hooks";
 import TextEditor from "../../../../Components/TextEditor";
 import Button from "../../../../Components/Buttons/Button";
 import {makeRequest} from "../../../../Api/Api";
 import Input from "../../../../Components/Input";
 
+
 const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
 
     const inside = useRef();
-    useDismiss(inside, hide);
+
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon());
-    const updateTask = () => {
-        makeRequest('projects/boards/update_task', 'put', task)
+
+    useDismiss(inside, hide);
+
+    const updateTask = async () => {
+        await makeRequest('projects/boards/update_task', 'put', task)
     };
 
     const handleInputChange = (e) => {
@@ -26,6 +39,13 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
         setPriorityIcon(getPriorityIcon(Number(e.target.value)))
     };
 
+    const renderTaskCollaborators = () => {
+        return (
+            task.collaborators.map(collaborator => {
+                return (<img key={collaborator.u_id} src={collaborator.profile_pic}/>)
+            })
+        )
+    };
 
     return ReactDOM.createPortal(
             <OuterDiv>
@@ -38,11 +58,16 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
                             {task.title}
                         </TaskTitle>
                     </TaskInfoHead>
-                    <TaskDescription>
-                        <TextEditor task={task}/>
-                    </TaskDescription>
-                    <img src={priorityIcon}/>
-                    <PriorityInput value={priorityInputVal} onChange={(e) => handleInputChange(e)} style={{width: '32px'}} placeholder={task.priority}/>
+                    <TaskInfoBody>
+                        <TaskDescription>
+                            <TextEditor task={task}/>
+                        </TaskDescription>
+                    </TaskInfoBody>
+                    <TaskFooter>
+                        <img src={priorityIcon}/>
+                        <PriorityInput value={priorityInputVal} onChange={(e) => handleInputChange(e)} style={{width: '32px'}} placeholder={task.priority}/>
+                        <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
+                    </TaskFooter>
                 </TaskInfo>
             </OuterDiv>
         , document.querySelector('#modal'))

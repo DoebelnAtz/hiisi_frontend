@@ -9,8 +9,20 @@ export const TaskContent = styled.div`
 export const TaskStatus = styled.div`
   ${layout.row}
   & img {
-    height: 20px;
-    width: 20px;
+    height: 26px;
+    width: 26px;
+  }
+`;
+
+export const TaskCollaborators = styled.div`
+  ${layout.row};
+  margin-left: auto;
+  & img {
+      height: 30px;
+      width: 30px;
+      margin-left: -8px;
+      border-radius: 50%;
+      border: 3px solid ${color.siteBG2};
   }
 `;
 
