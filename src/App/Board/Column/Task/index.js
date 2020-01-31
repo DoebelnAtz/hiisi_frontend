@@ -40,7 +40,7 @@ const BoardColumnTask = ({task, index}) => {
 
     return (
         <Fragment>
-            {showTask &&  <TaskInfo task={task} hide={setShowTask} getPriorityIcon={getPriorityIcon}/>}
+            {showTask &&  <TaskInfo hidden={showTask} task={task} hide={setShowTask} getPriorityIcon={getPriorityIcon}/>}
             <Draggable draggableId={task.task_id.toString()} index={index}>
                 {(provided, snapshot) => (
                     <TaskContent

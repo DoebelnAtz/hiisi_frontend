@@ -17,6 +17,7 @@ import TextEditor from "../../../../Components/TextEditor";
 import Button from "../../../../Components/Buttons/Button";
 import {makeRequest} from "../../../../Api/Api";
 import Input from "../../../../Components/Input";
+import Avatar from "../../../../Components/Avatar";
 
 
 const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
@@ -25,6 +26,8 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
 
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon());
+
+    const fade = useSpring({opacity:})
 
     useDismiss(inside, hide);
 
@@ -42,7 +45,7 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
     const renderTaskCollaborators = () => {
         return (
             task.collaborators.map(collaborator => {
-                return (<img key={collaborator.u_id} src={collaborator.profile_pic}/>)
+                return (<Avatar key={collaborator.u_id} src={collaborator.profile_pic}/>)
             })
         )
     };
