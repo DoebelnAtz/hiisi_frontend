@@ -59,6 +59,7 @@ export const layout = {
     col: css`
         flex-basis: 0;
         flex-grow: 1;
+        
         max-width: 100%;
     `,
     centered: css`

@@ -7,6 +7,7 @@ export const TaskContent = styled.div`
 `;
 
 export const TaskStatus = styled.div`
+  margin-top: ${length.margin};
   ${layout.row}
   & img {
     height: 26px;
@@ -18,40 +19,41 @@ export const TaskCollaborators = styled.div`
   ${layout.row};
   margin-left: auto;
   & img {
+      transition: border 0.3s;
       height: 30px;
       width: 30px;
       margin-left: -8px;
       border-radius: 50%;
-      border: 3px solid ${color.siteBG2};
+      border: 3px solid ${color.siteBG4};
   }
 `;
 
 export const Task = styled.div`
   padding: 10px;
   margin: 0 0;
-  border: 2px solid ${color.siteBG3};
+  border: 4px solid ${color.siteBG2};
   color: white;
-  border-radius: ${length.radius};
+  border-radius: 8px;
   transition: all 0.3s;
   ${cursor.clickable};
-  background-color: ${color.siteBG2};
-  
-  
+  background-color: ${color.siteBG4};
   
   & span {
     font-size: 16px;
   }
   
   &:hover {
-    
-    background-color: ${colorAdjust.lighten(color.siteBG2, 0)};
+    background-color: ${colorAdjust.lighten(color.siteBG3, 0)};
   }
+  &:hover  ${TaskCollaborators} img {
+    border: 3px solid ${color.siteBG3};
+  }
+  
   ${props =>
     props.isBeingDragged &&
     css`
-      border: 2px solid ${color.siteBG2};
-
-      background-color: ${colorAdjust.lighten(color.siteBG1, 0.3)};;
+      border: 2px solid ${color.siteBG3};
+      background-color: ${colorAdjust.lighten(color.siteBG2, 0.5)};;
       transform: scale(1.2);
     `}
 `;

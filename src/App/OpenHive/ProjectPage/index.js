@@ -10,7 +10,7 @@ import
 {
     ProjectPage, ProjectInfo,
     ProjectCollaborators, ProjectDashBoard,
-    ProjectTitle, ProjectDashboardNav, ProjectDashBoardNavItem
+    ProjectTitle, ProjectDashboardNav, ProjectDashBoardNavItem, Collaborator
 } from "./Style";
 
 const OpenHiveProjectPage = (props) => {
@@ -29,11 +29,13 @@ const OpenHiveProjectPage = (props) => {
             return (
                 project.collaborators.map((collaborator) => {
                 return (
-                    <img
-                        key={collaborator.u_id}
-                        className={'collaborator_avatar'}
-                        src={collaborator.profile_pic}
-                    />
+                    <Collaborator>
+                        <img
+                            key={collaborator.u_id}
+                            className={'collaborator_avatar'}
+                            src={collaborator.profile_pic}
+                        />
+                    </Collaborator>
                 );
             })
             )
@@ -60,7 +62,7 @@ const OpenHiveProjectPage = (props) => {
                 <ProjectTitle>{!isLoading ? capitalizeFirst(project.title) : 'Loading...'}</ProjectTitle>
             </ProjectInfo>
             <ProjectCollaborators>
-                <span className={'project_collaborators'}>Collaborators: </span>{mapCollaborators()}
+                {mapCollaborators()}
             </ProjectCollaborators>
             <ProjectDashBoard>
                 <ProjectDashboardNav>

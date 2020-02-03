@@ -10,7 +10,7 @@ import {
     TaskInfoHead,
     PriorityInput,
     TaskCollaborators,
-    TaskFooter, TaskInfoBody
+    TaskFooter, TaskInfoBody, Collaborator
 } from "./Styles";
 import {useDismiss} from "../../../../../Hooks/Hooks";
 import TextEditor from "../../../../Components/TextEditor";
@@ -27,7 +27,7 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon());
 
-    const fade = useSpring({opacity:})
+
 
     useDismiss(inside, hide);
 
@@ -45,7 +45,11 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
     const renderTaskCollaborators = () => {
         return (
             task.collaborators.map(collaborator => {
-                return (<Avatar key={collaborator.u_id} src={collaborator.profile_pic}/>)
+                return (
+                    <Collaborator>
+                        <Avatar key={collaborator.u_id} src={collaborator.profile_pic}/>
+                    </Collaborator>
+                )
             })
         )
     };
@@ -65,11 +69,17 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
                         <TaskDescription>
                             <TextEditor task={task}/>
                         </TaskDescription>
+                        <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
                     </TaskInfoBody>
                     <TaskFooter>
                         <img src={priorityIcon}/>
-                        <PriorityInput value={priorityInputVal} onChange={(e) => handleInputChange(e)} style={{width: '32px'}} placeholder={task.priority}/>
-                        <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
+                        <PriorityInput
+                            value={priorityInputVal}
+                            onChange={(e) => handleInputChange(e)}
+                            style={{width: '32px'}}
+                            placeholder={task.priority}
+                        />
+
                     </TaskFooter>
                 </TaskInfo>
             </OuterDiv>

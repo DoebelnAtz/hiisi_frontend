@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import {color, colorAdjust, length, layout, components} from "../../../../../Styles/sharedStyles";
+import {color, colorAdjust, length, layout, components, border} from "../../../../../Styles/sharedStyles";
 
 export const OuterDiv = styled.div`
     position: fixed;
@@ -17,9 +17,11 @@ export const OuterDiv = styled.div`
 export const PriorityInput = components.input;
 
 export const TaskDescription = styled.div`
-    width: 100%;
+    ${layout.col};
     height: 100%;
 `;
+
+
 
 export const TaskFooter = styled.div`
     ${layout.row};
@@ -32,16 +34,21 @@ export const TaskFooter = styled.div`
 `;
 
 export const TaskCollaborators = styled.div`
-  ${layout.row};
+  ${layout.col};
+  height: 100%;
   margin-left: auto;
   margin-top: auto;
   margin-bottom: auto;
+`;
+
+export const Collaborator = styled.div`
+  ${layout.row};
+  margin: ${length.margin};
   & img {
-      height: 40px;
-      width: 40px;
-      margin-left: -8px;
-      border-radius: 50%;
-      border: 3px solid ${color.siteBG2};
+      height: 60px;
+      width: 60px;
+      border-radius: 30px 0 30px 30px;
+      border: 4px solid ${color.siteBG4};
   }
 `;
 

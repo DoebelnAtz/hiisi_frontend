@@ -5,9 +5,8 @@ export const ProjectPage = styled.div`
     color: white;
     width: calc(100%);
     height: 100%;
-    border: 1px solid ${color.primary};
-    padding: ${length.margin} 0;
-    background-color: ${color.siteBG3};
+    padding: ${length.margin};
+    background-color: ${color.siteBG2};
 `;
 
 export const ProjectInfo = styled.div`
@@ -20,20 +19,35 @@ export const ProjectTitle = styled.div`
 `;
 
 export const ProjectCollaborators = styled.div`
+  ${layout.row};
+  margin: ${length.margin};
    & img {
-        height: 32px;
-        width: 32px;
+        height: 42px;
+        width: 42px;
         border-radius: 50%;
         margin-left: -8px;
-        border: 3px solid ${color.siteBG3};
+        border: 4px solid ${color.siteBG2};
    }
    
+   
+`;
+
+export const Collaborator = styled.div`
+  position: relative;
+  bottom: 0;
+  z-index: auto;
+  ${cursor.clickable};
+  transition: all 0.1s;
+  &:hover {
+      bottom: 10px;
+      z-index: 4!important;
+   }
 `;
 
 export const ProjectDashboardNav = styled.div`
   ${layout.row};
   ${cursor.clickable};
-  ${border.setBorders(1, 0 , 0, 0, color.primary)}
+  ${border.setBorders(1, 1 , 0, 1, color.primary)}
   & div:nth-child(2) {
     ${border.setBorders(0, 1 , 1, 1, color.primary)}
   }

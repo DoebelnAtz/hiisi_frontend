@@ -49,7 +49,8 @@ const boardState = {
 
             ]
         },
-    ],};
+    ],
+};
 
 const Board = (props) => {
 
@@ -57,6 +58,7 @@ const Board = (props) => {
         'projects/boards/' + props.board_id,
         'get'
     );
+
     const handleTaskDrop = ({draggableId, destination, source}) => {
         if (!destination)
             return;
@@ -89,7 +91,7 @@ const Board = (props) => {
     };
 
     const addTask = async (taskTitle, taskColumnId) => {
-        let resp = await makeRequest('projects/boards/add_task', 'post', {taskTitle, taskColumnId})
+        let resp = await makeRequest('projects/boards/add_task', 'post', {taskTitle, taskColumnId});
         if (resp?.data) {
             let addedTask = resp.data;
             setBoard({...board, columns: board.columns.map(col => {

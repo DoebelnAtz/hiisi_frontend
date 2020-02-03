@@ -9,9 +9,9 @@ export const Column = styled.div`
   margin: 0 5px;
   padding: 5px;
   height: 100%;
-  width: 25%;
+  width: 20%;
   border-radius: 3px;
-  background: ${color.siteBG2};
+  background: ${color.siteBG3};
 `;
 
 export const ColumnList = styled.div`
@@ -20,7 +20,7 @@ export const ColumnList = styled.div`
   border-radius: 4px;
   min-height: 20px;
   width: 100%;
-  background-color: ${color.siteBG3};
+  background-color: ${color.siteBG2};
 `;
 
 export const ColumnTitle = styled.div`
