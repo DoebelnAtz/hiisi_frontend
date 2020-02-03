@@ -4,7 +4,7 @@ import { Avatar } from './Styles'
 
 const ComponentAvatar = (props) => {
     return (
-        <Avatar src={props.src} size={props.size}/>
+        <Avatar key={props.key} src={props.src} size={props.size} borderSize={props.borderSize} borderColor={props.borderColor}/>
     )
 };
 

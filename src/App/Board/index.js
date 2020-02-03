@@ -71,8 +71,6 @@ const Board = (props) => {
         let targetCol = board.columns[destColId];
         let updatedTask = {...draggedTask, column_id: targetCol.column_id};
         draggedTask.column_id = targetCol.column_id;
-        console.log(draggedTask, targetCol);
-        console.log(updatedTask);
         setBoard({columns: board.columns.map(column => ({
                 ...column, tasks: _.flow( // check Lodash docs on flow.
                 ids => ids.filter(id => id.task_id !== taskId),
@@ -95,7 +93,6 @@ const Board = (props) => {
         if (resp?.data) {
             let addedTask = resp.data;
             setBoard({...board, columns: board.columns.map(col => {
-                console.log(taskColumnId, col);
                 if (col.column_id === taskColumnId) {
                     return {...col, tasks: [...col.tasks, addedTask]};
                 } else {

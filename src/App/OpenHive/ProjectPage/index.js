@@ -29,7 +29,7 @@ const OpenHiveProjectPage = (props) => {
             return (
                 project.collaborators.map((collaborator) => {
                 return (
-                    <Collaborator>
+                    <Collaborator key={collaborator.u_id}>
                         <img
                             key={collaborator.u_id}
                             className={'collaborator_avatar'}

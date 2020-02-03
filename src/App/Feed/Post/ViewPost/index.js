@@ -16,7 +16,7 @@ const ShowComments = (props) => {
                 comment.map((child) => {
                         return (
                             <div key={child.c_id}>
-                                <Comment odd={odd} focusList={props.focusList} isExpanded={isExpanded} child={child} renderComments={renderComments}/>
+                                <Comment  odd={odd} focusList={props.focusList} isExpanded={isExpanded} child={child} renderComments={renderComments}/>
                             </div>
                         )
 

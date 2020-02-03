@@ -14,42 +14,21 @@ export const OuterDiv = styled.div`
     z-index: 1;
 `;
 
-export const PriorityInput = components.input;
-
-export const TaskDescription = styled.div`
+export const TaskInfo = styled.div`
+    position: absolute;
+    padding: ${length.margin};
     ${layout.col};
-    height: 100%;
-`;
-
-
-
-export const TaskFooter = styled.div`
-    ${layout.row};
-    margin-top: auto;
-    height: 50px;
-    & input {
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-`;
-
-export const TaskCollaborators = styled.div`
-  ${layout.col};
-  height: 100%;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-`;
-
-export const Collaborator = styled.div`
-  ${layout.row};
-  margin: ${length.margin};
-  & img {
-      height: 60px;
-      width: 60px;
-      border-radius: 30px 0 30px 30px;
-      border: 4px solid ${color.siteBG4};
-  }
+    left: 20%;
+    right: 20%;
+    top: 15%;
+    bottom: 35%;
+    color: ${color.primary};
+    border: 5px solid ${color.siteBG2};
+    border-radius: 2px;
+    margin: auto;
+    background: ${color.siteBG2};
+    overflow: auto;
+    z-index: 2!important;
 `;
 
 export const TaskInfoHead = styled.div`
@@ -71,21 +50,53 @@ export const TaskTitle = styled.div`
    
 `;
 
-export const TaskInfo = styled.div`
-    position: absolute;
-    padding: ${length.margin};
-    ${layout.col};
-    left: 20%;
-    right: 20%;
-    top: 15%;
-    bottom: 35%;
-    color: ${color.primary};
-    border: 5px solid ${color.siteBG2};
-    border-radius: 2px;
-    margin: auto;
-    background: ${color.siteBG2};
-    overflow: auto;
-    z-index: 2!important;
+export const TaskFooter = styled.div`
+    ${layout.row};
+    margin-top: auto;
+    height: 50px;
+    & input {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
 `;
+
+export const PriorityInput = components.input;
+
+export const AddUserInput = components.input;
+
+
+
+export const TaskDescription = styled.div`
+    ${layout.col};
+    height: 100%;
+`;
+
+export const TaskSidebar = styled.div`
+    ${layout.col};
+    height: 100%;
+`;
+
+export const AddUserToTask = styled.div`
+  ${layout.row};
+  padding: ${length.margin};
+`;
+
+export const TaskCollaborators = styled.div`
+  margin-left: calc(${length.margin} * 2 - 4px);
+  ${layout.row}
+`;
+
+export const Collaborator = styled.div`
+  ${layout.row};
+  & img {
+      height: 60px;
+      width: 60px;
+      margin-left: -10px;
+      border-radius: 50%;
+      border: 4px solid ${color.siteBG2};
+  }
+`;
+
+
 
 

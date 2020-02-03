@@ -20,8 +20,8 @@ export const TaskCollaborators = styled.div`
   margin-left: auto;
   & img {
       transition: border 0.3s;
-      height: 30px;
-      width: 30px;
+      height: 32px;
+      width: 32px;
       margin-left: -8px;
       border-radius: 50%;
       border: 3px solid ${color.siteBG4};

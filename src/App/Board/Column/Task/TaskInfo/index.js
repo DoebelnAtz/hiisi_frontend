@@ -10,24 +10,23 @@ import {
     TaskInfoHead,
     PriorityInput,
     TaskCollaborators,
-    TaskFooter, TaskInfoBody, Collaborator
+    TaskFooter, TaskInfoBody,
+    Collaborator, TaskSidebar,
+    AddUserToTask, AddUserInput
 } from "./Styles";
-import {useDismiss} from "../../../../../Hooks/Hooks";
+
+import { useDismiss } from "../../../../../Hooks/Hooks";
 import TextEditor from "../../../../Components/TextEditor";
 import Button from "../../../../Components/Buttons/Button";
-import {makeRequest} from "../../../../Api/Api";
-import Input from "../../../../Components/Input";
+import { makeRequest } from "../../../../Api/Api";
 import Avatar from "../../../../Components/Avatar";
 
 
 const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
 
     const inside = useRef();
-
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon());
-
-
 
     useDismiss(inside, hide);
 
@@ -69,7 +68,10 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
                         <TaskDescription>
                             <TextEditor task={task}/>
                         </TaskDescription>
-                        <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
+                        <TaskSidebar>
+                            <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
+                            <AddUserToTask><AddUserInput/></AddUserToTask>
+                        </TaskSidebar>
                     </TaskInfoBody>
                     <TaskFooter>
                         <img src={priorityIcon}/>
@@ -79,7 +81,6 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
                             style={{width: '32px'}}
                             placeholder={task.priority}
                         />
-
                     </TaskFooter>
                 </TaskInfo>
             </OuterDiv>
