@@ -10,8 +10,8 @@ export const TaskStatus = styled.div`
   margin-top: ${length.margin};
   ${layout.row}
   & img {
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
   }
 `;
 

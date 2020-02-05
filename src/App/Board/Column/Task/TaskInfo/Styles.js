@@ -11,7 +11,7 @@ export const OuterDiv = styled.div`
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
-    z-index: 1;
+    z-index: 5;
 `;
 
 export const TaskInfo = styled.div`
@@ -88,7 +88,8 @@ export const TaskCollaborators = styled.div`
 `;
 
 export const Collaborator = styled.img`
-  width: 29%;
+  width: 25%;
+  max-width: 60px;
   margin-left: -10px;
   border-radius: 50%;
   border: 4px solid ${color.siteBG2};

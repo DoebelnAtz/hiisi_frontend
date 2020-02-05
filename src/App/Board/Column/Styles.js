@@ -12,6 +12,10 @@ export const Column = styled.div`
   width: 20%;
   border-radius: 3px;
   background: ${color.siteBG3};
+  z-index: 5;
+  &:hover {
+    background: ${color.siteBG3};
+  }
 `;
 
 export const ColumnList = styled.div`

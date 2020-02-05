@@ -1,14 +1,15 @@
-import React, {useState} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 
 import Column from './Column'
 import _ from "lodash";
 
-import { Columns } from "./Styles";
+import { Columns, Collaborator, ProjectCollaborators } from "./Styles";
 import {makeRequest} from "../Api/Api";
 import {useRequest} from "../../Hooks/Hooks";
 
-const boardState = {
+
+let boardState = {
     columns: [
         {
             column_id: 0,
@@ -59,6 +60,24 @@ const Board = (props) => {
         'get'
     );
 
+    const [filteredBoard, setFilteredBoard] = useState(boardState);
+    const [filteredUser, setFilteredUser] = useState(false);
+
+    useEffect(() => {
+        isLoading ? setFilteredBoard(boardState) : setFilteredBoard(board)
+    }, [isLoading]);
+
+
+    const filterBoard = (userId) => {
+        setFilteredUser(userId);
+        console.log(board, filteredBoard);
+        setFilteredBoard({...board, columns: board.columns.map(col => {
+            return ({...col, tasks:
+            col.tasks.filter(task => task.collaborators.find(collaborator => collaborator.u_id === userId))
+            })})
+        })
+    };
+
     const handleTaskDrop = ({draggableId, destination, source}) => {
         if (!destination)
             return;
@@ -103,20 +122,45 @@ const Board = (props) => {
         }
     };
 
+    const mapCollaborators = () => {
+        if (!isLoading) {
+            return (
+                props.projectCollaborators.map((collaborator) => {
+                    return (
+                        <Collaborator filtered={filteredUser===collaborator.u_id} onClick={() => filterBoard(collaborator.u_id)} key={collaborator.u_id}>
+                            <img
+                                key={collaborator.u_id}
+                                className={'collaborator_avatar'}
+                                src={collaborator.profile_pic}
+                            />
+                        </Collaborator>
+                    );
+                })
+            )
+        } else {
+            return(<div style={{marginBottom: '28px'}}>Loading...</div>)
+        }
+    };
+
     return (
-        <DragDropContext onDragEnd={handleTaskDrop}>
-            <Columns>
-            {(!isLoading ? board : boardState).columns.map((column) => (
-                <Column
-                    column={column}
-                    columnNum={column.column_number}
-                    key={column.column_number}
-                    taskList={column.tasks}
-                    addTask={addTask}
-                />
-            ))}
-            </Columns>
-        </DragDropContext>
+        <Fragment>
+            <ProjectCollaborators>
+                {mapCollaborators()}
+            </ProjectCollaborators>
+            <DragDropContext onDragEnd={handleTaskDrop}>
+                <Columns>
+                    {filteredBoard.columns.map((column) => (
+                    <Column
+                        column={column}
+                        columnNum={column.column_number}
+                        key={column.column_number}
+                        taskList={column.tasks}
+                        addTask={addTask}
+                    />
+                ))}
+                </Columns>
+            </DragDropContext>
+        </Fragment>
     )
 };
 

@@ -24,31 +24,13 @@ const OpenHiveProjectPage = (props) => {
         setPid(props.match.params.pid)
     }, [props.match.params.pid]);
 
-    const mapCollaborators = () => {
-        if (!isLoading) {
-            return (
-                project.collaborators.map((collaborator) => {
-                return (
-                    <Collaborator key={collaborator.u_id}>
-                        <img
-                            key={collaborator.u_id}
-                            className={'collaborator_avatar'}
-                            src={collaborator.profile_pic}
-                        />
-                    </Collaborator>
-                );
-            })
-            )
-        } else {
-            return(<div>Loading...</div>)
-        }
-    };
+
 
     const renderDash = () => {
         console.log(project);
         switch(dashState) {
             case('board'):
-                return (<Board board_id={project.board_id}/>);
+                return (<Board projectCollaborators={project.collaborators} board_id={project.board_id}/>);
             case('chat'):
                 return (<Messages tid={project.t_id}/>);
             default:
@@ -61,9 +43,7 @@ const OpenHiveProjectPage = (props) => {
             <ProjectInfo>
                 <ProjectTitle>{!isLoading ? capitalizeFirst(project.title) : 'Loading...'}</ProjectTitle>
             </ProjectInfo>
-            <ProjectCollaborators>
-                {mapCollaborators()}
-            </ProjectCollaborators>
+
             <ProjectDashBoard>
                 <ProjectDashboardNav>
                     <ProjectDashBoardNavItem

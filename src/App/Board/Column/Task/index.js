@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react'
 import { Draggable } from 'react-beautiful-dnd';
 
 import TaskInfo from './TaskInfo'
-import Plus from '../../../../Assets/Plus.png'
+import Plus from '../../../../Assets/Dots.png'
 import {Task, TaskContent, TaskStatus, TaskCollaborators} from './Styles'
 import {getPriorityIcon} from "../../../../utils/taskUtils";
 import {withRouter} from "react-router-dom";
@@ -18,7 +18,7 @@ const BoardColumnTask = ({task, index, history}) => {
                 if (index === 3 && task.collaborators.length > 4) {
                     return (<img key={collaborator.u_id} src={Plus}/>)
                 } else if (index > 3) {
-                    return (<div/>)
+                    return (<div key={collaborator.u_id}/>)
                 } else {
                     return (<img key={collaborator.u_id} src={collaborator.profile_pic}/>)
                 }

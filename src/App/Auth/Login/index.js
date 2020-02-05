@@ -32,7 +32,7 @@ const Login = (props) => {
                 setLocal('token', resp.data);
                 setAnimate(false);
                 setTimeout(() =>
-                props.history.push('/blog')
+                props.history.push('/openhive')
                 , 2000)
             } else {
                 props.history.push('/login')

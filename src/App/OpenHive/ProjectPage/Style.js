@@ -18,31 +18,7 @@ export const ProjectTitle = styled.div`
     ${font.title};
 `;
 
-export const ProjectCollaborators = styled.div`
-  ${layout.row};
-  margin: ${length.margin};
-   & img {
-        height: 42px;
-        width: 42px;
-        border-radius: 50%;
-        margin-left: -8px;
-        border: 4px solid ${color.siteBG2};
-   }
-   
-   
-`;
 
-export const Collaborator = styled.div`
-  position: relative;
-  bottom: 0;
-  z-index: auto;
-  ${cursor.clickable};
-  transition: all 0.1s;
-  &:hover {
-      bottom: 10px;
-      z-index: 4!important;
-   }
-`;
 
 export const ProjectDashboardNav = styled.div`
   ${layout.row};
@@ -51,13 +27,18 @@ export const ProjectDashboardNav = styled.div`
   & div:nth-child(2) {
     ${border.setBorders(0, 1 , 1, 1, color.primary)}
   }
+  
 `;
 
 export const ProjectDashBoardNavItem = styled.div`
   ${layout.col};
   border-bottom: 1px solid ${color.primary};
   display: flex; 
+  z-index: 5;
   justify-content: center;
+  &:hover {
+    background-color: ${color.siteBG3};
+  }
 `;
 
 export const ProjectDashBoard = styled.div`

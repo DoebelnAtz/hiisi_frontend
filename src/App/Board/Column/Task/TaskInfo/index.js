@@ -14,7 +14,7 @@ import {
     AddUserToTask, AddUserInput, AddUser, AddUserBtn
 } from "./Styles";
 
-import Plus from '../../../../../Assets/Plus.png'
+import Plus from '../../../../../Assets/Dots.png'
 import {useDismiss, useRequest} from "../../../../../Hooks/Hooks";
 import TextEditor from "../../../../Components/TextEditor";
 import Button from "../../../../Components/Buttons/Button";
@@ -30,6 +30,7 @@ const BoardColumnTaskInfo = (props) => {
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+    const [maxDisplayedUsers, setMaxDisplayedUsers] = useState(3);
 
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 
@@ -101,10 +102,14 @@ const BoardColumnTaskInfo = (props) => {
     const renderTaskCollaborators = () => {
         return (
             task.collaborators.map((collaborator, index)=> {
-                if (index === 3 && task.collaborators.length > 4) {
-                    return <Collaborator key={collaborator.u_id} src={Plus}/>
-                } else if (index > 3) {
-                    return (<div/>)
+                if (index === maxDisplayedUsers && task.collaborators.length > maxDisplayedUsers + 1) {
+                    return <Collaborator
+                        key={collaborator.u_id}
+                        src={Plus}
+                        onClick={() => setMaxDisplayedUsers(maxDisplayedUsers + 1)}
+                    />
+                } else if (index > maxDisplayedUsers) {
+                    return (<div key={collaborator.u_id}/>)
                 } else {
                     return (
                         <Collaborator key={collaborator.u_id} src={collaborator.profile_pic}/>
@@ -140,7 +145,7 @@ const BoardColumnTaskInfo = (props) => {
                     <TaskFooter>
                         <img src={priorityIcon}/>
 
-                            <PriorityInput style={{width: '14px'}}
+                            <PriorityInput style={{width: '32px'}}
                                 value={priorityInputVal}
                                 onChange={(e) => handleInputChange(e)}
                                 placeholder={task.priority ?? 1}
