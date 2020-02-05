@@ -1,9 +1,9 @@
 import Feed from "./Feed/Feed";
 import Profile from "./Profile/Profile";
-import React, {useRef} from "react";
+import React, {Fragment, useRef} from "react";
 
 import { Route, Switch, useLocation } from 'react-router-dom'
-import Slots from "./Slots/Slots";
+
 import UserPage from "./User/UserPage";
 import {useTransition, animated} from "react-spring";
 import Coalition from "./Coalition/Coalition";
@@ -12,6 +12,7 @@ import MessageHome from "./Messages/MessageHome";
 import OpenHive from './OpenHive'
 import Board from './Board'
 import ProjectPage from "./OpenHive/ProjectPage";
+import TaskInfo from "./Board/Column/Task/TaskInfo";
 
 export default (prop) => {
 
@@ -29,15 +30,11 @@ export default (prop) => {
     const renderCount = useRef(1);
 
     return (//transitions.map(({ item, props, key }) => (
+        <Fragment>
             <Switch location={location}>
                 <Route exact path={'/openhive'}
                        render={(props) =>
                            <OpenHive {...props} />
-                       }
-                />
-                <Route exact path={'/slots'}
-                       render={(props) =>
-                           <Slots {...props} />
                        }
                 />
                 <Route exact path={'/blog'} render={
@@ -69,12 +66,17 @@ export default (prop) => {
                 <Route exact path={'/search/user/:uid'}>
                     <UserPage/>
                 </Route>
-
-                <Route exact path={'/projects/:pid'}
-                    render={(props) => <ProjectPage {...props}/>}
-                    >
-                </Route>
             </Switch>
+            <Route path={'/projects/:pid'}
+                render={(props) => <ProjectPage {...props}/>}
+                >
+            </Route>
+            <Route exact path={'/projects/:pid/tasks/:tid'}
+                   render={(props) => <TaskInfo {...props}/>}
+            >
+            </Route>
+        </Fragment>
+
     )
 
 }

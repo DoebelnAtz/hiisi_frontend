@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import { Route, Switch } from 'react-router-dom'
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { DndProvider } from 'react-dnd'
 import Backend from 'react-dnd-html5-backend'
 import ErrorContext from '../Context/ErrorContext'
@@ -26,7 +24,6 @@ const App =  () => {
 
     return (
         <DndProvider backend={Backend}>
-        <MuiPickersUtilsProvider utils={MomentUtils}>
         <IntraContext.Provider value={{intra, setIntra}}>
             <ErrorContext.Provider value={{error, setError}}>
         <CurrentNavContext.Provider value={{currentNav, setCurrentNav}}>
@@ -59,7 +56,6 @@ const App =  () => {
         </CurrentNavContext.Provider>
             </ErrorContext.Provider>
         </IntraContext.Provider>
-        </MuiPickersUtilsProvider>
         </DndProvider>
     )
 };

@@ -40,13 +40,13 @@ export const useSocket = (url, options, room) => {
     return {socket, connected, messages, setMessages, activeUsers}
 };
 
-export const useDismiss = (refInside, setDismissState) => {
+export const useDismiss = (refInside, close) => {
 
     const handleEsc = (e) => {
         if (e.keyCode !== 27)
             return;
         else
-            setDismissState(false);
+            close();
     };
 
     const handleClick = (e) => {
@@ -54,7 +54,7 @@ export const useDismiss = (refInside, setDismissState) => {
         if (refInside.current?.contains(e.target))
             return;
         else
-            setDismissState(false);
+            close();
     };
     useEffect(() => {
         document.addEventListener("keydown", handleEsc, false);

@@ -12,7 +12,6 @@ import './messages.css'
 import { calculateTimeSince, getLocal } from "../../utils/utils";
 
 import socketIOClient from "socket.io-client";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import AddToChat from "../Components/Buttons/AddToChat";
 
 const Messages = (props) => {
@@ -194,7 +193,7 @@ const Messages = (props) => {
             <textarea id={'chat_input'} onKeyDown={(e) =>handleEnter(e)} value={inputVal}
                       onChange={(e) => setInputVal(e.target.value)}>
             </textarea>
-                <button id={'send_button'} onClick={(e) => handleClick(e)}>{(connected ? 'send' : <CircularProgress size={20} />)}</button>
+                <button id={'send_button'} onClick={(e) => handleClick(e)}>{(connected ? 'send' : 'loading')}</button>
             </div>
         </div>
 

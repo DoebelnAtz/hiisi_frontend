@@ -1,6 +1,5 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import ReactDOM from 'react-dom'
-import {useSpring, useTransition, animated} from 'react-spring'
 
 import {
     OuterDiv,
@@ -15,20 +14,32 @@ import {
     AddUserToTask, AddUserInput
 } from "./Styles";
 
-import { useDismiss } from "../../../../../Hooks/Hooks";
+import {useDismiss, useRequest} from "../../../../../Hooks/Hooks";
 import TextEditor from "../../../../Components/TextEditor";
 import Button from "../../../../Components/Buttons/Button";
 import { makeRequest } from "../../../../Api/Api";
 import Avatar from "../../../../Components/Avatar";
+import {getPriorityIcon} from "../../../../../utils/taskUtils";
 
 
-const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
+const BoardColumnTaskInfo = (props) => {
 
     const inside = useRef();
+    const [task, setTask, isLoading] = useRequest('projects/boards/tasks/' + props.match.params.tid);
     const [priorityInputVal, setPriorityInputVal] = useState('');
-    const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon());
 
-    useDismiss(inside, hide);
+    const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
+
+    useEffect(() => {
+        setPriorityIcon(getPriorityIcon(task.priority))
+    }, [isLoading]);
+
+    const close = () => {
+        props.history.push('/projects/1')
+
+    };
+
+    useDismiss(inside, close);
 
     const updateTask = async () => {
         await makeRequest('projects/boards/update_task', 'put', task)
@@ -37,7 +48,7 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
     const handleInputChange = (e) => {
         console.log(e.target.value);
         setPriorityInputVal(e.target.value);
-        task.priority = e.target.value;
+        setTask({...task, priority: e.target.value});
         setPriorityIcon(getPriorityIcon(Number(e.target.value)))
     };
 
@@ -45,8 +56,8 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
         return (
             task.collaborators.map(collaborator => {
                 return (
-                    <Collaborator>
-                        <Avatar key={collaborator.u_id} src={collaborator.profile_pic}/>
+                    <Collaborator key={collaborator.u_id}>
+                        <Avatar src={collaborator.profile_pic}/>
                     </Collaborator>
                 )
             })
@@ -66,21 +77,22 @@ const BoardColumnTaskInfo = ({task, hide, getPriorityIcon}) => {
                     </TaskInfoHead>
                     <TaskInfoBody>
                         <TaskDescription>
-                            <TextEditor task={task}/>
+                            {!isLoading && <TextEditor task={task}/>}
                         </TaskDescription>
                         <TaskSidebar>
-                            <TaskCollaborators>{renderTaskCollaborators()}</TaskCollaborators>
+                            <TaskCollaborators>{!isLoading && renderTaskCollaborators()}</TaskCollaborators>
                             <AddUserToTask><AddUserInput/></AddUserToTask>
                         </TaskSidebar>
                     </TaskInfoBody>
                     <TaskFooter>
                         <img src={priorityIcon}/>
-                        <PriorityInput
-                            value={priorityInputVal}
-                            onChange={(e) => handleInputChange(e)}
-                            style={{width: '32px'}}
-                            placeholder={task.priority}
-                        />
+
+                            <PriorityInput
+                                value={priorityInputVal}
+                                onChange={(e) => handleInputChange(e)}
+                                placeholder={task.priority ?? 1}
+                            />
+
                     </TaskFooter>
                 </TaskInfo>
             </OuterDiv>

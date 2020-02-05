@@ -14,7 +14,7 @@ const CreatePostModal = (props) => {
     const [submitDisabled, setSubmitDisabled] = useState(true);
     const inside = useRef();
 
-    useDismiss(inside, props.setPopup);
+    useDismiss(inside, () => props.setPopup(false));
 
     const createPost = async (title, content) => {
         let now = new Date().toISOString();
