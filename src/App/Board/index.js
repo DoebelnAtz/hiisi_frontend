@@ -60,24 +60,25 @@ const Board = (props) => {
         'get'
     );
 
-    const [filteredBoard, setFilteredBoard] = useState(boardState);
     const [filteredUser, setFilteredUser] = useState(false);
 
-    useEffect(() => {
-        isLoading ? setFilteredBoard(boardState) : setFilteredBoard(board)
-    }, [isLoading]);
 
 
-    const filterBoard = (userId) => {
-        setFilteredUser(userId);
-        console.log(board, filteredBoard);
-        setFilteredBoard({...board, columns: board.columns.map(col => {
-            return ({...col, tasks:
-            col.tasks.filter(task => task.collaborators.find(collaborator => collaborator.u_id === userId))
-            })})
-        })
+    const filterBoard = () => {
+        let b;
+        if (!filteredUser) {
+            return board;
+        } else {
+            b = {...board, columns: board.columns.map(col => {
+                    return ({...col, tasks:
+                            col.tasks.filter(task =>
+                                task.collaborators.find(collaborator =>
+                                    collaborator.u_id === filteredUser))
+                    })})
+            };
+            return b;
+        }
     };
-
     const handleTaskDrop = ({draggableId, destination, source}) => {
         if (!destination)
             return;
@@ -86,8 +87,8 @@ const Board = (props) => {
         let taskId = Number(draggableId);
         if (srcColId === destColId && source.index === destination.index)
             return;
-        let draggedTask = board.columns[srcColId].tasks[source.index];
-        let targetCol = board.columns[destColId];
+        let draggedTask = filterBoard().columns[srcColId].tasks[source.index];
+        let targetCol = filterBoard().columns[destColId];
         let updatedTask = {...draggedTask, column_id: targetCol.column_id};
         draggedTask.column_id = targetCol.column_id;
         setBoard({columns: board.columns.map(column => ({
@@ -127,7 +128,10 @@ const Board = (props) => {
             return (
                 props.projectCollaborators.map((collaborator) => {
                     return (
-                        <Collaborator filtered={filteredUser===collaborator.u_id} onClick={() => filterBoard(collaborator.u_id)} key={collaborator.u_id}>
+                        <Collaborator
+                            filtered={filteredUser===collaborator.u_id}
+                            onClick={() => setFilteredUser(filteredUser === collaborator.u_id ? false : collaborator.u_id)}
+                            key={collaborator.u_id}>
                             <img
                                 key={collaborator.u_id}
                                 className={'collaborator_avatar'}
@@ -149,7 +153,7 @@ const Board = (props) => {
             </ProjectCollaborators>
             <DragDropContext onDragEnd={handleTaskDrop}>
                 <Columns>
-                    {filteredBoard.columns.map((column) => (
+                    {!isLoading && filterBoard().columns.map((column) => (
                     <Column
                         column={column}
                         columnNum={column.column_number}

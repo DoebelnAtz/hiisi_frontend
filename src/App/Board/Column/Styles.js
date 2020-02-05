@@ -7,15 +7,13 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 5px;
-  padding: 5px;
+  padding: 0 5px 5px 5px;
   height: 100%;
   width: 20%;
   border-radius: 3px;
   background: ${color.siteBG3};
-  z-index: 5;
-  &:hover {
-    background: ${color.siteBG3};
-  }
+  
+  
 `;
 
 export const ColumnList = styled.div`
@@ -31,5 +29,8 @@ export const ColumnTitle = styled.div`
   padding: 13px 10px 17px;
   text-transform: uppercase;
   color: ${color.primary};
- 
+  z-index: 3;
+    &:hover {
+      background: ${color.siteBG3};
+    }
 `;

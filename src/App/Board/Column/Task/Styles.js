@@ -4,6 +4,7 @@ import {color, colorAdjust, cursor, layout, length} from "../../../../Styles/sha
 export const TaskContent = styled.div`
   display: block;
   margin-top: 0;
+  z-index: 100!important;
 `;
 
 export const TaskStatus = styled.div`
@@ -37,7 +38,8 @@ export const Task = styled.div`
   transition: all 0.3s;
   ${cursor.clickable};
   background-color: ${color.siteBG4};
-  
+  z-index: 100;
+
   & span {
     font-size: 16px;
   }
@@ -55,6 +57,7 @@ export const Task = styled.div`
       border: 2px solid ${color.siteBG3};
       background-color: ${colorAdjust.lighten(color.siteBG2, 0.5)};;
       transform: scale(1.2);
+      z-index: 100!important;
     `}
 `;
 

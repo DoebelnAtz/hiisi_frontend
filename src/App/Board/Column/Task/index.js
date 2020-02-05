@@ -28,7 +28,6 @@ const BoardColumnTask = ({task, index, history}) => {
 
     return (
         <Fragment>
-
             <Draggable draggableId={task.task_id.toString()} index={index}>
                 {(provided, snapshot) => (
                     <TaskContent
