@@ -18,8 +18,6 @@ export const ProjectTitle = styled.div`
     ${font.title};
 `;
 
-
-
 export const ProjectDashboardNav = styled.div`
   ${layout.row};
   ${cursor.clickable};

@@ -106,6 +106,7 @@ const BoardColumnTaskInfo = (props) => {
                     return <Collaborator
                         key={collaborator.u_id}
                         src={Plus}
+                        style={{cursor: 'pointer'}}
                         onClick={() => setMaxDisplayedUsers(maxDisplayedUsers + 1)}
                     />
                 } else if (index > maxDisplayedUsers) {
@@ -137,7 +138,12 @@ const BoardColumnTaskInfo = (props) => {
                         <TaskSidebar>
                             <TaskCollaborators>{!isLoading && renderTaskCollaborators()}</TaskCollaborators>
                             <AddUserToTask>
-                                <AddUserInput style={{width: '100%'}} value={searchInput} onChange={(e) => handleSearch(e)}/>
+                                <AddUserInput
+                                    style={{width: '100%'}}
+                                    value={searchInput}
+                                    onChange={(e) => handleSearch(e)}
+                                    placeholder={'add user'}
+                                />
                             </AddUserToTask>
                             {!!searchResult.length && renderSearchResults()}
                         </TaskSidebar>
