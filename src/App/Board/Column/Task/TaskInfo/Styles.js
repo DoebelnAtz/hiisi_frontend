@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import {color, colorAdjust, length, layout, components, border} from "../../../../../Styles/sharedStyles";
+import {color, colorAdjust, length, layout, components, border, font, cursor} from "../../../../../Styles/sharedStyles";
 
 export const OuterDiv = styled.div`
     position: fixed;
@@ -39,7 +39,7 @@ export const TaskInfoHead = styled.div`
 
 export const TaskInfoBody = styled.div`
     height: calc(100% - 120px);
-    width: calc(100%- 20px);
+    width: calc(100%);
     ${layout.row};
 `;
 
@@ -67,18 +67,19 @@ export const AddUserInput = components.input;
 
 
 export const TaskDescription = styled.div`
-    ${layout.col};
     height: 100%;
+    width: 70%;
 `;
 
 export const TaskSidebar = styled.div`
-    ${layout.col};
     height: 100%;
+    width: 30%;
 `;
 
 export const AddUserToTask = styled.div`
   ${layout.row};
   padding: ${length.margin};
+  padding-right: 0;
 `;
 
 export const TaskCollaborators = styled.div`
@@ -86,16 +87,56 @@ export const TaskCollaborators = styled.div`
   ${layout.row}
 `;
 
-export const Collaborator = styled.div`
+export const Collaborator = styled.img`
+  width: 29%;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 4px solid ${color.siteBG2};
+`;
+
+export const AddUserBtn = styled.div`
+  background-color: ${color.primary};
+  width: 40px; 
+  padding: 0 8px 4px 8px;
+  border-radius: 0  18px 18px 0;
+  font-size: 24px;
+  color: ${color.siteBG2};
+  
+`;
+
+export const AddUser = styled.div`
   ${layout.row};
+  ${cursor.clickable};
+
   & img {
-      height: 60px;
-      width: 60px;
-      margin-left: -10px;
-      border-radius: 50%;
-      border: 4px solid ${color.siteBG2};
+      height: 40px;
+      width: 40px;
+      margin-left: 8px;
+      border-radius: 50% 0 0 50%;
+      border: 2px solid ${color.primary};
+  }
+  & span {
+    font-size: 18px;
+    width: calc(100% - 40px - 48px);
+    padding: 4px 12px 4px 12px;
+    ${border.setBorders(2, 2, 2, 0, color.primary)};
+    letter-spacing: 1px;
+    color: ${color.primary};
+  }
+  &:hover span {
+      border-color: ${colorAdjust.darken(color.primary, 0.1)}!important;
+  }
+  
+  &:hover img {
+      border-color: ${colorAdjust.darken(color.primary, 0.1)}!important;
+  }
+  
+  &:hover ${AddUserBtn} {
+      background-color: ${colorAdjust.darken(color.primary, 0.1)}!important;
   }
 `;
+
+
 
 
 
