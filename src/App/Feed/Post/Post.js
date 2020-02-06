@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import ViewPost from './ViewPost/ViewPost'
+import ViewPost from './ViewPost'
 import PostMainContent from './PostMainContent'
 
 const Post = ({content}) => {
@@ -22,7 +22,7 @@ const Post = ({content}) => {
         return (
             <div  className={'feed_item'}>
                 <PostMainContent expand={expand} content={content}/>
-                <ViewPost content={content}/>
+                <ViewPost focusList={{focus: [content.username], title: 'author'}} content={content} commentthread={content.commentthread}/>
             </div>
         );
     } else {

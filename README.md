@@ -156,7 +156,7 @@ like blog/comment
     data = {
         target_id: (blog or comment id),
         user_id: (user id number),
-        target: ("Blog" or "Comment"),
+        target: ("Blog" or "Index"),
         change: (number, 1 for like -1 for dislike),
     }
     

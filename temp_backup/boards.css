@@ -1,0 +1,80 @@
+#boards_main {
+    padding: var(--viewMargin);
+}
+
+.board {
+    display: flex;
+    min-height: 15px;
+    width: 100%;
+    max-width: 1500px;
+    justify-content: space-between;
+}
+
+.board_item {
+    display: flex;
+    width: 100%;
+}
+
+.task_title {
+    white-space: inherit;
+    text-overflow: inherit;
+    overflow: inherit;
+    width: auto;
+}
+
+.task {
+    margin: 8px 2px;
+    max-height: 32px;
+    height: auto;
+    padding: 3px 0 5px 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: auto;
+    background-color: var(--siteBG4);
+    color: var(--logoMain);
+}
+
+.task:hover {
+    max-height: 500px;
+
+    transition: max-height 800ms ease-in;
+    white-space: normal;
+}
+
+.column {
+
+    height: 100%;
+    background-color: var(--siteBG3);
+    border-radius: 4px;
+    margin: 0;
+    padding: 0 3px;
+    width: calc(20% - 6px);
+    color: var(--logoMain);
+}
+
+.column_title {
+    font-size: 18px;
+    margin: 3px 3px 0 3px;
+}
+
+.dragging {
+    opacity: 0.3;
+    background-color: white;
+    color: white;
+}
+
+.spacer {
+    height: 0;
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    background-color: var(--siteBG4);
+    cursor: default;
+}
+
+.spacer.empty_spacer {
+    min-height: 20px;
+    margin: 8px 2px;
+    background-color: var(--siteBG4);
+}

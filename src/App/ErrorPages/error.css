@@ -1,0 +1,10 @@
+#error_message {
+    background-color: red;
+    width: 100px;
+    height: 50px;
+    color: wheat;
+    top: 0;
+    opacity: 80%;
+    right: 0;
+    position: absolute;
+}

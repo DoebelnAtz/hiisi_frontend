@@ -13,7 +13,7 @@ const TextArea = (props) => {
                     </textarea>
             </div>
             <div className={'row justify-content-center counter'}>
-                <p style={{color: props.count > props.max ? 'red' : 'black'}}>{props.count}/{props.max}</p>
+                <p style={{color: props.count > props.max ? 'red' : 'var(--logoMain);'}}>{props.count}/{props.max}</p>
             </div>
         </div>
     )
