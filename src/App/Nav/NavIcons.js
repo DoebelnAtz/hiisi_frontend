@@ -27,6 +27,7 @@ const NavIcons = (props) => {
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
             <NavItem path={props.location.pathname} name={'Search'} icon={searchIcon}/>
+            <NavItem path={'/resources'} name={'Resources'} icon={openHiveIcon}/>
             {/*<ToggleButton connected={props.intra} setConnected={props.setIntra}/>*/}
         </div>
     )

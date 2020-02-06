@@ -153,7 +153,7 @@ const Board = (props) => {
             </ProjectCollaborators>
             <DragDropContext onDragEnd={handleTaskDrop}>
                 <Columns>
-                    {!isLoading && filterBoard().columns.map((column) => (
+                    {(!isLoading ? filterBoard().columns : boardState.columns).map(column => (
                     <Column
                         column={column}
                         columnNum={column.column_number}

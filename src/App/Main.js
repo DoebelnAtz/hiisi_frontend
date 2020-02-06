@@ -13,6 +13,8 @@ import OpenHive from './OpenHive'
 import Board from './Board'
 import ProjectPage from "./OpenHive/ProjectPage";
 import TaskInfo from "./Board/Column/Task/TaskInfo";
+import Messages from "./Messages/Messages";
+import Resources from "./Resources";
 
 export default (prop) => {
 
@@ -66,6 +68,18 @@ export default (prop) => {
                 <Route exact path={'/search/user/:uid'}>
                     <UserPage/>
                 </Route>
+                <Route
+                    exact path={'/messages/:tid'} // useTransition in main causes a UI bug
+                    render={(props) =>             // in this component, moved here for now
+                        <Messages {...props}/>
+                    }
+                />
+                <Route
+                    exact path={'/resources'}
+                    render={(props) =>
+                        <Resources {...props}/>
+                    }
+                />
             </Switch>
             <Route path={'/projects/:pid'}
                 render={(props) => <ProjectPage {...props}/>}
