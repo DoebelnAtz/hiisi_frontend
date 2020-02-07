@@ -86,6 +86,6 @@ export const useRequest = (url, method, body={}) => {
             }
         }
         request();
-    }, []);
+    }, [url, method]);
     return [data, setData, isLoading]
 };

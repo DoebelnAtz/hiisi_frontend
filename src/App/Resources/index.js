@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useRequest} from "../../Hooks/Hooks";
-import {ResourceCard, Resources} from "./Styles";
+import {ResourceCard, Resources, Tag, Tags, ResourceTitle, DeleteButton } from "./Styles";
 import {withRouter} from "react-router-dom";
 import SubmitResource from './SubmitResource'
 import  Button  from '../Components/Buttons/Button'
@@ -28,10 +28,19 @@ const ResourcesHome = (props) => {
                 return (
                     <ResourceCard
                         key={resource.r_id}
-                        onClick={() => {props.history.push(`/resources/${resource.r_id}`)}}
+
                     >
-                        {resource.title}
-                        {resource.owner && <Button onClick={() => deleteResource(resource.r_id)}>X</Button>}
+                        <ResourceTitle
+                            onClick={() => {props.history.push(`/resources/${resource.r_id}`)}}
+                        >
+                             {resource.title}
+                        </ResourceTitle>
+                        <Tags>
+                                {resource.tags.map(tag => <Tag color={tag.color}># {tag.title}</Tag>)}
+                        </Tags>
+                        <DeleteButton>
+                            {resource.owner && <Button onClick={() => deleteResource(resource.r_id)}>X</Button>}
+                        </DeleteButton>
                     </ResourceCard>
                 )
             })

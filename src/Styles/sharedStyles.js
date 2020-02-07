@@ -68,6 +68,19 @@ export const components = {
             outline: none;
             border: 1px solid ${colorAdjust.darken(color.primary, 0.2)};
         }
+    `,
+    button: css`
+        padding: 2px 7px;
+        font-size: 16px;
+        height: 34px;
+        background-color: ${color.siteBG3};
+        color: ${color.primary};
+        border: 1px solid ${color.primary};
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+          border-color: ${colorAdjust.darken(color.primary, 0.2)};
+        }
     `
 };
 
