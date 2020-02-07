@@ -51,7 +51,7 @@ const Feed = (prop) => {
                              setPosts={setPosts} posts={posts}
                              isMounted={isMounted}
             />
-            {!isLoading ? renderList() : null}
+            {!isLoading && renderList()}
         </div>
     );
 

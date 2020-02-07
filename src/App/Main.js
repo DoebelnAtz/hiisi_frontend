@@ -15,6 +15,7 @@ import ProjectPage from "./OpenHive/ProjectPage";
 import TaskInfo from "./Board/Column/Task/TaskInfo";
 import Messages from "./Messages/Messages";
 import Resources from "./Resources";
+import ResourcePage from './Resources/ResourcePage'
 
 export default (prop) => {
 
@@ -75,9 +76,17 @@ export default (prop) => {
                     }
                 />
                 <Route
-                    exact path={'/resources'}
+                    exact
+                    path={'/resources'}
                     render={(props) =>
                         <Resources {...props}/>
+                    }
+                />
+                <Route
+                    exact
+                    path={'/resources/:rid'}
+                    render={(props) =>
+                        <ResourcePage {...props}/>
                     }
                 />
             </Switch>

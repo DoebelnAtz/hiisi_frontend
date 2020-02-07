@@ -13,6 +13,22 @@ export const color = {
     siteBG5: Color('#161616').lighten(2.5).string(),
 };
 
+export const colorAdjust = {
+    darken: (color, amount) =>
+        Color(color)
+            .darken(amount)
+            .string(),
+    lighten: (color, amount) =>
+        Color(color)
+            .lighten(amount)
+            .string(),
+    rgba: (color, opacity) =>
+        Color(color)
+            .alpha(opacity)
+            .string()
+};
+
+
 export const length = {
     margin: '10px',
     radius: '4px'
@@ -23,6 +39,10 @@ export const font = {
       font-family: Share Tech, sans-serif;
       font-size:36px;
       letter-spacing: 2px;
+    `,
+    text: css`
+      color: white;
+      letter-spacing: 1px;
     `
 };
 
@@ -37,16 +57,16 @@ export const border = {
 };
 
 export const components = {
-    input: styled.input`
+    input: css`
         border-radius: 4px;
         padding-left: 10px;
-        background-color: var(--siteBG2);
-        color: var(--logoMain);
+        background-color: ${color.siteBG1};
+        color: ${color.primary};
         height: 36px;
-        border: 1px solid var(--logoMain);
-        :focus {
+        border: 1px solid ${color.primary};
+        &:focus {
             outline: none;
-            border: 1px solid var(--logoMainShade);
+            border: 1px solid ${colorAdjust.darken(color.primary, 0.2)};
         }
     `
 };
@@ -69,20 +89,6 @@ export const layout = {
     `
 };
 
-export const colorAdjust = {
-    darken: (color, amount) =>
-        Color(color)
-            .darken(amount)
-            .string(),
-    lighten: (color, amount) =>
-        Color(color)
-            .lighten(amount)
-            .string(),
-    rgba: (color, opacity) =>
-        Color(color)
-            .alpha(opacity)
-            .string()
-};
 
 export const cursor = {
     clickable: css`

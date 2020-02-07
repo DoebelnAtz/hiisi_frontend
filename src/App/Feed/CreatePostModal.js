@@ -64,7 +64,7 @@ const CreatePostModal = (props) => {
 
     const fadeIn = useSpring({opacity: props.popup ? 1 : 0});
 
-    const propHolder = props; // react-springs overwrites props? temporary fix
+    const propHolder = props; // react-springs overwrites props? temporary fix cant rename props in map func..
 
     return ReactDOM.createPortal(
         slideIn.map(({ item, key, props }, i) => item &&

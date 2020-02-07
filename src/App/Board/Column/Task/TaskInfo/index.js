@@ -30,6 +30,7 @@ const BoardColumnTaskInfo = (props) => {
     const [priorityInputVal, setPriorityInputVal] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+    const [description, setDescription] = useState(task.description);
     const [maxDisplayedUsers, setMaxDisplayedUsers] = useState(3);
 
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
@@ -120,6 +121,11 @@ const BoardColumnTaskInfo = (props) => {
         )
     };
 
+    const handleDescriptionChange = (e) => {
+        setDescription(e);
+        setTask({...task, description: e})
+    };
+
     return ReactDOM.createPortal(
             <OuterDiv>
                 <TaskInfo ref={inside}>
@@ -133,7 +139,10 @@ const BoardColumnTaskInfo = (props) => {
                     </TaskInfoHead>
                     <TaskInfoBody>
                         <TaskDescription>
-                            {!isLoading && <TextEditor task={task}/>}
+                            {!isLoading && <TextEditor
+                                state={task.description}
+                                setState={(e) => handleDescriptionChange(e)}
+                            />}
                         </TaskDescription>
                         <TaskSidebar>
                             <TaskCollaborators>{!isLoading && renderTaskCollaborators()}</TaskCollaborators>

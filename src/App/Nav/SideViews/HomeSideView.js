@@ -98,7 +98,7 @@ const HomeSideNav = (props) => {
                 </Link>
             </div>
             <div
-                onClick={() => {setCurrentNav('resources');}}
+                onClick={handleDivClick}
                 onMouseOver={() => setHoveredNav('resources')}
                 onMouseLeave={() => setHoveredNav('')}
                 className={`home_nav_text ${hoveredNav === "resources"
@@ -115,6 +115,6 @@ const HomeSideNav = (props) => {
             </div>
         </div>
     )
-}
+};
 
 export default withRouter(HomeSideNav)

@@ -60,9 +60,13 @@ export const TaskFooter = styled.div`
     }
 `;
 
-export const PriorityInput = components.input;
+export const PriorityInput = styled.input`
+ ${components.input};
+`;
 
-export const AddUserInput = components.input;
+export const AddUserInput = styled.input`
+ ${components.input};
+`;
 
 
 

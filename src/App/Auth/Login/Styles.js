@@ -29,15 +29,18 @@ export const UsernameDiv = styled.div`
     ${layout.row};
 `;
 
-export const UsernameInput = components.input;
+export const UsernameInput = styled.input`
+  ${components.input}
+`;
 
 export const PasswordDiv = styled.div`
     margin: 10px 0;
     ${layout.row};
 `;
 
-export const PasswordInput = components.input;
-
+export const PasswordInput = styled.input`
+  ${components.input}
+`;
 
 export const LoginButton = styled.div`
   ${layout.row};

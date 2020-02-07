@@ -14,7 +14,7 @@ console.error = (function() {
     }
 })();
 
-const TextEditWindowOutput = ({task, output, setOutput}) => {
+const TextEditWindowOutput = ({state, setState}) => {
 
     const editOutput = useRef();
     const showOutput = useRef();
@@ -44,8 +44,7 @@ const TextEditWindowOutput = ({task, output, setOutput}) => {
     };
 
     const handleChange = (e) => {
-        task.description = e.target.value;
-        setOutput(e.target.value);
+        setState(e.target.value);
     };
 
     useEffect(() => {
@@ -60,13 +59,13 @@ const TextEditWindowOutput = ({task, output, setOutput}) => {
             <TextOutput
                 style={{ display: (!editing ? 'block' : 'none')}}
                 ref={showOutput}
-                dangerouslySetInnerHTML={{__html: output}}
+                dangerouslySetInnerHTML={{__html: state}}
             >
             </TextOutput>
             <TextEditOutput
                 style={{display: (editing ? 'block' : 'none')}}
                 ref={editOutput}
-                value={output}
+                value={state}
                 onChange={(e) => handleChange(e)}
             >
             </TextEditOutput>

@@ -6,6 +6,7 @@ import notificationIcon from './navIcons/Notifications.png'
 import homeIcon from './navIcons/Home.png'
 import slotsIcon from './navIcons/Slots.png'
 import profileIcon from './navIcons/Profile.png'
+import treeIcon from './navIcons/Tree6.png'
 
 import { NavItem, OpenHiveNav } from "./NavItems";
 import {ToggleButton} from "../Components/Buttons/Toggle";
@@ -27,7 +28,7 @@ const NavIcons = (props) => {
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
             <NavItem path={props.location.pathname} name={'Search'} icon={searchIcon}/>
-            <NavItem path={'/resources'} name={'Resources'} icon={openHiveIcon}/>
+            <NavItem path={'/resources'} name={'Resources'} icon={treeIcon}/>
             {/*<ToggleButton connected={props.intra} setConnected={props.setIntra}/>*/}
         </div>
     )
