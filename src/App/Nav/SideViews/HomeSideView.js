@@ -66,6 +66,22 @@ const HomeSideNav = (props) => {
                 </Link>
             </div>
             <div
+                onClick={handleDivClick}
+                onMouseOver={() => setHoveredNav('resources')}
+                onMouseLeave={() => setHoveredNav('')}
+                className={`home_nav_text ${hoveredNav === "resources"
+                    ? 'hovered' : currentNav === "resources" ? 'active' : 'inactive'}`}
+            >
+                <Link
+
+                    to={'/resources'}
+                    className={'home_nav_link'}
+                    onClick={() => setCurrentNav('resources')}
+                >
+                    Resources
+                </Link>
+            </div>
+            <div
                 onClick={() => {setCurrentNav('messages');}}
                 onMouseOver={() => setHoveredNav('messages')}
                 onMouseLeave={() => setHoveredNav('')}
@@ -97,22 +113,7 @@ const HomeSideNav = (props) => {
                     Search
                 </Link>
             </div>
-            <div
-                onClick={handleDivClick}
-                onMouseOver={() => setHoveredNav('resources')}
-                onMouseLeave={() => setHoveredNav('')}
-                className={`home_nav_text ${hoveredNav === "resources"
-                    ? 'hovered' : currentNav === "resources" ? 'active' : 'inactive'}`}
-            >
-                <Link
 
-                    to={'/resources'}
-                    className={'home_nav_link'}
-                    onClick={() => setCurrentNav('resources')}
-                >
-                    Resources
-                </Link>
-            </div>
         </div>
     )
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {color, components, font, layout, length} from "../../../Styles/sharedStyles";
+import {color, components, cursor, font, layout, length} from "../../../Styles/sharedStyles";
 
 export const ResourcePage = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ export const ResourceContent = styled.div`
 
 export const AddTagInput = styled.input`
   ${components.input};
-  width: 40%;
+  width: 100%;
   margin-left: ${length.margin};
 `;
 
@@ -47,14 +47,37 @@ export const ResourceTag = styled.div`
     border-radius: 4px;
 `;
 
+export const SearchResultTag = styled.div`
+    z-index: 2;
+    margin: 10px;
+    ${layout.row};
+    background-color: ${props => props.color};
+    ${font.text};
+    height: 34px;
+    padding: 4px 8px;
+    width: 100%;
+    border-radius: 4px;
+    & span {
+    ${cursor.clickable}
+      &:hover {
+        color: lightgray;
+      }
+    }
+`;
+
+export const TagSearchResults = styled.div`
+    width: 40%;
+`;
+
 export const ResourceDescription = styled.div`
   ${font.text};
   
   background-color: ${color.siteBG3};
-  width: calc(60% - ${length.margin} * 2);
+  width: calc(${props => props.full  ? '100%' : '60%'} - ${length.margin} * 2);
 `;
 
 export const ResourceComments = styled.div`
+    border-top: ${length.margin} solid ${color.siteBG1};
     margin: ${length.margin};
     width: calc(100% - ${length.margin} * 2);
 `;

@@ -8,7 +8,7 @@ import {makeRequest} from "../Api/Api";
 import {getLocal} from "../../utils/utils";
 const ResourcesHome = (props) => {
 
-    const [resources, setResources, isLoading] = useRequest('resources', 'get');
+    const [resources, setResources, isLoading] = useRequest(`resources?page=1`, 'get');
     const [popup, setPopup] = useState(false);
     console.log(resources);
 

@@ -24,11 +24,11 @@ const NavIcons = (props) => {
             {/*path={'slots'} name={'Slots'} icon={slotsIcon}/>*/}
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'notifications'} name={'Notifications'} icon={notificationIcon}/>*/}
+            <NavItem path={'/resources'} name={'Resources'} icon={treeIcon}/>
             <NavItem path={props.location.pathname} name={'Messages'} icon={messageIcon}/>
             {/*<NavItem currentNav={props.currentNav} setCurrentNav={props.setCurrentNav}*/}
             {/*path={'coalition'} name={'Coalition'} icon={coalitionIcon}/>*/}
             <NavItem path={props.location.pathname} name={'Search'} icon={searchIcon}/>
-            <NavItem path={'/resources'} name={'Resources'} icon={treeIcon}/>
             {/*<ToggleButton connected={props.intra} setConnected={props.setIntra}/>*/}
         </div>
     )
