@@ -56,6 +56,19 @@ export const border = {
     )
 };
 
+export const cursor = {
+    clickable: css`
+      cursor: pointer;
+      user-select: none;
+    `,
+    draggable: css`
+      cursor: grab;
+    `,
+    dragging: css`
+      cursor: grabbing;
+    `,
+};
+
 export const components = {
     input: css`
         border-radius: 4px;
@@ -75,11 +88,16 @@ export const components = {
         height: 34px;
         background-color: ${color.siteBG3};
         color: ${color.primary};
+        ${cursor.clickable};
         border: 1px solid ${color.primary};
         border-radius: 5px;
+        transition: background-color 0.1s;
         &:focus {
           outline: none;
           border-color: ${colorAdjust.darken(color.primary, 0.2)};
+        }
+        &:hover {
+          background-color: ${color.siteBG2};
         }
     `
 };
@@ -103,15 +121,3 @@ export const layout = {
 };
 
 
-export const cursor = {
-    clickable: css`
-      cursor: pointer;
-      user-select: none;
-    `,
-    draggable: css`
-      cursor: grab;
-    `,
-    dragging: css`
-      cursor: grabbing;
-    `,
-};

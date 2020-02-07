@@ -66,6 +66,7 @@ const ResourcesSubmitResource = ({resources, setResources, setPopup}) => {
                 <EditDescription>
                     <span>Description: </span>
                     <TextEditor
+                        editable
                         state={description}
                         setState={(e) => handleDescriptionChange(e)}
                     />

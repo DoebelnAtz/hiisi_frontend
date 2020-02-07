@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {color, components, cursor, font, layout, length} from "../../Styles/sharedStyles";
+import {color, colorAdjust, components, cursor, font, layout, length} from "../../Styles/sharedStyles";
 
 export const Resources = styled.div`
   
@@ -7,11 +7,12 @@ export const Resources = styled.div`
 
 export const ResourceCard = styled.div`
   ${font.text};
-  width: 100%;
+  width: calc(100% - ${length.margin} * 2);
+  border-radius: 8px;
   padding: 14px;
   z-index: 1;
   background-color: ${color.siteBG2};
-  margin: ${length.margin} 0;
+  margin: ${length.margin};
 `;
 
 export const ResourceTitle = styled.div`
@@ -31,14 +32,34 @@ export const Tags = styled.div`
 
 export const Tag = styled.div`
   z-index: 2;
+  ${cursor.clickable};
   margin: 6px 4px 6px 0;
   background-color: ${props => props.color};
   padding: 4px 8px;
   border-radius: 4px;
+  &:hover {
+    background-color: ${props => colorAdjust.darken(props.color, 0.1)};
+  }
 `;
 
 
+export const SubmitResourceButton = styled.div`
+  ${components.button};
+  width: fit-content;
+  font-size: 18px;
+  margin: ${length.margin};
+`;
 
+export const FilterButton = styled.div`
+  ${components.button};
+  width: fit-content;
+  font-size: 18px;
+  margin: ${length.margin};
+`;
+
+export const ResourcePageHead = styled.div`
+  ${layout.row};
+`;
 
 
 export const DeleteButton = styled.div`

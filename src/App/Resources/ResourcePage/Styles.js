@@ -66,14 +66,14 @@ export const SearchResultTag = styled.div`
 `;
 
 export const TagSearchResults = styled.div`
-    width: 40%;
+    width: calc(40% - ${length.margin});
 `;
 
 export const ResourceDescription = styled.div`
   ${font.text};
   
   background-color: ${color.siteBG3};
-  width: calc(${props => props.full  ? '100%' : '60%'} - ${length.margin} * 2);
+  width: calc(${props => props.full  ? '100%' : '60%'});
 `;
 
 export const ResourceComments = styled.div`

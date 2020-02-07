@@ -14,7 +14,7 @@ console.error = (function() {
     }
 })();
 
-const TextEditWindowOutput = ({state, setState}) => {
+const TextEditWindowOutput = ({editable, state, setState}) => {
 
     const editOutput = useRef();
     const showOutput = useRef();
@@ -32,7 +32,7 @@ const TextEditWindowOutput = ({state, setState}) => {
         }
     };
 
-    const handleTabPress = (e) => { //doesn't work
+    const handleTabPress = (e) => { //doesn't work, something with react DnD
         console.log(e.keyCode);
         if (e.keyCode === 9) {
             e.preventDefault();
@@ -57,13 +57,13 @@ const TextEditWindowOutput = ({state, setState}) => {
     return (
         <Fragment>
             <TextOutput
-                style={{ display: (!editing ? 'block' : 'none')}}
+                style={{ display: (!editing || !editable ? 'block' : 'none')}}
                 ref={showOutput}
                 dangerouslySetInnerHTML={{__html: state}}
             >
             </TextOutput>
             <TextEditOutput
-                style={{display: (editing ? 'block' : 'none')}}
+                style={{display: (editing && editable ? 'block' : 'none')}}
                 ref={editOutput}
                 value={state}
                 onChange={(e) => handleChange(e)}

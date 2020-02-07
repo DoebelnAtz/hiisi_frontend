@@ -82,6 +82,7 @@ const ResourceInfoPage = (props) => {
                 <ResourceDescription full={resource?.tags?.length > 2}>
                     {!isLoading &&
                         <TextEditor
+                            editable={resource.owner}
                             state={resource.description}
                             setState={(e) => handleDescriptionChange(e)}
                         />

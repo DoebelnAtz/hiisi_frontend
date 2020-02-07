@@ -140,6 +140,7 @@ const BoardColumnTaskInfo = (props) => {
                     <TaskInfoBody>
                         <TaskDescription>
                             {!isLoading && <TextEditor
+                                editable={task.owner}
                                 state={task.description}
                                 setState={(e) => handleDescriptionChange(e)}
                             />}
