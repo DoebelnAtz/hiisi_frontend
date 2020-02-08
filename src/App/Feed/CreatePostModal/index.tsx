@@ -4,7 +4,7 @@ import { useSpring, useTransition } from 'react-spring';
 import { makeRequest } from '../../Api/Api';
 import Button from '../../Components/Buttons/Button';
 import { getLocal } from '../../../utils/utils';
-import { useDismiss } from '../../../Hooks/Hooks';
+import { useDismiss } from '../../../Hooks';
 import { CreatePostModalProps } from '../Types';
 import {
 	ModalDiv,
@@ -29,7 +29,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	const [title, setTitle] = useState<string>('');
 	const [content, setContent] = useState<string>('');
 	const [submitDisabled, setSubmitDisabled] = useState<boolean>(true);
-	const inside = useRef<any>(); // any because animated.div is causing issues
+	const inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setPopup(false));
 
@@ -46,7 +46,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 		if (isMounted) {
 			console.log('updating');
-			setPosts([resp.data, ...posts]);
+			posts && setPosts([resp.data, ...posts]);
 			setPopup(false);
 		}
 		setTitle('');
@@ -90,42 +90,49 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			({ item, key, props }, i) =>
 				item && (
 					<OutsideDiv key={i} style={fadeIn} id={'popup_background'}>
-						<ModalDiv style={props} id={'popup_cont'} ref={inside}>
-							<TitleText>Title</TitleText>
-							<TitleInput
-								placeholder={'Title'}
-								onChange={(e: React.SyntheticEvent) =>
-									handleChange(e, setTitle)
-								}
-							/>
-							<LengthCounter warning={title.length > 80}>
-								<span>
-									{title.length}/{80}
-								</span>
-							</LengthCounter>
-							<ContentText>Content</ContentText>
-							<ContentInput
-								placeholder={'Content'}
-								onChange={(e: React.SyntheticEvent) =>
-									handleChange(e, setContent)
-								}
-							/>
-							<LengthCounter warning={content.length > 500}>
-								<span>
-									{content.length}/{500}
-								</span>
-							</LengthCounter>
-							<ButtonRow>
-								<BackButton onClick={() => setPopup(false)}>
-									Back
-								</BackButton>
-								<SubmitButton
-									disabled={submitDisabled}
-									onClick={() => createPost(title, content)}
-								>
-									Submit Post
-								</SubmitButton>
-							</ButtonRow>
+						<ModalDiv style={props} id={'popup_cont'}>
+							<div
+								ref={inside}
+								style={{ width: '100%', height: '100%' }}
+							>
+								<TitleText>Title</TitleText>
+								<TitleInput
+									placeholder={'Title'}
+									onChange={(e: React.SyntheticEvent) =>
+										handleChange(e, setTitle)
+									}
+								/>
+								<LengthCounter warning={title.length > 80}>
+									<span>
+										{title.length}/{80}
+									</span>
+								</LengthCounter>
+								<ContentText>Content</ContentText>
+								<ContentInput
+									placeholder={'Content'}
+									onChange={(e: React.SyntheticEvent) =>
+										handleChange(e, setContent)
+									}
+								/>
+								<LengthCounter warning={content.length > 500}>
+									<span>
+										{content.length}/{500}
+									</span>
+								</LengthCounter>
+								<ButtonRow>
+									<BackButton onClick={() => setPopup(false)}>
+										Back
+									</BackButton>
+									<SubmitButton
+										disabled={submitDisabled}
+										onClick={() =>
+											createPost(title, content)
+										}
+									>
+										Submit Post
+									</SubmitButton>
+								</ButtonRow>
+							</div>
 						</ModalDiv>
 					</OutsideDiv>
 				),

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, SetStateAction } from 'react';
 import Post from './Post';
-import { useRequest } from '../../Hooks/Hooks';
+import { useRequest } from '../../Hooks';
 import { useTrail, animated } from 'react-spring';
 import CreatePostModal from './CreatePostModal';
 import Button from '../Components/Buttons/Button';
@@ -15,15 +15,14 @@ const Feed = ({}) => {
 	const isMounted = useRef(true);
 
 	// @ts-ignore
-	const [posts, setPosts, isLoading]: [
-		PostType[],
-		SetStateAction<PostType[]>,
-		boolean,
-	] = useRequest('blogs', 'get');
+	const [posts, setPosts, isLoading] = useRequest<PostType[] | null>(
+		'blogs',
+		'get',
+	);
 
 	const config = { mass: 5, tension: 2000, friction: 200 };
 
-	const trail = useTrail(posts.length, {
+	const trail = useTrail(posts?.length ?? 0, {
 		config,
 		opacity: !isLoading ? 1 : 0,
 		x: !isLoading ? 0 : 20,
@@ -32,22 +31,23 @@ const Feed = ({}) => {
 	});
 
 	const renderList = () => {
-		return trail.map(({ x, height, ...rest }: any, i: number) => {
-			return (
-				<animated.div
-					style={{
-						...rest,
-						transform: x.interpolate(
-							(x: any) => `translate3d(0,${x}px,0)`,
-						),
-					}}
-					id={'feed'}
-					key={posts[i].b_id}
-				>
-					<Post content={posts[i]} />
-				</animated.div>
-			);
-		});
+		if (posts)
+			return trail.map(({ x, height, ...rest }: any, i: number) => {
+				return (
+					<animated.div
+						style={{
+							...rest,
+							transform: x.interpolate(
+								(x: any) => `translate3d(0,${x}px,0)`,
+							),
+						}}
+						id={'feed'}
+						key={posts[i].b_id}
+					>
+						<Post content={posts[i]} />
+					</animated.div>
+				);
+			});
 	};
 
 	return (

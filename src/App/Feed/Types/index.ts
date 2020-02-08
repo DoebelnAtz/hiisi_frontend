@@ -13,7 +13,7 @@ export interface CommentProps {
     odd: boolean,
     focusList: focusList,
     child: CommentType,
-    renderComments: (odd: boolean, thread: Array<CommentType>, expanded: boolean) => void,
+    renderComments: (odd: boolean, thread: Array<CommentType> | undefined, expanded: boolean) => void,
     isExpanded: boolean
 }
 
@@ -29,25 +29,25 @@ export interface PostType {
 }
 
 export interface ReplyProps {
-    commentThread: Array<CommentType>,
+    commentThread: CommentType[] | undefined,
     expandChildThread?: any,
     setCommentThread: any,
     childThreadId: number
 }
 
-export interface ViewPostProps {
+export type ViewPostProps = {
     commentthread: number,
     focusList: focusList,
 }
 
-export interface CreatePostModalProps {
+export type CreatePostModalProps = {
     setPosts: any,
-    posts: PostType[],
+    posts: PostType[] | null | undefined,
     setPopup: any,
     popup: boolean,
     isMounted: any
 }
 
-export interface PostProps {
+export type PostProps = {
     content: PostType
 }

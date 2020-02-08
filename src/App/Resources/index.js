@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useRequest} from "../../Hooks/Hooks";
+import {useRequest} from "../../Hooks";
 
 import {
     ResourceCard,

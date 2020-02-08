@@ -1,48 +1,46 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Link, withRouter} from "react-router-dom";
-import {useNav} from "../../Hooks/Hooks";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { useNav } from '../../Hooks';
 
-import './messages.css'
-import {makeRequest} from "../Api/Api";
-import {getLocal} from "../../utils/utils";
-import Messages from "./Messages";
-import CurrentNavContext from "../../Context/CurrentNavContext";
+import './messages.css';
+import { makeRequest } from '../Api/Api';
+import { getLocal } from '../../utils/utils';
+import Messages from './Messages';
 
 const MessageHome = (props) => {
+	let profile = JSON.parse(localStorage.getItem('currentUser'));
+	const [inputVal, setInputVal] = useState('');
+	const [thread, setThread] = useState({});
 
-    let profile = JSON.parse(localStorage.getItem("currentUser"));
-    const [inputVal, setInputVal] = useState('');
-    const [thread, setThread] = useState({});
-    const {setCurrentNav} = useContext(CurrentNavContext);
+	useNav('messages');
 
-    useNav('messages', setCurrentNav);
+	const createThread = async () => {
+		let resp = await makeRequest('messages/threads/create_thread', 'post', {
+			threadName: inputVal,
+		});
 
-    const createThread = async () => {
+		if (resp.data) {
+			props.history.push('messages/' + resp.data.thread_id);
+		}
+	};
 
-        let resp = await makeRequest('messages/threads/create_thread', 'post', {
-            threadName: inputVal
-        });
+	const getThreads = async () => {
+		let resp = await makeRequest('messages/threads');
+		if (resp.data) {
+			setThread(resp.data[0]);
+		}
+		return <div> </div>;
+	};
 
-        if (resp.data) {
-            props.history.push('messages/' + resp.data.thread_id);
-        }
-    };
+	useEffect(() => {
+		getThreads();
+	}, []);
 
-    const getThreads = async () => {
-        let resp = await makeRequest('messages/threads');
-        if (resp.data) {
-            setThread(resp.data[0]);
-        }
-        return (<div> </div>)
-    };
-
-    useEffect(() => {getThreads()}, []);
-
-    return (
-        <div className={'message_friend_list'}>
-            <div>No threads, create one!</div>
-        </div>
-    )
+	return (
+		<div className={'message_friend_list'}>
+			<div>No threads, create one!</div>
+		</div>
+	);
 };
 
-export default withRouter(MessageHome)
+export default withRouter(MessageHome);

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import _ from 'lodash'
 import useSocket from 'use-socket.io-client';
 
-import { useNav } from "../../Hooks/Hooks";
+import { useNav } from "../../Hooks";
 import Button from "../Components/Buttons/Button";
 import { makeRequest } from "../Api/Api";
 import './messages.css'

@@ -1,87 +1,92 @@
-import React, {useContext, useState} from 'react';
-import {Link, withRouter} from 'react-router-dom'
-import {useTrail, animated} from "react-spring";
+import React, { useContext, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { useTrail, animated } from 'react-spring';
 
-import {makeRequest} from "../../Api/Api";
-import './search.css'
-import {useNav} from "../../../Hooks/Hooks";
-import CurrentNavContext from "../../../Context/CurrentNavContext";
+import { makeRequest } from '../../Api/Api';
+import './search.css';
+import { useNav } from '../../../Hooks';
 
 const SearchSideView = (props) => {
+	const [searchVal, setSearchVal] = useState('');
+	const [results, setResults] = useState([]);
 
-    const [searchVal, setSearchVal] = useState('');
-    const [results, setResults] = useState([]);
-    const {setCurrentNav} = useContext(CurrentNavContext);
+	const handleChange = async (e) => {
+		setResults([]);
+		let val = e.target.value;
+		if (val.length) {
+			let resp = await makeRequest(
+				// make request to search endpoint, it will return a list of matched users
+				'users/search',
+				'post',
+				{
+					search: val,
+				},
+			);
+			setResults(resp.data);
+		}
+		setSearchVal(val);
+	};
 
-    const handleChange = async(e) => {
-        setResults([]);
-        let val = e.target.value;
-        if (val.length) {
-            let resp = await makeRequest( // make request to search endpoint, it will return a list of matched users
-                "users/search",
-                'post',
-                {
-                    search: val
-                }
-            );
-            setResults(resp.data);
-        }
-        setSearchVal(val);
-    };
+	useNav('search');
 
-    useNav('search', setCurrentNav);
+	const config = { mass: 5, tension: 2000, friction: 200 };
 
-    const config = { mass: 5, tension: 2000, friction: 200 };
+	const trail = useTrail(results.length, {
+		config,
+		opacity: results.length ? 1 : 0,
+		x: results.length ? 0 : 20,
+		height: results.length ? 80 : 0,
+		from: { opacity: 0, x: 50, height: 0 },
+	});
 
-    const trail = useTrail(results.length, {
-        config,
-        opacity: results.length ? 1 : 0,
-        x: results.length ? 0 : 20,
-        height: results.length ? 80 : 0,
-        from: {opacity: 0, x: 50, height: 0},
-    });
+	const renderResults = (results) => {
+		if (results) {
+			return trail.map(({ x, height, ...rest }, i) => {
+				return (
+					<animated.div
+						style={{
+							...rest,
+							transform: x.interpolate(
+								(x) => `translate3d(0,${x}px,0)`,
+							),
+						}}
+						id={'feed'}
+						key={results[i].u_id}
+						className={'my-2 search_result_item'}
+						onClick={() =>
+							props.history.push(
+								'/search/user/' + results[i].u_id,
+							)
+						}
+					>
+						<img
+							className={'search_result_avatar'}
+							src={results[i].profile_pic}
+							alt={results[i].username}
+						/>
+						<Link
+							to={'/search/user/' + results[i].u_id}
+							className={'search_result_name'}
+						>
+							{results[i].username}
+						</Link>
+					</animated.div>
+				);
+			});
+		}
+	};
 
-    const renderResults = (results) => {
-        if (results) {
-            return (
-                trail.map(({ x, height, ...rest }, i) => {
-                    return (
-                        <animated.div
-                            style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
-                            id={'feed'}
-                            key={results[i].u_id}
-                            className={'my-2 search_result_item'}
-                            onClick={() => props.history.push('/search/user/' + results[i].u_id)}
-                        >
-                            <img className={'search_result_avatar'}
-                                 src={results[i].profile_pic}
-                                 alt={results[i].username} />
-                            <Link
-                                to={'/search/user/' + results[i].u_id}
-                                className={'search_result_name'}
-                            >
-                                {results[i].username}
-                            </Link>
-                        </animated.div>
-                    )
-                })
-            )
-        }
-    };
-
-    return (
-        <div className={'search_box'}>
-            <input
-                className={'search_input'}
-                value={searchVal}
-                onChange={handleChange}
-                placeholder={'username'}
-            />
-            <div className={'search_results'}>
-                {renderResults(results)}
-            </div>
-        </div>
-    );
+	return (
+		<div className={'search_box'}>
+			<input
+				className={'search_input'}
+				value={searchVal}
+				onChange={handleChange}
+				placeholder={'username'}
+			/>
+			<div className={'search_results'}>{renderResults(results)}</div>
+		</div>
+	);
 };
 
 export default withRouter(SearchSideView);

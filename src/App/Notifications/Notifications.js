@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useFetch, useNav} from "../../Hooks/Hooks";
+import {useFetch, useNav} from "../../Hooks";
 import Button from "../Components/Buttons/Button";
 import {makeRequest} from "../Api/Api";
 import _ from 'lodash'

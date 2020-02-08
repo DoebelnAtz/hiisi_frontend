@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useFetch, useNav, useRequest} from "../../Hooks/Hooks";
+import {useFetch, useNav, useRequest} from "../../Hooks";
 
 import './coalition.css'
 

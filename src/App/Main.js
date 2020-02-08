@@ -70,12 +70,6 @@ export default (prop) => {
 				/>
 				<Route
 					exact
-					path={'/message_home/'}
-					render={(props) => <MessageHome {...props} />}
-				/>
-
-				<Route
-					exact
 					path={'/coalition/'}
 					render={(props) => <Coalition {...props} />}
 				/>

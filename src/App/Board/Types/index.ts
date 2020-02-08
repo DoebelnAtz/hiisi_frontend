@@ -8,7 +8,7 @@ export interface TaskType {
     column_id: number,
     title: string,
     description: string,
-    collaborators: Array<User>,
+    collaborators: User[],
     priority: number,
     owner: boolean
 }

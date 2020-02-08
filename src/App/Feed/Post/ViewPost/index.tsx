@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import Reply from './Reply';
 import Comment from './Comment';
-import { useRequest } from '../../../../Hooks/Hooks';
+import { useRequest } from '../../../../Hooks';
 import { CommentSection } from './Styles';
 import { CommentType, ViewPostProps } from '../../Types';
 
@@ -11,11 +11,10 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	focusList,
 }) => {
 	// @ts-ignore
-	const [comments, setComments, isLoading]: [
-		Array<CommentType>,
-		any,
-		boolean,
-	] = useRequest(`blogs/commentthread/${commentthread}`, 'get');
+	const [comments, setComments, isLoading] = useRequest<CommentType[]>(
+		`blogs/commentthread/${commentthread}`,
+		'get',
+	);
 
 	const renderComments = (
 		odd = true,
@@ -45,12 +44,14 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	return (
 		<Fragment>
 			<CommentSection>
-				<Reply
-					commentThread={comments}
-					setCommentThread={setComments}
-					childThreadId={commentthread}
-				/>
-				{!!comments.length && renderComments()}
+				{!isLoading && (
+					<Reply
+						commentThread={comments}
+						setCommentThread={setComments}
+						childThreadId={commentthread}
+					/>
+				)}
+				{!!comments?.length && renderComments()}
 			</CommentSection>
 		</Fragment>
 	);

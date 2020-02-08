@@ -10,7 +10,7 @@ import {
     TitleInputDiv
 } from "./Styles";
 import { OuterDiv } from "./Styles";
-import {useDismiss} from "../../../Hooks/Hooks";
+import {useDismiss} from "../../../Hooks";
 import TextEditor from "../../Components/TextEditor";
 import Button from "../../Components/Buttons/Button";
 import { ButtonRow } from "./Styles";
