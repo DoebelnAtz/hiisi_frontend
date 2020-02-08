@@ -11,35 +11,6 @@ export const useNav = (current) => {
     }, [current]);
 };
 
-export const useSocket = (url, options, room) => {
-    const [connected, setConnected] = useState(false);
-    const [messages, setMessages] = useState([]);
-    const [activeUsers, setActiveUsers] = useState([]);
-    let socket;
-
-    useEffect(() => {
-        socket = socketIOClient(url, options);
-        socket.on('connect', () => {
-            setConnected(true);
-        });
-        socket.on('joined-room', (user) => {
-            setActiveUsers([...activeUsers, user.username]);
-        });
-        socket.on('left-room', (user) => {
-            console.log('left-room' + user.username)
-        });
-        socket.on('chat-message', (message) => {
-            console.log('incoming message');
-            setMessages({...messages, message});
-        });
-        return () => {
-            socket.disconnect();
-        };
-    }, [url, room]);
-
-    return {socket, connected, messages, setMessages, activeUsers}
-};
-
 export const useDismiss = (refInside, close) => {
 
     const handleEsc = (e) => {

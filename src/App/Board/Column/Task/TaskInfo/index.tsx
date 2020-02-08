@@ -12,27 +12,32 @@ import {
     TaskFooter, TaskInfoBody,
     Collaborator, TaskSidebar,
     AddUserToTask, AddUserInput, AddUser, AddUserBtn
+
 } from "./Styles";
 
 import Plus from '../../../../../Assets/Dots.png'
 import {useDismiss, useRequest} from "../../../../../Hooks/Hooks";
-import TextEditor from "../../../../Components/TextEditor";
+import TextEditor from '../../../../Components/TextEditor';
 import Button from "../../../../Components/Buttons/Button";
 import { makeRequest } from "../../../../Api/Api";
-import Avatar from "../../../../Components/Avatar";
+import Avatar from '../../../../Components/Avatar';
 import {getPriorityIcon} from "../../../../../utils/taskUtils";
+import {RouteComponentProps, User} from "../../../../../Types";
+import { TaskType } from "../../../Types";
 
 
-const BoardColumnTaskInfo = (props) => {
+
+const BoardColumnTaskInfo: React.FC<RouteComponentProps<object>> = ({match, history}) => {
 
     const inside = useRef();
-    const [task, setTask, isLoading] = useRequest('projects/boards/tasks/' + props.match.params.tid);
-    const [priorityInputVal, setPriorityInputVal] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
-    const [searchInput, setSearchInput] = useState('');
-    const [description, setDescription] = useState(task.description);
-    const [maxDisplayedUsers, setMaxDisplayedUsers] = useState(3);
 
+    // @ts-ignore
+    const [task, setTask, isLoading]: [TaskType, any, boolean] = useRequest('projects/boards/tasks/' + match.params.tid);
+    const [priorityInputVal, setPriorityInputVal] = useState<string>('');
+    const [searchResult, setSearchResult] = useState([]);
+    const [searchInput, setSearchInput] = useState<string>('');
+    const [description, setDescription] = useState<string>(task.description);
+    const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
     const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 
     useEffect(() => {
@@ -40,8 +45,7 @@ const BoardColumnTaskInfo = (props) => {
     }, [isLoading]);
 
     const close = () => {
-        props.history.push('/projects/1')
-
+        history.push('/projects/1')
     };
 
     useDismiss(inside, close);
@@ -50,7 +54,7 @@ const BoardColumnTaskInfo = (props) => {
         await makeRequest('projects/boards/update_task', 'put', task)
     };
 
-    const assignUserToTask = async (userId, taskId) => {
+    const assignUserToTask = async (userId :number, taskId: number) => {
         let resp = await makeRequest('projects/boards/tasks/add_user', 'post', {userId, taskId});
         if (resp?.data) {
             setTask({...task, collaborators: resp.data.collaborators});
@@ -59,23 +63,25 @@ const BoardColumnTaskInfo = (props) => {
         }
     };
 
-    const handleInputChange = (e) => {
-        console.log(e.target.value);
-        setPriorityInputVal(e.target.value);
-        setTask({...task, priority: e.target.value});
-        setPriorityIcon(getPriorityIcon(Number(e.target.value)))
+    const handleInputChange = (e: React.SyntheticEvent) => {
+        let target = e.target as HTMLInputElement;
+        console.log(target.value);
+        setPriorityInputVal(target.value);
+        setTask({...task, priority: target.value});
+        setPriorityIcon(getPriorityIcon(Number(target.value)))
     };
 
-    const handleSearch = async(e) => {
-        setSearchInput(e.target.value);
-        console.log(e.target.value);
+    const handleSearch = async(e: React.SyntheticEvent) => {
+        let target = e.target as HTMLInputElement;
+        setSearchInput(target.value);
+        console.log(target.value);
         setSearchResult([]);
-        if (e.target.value.length > 0)
+        if (target.value.length > 0)
         {
-            let resp = await makeRequest('users/search', 'post', {search: e.target.value});
+            let resp = await makeRequest('users/search', 'post', {search: target.value});
             console.log(resp);
             if (resp?.data) {
-                setSearchResult(resp.data.filter(user => {
+                setSearchResult(resp.data.filter((user: User) => {
                     for (var i = 0; i < task.collaborators.length; i++) {
                         if (task.collaborators[i].u_id === user.u_id)
                             return false
@@ -88,7 +94,7 @@ const BoardColumnTaskInfo = (props) => {
 
     const renderSearchResults = () => {
         return (
-            searchResult.map(user => {
+            searchResult.map((user: User) => {
                 return (
                     <AddUser onClick={() => assignUserToTask(user.u_id, task.task_id)} key={user.u_id}>
                         <Avatar src={user.profile_pic}/>
@@ -102,7 +108,7 @@ const BoardColumnTaskInfo = (props) => {
 
     const renderTaskCollaborators = () => {
         return (
-            task.collaborators.map((collaborator, index)=> {
+            task.collaborators.map((collaborator: User, index:number)=> {
                 if (index === maxDisplayedUsers && task.collaborators.length > maxDisplayedUsers + 1) {
                     return <Collaborator
                         key={collaborator.u_id}
@@ -121,9 +127,9 @@ const BoardColumnTaskInfo = (props) => {
         )
     };
 
-    const handleDescriptionChange = (e) => {
-        setDescription(e);
-        setTask({...task, description: e})
+    const handleDescriptionChange = (descVal: string) => {
+        setDescription(descVal);
+        setTask({...task, description: descVal})
     };
 
     return ReactDOM.createPortal(
@@ -142,7 +148,7 @@ const BoardColumnTaskInfo = (props) => {
                             {!isLoading && <TextEditor
                                 editable={task.owner}
                                 state={task.description}
-                                setState={(e) => handleDescriptionChange(e)}
+                                setState={(e: string) => handleDescriptionChange(e)}
                             />}
                         </TaskDescription>
                         <TaskSidebar>
@@ -151,7 +157,7 @@ const BoardColumnTaskInfo = (props) => {
                                 <AddUserInput
                                     style={{width: '100%'}}
                                     value={searchInput}
-                                    onChange={(e) => handleSearch(e)}
+                                    onChange={(e:  React.SyntheticEvent) => handleSearch(e)}
                                     placeholder={'add user'}
                                 />
                             </AddUserToTask>
@@ -163,14 +169,14 @@ const BoardColumnTaskInfo = (props) => {
 
                             <PriorityInput style={{width: '32px'}}
                                 value={priorityInputVal}
-                                onChange={(e) => handleInputChange(e)}
+                                onChange={(e: React.SyntheticEvent) => handleInputChange(e)}
                                 placeholder={task.priority ?? 1}
                             />
 
                     </TaskFooter>
                 </TaskInfo>
             </OuterDiv>
-        , document.querySelector('#modal'))
+        ,document.querySelector('#modal') as Element)
 };
 
 export default BoardColumnTaskInfo;

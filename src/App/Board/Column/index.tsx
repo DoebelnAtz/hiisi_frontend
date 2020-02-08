@@ -4,8 +4,9 @@ import { Droppable } from 'react-beautiful-dnd'
 import { Column, ColumnTitle, ColumnList } from './Styles'
 import Task  from './Task'
 import Input from "../../Components/Input";
+import {ColumnProps} from "../Types";
 
-const BoardColumn = ({addTask, columnNum, column, taskList}) => {
+const BoardColumn: React.FC<ColumnProps> = ({addTask, columnNum, column, taskList}) => {
     const [inputVal, setInputVal] = useState('');
 
     return (
@@ -29,7 +30,6 @@ const BoardColumn = ({addTask, columnNum, column, taskList}) => {
                         key={task.task_id}
                         task={task}
                         index={index}
-                        id={task.task_id}
                     />
                 ))
                 }

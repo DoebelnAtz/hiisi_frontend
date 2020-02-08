@@ -7,6 +7,7 @@ import _ from "lodash";
 import { Columns, Collaborator, ProjectCollaborators } from "./Styles";
 import {makeRequest} from "../Api/Api";
 import {useRequest} from "../../Hooks/Hooks";
+import {BoardProps, BoardType, TaskType} from "./Types";
 
 
 let boardState = {
@@ -53,14 +54,17 @@ let boardState = {
     ],
 };
 
-const Board = (props) => {
+const Board: React.FC<BoardProps> = ({board_id, projectCollaborators}) => {
 
-    const [board, setBoard, isLoading] = useRequest(
-        'projects/boards/' + props.board_id,
+    // Getting TS2739 error, not sure how to solve it..
+
+    // @ts-ignore
+    const [board, setBoard, isLoading]: [BoardType, any, boolean] = useRequest(
+        'projects/boards/' + board_id,
         'get'
     );
 
-    const [filteredUser, setFilteredUser] = useState(false);
+    const [filteredUser, setFilteredUser] = useState<number>(0);
 
 
 
@@ -69,7 +73,7 @@ const Board = (props) => {
         if (!filteredUser) {
             return board;
         } else {
-            b = {...board, columns: board.columns.map(col => {
+            b = {...board, columns: board.columns.map((col) => {
                     return ({...col, tasks:
                             col.tasks.filter(task =>
                                 task.collaborators.find(collaborator =>
@@ -79,7 +83,8 @@ const Board = (props) => {
             return b;
         }
     };
-    const handleTaskDrop = ({draggableId, destination, source}) => {
+
+    const handleTaskDrop = ({draggableId, destination, source}: any) => {
         if (!destination)
             return;
         let destColId = Number(destination.droppableId);
@@ -87,15 +92,15 @@ const Board = (props) => {
         let taskId = Number(draggableId);
         if (srcColId === destColId && source.index === destination.index)
             return;
-        let draggedTask = filterBoard().columns[srcColId].tasks[source.index];
+        let draggedTask: TaskType = filterBoard().columns[srcColId].tasks[source.index];
         let targetCol = filterBoard().columns[destColId];
         let updatedTask = {...draggedTask, column_id: targetCol.column_id};
         draggedTask.column_id = targetCol.column_id;
-        setBoard({columns: board.columns.map(column => ({
+        setBoard({columns: board.columns.map((column) => ({
                 ...column, tasks: _.flow( // check Lodash docs on flow.
-                ids => ids.filter(id => id.task_id !== taskId),
+                (ids: Array<TaskType>) => ids.filter(id => id.task_id !== taskId),
 
-                ids =>
+                (ids: Array<TaskType>) =>
                     column.column_number === destColId
                         ? [
                             ...ids.slice(0, destination.index),
@@ -108,7 +113,7 @@ const Board = (props) => {
         makeRequest('projects/boards/update_task', 'put', updatedTask)
     };
 
-    const addTask = async (taskTitle, taskColumnId) => {
+    const addTask = async (taskTitle: string, taskColumnId: number) => {
         let resp = await makeRequest('projects/boards/add_task', 'post', {taskTitle, taskColumnId});
         if (resp?.data) {
             let addedTask = resp.data;
@@ -126,16 +131,17 @@ const Board = (props) => {
     const mapCollaborators = () => {
         if (!isLoading) {
             return (
-                props.projectCollaborators.map((collaborator) => {
+                projectCollaborators.map((collaborator) => {
                     return (
                         <Collaborator
-                            filtered={filteredUser===collaborator.u_id}
-                            onClick={() => setFilteredUser(filteredUser === collaborator.u_id ? false : collaborator.u_id)}
+                            filtered={filteredUser === collaborator.u_id}
+                            onClick={() => setFilteredUser(filteredUser === collaborator.u_id ? 0 : collaborator.u_id)}
                             key={collaborator.u_id}>
                             <img
                                 key={collaborator.u_id}
                                 className={'collaborator_avatar'}
                                 src={collaborator.profile_pic}
+                                alt={'profile_pic'}
                             />
                         </Collaborator>
                     );

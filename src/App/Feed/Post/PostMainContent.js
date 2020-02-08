@@ -9,7 +9,6 @@ import {makeRequest} from "../../Api/Api";
 const PostMainContent = ({content, expand}) => {
 
     const [likes, setLikes] = useState(content.likes);
-    let profile = getLocal('currentUser');
     const handleClick = async() => {
         if (!content.liked) {
             let resp = await makeRequest('blogs/like_post', 'post',

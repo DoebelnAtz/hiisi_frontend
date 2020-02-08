@@ -43,7 +43,8 @@ export const font = {
     text: css`
       color: white;
       letter-spacing: 1px;
-    `
+    `,
+
 };
 
 export const border = {
@@ -99,7 +100,17 @@ export const components = {
         &:hover {
           background-color: ${color.siteBG2};
         }
-    `
+    `,
+    textarea: css`
+      color: white;
+      padding: 5px;
+      ${font.text};
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+    `,
+
 };
 
 export const layout = {

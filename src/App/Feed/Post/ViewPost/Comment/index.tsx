@@ -6,11 +6,13 @@ import Button from "../../../../Components/Buttons/Button";
 import {useRequest} from "../../../../../Hooks/Hooks";
 
 import {ParentComment, CommentHead, CommentBody, ChildComments, CommentInfo, ButtonRow} from "./Styles";
+import {CommentProps} from "../../../Types";
 
-const CommentCard = ({odd, focusList, child,  renderComments, isExpanded}) => {
+const CommentCard: React.FC<CommentProps> = ({odd, focusList, child, renderComments, isExpanded}) => {
+
     const [expanded, setExpanded] = useState(false);
-
-    const [childThread, setChildThread, isLoading] = useRequest('blogs/commentthread/' + child.childthread, 'get')
+    // @ts-ignore
+    const [childThread, setChildThread, isLoading]: [CommentType, any, boolean] = useRequest('blogs/commentthread/' + child.childthread, 'get');
 
     if (isExpanded) {
         return (
