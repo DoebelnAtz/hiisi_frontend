@@ -9,12 +9,8 @@ export const TextEditOutput = styled.textarea`
   color: ${color.primary};
   border-radius: ${length.radius};
   background-color: ${color.siteBG3};
-  transition: border-width 0.5s, padding 0.5s;
 
   :focus {
-      border: 3px solid ${color.primary};
-      box-shadow: none;
-      padding: calc(${length.margin} - 3px);
       width: 100%;
       height: 100%;
       outline: none;

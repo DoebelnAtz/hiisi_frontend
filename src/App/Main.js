@@ -1,4 +1,4 @@
-import Feed from './Feed/Feed';
+import Feed from './Feed';
 import Profile from './Profile/Profile';
 import React, { Fragment, useRef } from 'react';
 

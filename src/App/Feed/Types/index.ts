@@ -18,9 +18,11 @@ export interface CommentProps {
 }
 
 export interface PostType {
-    blog_id: number,
+    b_id: number,
     username: string,
     title: string,
+    content: string,
+    published_date: string,
     commentthread: number,
     liked: boolean,
     likes: number

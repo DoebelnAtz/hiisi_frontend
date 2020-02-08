@@ -1,18 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, SetStateAction } from 'react';
 import Post from './Post';
-import { useFetch, useRequest } from '../../Hooks/Hooks';
+import { useRequest } from '../../Hooks/Hooks';
 import { useTrail, animated } from 'react-spring';
 import CreatePostModal from './CreatePostModal';
 import Button from '../Components/Buttons/Button';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
+import { PostType } from './Types';
+import { FeedPage } from './Styles';
 
-const Feed = (prop) => {
+const Feed = ({}) => {
 	const [popup, setPopup] = useState(false);
 
 	const isMounted = useRef(true);
 
-	const [posts, setPosts, isLoading] = useRequest('blogs', 'get');
+	// @ts-ignore
+	const [posts, setPosts, isLoading]: [
+		PostType[],
+		SetStateAction<PostType[]>,
+		boolean,
+	] = useRequest('blogs', 'get');
 
 	const config = { mass: 5, tension: 2000, friction: 200 };
 
@@ -25,13 +32,13 @@ const Feed = (prop) => {
 	});
 
 	const renderList = () => {
-		return trail.map(({ x, height, ...rest }, i) => {
+		return trail.map(({ x, height, ...rest }: any, i: number) => {
 			return (
 				<animated.div
 					style={{
 						...rest,
 						transform: x.interpolate(
-							(x) => `translate3d(0,${x}px,0)`,
+							(x: any) => `translate3d(0,${x}px,0)`,
 						),
 					}}
 					id={'feed'}
@@ -44,12 +51,12 @@ const Feed = (prop) => {
 	};
 
 	return (
-		<div id={'feed_container'} className={'ml-0'}>
+		<FeedPage>
 			<Button
 				text={'Create Post'}
 				customStyle={{ margin: 'var(--viewMargin)' }}
 				onClick={() => setPopup(true)}
-			></Button>
+			/>
 			<CreatePostModal
 				popup={popup}
 				setPopup={setPopup}
@@ -58,7 +65,7 @@ const Feed = (prop) => {
 				isMounted={isMounted}
 			/>
 			{!isLoading && renderList()}
-		</div>
+		</FeedPage>
 	);
 };
 

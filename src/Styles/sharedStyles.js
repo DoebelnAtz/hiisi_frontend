@@ -95,7 +95,6 @@ export const components = {
         transition: background-color 0.1s;
         &:focus {
           outline: none;
-          border-color: ${colorAdjust.darken(color.primary, 0.2)};
         }
         &:hover {
           background-color: ${color.siteBG2};
