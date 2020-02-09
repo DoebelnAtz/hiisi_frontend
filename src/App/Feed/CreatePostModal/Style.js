@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
-import { color, components, font, layout, length } from '../../../Styles/sharedStyles';
+import {
+	color,
+	components,
+	font,
+	layout,
+	length,
+} from '../../../Styles/sharedStyles';
 
 export const OutsideDiv = styled(animated.div)`
 	position: fixed;
@@ -58,7 +64,6 @@ export const ContentInput = styled.textarea`
 	background-color: ${color.siteBG2};
 	height: 50%;
 	width: 90%;
-	
 `;
 
 export const LengthCounter = styled.div`

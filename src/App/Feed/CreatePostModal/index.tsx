@@ -93,7 +93,12 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 						<ModalDiv style={props} id={'popup_cont'}>
 							<div
 								ref={inside}
-								style={{ width: '100%', height: '100%' }}
+								style={{
+									width: '100%',
+									height: '100%',
+									display: 'inherit',
+									flexDirection: 'inherit',
+								}}
 							>
 								<TitleText>Title</TitleText>
 								<TitleInput

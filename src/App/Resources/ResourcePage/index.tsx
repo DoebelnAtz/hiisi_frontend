@@ -16,10 +16,14 @@ import {
 import TextEditor from '../../Components/TextEditor';
 import ViewPost from '../../Feed/Post/ViewPost';
 import { makeRequest } from '../../Api/Api';
+import { RouteComponentProps } from '../../../Types';
+import { ResourceType, Tag } from '../Types';
 
-const ResourceInfoPage = (props) => {
-	const [resource, setResource, isLoading] = useRequest(
-		`resources/${props.match.params.rid}`,
+const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
+	match,
+}) => {
+	const [resource, setResource, isLoading] = useRequest<ResourceType>(
+		`resources/${match.params.rid}`,
 		'get',
 	);
 	const [description, setDescription] = useState(resource?.description);
@@ -32,17 +36,19 @@ const ResourceInfoPage = (props) => {
 
 	console.log(resource, isLoading);
 
-	const handleDescriptionChange = (e) => {
+	const handleDescriptionChange = (e: string) => {
 		setDescription(e);
-		setResource({ ...resource, description: e });
+
+		!!resource && setResource({ ...resource, description: e });
 	};
 
 	const renderSearchResults = () => {
 		return results
 			.filter(
-				(tag) => !resource.tags.find((t) => t.tag_id === tag.tag_id),
+				(tag: Tag) =>
+					!resource?.tags.find((t) => t.tag_id === tag.tag_id),
 			) // make sure we don't show already added tags
-			.map((tag) => {
+			.map((tag: Tag) => {
 				return (
 					<SearchResultTag key={tag.tag_id} color={tag.color}>
 						# {tag.title}
@@ -57,12 +63,12 @@ const ResourceInfoPage = (props) => {
 			});
 	};
 
-	const addTag = async (tag) => {
+	const addTag = async (tag: Tag) => {
 		let resp = await makeRequest('resources/add_tags', 'post', {
 			tag: tag,
-			rId: props.match.params.rid,
+			rId: match.params.rid,
 		});
-		if (resp?.data) {
+		if (!!resource && resp?.data) {
 			setResource({ ...resource, tags: [...resource.tags, resp.data] });
 		}
 	};
@@ -71,11 +77,13 @@ const ResourceInfoPage = (props) => {
 		<ResourcePage>
 			<ResourceHeader>
 				<ResourceTitle>
-					<a href={`${resource?.link}`}>{resource?.title}</a>
+					{!!resource && (
+						<a href={`${resource?.link}`}>{resource?.title}</a>
+					)}
 				</ResourceTitle>
 				<ResourceTags>
 					{!isLoading &&
-						!!resource.tags.length &&
+						!!resource?.tags.length &&
 						resource.tags.map((tag) => {
 							return (
 								<ResourceTag key={tag.tag_id} color={tag.color}>
@@ -86,21 +94,24 @@ const ResourceInfoPage = (props) => {
 				</ResourceTags>
 			</ResourceHeader>
 			<ResourceContent>
-				<ResourceDescription full={resource?.tags?.length > 2}>
+				<ResourceDescription
+					full={!!resource && resource?.tags?.length > 2}
+				>
 					{!isLoading && (
 						<TextEditor
-							editable={resource.owner}
-							state={resource.description}
-							setState={(e) => handleDescriptionChange(e)}
+							editable={resource?.owner}
+							state={resource?.description}
+							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					)}
 				</ResourceDescription>
-				{resource?.tags?.length < 3 && (
+				{!!resource && resource?.tags?.length < 3 && (
 					<TagSearchResults>
 						<AddTagInput
 							value={tagSearch}
-							onChange={(e) => {
-								setTagSearch(e.target.value);
+							onChange={(e: React.SyntheticEvent) => {
+								let target = e.target as HTMLInputElement;
+								setTagSearch(target.value);
 							}}
 							placeholder={'+ Add Tag'}
 						/>
@@ -110,13 +121,13 @@ const ResourceInfoPage = (props) => {
 			</ResourceContent>
 
 			<ResourceComments>
-				{!isLoading && (
+				{!!resource && !isLoading && (
 					<ViewPost
 						focusList={{
-							focus: [resource.username],
+							focus: [resource?.username],
 							title: 'author',
 						}}
-						commentthread={resource.commentthread}
+						commentthread={resource?.commentthread}
 					/>
 				)}
 			</ResourceComments>
