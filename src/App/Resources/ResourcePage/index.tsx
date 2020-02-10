@@ -12,6 +12,7 @@ import {
 	ResourceContent,
 	TagSearchResults,
 	SearchResultTag,
+	SaveButton,
 } from './Styles';
 import TextEditor from '../../Components/TextEditor';
 import ViewPost from '../../Feed/Post/ViewPost';
@@ -63,8 +64,18 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			});
 	};
 
+	const updateResource = async () => {
+		console.log('saving..');
+		let resp = await makeRequest('resources/update_resource', 'put', {
+			resource: resource,
+		});
+		if (resp.data?.success) {
+			console.log('successfully saved resource');
+		}
+	};
+
 	const addTag = async (tag: Tag) => {
-		let resp = await makeRequest('resources/add_tags', 'post', {
+		let resp = await makeRequest('/resources/add_tags', 'post', {
 			tag: tag,
 			rId: match.params.rid,
 		});
@@ -80,6 +91,9 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 					{!!resource && (
 						<a href={`${resource?.link}`}>{resource?.title}</a>
 					)}
+					<SaveButton onClick={() => updateResource()}>
+						save
+					</SaveButton>
 				</ResourceTitle>
 				<ResourceTags>
 					{!isLoading &&

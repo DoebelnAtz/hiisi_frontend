@@ -172,16 +172,16 @@ const Messages = (props) => {
 						}
 					/>
 					<div
-						className={
-							'connected_' +
-							(user.username ===
-								getLocal('token').user.username ||
-							activeUsers.includes(user.username)
-								? 'active'
-								: 'inactive') +
-							'_dot'
-						}
-					></div>
+	className={
+		'connected_' +
+		(user.username ===
+		getLocal('token').user.username ||
+		activeUsers.includes(user.username)
+			? 'active'
+			: 'inactive') +
+		'_dot'
+	}
+	/>
 				</div>
 			);
 		});
@@ -200,11 +200,11 @@ const Messages = (props) => {
 			</div>
 			<div className={''}>
 				<textarea
-					id={'chat_input'}
-					onKeyDown={(e) => handleEnter(e)}
-					value={inputVal}
-					onChange={(e) => setInputVal(e.target.value)}
-				></textarea>
+	id={'chat_input'}
+	onKeyDown={(e) => handleEnter(e)}
+	value={inputVal}
+	onChange={(e) => setInputVal(e.target.value)}
+	/>
 				<button id={'send_button'} onClick={(e) => handleClick(e)}>
 					{connected ? 'send' : 'loading'}
 				</button>

@@ -105,7 +105,6 @@ select:-webkit-autofill:focus {
     background-color: var(--siteBG2);
     margin-left: var(--viewMargin);
     overflow: auto;
-
     height: 100%;
 
 }
@@ -183,8 +182,7 @@ select:-webkit-autofill:focus {
 }
 
 body {
-    min-height: 100%;
-    height: 100%;
+    height: calc(100% - var(--viewMargin));
     margin: 0;
     padding: 0;
     background-color: var(--siteBG);

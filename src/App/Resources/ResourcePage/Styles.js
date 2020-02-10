@@ -7,16 +7,22 @@ export const ResourcePage = styled.div`
 `;
 
 export const ResourceHeader = styled.div`
-  ${layout.row};
+  ${layout.col};
 `;
 
 export const ResourceTitle = styled.div`
+	${layout.row};
   ${font.title};
   margin: 0 0 0 ${length.margin};
   color: ${color.primary};
   & :hover {
     text-decoration: none;
   }
+`;
+
+export const SaveButton = styled.button`
+	margin: ${length.margin} ${length.margin} ${length.margin} auto;
+	${components.button};
 `;
 
 export const ResourceTags = styled.div`

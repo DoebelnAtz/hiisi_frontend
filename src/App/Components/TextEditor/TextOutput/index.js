@@ -44,7 +44,8 @@ const TextEditWindowOutput = ({editable, state, setState}) => {
     };
 
     const handleChange = (e) => {
-        setState(e.target.value);
+    	let input = e.target.value;
+        setState(input);
     };
 
     useEffect(() => {
