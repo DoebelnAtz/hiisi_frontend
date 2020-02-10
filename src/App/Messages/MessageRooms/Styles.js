@@ -8,6 +8,7 @@ export const RoomList = styled.div`
 	bottom: 40px;
 	right: 0;
 	height: auto;
+	border: 2px solid ${color.siteBG1};
 	width: 300px;
 	padding: ${length.margin};
 `;

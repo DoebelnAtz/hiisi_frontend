@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useRequest } from '../../Hooks';
-
+import ResourceCard from './ResourceCard';
 import {
-	ResourceCard,
 	Resources,
 	Tag,
 	Tags,
@@ -11,13 +10,18 @@ import {
 	SubmitResourceButton,
 	FilterButton,
 	ResourcePageHead,
+	ResourceContent,
+	ResourceVotes,
+	ArrowImage,
+	ResourceVoteCount,
 } from './Styles';
+
 import SubmitResource from './SubmitResource/index';
 import Button from '../Components/Buttons/Button';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
-import { ResourceListType, ResourceType } from './Types';
+import { ResourceListType, ResourceType, vote } from './Types';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
@@ -53,37 +57,15 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 		if (!!resources)
 			return resources.map((resource: ResourceListType) => {
 				return (
-					<ResourceCard key={resource.r_id}>
-						<ResourceTitle
-							onClick={() => {
-								history.push(`/resources/${resource.r_id}`);
-							}}
-						>
-							{resource.title}
-						</ResourceTitle>
-						<Tags>
-							{resource.tags.map((tag, index) => (
-								<Tag
-									color={resource.colors[index]}
-									key={index}
-									onClick={() => setFilter(tag)}
-								>
-									# {tag}
-								</Tag>
-							))}
-						</Tags>
-						<DeleteButton>
-							{resource.owner && (
-								<Button
-									onClick={() =>
-										deleteResource(resource.r_id)
-									}
-								>
-									X
-								</Button>
-							)}
-						</DeleteButton>
-					</ResourceCard>
+					<ResourceCard
+						key={resource.r_id}
+						resource={resource}
+						openResource={() =>
+							history.push(`/resources/${resource.r_id}`)
+						}
+						deleteResource={() => deleteResource(resource.r_id)}
+						setFilter={setFilter}
+					/>
 				);
 			});
 	};

@@ -14,7 +14,8 @@ export interface ResourceType {
 	username: string,
 	link: string,
 	commentthread: number,
-	owner: boolean
+	owner: boolean,
+	votes: number
 }
 
 export interface ResourceListType {
@@ -26,7 +27,8 @@ export interface ResourceListType {
 	username: string,
 	link: string,
 	commentthread: number,
-	owner: boolean
+	owner: boolean,
+	votes: number
 }
 
 export type SubmitResourceProps = {
@@ -35,3 +37,5 @@ export type SubmitResourceProps = {
 	setResources: Dispatch<SetStateAction<ResourceListType[] | undefined>>,
 	setPopup: Dispatch<SetStateAction<boolean>>
 }
+
+export type vote = 1 | -1;

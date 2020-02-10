@@ -63,16 +63,16 @@ const Login = (props) => {
     const moveRight = useSpring(
         {
             ref: moveRightRef,
-            from: {transform: 'translateX(0vw)'},
-            to: {transform: !animate ? 'translateX(0vw)' : 'translateX(15vw)'}
+            from: {transform: 'translateX(2vw)'},
+            to: {transform: !animate ? 'translateX(2vw)' : 'translateX(14vw)'}
         }
     );
 
     const moveLeft = useSpring(
         {
             ref: moveLeftRef,
-            from: {transform: 'translateX(0vw)'},
-            to: {transform: !animate ? 'translateX(0vw)' : 'translateX(-15vw)'}
+            from: {transform: 'translateX(2vw)'},
+            to: {transform: !animate ? 'translateX(2vw)' : 'translateX(-10vw)'}
         }
     );
 
@@ -80,7 +80,7 @@ const Login = (props) => {
         {
             ref: moveUpRef,
             from: {transform: 'translateY(0vw)'},
-            to: {transform: !animate ? 'translateY(0vw)' : 'translateY(-20vw)'}
+            to: {transform: !animate ? 'translateY(0vw)' : 'translateY(-16vw)'}
         }
     );
 
@@ -88,26 +88,26 @@ const Login = (props) => {
         {
             ref: moveDownRef,
             from: {transform: 'translateY(0vw)'},
-            to: {transform: !animate ? 'translateY(0vw)' : 'translateY(20vw)'}
+            to: {transform: !animate ? 'translateY(0vw)' : 'translateY(16vw)'}
         }
     );
 
     const expandMain = useSpring(
         {
             ref: widthRef,
-            from: {width: '20vw'},
-            to: {width: !animate ? '20vw' : '50vw'}
+            from: {width: '16vw'},
+            to: {width: !animate ? '16vw' : '40vw'}
         });
     const expandBorderMain = useSpring(
         {
             ref: radiusRef,
             from: {
-                borderTopLeftRadius: '10vw',
-                borderBottomRightRadius: '10vw',
+                borderTopLeftRadius: '8vw',
+                borderBottomRightRadius: '8vw',
             },
             to: {
-                borderTopLeftRadius: !animate ? '10vw' : '0',
-                borderBottomRightRadius: !animate ? '10vw' : '0',
+                borderTopLeftRadius: !animate ? '8vw' : '0',
+                borderBottomRightRadius: !animate ? '8vw' : '0',
             }
         }
         );
@@ -116,10 +116,10 @@ const Login = (props) => {
         {
             ref: greenTRRadiusRef,
             from: {
-                borderTopRightRadius: '10vw',
+                borderTopRightRadius: '8vw',
             },
             to: {
-                borderTopRightRadius: !animate ? '10vw' : '0',
+                borderTopRightRadius: !animate ? '8vw' : '0',
             }
         }
     );
@@ -128,10 +128,10 @@ const Login = (props) => {
         {
             ref: greenBLRadiusRef,
             from: {
-                borderBottomLeftRadius: '10vw',
+                borderBottomLeftRadius: '8vw',
             },
             to: {
-                borderBottomLeftRadius: !animate ? '10vw' : '0',
+                borderBottomLeftRadius: !animate ? '8vw' : '0',
             }
         }
     );
@@ -143,8 +143,7 @@ const Login = (props) => {
 
     return (
         <BackgroundDiv>
-            <button style={{position: 'absolute'}} onClick={() => setAnimate(!animate)}>animate</button>
-
+            {/*<button style={{position: 'absolute'}} onClick={() => setAnimate(!animate)}>animate</button>*/}
             <LoginDiv style={{...expandMain, ...expandBorderMain}}>
                 <InputDiv>
                     <div style={{position: 'relative', left: '-50%'}}>

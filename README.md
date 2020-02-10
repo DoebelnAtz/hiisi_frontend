@@ -14,13 +14,13 @@
     3. Run npm start
     4. Repeat for the backend repository
 
-<h2>NORM RULES FOR HIVEMIND:</h2>
+<h3>NORM RULES:</h3>
 
-<h4>Project Structure</h4>
+
 
 Style rules: Use prettier with the rules defined in the package.json file.
 
-Project structure
+<h4>Project Structure</h4>
 
 Every page or view has their own folder,
 Every component used only by that view should be a child directory of that folder.

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { RoomList, ThreadItem, CreateThreadRow } from './Styles';
 import { makeRequest } from '../../Api/Api';
 import Input from '../../Components/Input';
@@ -6,7 +6,16 @@ import Button from '../../Components/Buttons/Button';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
 import InputWithButton from '../../Components/Buttons/InputWithButton';
-const MessageRoomList: React.FC<RouteComponentProps> = ({ history }) => {
+import { useDismiss } from '../../../Hooks';
+
+type MessageRoomProps = {
+	close?: () => void;
+};
+
+const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
+	history,
+	close,
+}) => {
 	const [threads, setThreads] = useState<ThreadType[]>([]);
 	const [inputVal, setInputVal] = useState('');
 

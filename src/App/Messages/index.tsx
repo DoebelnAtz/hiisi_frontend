@@ -1,18 +1,21 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 import { MessageModal } from './Style';
 import MessageRoomList from './MessageRooms';
+import { useDismiss } from '../../Hooks';
 
 const MessageRoomModal: React.FC = () => {
-	const [expandRoomList, setExpandRoomList] = useState<boolean>(true);
+	const [expandRoomList, setExpandRoomList] = useState<boolean>(false);
+	const inside = useRef<HTMLDivElement>(null);
+	useDismiss(inside, () => setExpandRoomList(false));
 	return ReactDOM.createPortal(
-		<Fragment>
+		<div ref={inside} style={{ zIndex: 100 }}>
 			{expandRoomList && <MessageRoomList />}
 			<MessageModal onClick={() => setExpandRoomList(!expandRoomList)}>
 				Chat
 			</MessageModal>
-		</Fragment>,
+		</div>,
 		document.querySelector('#chat') as Element,
 	);
 };

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {color, components, layout} from "../../../Styles/sharedStyles";
+import {color, components, layout, length} from "../../../Styles/sharedStyles";
 import { animated } from 'react-spring'
 
 
@@ -10,11 +10,11 @@ export const BackgroundDiv = styled.div`
 `;
 
 export const LoginDiv = styled(animated.div)`
-    width: 20vw;
+    width: 16vw;
     margin: auto;
-    display: flex;
-    height: 20vw;
-    border-radius: 10vw;
+    //display: flex;
+    height: 16vw;
+    border-radius: 8vw;
     background-color: ${ color.primary };
     z-index: 3;
 `;
@@ -22,7 +22,7 @@ export const LoginDiv = styled(animated.div)`
 export const InputDiv = styled.div`
     position: absolute;
     left: 50%;
-    top: 46%; 
+    top: 45%; 
 `;
 
 export const UsernameDiv = styled.div`
@@ -50,31 +50,27 @@ export const LoginButton = styled.div`
 `;
 
 export const OrangeDiv = styled(animated.div)`
-    width: 20vw;
-    height: 20vw;
-    border-radius: 10vw;
+    width: 16vw;
+    height: 16vw;
+    border-radius: 8vw;
     
     background-color: ${color.secondary};
     z-index: 1;
 `;
 
 export const GreenDiv = styled(animated.div)`
-    width: 20vw;
-    height: 20vw;
-    border-radius: 10vw;
+    width: 16vw;
+    height: 16vw;
+    border-radius: 8vw;
     
     background-color: ${color.tertiary};
     z-index: 1;
 `;
 
 export const HelperDiv = styled(animated.div)`
-    top: calc(50% - 10vw);
+    top: calc(50% - 8vw - ${length.margin} / 2);
     left: 40vw;
     position: absolute;
 `;
 
-export const HelperOrangeDiv = styled(animated.div)`
-    top: calc(50% - 10vw);
-    left: 40vw;
-    position: absolute;
-`;
+

@@ -64,10 +64,15 @@ export const cursor = {
     `,
     draggable: css`
       cursor: grab;
+      user-select: none;
     `,
     dragging: css`
       cursor: grabbing;
     `,
+    notAllowed: css`
+		cursor: not-allowed;
+		user-select: none;
+	`,
 };
 
 export const components = {
