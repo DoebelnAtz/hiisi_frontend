@@ -1,7 +1,6 @@
 <h3>Demo Login:</h2>
 
-    username: morko
-    password: 94502491Morko
+    Currently not available
 
 <h4>Setup:</h4>
     
@@ -10,76 +9,57 @@
 
 <h4>To run:</h4>
 
-    1. Clone the repository
+    1. Clone the frontend repository
     2. Run npm install
     3. Run npm start
-    
+    4. Repeat for the backend repository
 
 <h2>NORM RULES FOR HIVEMIND:</h2>
 
 <h4>Project Structure</h4>
 
-React component files and function have to be Capitalized and follow camelCase, other .js files should just be camelCase
+Style rules: Use prettier with the rules defined in the package.json file.
 
-.css files should be lowercase
+Project structure
 
-Don't put all .js files in the same directory, try to split 
-them up into subdirectories by function
+Every page or view has their own folder,
+Every component used only by that view should be a child directory of that folder.
+If a component is used in multiple Directories it should be in ./src/Components
 
-<h4>Project Code recommendations</h4>
+Each folder should have a index.js/ts/tsx file and a Styles.js file if necessary.
 
-third party import statements should be at top of page, other
-import statements should follow them separated by a newline.
+This way style rules are easy to find. If a style is used in several component, it should be defined in
+.Styles/sharedStyles.js
 
-Prefer functional components with react hooks
+Every view should have one Types folder with a index.ts file that holds all the types used by that view.
 
-Enclose function arguments in parenthesis even  if it only takes
-one arguments, return statements should always be
-multiline.
+Example:
 
-example:
-
-    const App = ->(props)<- => {
-      ->return(
-            <div>App</div>
-        );<-
-    }
+    | Resources
+    |
+    |--| ResourcePage
+    |  |
+    |  |-- index.tsx
+    |  |-- Styles.js
+    |
+    |--| SubmitResource
+    |  |
+    |  |-- index.tsx
+    |  |-- Styles.js
+    |
+    |--| Types
+    |  |
+    |  |-- index.ts
+    |
+    |-- index.tsx
+    |-- Styles.js
     
-One newline separating class methods
-
-No newline for first bracket
-
-example:
-
-    const func = () => ->{<-
-        return(
-            <div>Hello World</div>
-        )
-    }
-
-
-
-When styling colors in css, use variables found in ./src/App/base.css
-this way, if we decide to use another color palette we don't have to change it in every
-.css file.
-
-css rules should be ordered alphabetically
-by order of specificity
-
-    
-    id rules
-    class rules
-    element rules
-
+ 
 <h3>Resources:</h3>
 
 Arrow functions explained:
 
 https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
-
-React redux short tutorial:
-
-https://www.youtube.com/watch?v=CVpUuw9XSjY
 
 What is a rest API?:
 
@@ -97,66 +77,10 @@ Lodash docs:
 
 https://lodash.com/docs/4.17.15
 
-React DND docs:
 
-https://react-dnd.github.io/react-dnd/about
 
 <h3>API documentation:</h3>
 
-<h5>Endpoints:</h5>
+    Api documentation is found in the backend repository.
 
-make sure you're running the backend on 127/0.0.1:8002
-
-base URL: http://134.209.227.11:8002/api/
-
-profiles: /profiles/
-
-blogs: /blogs/
-
-events: /events/
-
-comments: /comments/
-
-login: /auth/login
-
-    data = {
-        username: "username", 
-        password: "password"
-    }
-
-registration: /auth/register/
-
-    data = {
-        username: "username", 
-        password: "password"
-    }
-
-create_comment: /api/create_comment/
-    
-    data = {
-        user_id: "", 
-        comment_text: "",
-        blog_id: (null or blog_id), 
-        comment_parent: (null or comment id), 
-        published_date: (ISO datetime string)
-    }
-
-create blogpost: /api/blogs
-
-    data = {
-        creator: user.id,
-        post: string,
-        title: string,
-        event: boolean,
-        published_date: (ISO datetime string),
-    }
-
-like blog/comment
-
-    data = {
-        target_id: (blog or comment id),
-        user_id: (user id number),
-        target: ("Blog" or "Index"),
-        change: (number, 1 for like -1 for dislike),
-    }
     

@@ -45,7 +45,7 @@ export function useRequest<F>(url: string, method: string, body = {}) {
 	type dataType = F;
 	const [data, setData] = useState<F>();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const { update } = useContext(ErrorContext); // NOT sure how to type this in TS
+	const { update: setError } = useContext(ErrorContext); // NOT sure how to type this in TS
 
 	let resp;
 	useEffect(() => {
@@ -55,7 +55,11 @@ export function useRequest<F>(url: string, method: string, body = {}) {
 				resp = await makeRequest(url, method, body);
 				setData(resp.data);
 			} catch (e) {
-				update(JSON.stringify(e.response.status));
+				if (e.response.status === 401) {
+					localStorage.clear();
+					window.location.replace('/login')
+				}
+				setError(JSON.stringify(e.response.status));
 			} finally {
 				setIsLoading(false);
 			}

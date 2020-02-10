@@ -6,7 +6,7 @@ import SearchSideView from './SideViews/SearchSideView';
 
 export default () => {
 	const { state: currentNav } = useContext(CurrentNavContext);
-
+	// TODO: fix this mess..
 	const selectNav = (nav) => {
 		switch (nav) {
 			case 'messages':

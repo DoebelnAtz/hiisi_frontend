@@ -9,11 +9,11 @@ import { useTransition, animated } from 'react-spring';
 import Coalition from './Coalition/Coalition';
 import Notifications from './Notifications/Notifications';
 import MessageHome from './Messages/MessageHome';
-import OpenHive from './OpenHive';
-import ProjectPage from './OpenHive/ProjectPage';
+import OpenHive from './OpenHive/index';
+import ProjectPage from './OpenHive/ProjectPage/index';
 import TaskInfo from './Board/Column/Task/TaskInfo';
 import Messages from './Messages/Messages';
-import Resources from './Resources';
+import Resources from './Resources/index';
 import ResourcePage from './Resources/ResourcePage';
 
 export default (prop) => {
