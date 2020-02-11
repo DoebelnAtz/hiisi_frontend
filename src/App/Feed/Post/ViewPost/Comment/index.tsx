@@ -23,7 +23,6 @@ const CommentCard: React.FC<CommentProps> = ({
 	isExpanded,
 }) => {
 	const [expanded, setExpanded] = useState(false);
-	// @ts-ignore
 	const [childThread, setChildThread, isLoading] = useRequest<CommentType[]>(
 		'blogs/commentthread/' + child.childthread,
 		'get',
@@ -67,7 +66,8 @@ const CommentCard: React.FC<CommentProps> = ({
 					/>
 				</ButtonRow>
 				<ChildComments>
-					{renderComments(!odd, childThread, expanded)}
+					{!!childThread &&
+						renderComments(!odd, childThread, expanded)}
 				</ChildComments>
 			</ParentComment>
 		);

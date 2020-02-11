@@ -4,6 +4,7 @@ import './base.css';
 import { Logo } from './Nav/NavItems';
 import logo from './Nav/navIcons/Logo6.png';
 import { CurrentNavContext } from '../Context/CurrentNavContext';
+import { capitalizeFirst } from '../utils/utils';
 
 const Header = (props) => {
 	const { state, update } = useContext(CurrentNavContext);
@@ -17,7 +18,7 @@ const Header = (props) => {
 			<div className={'logo_section'}>
 				<Logo currentNav={state} icon={logo} setCurrentNav={update} />
 			</div>
-			<div id={'header_nav_title'}>{props.currentNav}</div>
+			<div id={'header_nav_title'}>{capitalizeFirst(state)}</div>
 			<div
 				className={'ml-auto'}
 				id={'header_logout'}

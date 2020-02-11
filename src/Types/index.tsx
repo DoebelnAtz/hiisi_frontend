@@ -41,9 +41,24 @@ export interface User {
 	u_id: number;
 }
 
-export interface focusList {
+export interface FocusList {
 	focus: Array<String>;
 	title: string;
+}
+
+export interface MessageNotification {
+	type: string,
+	thread: number,
+	sender: number
+}
+
+declare var ioType : {
+	connect(url: string): SocketType;
+};
+export interface SocketType {
+	on: (event: string, callback: (data: any) => void ) => void
+	emit: (event: string, data: any) => void
+	disconnect: () => void
 }
 
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color, colorAdjust, layout, length } from '../../../Styles/sharedStyles';
+import { color, colorAdjust, components, layout, length } from '../../../Styles/sharedStyles';
 
 export const RoomList = styled.div`
 	position: absolute;
@@ -27,4 +27,8 @@ export const ThreadItem = styled.div`
   	& span {
   		color: ${color.primary};
   	}  
+`;
+
+export const NotificationIcon = styled.div`
+	${components.notificationIcon};
 `;

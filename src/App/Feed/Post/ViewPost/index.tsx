@@ -10,7 +10,6 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	commentthread,
 	focusList,
 }) => {
-	// @ts-ignore
 	const [comments, setComments, isLoading] = useRequest<CommentType[]>(
 		`blogs/commentthread/${commentthread}`,
 		'get',
@@ -22,7 +21,6 @@ const ShowComments: React.FC<ViewPostProps> = ({
 		isExpanded = true,
 	) => {
 		if (comment) {
-			console.log(odd);
 			return comment.map((child: CommentType) => {
 				return (
 					<div key={child.c_id}>

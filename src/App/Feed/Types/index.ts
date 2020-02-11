@@ -1,4 +1,4 @@
-import {focusList} from "../../../Types";
+import {FocusList} from "../../../Types";
 
 export interface CommentType {
     c_id: number,
@@ -11,7 +11,7 @@ export interface CommentType {
 
 export interface CommentProps {
     odd: boolean,
-    focusList: focusList,
+    focusList: FocusList,
     child: CommentType,
     renderComments: (odd: boolean, thread: Array<CommentType> | undefined, expanded: boolean) => void,
     isExpanded: boolean
@@ -37,7 +37,7 @@ export interface ReplyProps {
 
 export type ViewPostProps = {
     commentthread: number,
-    focusList: focusList,
+    focusList: FocusList,
 }
 
 export type CreatePostModalProps = {

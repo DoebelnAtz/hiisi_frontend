@@ -59,7 +59,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	useEffect(() => {
 		setPriorityIcon(getPriorityIcon(task?.priority));
 	}, [isLoading]);
-
+	console.log(task);
 	const close = () => {
 		history.push('/projects/1');
 	};

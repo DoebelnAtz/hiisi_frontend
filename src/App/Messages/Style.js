@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, cursor, length } from '../../Styles/sharedStyles';
+import { color, components, cursor, layout, length } from '../../Styles/sharedStyles';
 
 export const MessageModal = styled.div`
 	color: white;
@@ -8,9 +8,14 @@ export const MessageModal = styled.div`
 	padding: 4px;
 	width: 300px;
 	height: 40px;
+	${layout.row};
 	${cursor.clickable};
 	position: fixed;
 	bottom: 0;
 	z-index: 5;
 	right: 0;
+`;
+
+export const NotificationIcon = styled.div`
+	${components.notificationIcon};
 `;

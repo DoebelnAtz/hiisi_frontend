@@ -28,7 +28,6 @@ export const colorAdjust = {
             .string()
 };
 
-
 export const length = {
     margin: '10px',
     radius: '4px'
@@ -76,6 +75,15 @@ export const cursor = {
 };
 
 export const components = {
+    notificationIcon: css`
+        height: 14px;
+		width: 14px;
+		margin: auto 10px auto auto;
+		border-radius: 50%;
+		background-color: ${color.secondary};
+		z-index: 6;
+		display: block;
+    `,
     input: css`
         border-radius: 4px;
         padding-left: 10px;

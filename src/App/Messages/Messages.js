@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
@@ -13,30 +13,32 @@ import { calculateTimeSince, getLocal } from '../../utils/utils';
 
 import socketIOClient from 'socket.io-client';
 import AddToChat from '../Components/Buttons/AddToChat';
+import { NotificationContext } from '../../Context/NotificationContext';
 
 const Messages = (props) => {
 	const [inputVal, setInputVal] = useState('');
-	const [addUserInputVal, setAddUserInputVal] = useState('');
-	const [searchResults, setSearchResults] = useState({});
 	const [connectedUsers, setConnectedUsers] = useState([]);
 	const [connected, setConnected] = useState(false);
 	const [messages, setMessages] = useState([]);
 	const [newMessage, setNewMessage] = useState({});
 	const [activeUsers, setActiveUsers] = useState([]);
 	const [socket, setSocket] = useState();
+	const { state: notifications, update: setNotifications } = useContext(NotificationContext);
 
 	let scrollDown = useRef(null);
 	let tid = props.match.params.tid ?? props.tid;
 
 	useNav('messages');
 	useEffect(() => {
+		let user = getLocal('token');
 		let socket = socketIOClient(
 			'http://localhost:5010',
 			{
 				transportOptions: {
 					polling: {
 						extraHeaders: {
-							Authorization: 'Bearer ' + getLocal('token').token,
+							Authorization: 'Bearer ' + user.token,
+							Room: 'Chat-room: ' + tid.toString()
 						},
 					},
 				},
@@ -63,13 +65,14 @@ const Messages = (props) => {
 	}, [props.match.params.tid]);
 
 	useEffect(() => {
-		if (newMessage.username) appendMessage(newMessage);
+		newMessage.username && appendMessage(newMessage);
 	}, [JSON.stringify(newMessage)]);
 
 	useEffect(() => {
 		console.log(tid);
 		getMessages(tid);
 		getUsersConnected(tid);
+		setNotifications(notifications.filter(notif => notif.thread_id === props.match.params.tid))
 	}, [props.match.params.tid]);
 
 	// useEffect(() => {

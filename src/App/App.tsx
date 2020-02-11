@@ -20,33 +20,44 @@ import {
 	SideNavCol,
 } from './Style';
 import Messages from './Messages';
+import { NotificationContextProvider } from '../Context/NotificationContext';
 
 const App = () => {
 	return (
 		<DndProvider backend={Backend}>
 			<ErrorContextProvider>
 				<CurrentNavContextProvider>
-					<Switch>
-						<Route exact path={'/505/'} component={ServerDown} />
-						<Route exact path={'/login/'} component={Login} />
-						<Route exact path={'/redirect/'} component={Redirect} />
-						<Route path={'/'}>
-							<MainContainer>
-								<MainPageHeader>
-									<Header />
-								</MainPageHeader>
-								<MainPage>
-									<SideNavCol>
-										<SideNav />
-									</SideNavCol>
-									<MainView>
-										<Main />
-									</MainView>
-								</MainPage>
-								<Messages />
-							</MainContainer>
-						</Route>
-					</Switch>
+					<NotificationContextProvider>
+						<Switch>
+							<Route
+								exact
+								path={'/505/'}
+								component={ServerDown}
+							/>
+							<Route exact path={'/login/'} component={Login} />
+							<Route
+								exact
+								path={'/redirect/'}
+								component={Redirect}
+							/>
+							<Route path={'/'}>
+								<MainContainer>
+									<MainPageHeader>
+										<Header />
+									</MainPageHeader>
+									<MainPage>
+										<SideNavCol>
+											<SideNav />
+										</SideNavCol>
+										<MainView>
+											<Main />
+										</MainView>
+									</MainPage>
+									<Messages />
+								</MainContainer>
+							</Route>
+						</Switch>
+					</NotificationContextProvider>
 				</CurrentNavContextProvider>
 			</ErrorContextProvider>
 		</DndProvider>

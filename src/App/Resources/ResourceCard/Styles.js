@@ -6,41 +6,51 @@ export const ResourceCard = styled.div`
   ${layout.row};
   width: calc(100% - ${length.margin} * 2);
   border-radius: 8px;
-  padding: 14px;
   z-index: 1;
   background-color: ${color.siteBG2};
   margin: ${length.margin};
 `;
 
 export const ResourceVotes = styled.div`
-	width: 5%;
+	width: 40px;
+	padding: 14px 0 14px 4px;
+	border-right: 1px solid ${color.siteBG1};
    	${layout.col};
 `;
 
 export const ResourceContent = styled.div`
-	width: 95%;
- 
+	width: calc(100% - 95px);
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+ 	${cursor.clickable};
+ 	z-index: 1;
+ 	&:hover {
+ 		background-color: ${color.siteBG1};
+ 	}
+`;
+
+export const ResourceButtons = styled.div`
+	width: 55px;
+	padding: 14px 0 ;
+	border-left: 1px solid ${color.siteBG1};
 `;
 
 export const ResourceTitle = styled.div`
    ${layout.row};
    width: auto;
    margin-bottom: ${length.margin};
-   ${cursor.clickable}
-   &:hover {
-    color: ${color.primary};
-   }
 `;
 
 export const Tags = styled.div`
+	margin-top: auto;
    ${layout.row};
-   
 `;
 
 export const Tag = styled.div`
   z-index: 2;
   ${cursor.clickable};
-  margin: 6px 4px 6px 0;
+  margin: 2px 4px 2px 0;
   background-color: ${props => props.color};
   padding: 4px 8px;
   border-radius: 4px;
@@ -63,11 +73,9 @@ export const ResourceVoteCount = styled.div`
 
 
 export const DeleteButton = styled.div`
-  position: relative;
+  position: absolute;
+  right: 38px;
   & button {
-    position: absolute;
-
-    left: calc(100% - 30px);
-    bottom: 100%;
+  width: 28px;
   }
 `;

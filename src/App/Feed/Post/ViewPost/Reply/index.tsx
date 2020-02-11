@@ -20,8 +20,10 @@ const ReplyButton: React.FC<ReplyProps> = ({
 				content: commentText,
 				threadId: childThreadId,
 			});
-			!!commentThread?.length &&
-				setCommentThread([...commentThread, resp.data]);
+			if (resp.data) {
+				!!commentThread &&
+					setCommentThread([...commentThread, resp.data]);
+			}
 		}
 		expandChildThread && expandChildThread(true);
 		setOpened(false);

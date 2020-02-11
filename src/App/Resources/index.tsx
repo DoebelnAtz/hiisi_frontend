@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRequest } from '../../Hooks';
+import { useNav, useRequest } from '../../Hooks';
 import ResourceCard from './ResourceCard';
 import {
 	Resources,
@@ -21,8 +21,9 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 		`resources?page=1&filter=${filter}`,
 		'get',
 	);
+
+	useNav('resources');
 	const [popup, setPopup] = useState(false);
-	console.log(resources);
 
 	const deleteResource = async (rId: number) => {
 		if (resources) {

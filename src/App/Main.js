@@ -1,6 +1,6 @@
 import Feed from './Feed';
 import Profile from './Profile/Profile';
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useContext, useEffect, useRef, useState } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
@@ -15,9 +15,14 @@ import TaskInfo from './Board/Column/Task/TaskInfo';
 import Messages from './Messages/Messages';
 import Resources from './Resources/index';
 import ResourcePage from './Resources/ResourcePage';
+import { getLocal } from '../utils/utils';
+import { NotificationContext } from '../Context/NotificationContext';
+import { useNotifications } from '../Hooks';
 
 export default (prop) => {
 	const location = useLocation();
+	const [socket, setSocket] = useState();
+
 	const transitions = useTransition(
 		location,
 		(location) => location.pathname,
@@ -37,7 +42,7 @@ export default (prop) => {
 			},
 		},
 	);
-
+	const [notifications, connected] = useNotifications(getLocal('token').user.u_id);
 	//  React-spring useTransition causes a bug where a component is
 	//  mounted multiple times, disabled for now
 	//  TODO: fix this bug..
@@ -84,26 +89,25 @@ export default (prop) => {
 						props, // in this component, moved here for now
 					) => <Messages {...props} />}
 				/>
-				<Route
-					exact
-					path={'/resources'}
-					render={(props) => <Resources {...props} />}
-				/>
-				<Route
-					exact
-					path={'/resources/:rid'}
-					render={(props) => <ResourcePage {...props} />}
-				/>
 			</Switch>
 			<Route
-				path={'/projects/:pid'}
-				render={(props) => <ProjectPage {...props} />}
-			></Route>
+				path={'/resources'}
+				render={(props) => <Resources {...props} />}
+			/>
 			<Route
 				exact
-				path={'/projects/:pid/tasks/:tid'}
-				render={(props) => <TaskInfo {...props} />}
-			></Route>
+				path={'/resources/:rid'}
+				render={(props) => <ResourcePage {...props} />}
+			/>
+			<Route
+	path={'/projects/:pid'}
+	render={(props) => <ProjectPage {...props} />}
+	/>
+			<Route
+	exact
+	path={'/projects/:pid/tasks/:tid'}
+	render={(props) => <TaskInfo {...props} />}
+	/>
 		</Fragment>
 	);
 };
