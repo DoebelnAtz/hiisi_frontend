@@ -3,17 +3,9 @@ import { useRequest } from '../../Hooks';
 import ResourceCard from './ResourceCard';
 import {
 	Resources,
-	Tag,
-	Tags,
-	ResourceTitle,
-	DeleteButton,
 	SubmitResourceButton,
 	FilterButton,
 	ResourcePageHead,
-	ResourceContent,
-	ResourceVotes,
-	ArrowImage,
-	ResourceVoteCount,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';

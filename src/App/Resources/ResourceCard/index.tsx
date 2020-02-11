@@ -9,14 +9,15 @@ import {
 	ResourceVotes,
 	Tag,
 	Tags,
-} from '../Styles';
+} from './Styles';
 import Button from '../../Components/Buttons/Button';
 import ArrowUp from '../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../Assets/ArrowDown.png';
+import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
+import ArrowDownVoted from '../../../Assets/ArrowDownVoted.png';
+
 import { ResourceListType, vote } from '../Types';
-import { RouteComponentProps } from 'react-router';
 import { makeRequest } from '../../Api/Api';
-import { getLocal } from '../../../utils/utils';
 import { number } from 'prop-types';
 
 type ResourceCardPropTypes = {
@@ -34,26 +35,65 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	deleteResource,
 	openResource,
 }) => {
-	const [votes, setVotes] = useState<number>();
+	const [votes, setVotes] = useState<number>(resource.votes);
+	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 
 	const voteResource = async (vote: vote, resourceId: number) => {
 		let resp = await makeRequest('resources/vote_resource', 'post', {
 			vote: vote,
 			resourceId: resourceId,
 		});
-		if (votes && resp?.data) {
+		if (resp?.data) {
+			setVoted(vote);
 			setVotes(votes + vote);
+		}
+	};
+
+	const removeVote = async (
+		vote: vote,
+		resourceId: number,
+		update: boolean,
+	) => {
+		let resp = await makeRequest('resources/remove_vote', 'put', {
+			vote: vote,
+			resourceId: resourceId,
+		});
+		if (resp?.data && update) {
+			setVoted(0);
+			setVotes(votes - vote);
+		}
+	};
+
+	const handleUpClick = async (vote: vote, resourceId: number) => {
+		if (voted === 1) {
+			await voteResource(0, resourceId);
+		} else {
+			await voteResource(vote, resourceId);
+		}
+	};
+
+	const handleDownClick = async (vote: vote, resourceId: number) => {
+		if (voted === -1) {
+			await voteResource(0, resourceId);
+		} else {
+			await voteResource(vote, resourceId);
 		}
 	};
 
 	return (
 		<ResourceCard key={resource.r_id}>
 			<ResourceVotes>
-				<ArrowImage src={ArrowUp} alt={'arrow_up'} onClick={() => {}} />
-				<ResourceVoteCount>
-					{votes ? votes : resource.votes}
-				</ResourceVoteCount>
-				<ArrowImage src={ArrowDown} alt={'arrow_down'} />
+				<ArrowImage
+					src={voted > 0 ? ArrowUpVoted : ArrowUp}
+					alt={'arrow_up'}
+					onClick={() => handleUpClick(1, resource.r_id)}
+				/>
+				<ResourceVoteCount>{votes}</ResourceVoteCount>
+				<ArrowImage
+					src={voted < 0 ? ArrowDownVoted : ArrowDown}
+					alt={'arrow_down'}
+					onClick={() => handleDownClick(-1, resource.r_id)}
+				/>
 			</ResourceVotes>
 			<ResourceContent>
 				<ResourceTitle

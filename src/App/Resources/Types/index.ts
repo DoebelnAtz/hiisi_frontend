@@ -20,6 +20,7 @@ export interface ResourceType {
 
 export interface ResourceListType {
 	r_id: number,
+	vote: vote,
 	description: string,
 	tags: string[],
 	colors: string[],
@@ -38,4 +39,4 @@ export type SubmitResourceProps = {
 	setPopup: Dispatch<SetStateAction<boolean>>
 }
 
-export type vote = 1 | -1;
+export type vote = 1 | 0 | -1;
