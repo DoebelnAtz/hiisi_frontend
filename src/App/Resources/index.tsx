@@ -67,7 +67,6 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				);
 			});
 	};
-	console.log(tags);
 	return (
 		<Resources>
 			<ResourcePageHead>

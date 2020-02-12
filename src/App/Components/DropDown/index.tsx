@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, {
+	Dispatch,
+	SetStateAction,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 
 import {
 	DropDown,
@@ -32,6 +38,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	const inside = useRef<HTMLDivElement>(null);
 	const [options, setOptions] = useState(optionList);
 	const [filterInput, setFilterInput] = useState('');
+	const filterInputRef = useRef<HTMLInputElement>(null);
 	const renderOptions = () => {
 		return options.map((option: string, index: number) => {
 			return (
@@ -50,9 +57,15 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 
 	useDismiss(inside, () => setExpanded(false));
 
+	useEffect(() => {
+		if (filterInputRef && expanded) {
+			filterInputRef.current?.focus();
+			console.log('hit');
+		}
+	}, [expanded]);
+
 	const handleFilterChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		console.log(options, optionList);
 		setFilterInput(target.value);
 		setOptions(
 			optionList.filter((option) => {
@@ -61,6 +74,10 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 					.includes(target.value.toLowerCase());
 			}),
 		);
+	};
+
+	const handleClick = () => {
+		setExpanded(!expanded);
 	};
 
 	return (
@@ -73,7 +90,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 			}}
 		>
 			<CurrentOption
-				onClick={() => setExpanded(!expanded)}
+				onClick={() => handleClick()}
 				style={{ lineHeight: `${height}` }}
 			>
 				<span>{`${text}${capitalizeFirst(state)}`}</span>
@@ -82,6 +99,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 				<DropDownList height={height} style={{ width: `${width}` }}>
 					{withFilter && (
 						<SearchInput
+							ref={filterInputRef}
 							placeholder={'filter'}
 							onChange={(e: React.SyntheticEvent) =>
 								handleFilterChange(e)
