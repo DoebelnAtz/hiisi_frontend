@@ -58,6 +58,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 						}
 						deleteResource={() => deleteResource(resource.r_id)}
 						setFilter={setFilter}
+						filter={filter}
 					/>
 				);
 			});

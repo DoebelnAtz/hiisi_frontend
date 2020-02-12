@@ -20,12 +20,14 @@ import ArrowDownVoted from '../../../Assets/ArrowDownVoted.png';
 import { ResourceListType, vote } from '../Types';
 import { makeRequest } from '../../Api/Api';
 import { number } from 'prop-types';
+import { filter } from 'minimatch';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
 	setFilter: Dispatch<SetStateAction<string>>;
 	deleteResource: () => void;
 	openResource: () => void;
+	filter: string;
 	key?: number;
 };
 
@@ -34,6 +36,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	setFilter,
 	deleteResource,
 	openResource,
+	filter,
 }) => {
 	const [votes, setVotes] = useState<number>(resource.votes);
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
@@ -78,6 +81,14 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}
 	};
 
+	const handleFiltering = (filterName: string) => {
+		if (filterName === filter) {
+			setFilter('none');
+		} else {
+			setFilter(filterName);
+		}
+	};
+
 	return (
 		<ResourceCard>
 			<ResourceVotes>
@@ -107,7 +118,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							key={index}
 							onClick={(e: React.SyntheticEvent) => {
 								e.stopPropagation();
-								setFilter(tag);
+								handleFiltering(tag);
 							}}
 						>
 							# {tag}

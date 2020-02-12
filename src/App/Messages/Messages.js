@@ -63,7 +63,6 @@ const Messages = (props) => {
 			socket.disconnect();
 		};
 	}, [props.match.params.tid]);
-
 	useEffect(() => {
 		newMessage.username && appendMessage(newMessage);
 	}, [JSON.stringify(newMessage)]);
@@ -122,8 +121,8 @@ const Messages = (props) => {
 	};
 
 	const renderMessages = () => {
-		if (messages.length) {
-			return messages.map((message) => {
+		if (messages.messages?.length) {
+			return messages.messages.map((message) => {
 				return (
 					<div
 						key={message.m_id}
@@ -196,7 +195,7 @@ const Messages = (props) => {
 			<div className={'row_div '}>
 				<AddToChat tid={props.match.params.tid} />
 			</div>
-
+			<span style={{color: 'white'}}>{messages?.title}</span>
 			<div className={'message_feed'}>
 				{renderMessages()}
 				<div ref={(e) => (scrollDown.current = e)}> </div>

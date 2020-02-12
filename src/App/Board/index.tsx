@@ -7,14 +7,14 @@ import _ from 'lodash';
 import { Columns, Collaborator, ProjectCollaborators } from './Styles';
 import { makeRequest } from '../Api/Api';
 import { useRequest } from '../../Hooks';
-import { BoardProps, BoardType, TaskType } from './Types';
+import { BoardProps, BoardType, ColumnType, TaskType } from './Types';
 
 let boardState = {
 	columns: [
 		{
 			column_id: 0,
 			column_number: 0,
-			title: 'Loading...',
+			title: 'Loading',
 			tasks: [],
 		},
 		{
@@ -170,7 +170,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 					{(!isLoading
 						? filterBoard().columns
 						: boardState.columns
-					).map((column) => (
+					).map((column: ColumnType) => (
 						<Column
 							column={column}
 							columnNum={column.column_number}

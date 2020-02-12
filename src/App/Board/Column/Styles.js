@@ -25,12 +25,21 @@ export const ColumnList = styled.div`
   background-color: ${color.siteBG2};
 `;
 
-export const ColumnTitle = styled.div`
-  padding: 13px 10px 17px;
+export const ColumnTitle = styled.input`
+  padding: 8px 10px 10px;
+  margin: 5px 0 0;
   text-transform: uppercase;
+  border: none;
   color: ${color.primary};
+  background: ${color.siteBG3};
+
   z-index: 3;
     &:hover {
       background: ${color.siteBG3};
+    }
+    &:focus {
+    	outline: none;
+    	background-color: ${color.siteBG1};
+    	border-radius: 4px;
     }
 `;

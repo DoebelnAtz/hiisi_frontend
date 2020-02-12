@@ -5,12 +5,12 @@ import { color, colorAdjust, components, layout, length } from '../../../Styles/
 export const RoomList = styled.div`
 	position: absolute;
 	background-color: ${colorAdjust.rgba(color.siteBG3, 0.95)};
-	bottom: 40px;
+	bottom: 20px;
 	right: 0;
 	height: auto;
-	border: 2px solid ${color.siteBG1};
+	border: 2px solid ${color.primary};
 	width: 300px;
-	padding: ${length.margin};
+	padding: ${length.margin} ${length.margin} 20px ${length.margin};
 `;
 
 export const CreateThreadRow = styled.div`

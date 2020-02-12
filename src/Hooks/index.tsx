@@ -29,6 +29,10 @@ export const useNotifications = (room: string) => {
 	const [socket, setSocket] = useState<SocketType>();
 	useEffect(() => {
 		let user = getLocal('token');
+		if (!user) {
+			localStorage.clear();
+			window.location.replace('/login')
+		}
 		let socket: SocketType = socketIOClient(
 			'http://localhost:5010',
 			{

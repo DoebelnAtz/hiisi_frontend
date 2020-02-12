@@ -42,7 +42,12 @@ export default (prop) => {
 			},
 		},
 	);
-	const [notifications, connected] = useNotifications(getLocal('token').user.u_id);
+	let userId = getLocal('token')?.user?.u_id;
+	if (!userId) {
+		localStorage.clear();
+		window.location.replace('/login')
+	}
+	const [notifications, connected] = useNotifications();
 	//  React-spring useTransition causes a bug where a component is
 	//  mounted multiple times, disabled for now
 	//  TODO: fix this bug..

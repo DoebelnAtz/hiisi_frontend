@@ -1,9 +1,10 @@
 import React, { useState, Fragment, useRef, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
-import { MessageModal } from './Style';
+import { MessageModal, MessageImg } from './Style';
 import MessageRoomList from './MessageRooms';
 import { useDismiss } from '../../Hooks';
+import MessageIcon from '../../Assets/Messages2.png';
 import { MessageNotification } from '../../Types';
 import { NotificationIcon } from './MessageRooms/Styles';
 import { NotificationContext } from '../../Context/NotificationContext';
@@ -20,7 +21,8 @@ const MessageRoomModal: React.FC = () => {
 		<div ref={inside} style={{ zIndex: 100 }}>
 			{expandRoomList && <MessageRoomList />}
 			<MessageModal onClick={() => setExpandRoomList(!expandRoomList)}>
-				Chat
+				<MessageImg src={MessageIcon} />
+				<span>Chat</span>
 				{!!notifications.length && <NotificationIcon />}
 			</MessageModal>
 		</div>,
