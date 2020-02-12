@@ -13,7 +13,7 @@ export const ResourceCard = styled.div`
 
 export const ResourceVotes = styled.div`
 	width: 40px;
-	padding: 14px 0 14px 4px;
+	padding: 14px 0;
 	border-right: 1px solid ${color.siteBG1};
    	${layout.col};
 `;
@@ -34,6 +34,10 @@ export const ResourceButtons = styled.div`
 	width: 55px;
 	padding: 14px 0 ;
 	border-left: 1px solid ${color.siteBG1};
+`;
+
+export const ResourceDate = styled.span`
+	margin-left: auto;
 `;
 
 export const ResourceTitle = styled.div`
@@ -59,16 +63,24 @@ export const Tag = styled.div`
   }
 `;
 
-export const ArrowImage = styled.img`
+export const ArrowImage = styled.div`
+	${layout.row};
+	& img {
 	height: 30px;
 	width: 30px;
+	margin: 0 auto;
 	${cursor.clickable};
+	}
 
 `;
 
 export const ResourceVoteCount = styled.div`
   ${layout.row};
-  margin: 0 10px;  
+  & span {
+  	text-align: center;
+	margin: 0 auto;
+  }
+
 `;
 
 

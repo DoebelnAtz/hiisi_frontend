@@ -118,6 +118,8 @@ export const TagSearchResults = styled.div`
 
 export const ResourceDescription = styled.div`
   ${font.text};
+  min-height: 50%;
+  height: 400px;
   background-color: ${color.siteBG3};
   width: calc(${props => props.full  ? '100%' : '60%'});
 `;

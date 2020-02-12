@@ -10,6 +10,7 @@ import {
 	Tag,
 	Tags,
 	ResourceButtons,
+	ResourceDate,
 } from './Styles';
 import Button from '../../Components/Buttons/Button';
 import ArrowUp from '../../../Assets/ArrowUp.png';
@@ -19,8 +20,7 @@ import ArrowDownVoted from '../../../Assets/ArrowDownVoted.png';
 
 import { ResourceListType, vote } from '../Types';
 import { makeRequest } from '../../Api/Api';
-import { number } from 'prop-types';
-import { filter } from 'minimatch';
+import { formatDate } from '../../../utils/utils';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -96,13 +96,23 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					src={voted > 0 ? ArrowUpVoted : ArrowUp}
 					alt={'arrow_up'}
 					onClick={() => handleUpClick(1, resource.r_id)}
-				/>
-				<ResourceVoteCount>{votes}</ResourceVoteCount>
-				<ArrowImage
-					src={voted < 0 ? ArrowDownVoted : ArrowDown}
-					alt={'arrow_down'}
-					onClick={() => handleDownClick(-1, resource.r_id)}
-				/>
+				>
+					<img
+						src={voted > 0 ? ArrowUpVoted : ArrowUp}
+						alt={'arrow_up'}
+						onClick={() => handleUpClick(1, resource.r_id)}
+					/>
+				</ArrowImage>
+				<ResourceVoteCount>
+					<span>{votes}</span>
+				</ResourceVoteCount>
+				<ArrowImage>
+					<img
+						src={voted < 0 ? ArrowDownVoted : ArrowDown}
+						alt={'arrow_down'}
+						onClick={() => handleDownClick(-1, resource.r_id)}
+					/>
+				</ArrowImage>
 			</ResourceVotes>
 			<ResourceContent
 				key={resource.r_id}
@@ -110,20 +120,26 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					openResource();
 				}}
 			>
-				<ResourceTitle>{resource.title}</ResourceTitle>
+				<ResourceTitle>
+					{resource.title}
+					<ResourceDate>
+						{formatDate(resource.published_date)}
+					</ResourceDate>
+				</ResourceTitle>
 				<Tags>
-					{resource.tags.map((tag, index) => (
-						<Tag
-							color={resource.colors[index]}
-							key={index}
-							onClick={(e: React.SyntheticEvent) => {
-								e.stopPropagation();
-								handleFiltering(tag);
-							}}
-						>
-							# {tag}
-						</Tag>
-					))}
+					{resource.tags &&
+						resource.tags?.map((tag, index) => (
+							<Tag
+								color={resource.colors[index]}
+								key={index}
+								onClick={(e: React.SyntheticEvent) => {
+									e.stopPropagation();
+									handleFiltering(tag);
+								}}
+							>
+								# {tag}
+							</Tag>
+						))}
 				</Tags>
 			</ResourceContent>
 			<ResourceButtons>

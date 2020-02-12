@@ -9,16 +9,17 @@ import {
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
-import Button from '../Components/Buttons/Button';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, ResourceType, vote } from './Types';
+import DropDown from '../Components/DropDown';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
+	const [sortBy, setSortBy] = useState('popular');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
-		`resources?page=1&filter=${filter}`,
+		`resources?page=1&filter=${filter}&order=${sortBy}`,
 		'get',
 	);
 
@@ -46,7 +47,6 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	};
 
 	const renderResources = () => {
-		console.log(resources);
 		if (!!resources)
 			return resources.map((resource: ResourceListType) => {
 				return (
@@ -70,6 +70,14 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				<SubmitResourceButton onClick={() => setPopup(true)}>
 					Submit Resource
 				</SubmitResourceButton>
+				<DropDown
+					width={156}
+					height={34}
+					state={sortBy}
+					text={'Sort by: '}
+					setState={setSortBy}
+					optionList={['popular', 'recent']}
+				/>
 				<FilterButton onClick={() => setFilter('none')}>
 					Filter: {filter}
 				</FilterButton>

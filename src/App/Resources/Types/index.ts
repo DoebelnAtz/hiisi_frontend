@@ -21,6 +21,7 @@ export interface ResourceType {
 export interface ResourceListType {
 	r_id: number,
 	vote: vote,
+	published_date: string,
 	description: string,
 	tags: string[],
 	colors: string[],

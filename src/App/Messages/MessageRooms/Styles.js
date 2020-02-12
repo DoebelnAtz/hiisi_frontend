@@ -8,6 +8,7 @@ export const RoomList = styled.div`
 	bottom: 20px;
 	right: 0;
 	height: auto;
+	z-index: 42;
 	border: 2px solid ${color.primary};
 	width: 300px;
 	padding: ${length.margin} ${length.margin} 20px ${length.margin};

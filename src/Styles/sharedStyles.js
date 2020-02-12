@@ -41,6 +41,7 @@ export const font = {
     `,
     text: css`
       color: white;
+      font-size:16px;
       letter-spacing: 1px;
     `,
 
@@ -100,11 +101,12 @@ export const components = {
         padding: 2px 7px;
         font-size: 16px;
         height: 34px;
+        line-height: 30px;
         background-color: ${color.siteBG3};
         color: ${color.primary};
         ${cursor.clickable};
         border: 1px solid ${color.primary};
-        border-radius: 5px;
+        border-radius: ${length.radius};
         transition: background-color 0.1s;
         &:focus {
           outline: none;

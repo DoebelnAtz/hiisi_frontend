@@ -13,7 +13,7 @@ export const MessageModal = styled.div`
 	${cursor.clickable};
 	position: fixed;
 	bottom: 0;
-	z-index: 5;
+	z-index: ${42 + 42};
 	right: 0;
 	& span {
 	

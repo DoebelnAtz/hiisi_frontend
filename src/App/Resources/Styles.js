@@ -9,18 +9,21 @@ export const SubmitResourceButton = styled.div`
   ${components.button};
   width: fit-content;
   font-size: 18px;
-  margin: ${length.margin};
+  margin-right: ${length.margin};
 `;
 
 export const FilterButton = styled.div`
   ${components.button};
+  
   width: fit-content;
   font-size: 18px;
-  margin: ${length.margin};
+  margin-left: auto;
 `;
 
 export const ResourcePageHead = styled.div`
   ${layout.row};
+    margin: ${length.margin};
+
 `;
 
 
