@@ -6,7 +6,7 @@ export const MessageModal = styled.div`
 	border: 1px solid ${color.primary};
 	background-color: ${color.siteBG2};
 	padding: 4px 0;
-	border-radius: 20px 0 6px 20px;
+	border-radius: 20px 0 5px 20px;
 	width: 300px;
 	height: 40px;
 	${layout.row};

@@ -12,14 +12,14 @@ export const ResourceCard = styled.div`
 `;
 
 export const ResourceVotes = styled.div`
-	width: 40px;
+	width: 41px;
 	padding: 14px 0;
 	border-right: 1px solid ${color.siteBG1};
    	${layout.col};
 `;
 
 export const ResourceContent = styled.div`
-	width: calc(100% - 95px);
+	width: calc(100% - 94px);
 	padding: 14px;
 	display: flex;
 	flex-direction: column;
@@ -78,6 +78,7 @@ export const ResourceVoteCount = styled.div`
   ${layout.row};
   & span {
   	text-align: center;
+  	letter-spacing: 0;
 	margin: 0 auto;
   }
 

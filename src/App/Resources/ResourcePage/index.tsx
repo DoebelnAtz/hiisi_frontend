@@ -35,7 +35,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	const [tagSearch, setTagSearch] = useState('');
 
 	const [results, setResults, isLoadingResults] = useRequest(
-		`resources/tags?q=${tagSearch}`,
+		`resources/tags?q=${tagSearch}&limit=10`,
 		'get',
 	);
 

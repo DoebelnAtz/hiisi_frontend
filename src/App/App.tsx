@@ -21,8 +21,10 @@ import {
 } from './Style';
 import Messages from './Messages';
 import { NotificationContextProvider } from '../Context/NotificationContext';
+import { setLocal } from '../utils/utils';
 
 const App = () => {
+	setLocal('darkmode', true);
 	return (
 		<DndProvider backend={Backend}>
 			<ErrorContextProvider>

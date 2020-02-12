@@ -40,24 +40,28 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 }) => {
 	const [votes, setVotes] = useState<number>(resource.votes);
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
-
+	const [disabled, setDisabled] = useState<boolean>(false);
 	const voteResource = async (
 		vote: vote,
 		resourceId: number,
 		diff: number,
 	) => {
-		setVotes(votes + diff);
-		let backUp = voted;
-		setVoted(vote);
-		let resp = await makeRequest('resources/vote_resource', 'post', {
-			vote: vote,
-			resourceId: resourceId,
-		});
-		if (!resp?.data) {
-			// To make the UI feel more responsive we set states before we make a
-			// request, then set them back if the request fails
-			setVoted(voted);
-			setVotes(votes - diff);
+		if (!disabled) {
+			setDisabled(true); // prevent possible bugs caused by spamming
+			setVotes(votes + diff);
+			let backUp = voted;
+			setVoted(vote);
+			let resp = await makeRequest('resources/vote_resource', 'post', {
+				vote: vote,
+				resourceId: resourceId,
+			});
+			if (!resp?.data) {
+				// To make the UI feel more responsive we set states before we make a
+				// request, then set them back if the request fails
+				setVoted(voted);
+				setVotes(votes - diff);
+			}
+			setDisabled(false);
 		}
 	};
 
@@ -92,11 +96,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	return (
 		<ResourceCard>
 			<ResourceVotes>
-				<ArrowImage
-					src={voted > 0 ? ArrowUpVoted : ArrowUp}
-					alt={'arrow_up'}
-					onClick={() => handleUpClick(1, resource.r_id)}
-				>
+				<ArrowImage>
 					<img
 						src={voted > 0 ? ArrowUpVoted : ArrowUp}
 						alt={'arrow_up'}

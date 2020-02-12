@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNav, useRequest } from '../../Hooks';
 import ResourceCard from './ResourceCard';
 import {
@@ -12,7 +12,7 @@ import SubmitResource from './SubmitResource/index';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
-import { ResourceListType, ResourceType, vote } from './Types';
+import { ResourceListType, ResourceType, Tag, vote } from './Types';
 import DropDown from '../Components/DropDown';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
@@ -20,6 +20,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [sortBy, setSortBy] = useState('popular');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
 		`resources?page=1&filter=${filter}&order=${sortBy}`,
+		'get',
+	);
+	const [tags, setTags, isLoadingTags] = useRequest<Tag[]>(
+		'resources/tags?q=&limit=100',
 		'get',
 	);
 
@@ -63,7 +67,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				);
 			});
 	};
-
+	console.log(tags);
 	return (
 		<Resources>
 			<ResourcePageHead>
@@ -71,15 +75,26 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					Submit Resource
 				</SubmitResourceButton>
 				<DropDown
-					width={156}
-					height={34}
+					width={'156px'}
+					height={'34px'}
 					state={sortBy}
 					text={'Sort by: '}
 					setState={setSortBy}
 					optionList={['popular', 'recent']}
 				/>
+				{tags && (
+					<DropDown
+						width={'204px'}
+						height={'34px'}
+						state={filter}
+						text={'Filter by: '}
+						withFilter={true}
+						setState={setFilter}
+						optionList={tags.map((tag) => tag.title)}
+					/>
+				)}
 				<FilterButton onClick={() => setFilter('none')}>
-					Filter: {filter}
+					Remove filter
 				</FilterButton>
 			</ResourcePageHead>
 			{!isLoading && renderResources()}
