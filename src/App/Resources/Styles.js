@@ -26,4 +26,9 @@ export const ResourcePageHead = styled.div`
 
 `;
 
+export const LoadButton = styled.button`
+	margin: 0 ${length.margin} ${length.margin};
+	${components.button};
+`;
+
 

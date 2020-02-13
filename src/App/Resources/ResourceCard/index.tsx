@@ -4,7 +4,7 @@ import {
 	DeleteButton,
 	ResourceCard,
 	ResourceContent,
-	ResourceTitle,
+	ResourceInfo,
 	ResourceVoteCount,
 	ResourceVotes,
 	Tag,
@@ -13,6 +13,7 @@ import {
 	ResourceDate,
 	ShareButton,
 	CopiedSpan,
+	ResourceTitle,
 } from './Styles';
 import Button from '../../Components/Buttons/Button';
 import ArrowUp from '../../../Assets/ArrowUp.png';
@@ -105,6 +106,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}, 700);
 	};
 
+	// @ts-ignore
 	return (
 		<ResourceCard>
 			<ResourceVotes>
@@ -132,12 +134,12 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					openResource();
 				}}
 			>
-				<ResourceTitle>
-					{resource.title}
+				<ResourceInfo>
+					<ResourceTitle>{resource.title}</ResourceTitle>
 					<ResourceDate>
 						{formatDate(resource.published_date)}
 					</ResourceDate>
-				</ResourceTitle>
+				</ResourceInfo>
 				<Tags>
 					{resource.tags &&
 						resource.tags?.map((tag, index) => (

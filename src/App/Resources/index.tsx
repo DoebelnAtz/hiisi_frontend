@@ -6,6 +6,7 @@ import {
 	SubmitResourceButton,
 	FilterButton,
 	ResourcePageHead,
+	LoadButton,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
@@ -18,8 +19,10 @@ import DropDown from '../Components/DropDown';
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
 	const [sortBy, setSortBy] = useState('popular');
+	const [sortRev, setSortRev] = useState('false');
+	const [pagination, setPagination] = useState(1);
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
-		`resources?page=1&filter=${filter}&order=${sortBy}`,
+		`resources?page=${pagination}&filter=${filter}&order=${sortBy}&reverse=${sortRev}`,
 		'get',
 	);
 	const [tags, setTags, isLoadingTags] = useRequest<Tag[]>(
@@ -67,8 +70,34 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				);
 			});
 	};
+
+	const onSortSelect = (sort: string) => {
+		if (sort === sortBy) {
+			setSortRev(sortRev === 'true' ? 'false' : 'true');
+		} else {
+			setSortRev('false');
+			setSortBy(sort);
+		}
+	};
+
+	const onFilterSelect = (newFilter: string) => {
+		if (newFilter === filter) {
+			setFilter('none');
+		} else {
+			setFilter(newFilter);
+		}
+	};
+
 	return (
 		<Resources>
+			{resources && popup && (
+				<SubmitResource
+					popup
+					setResources={setResources}
+					resources={resources}
+					setPopup={setPopup}
+				/>
+			)}
 			<ResourcePageHead>
 				<SubmitResourceButton onClick={() => setPopup(true)}>
 					Submit Resource
@@ -78,7 +107,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					height={'34px'}
 					state={sortBy}
 					text={'Sort by: '}
-					setState={setSortBy}
+					setSelect={onSortSelect}
 					optionList={['popular', 'recent', 'title']}
 				/>
 				{tags && (
@@ -88,7 +117,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 						state={filter}
 						text={'Filter by: '}
 						withFilter={true}
-						setState={setFilter}
+						setSelect={onFilterSelect}
 						optionList={tags.map((tag) => tag.title)}
 					/>
 				)}
@@ -97,13 +126,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				</FilterButton>
 			</ResourcePageHead>
 			{!isLoading && renderResources()}
-			{resources && popup && (
-				<SubmitResource
-					popup
-					setResources={setResources}
-					resources={resources}
-					setPopup={setPopup}
-				/>
+			{resources && resources.length >= pagination * 10 && (
+				<LoadButton onClick={() => setPagination(pagination + 1)}>
+					Moar
+				</LoadButton>
 			)}
 		</Resources>
 	);

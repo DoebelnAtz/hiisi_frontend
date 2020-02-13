@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import {color, colorAdjust, cursor, length} from "../../Styles/sharedStyles";
+import { color, colorAdjust, components, cursor, length } from '../../Styles/sharedStyles';
 
 export const ProjectList = styled.div`
   color: ${color.primary};
@@ -21,5 +21,9 @@ export const CollaboratorList = styled.div`
     border-radius: 50%;
     margin-right: ${length.margin};
   }
-  
+`;
+
+export const CreateProjectButton = styled.button`
+	${components.button};
+	margin: ${length.margin};
 `;

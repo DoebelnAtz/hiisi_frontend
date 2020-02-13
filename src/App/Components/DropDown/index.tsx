@@ -17,7 +17,7 @@ import { useDismiss } from '../../../Hooks';
 import { capitalizeFirst } from '../../../utils/utils';
 type DropDownProps = {
 	state: string;
-	setState: Dispatch<SetStateAction<string>>;
+	setSelect: any;
 	optionList: string[];
 	width?: string;
 	height: string;
@@ -27,7 +27,7 @@ type DropDownProps = {
 
 const DropDownComponent: React.FC<DropDownProps> = ({
 	state,
-	setState,
+	setSelect,
 	optionList,
 	width = 100,
 	height,
@@ -35,9 +35,9 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	withFilter = false,
 }) => {
 	const [expanded, setExpanded] = useState(false);
-	const inside = useRef<HTMLDivElement>(null);
 	const [options, setOptions] = useState(optionList);
 	const [filterInput, setFilterInput] = useState('');
+	const inside = useRef<HTMLDivElement>(null);
 	const filterInputRef = useRef<HTMLInputElement>(null);
 	const renderOptions = () => {
 		return options.map((option: string, index: number) => {
@@ -45,7 +45,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 				<Option
 					key={index}
 					onClick={() => {
-						setState(option);
+						setSelect(option);
 						setExpanded(false);
 					}}
 				>

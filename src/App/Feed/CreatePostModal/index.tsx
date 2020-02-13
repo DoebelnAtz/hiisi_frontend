@@ -17,7 +17,7 @@ import {
 	ButtonRow,
 	SubmitButton,
 	BackButton,
-} from './Style';
+} from './Styles';
 
 const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	setPosts,

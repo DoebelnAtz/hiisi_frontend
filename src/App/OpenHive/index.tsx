@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useNav, useRequest } from '../../Hooks';
-import { CollaboratorList, ProjectItem, ProjectList } from './Style';
+import {
+	CollaboratorList,
+	ProjectItem,
+	ProjectList,
+	CreateProjectButton,
+} from './Style';
 import { User } from '../../Types';
 import { Project } from './Types';
+import CreateProjectModal from './CreateProjectModal';
 
 const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [projects, setProjects, isLoading] = useRequest<Project[]>(
 		'projects',
 		'get',
 	);
-
+	const [showModal, setShowModal] = useState(false);
 	useNav('Open Hive');
 
 	const renderProjects = () => {
@@ -40,7 +46,15 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 			});
 	};
 
-	return <ProjectList>{!isLoading && renderProjects()}</ProjectList>;
+	return (
+		<ProjectList>
+			{showModal && <CreateProjectModal setShowModal={setShowModal} />}
+			<CreateProjectButton onClick={() => setShowModal(true)}>
+				Start a project
+			</CreateProjectButton>
+			{!isLoading && renderProjects()}
+		</ProjectList>
+	);
 };
 
 export default withRouter(Projects);

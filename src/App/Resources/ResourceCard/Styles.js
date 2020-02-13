@@ -40,14 +40,21 @@ export const ResourceButtons = styled.div`
 
 export const ResourceDate = styled.span`
 	margin-left: auto;
-	font-size: 18px;
+	font-size: 14px;
+	padding-left: 10px;
+	${layout.row};
+
 `;
 
-export const ResourceTitle = styled.div`
+export const ResourceInfo = styled.div`
    ${layout.row};
    font-size: 20px;
    width: auto;
    margin-bottom: ${length.margin};
+`;
+
+export const ResourceTitle = styled.span`
+	${layout.col};
 `;
 
 
@@ -82,6 +89,7 @@ export const ArrowImage = styled.div`
 export const ResourceVoteCount = styled.div`
   ${layout.row};
   & span {
+  	user-select: none;
   	text-align: center;
   	letter-spacing: 0;
 	margin: 0 auto;
