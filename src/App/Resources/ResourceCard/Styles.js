@@ -33,18 +33,23 @@ export const ResourceContent = styled.div`
 export const ResourceButtons = styled.div`
 	width: 55px;
 	padding: 14px 0 ;
+	display: flex;
+	flex-direction: column;
 	border-left: 1px solid ${color.siteBG1};
 `;
 
 export const ResourceDate = styled.span`
 	margin-left: auto;
+	font-size: 18px;
 `;
 
 export const ResourceTitle = styled.div`
    ${layout.row};
+   font-size: 20px;
    width: auto;
    margin-bottom: ${length.margin};
 `;
+
 
 export const Tags = styled.div`
 	margin-top: auto;
@@ -86,9 +91,43 @@ export const ResourceVoteCount = styled.div`
 
 
 export const DeleteButton = styled.div`
-  position: absolute;
-  right: 38px;
-  & button {
-  width: 28px;
+  ${layout.row};
+  margin-bottom: 10px;
+  & img {
+  	${cursor.clickable};
+  	margin: 0 auto;
+  	height: 30px;
+  	border-radius: 50%;
+	  background-color: ${color.siteBG2};
+	  transition: background-color 0.2s;
+  	&:hover {
+  		background-color: ${color.siteBG1};
+  	}
   }
+  
+  
+`;
+
+export const ShareButton = styled.div`
+  ${layout.row};
+  
+  & img {
+  	${cursor.clickable};
+  	margin: 0 auto;
+  	height: 30px;
+	border-radius: 50%;
+	background-color: ${color.siteBG2};
+  	transition: background-color 0.2s;
+	&:hover {
+		background-color: ${color.siteBG1};
+	}
+  }
+`;
+
+export const CopiedSpan = styled.span`
+	position: relative;
+	bottom: 0;
+	transition: opacity 0.3s;
+	user-select: none;
+	opacity: ${props => props.copied ? '1' : '0'};
 `;

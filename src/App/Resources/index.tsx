@@ -79,7 +79,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					state={sortBy}
 					text={'Sort by: '}
 					setState={setSortBy}
-					optionList={['popular', 'recent']}
+					optionList={['popular', 'recent', 'title']}
 				/>
 				{tags && (
 					<DropDown

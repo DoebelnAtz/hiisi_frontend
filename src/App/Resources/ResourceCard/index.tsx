@@ -11,13 +11,16 @@ import {
 	Tags,
 	ResourceButtons,
 	ResourceDate,
+	ShareButton,
+	CopiedSpan,
 } from './Styles';
 import Button from '../../Components/Buttons/Button';
 import ArrowUp from '../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../Assets/ArrowDown.png';
 import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
 import ArrowDownVoted from '../../../Assets/ArrowDownVoted.png';
-
+import DeleteImg from '../../../Assets/x.png';
+import ShareImg from '../../../Assets/Share.png';
 import { ResourceListType, vote } from '../Types';
 import { makeRequest } from '../../Api/Api';
 import { formatDate } from '../../../utils/utils';
@@ -41,6 +44,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [votes, setVotes] = useState<number>(resource.votes);
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
+	const [copied, setCopied] = useState(false);
 	const voteResource = async (
 		vote: vote,
 		resourceId: number,
@@ -93,6 +97,14 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}
 	};
 
+	const handleShareClick = (text: string) => {
+		setCopied(true);
+		navigator.clipboard.writeText(text);
+		setTimeout(() => {
+			setCopied(false);
+		}, 700);
+	};
+
 	return (
 		<ResourceCard>
 			<ResourceVotes>
@@ -143,11 +155,18 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				</Tags>
 			</ResourceContent>
 			<ResourceButtons>
-				<DeleteButton>
-					{resource.owner && (
-						<Button onClick={() => deleteResource()}>X</Button>
-					)}
-				</DeleteButton>
+				{resource.owner && (
+					<DeleteButton>
+						<img onClick={() => deleteResource()} src={DeleteImg} />
+					</DeleteButton>
+				)}
+				<ShareButton>
+					<img
+						onClick={() => handleShareClick(resource.link)}
+						src={ShareImg}
+					/>
+					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+				</ShareButton>
 			</ResourceButtons>
 		</ResourceCard>
 	);

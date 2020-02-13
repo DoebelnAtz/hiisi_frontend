@@ -3,7 +3,7 @@ import messageIcon from './navIcons/Messages2.png';
 import openHiveIcon from './navIcons/OpenHive.png';
 
 import profileIcon from './navIcons/Profile.png';
-import treeIcon from './navIcons/Tree6.png';
+import treeIcon from './navIcons/Tree7.png';
 
 import { NavItem, OpenHiveNav } from './NavItems';
 import React from 'react';
