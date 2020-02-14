@@ -13,9 +13,12 @@ import {
 	ProjectTitle,
 	ProjectDashboardNav,
 	ProjectDashBoardNavItem,
+	ProjectLink,
+	ProjectDescription,
 } from './Style';
 import { RouteComponentProps, User } from '../../../Types';
 import { Project } from '../Types';
+import { TextEditor } from '../../Components/TextEditor/Styles';
 
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
@@ -23,7 +26,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 }) => {
 	const [pid, setPid] = useState(match.params.pid);
 	const [dashState, setDashState] = useState('board');
-	const [project, , isLoading] = useRequest<Project>(
+	const [project, setProject, isLoading] = useRequest<Project>(
 		'projects/' + pid,
 		'get',
 	);
@@ -62,6 +65,10 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 			}
 	};
 
+	const updateProjectDescription = (e: string) => {
+		if (project) setProject({ ...project, description: e });
+	};
+
 	return (
 		<ProjectPage>
 			<ProjectInfo>
@@ -70,7 +77,17 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						? capitalizeFirst(project.title)
 						: 'Loading...'}
 				</ProjectTitle>
+				<ProjectLink>
+					{!isLoading && project && <a href={project.link}>link</a>}
+				</ProjectLink>
 			</ProjectInfo>
+			<ProjectDescription>
+				<TextEditor
+					editable={project?.contributor}
+					state={project?.description}
+					setState={(e: string) => updateProjectDescription(e)}
+				/>
+			</ProjectDescription>
 
 			<ProjectDashBoard>
 				<ProjectDashboardNav>

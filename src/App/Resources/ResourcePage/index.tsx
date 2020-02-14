@@ -16,6 +16,7 @@ import {
 	SaveButton,
 	OutsideDiv,
 	ModalDiv,
+	DeleteTagButton,
 } from './Styles';
 import TextEditor from '../../Components/TextEditor';
 import ViewPost from '../../Feed/Post/ViewPost';
@@ -91,6 +92,19 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 		}
 	};
 
+	const deleteResourceTag = async (tagId: number, rId: number) => {
+		let resp = await makeRequest('resources/delete_tag', 'delete', {
+			tagId: tagId,
+			rId: rId,
+		});
+		if (resp?.data && resource) {
+			setResource({
+				...resource,
+				tags: resource.tags.filter((tag) => tag.tag_id !== tagId),
+			});
+		}
+	};
+
 	return ReactDOM.createPortal(
 		<OutsideDiv>
 			<ModalDiv ref={insideRef}>
@@ -112,10 +126,23 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 								resource.tags.map((tag) => {
 									return (
 										<ResourceTag
+											owner={resource?.owner}
 											key={tag.tag_id}
 											color={tag.color}
 										>
 											# {tag.title}
+											<DeleteTagButton
+												owner={resource?.owner}
+												color={tag.color}
+												onClick={() =>
+													deleteResourceTag(
+														tag.tag_id,
+														resource?.r_id,
+													)
+												}
+											>
+												X
+											</DeleteTagButton>
 										</ResourceTag>
 									);
 								})}

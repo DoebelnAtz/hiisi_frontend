@@ -48,7 +48,13 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 
 	return (
 		<ProjectList>
-			{showModal && <CreateProjectModal setShowModal={setShowModal} />}
+			{showModal && (
+				<CreateProjectModal
+					projects={projects}
+					setProjects={setProjects}
+					setShowModal={setShowModal}
+				/>
+			)}
 			<CreateProjectButton onClick={() => setShowModal(true)}>
 				Start a project
 			</CreateProjectButton>

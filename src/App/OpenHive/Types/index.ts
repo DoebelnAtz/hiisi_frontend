@@ -8,4 +8,6 @@ export interface Project {
 	collaborators: User[], // List of contributors TODO: fix inconsistent wording here
 	commentthread: number, // Comment thread id
 	title: string,
+	link: string,
+	description: string
 }

@@ -23,6 +23,7 @@ import {
 	AddUserInput,
 	AddUser,
 	AddUserBtn,
+	TaskTitleEditable,
 } from './Styles';
 
 import Plus from '../../../../../Assets/Dots.png';
@@ -50,9 +51,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	const [priorityInputVal, setPriorityInputVal] = useState<string>('');
 	const [searchResult, setSearchResult] = useState([]);
 	const [searchInput, setSearchInput] = useState<string>('');
-	const [description, setDescription] = useState<string | undefined>(
-		task?.description,
-	);
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 
@@ -172,8 +170,12 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	};
 
 	const handleDescriptionChange = (descVal: string) => {
-		setDescription(descVal);
 		task && setTask({ ...task, description: descVal });
+	};
+
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		task && setTask({ ...task, title: target.value });
 	};
 
 	return ReactDOM.createPortal(
@@ -181,7 +183,14 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 			<TaskInfo ref={inside}>
 				<TaskInfoHead>
 					<Button onClick={updateTask}>Save</Button>
-					<TaskTitle>{task?.title}</TaskTitle>
+					<TaskTitleEditable
+						editable={task?.owner}
+						onChange={(e: React.SyntheticEvent) =>
+							handleTitleChange(e)
+						}
+						value={task?.title}
+					/>
+					<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
 				</TaskInfoHead>
 				<TaskInfoBody>
 					<TaskDescription>

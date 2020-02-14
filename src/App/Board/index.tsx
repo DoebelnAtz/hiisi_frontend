@@ -92,6 +92,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 		];
 		let targetCol = filterBoard().columns[destColId];
 		let updatedTask = { ...draggedTask, column_id: targetCol.column_id };
+		console.log(updatedTask);
 		draggedTask.column_id = targetCol.column_id;
 		setBoard({
 			columns: board.columns.map((column) => ({
@@ -112,7 +113,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 				)(column.tasks),
 			})),
 		});
-		makeRequest('projects/boards/update_task', 'put', updatedTask);
+		makeRequest('projects/boards/update_task_position', 'put', updatedTask);
 	};
 
 	const addTask = async (taskTitle: string, taskColumnId: number) => {
