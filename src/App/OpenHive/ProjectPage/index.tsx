@@ -3,7 +3,7 @@ import { useNav, useRequest } from '../../../Hooks';
 import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
 import Board from '../../Board';
-import Messages from '../../Messages/Messages';
+import Messages from '../../Messages/MessageRoom/index';
 import ViewPost from '../../Feed/Post/ViewPost';
 import { capitalizeFirst } from '../../../utils/utils';
 import {
@@ -23,7 +23,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 }) => {
 	const [pid, setPid] = useState(match.params.pid);
 	const [dashState, setDashState] = useState('board');
-	const [project, setProject, isLoading] = useRequest<Project>(
+	const [project, , isLoading] = useRequest<Project>(
 		'projects/' + pid,
 		'get',
 	);
@@ -46,7 +46,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						/>
 					);
 				case 'chat':
-					return <Messages tid={project.t_id} />;
+					break;
 				default:
 					return (
 						<ViewPost

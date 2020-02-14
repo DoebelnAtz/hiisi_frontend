@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Reply from './Reply';
 import Comment from './Comment';
 import { useRequest } from '../../../../Hooks';
-import { CommentSection } from './Styles';
+import { CommentSection, Comments, ReplyToThread } from './Styles';
 import { CommentType, ViewPostProps } from '../../Types';
 
 const ShowComments: React.FC<ViewPostProps> = ({
@@ -40,18 +40,17 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	};
 
 	return (
-		<Fragment>
-			<CommentSection>
-				{!isLoading && (
-					<Reply
-						commentThread={comments}
-						setCommentThread={setComments}
-						childThreadId={commentthread}
-					/>
-				)}
-				{!!comments?.length && renderComments()}
-			</CommentSection>
-		</Fragment>
+		<CommentSection>
+			<ReplyToThread />
+			{!isLoading && (
+				<Reply
+					commentThread={comments}
+					setCommentThread={setComments}
+					childThreadId={commentthread}
+				/>
+			)}
+			<Comments>{!!comments?.length && renderComments()}</Comments>
+		</CommentSection>
 	);
 };
 

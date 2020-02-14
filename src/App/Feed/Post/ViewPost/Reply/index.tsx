@@ -5,6 +5,9 @@ import Button from '../../../../Components/Buttons/Button';
 import Input from '../../../../Components/Input';
 import { ReplyProps } from '../../../Types';
 
+import { CommentInput, ReplyRow, CancelButton, SendButton } from './Styles';
+import { useSpring } from 'react-spring';
+
 const ReplyButton: React.FC<ReplyProps> = ({
 	commentThread,
 	expandChildThread,
@@ -13,6 +16,8 @@ const ReplyButton: React.FC<ReplyProps> = ({
 }) => {
 	const [commentText, setCommentText] = useState('');
 	const [opened, setOpened] = useState(false);
+
+	const expandReply = useSpring({ width: opened ? '0%' : '100%' });
 
 	const submitPost = async () => {
 		if (commentText.length > 0) {
@@ -30,36 +35,35 @@ const ReplyButton: React.FC<ReplyProps> = ({
 	};
 
 	if (!opened) {
-		return <Button onClick={() => setOpened(true)}>Reply</Button>;
+		return (
+			<Button
+				customStyle={{ height: '34px' }}
+				onClick={() => setOpened(true)}
+			>
+				Reply
+			</Button>
+		);
 	} else {
 		return (
-			<Fragment>
-				<Button
-					onClick={() => setOpened(false)}
-					customStyle={{
-						borderRight: '0',
-						borderRadius: '4px 0 0 4px',
-					}}
-				>
+			<ReplyRow>
+				<CancelButton onClick={() => setOpened(false)}>
 					Cancel
-				</Button>
-				<Input
-					className={'comment_textarea'}
-					valueState={commentText}
-					customStyle={{ borderRadius: '0', width: 'auto' }}
-					setValueState={setCommentText}
-					onEnter={submitPost}
-				/>
-				<Button
-					onClick={() => submitPost()}
-					customStyle={{
-						borderLeft: '0',
-						borderRadius: '0 4px 4px 0',
+				</CancelButton>
+
+				<CommentInput
+					style={expandReply}
+					value={commentText}
+					onChange={(e: React.SyntheticEvent) => {
+						let target = e.target as HTMLInputElement;
+						setCommentText(target.value);
 					}}
-				>
-					Send
-				</Button>
-			</Fragment>
+					onEnter={(e: KeyboardEvent) => {
+						if (e.key === 'Enter') submitPost();
+					}}
+				/>
+
+				<SendButton onClick={() => submitPost()}>Send</SendButton>
+			</ReplyRow>
 		);
 	}
 };

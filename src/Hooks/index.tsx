@@ -78,7 +78,12 @@ export const useDismiss = (
 ) => {
 	const handleEsc = (e: KeyboardEvent) => {
 		if (e.key !== 'Escape') return;
-		else close();
+		else {
+			e.preventDefault();
+			// esc by default stops the page from refreshing,
+			// this is not a problem but causes a small delay when pressing.
+			close();
+		}
 	};
 	const handleClick = (e: MouseEvent) => {
 		let target = e.target as HTMLDivElement;

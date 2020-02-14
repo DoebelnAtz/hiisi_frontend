@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {color, components, cursor, font, layout, length} from "../../../Styles/sharedStyles";
+import { border, color, components, cursor, font, layout, length } from '../../../Styles/sharedStyles';
 import { animated } from 'react-spring';
 
 
@@ -74,6 +74,9 @@ export const ResourceContent = styled.div`
   width: calc(100% - ${length.margin} * 2);
   min-height: 50%;
   height: 50%;
+  padding: ${length.margin} 0;
+  ${border.setBorders(4, 0, 4, 0, color.siteBG1)};
+
   margin: ${length.margin};
   ${layout.row};
 `;
@@ -125,7 +128,6 @@ export const ResourceDescription = styled.div`
 `;
 
 export const ResourceComments = styled.div`
-    border-top: ${length.margin} solid ${color.siteBG1};
     margin: ${length.margin};
     width: calc(100% - ${length.margin} * 2);
 `;

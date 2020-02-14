@@ -12,3 +12,4 @@ export const InsideDiv = styled.div`
 export const TitleInput = styled.input`
 	${components.input};
 `;
+

@@ -18,7 +18,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	const titleInput = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
-		// To make sure title value updates from loading after we
+		// To make sure title value updates from 'loading...' after we
 		// fetch columns.
 		setTitleVal(column.title);
 	}, [column.title]);

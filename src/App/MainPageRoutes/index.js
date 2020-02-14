@@ -1,23 +1,23 @@
-import Feed from './Feed';
-import Profile from './Profile/Profile';
+import Feed from '../Feed/index';
+import Profile from '../Profile/Profile';
 import React, { Fragment, useContext, useEffect, useRef, useState } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
-import UserPage from './User/UserPage';
+import UserPage from '../Profile/UserPage';
 import { useTransition, animated } from 'react-spring';
-import Coalition from './Coalition/Coalition';
-import Notifications from './Notifications/Notifications';
-import MessageHome from './Messages/MessageHome';
-import OpenHive from './OpenHive/index';
-import ProjectPage from './OpenHive/ProjectPage/index';
-import TaskInfo from './Board/Column/Task/TaskInfo';
-import Messages from './Messages/Messages';
-import Resources from './Resources/index';
-import ResourcePage from './Resources/ResourcePage';
-import { getLocal } from '../utils/utils';
-import { NotificationContext } from '../Context/NotificationContext';
-import { useNotifications } from '../Hooks';
+import Coalition from '../Coalition/Coalition';
+import Notifications from '../Notifications/Notifications';
+import MessageHome from '../Messages/MessageHome';
+import OpenHive from '../OpenHive/index';
+import ProjectPage from '../OpenHive/ProjectPage/index';
+import TaskInfo from '../Board/Column/Task/TaskInfo/index';
+import Messages from '../Messages/MessageRoom/index';
+import Resources from '../Resources/index';
+import ResourcePage from '../Resources/ResourcePage/index';
+import { getLocal } from '../../utils/utils';
+import { NotificationContext } from '../../Context/NotificationContext';
+import { useNotifications } from '../../Hooks/index';
 
 export default (prop) => {
 	const location = useLocation();

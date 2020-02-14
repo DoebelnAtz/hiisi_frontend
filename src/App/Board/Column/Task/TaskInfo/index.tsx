@@ -188,7 +188,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 						{!isLoading && (
 							<TextEditor
 								editable={task?.owner}
-								state={task?.description}
+								state={task?.description ?? ''}
 								setState={(e: string) =>
 									handleDescriptionChange(e)
 								}

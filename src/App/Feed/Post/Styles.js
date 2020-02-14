@@ -63,6 +63,10 @@ export const CommentButton = styled.button`
 	border-right: none;
 `;
 
+export const CommentSection = styled.div`
+	padding: ${length.margin};
+`;
+
 export const LikeButton = styled.button`
 	${components.button};
 `;

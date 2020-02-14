@@ -13,6 +13,7 @@ import {
 	PostHead,
 	PostInfo,
 	PostTitle,
+	CommentSection,
 } from './Styles';
 import { formatDate } from '../../../utils/utils';
 import { makeRequest } from '../../Api/Api';
@@ -69,10 +70,15 @@ const Post: React.FC<PostProps> = ({ content }) => {
 				</LikeButton>
 			</ButtonRow>
 			{expanded && (
-				<ViewPost
-					focusList={{ focus: [content.username], title: 'author' }}
-					commentthread={content.commentthread}
-				/>
+				<CommentSection>
+					<ViewPost
+						focusList={{
+							focus: [content.username],
+							title: 'author',
+						}}
+						commentthread={content.commentthread}
+					/>
+				</CommentSection>
 			)}
 		</BlogPost>
 	);

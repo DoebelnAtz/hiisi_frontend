@@ -16,6 +16,7 @@ export const MainContainer = styled.div`
 export const MainPageHeader = styled.div`
 	width: 100%;
 	margin: 0;
+	border-radius: ${length.radius};
 `;
 
 export const MainPage = styled.div`
@@ -32,10 +33,13 @@ export const MainPage = styled.div`
 export const SideNavCol = styled.div`
 	max-width: 300px;
     height: 100%;
+    border-radius: ${length.radius};
     background-color: ${color.siteBG1};
 `;
 
 export const MainView = styled.div`
+    border-radius: ${length.radius};
+
 	width: calc(100% - 300px - ${length.margin});
     background-color: ${color.siteBG1};
     margin-left: ${length.margin};

@@ -97,7 +97,6 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 				<ResourcePage>
 					<ResourceHeader>
 						<ResourceTitle>
-							<span>Link: </span>
 							{!!resource && (
 								<a href={`${resource?.link}`}>
 									{`${resource?.title}`}

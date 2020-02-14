@@ -77,7 +77,9 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 			return b;
 		}
 	};
-
+	// Not the prettiest function, basically, handles board state modification
+	// When moving task from one column to another and makes a put request to
+	// the backend.
 	const handleTaskDrop = ({ draggableId, destination, source }: any) => {
 		if (!destination) return;
 		let destColId = Number(destination.droppableId);

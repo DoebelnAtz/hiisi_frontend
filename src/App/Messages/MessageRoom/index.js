@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import useSocket from 'use-socket.io-client';
 
-import { useNav } from '../../Hooks';
-import Button from '../Components/Buttons/Button';
-import { makeRequest } from '../Api/Api';
-import './messages.css';
-import { calculateTimeSince, getLocal } from '../../utils/utils';
+import { useNav } from '../../../Hooks/index';
+import Button from '../../Components/Buttons/Button';
+import { makeRequest } from '../../Api/Api';
+import '../messages.css';
+import { calculateTimeSince, getLocal } from '../../../utils/utils';
 
 import socketIOClient from 'socket.io-client';
-import AddToChat from '../Components/Buttons/AddToChat';
-import { NotificationContext } from '../../Context/NotificationContext';
+import AddToChat from '../../Components/Buttons/AddToChat';
+import { NotificationContext } from '../../../Context/NotificationContext';
 
-const Messages = (props) => {
+const Messages = ({match}) => {
 	const [inputVal, setInputVal] = useState('');
 	const [connectedUsers, setConnectedUsers] = useState([]);
 	const [connected, setConnected] = useState(false);
@@ -23,10 +23,12 @@ const Messages = (props) => {
 	const [newMessage, setNewMessage] = useState({});
 	const [activeUsers, setActiveUsers] = useState([]);
 	const [socket, setSocket] = useState();
-	const { state: notifications, update: setNotifications } = useContext(NotificationContext);
+	const { state: notifications, update: setNotifications } = useContext(
+		NotificationContext,
+	);
 
 	let scrollDown = useRef(null);
-	let tid = props.match.params.tid ?? props.tid;
+	let tid = match.params.tid;
 
 	useNav('messages');
 	useEffect(() => {
@@ -38,12 +40,12 @@ const Messages = (props) => {
 					polling: {
 						extraHeaders: {
 							Authorization: 'Bearer ' + user.token,
-							Room: 'Chat-room: ' + tid.toString()
+							Room: 'Chat-room: ' + tid.toString(),
 						},
 					},
 				},
 			},
-			props.match.params.tid,
+			match.params.tid,
 		);
 		socket.on('connect', () => {
 			setConnected(true);
@@ -62,7 +64,7 @@ const Messages = (props) => {
 		return () => {
 			socket.disconnect();
 		};
-	}, [props.match.params.tid]);
+	}, [match.params.tid]);
 	useEffect(() => {
 		newMessage.username && appendMessage(newMessage);
 	}, [JSON.stringify(newMessage)]);
@@ -71,8 +73,12 @@ const Messages = (props) => {
 		console.log(tid);
 		getMessages(tid);
 		getUsersConnected(tid);
-		setNotifications(notifications.filter(notif => notif.thread_id === props.match.params.tid))
-	}, [props.match.params.tid]);
+		setNotifications(
+			notifications.filter(
+				(notif) => notif.thread_id === match.params.tid,
+			),
+		);
+	}, [match.params.tid]);
 
 	// useEffect(() => {
 	//     connectToRoom();
@@ -83,7 +89,8 @@ const Messages = (props) => {
 	};
 
 	const appendMessage = (message) => {
-		setMessages([...messages, message]);
+		console.log(messages);
+		setMessages({...messages, messages: [...messages.messages, message]});
 		setTimeout(() => scrollToBottom(), 10);
 	};
 
@@ -101,7 +108,7 @@ const Messages = (props) => {
 				message: inputVal,
 				username: getLocal('currentUser').username,
 				time_sent: new Date().toISOString(),
-				t_id: props.match.params.tid,
+				t_id: 	match.params.tid,
 			});
 		}
 		setInputVal('');
@@ -174,16 +181,16 @@ const Messages = (props) => {
 						}
 					/>
 					<div
-	className={
-		'connected_' +
-		(user.username ===
-		getLocal('token').user.username ||
-		activeUsers.includes(user.username)
-			? 'active'
-			: 'inactive') +
-		'_dot'
-	}
-	/>
+						className={
+							'connected_' +
+							(user.username ===
+								getLocal('token').user.username ||
+							activeUsers.includes(user.username)
+								? 'active'
+								: 'inactive') +
+							'_dot'
+						}
+					/>
 				</div>
 			);
 		});
@@ -193,20 +200,20 @@ const Messages = (props) => {
 		<div className={'message_cont container p-0'}>
 			<div className={'row_div '}>{renderConnectedUsers()}</div>
 			<div className={'row_div '}>
-				<AddToChat tid={props.match.params.tid} />
+				<AddToChat tid={match.params.tid} />
 			</div>
-			<span style={{color: 'white'}}>{messages?.title}</span>
+			<span style={{ color: 'white' }}>{messages?.title}</span>
 			<div className={'message_feed'}>
 				{renderMessages()}
 				<div ref={(e) => (scrollDown.current = e)}> </div>
 			</div>
 			<div className={''}>
 				<textarea
-	id={'chat_input'}
-	onKeyDown={(e) => handleEnter(e)}
-	value={inputVal}
-	onChange={(e) => setInputVal(e.target.value)}
-	/>
+					id={'chat_input'}
+					onKeyDown={(e) => handleEnter(e)}
+					value={inputVal}
+					onChange={(e) => setInputVal(e.target.value)}
+				/>
 				<button id={'send_button'} onClick={(e) => handleClick(e)}>
 					{connected ? 'send' : 'loading'}
 				</button>

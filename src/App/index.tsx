@@ -7,7 +7,7 @@ import IntraContext from '../Context/IntraContext';
 import Redirect from './Auth/Redirect';
 import Header from './Header';
 import SideNav from './Nav/SideNav';
-import Main from './Main';
+import Main from './MainPageRoutes/index';
 import Login from './Auth/Login';
 import './base.css';
 import ServerDown from './ErrorPages/ServerDown';

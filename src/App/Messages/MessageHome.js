@@ -5,7 +5,7 @@ import { useNav } from '../../Hooks';
 import './messages.css';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
-import Messages from './Messages';
+import Messages from './MessageRoom/index';
 
 const MessageHome = (props) => {
 	let profile = JSON.parse(localStorage.getItem('currentUser'));

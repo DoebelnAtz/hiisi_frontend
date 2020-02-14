@@ -149,6 +149,8 @@ export const components = {
     `,
     textarea: css`
       color: white;
+      background-color: ${color.siteBG2};
+      border: 1px solid ${color.siteBG1};
       padding: 5px;
       ${font.text};
       &:focus {

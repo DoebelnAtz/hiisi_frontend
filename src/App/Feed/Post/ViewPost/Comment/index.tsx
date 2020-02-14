@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Reply from '../Reply';
 import { formatDate } from '../../../../../utils/utils';
 import { makeRequest } from '../../../../Api/Api';
@@ -12,6 +12,8 @@ import {
 	ChildComments,
 	CommentInfo,
 	ButtonRow,
+	ShowRepliesButton,
+	ReplyRow,
 } from './Styles';
 import { CommentProps, CommentType } from '../../../Types';
 
@@ -27,8 +29,7 @@ const CommentCard: React.FC<CommentProps> = ({
 		'blogs/commentthread/' + child.childthread,
 		'get',
 	);
-
-	if (isExpanded) {
+	if (isExpanded)
 		return (
 			<ParentComment key={child.c_id} odd={odd}>
 				<CommentHead>
@@ -47,32 +48,34 @@ const CommentCard: React.FC<CommentProps> = ({
 				</CommentBody>
 				<ButtonRow>
 					{!!childThread?.length && (
-						<Button
+						<ShowRepliesButton
 							onClick={() => setExpanded(!expanded)}
-							customStyle={{ margin: '0 var(--viewMargin) 0 0' }}
 						>
 							<i
 								style={{ fontSize: '13px', marginRight: '5px' }}
 								className="fas fa-comment-alt"
 							/>
-							{!expanded ? 'Show Replies' : 'Hide'}
-						</Button>
+							{!expanded ? 'Show' : 'Hide'}
+						</ShowRepliesButton>
 					)}
-					<Reply
-						commentThread={childThread}
-						expandChildThread={setExpanded}
-						setCommentThread={setChildThread}
-						childThreadId={child.childthread}
-					/>
+					<ReplyRow full={!!childThread?.length}>
+						<Reply
+							commentThread={childThread}
+							expandChildThread={setExpanded}
+							setCommentThread={setChildThread}
+							childThreadId={child.childthread}
+						/>
+					</ReplyRow>
 				</ButtonRow>
-				<ChildComments>
-					{!!childThread &&
-						renderComments(!odd, childThread, expanded)}
-				</ChildComments>
+				{!!childThread && (
+					<ChildComments>
+						{renderComments(!odd, childThread, expanded)}
+					</ChildComments>
+				)}
 			</ParentComment>
 		);
-	} else {
-		return <div></div>;
+	else {
+		return <Fragment />;
 	}
 };
 
