@@ -16,11 +16,18 @@ import {
 import { useDismiss } from '../../../Hooks';
 import { capitalizeFirst } from '../../../utils/utils';
 type DropDownProps = {
+	// currently selected option
 	state: string;
-	setSelect: any;
+	// function that takes a string input and is run on option change
+	setSelect: (e: string) => void;
+	// provided list of options
 	optionList: string[];
-	width?: string;
+	// Component height and width
+	width: string;
 	height: string;
+	// Optional text snippet that prepends currently selected option
+	// ex: text = 'sort by: , state = 'popular'
+	// component would read sort by: popular
 	text?: string;
 	withFilter?: boolean;
 };
@@ -94,7 +101,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 				onClick={() => handleClick()}
 				style={{ lineHeight: `${height}` }}
 			>
-				<span>{`${text}${capitalizeFirst(state)}`}</span>
+				<span>{`${text ? text : ''}${capitalizeFirst(state)}`}</span>
 			</CurrentOption>
 			{expanded && (
 				<DropDownList width={width} height={height}>

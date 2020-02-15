@@ -21,7 +21,9 @@ export const ProjectInfo = styled.div`
 	${layout.row};
 `;
 
-export const ProjectDescription = styled.div``;
+export const ProjectDescription = styled.div`
+	margin: ${length.margin} 0;
+`;
 
 export const ProjectTitle = styled.div`
 	${layout.centered};

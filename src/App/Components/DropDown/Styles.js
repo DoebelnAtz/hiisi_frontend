@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import {
 	color,
+	colorAdjust,
 	components,
 	cursor,
 	font,
@@ -62,7 +63,9 @@ export const Option = styled.div`
 	margin: 2px;
 	padding: 0 6px;
 	background-color: ${(props) =>
-		props.highlighted ? color.siteBG1 : color.siteBG2};
+		props.highlighted
+			? colorAdjust.darken(color.siteBG2, 0.15)
+			: color.siteBG2};
 	border-radius: 4px;
 	transition: background-color 0.1s;
 	${cursor.clickable};

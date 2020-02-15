@@ -18,7 +18,7 @@ import {
 } from './Style';
 import { RouteComponentProps, User } from '../../../Types';
 import { Project } from '../Types';
-import { TextEditor } from '../../Components/TextEditor/Styles';
+import TextEditor from '../../Components/TextEditor';
 
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,

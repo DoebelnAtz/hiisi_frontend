@@ -40,10 +40,10 @@ import { TaskType } from '../../../Types';
 import { BrowserRouterProps, NavLinkProps } from 'react-router-dom';
 import DropDown from '../../../../Components/DropDown';
 
-const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
-	match,
-	history,
-}) => {
+const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
+	tid: number;
+	pid: number;
+}>> = ({ match, history }) => {
 	const getPriorityText = (priorityNum: number) => {
 		switch (priorityNum) {
 			case 0:
@@ -95,7 +95,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	}, [isLoading]);
 	console.log(task);
 	const close = () => {
-		history.push('/projects/1');
+		history.push(`/projects/${match.params.pid}`);
 	};
 
 	useDismiss(inside, close);
