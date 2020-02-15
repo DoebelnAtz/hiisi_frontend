@@ -13,7 +13,7 @@ import SubmitResource from './SubmitResource/index';
 import { makeRequest } from '../Api/Api';
 import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
-import { ResourceListType, ResourceType, Tag, vote } from './Types';
+import { ResourceListType, Tag } from './Types';
 import DropDown from '../Components/DropDown';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
@@ -25,10 +25,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 		`resources?page=${pagination}&filter=${filter}&order=${sortBy}&reverse=${sortRev}`,
 		'get',
 	);
-	const [tags, setTags, isLoadingTags] = useRequest<Tag[]>(
-		'resources/tags?q=&limit=100',
-		'get',
-	);
+	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 
 	useNav('resources');
 	const [popup, setPopup] = useState(false);

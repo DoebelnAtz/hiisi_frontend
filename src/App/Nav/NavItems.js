@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './nav.css';
 
-import profileIcon from './navIcons/Profile1.png';
-import Button from '../Components/Buttons/Button';
 import { CurrentNavContext } from '../../Context/CurrentNavContext';
 import HoveredNavContext from '../../Context/HoveredNavContext';
 
@@ -74,17 +72,5 @@ export const NavItem = (props) => {
 				alt={`${props.name}_icon`}
 			/>
 		</Link>
-	);
-};
-
-export const ConnectToIntra = (props) => {
-	return (
-		<a>
-			<Button
-				disabled={props.disabled}
-				onClick={() => props.setConnectedText('Connecting...')}
-				text={props.text}
-			></Button>
-		</a>
 	);
 };

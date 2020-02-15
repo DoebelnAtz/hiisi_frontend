@@ -106,7 +106,6 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}, 700);
 	};
 
-	// @ts-ignore
 	return (
 		<ResourceCard>
 			<ResourceVotes>

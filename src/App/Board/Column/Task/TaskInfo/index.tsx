@@ -25,7 +25,7 @@ import {
 	AddUserBtn,
 	TaskTitleEditable,
 	SaveButton,
-} from './Styles';
+} from './Styles.js';
 
 import Plus from '../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../Hooks';
