@@ -10,7 +10,7 @@ export const Logo = (props) => {
 		props.setCurrentNav('blog');
 	};
 	return (
-		<Link to={'/blog'} className={'nav_logo'} onClick={setNavHome}>
+		<Link to={'/openhive'} className={'nav_logo'} onClick={setNavHome}>
 			<img className={'logo_icon'} src={props.icon} alt={'logo'} />
 			<span className={'nav_logo_text'}>Hivemind</span>
 		</Link>
