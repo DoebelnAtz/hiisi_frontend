@@ -9,7 +9,7 @@ export const Column = styled.div`
   margin: 0 5px;
   padding: 0 5px 5px 5px;
   height: 100%;
-  width: 20%;
+  width: calc(20% - 10px);
   border-radius: 3px;
   background: ${color.siteBG3};
   

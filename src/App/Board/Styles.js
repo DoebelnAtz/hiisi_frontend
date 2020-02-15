@@ -7,8 +7,13 @@ import {
 	length,
 } from '../../Styles/sharedStyles';
 
+export const BoardDiv = styled.div`
+	width: 100%;
+`;
+
 export const Columns = styled.div`
 	display: flex;
+	width: 100%;
 	z-index: 3;
 `;
 
@@ -36,8 +41,8 @@ export const Collaborator = styled.div`
 	& img {
 		border-color: ${(props) =>
 			props.filtered
-				? colorAdjust.darken(color.primary, 0.7)
-				: color.siteBG2};
+				? colorAdjust.darken(color.tertiary, 0.7)
+				: color.siteBG1};
 	}
 	&:hover {
 		bottom: 10px;

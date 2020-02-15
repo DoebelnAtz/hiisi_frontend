@@ -11,10 +11,10 @@ import {
 
 export const ProjectPage = styled.div`
 	color: white;
-	width: calc(100%);
+	width: 100%;
 	height: 100%;
 	padding: ${length.margin};
-	background-color: ${color.siteBG2};
+	background-color: ${color.siteBG1};
 `;
 
 export const ProjectInfo = styled.div`

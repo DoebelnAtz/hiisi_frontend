@@ -26,7 +26,7 @@ Every page or view has their own folder,
 Every component used only by that view should be a child directory of that folder.
 If a component is used in multiple Directories it should be in ./src/Components
 
-Each folder should have a index.js/ts/tsx file and a Styles.js file if necessary.
+Each folder should have a index.tsx/ts/tsx file and a Styles.js file if necessary.
 
 This way style rules are easy to find. If a style is used in several component, it should be defined in
 .Styles/sharedStyles.js

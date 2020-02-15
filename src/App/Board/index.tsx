@@ -4,7 +4,12 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import Column from './Column';
 import _ from 'lodash';
 
-import { Columns, Collaborator, ProjectCollaborators } from './Styles';
+import {
+	Columns,
+	Collaborator,
+	ProjectCollaborators,
+	BoardDiv,
+} from './Styles';
 import { makeRequest } from '../Api/Api';
 import { useRequest } from '../../Hooks';
 import { BoardProps, BoardType, ColumnType, TaskType } from './Types';
@@ -166,7 +171,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 	};
 
 	return (
-		<Fragment>
+		<BoardDiv>
 			<ProjectCollaborators>{mapCollaborators()}</ProjectCollaborators>
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
@@ -184,7 +189,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 					))}
 				</Columns>
 			</DragDropContext>
-		</Fragment>
+		</BoardDiv>
 	);
 };
 

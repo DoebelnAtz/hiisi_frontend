@@ -14,23 +14,26 @@ import {
 } from "./Styles";
 import Button from "../../Components/Buttons/Button";
 import { useSpring, useChain } from 'react-spring'
+import { makeRequest } from '../../Api/Api';
 const Login = (props) => {
     const requestLogin = async (e) => {
 
         e.preventDefault();
         if (password.length && username.length) {
-            let resp = await axios({
-                url: `http://localhost:5000/api/auth/login`,
-                method: 'post',
-                data: {
+            let resp = await makeRequest(
+                'auth/login',
+                'post',
+                {
                     username: username,
                     password: password,
                 }
-            });
+            );
             console.log(resp);
             if (resp.data.success) {
                 setLocal('token', resp.data);
                 setAnimate(false);
+                // In a hurry? fuck you, now enjoy these animations
+                // I spent 6h creating
                 setTimeout(() =>
                 props.history.push('/openhive')
                 , 2000)
