@@ -13,7 +13,7 @@ import {
 	TaskInfo,
 	TaskTitle,
 	TaskInfoHead,
-	PriorityInput,
+	PriorityDropdown,
 	TaskCollaborators,
 	TaskFooter,
 	TaskInfoBody,
@@ -24,6 +24,7 @@ import {
 	AddUser,
 	AddUserBtn,
 	TaskTitleEditable,
+	SaveButton,
 } from './Styles';
 
 import Plus from '../../../../../Assets/Dots.png';
@@ -37,11 +38,42 @@ import { RouteComponentProps, User } from '../../../../../Types';
 import { TaskType } from '../../../Types';
 
 import { BrowserRouterProps, NavLinkProps } from 'react-router-dom';
+import DropDown from '../../../../Components/DropDown';
 
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	match,
 	history,
 }) => {
+	const getPriorityText = (priorityNum: number) => {
+		switch (priorityNum) {
+			case 0:
+				return 'very low';
+			case 1:
+				return 'low';
+			case 2:
+				return 'medium';
+			case 3:
+				return 'high';
+			default:
+				return 'very high;';
+		}
+	};
+
+	const getPriorityNumber = (priorityText: string) => {
+		switch (priorityText) {
+			case 'very low':
+				return 0;
+			case 'low':
+				return 1;
+			case 'medium':
+				return 2;
+			case 'high':
+				return 3;
+			default:
+				return 4;
+		}
+	};
+
 	const inside = useRef<HTMLDivElement>(null);
 
 	const [task, setTask, isLoading] = useRequest<TaskType | null>(
@@ -53,9 +85,13 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 	const [searchInput, setSearchInput] = useState<string>('');
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
+	const [priority, setPriority] = useState(getPriorityText(0));
 
 	useEffect(() => {
-		setPriorityIcon(getPriorityIcon(task?.priority));
+		if (task) {
+			setPriorityIcon(getPriorityIcon(task.priority));
+			setPriority(getPriorityText(task.priority));
+		}
 	}, [isLoading]);
 	console.log(task);
 	const close = () => {
@@ -83,6 +119,14 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 			setTask(updatedTask);
 			setSearchInput('');
 			setSearchResult([]);
+		}
+	};
+
+	const handlePrioritySelect = (e: string) => {
+		if (task) {
+			setPriority(e);
+			setPriorityIcon(getPriorityIcon(getPriorityNumber(e)));
+			setTask({ ...task, priority: getPriorityNumber(e) });
 		}
 	};
 
@@ -182,7 +226,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 		<OuterDiv>
 			<TaskInfo ref={inside}>
 				<TaskInfoHead>
-					<Button onClick={updateTask}>Save</Button>
 					<TaskTitleEditable
 						editable={task?.owner}
 						onChange={(e: React.SyntheticEvent) =>
@@ -191,6 +234,9 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 						value={task?.title}
 					/>
 					<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
+					{task?.owner && (
+						<SaveButton onClick={updateTask}>Save</SaveButton>
+					)}
 				</TaskInfoHead>
 				<TaskInfoBody>
 					<TaskDescription>
@@ -223,15 +269,22 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{ tid: number }>> = ({
 				</TaskInfoBody>
 				<TaskFooter>
 					<img src={priorityIcon} />
-
-					<PriorityInput
-						style={{ width: '32px' }}
-						value={priorityInputVal}
-						onChange={(e: React.SyntheticEvent) =>
-							handleInputChange(e)
-						}
-						placeholder={task?.priority ?? 1}
-					/>
+					<PriorityDropdown>
+						<DropDown
+							height={'34px'}
+							optionList={[
+								'very low',
+								'low',
+								'medium',
+								'high',
+								'very high',
+							]}
+							text={'Priority:'}
+							state={priority}
+							setSelect={handlePrioritySelect}
+							width={'200px'}
+						/>
+					</PriorityDropdown>
 				</TaskFooter>
 			</TaskInfo>
 		</OuterDiv>,

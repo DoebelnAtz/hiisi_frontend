@@ -39,11 +39,13 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	const [filterInput, setFilterInput] = useState('');
 	const inside = useRef<HTMLDivElement>(null);
 	const filterInputRef = useRef<HTMLInputElement>(null);
+
 	const renderOptions = () => {
 		return options.map((option: string, index: number) => {
 			return (
 				<Option
 					key={index}
+					highlighted={state === option}
 					onClick={() => {
 						setSelect(option);
 						setExpanded(false);
@@ -84,19 +86,18 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 		<DropDown
 			expanded={expanded}
 			ref={inside}
-			style={{
-				width: `${width}`,
-				height: `${height}`,
-			}}
+			width={width}
+			height={height}
 		>
 			<CurrentOption
+				expanded={expanded}
 				onClick={() => handleClick()}
 				style={{ lineHeight: `${height}` }}
 			>
 				<span>{`${text}${capitalizeFirst(state)}`}</span>
 			</CurrentOption>
 			{expanded && (
-				<DropDownList height={height} style={{ width: `${width}` }}>
+				<DropDownList width={width} height={height}>
 					{withFilter && (
 						<SearchInput
 							ref={filterInputRef}

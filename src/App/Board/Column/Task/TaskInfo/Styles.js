@@ -67,7 +67,6 @@ export const TaskTitle = styled.div`
 	${layout.row};
 	font-size: 26px;
 	display: ${(props) => (props.editable ? 'none' : 'block')};
-	margin: 0 0 0 ${length.margin};
 	border-color: ${color.siteBG2};
 	background-color: ${color.siteBG2};
 `;
@@ -82,8 +81,8 @@ export const TaskFooter = styled.div`
 	}
 `;
 
-export const PriorityInput = styled.input`
-	${components.input};
+export const PriorityDropdown = styled.div`
+	margin-top: calc(${length.margin} * 1.5);
 `;
 
 export const AddUserInput = styled.input`
@@ -126,6 +125,11 @@ export const AddUserBtn = styled.div`
 	border-radius: 0 18px 18px 0;
 	font-size: 24px;
 	color: ${color.siteBG2};
+`;
+
+export const SaveButton = styled.button`
+	${components.button};
+	margin-left: auto;
 `;
 
 export const AddUser = styled.div`
