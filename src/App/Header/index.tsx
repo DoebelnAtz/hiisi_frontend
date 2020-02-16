@@ -19,7 +19,7 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	return (
 		<HeaderDiv>
 			<LogoDiv>
-				<Logo currentNav={state} icon={logo} setCurrentNav={update} />
+				<Logo icon={logo} setCurrentNav={update} />
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
 			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>

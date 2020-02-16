@@ -4,10 +4,10 @@ import MessageSideView from './SideViews/MessageSideView';
 import { CurrentNavContext } from '../../Context/CurrentNavContext';
 import SearchSideView from './SideViews/SearchSideView';
 
-export default () => {
+const NavDisplay: React.FC = () => {
 	const { state: currentNav } = useContext(CurrentNavContext);
 	// TODO: fix this mess..
-	const selectNav = (nav) => {
+	const selectNav = (nav: string) => {
 		switch (nav) {
 			case 'messages':
 				return <MessageSideView />;
@@ -20,3 +20,5 @@ export default () => {
 
 	return selectNav(currentNav);
 };
+
+export default NavDisplay;

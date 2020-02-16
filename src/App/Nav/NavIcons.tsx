@@ -8,8 +8,9 @@ import treeIcon from './navIcons/Tree7.png';
 import { NavItem, OpenHiveNav } from './NavItems';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from '../../Types';
 
-const NavIcons = (props) => {
+const NavIcons: React.FC<RouteComponentProps<{}>> = ({ location }) => {
 	return (
 		<div className={'side_nav'}>
 			<OpenHiveNav icon={openHiveIcon} />
@@ -17,12 +18,12 @@ const NavIcons = (props) => {
 			<NavItem path={'/profile'} name={'Profile'} icon={profileIcon} />
 			<NavItem path={'/resources'} name={'Resources'} icon={treeIcon} />
 			<NavItem
-				path={props.location.pathname}
+				path={location.pathname}
 				name={'Messages'}
 				icon={messageIcon}
 			/>
 			<NavItem
-				path={props.location.pathname}
+				path={location.pathname}
 				name={'Search'}
 				icon={searchIcon}
 			/>
