@@ -19,7 +19,7 @@ import {
 	DeleteTagButton,
 } from './Styles';
 import TextEditor from '../../Components/TextEditor';
-import ViewPost from '../../Feed/Post/ViewPost';
+import ViewPost from '../../Forum/Post/ViewPost';
 import { makeRequest } from '../../Api/Api';
 import { RouteComponentProps } from '../../../Types';
 import { ResourceType, Tag } from '../Types';

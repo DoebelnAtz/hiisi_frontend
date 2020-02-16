@@ -31,6 +31,8 @@ import {
 	DeleteButton,
 } from '../../../Styles/sharedStyles';
 import { vote } from '../../Resources/Types';
+import ShareImg from '../../../Assets/Share.png';
+import { CopiedSpan, ShareButton } from '../../Resources/ResourceCard/Styles';
 
 const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	content,
@@ -41,6 +43,7 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	const [votes, setVotes] = useState<number>(content.votes);
 	const [voted, setVoted] = useState<vote>(content.voted ? content.voted : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
+	const [copied, setCopied] = useState(false);
 
 	const voteBlog = async (vote: vote, blogId: number, diff: number) => {
 		if (!disabled) {
@@ -61,7 +64,13 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 			setDisabled(false);
 		}
 	};
-	console.log(content, voted);
+	const handleShareClick = (text: string) => {
+		setCopied(true);
+		navigator.clipboard.writeText(text);
+		setTimeout(() => {
+			setCopied(false);
+		}, 700);
+	};
 
 	const handleUpClick = async (vote: vote, blogId: number) => {
 		if (voted === 1) {
@@ -121,6 +130,17 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 						<img onClick={() => {}} src={DeleteImg} />
 					</DeleteButton>
 				)}
+				<ShareButton>
+					<img
+						onClick={() =>
+							handleShareClick(
+								`${window.location.href}/${content.b_id}`,
+							)
+						}
+						src={ShareImg}
+					/>
+					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+				</ShareButton>
 			</PostButtons>
 		</BlogPost>
 	);

@@ -1,4 +1,4 @@
-import Feed from '../Feed/index';
+import Feed from '../Forum/index';
 import Profile from '../Profile/Profile';
 import React, {
 	Fragment,
@@ -11,7 +11,7 @@ import React, {
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 import UserPage from '../Profile/UserPage';
-import PostPage from '../Feed/PostPage';
+import PostPage from '../Forum/PostPage';
 import { useTransition, animated } from 'react-spring';
 import Notifications from '../Notifications/Notifications';
 import OpenHive from '../OpenHive';

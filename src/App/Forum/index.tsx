@@ -7,6 +7,7 @@ import Button from '../Components/Buttons/Button';
 import { PostType } from './Types';
 import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
 import DropDown from '../Components/DropDown';
+import ForumFeed from './ForumFeed';
 
 const Feed = ({}) => {
 	const [popup, setPopup] = useState(false);
@@ -16,7 +17,7 @@ const Feed = ({}) => {
 	const [sortBy, setSortBy] = useState('popular');
 	const [reverse, setReverse] = useState('false');
 	const [posts, setPosts, isLoading] = useRequest<PostType[]>(
-		`blogs?order=${sortBy}&reverse=${reverse}`,
+		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	const config = { mass: 5, tension: 2000, friction: 200 };
@@ -37,26 +38,6 @@ const Feed = ({}) => {
 		}
 	};
 
-	const renderList = () => {
-		if (posts)
-			return trail.map(({ x, height, ...rest }: any, i: number) => {
-				return (
-					<animated.div
-						style={{
-							...rest,
-							transform: x.interpolate(
-								(x: any) => `translate3d(0,${x}px,0)`,
-							),
-						}}
-						id={'feed'}
-						key={posts[i].b_id}
-					>
-						<Post content={posts[i]} />
-					</animated.div>
-				);
-			});
-	};
-
 	return (
 		<FeedPage>
 			<FeedButtonRow>
@@ -75,11 +56,16 @@ const Feed = ({}) => {
 			<CreatePostModal
 				popup={popup}
 				setPopup={setPopup}
-				setPosts={setPosts}
-				posts={posts}
 				isMounted={isMounted}
 			/>
-			{!isLoading && renderList()}
+			{posts && (
+				<ForumFeed
+					reverse={reverse}
+					sortBy={sortBy}
+					page={2}
+					posts={posts}
+				/>
+			)}
 		</FeedPage>
 	);
 };

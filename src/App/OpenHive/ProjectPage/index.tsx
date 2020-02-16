@@ -4,7 +4,7 @@ import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
 import Board from '../../Board';
 import Messages from '../../Messages/MessageRoom/index';
-import ViewPost from '../../Feed/Post/ViewPost';
+import ViewPost from '../../Forum/Post/ViewPost';
 import { capitalizeFirst } from '../../../utils/utils';
 import {
 	ProjectPage,

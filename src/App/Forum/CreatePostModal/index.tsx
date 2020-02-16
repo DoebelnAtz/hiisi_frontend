@@ -20,8 +20,6 @@ import {
 } from './Styles';
 
 const CreatePostModal: React.FC<CreatePostModalProps> = ({
-	setPosts,
-	posts,
 	setPopup,
 	popup,
 	isMounted,
@@ -42,11 +40,9 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			title,
 			published_date: now,
 		});
-		console.log(posts);
 
 		if (isMounted) {
 			console.log('updating');
-			posts && setPosts([resp.data, ...posts]);
 			setPopup(false);
 		}
 		setTitle('');

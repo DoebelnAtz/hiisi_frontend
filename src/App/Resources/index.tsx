@@ -15,58 +15,20 @@ import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';
 import DropDown from '../Components/DropDown';
+import ResourcesResourceFeed from './ResourceFeed';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
 	const [sortBy, setSortBy] = useState('popular');
 	const [sortRev, setSortRev] = useState('false');
-	const [pagination, setPagination] = useState(1);
+
+	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
-		`resources?page=${pagination}&filter=${filter}&order=${sortBy}&reverse=${sortRev}`,
+		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${sortRev}`,
 		'get',
 	);
-	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
-
 	useNav('resources');
 	const [popup, setPopup] = useState(false);
-
-	const deleteResource = async (rId: number) => {
-		if (resources) {
-			let deleted = await makeRequest(
-				'resources/delete_resource',
-				'delete',
-				{
-					userId: getLocal('token').user.u_id,
-					resourceId: rId,
-				},
-			);
-			if (deleted?.data?.success) {
-				setResources(
-					resources.filter(
-						(resource: ResourceListType) => resource.r_id !== rId,
-					),
-				);
-			}
-		}
-	};
-
-	const renderResources = () => {
-		if (!!resources)
-			return resources.map((resource: ResourceListType) => {
-				return (
-					<ResourceCard
-						key={resource.r_id}
-						resource={resource}
-						openResource={() =>
-							history.push(`/resources/${resource.r_id}`)
-						}
-						deleteResource={() => deleteResource(resource.r_id)}
-						setFilter={setFilter}
-						filter={filter}
-					/>
-				);
-			});
-	};
 
 	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
@@ -87,11 +49,11 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 
 	return (
 		<Resources>
-			{resources && popup && (
+			{popup && resources && (
 				<SubmitResource
-					popup
-					setResources={setResources}
 					resources={resources}
+					setResources={setResources}
+					popup
 					setPopup={setPopup}
 				/>
 			)}
@@ -122,11 +84,16 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					Remove filter
 				</FilterButton>
 			</ResourcePageHead>
-			{!isLoading && renderResources()}
-			{resources && resources.length >= pagination * 10 && (
-				<LoadButton onClick={() => setPagination(pagination + 1)}>
-					Moar
-				</LoadButton>
+			{resources && (
+				<ResourcesResourceFeed
+					pagination={2}
+					reverse={sortRev}
+					sortBy={sortBy}
+					filterBy={filter}
+					setFilter={setFilter}
+					resources={resources}
+					setResources={setResources}
+				/>
 			)}
 		</Resources>
 	);

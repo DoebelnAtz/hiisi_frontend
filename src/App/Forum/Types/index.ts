@@ -43,8 +43,6 @@ export type ViewPostProps = {
 }
 
 export type CreatePostModalProps = {
-    setPosts: any,
-    posts: PostType[] | null | undefined,
     setPopup: any,
     popup: boolean,
     isMounted: any

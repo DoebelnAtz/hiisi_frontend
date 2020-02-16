@@ -26,6 +26,8 @@ import ShareImg from '../../../Assets/Share.png';
 import { ResourceListType, vote } from '../Types';
 import { makeRequest } from '../../Api/Api';
 import { formatDate } from '../../../utils/utils';
+import { BrowserRouterProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps } from '../../../Types';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -107,7 +109,6 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 			setCopied(false);
 		}, 700);
 	};
-
 	return (
 		<ResourceCard>
 			<ResourceVotes>
@@ -165,7 +166,11 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				)}
 				<ShareButton>
 					<img
-						onClick={() => handleShareClick(resource.link)}
+						onClick={() =>
+							handleShareClick(
+								`${window.location.href}/${resource.r_id}`,
+							)
+						}
 						src={ShareImg}
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
