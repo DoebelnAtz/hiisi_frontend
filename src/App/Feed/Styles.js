@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { components, layout, length } from '../../Styles/sharedStyles';
 
 export const FeedPage = styled.div`
-	height: 100%;
+	height: calc(100% - ${length.margin});
 	width: 100%;
 	padding-bottom: ${length.margin * 2};
 `;

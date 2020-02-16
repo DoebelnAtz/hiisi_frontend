@@ -11,14 +11,15 @@ import React, {
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 import UserPage from '../Profile/UserPage';
+import PostPage from '../Feed/PostPage';
 import { useTransition, animated } from 'react-spring';
 import Notifications from '../Notifications/Notifications';
-import OpenHive from '../OpenHive/index';
-import ProjectPage from '../OpenHive/ProjectPage/index';
-import TaskInfo from '../Board/Column/Task/TaskInfo/index';
-import Messages from '../Messages/MessageRoom/index';
-import Resources from '../Resources/index';
-import ResourcePage from '../Resources/ResourcePage/index';
+import OpenHive from '../OpenHive';
+import ProjectPage from '../OpenHive/ProjectPage';
+import TaskInfo from '../Board/Column/Task/TaskInfo';
+import Messages from '../Messages/MessageRoom';
+import Resources from '../Resources';
+import ResourcePage from '../Resources/ResourcePage';
 import { getLocal } from '../../utils/utils';
 import { useNotifications } from '../../Hooks';
 
@@ -40,7 +41,6 @@ const MainRoutes: React.FC = (prop) => {
 					path={'/openhive'}
 					render={(props) => <OpenHive {...props} />}
 				/>
-				<Route exact path={'/blog'} render={() => <Feed />} />
 				<Route
 					exact
 					path={'/profile/'}
@@ -63,6 +63,9 @@ const MainRoutes: React.FC = (prop) => {
 					) => <Messages {...props} />}
 				/>
 			</Switch>
+			<Route path={'/blog'} render={() => <Feed />} />
+			<Route exact path={'/blog/:bid'} render={() => <PostPage />} />
+
 			<Route
 				path={'/resources'}
 				render={(props) => <Resources {...props} />}

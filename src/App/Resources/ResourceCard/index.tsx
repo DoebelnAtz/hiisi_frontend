@@ -1,11 +1,8 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import {
-	ArrowImage,
-	DeleteButton,
 	ResourceCard,
 	ResourceContent,
 	ResourceInfo,
-	ResourceVoteCount,
 	ResourceVotes,
 	Tag,
 	Tags,
@@ -15,7 +12,11 @@ import {
 	CopiedSpan,
 	ResourceTitle,
 } from './Styles';
-import Button from '../../Components/Buttons/Button';
+import {
+	VoteCount,
+	ArrowImage,
+	DeleteButton,
+} from '../../../Styles/sharedStyles';
 import ArrowUp from '../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../Assets/ArrowDown.png';
 import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
@@ -46,6 +47,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
+
 	const voteResource = async (
 		vote: vote,
 		resourceId: number,
@@ -116,9 +118,9 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 						onClick={() => handleUpClick(1, resource.r_id)}
 					/>
 				</ArrowImage>
-				<ResourceVoteCount>
+				<VoteCount>
 					<span>{votes}</span>
-				</ResourceVoteCount>
+				</VoteCount>
 				<ArrowImage>
 					<img
 						src={voted < 0 ? ArrowDownVoted : ArrowDown}

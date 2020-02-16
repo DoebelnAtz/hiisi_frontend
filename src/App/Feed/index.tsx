@@ -61,7 +61,7 @@ const Feed = ({}) => {
 		<FeedPage>
 			<FeedButtonRow>
 				<CreatePostButton onClick={() => setPopup(true)}>
-					Create Post
+					Submit Post
 				</CreatePostButton>
 				<DropDown
 					state={sortBy}

@@ -1,4 +1,5 @@
 import {FocusList} from "../../../Types";
+import { vote } from '../../Resources/Types';
 
 export interface CommentType {
     c_id: number,
@@ -22,10 +23,11 @@ export interface PostType {
     username: string,
     title: string,
     content: string,
+    owner: boolean,
     published_date: string,
     commentthread: number,
-    liked: boolean,
-    likes: number
+    voted: vote,
+    votes: number
 }
 
 export interface ReplyProps {
