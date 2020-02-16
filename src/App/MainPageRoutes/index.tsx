@@ -63,8 +63,8 @@ const MainRoutes: React.FC = (prop) => {
 					) => <Messages {...props} />}
 				/>
 			</Switch>
-			<Route path={'/blog'} render={() => <Feed />} />
-			<Route exact path={'/blog/:bid'} render={() => <PostPage />} />
+			<Route path={'/forum'} render={() => <Feed />} />
+			<Route exact path={'/forum/:bid'} render={() => <PostPage />} />
 
 			<Route
 				path={'/resources'}

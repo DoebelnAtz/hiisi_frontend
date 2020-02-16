@@ -42,22 +42,22 @@ const HomeSideNav = (props) => {
 			</div>
 			<div
 				onClick={handleDivClick}
-				onMouseOver={() => setHoveredNav('blog')}
+				onMouseOver={() => setHoveredNav('forum')}
 				onMouseLeave={() => setHoveredNav('')}
 				className={`home_nav_text ${
-					hoveredNav === 'blog'
+					hoveredNav === 'forum'
 						? 'hovered'
-						: state === 'blog'
+						: state === 'forum'
 						? 'active'
 						: 'inactive'
 				}`}
 			>
 				<Link
-					to={'/blog'}
+					to={'/forum'}
 					className={'home_nav_link'}
-					onClick={() => update('blog')}
+					onClick={() => update('forum')}
 				>
-					Blog
+					Forum
 				</Link>
 			</div>
 			<div

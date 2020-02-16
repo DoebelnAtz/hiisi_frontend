@@ -24,7 +24,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	const inside = useRef<HTMLDivElement>(null);
 
 	const close = () => {
-		history.push('/blog');
+		history.push('/forum');
 	};
 
 	const [post, setPost, isLoading] = useRequest<PostType>(

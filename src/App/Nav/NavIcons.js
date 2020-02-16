@@ -13,7 +13,7 @@ const NavIcons = (props) => {
 	return (
 		<div className={'side_nav'}>
 			<OpenHiveNav icon={openHiveIcon} />
-			<NavItem path={'/blog'} name={'Blog'} icon={openHiveIcon} />
+			<NavItem path={'/forum'} name={'forum'} icon={openHiveIcon} />
 			<NavItem path={'/profile'} name={'Profile'} icon={profileIcon} />
 			<NavItem path={'/resources'} name={'Resources'} icon={treeIcon} />
 			<NavItem

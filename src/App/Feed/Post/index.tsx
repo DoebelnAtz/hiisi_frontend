@@ -106,7 +106,7 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 			</PostVotes>
 			<PostContent
 				onClick={() => {
-					history.push(`/blog/${content.b_id}`);
+					history.push(`/forum/${content.b_id}`);
 				}}
 			>
 				<PostTitle>{content.title}</PostTitle>
