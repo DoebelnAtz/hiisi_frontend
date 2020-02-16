@@ -20,6 +20,8 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 	const [nextPosts, setNextPosts, isLoading] = useRequest<PostType[]>(
 		`blogs?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
+		{},
+		posts.length >= 10,
 	);
 	const [showNext, setShowNext] = useState(false);
 	const renderList = () => {

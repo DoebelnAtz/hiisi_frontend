@@ -35,6 +35,8 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	>(
 		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}`,
 		'get',
+		{},
+		resources.length >= 10,
 	);
 	const [next, setNext] = useState(false);
 	const deleteResource = async (rId: number) => {

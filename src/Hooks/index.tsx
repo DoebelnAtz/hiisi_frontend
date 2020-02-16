@@ -22,30 +22,30 @@ export const useNav = (current: string) => {
 };
 
 export const useNotifications = (room: string) => {
-
-	const { state: notifications, update: setNotifications } = useContext(NotificationContext);
+	const { state: notifications, update: setNotifications } = useContext(
+		NotificationContext,
+	);
 	const [connected, setConnected] = useState(false);
-	const [newNotification, setNewNotification] = useState<MessageNotification>();
+	const [newNotification, setNewNotification] = useState<
+		MessageNotification
+	>();
 	const [socket, setSocket] = useState<SocketType>();
 	useEffect(() => {
 		let user = getLocal('token');
 		if (!user) {
 			localStorage.clear();
-			window.location.replace('/login')
+			window.location.replace('/login');
 		}
-		let socket: SocketType = socketIOClient(
-			'http://localhost:5010',
-			{
-				transportOptions: {
-					polling: {
-						extraHeaders: {
-							Authorization: 'Bearer ' + user.token,
-							Room: room
-						},
+		let socket: SocketType = socketIOClient('http://localhost:5010', {
+			transportOptions: {
+				polling: {
+					extraHeaders: {
+						Authorization: 'Bearer ' + user.token,
+						Room: room,
 					},
 				},
 			},
-		);
+		});
 		socket.on('connect', () => {
 			setConnected(true);
 		});
@@ -61,15 +61,17 @@ export const useNotifications = (room: string) => {
 	// We cant append to notification inside the socket event function, because it
 	// creates a copy of the notification state... Probablye not the most elegant way of doing this..
 	useEffect(() => {
-		if(newNotification) {
+		if (newNotification) {
 			console.log(newNotification);
-			setNotifications([newNotification as MessageNotification, ...notifications]);
+			setNotifications([
+				newNotification as MessageNotification,
+				...notifications,
+			]);
 			console.log('notification ', notifications);
 		}
-
 	}, [JSON.stringify(newNotification)]);
 
-	return [notifications, connected]
+	return [notifications, connected];
 };
 
 export const useDismiss = (
@@ -102,7 +104,12 @@ export const useDismiss = (
 	}, []);
 };
 
-export function useRequest<F>(url: string, method: string, body = {}) {
+export function useRequest<F>(
+	url: string,
+	method: string,
+	body = {},
+	conditional = true,
+) {
 	type dataType = F;
 	const [data, setData] = useState<F>();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -118,14 +125,14 @@ export function useRequest<F>(url: string, method: string, body = {}) {
 			} catch (e) {
 				if (e.response.status === 401) {
 					localStorage.clear();
-					window.location.replace('/login')
+					window.location.replace('/login');
 				}
 				setError(JSON.stringify(e.response.status));
 			} finally {
 				setIsLoading(false);
 			}
 		}
-		request();
+		if (conditional) request();
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }
