@@ -17,7 +17,7 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 	reverse,
 	posts,
 }) => {
-	const [nextPosts, setNextPosts, isLoading] = useRequest<PostType[]>(
+	const [nextPosts, ,] = useRequest<PostType[]>(
 		`blogs?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 import Color from 'color';
 
 export const color = {
@@ -182,39 +182,3 @@ export const layout = {
 		margin-right: auto;
 	`,
 };
-
-export const ArrowImage = styled.div`
-	${layout.row};
-	& img {
-		height: 30px;
-		width: 30px;
-		margin: 0 auto;
-		${cursor.clickable};
-	}
-`;
-
-export const VoteCount = styled.div`
-	${layout.row};
-	& span {
-		user-select: none;
-		text-align: center;
-		letter-spacing: 0;
-		margin: 0 auto;
-	}
-`;
-
-export const DeleteButton = styled.div`
-	${layout.row};
-	margin-bottom: 10px;
-	& img {
-		${cursor.clickable};
-		margin: 0 auto;
-		height: 30px;
-		border-radius: 50%;
-		background-color: ${color.siteBG2};
-		transition: background-color 0.2s;
-		&:hover {
-			background-color: ${color.siteBG1};
-		}
-	}
-`;

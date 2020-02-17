@@ -1,22 +1,21 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import {
-	ResourceCard,
-	ResourceContent,
-	ResourceInfo,
-	ResourceVotes,
-	Tag,
-	Tags,
-	ResourceButtons,
-	ResourceDate,
-	ShareButton,
-	CopiedSpan,
-	ResourceTitle,
-} from './Styles';
+import { Tag, Tags } from './Styles';
 import {
 	VoteCount,
 	ArrowImage,
+	ShareButton,
+	CopiedSpan,
 	DeleteButton,
-} from '../../../Styles/sharedStyles';
+	CardContent,
+	CardInfo,
+	CardDate,
+	Card,
+	CardVotes,
+	CardTitle,
+	CardButtons,
+	CardAuthor,
+	CardTitleInfo,
+} from '../../../Styles/CardStyles';
 import ArrowUp from '../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../Assets/ArrowDown.png';
 import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
@@ -26,8 +25,6 @@ import ShareImg from '../../../Assets/Share.png';
 import { ResourceListType, vote } from '../Types';
 import { makeRequest } from '../../Api/Api';
 import { formatDate } from '../../../utils/utils';
-import { BrowserRouterProps, withRouter } from 'react-router-dom';
-import { RouteComponentProps } from '../../../Types';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -110,8 +107,8 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}, 700);
 	};
 	return (
-		<ResourceCard>
-			<ResourceVotes>
+		<Card>
+			<CardVotes>
 				<ArrowImage>
 					<img
 						src={voted > 0 ? ArrowUpVoted : ArrowUp}
@@ -129,19 +126,22 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 						onClick={() => handleDownClick(-1, resource.r_id)}
 					/>
 				</ArrowImage>
-			</ResourceVotes>
-			<ResourceContent
+			</CardVotes>
+			<CardContent
 				key={resource.r_id}
 				onClick={() => {
 					openResource();
 				}}
 			>
-				<ResourceInfo>
-					<ResourceTitle>{resource.title}</ResourceTitle>
-					<ResourceDate>
-						{formatDate(resource.published_date)}
-					</ResourceDate>
-				</ResourceInfo>
+				<CardTitleInfo>
+					<CardTitle>{resource.title}</CardTitle>
+					<CardInfo>
+						<CardDate>
+							{formatDate(resource.published_date)}
+						</CardDate>
+						<CardAuthor>{resource.username}</CardAuthor>
+					</CardInfo>
+				</CardTitleInfo>
 				<Tags>
 					{resource.tags &&
 						resource.tags?.map((tag, index) => (
@@ -157,8 +157,8 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							</Tag>
 						))}
 				</Tags>
-			</ResourceContent>
-			<ResourceButtons>
+			</CardContent>
+			<CardButtons>
 				{resource.owner && (
 					<DeleteButton>
 						<img onClick={() => deleteResource()} src={DeleteImg} />
@@ -175,8 +175,8 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 				</ShareButton>
-			</ResourceButtons>
-		</ResourceCard>
+			</CardButtons>
+		</Card>
 	);
 };
 

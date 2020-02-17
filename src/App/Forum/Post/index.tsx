@@ -1,20 +1,7 @@
 import React, { useState } from 'react';
 
-import ViewPost from './ViewPost';
 import { PostProps } from '../Types';
-import {
-	BlogPost,
-	ButtonRow,
-	CommentButton,
-	LikeButton,
-	PostAuthor,
-	PostDate,
-	PostContent,
-	PostInfo,
-	PostButtons,
-	PostTitle,
-	PostVotes,
-} from './Styles';
+
 import ArrowUp from '../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../Assets/ArrowDown.png';
 import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
@@ -29,10 +16,20 @@ import {
 	VoteCount,
 	ArrowImage,
 	DeleteButton,
-} from '../../../Styles/sharedStyles';
+	Card,
+	CardContent,
+	CardInfo,
+	CardButtons,
+	CardDate,
+	CardVotes,
+	CardTitle,
+	ShareButton,
+	CopiedSpan,
+	CardAuthor,
+	CardTitleInfo,
+} from '../../../Styles/CardStyles';
 import { vote } from '../../Resources/Types';
 import ShareImg from '../../../Assets/Share.png';
-import { CopiedSpan, ShareButton } from '../../Resources/ResourceCard/Styles';
 
 const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	content,
@@ -93,8 +90,8 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	};
 
 	return (
-		<BlogPost>
-			<PostVotes>
+		<Card>
+			<CardVotes>
 				<ArrowImage>
 					<img
 						src={voted > 0 ? ArrowUpVoted : ArrowUp}
@@ -112,19 +109,23 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 						onClick={() => handleDownClick(-1, content.b_id)}
 					/>
 				</ArrowImage>
-			</PostVotes>
-			<PostContent
+			</CardVotes>
+			<CardContent
 				onClick={() => {
 					history.push(`/forum/${content.b_id}`);
 				}}
 			>
-				<PostTitle>{content.title}</PostTitle>
-				<PostInfo>
-					<PostDate>{formatDate(content.published_date)}</PostDate>
-					<PostAuthor>{content.username}</PostAuthor>
-				</PostInfo>
-			</PostContent>
-			<PostButtons>
+				<CardTitleInfo>
+					<CardTitle>{content.title}</CardTitle>
+					<CardInfo>
+						<CardDate>
+							{formatDate(content.published_date)}
+						</CardDate>
+						<CardAuthor>{content.username}</CardAuthor>
+					</CardInfo>
+				</CardTitleInfo>
+			</CardContent>
+			<CardButtons>
 				{content.owner && (
 					<DeleteButton>
 						<img onClick={() => {}} src={DeleteImg} />
@@ -141,8 +142,8 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 				</ShareButton>
-			</PostButtons>
-		</BlogPost>
+			</CardButtons>
+		</Card>
 	);
 };
 
