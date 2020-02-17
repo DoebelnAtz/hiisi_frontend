@@ -2,18 +2,30 @@ import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useNav, useRequest } from '../../Hooks';
-import { ProjectList, CreateProjectButton } from './Style';
+import { ProjectList, CreateProjectButton, ProjectButtonRow } from './Style';
 import ProjectFeed from './ProjectFeed';
 import { Project } from './Types';
 import CreateProjectModal from './CreateProjectModal';
+import DropDown from '../Components/DropDown';
 
 const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [showModal, setShowModal] = useState(false);
+	const [sortBy, setSortBy] = useState('popular');
+	const [reverse, setReverse] = useState('false');
 	useNav('Open Hive');
 	const [projects, setProjects, isLoading] = useRequest<Project[]>(
-		'projects',
+		`projects?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
+
+	const onSortSelect = (sort: string) => {
+		if (sort === sortBy) {
+			setReverse(reverse === 'true' ? 'false' : 'true');
+		} else {
+			setReverse('false');
+			setSortBy(sort);
+		}
+	};
 
 	return (
 		<ProjectList>
@@ -24,10 +36,27 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					setShowModal={setShowModal}
 				/>
 			)}
-			<CreateProjectButton onClick={() => setShowModal(true)}>
-				Start a project
-			</CreateProjectButton>
-			{projects && <ProjectFeed projects={projects} />}
+			<ProjectButtonRow>
+				<CreateProjectButton onClick={() => setShowModal(true)}>
+					Start a project
+				</CreateProjectButton>
+				<DropDown
+					state={sortBy}
+					setSelect={onSortSelect}
+					text={'Sort By: '}
+					optionList={['popular', 'recent', 'title']}
+					width={'160px'}
+					height={'34px'}
+				/>
+			</ProjectButtonRow>
+			{projects && (
+				<ProjectFeed
+					page={1}
+					sortBy={sortBy}
+					reverse={reverse}
+					projects={projects}
+				/>
+			)}
 		</ProjectList>
 	);
 };

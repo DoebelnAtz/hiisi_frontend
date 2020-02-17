@@ -138,7 +138,7 @@ export const components = {
 	button: css`
 		padding: 2px 7px;
 		font-size: 16px;
-		height: 34px;
+		height: 36px;
 		line-height: 30px;
 		background-color: ${color.siteBG3};
 		color: ${color.primary};

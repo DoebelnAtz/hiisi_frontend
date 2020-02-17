@@ -7,12 +7,22 @@ import PlusIcon from '../../../Assets/Plus.png';
 
 type ProjectFeedProps = {
 	projects: Project[];
+	page: number;
+	reverse: string;
+	sortBy: string;
 };
 
-const ProjectFeed: React.FC<ProjectFeedProps> = ({ projects }) => {
+const ProjectFeed: React.FC<ProjectFeedProps> = ({
+	projects,
+	page,
+	sortBy,
+	reverse,
+}) => {
 	const [nextProjects, setNextProjects, isLoading] = useRequest<Project[]>(
-		'projects',
+		`projects?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
+		{},
+		projects.length >= 10,
 	);
 	const [showNext, setShowNext] = useState(false);
 
@@ -26,7 +36,12 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({ projects }) => {
 		<Fragment>
 			{renderProject()}
 			{showNext && nextProjects && (
-				<ProjectFeed projects={nextProjects} />
+				<ProjectFeed
+					page={page + 1}
+					projects={nextProjects}
+					sortBy={sortBy}
+					reverse={reverse}
+				/>
 			)}
 			{!showNext && projects.length >= 10 && (
 				<MoreButton>

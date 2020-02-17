@@ -22,6 +22,8 @@ import {
 	ArrowImage,
 	VoteCount,
 	CardTitleInfo,
+	ShareButton,
+	CopiedSpan,
 } from '../../../../Styles/CardStyles';
 import { makeRequest } from '../../../Api/Api';
 
@@ -83,7 +85,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			setCopied(false);
 		}, 700);
 	};
-
+	console.log(window);
 	return (
 		<Card>
 			<CardVotes>
@@ -127,7 +129,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 					})}
 				</CollaboratorList>
 			</CardContent>
-			<CardButtons></CardButtons>
+			<CardButtons>
+				<ShareButton>
+					<img
+						onClick={() =>
+							handleShareClick(
+								`${window.location.origin}/projects/${project.project_id}`,
+							)
+						}
+						src={ShareImg}
+					/>
+					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+				</ShareButton>
+			</CardButtons>
 		</Card>
 	);
 };

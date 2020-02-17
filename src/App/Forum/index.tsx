@@ -49,7 +49,7 @@ const Feed = ({}) => {
 					setSelect={handleOrderSelect}
 					text={'Sort by: '}
 					optionList={['popular', 'recent', 'title']}
-					height={'32px'}
+					height={'34px'}
 					width={'160px'}
 				/>
 			</FeedButtonRow>
