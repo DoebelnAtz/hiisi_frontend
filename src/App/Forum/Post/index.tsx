@@ -128,7 +128,11 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 			<CardButtons>
 				{content.owner && (
 					<DeleteButton>
-						<img onClick={() => {}} src={DeleteImg} />
+						<img
+							onClick={() => {}}
+							src={DeleteImg}
+							alt={'delete post'}
+						/>
 					</DeleteButton>
 				)}
 				<ShareButton>
@@ -139,6 +143,7 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 							)
 						}
 						src={ShareImg}
+						alt={'share'}
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 				</ShareButton>

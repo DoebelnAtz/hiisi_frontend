@@ -16,6 +16,7 @@ import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';
 import DropDown from '../Components/DropDown';
 import ResourcesResourceFeed from './ResourceFeed';
+import PlaceHolderFeed from '../Components/PlaceHolderFeed';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
@@ -84,7 +85,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					Remove filter
 				</FilterButton>
 			</ResourcePageHead>
-			{resources && (
+			{(resources && (
 				<ResourcesResourceFeed
 					pagination={2}
 					reverse={sortRev}
@@ -94,7 +95,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					resources={resources}
 					setResources={setResources}
 				/>
-			)}
+			)) || <PlaceHolderFeed />}
 		</Resources>
 	);
 };

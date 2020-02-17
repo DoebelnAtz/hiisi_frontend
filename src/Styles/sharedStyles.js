@@ -21,6 +21,9 @@ export const color = {
 	siteBG5: Color('#161616')
 		.lighten(2.5)
 		.string(),
+	textColor: Color('#AC7BC2')
+		.lighten(0.15)
+		.string(),
 };
 
 export const colorAdjust = {
@@ -137,20 +140,20 @@ export const components = {
 	`,
 	button: css`
 		padding: 2px 7px;
-		font-size: 16px;
 		height: 36px;
 		line-height: 30px;
-		background-color: ${color.siteBG3};
-		color: ${color.primary};
+		background-color: ${color.siteBG2};
+		color: ${colorAdjust.lighten(color.primary, 0.15)};
 		${cursor.clickable};
 		border: 1px solid ${color.primary};
 		border-radius: ${length.radius};
 		transition: background-color 0.1s;
+		font-size: 16px;
 		&:focus {
 			outline: none;
 		}
 		&:hover {
-			background-color: ${color.siteBG2};
+			background-color: ${colorAdjust.darken(color.siteBG2, 0.1)};
 		}
 	`,
 	textarea: css`

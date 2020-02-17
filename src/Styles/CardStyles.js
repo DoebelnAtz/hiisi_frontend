@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, cursor, font, layout, length } from './sharedStyles';
+import { color, colorAdjust, cursor, font, layout, length } from './sharedStyles';
 
 export const Card = styled.div`
 	${font.text};
@@ -46,7 +46,7 @@ export const CardContent = styled.div`
 	${cursor.clickable};
 	z-index: 1;
 	&:hover {
-		background-color: ${color.siteBG1};
+		background-color: ${colorAdjust.darken(color.siteBG2, 0.15)};
 	}
 `;
 

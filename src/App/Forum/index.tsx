@@ -8,6 +8,7 @@ import { PostType } from './Types';
 import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
 import DropDown from '../Components/DropDown';
 import ForumFeed from './ForumFeed';
+import PlaceHolderFeed from '../Components/PlaceHolderFeed';
 
 const Feed = ({}) => {
 	const [popup, setPopup] = useState(false);
@@ -58,14 +59,14 @@ const Feed = ({}) => {
 				setPopup={setPopup}
 				isMounted={isMounted}
 			/>
-			{posts && (
+			{(posts && (
 				<ForumFeed
 					reverse={reverse}
 					sortBy={sortBy}
 					page={2}
 					posts={posts}
 				/>
-			)}
+			)) || <PlaceHolderFeed />}
 		</FeedPage>
 	);
 };

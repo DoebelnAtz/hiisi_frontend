@@ -21,7 +21,7 @@ const MessageRoomModal: React.FC = () => {
 		<div ref={inside} style={{ zIndex: 100 }}>
 			{expandRoomList && <MessageRoomList />}
 			<MessageModal onClick={() => setExpandRoomList(!expandRoomList)}>
-				<MessageImg src={MessageIcon} />
+				<MessageImg src={MessageIcon} alt={'chat'} />
 				<span>Chat</span>
 				{!!notifications.length && <NotificationIcon />}
 			</MessageModal>

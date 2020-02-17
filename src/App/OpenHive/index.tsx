@@ -7,6 +7,7 @@ import ProjectFeed from './ProjectFeed';
 import { Project } from './Types';
 import CreateProjectModal from './CreateProjectModal';
 import DropDown from '../Components/DropDown';
+import PlaceHolderFeed from '../Components/PlaceHolderFeed';
 
 const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [showModal, setShowModal] = useState(false);
@@ -49,14 +50,14 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					height={'34px'}
 				/>
 			</ProjectButtonRow>
-			{projects && (
+			{(projects && (
 				<ProjectFeed
 					page={1}
 					sortBy={sortBy}
 					reverse={reverse}
 					projects={projects}
 				/>
-			)}
+			)) || <PlaceHolderFeed />}
 		</ProjectList>
 	);
 };

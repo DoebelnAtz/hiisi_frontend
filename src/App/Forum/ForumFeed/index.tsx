@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Post from '../Post';
 import { PostType } from '../Types';
 import { useRequest } from '../../../Hooks';
 import { MoreButton } from './Styles';
 import PlusIcon from '../../../Assets/Plus.png';
+import PlaceholderCard from '../../Components/PlaceHolderFeed/PlaceholderCard';
 type ForumFeedProps = {
 	sortBy: string;
 	page: number;
@@ -23,13 +24,20 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 		{},
 		posts.length >= 10,
 	);
+	const isVisible = useRef<HTMLElement>(null);
 	const [showNext, setShowNext] = useState(false);
 	const renderList = () => {
-		if (posts)
+		if (posts) {
 			return posts.map((post) => {
 				return <Post content={post} key={post.b_id} />;
 			});
+		}
 	};
+
+
+
+
+
 	return (
 		<Fragment>
 			{renderList()}

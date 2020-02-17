@@ -11,9 +11,13 @@ import {
 export const DropDown = styled.div`
 	position: relative;
 	margin: 0 ${length.margin};
-	background-color: ${color.siteBG3};
+
+	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
+	&:hover {
+		background-color: ${colorAdjust.darken(color.siteBG2, 0.1)};
+	}
 `;
 
 export const CurrentOption = styled.div`
@@ -26,7 +30,7 @@ export const CurrentOption = styled.div`
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	color: ${color.primary};
+	color: ${color.textColor};
 	vertical-align: middle;
 	text-align: center;
 `;
@@ -35,7 +39,7 @@ export const DropDownList = styled.div`
 	position: fixed;
 	//right: -1px;
 	width: ${(props) => props.width};
-	background-color: ${color.siteBG3};
+	background-color: ${color.siteBG2};
 	z-index: 5;
 	padding: 2px;
 	max-height: 300px;
@@ -64,8 +68,8 @@ export const Option = styled.div`
 	padding: 0 6px;
 	background-color: ${(props) =>
 		props.highlighted
-			? colorAdjust.darken(color.siteBG2, 0.15)
-			: color.siteBG2};
+			? colorAdjust.darken(color.siteBG1, 0.15)
+			: colorAdjust.darken(color.siteBG2, 0.2)};
 	border-radius: 4px;
 	transition: background-color 0.1s;
 	${cursor.clickable};

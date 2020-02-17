@@ -124,6 +124,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 							<img
 								key={collaborator.u_id}
 								src={collaborator.profile_pic}
+								alt={'profile_pic'}
 							/>
 						);
 					})}
@@ -138,6 +139,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 							)
 						}
 						src={ShareImg}
+						alt={'share'}
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 				</ShareButton>

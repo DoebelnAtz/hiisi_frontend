@@ -112,7 +112,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				<ArrowImage>
 					<img
 						src={voted > 0 ? ArrowUpVoted : ArrowUp}
-						alt={'arrow_up'}
+						alt={'arrow up'}
 						onClick={() => handleUpClick(1, resource.r_id)}
 					/>
 				</ArrowImage>
@@ -122,7 +122,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				<ArrowImage>
 					<img
 						src={voted < 0 ? ArrowDownVoted : ArrowDown}
-						alt={'arrow_down'}
+						alt={'arrow down'}
 						onClick={() => handleDownClick(-1, resource.r_id)}
 					/>
 				</ArrowImage>
@@ -161,7 +161,11 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 			<CardButtons>
 				{resource.owner && (
 					<DeleteButton>
-						<img onClick={() => deleteResource()} src={DeleteImg} />
+						<img
+							onClick={() => deleteResource()}
+							src={DeleteImg}
+							alt={'delete resource'}
+						/>
 					</DeleteButton>
 				)}
 				<ShareButton>
@@ -172,6 +176,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							)
 						}
 						src={ShareImg}
+						alt={'share'}
 					/>
 					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 				</ShareButton>

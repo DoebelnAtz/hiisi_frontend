@@ -21,7 +21,11 @@ export const Logo: React.FC<LogoProps> = ({ icon, setCurrentNav }) => {
 		setCurrentNav('blog');
 	};
 	return (
-		<Link to={'/openhive'} className={'nav_logo'} onClick={setNavHome}>
+		<Link
+			to={'/openhive'}
+			className={'row_div nav_logo'}
+			onClick={setNavHome}
+		>
 			<img className={'logo_icon'} src={icon} alt={'logo'} />
 			<span className={'nav_logo_text'}>Hivemind</span>
 		</Link>
@@ -64,7 +68,7 @@ export const NavItem: React.FC<NavItemProps> = ({ path, name, icon }) => {
 			onMouseOver={() => setHoveredNav(name?.toLowerCase())}
 			onMouseLeave={() => setHoveredNav('')}
 			to={`${path}`}
-			className={`row nav_item ${
+			className={`row_div nav_item ${
 				hoveredNav === name?.toLowerCase()
 					? 'hovered'
 					: currentNav === name?.toLowerCase()

@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-
-import { useParams } from 'react-router-dom';
-import _ from 'lodash';
-import useSocket from 'use-socket.io-client';
+import { withRouter } from 'react-router-dom';
 
 import { useNav } from '../../../Hooks/index';
-import Button from '../../Components/Buttons/Button';
 import { makeRequest } from '../../Api/Api';
 import '../messages.css';
 import { calculateTimeSince, getLocal } from '../../../utils/utils';
@@ -15,7 +10,7 @@ import socketIOClient from 'socket.io-client';
 import AddToChat from '../../Components/Buttons/AddToChat';
 import { NotificationContext } from '../../../Context/NotificationContext';
 
-const Messages = ({match}) => {
+const Messages = ({ match }) => {
 	const [inputVal, setInputVal] = useState('');
 	const [connectedUsers, setConnectedUsers] = useState([]);
 	const [connected, setConnected] = useState(false);
@@ -90,7 +85,7 @@ const Messages = ({match}) => {
 
 	const appendMessage = (message) => {
 		console.log(messages);
-		setMessages({...messages, messages: [...messages.messages, message]});
+		setMessages({ ...messages, messages: [...messages.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
 	};
 
@@ -108,7 +103,7 @@ const Messages = ({match}) => {
 				message: inputVal,
 				username: getLocal('currentUser').username,
 				time_sent: new Date().toISOString(),
-				t_id: 	match.params.tid,
+				t_id: match.params.tid,
 			});
 		}
 		setInputVal('');
