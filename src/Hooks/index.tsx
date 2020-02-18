@@ -63,12 +63,10 @@ export const useNotifications = (room: string) => {
 	// creates a copy of the notification state... Probablye not the most elegant way of doing this..
 	useEffect(() => {
 		if (newNotification) {
-
 			setNotifications([
 				newNotification as MessageNotification,
 				...notifications,
 			]);
-
 		}
 	}, [JSON.stringify(newNotification)]);
 
@@ -126,12 +124,10 @@ export function useRequest<F>(
 			} catch (e) {
 				if (!e.response) {
 					window.location.replace('/505');
-				}
-				else if (e.response.status === 401) {
+				} else if (e.response.status === 401) {
 					localStorage.clear();
 					window.location.replace('/login');
-				}
-				else {
+				} else {
 					setError(e.response.status.toString());
 				}
 			} finally {

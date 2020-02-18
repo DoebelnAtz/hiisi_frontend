@@ -34,9 +34,8 @@ import ShareImg from '../../../Assets/Share.png';
 const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	content,
 	history,
+	deletePost,
 }) => {
-	//  TODO: refactor the code for this component, too many child components.
-
 	const [votes, setVotes] = useState<number>(content.votes);
 	const [voted, setVoted] = useState<vote>(content.voted ? content.voted : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
@@ -129,7 +128,7 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 				{content.owner && (
 					<DeleteButton>
 						<img
-							onClick={() => {}}
+							onClick={deletePost}
 							src={DeleteImg}
 							alt={'delete post'}
 						/>

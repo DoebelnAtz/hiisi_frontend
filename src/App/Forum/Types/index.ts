@@ -51,4 +51,5 @@ export type CreatePostModalProps = {
 
 export type PostProps = {
     content: PostType
+    deletePost: () => void
 }

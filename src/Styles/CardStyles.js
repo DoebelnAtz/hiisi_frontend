@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { color, colorAdjust, cursor, font, layout, length } from './sharedStyles';
+import {
+	color,
+	colorAdjust,
+	cursor,
+	font,
+	layout,
+	length,
+} from './sharedStyles';
 
 export const Card = styled.div`
 	${font.text};
@@ -7,6 +14,7 @@ export const Card = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	border-radius: 8px;
 	z-index: 1;
+	min-height: 122px;
 	background-color: ${color.siteBG2};
 	margin: ${length.margin};
 `;

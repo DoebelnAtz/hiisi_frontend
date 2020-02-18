@@ -65,6 +65,7 @@ const Feed = ({}) => {
 					sortBy={sortBy}
 					page={2}
 					posts={posts}
+					setPosts={setPosts}
 				/>
 			)) || <PlaceHolderFeed />}
 		</FeedPage>
