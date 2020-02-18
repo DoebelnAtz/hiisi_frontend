@@ -39,10 +39,15 @@ export const SideNavCol = styled.div`
 
 export const MainView = styled.div`
     border-radius: ${length.radius};
-	width: calc(100% - 280px - ${length.margin});
+	width: calc(100% - 230px - ${length.margin} * 3);
     background-color: ${color.siteBG1};
     margin-left: ${length.margin};
     overflow: auto;
     height: 100%;
+    transition: width 0.2s;
+
+    @media (max-width: 1024px) {
+    	width: calc(100% - 50px - ${length.margin} * 3);
+  	}
 
 `;

@@ -40,6 +40,7 @@ const SearchBar: React.FC = () => {
 							history.push(`${result.link}/${result.id}`)
 						}
 					>
+						{`${result.type}: `}
 						{result.title}
 					</ResultItem>
 				);

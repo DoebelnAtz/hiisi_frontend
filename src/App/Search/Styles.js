@@ -11,7 +11,7 @@ export const SearchInput = styled.input`
 	${components.input};
 	height: 36px;
 	border-radius: ${props => !props.showingResults ? '4px' : '4px 4px 0 0'};
-
+	
 	width: 20vw;
 `;
 
@@ -23,16 +23,18 @@ export const SearchResults = styled.div`
     overflow-y: auto;
     top: 35px;
     width: 20vw;
+    border-radius: 0 0 4px 4px;
     border: 1px solid ${color.primary};
     background-color: ${color.siteBG2};
 `;
 
 export const ResultItem = styled.div`
-	${font.text};
 	${layout.row};
 	background-color: ${color.siteBG1};
 	padding: 8px;
 	margin: 6px;
+	${font.text};
+	font-size: 14px;
 	${cursor.clickable};
 	border-radius: ${length.radius};
 `;
