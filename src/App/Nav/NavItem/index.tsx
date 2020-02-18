@@ -10,12 +10,17 @@ type NavItemProps = {
 };
 
 const NavItem: React.FC<NavItemProps> = ({ icon, title, link }) => {
-	const { state: currentNav } = useContext(CurrentNavContext);
+	const { state: currentNav, update: setCurrentNav } = useContext(
+		CurrentNavContext,
+	);
 	const history = useHistory();
 	return (
 		<NavItemDiv
-			selected={currentNav === title}
-			onClick={() => history.push(`${link}`)}
+			selected={currentNav.toLowerCase() === title.toLowerCase()}
+			onClick={() => {
+				setCurrentNav(title);
+				history.push(`${link}`);
+			}}
 		>
 			<NavIcon src={icon} alt={`${title} icon`} />
 			<NavTitle>{title}</NavTitle>

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-import { color, colorAdjust, components, layout, length } from '../../../Styles/sharedStyles';
+import {
+	color,
+	colorAdjust,
+	components,
+	cursor,
+	layout,
+	length,
+} from '../../../Styles/sharedStyles';
 
 export const RoomList = styled.div`
 	position: absolute;
@@ -17,19 +24,26 @@ export const RoomList = styled.div`
 `;
 
 export const CreateThreadRow = styled.div`
-	  width: 90%;
-	  margin: 0 auto;
-	  ${layout.row};  
+	width: 90%;
+	margin: 0 auto;
+	${layout.row};
 `;
 
 export const ThreadItem = styled.div`
-  	width: 90%;
-  	${layout.row};
-  	margin: ${length.margin} auto;
-
-  	& span {
-  		color: ${color.primary};
-  	}  
+	width: 90%;
+	${layout.row};
+	margin: ${length.margin} auto;
+	background-color: ${color.siteBG2};
+	padding: 6px;
+	border-radius: ${length.radius};
+	${cursor.clickable};
+	transition: background-color 0.1s;
+	&:hover {
+		background-color: ${color.siteBG1};
+	}
+	& span {
+		color: ${color.primary};
+	}
 `;
 
 export const NotificationIcon = styled.div`

@@ -36,9 +36,11 @@ const SearchBar: React.FC = () => {
 				return (
 					<ResultItem
 						key={index}
-						onClick={() =>
-							history.push(`${result.link}/${result.id}`)
-						}
+						onClick={() => {
+							setResults([]);
+							setSearchInput('');
+							history.push(`${result.link}/${result.id}`);
+						}}
 					>
 						{`${result.type}: `}
 						{result.title}

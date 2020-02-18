@@ -59,6 +59,8 @@ export const SearchInput = styled.input`
 export const Option = styled.div`
 	text-align: center;
 	${font.text};
+	font-size: 15px;
+	letter-spacing: 0;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;

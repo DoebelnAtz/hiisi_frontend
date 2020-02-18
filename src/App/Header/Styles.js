@@ -12,21 +12,21 @@ export const HeaderDiv = styled.div`
 
 export const LogoDiv = styled.div`
 	${layout.row};
-	width: 300px;
+	width: 250px;
 	height: 70px;
 	@media (max-width: 1024px) {
-    	width: 90px;
-    	${layout.row};
-    	height: 70px;
-  	}
+		width: 90px;
+		${layout.row};
+		height: 70px;
+	}
 `;
 
 export const Logo = styled.img`
 	height: 56px;
 	margin: auto ${length.margin};
 	@media (max-width: 1024px) {
-    	margin-top: 7px;
-  	}
+		margin-top: 7px;
+	}
 `;
 
 export const SiteTitle = styled.span`
@@ -34,8 +34,8 @@ export const SiteTitle = styled.span`
 	line-height: 70px;
 	color: ${color.primary};
 	@media (max-width: 1024px) {
-    	visibility: hidden;
-  	}
+		visibility: hidden;
+	}
 `;
 
 export const NavTitleDiv = styled.div`

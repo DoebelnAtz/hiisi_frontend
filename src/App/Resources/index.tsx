@@ -72,10 +72,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				/>
 				{tags && (
 					<DropDown
-						width={'204px'}
+						width={'166px'}
 						height={'34px'}
 						state={filter}
-						text={'Filter by: '}
+						text={'Filter: '}
 						withFilter={true}
 						setSelect={onFilterSelect}
 						optionList={tags.map((tag) => tag.title)}
