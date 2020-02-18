@@ -39,8 +39,7 @@ export const SideNavCol = styled.div`
 
 export const MainView = styled.div`
     border-radius: ${length.radius};
-
-	width: calc(100% - 300px - ${length.margin});
+	width: calc(100% - 280px - ${length.margin});
     background-color: ${color.siteBG1};
     margin-left: ${length.margin};
     overflow: auto;

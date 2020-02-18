@@ -8,7 +8,7 @@ import ArrowUpVoted from '../../../Assets/ArrowUpVoted.png';
 import ArrowDownVoted from '../../../Assets/ArrowDownVoted.png';
 import DeleteImg from '../../../Assets/x.png';
 import { formatDate } from '../../../utils/utils';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 import { RouteComponentProps } from '../../../Types';
 import { withRouter } from 'react-router-dom';
 

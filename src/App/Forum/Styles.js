@@ -14,4 +14,5 @@ export const FeedButtonRow = styled.div`
 
 export const CreatePostButton = styled.button`
 	${components.button};
+	margin-right: ${length.margin};
 `;

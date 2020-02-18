@@ -5,7 +5,7 @@ import { Column, ColumnTitle, ColumnList } from './Styles';
 import Task from './Task';
 import Input from '../../Components/Input';
 import { ColumnProps } from '../Types';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 
 const BoardColumn: React.FC<ColumnProps> = ({
 	addTask,

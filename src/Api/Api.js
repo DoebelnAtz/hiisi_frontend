@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getLocal } from '../../utils/utils';
+import { getLocal } from '../utils/utils';
 import { useContext } from 'react';
 
 export const makeRequest = async (url, method, data) => {

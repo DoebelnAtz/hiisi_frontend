@@ -12,4 +12,5 @@ export const ProjectButtonRow = styled.div`
 
 export const CreateProjectButton = styled.button`
 	${components.button};
+	margin-right: ${length.margin};
 `;

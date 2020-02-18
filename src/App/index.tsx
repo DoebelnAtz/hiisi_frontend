@@ -6,7 +6,7 @@ import { ErrorContext, ErrorContextProvider } from '../Context/ErrorContext';
 import IntraContext from '../Context/IntraContext';
 import Redirect from './Auth/Redirect';
 import Header from './Header';
-import SideNav from './Nav/SideNav';
+import Nav from './Nav';
 import Main from './MainPageRoutes';
 import Login from './Auth/Login';
 import './base.css';
@@ -51,7 +51,7 @@ const App: React.FC = () => {
 									</MainPageHeader>
 									<MainPage>
 										<SideNavCol>
-											<SideNav />
+											<Nav />
 										</SideNavCol>
 										<MainView>
 											<Main />

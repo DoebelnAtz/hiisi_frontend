@@ -1,7 +1,7 @@
 import {useSpring, animated, useChain} from 'react-spring'
 import React, {useRef, useState} from 'react';
 import Input from "../Input";
-import {makeRequest} from "../../Api/Api";
+import {makeRequest} from "../../../Api/Api";
 import Button from "./Button";
 
 const AddToChat = (props) => {

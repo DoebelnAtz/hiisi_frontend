@@ -1,11 +1,15 @@
 import React, { Fragment, useState } from 'react';
 
-import { makeRequest } from '../../../../Api/Api';
-import Button from '../../../../Components/Buttons/Button';
-import Input from '../../../../Components/Input';
+import { makeRequest } from '../../../../../Api/Api';
 import { ReplyProps } from '../../../Types';
 
-import { CommentInput, ReplyRow, CancelButton, SendButton } from './Styles';
+import {
+	CommentInput,
+	ReplyRow,
+	CancelButton,
+	SendButton,
+	ReplyBtn,
+} from './Styles';
 import { useSpring } from 'react-spring';
 
 const ReplyButton: React.FC<ReplyProps> = ({
@@ -35,14 +39,7 @@ const ReplyButton: React.FC<ReplyProps> = ({
 	};
 
 	if (!opened) {
-		return (
-			<Button
-				customStyle={{ height: '34px' }}
-				onClick={() => setOpened(true)}
-			>
-				Reply
-			</Button>
-		);
+		return <ReplyBtn onClick={() => setOpened(true)}>Reply</ReplyBtn>;
 	} else {
 		return (
 			<ReplyRow>

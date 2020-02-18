@@ -32,6 +32,7 @@ export const ButtonRow = styled.div`
 export const ShowRepliesButton = styled.button`
 	${components.button};
 	width: 100px;
+	height: 34px;
 	margin-right: ${length.margin};
 `;
 
@@ -50,6 +51,9 @@ export const CommentInfo = styled.div`
 export const CommentHead = styled.div`
   display: flex;
   flex-wrap: wrap;
+  & img {
+  	${cursor.clickable};
+  }
 `;
 
 export const CommentBody = styled.div`

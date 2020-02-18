@@ -25,7 +25,7 @@ import {
 	ShareButton,
 	CopiedSpan,
 } from '../../../../Styles/CardStyles';
-import { makeRequest } from '../../../Api/Api';
+import { makeRequest } from '../../../../Api/Api';
 
 type ProjectCardProps = {
 	project: Project;

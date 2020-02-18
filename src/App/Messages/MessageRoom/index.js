@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { useNav } from '../../../Hooks/index';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 import '../messages.css';
 import { calculateTimeSince, getLocal } from '../../../utils/utils';
 

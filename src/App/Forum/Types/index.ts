@@ -6,6 +6,7 @@ export interface CommentType {
     comment_date: string,
     profile_pic: string,
     username: string,
+    u_id: number,
     commentcontent: string,
     childthread: number
 }

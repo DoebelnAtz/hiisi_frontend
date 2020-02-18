@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import Reply from '../Reply';
 import { formatDate } from '../../../../../utils/utils';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../../Api/Api';
 import Button from '../../../../Components/Buttons/Button';
 import { useRequest } from '../../../../../Hooks';
 
@@ -16,6 +16,8 @@ import {
 	ReplyRow,
 } from './Styles';
 import { CommentProps, CommentType } from '../../../Types';
+import { Collaborator } from '../../../../Board/Column/Task/TaskInfo/Styles';
+import { useHistory } from 'react-router';
 
 const CommentCard: React.FC<CommentProps> = ({
 	odd,
@@ -24,6 +26,7 @@ const CommentCard: React.FC<CommentProps> = ({
 	renderComments,
 	isExpanded,
 }) => {
+	const history = useHistory();
 	const [expanded, setExpanded] = useState(false);
 	const [childThread, setChildThread, isLoading] = useRequest<CommentType[]>(
 		'blogs/commentthread/' + child.childthread,
@@ -33,7 +36,11 @@ const CommentCard: React.FC<CommentProps> = ({
 		return (
 			<ParentComment key={child.c_id} odd={odd}>
 				<CommentHead>
-					<img src={child.profile_pic} alt={'profile_pic'} />
+					<img
+						src={child.profile_pic}
+						alt={`${child.username} profiled pic`}
+						onClick={() => history.push(`/user/${child.u_id}`)}
+					/>
 					<CommentInfo>
 						<span>
 							{child.username} | {formatDate(child.comment_date)}

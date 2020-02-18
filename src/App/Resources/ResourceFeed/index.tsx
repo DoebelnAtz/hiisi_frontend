@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, Fragment, useState } from 'react';
 import { useRequest } from '../../../Hooks';
 import { ResourceListType } from '../Types';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 import { getLocal } from '../../../utils/utils';
 import ResourceCard from '../ResourceCard';
 import { useHistory } from 'react-router-dom';

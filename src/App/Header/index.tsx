@@ -1,15 +1,22 @@
 import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../base.css';
-import { Logo } from '../Nav/NavItems';
-import logo from '../Nav/navIcons/Logo6.png';
+import logo from '../../Assets/Logo6.png';
 import { CurrentNavContext } from '../../Context/CurrentNavContext';
 import { capitalizeFirst } from '../../utils/utils';
 import { RouteComponentProps } from '../../Types';
-import { HeaderDiv, LogoDiv, LogOutDiv, NavTitleDiv } from './Styles';
+import {
+	HeaderDiv,
+	LogoDiv,
+	LogOutDiv,
+	NavTitleDiv,
+	Logo,
+	SiteTitle,
+} from './Styles';
+import SearchBar from '../Search';
 
 const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
-	const { state, update } = useContext(CurrentNavContext);
+	const { state } = useContext(CurrentNavContext);
 
 	const requestLogout = () => {
 		localStorage.clear();
@@ -19,9 +26,11 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	return (
 		<HeaderDiv>
 			<LogoDiv>
-				<Logo icon={logo} setCurrentNav={update} />
+				<Logo src={logo} />
+				<SiteTitle>Hivemind</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
+			<SearchBar />
 			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
 		</HeaderDiv>
 	);

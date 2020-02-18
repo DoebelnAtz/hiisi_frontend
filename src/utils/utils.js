@@ -1,4 +1,4 @@
-import { makeRequest } from '../App/Api/Api';
+import { makeRequest } from '../Api/Api';
 import axios from 'axios';
 
 export const formatDate = (date, event) => {

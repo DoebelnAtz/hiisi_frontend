@@ -10,7 +10,7 @@ import {
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
-import { makeRequest } from '../Api/Api';
+import { makeRequest } from '../../Api/Api';
 import { getLocal } from '../../utils/utils';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';

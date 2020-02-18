@@ -115,6 +115,7 @@ export const Collaborator = styled.img`
 	max-width: 60px;
 	margin-left: -10px;
 	border-radius: 50%;
+	${cursor.clickable};
 	border: 4px solid ${color.siteBG2};
 `;
 

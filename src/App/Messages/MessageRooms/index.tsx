@@ -5,7 +5,7 @@ import {
 	CreateThreadRow,
 	NotificationIcon,
 } from './Styles';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 import Input from '../../Components/Input';
 import Button from '../../Components/Buttons/Button';
 import { RouteComponentProps, withRouter } from 'react-router';

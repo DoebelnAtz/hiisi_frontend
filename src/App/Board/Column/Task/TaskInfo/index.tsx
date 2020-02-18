@@ -31,7 +31,7 @@ import Plus from '../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../Hooks';
 import TextEditor from '../../../../Components/TextEditor';
 import Button from '../../../../Components/Buttons/Button';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../../Api/Api';
 import Avatar from '../../../../Components/Avatar';
 import { getPriorityIcon } from '../../../../../utils/taskUtils';
 import { RouteComponentProps, User } from '../../../../../Types';
@@ -206,6 +206,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 							<Collaborator
 								key={collaborator.u_id}
 								src={collaborator.profile_pic}
+								alt={`${collaborator.username} profiled pic`}
+								onClick={() => history.push(`/user/${collaborator.u_id}`)}
 							/>
 						);
 					}

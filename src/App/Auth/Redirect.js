@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import {getUrlParam, setLocal,} from "../../utils/utils";
-import { makeRequest } from "../Api/Api";
+import { makeRequest } from "../../Api/Api";
 
 const Redirect = (props) => {
 

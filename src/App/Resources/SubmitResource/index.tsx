@@ -14,7 +14,7 @@ import { useDismiss } from '../../../Hooks';
 import TextEditor from '../../Components/TextEditor';
 import Button from '../../Components/Buttons/Button';
 import { ButtonRow } from './Styles';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../../Api/Api';
 import { SubmitResourceProps } from '../Types';
 import { string } from 'prop-types';
 

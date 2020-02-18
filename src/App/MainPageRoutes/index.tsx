@@ -56,7 +56,7 @@ const MainRoutes: React.FC = (prop) => {
 					render={(props) => <Notifications />}
 				/>
 
-				<Route exact path={'/search/user/:uid'}>
+				<Route exact path={'/user/:uid'}>
 					<UserPage />
 				</Route>
 				<Route
