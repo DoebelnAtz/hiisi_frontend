@@ -5,8 +5,10 @@ export const CollaboratorList = styled.div`
 	margin-top: auto;
 	${layout.row};
 	& img {
-		height: 24px;
+		height: 40px;
+		width: 40px;
 		border-radius: 50%;
-		margin-right: ${length.margin};
+		border: 4px solid ${color.siteBG2};
+		margin-right: -${length.margin};
 	}
 `;

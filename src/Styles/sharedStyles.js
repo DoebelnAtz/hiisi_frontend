@@ -141,6 +141,7 @@ export const components = {
 	button: css`
 		padding: 2px 7px;
 		height: 36px;
+		letter-spacing: 1px;
 		line-height: 30px;
 		background-color: ${color.siteBG2};
 		color: ${colorAdjust.lighten(color.primary, 0.15)};

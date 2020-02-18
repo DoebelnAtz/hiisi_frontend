@@ -19,9 +19,7 @@ export const SubmitResourceButton = styled.div`
 
 export const FilterButton = styled.div`
 	${components.button};
-
 	width: fit-content;
-	font-size: 18px;
 	margin-left: auto;
 `;
 
