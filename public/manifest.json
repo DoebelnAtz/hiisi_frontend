@@ -6,8 +6,13 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "sizes": "136x156 64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "LogoLarge.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/openhive",

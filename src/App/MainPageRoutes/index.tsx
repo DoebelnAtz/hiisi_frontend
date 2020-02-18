@@ -22,6 +22,8 @@ import Resources from '../Resources';
 import ResourcePage from '../Resources/ResourcePage';
 import { getLocal } from '../../utils/utils';
 import { useNotifications } from '../../Hooks';
+import ErrorMessage from '../ErrorPages/ErrorModal/index';
+import { ErrorContext } from '../../Context/ErrorContext';
 
 const MainRoutes: React.FC = (prop) => {
 	const location = useLocation();
@@ -32,9 +34,11 @@ const MainRoutes: React.FC = (prop) => {
 		window.location.replace('/login');
 	}
 	const [notifications, connected] = useNotifications(userId);
-
+	const { state: error } = useContext(ErrorContext);
+	console.log(error);
 	return (
 		<Fragment>
+			{!!error.length && <ErrorMessage />}
 			<Switch location={location}>
 				<Route
 					exact

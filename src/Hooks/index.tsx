@@ -13,6 +13,7 @@ import { getLocal } from '../utils/utils';
 import socketIOClient from 'socket.io-client';
 import { MessageNotification } from '../Types';
 import { SocketType } from '../Types';
+import { log } from 'util';
 
 export const useNav = (current: string) => {
 	const { update } = useContext(CurrentNavContext);
@@ -113,7 +114,7 @@ export function useRequest<F>(
 	type dataType = F;
 	const [data, setData] = useState<F>();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const { update: setError } = useContext(ErrorContext); // NOT sure how to type this in TS
+	const { update: setError } = useContext(ErrorContext);
 
 	let resp;
 	useEffect(() => {
@@ -123,11 +124,16 @@ export function useRequest<F>(
 				resp = await makeRequest(url, method, body);
 				setData(resp.data);
 			} catch (e) {
-				if (e.response.status === 401) {
+				if (!e.response) {
+					window.location.replace('/505');
+				}
+				else if (e.response.status === 401) {
 					localStorage.clear();
 					window.location.replace('/login');
 				}
-				setError(JSON.stringify(e.response.status));
+				else {
+					setError(e.response.status.toString());
+				}
 			} finally {
 				setIsLoading(false);
 			}

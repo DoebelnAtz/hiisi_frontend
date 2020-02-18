@@ -24,7 +24,7 @@ const Login = (props) => {
                 'auth/login',
                 'post',
                 {
-                    username: username,
+                    username: username.toLowerCase(),
                     password: password,
                 }
             );
