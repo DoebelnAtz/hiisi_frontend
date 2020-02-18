@@ -13,18 +13,29 @@ export const HeaderDiv = styled.div`
 export const LogoDiv = styled.div`
 	${layout.row};
 	width: 300px;
-	height: 100%;
+	height: 70px;
+	@media (max-width: 1024px) {
+    	width: 90px;
+    	${layout.row};
+    	height: 70px;
+  	}
 `;
 
 export const Logo = styled.img`
 	height: 56px;
 	margin: auto ${length.margin};
+	@media (max-width: 1024px) {
+    	margin-top: 7px;
+  	}
 `;
 
 export const SiteTitle = styled.span`
 	${font.title};
 	line-height: 70px;
 	color: ${color.primary};
+	@media (max-width: 1024px) {
+    	visibility: hidden;
+  	}
 `;
 
 export const NavTitleDiv = styled.div`

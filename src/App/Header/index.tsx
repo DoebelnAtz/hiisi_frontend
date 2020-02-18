@@ -26,7 +26,7 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	return (
 		<HeaderDiv>
 			<LogoDiv>
-				<Logo src={logo} />
+				<Logo src={logo} alt={'logo'} />
 				<SiteTitle>Hivemind</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
