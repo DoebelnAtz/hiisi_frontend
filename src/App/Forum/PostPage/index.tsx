@@ -36,7 +36,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 		post && setPost({ ...post, content: e });
 	};
 
-	console.log(post);
+
 
 	useDismiss(inside, close);
 

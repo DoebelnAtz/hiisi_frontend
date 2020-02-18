@@ -85,7 +85,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			setCopied(false);
 		}, 700);
 	};
-	console.log(window);
+
 	return (
 		<Card>
 			<CardVotes>

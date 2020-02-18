@@ -73,12 +73,11 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	const updateResource = async () => {
-		console.log('saving..');
 		let resp = await makeRequest('resources/update_resource', 'put', {
 			resource: resource,
 		});
 		if (resp.data?.success) {
-			console.log('successfully saved resource');
+
 		}
 	};
 

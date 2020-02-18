@@ -97,7 +97,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 		];
 		let targetCol = filterBoard().columns[destColId];
 		let updatedTask = { ...draggedTask, column_id: targetCol.column_id };
-		console.log(updatedTask);
+
 		draggedTask.column_id = targetCol.column_id;
 		setBoard({
 			columns: board.columns.map((column) => ({

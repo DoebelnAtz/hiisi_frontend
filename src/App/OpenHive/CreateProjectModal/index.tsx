@@ -37,7 +37,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	useDismiss(inside, close);
 	const createProject = async () => {
 		let url = await validateUrl(linkVal);
-		console.log(url);
+
 		if (url) {
 			let resp = await makeRequest('projects/create_project', 'post', {
 				title: titleVal,

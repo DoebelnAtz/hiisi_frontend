@@ -28,7 +28,7 @@ const Login = (props) => {
                     password: password,
                 }
             );
-            console.log(resp);
+
             if (resp.data.success) {
                 setLocal('token', resp.data);
                 setAnimate(false);

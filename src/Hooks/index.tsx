@@ -63,12 +63,12 @@ export const useNotifications = (room: string) => {
 	// creates a copy of the notification state... Probablye not the most elegant way of doing this..
 	useEffect(() => {
 		if (newNotification) {
-			console.log(newNotification);
+
 			setNotifications([
 				newNotification as MessageNotification,
 				...notifications,
 			]);
-			console.log('notification ', notifications);
+
 		}
 	}, [JSON.stringify(newNotification)]);
 

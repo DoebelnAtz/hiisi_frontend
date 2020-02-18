@@ -46,7 +46,7 @@ function register(config) {
 				// Add some additional logging to localhost, pointing developers to the
 				// service worker/PWA documentation.
 				navigator.serviceWorker.ready.then(() => {
-					console.log(
+					 console.log(
 						'This web app is being served cache-first by a service ' +
 						'worker. To learn more, visit https://bit.ly/CRA-PWA'
 					);
@@ -69,7 +69,7 @@ function register(config) {
 			event.waitUntil(
 				caches.open(CACHE_NAME)
 					.then(function(cache) {
-						console.log('Opened cache');
+
 						return cache.addAll(urlsToCache);
 					})
 			);
@@ -97,7 +97,7 @@ function register(config) {
 						});
 				})
 				.catch(function(error) {
-					console.log('Request failed:', error);
+
 					// You could return a custom offline 404 page here
 				});
 		}
@@ -132,7 +132,7 @@ function registerValidSW(swUrl, config) {
 							// At this point, everything has been precached.
 							// It's the perfect time to display a
 							// "Content is cached for offline use." message.
-							console.log('Content is cached for offline use.');
+
 
 							// Execute callback
 							if (config && config.onSuccess) {
@@ -172,7 +172,7 @@ function checkValidServiceWorker(swUrl, config) {
 			}
 		})
 		.catch(() => {
-			console.log(
+
 				'No internet connection found. App is running in offline mode.'
 			);
 		});

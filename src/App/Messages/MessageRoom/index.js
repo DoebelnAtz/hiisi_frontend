@@ -49,10 +49,10 @@ const Messages = ({ match }) => {
 			setActiveUsers([...activeUsers, user.username]);
 		});
 		socket.on('left-room', (user) => {
-			console.log('left-room' + user.username);
+
 		});
 		socket.on('chat-message', (message) => {
-			console.log('incoming message');
+
 			setNewMessage(message);
 		});
 		setSocket(socket);
@@ -65,7 +65,7 @@ const Messages = ({ match }) => {
 	}, [JSON.stringify(newMessage)]);
 
 	useEffect(() => {
-		console.log(tid);
+
 		getMessages(tid);
 		getUsersConnected(tid);
 		setNotifications(
@@ -84,7 +84,7 @@ const Messages = ({ match }) => {
 	};
 
 	const appendMessage = (message) => {
-		console.log(messages);
+
 		setMessages({ ...messages, messages: [...messages.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
 	};
@@ -92,7 +92,7 @@ const Messages = ({ match }) => {
 	const getMessages = async (tid) => {
 		let resp = await makeRequest('messages/threads/' + tid, 'GET');
 		setMessages(resp.data);
-		console.log(messages);
+
 		scrollDown.current.scrollIntoView();
 	};
 

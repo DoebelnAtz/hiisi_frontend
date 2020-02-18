@@ -33,7 +33,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 	const createPost = async (title: string, content: string) => {
 		let now = new Date().toISOString();
-		console.log(now);
+
 		let resp = await makeRequest('blogs/create_blog', 'post', {
 			authorId: getLocal('token').user.u_id,
 			content,
@@ -42,7 +42,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 		});
 
 		if (isMounted) {
-			console.log('updating');
+
 			setPopup(false);
 		}
 		setTitle('');

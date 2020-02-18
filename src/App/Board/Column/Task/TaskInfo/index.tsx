@@ -93,7 +93,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			setPriority(getPriorityText(task.priority));
 		}
 	}, [isLoading]);
-	console.log(task);
+
 	const close = () => {
 		history.push(`/projects/${match.params.pid}`);
 	};
@@ -143,13 +143,13 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const handleSearch = async (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
 		setSearchInput(target.value);
-		console.log(target.value);
+
 		setSearchResult([]);
 		if (target.value.length > 0) {
 			let resp = await makeRequest('users/search', 'post', {
 				search: target.value,
 			});
-			console.log(resp);
+
 			if (task && resp?.data) {
 				setSearchResult(
 					resp.data.filter((user: User) => {

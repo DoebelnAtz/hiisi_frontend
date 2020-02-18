@@ -69,7 +69,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	useEffect(() => {
 		if (filterInputRef && expanded) {
 			filterInputRef.current?.focus();
-			console.log('hit');
+
 		}
 	}, [expanded]);
 

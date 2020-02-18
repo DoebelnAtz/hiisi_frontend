@@ -65,7 +65,7 @@ const AddToChat = (props) => {
     const handleSearchChange = async(e) => {
         setSearchResults([]);
         let val = e.target.value;
-        console.log(val);
+
         if (val.length) {
             let resp = await makeRequest(
                 "users/search",

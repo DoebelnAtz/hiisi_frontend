@@ -74,10 +74,10 @@ export const checkFriendList = (profile, username) => {
 };
 
 export const validateUrl = async (url) => {
-	console.log(url);
+
 	if (url.slice(0, 7) !== 'http://' || url.slice(0, 8) !== 'https://') {
 		url = 'http://' + url;
-		console.log(url);
+
 	}
 	let resp = await axios.get(url);
 	if (resp.status === 404) {

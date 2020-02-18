@@ -35,7 +35,7 @@ const MainRoutes: React.FC = (prop) => {
 	}
 	const [notifications, connected] = useNotifications(userId);
 	const { state: error } = useContext(ErrorContext);
-	console.log(error);
+
 	return (
 		<Fragment>
 			{!!error.length && <ErrorMessage />}

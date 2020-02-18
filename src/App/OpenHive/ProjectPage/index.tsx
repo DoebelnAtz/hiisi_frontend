@@ -32,13 +32,11 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	);
 	useNav('Open Hive');
 
-	console.log(isLoading);
 	useEffect(() => {
 		setPid(match.params.pid);
 	}, [match.params.pid]);
 
 	const renderDash = () => {
-		console.log(project);
 		if (project)
 			switch (dashState) {
 				case 'board':

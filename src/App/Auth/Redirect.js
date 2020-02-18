@@ -6,7 +6,7 @@ const Redirect = (props) => {
 
     const connect = async() => {
         let code = getUrlParam('code', '');
-        console.log(code);
+
         let resp = await makeRequest(
             "auth/connect/",
             'post',

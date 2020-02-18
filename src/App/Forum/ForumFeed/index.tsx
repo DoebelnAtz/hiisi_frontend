@@ -34,10 +34,6 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 		}
 	};
 
-
-
-
-
 	return (
 		<Fragment>
 			{renderList()}

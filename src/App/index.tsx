@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend';
 import { ErrorContext, ErrorContextProvider } from '../Context/ErrorContext';
-import IntraContext from '../Context/IntraContext';
 import Redirect from './Auth/Redirect';
 import Header from './Header';
 import Nav from './Nav';
@@ -22,7 +21,6 @@ import {
 import Messages from './Messages';
 import { NotificationContextProvider } from '../Context/NotificationContext';
 import { setLocal } from '../utils/utils';
-import ErrorMessage from './ErrorPages/ErrorModal/index';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);

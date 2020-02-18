@@ -3,7 +3,7 @@ import AddFriend from "../Components/Buttons/AddFriend";
 
 const ProfilePage = ({profile}) => {
     //TODO: add friend button
-    console.log(profile);
+
     return (
         <div id={'profile_page'} className={'container'}>
             <div className={'row justify-content-center'}>

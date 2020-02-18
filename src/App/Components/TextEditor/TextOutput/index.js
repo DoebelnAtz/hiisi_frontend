@@ -23,17 +23,17 @@ const TextEditWindowOutput = ({editable, state, setState}) => {
     const handleFocus = (e) => {
         if (!editOutput.current?.contains(e.target) && !showOutput.current?.contains(e.target)) {
             setEditing(false);
-            console.log('ping');
+
         }
         else if (showOutput.current?.contains(e.target)) {
             setEditing(true);
             editOutput.current.focus();
-            console.log('pong')
+
         }
     };
 
     const handleTabPress = (e) => { //doesn't work, something with react DnD
-        console.log(e.keyCode);
+
         if (e.keyCode === 9) {
             e.preventDefault();
             let space = new KeyboardEvent('keydown', {'keyCode': 32});
