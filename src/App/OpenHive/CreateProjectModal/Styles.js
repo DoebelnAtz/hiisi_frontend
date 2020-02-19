@@ -9,11 +9,13 @@ import {
 
 export const OutsideDiv = styled.div`
 	${modal.outside};
+	z-index: 5;
 `;
 
 export const InsideDiv = styled.div`
 	padding: ${length.margin};
 	${modal.inside};
+	z-index: 5;
 `;
 
 export const TitleInput = styled.input`
@@ -22,12 +24,13 @@ export const TitleInput = styled.input`
 
 export const LinkInput = styled.input`
 	margin: ${length.margin} 0;
+
 	${components.input};
 `;
 
 export const Description = styled.div`
 	width: 100%;
-	height: calc(100% - 100px);
+	min-height: 100px;
 	margin-bottom: ${length.margin};
 `;
 
