@@ -14,6 +14,7 @@ import { Project } from '../Types';
 import TextEditor from '../../Components/TextEditor';
 import { makeRequest } from '../../../Api/Api';
 import { validateUrl } from '../../../utils/utils';
+import { RowDiv } from '../../../Styles/LayoutStyles';
 
 type CreateProjectModalProps = {
 	setShowModal: Dispatch<SetStateAction<boolean>>;
@@ -53,22 +54,24 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	return (
 		<OutsideDiv>
 			<InsideDiv ref={inside}>
-				<TitleInput
-					value={titleVal}
-					onChange={(e: React.SyntheticEvent) => {
-						let target = e.target as HTMLInputElement;
-						setTitleVal(target.value);
-					}}
-					placeholder={'title'}
-				/>
-				<LinkInput
-					value={linkVal}
-					onChange={(e: React.SyntheticEvent) => {
-						let target = e.target as HTMLInputElement;
-						setLinkVal(target.value);
-					}}
-					placeholder={'project link'}
-				/>
+				<RowDiv>
+					<TitleInput
+						value={titleVal}
+						onChange={(e: React.SyntheticEvent) => {
+							let target = e.target as HTMLInputElement;
+							setTitleVal(target.value);
+						}}
+						placeholder={'title'}
+					/>
+					<LinkInput
+						value={linkVal}
+						onChange={(e: React.SyntheticEvent) => {
+							let target = e.target as HTMLInputElement;
+							setLinkVal(target.value);
+						}}
+						placeholder={'project link'}
+					/>
+				</RowDiv>
 				<Description>
 					<TextEditor
 						editable={true}

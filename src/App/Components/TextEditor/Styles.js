@@ -1,10 +1,4 @@
-import styled, { css } from 'styled-components';
-import {
-	colorAdjust,
-	color,
-	length,
-	layout,
-} from '../../../Styles/sharedStyles';
+import styled from 'styled-components';
 
 export const TextEditor = styled.div`
 	width: 100%;

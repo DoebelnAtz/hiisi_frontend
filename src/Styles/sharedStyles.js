@@ -59,6 +59,23 @@ export const font = {
 	`,
 };
 
+export const layout = {
+	row: css`
+		display: flex;
+		flex-wrap: wrap;
+	`,
+	col: css`
+		flex-basis: 0;
+		flex-grow: 1;
+
+		max-width: 100%;
+	`,
+	centered: css`
+		margin-left: auto;
+		margin-right: auto;
+	`,
+};
+
 export const border = {
 	setBorders: (top, right, bot, left, color) =>
 		css`
@@ -74,6 +91,7 @@ export const modal = {
 		left: 20%;
 		right: 20%;
 		top: 15%;
+		bottom: 35%;
 		color: ${color.primary};
 		border: 5px solid ${color.siteBG2};
 		border-radius: 2px;
@@ -81,8 +99,7 @@ export const modal = {
 		background: ${color.siteBG2};
 		overflow: auto;
 		z-index: 2 !important;
-		display: flex;
-		flex-direction: column;
+		${layout.col};
 	`,
 	outside: css`
 		position: fixed;
@@ -167,22 +184,5 @@ export const components = {
 			box-shadow: none;
 			outline: none;
 		}
-	`,
-};
-
-export const layout = {
-	row: css`
-		display: flex;
-		flex-wrap: wrap;
-	`,
-	col: css`
-		flex-basis: 0;
-		flex-grow: 1;
-
-		max-width: 100%;
-	`,
-	centered: css`
-		margin-left: auto;
-		margin-right: auto;
 	`,
 };

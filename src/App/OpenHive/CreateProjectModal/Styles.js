@@ -20,17 +20,19 @@ export const InsideDiv = styled.div`
 
 export const TitleInput = styled.input`
 	${components.input};
+	width: 40%;
 `;
 
 export const LinkInput = styled.input`
 	margin: ${length.margin} 0;
-
+	margin-left: auto;
 	${components.input};
+	width: 40%;
 `;
 
 export const Description = styled.div`
 	width: 100%;
-	min-height: 100px;
+	height: calc(100% - 140px);
 	margin-bottom: ${length.margin};
 `;
 
