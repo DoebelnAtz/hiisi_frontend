@@ -66,13 +66,14 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 
 	useDismiss(inside, () => setExpanded(false));
 
+	// make sure input field is focused when user click on dropdown.
 	useEffect(() => {
 		if (filterInputRef && expanded) {
 			filterInputRef.current?.focus();
-
 		}
 	}, [expanded]);
 
+	// Filter options
 	const handleFilterChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
 		setFilterInput(target.value);

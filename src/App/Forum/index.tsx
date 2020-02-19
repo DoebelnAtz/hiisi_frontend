@@ -21,15 +21,6 @@ const Feed = ({}) => {
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
-	const config = { mass: 5, tension: 2000, friction: 200 };
-
-	const trail = useTrail(posts?.length ?? 0, {
-		config,
-		opacity: !isLoading ? 1 : 0,
-		x: !isLoading ? 0 : 20,
-		height: !isLoading ? 80 : 0,
-		from: { opacity: 0, x: 50, height: 0 },
-	});
 
 	const handleOrderSelect = (e: string) => {
 		if (e === sortBy) {
