@@ -30,9 +30,7 @@ export const NavItemDiv = styled.div`
 
 export const NavTitle = styled.span`
 	${font.title};
-	position: absolute;
 	visibility: visible;
-	left: 80px;
 	font-size: 26px;
 	line-height: 50px;
 	color: ${color.primary};
