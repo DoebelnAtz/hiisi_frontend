@@ -66,11 +66,13 @@ export const CardInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: auto;
+	width: 30%;
 `;
 
 export const CardTitle = styled.span`
 	${layout.row};
 	font-size: 20px;
+	width: 70%;
 `;
 
 export const CardAuthor = styled.div`
