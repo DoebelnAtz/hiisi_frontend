@@ -24,20 +24,3 @@ export interface BoardType {
     columns: Array<ColumnType>
 }
 
-export interface TaskProps {
-    task: TaskType,
-    index: number,
-    history: H.History
-}
-
-export interface ColumnProps {
-    addTask: any,
-    columnNum: number,
-    column: ColumnType,
-    taskList: Array<TaskType>
-}
-
-export interface BoardProps {
-    board_id: number,
-    projectCollaborators: Array<User>
-}

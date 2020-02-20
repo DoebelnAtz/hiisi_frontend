@@ -1,13 +1,37 @@
-import React, { Fragment } from 'react';
+import React, { Dispatch, Fragment, SetStateAction } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import Dots from '../../../../Assets/Dots.png';
-import { withRouter } from 'react-router-dom';
-import { Task, TaskContent, TaskStatus, TaskCollaborators } from './Styles';
+import deleteImg from '../../../../Assets/x.png';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import {
+	Task,
+	TaskContent,
+	TaskStatus,
+	TaskCollaborators,
+	DeleteTaskImg,
+	TaskTitle,
+} from './Styles';
 import { getPriorityIcon } from '../../../../utils/taskUtils';
-import { TaskProps } from '../../Types';
+import { BoardType, TaskType } from '../../Types';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
+import { makeRequest } from '../../../../Api/Api';
+import * as H from 'history';
 
-const BoardColumnTask: React.FC<TaskProps> = ({ task, index, history }) => {
+type TaskProps = {
+	task: TaskType;
+	index: number;
+	board: BoardType;
+	setBoard: Dispatch<SetStateAction<BoardType>>;
+};
+
+const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
+	task,
+	index,
+	history,
+	board,
+	setBoard,
+}) => {
 	const renderTaskCollaborators = () => {
 		return task.collaborators.map((collaborator, index) => {
 			if (index === 3 && task.collaborators.length > 4) {
@@ -24,6 +48,28 @@ const BoardColumnTask: React.FC<TaskProps> = ({ task, index, history }) => {
 				);
 			}
 		});
+	};
+
+	const deleteTask = async (e: React.SyntheticEvent) => {
+		e.stopPropagation();
+		let resp = await makeRequest(
+			'projects/boards/tasks/delete_task',
+			'delete',
+			{ taskId: task.task_id },
+		);
+		if (resp.data) {
+			setBoard({
+				...board,
+				columns: board.columns.map((column) => {
+					return {
+						...column,
+						tasks: column.tasks.filter(
+							(t) => t.task_id !== task.task_id,
+						),
+					};
+				}),
+			});
+		}
 	};
 
 	return (
@@ -45,7 +91,16 @@ const BoardColumnTask: React.FC<TaskProps> = ({ task, index, history }) => {
 								snapshot.isDragging && !snapshot.isDropAnimating
 							}
 						>
-							<span>{task.title}</span>
+							<RowDiv>
+								<TaskTitle>{task.title}</TaskTitle>
+								<DeleteTaskImg
+									onClick={(e: React.SyntheticEvent) =>
+										deleteTask(e)
+									}
+								>
+									<img src={deleteImg} alt={'delete task'} />
+								</DeleteTaskImg>
+							</RowDiv>
 							<TaskStatus>
 								<img
 									src={getPriorityIcon(task.priority)}

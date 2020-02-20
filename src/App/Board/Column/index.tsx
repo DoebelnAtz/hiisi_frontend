@@ -1,17 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+	Dispatch,
+	SetStateAction,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 
 import { Column, ColumnTitle, ColumnList } from './Styles';
 import Task from './Task';
 import Input from '../../Components/Input';
-import { ColumnProps } from '../Types';
+import { BoardType, ColumnType, TaskType } from '../Types';
 import { makeRequest } from '../../../Api/Api';
+
+type ColumnProps = {
+	addTask: any;
+	columnNum: number;
+	column: ColumnType;
+	taskList: Array<TaskType>;
+	board: BoardType;
+	setBoard: Dispatch<SetStateAction<BoardType>>;
+};
 
 const BoardColumn: React.FC<ColumnProps> = ({
 	addTask,
 	columnNum,
 	column,
 	taskList,
+	board,
+	setBoard,
 }) => {
 	const [inputVal, setInputVal] = useState('');
 	const [titleVal, setTitleVal] = useState(column.title);
@@ -66,6 +83,8 @@ const BoardColumn: React.FC<ColumnProps> = ({
 								key={task.task_id}
 								task={task}
 								index={index}
+								board={board}
+								setBoard={setBoard}
 							/>
 						))}
 						{provided.placeholder}

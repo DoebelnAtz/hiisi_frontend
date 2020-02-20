@@ -80,6 +80,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		'projects/boards/tasks/' + match.params.tid,
 		'get',
 	);
+	const [saveButtonText, setSaveButtonText] = useState('save');
 	const [priorityInputVal, setPriorityInputVal] = useState<string>('');
 	const [searchResult, setSearchResult] = useState([]);
 	const [searchInput, setSearchInput] = useState<string>('');
@@ -101,7 +102,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	useDismiss(inside, close);
 
 	const updateTask = async () => {
-		await makeRequest('projects/boards/update_task', 'put', task);
+		let resp = await makeRequest('projects/boards/update_task', 'put', task);
+		if (resp.data) {
+			setSaveButtonText('saved');
+			setTimeout(() => setSaveButtonText('save'), 1500)
+		}
 	};
 
 	const assignUserToTask = async (userId: number, taskId: number) => {
@@ -237,7 +242,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					/>
 					<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
 					{task?.owner && (
-						<SaveButton onClick={updateTask}>Save</SaveButton>
+						<SaveButton onClick={updateTask}>{saveButtonText}</SaveButton>
 					)}
 				</TaskInfoHead>
 				<TaskInfoBody>

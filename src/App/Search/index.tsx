@@ -51,15 +51,17 @@ const SearchBar: React.FC = () => {
 	};
 	return (
 		<SearchDiv>
-			<SearchInput
-				showingResults={!!results?.length}
-				value={searchInput}
-				onChange={(e: React.SyntheticEvent) => search(e)}
-				placeholder={'search'}
-			/>
-			<SearchResults ref={inside} showingResults={!!results?.length}>
-				{renderResultList()}
-			</SearchResults>
+			<label>
+				<SearchInput
+					showingResults={!!results?.length}
+					value={searchInput}
+					onChange={(e: React.SyntheticEvent) => search(e)}
+					placeholder={'search'}
+				/>
+				<SearchResults ref={inside} showingResults={!!results?.length}>
+					{renderResultList()}
+				</SearchResults>
+			</label>
 		</SearchDiv>
 	);
 };

@@ -46,9 +46,7 @@ export const Task = styled.div`
 	background-color: ${color.siteBG4};
 	z-index: 100;
 
-	& span {
-		font-size: 16px;
-	}
+	
 
 	&:hover {
 		background-color: ${colorAdjust.lighten(color.siteBG3, 0)};
@@ -65,4 +63,24 @@ export const Task = styled.div`
 			transform: scale(1.2);
 			z-index: 100 !important;
 		`}
+`;
+
+export const TaskTitle = styled.div`
+	width: calc(100% - 24px);
+	& span {
+		font-size: 16px;
+	}
+`;
+
+export const DeleteTaskImg = styled.div`
+height: 24px;
+	width: 24px;
+	& img {
+	border-radius: 12px;
+	height: 24px;
+	width: 24px;
+	&:hover {
+	background-color: ${color.siteBG1};
+	}
+	}
 `;

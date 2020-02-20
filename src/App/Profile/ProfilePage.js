@@ -20,6 +20,7 @@ const ProfilePage = ({profile}) => {
                 <p>location: {profile.location}</p>
                 <p>coalition points: {profile.coalition_points}</p>
                 <p>wallet: {profile.wallet}</p>
+                <p>active: {profile.active ? 'active' : 'inactive'}</p>
                 {/*<AddFriend target={profile}/>*/}
             </div>
             <div className={'container'}>

@@ -12,7 +12,8 @@ import {
 } from './Styles';
 import { makeRequest } from '../../Api/Api';
 import { useRequest } from '../../Hooks';
-import { BoardProps, BoardType, ColumnType, TaskType } from './Types';
+import { BoardType, ColumnType, TaskType } from './Types';
+import { User } from '../../Types';
 
 let boardState = {
 	columns: [
@@ -47,6 +48,11 @@ let boardState = {
 			tasks: [],
 		},
 	],
+};
+
+type BoardProps = {
+	board_id: number;
+	projectCollaborators: Array<User>;
 };
 
 const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
@@ -185,6 +191,8 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 							key={column.column_number}
 							taskList={column.tasks}
 							addTask={addTask}
+							setBoard={setBoard}
+							board={board}
 						/>
 					))}
 				</Columns>
