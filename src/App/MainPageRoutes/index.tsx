@@ -17,7 +17,7 @@ import Notifications from '../Notifications/Notifications';
 import OpenHive from '../OpenHive';
 import ProjectPage from '../OpenHive/ProjectPage';
 import TaskInfo from '../Board/Column/Task/TaskInfo';
-import Messages from '../Messages/MessageRoom';
+import Messages from '../Messages/MessageRoom/index';
 import Resources from '../Resources';
 import ResourcePage from '../Resources/ResourcePage';
 import { getLocal } from '../../utils/utils';
@@ -59,13 +59,6 @@ const MainRoutes: React.FC = (prop) => {
 				<Route exact path={'/user/:uid'}>
 					<UserPage />
 				</Route>
-				<Route
-					exact
-					path={'/messages/:tid'} // useTransition in main causes a UI bug
-					render={(
-						props, // in this component, moved here for now
-					) => <Messages {...props} />}
-				/>
 			</Switch>
 			<Route path={'/forum'} render={() => <Feed />} />
 			<Route exact path={'/forum/:bid'} render={() => <PostPage />} />

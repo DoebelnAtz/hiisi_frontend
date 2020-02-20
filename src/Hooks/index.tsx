@@ -13,7 +13,6 @@ import { getLocal } from '../utils/utils';
 import socketIOClient from 'socket.io-client';
 import { MessageNotification } from '../Types';
 import { SocketType } from '../Types';
-import { log } from 'util';
 
 export const useNav = (current: string) => {
 	const { update } = useContext(CurrentNavContext);

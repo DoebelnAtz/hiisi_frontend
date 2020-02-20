@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNav, useRequest } from '../../../Hooks';
 import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
@@ -19,6 +19,7 @@ import {
 import { RouteComponentProps, User } from '../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../Components/TextEditor';
+import { ChatContext } from '../../../Context/ChatContext';
 
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
@@ -29,6 +30,9 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	const [project, setProject, isLoading] = useRequest<Project>(
 		'projects/' + pid,
 		'get',
+	);
+	const { state: currentChat, update: setCurrentChat } = useContext(
+		ChatContext,
 	);
 	useNav('Open Hive');
 
@@ -101,9 +105,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					</ProjectDashBoardNavItem>
 					{project?.contributor && (
 						<ProjectDashBoardNavItem
-							onClick={() =>
-								history.push(`/messages/${project.t_id}`)
-							}
+							onClick={() => setCurrentChat(project.t_id)}
 						>
 							<span>Chat</span>
 						</ProjectDashBoardNavItem>

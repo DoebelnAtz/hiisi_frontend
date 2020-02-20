@@ -1,19 +1,21 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import {
-	RoomList,
-	ThreadItem,
-	CreateThreadRow,
-	NotificationIcon,
-} from './Styles';
+import React, {
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+	Fragment,
+} from 'react';
+import { ThreadItem, CreateThreadRow, NotificationIcon } from './Styles';
 import { makeRequest } from '../../../Api/Api';
 import Input from '../../Components/Input';
 import Button from '../../Components/Buttons/Button';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
 import InputWithButton from '../../Components/Buttons/InputWithButton';
-import { useDismiss } from '../../../Hooks';
+import { useDismiss, useRequest } from '../../../Hooks';
 import { NotificationContext } from '../../../Context/NotificationContext';
 import { MessageNotification } from '../../../Types';
+import { ChatContext } from '../../../Context/ChatContext';
 
 type MessageRoomProps = {
 	close?: () => void;
@@ -21,53 +23,49 @@ type MessageRoomProps = {
 
 const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 	history,
-	close,
 }) => {
-	const [threads, setThreads] = useState<ThreadType[]>([]);
 	const [inputVal, setInputVal] = useState('');
+	const { state: currentChat, update: setCurrentChat } = useContext(
+		ChatContext,
+	);
 	const { state: notifications, update: setNotifications } = useContext(
 		NotificationContext,
 	);
 
-	const getThreads = async () => {
-		let resp = await makeRequest('messages/threads');
-		setThreads(resp.data);
-	};
+	const [threads, setThreads, isLoading] = useRequest<ThreadType[]>(
+		'messages/threads',
+		'get',
+	);
 
 	const createThread = async () => {
 		let resp = await makeRequest('messages/threads/create_thread', 'post', {
 			threadName: inputVal,
 		});
-		setThreads([...threads, resp.data]);
+		threads && setThreads([...threads, resp.data]);
 		setInputVal('');
 	};
 
-	useEffect(() => {
-		getThreads();
-	}, []);
-
 	const renderFriends = () => {
-		return threads.map((thread: ThreadType) => {
-			return (
-				<ThreadItem
-					className={'row message_thread_item'}
-					key={thread.thread_id}
-					onClick={() =>
-						history.push('/messages/' + thread.thread_id)
-					}
-				>
-					<span>{thread.thread_name}</span>
-					{notifications.find(
-						(notif: MessageNotification) =>
-							notif.thread === thread.thread_id,
-					) && <NotificationIcon />}
-				</ThreadItem>
-			);
-		});
+		if (threads)
+			return threads.map((thread: ThreadType) => {
+				return (
+					<ThreadItem
+						className={'row message_thread_item'}
+						key={thread.thread_id}
+						onClick={() => setCurrentChat(thread.thread_id)}
+					>
+						<span>{thread.thread_name}</span>
+						{notifications.find(
+							(notif: MessageNotification) =>
+								notif.thread === thread.thread_id,
+						) && <NotificationIcon />}
+					</ThreadItem>
+				);
+			});
 	};
 
 	return (
-		<RoomList>
+		<Fragment>
 			<CreateThreadRow>
 				<InputWithButton
 					value={inputVal}
@@ -82,7 +80,7 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 				</InputWithButton>
 			</CreateThreadRow>
 			{renderFriends()}
-		</RoomList>
+		</Fragment>
 	);
 };
 

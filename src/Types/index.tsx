@@ -47,6 +47,7 @@ export interface FocusList {
 }
 
 export interface MessageNotification {
+	thread_id: number;
 	type: string,
 	thread: number,
 	sender: number

@@ -7,7 +7,7 @@ export const MessageModal = styled.div`
 	background-color: ${color.siteBG2};
 	padding: 4px 0;
 	border-radius: 20px 0 5px 20px;
-	width: 300px;
+	width: 350px;
 	height: 40px;
 	${layout.row};
 	${cursor.clickable};
