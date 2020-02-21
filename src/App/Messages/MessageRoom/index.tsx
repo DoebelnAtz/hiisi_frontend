@@ -27,7 +27,7 @@ import {
 	MessageInputSend,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
-import { MessageNotification, SocketType, User } from '../../../Types';
+import { Notification, SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
 
 type MessageRoomPropsTypes = {
@@ -91,11 +91,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	useEffect(() => {
 		getMessages(tid);
 		getUsersConnected(tid);
-		setNotifications(
-			notifications.filter(
-				(notif: MessageNotification) => notif.thread_id === tid,
-			),
-		);
 	}, [tid]);
 
 	const scrollToBottom = () => {
@@ -211,9 +206,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 					Back
 				</GoBackButton>
 			</MessageNavigation>
-			<RowDiv className={'row_div '}>
-				<AddToChat tid={tid} />
-			</RowDiv>
 			<MessageRoomName>{room?.title}</MessageRoomName>
 			<MessageFeedDiv>
 				{renderMessages()}

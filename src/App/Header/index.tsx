@@ -13,7 +13,8 @@ import {
 	Logo,
 	SiteTitle,
 } from './Styles';
-import SearchBar from '../Search';
+import SearchBar from './Search';
+import Notifications from './Notifications';
 
 const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	const { state } = useContext(CurrentNavContext);
@@ -31,6 +32,7 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
 			<SearchBar />
+			<Notifications />
 			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
 		</HeaderDiv>
 	);

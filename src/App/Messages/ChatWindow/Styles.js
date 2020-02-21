@@ -11,6 +11,6 @@ export const ChatWindowDiv = styled.div`
 	border-top-left-radius: ${length.radius};
 	border: 2px solid ${color.primary};
 	border-right-width: 1px;
-	width: calc(350px - 9px);
-	padding: 4px 4px 20px 4px;
+	width: calc(350px - 1px);
+	padding-bottom: 20px;
 `;

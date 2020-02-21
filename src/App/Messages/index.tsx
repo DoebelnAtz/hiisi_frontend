@@ -11,7 +11,7 @@ import { MessageModal, MessageImg } from './Style';
 import MessageRoomList from './MessageRooms';
 import { useDismiss } from '../../Hooks';
 import MessageIcon from '../../Assets/Messages2.png';
-import { MessageNotification } from '../../Types';
+import { Notification } from '../../Types';
 import { NotificationIcon } from './MessageRooms/Styles';
 import { NotificationContext } from '../../Context/NotificationContext';
 import { ChatContext } from '../../Context/ChatContext';

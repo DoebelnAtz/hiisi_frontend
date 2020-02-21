@@ -14,7 +14,7 @@ import { ThreadType } from '../Types';
 import InputWithButton from '../../Components/Buttons/InputWithButton';
 import { useDismiss, useRequest } from '../../../Hooks';
 import { NotificationContext } from '../../../Context/NotificationContext';
-import { MessageNotification } from '../../../Types';
+import { Notification } from '../../../Types';
 import { ChatContext } from '../../../Context/ChatContext';
 
 type MessageRoomProps = {
@@ -55,10 +55,6 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 						onClick={() => setCurrentChat(thread.thread_id)}
 					>
 						<span>{thread.thread_name}</span>
-						{notifications.find(
-							(notif: MessageNotification) =>
-								notif.thread === thread.thread_id,
-						) && <NotificationIcon />}
 					</ThreadItem>
 				);
 			});

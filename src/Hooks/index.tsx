@@ -11,7 +11,7 @@ import { ErrorContext } from '../Context/ErrorContext';
 import { NotificationContext } from '../Context/NotificationContext';
 import { getLocal } from '../utils/utils';
 import socketIOClient from 'socket.io-client';
-import { MessageNotification } from '../Types';
+import { Notification } from '../Types';
 import { SocketType } from '../Types';
 
 export const useNav = (current: string) => {
@@ -27,7 +27,7 @@ export const useNotifications = (room: string) => {
 	);
 	const [connected, setConnected] = useState(false);
 	const [newNotification, setNewNotification] = useState<
-		MessageNotification
+		Notification
 	>();
 	const [socket, setSocket] = useState<SocketType>();
 	useEffect(() => {
@@ -49,7 +49,7 @@ export const useNotifications = (room: string) => {
 		socket.on('connect', () => {
 			setConnected(true);
 		});
-		socket.on('notification', (notification: MessageNotification) => {
+		socket.on('notification', (notification: Notification) => {
 			setNewNotification(notification);
 		});
 		setSocket(socket);
@@ -63,7 +63,7 @@ export const useNotifications = (room: string) => {
 	useEffect(() => {
 		if (newNotification) {
 			setNotifications([
-				newNotification as MessageNotification,
+				newNotification as Notification,
 				...notifications,
 			]);
 		}

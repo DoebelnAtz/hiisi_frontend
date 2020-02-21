@@ -46,11 +46,13 @@ export interface FocusList {
 	title: string;
 }
 
-export interface MessageNotification {
-	thread_id: number;
+export interface Notification {
 	type: string,
-	thread: number,
-	sender: number
+	u_id: number,
+	link: string,
+	message: string
+	date: string,
+	read: boolean
 }
 
 declare var ioType : {

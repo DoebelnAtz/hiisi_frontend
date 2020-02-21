@@ -1,5 +1,5 @@
-import Feed from '../Forum/index';
-import Profile from '../Profile/Profile';
+import Feed from './Forum/index';
+import Profile from './Profile/Profile';
 import React, {
 	Fragment,
 	useContext,
@@ -10,16 +10,15 @@ import React, {
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
-import UserPage from '../Profile/UserPage';
-import PostPage from '../Forum/PostPage';
+import UserPage from './Profile/UserPage';
+import PostPage from './Forum/PostPage';
 import { useTransition, animated } from 'react-spring';
-import Notifications from '../Notifications/Notifications';
-import OpenHive from '../OpenHive';
-import ProjectPage from '../OpenHive/ProjectPage';
-import TaskInfo from '../Board/Column/Task/TaskInfo';
-import Messages from '../Messages/MessageRoom/index';
-import Resources from '../Resources';
-import ResourcePage from '../Resources/ResourcePage';
+import OpenHive from './OpenHive';
+import ProjectPage from './OpenHive/ProjectPage';
+import TaskInfo from '../Components/Board/Column/Task/TaskInfo';
+import Notifications from '../Header/Notifications';
+import Resources from './Resources';
+import ResourcePage from './Resources/ResourcePage';
 import { getLocal } from '../../utils/utils';
 import { useNotifications } from '../../Hooks';
 import ErrorMessage from '../ErrorPages/ErrorModal/index';
@@ -50,12 +49,6 @@ const MainRoutes: React.FC = (prop) => {
 					path={'/profile/'}
 					render={(props) => <Profile {...props} />}
 				/>
-				<Route
-					exact
-					path={'/notifications/'}
-					render={(props) => <Notifications />}
-				/>
-
 				<Route exact path={'/user/:uid'}>
 					<UserPage />
 				</Route>

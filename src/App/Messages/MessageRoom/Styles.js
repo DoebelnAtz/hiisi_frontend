@@ -4,6 +4,7 @@ import { color, length, layout, font, components } from '../../../Styles/sharedS
 
 export const MessageNavigation = styled.div`
 	${layout.row};
+	margin: ${length.margin} ${length.margin} 0 ${length.margin};
 `;
 
 export const GoBackButton = styled.button`
@@ -12,17 +13,19 @@ export const GoBackButton = styled.button`
 `;
 
 export const MessageRoomDiv = styled.div`
-    padding: 2px;
 `;
 
 export const MessageRoomName = styled.span`
 	${font.text};
+	margin: ${length.margin};
+	font-size: 18px;
+		line-height: 30px;
+
 `;
 
 export const MessageFeedDiv = styled.div`
 	background-color: ${color.siteBG2};
 	height: 30vh;
-	padding: 5px;
 	overflow-y: auto;
 `;
 
@@ -33,7 +36,7 @@ export const ConnectedUser = styled.div`
 		height: 38px;
 		margin-right: -${length.margin};
 		border: 4px solid ${color.siteBG3};
-		border-radius: 19px;
+		border-radius: 24px;
 	}
 `;
 
@@ -42,8 +45,8 @@ export const ConnectedDot = styled.div`
 	height: 8px;
 	width: 8px;
 	position: relative;
-	bottom: 10px;
-	left: 4px;
+	bottom: 14px;
+	left: 6px;
 	border-radius: 4px;
 `;
 
@@ -51,8 +54,8 @@ export const Message = styled.div`
 	background-color: ${color.siteBG1};
 
 	border-radius: ${props => props.sender ? '5px 5px 0 5px' : '5px 5px 5px 0'};
-	margin-left: ${props => props.sender ? '15%' : '0'};
-	margin-right: ${props => props.sender ? '0' : '15%'};
+	margin-left: ${props => props.sender ? '15%' : '5px'};
+	margin-right: ${props => props.sender ? '5px' : '15%'};
 
 	padding: 5px;
 	margin-top: 10px;
@@ -83,19 +86,21 @@ export const MessageContent = styled.div`
 
 export const MessageInputSend = styled.div`
 	${layout.row};
-	margin: ${length.margin} 0;
+	margin: ${length.margin};
 `;
 
 export const MessageInputTextArea = styled.textarea`
 	${components.textarea};
-	height: 38px;
-	width: calc(70% - ${length.radius});
+	resize: vertical;
+	height: calc(38px - 12px);
+	max-height: 10vh;
+	width: calc(70%);
 	border-radius: ${length.radius};
 `;
 
 export const SendButton = styled.button`
 	${components.button};
 	height: 38px;
-	width: calc(30% - ${length.margin} - 10px);
+	width: calc(30% - ${length.margin} - 12px);
 	margin-left: ${length.margin};
 `;
