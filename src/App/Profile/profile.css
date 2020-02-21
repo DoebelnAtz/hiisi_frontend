@@ -3,6 +3,47 @@
 }
 
 .profile_profile_pic{
-    height: 66px;
-    width: 66px;
+    display: block;
+    height: 128px;
+    width: 128px;
+    margin: 20px auto 10px auto;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.profile_header{
+    text-align: center;
+    font-family: Share Tech, sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.profile_header h2{
+    text-align: center;
+    font-family: Share Tech, sans-serif;
+    font-size: 32px;
+    color: var(--logoMain);
+    margin-bottom: -5px;
+}
+
+.progress_bar {
+    position: relative;
+    height: 25px;
+    width: 50%;
+    border-radius: 5px;
+    background: rgb(68,51,68);
+    background: linear-gradient(90deg, rgba(68,51,68,1) 0%, rgba(50,45,50,1) 100%);
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filler {
+    background: rgb(144,63,193);
+    background: linear-gradient(90deg, rgba(144,63,193,1) 0%, rgba(171,93,217,1) 49%);
+    height: 100%;
+    border-radius: inherit;
 }
