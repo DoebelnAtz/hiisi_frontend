@@ -9,6 +9,7 @@ const ProgressBar = (props) => {
     return (
         <div className="progress_bar">
         <Filler percentage={props.percentage} />
+        <div className={'level_text'}>Level: {props.whole} - {props.percentage} %</div>
         </div>
     )
 }
@@ -17,7 +18,7 @@ const ProfileHeader = (props) => {
     const level = {
         whole:Math.floor(props.level), 
         next:Math.floor(props.level) + 1, 
-        percentage:((props.level - Math.floor(props.level)) * 100)
+        percentage:Math.round((props.level - Math.floor(props.level)) * 100)
     }
 
     return (
