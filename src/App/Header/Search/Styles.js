@@ -11,7 +11,7 @@ import {
 export const SearchDiv = styled.div`
 	${layout.row};
 	position: relative;
-	margin: auto ${length.margin} auto auto;
+	margin: auto ${length.margin} auto ${length.margin};
 	& label {
 		${font.text};
 	}
@@ -20,7 +20,6 @@ export const SearchDiv = styled.div`
 export const SearchInput = styled.input`
 	${components.input};
 	height: 36px;
-	margin-left: ${length.margin};
 	border-radius: ${(props) =>
 		!props.showingResults ? '4px' : '4px 4px 0 0'};
 	min-width: 200px;
@@ -36,8 +35,8 @@ export const SearchResults = styled.div`
 	overflow-y: auto;
 	top: 35px;
 	width: 20vw;
-	min-width: 200px;
-	max-width: 300px;
+	min-width: 210px;
+	max-width: 310px;
 	border-radius: 0 0 4px 4px;
 	border: 1px solid ${color.primary};
 	background-color: ${color.siteBG2};

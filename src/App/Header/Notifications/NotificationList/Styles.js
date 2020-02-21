@@ -1,17 +1,28 @@
 import styled from 'styled-components';
-import { color, font, layout, length } from '../../../../Styles/sharedStyles';
+import {
+	color,
+	cursor,
+	font,
+	layout,
+	length,
+} from '../../../../Styles/sharedStyles';
 
 export const NotificationListDiv = styled.div`
-	width: 200px;
+	width: 300px;
 	position: absolute;
 	max-height: 20vh;
+	top: 65px;
 	overflow-y: auto;
-	top: 60px;
+	z-index: 10;
 	background-color: ${color.siteBG3};
 `;
 
 export const NotificationItem = styled.div`
 	${layout.row};
 	${font.text};
-	margin: ${length.margin} 0;
+	padding: 8px;
+	${cursor.clickable};
+	background-color: ${color.siteBG2};
+	margin: ${length.margin} 5px;
+	border-radius: ${length.radius};
 `;

@@ -31,8 +31,8 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 				<SiteTitle>Hivemind</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
-			<SearchBar />
 			<Notifications />
+			<SearchBar />
 			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
 		</HeaderDiv>
 	);

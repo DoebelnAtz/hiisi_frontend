@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { length } from '../../../Styles/sharedStyles';
 
 export const TextEditor = styled.div`
-	width: 100%;
-	height: 100%;
+	width: calc(100% - ${length.margin} * 2);
+	height: calc(100% - ${length.margin} * 2);
 `;

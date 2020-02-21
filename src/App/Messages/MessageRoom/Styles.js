@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { color, length, layout, font, components } from '../../../Styles/sharedStyles';
+import {
+	color,
+	length,
+	layout,
+	font,
+	components,
+} from '../../../Styles/sharedStyles';
 
 export const MessageNavigation = styled.div`
 	${layout.row};
@@ -12,15 +18,18 @@ export const GoBackButton = styled.button`
 	margin-left: auto;
 `;
 
-export const MessageRoomDiv = styled.div`
-`;
+export const MessageRoomDiv = styled.div``;
 
 export const MessageRoomName = styled.span`
 	${font.text};
 	margin: ${length.margin};
 	font-size: 18px;
-		line-height: 30px;
+	line-height: 30px;
+`;
 
+export const LoadMoreButton = styled.button`
+	margin: ${length.margin} auto 0 auto;
+	${components.button};
 `;
 
 export const MessageFeedDiv = styled.div`
@@ -28,8 +37,6 @@ export const MessageFeedDiv = styled.div`
 	height: 30vh;
 	overflow-y: auto;
 `;
-
-
 
 export const ConnectedUser = styled.div`
 	& img {
@@ -41,7 +48,7 @@ export const ConnectedUser = styled.div`
 `;
 
 export const ConnectedDot = styled.div`
-   	background-color: ${props => props.active ? 'lightgreen' : 'lightgrey'};
+	background-color: ${(props) => (props.active ? 'lightgreen' : 'lightgrey')};
 	height: 8px;
 	width: 8px;
 	position: relative;
@@ -53,13 +60,14 @@ export const ConnectedDot = styled.div`
 export const Message = styled.div`
 	background-color: ${color.siteBG1};
 
-	border-radius: ${props => props.sender ? '5px 5px 0 5px' : '5px 5px 5px 0'};
-	margin-left: ${props => props.sender ? '15%' : '5px'};
-	margin-right: ${props => props.sender ? '5px' : '15%'};
+	border-radius: ${(props) =>
+		props.sender ? '5px 5px 0 5px' : '5px 5px 5px 0'};
+	margin-left: ${(props) => (props.sender ? '15%' : '5px')};
+	margin-right: ${(props) => (props.sender ? '5px' : '15%')};
 
 	padding: 5px;
 	margin-top: 10px;
-	color: ${props => props.sender ? color.secondary : color.tertiary};
+	color: ${(props) => (props.sender ? color.secondary : color.tertiary)};
 	font-size: 16px;
 `;
 
@@ -77,7 +85,6 @@ export const MessageDate = styled.span`
 export const MessageInfo = styled.div`
 	${layout.row};
 	margin-right: 5px;
-
 `;
 
 export const MessageContent = styled.div`

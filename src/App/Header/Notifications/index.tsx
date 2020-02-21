@@ -12,13 +12,15 @@ const Notifications: React.FC = () => {
 	>(`notifications/users/${getLocal('token').user.u_id}`, 'get');
 
 	return (
-		<NotificationIcon
-			onClick={() => setExpandNotifications(!expandNotifications)}
-		>
-			{expandNotifications && notifications && (
-				<NotificationList notifications={notifications} />
-			)}
-		</NotificationIcon>
+		<Fragment>
+			<NotificationIcon
+				onClick={() => setExpandNotifications(!expandNotifications)}
+			>
+				{expandNotifications && notifications && (
+					<NotificationList notifications={notifications} />
+				)}
+			</NotificationIcon>
+		</Fragment>
 	);
 };
 

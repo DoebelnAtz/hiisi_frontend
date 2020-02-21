@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useDismiss, useNav } from '../../../Hooks';
+import { useDismiss, useNav, useRequest } from '../../../Hooks';
 import { makeRequest } from '../../../Api/Api';
 import { calculateTimeSince, getLocal } from '../../../utils/utils';
 
@@ -25,6 +25,7 @@ import {
 	MessageNavigation,
 	MessageInputTextArea,
 	MessageInputSend,
+	LoadMoreButton,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
 import { Notification, SocketType, User } from '../../../Types';
@@ -39,7 +40,11 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	const [inputVal, setInputVal] = useState('');
 	const [connectedUsers, setConnectedUsers] = useState<User[]>([]);
 	const [connected, setConnected] = useState<boolean>(false);
-	const [room, setRoom] = useState<RoomType>();
+	const [page, setPage] = useState(1);
+	const [room, setRoom, isLoading] = useRequest<RoomType>(
+		`messages/threads/ ${tid.toString()}?page=${page}`,
+		'GET',
+	);
 	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [activeUsers, setActiveUsers] = useState<string[]>([]);
 	const [socket, setSocket] = useState<SocketType>();
@@ -80,16 +85,17 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			setNewMessage(message);
 		});
 		setSocket(socket);
+		scrollDown.current && scrollDown.current.scrollIntoView();
 		return () => {
 			socket.disconnect();
 		};
-	}, [tid]);
+	}, [room]);
+
 	useEffect(() => {
 		newMessage && newMessage.username && appendMessage(newMessage);
 	}, [JSON.stringify(newMessage)]);
 
 	useEffect(() => {
-		getMessages(tid);
 		getUsersConnected(tid);
 	}, [tid]);
 
@@ -101,16 +107,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	const appendMessage = (message: MessageType) => {
 		room && setRoom({ ...room, messages: [...room.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
-	};
-
-	const getMessages = async (tid: number) => {
-		let resp = await makeRequest(
-			'messages/threads/' + tid.toString(),
-			'GET',
-		);
-		setRoom(resp.data);
-
-		scrollDown.current && scrollDown.current.scrollIntoView();
 	};
 
 	const handleClick = async (event: React.SyntheticEvent) => {
@@ -208,6 +204,13 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			</MessageNavigation>
 			<MessageRoomName>{room?.title}</MessageRoomName>
 			<MessageFeedDiv>
+				{room && room.messages.length >= 20 && (
+					<RowDiv>
+						<LoadMoreButton onClick={() => setPage(page + 1)}>
+							Load More
+						</LoadMoreButton>
+					</RowDiv>
+				)}
 				{renderMessages()}
 				<div ref={scrollDown}> </div>
 			</MessageFeedDiv>
