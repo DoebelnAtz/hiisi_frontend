@@ -7,12 +7,12 @@ export const FeedPage = styled.div`
 	padding-bottom: ${length.margin * 2};
 `;
 
+export const CreatePostButton = styled.button`
+	${components.button};	
+	margin-right: ${length.margin};
+`;
+
 export const FeedButtonRow = styled.div`
 	${layout.row};
 	margin: ${length.margin};
-`;
-
-export const CreatePostButton = styled.button`
-	${components.button};
-	margin-right: ${length.margin};
 `;

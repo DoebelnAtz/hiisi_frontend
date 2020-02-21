@@ -20,7 +20,7 @@ export const Card = styled.div`
 `;
 
 export const CardVotes = styled.div`
-	width: 41px;
+	width: 55px;
 	padding: 14px 0;
 	border-right: 1px solid ${color.siteBG1};
 	${layout.col};
@@ -47,7 +47,7 @@ export const VoteCount = styled.div`
 `;
 
 export const CardContent = styled.div`
-	width: calc(100% - 94px);
+	width: calc(100% - 124px);
 	padding: 14px;
 	display: flex;
 	flex-direction: column;

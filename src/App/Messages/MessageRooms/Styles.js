@@ -16,12 +16,16 @@ export const CreateThreadRow = styled.div`
 	${layout.row};
 `;
 
+export const NotificationIcon = styled.div`
+	${components.notificationIcon};
+`;
+
 export const ThreadItem = styled.div`
 	width: 90%;
 	${layout.row};
 	margin: ${length.margin} auto;
 	background-color: ${color.siteBG2};
-	padding: 6px;
+	padding: 10px 6px;
 	border-radius: ${length.radius};
 	${cursor.clickable};
 	transition: background-color 0.1s;
@@ -31,8 +35,4 @@ export const ThreadItem = styled.div`
 	& span {
 		color: ${color.primary};
 	}
-`;
-
-export const NotificationIcon = styled.div`
-	${components.notificationIcon};
 `;

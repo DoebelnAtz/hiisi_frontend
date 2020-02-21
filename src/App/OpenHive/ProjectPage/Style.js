@@ -11,8 +11,8 @@ import {
 
 export const ProjectPage = styled.div`
 	color: white;
-	width: 100%;
-	height: 100%;
+	width: calc(100% - ${length.margin} * 2);
+	height: calc(100% - ${length.margin} * 2);
 	padding: ${length.margin};
 	background-color: ${color.siteBG1};
 `;
@@ -23,6 +23,7 @@ export const ProjectInfo = styled.div`
 
 export const ProjectDescription = styled.div`
 	margin: ${length.margin} 0;
+
 `;
 
 export const ProjectTitle = styled.div`
@@ -30,7 +31,12 @@ export const ProjectTitle = styled.div`
 	${font.title};
 `;
 
-export const ProjectLink = styled.div``;
+export const ProjectLink = styled.div`
+	& a {
+		${font.link};
+		font-size: 20px;
+	}
+`;
 
 export const ProjectDashboardNav = styled.div`
 	${layout.row};
@@ -45,6 +51,7 @@ export const ProjectDashBoardNavItem = styled.div`
 	${layout.col};
 	border-bottom: 1px solid ${color.primary};
 	display: flex;
+	padding: 5px;
 	z-index: 5;
 	justify-content: center;
 	background-color: ${props => props.focus? color.siteBG2 : color.siteBG1};
@@ -55,6 +62,6 @@ export const ProjectDashBoardNavItem = styled.div`
 `;
 
 export const SaveButton = styled.button`
- ${components.button};
+ 	${components.button};
 `;
 export const ProjectDashBoard = styled.div``;

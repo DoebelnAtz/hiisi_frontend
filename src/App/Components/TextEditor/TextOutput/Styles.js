@@ -18,8 +18,8 @@ export const TextEditOutput = styled.textarea`
 `;
 
 export const TextOutput = styled.div`
-     width: 100%;
-     height: 100%;
+     width: calc(100% - ${length.margin} * 2);
+     height: calc(100% - ${length.margin} * 2);
      padding: ${length.margin};
      border-radius: ${length.radius};
      background-color: ${color.siteBG3};

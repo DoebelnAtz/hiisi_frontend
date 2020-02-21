@@ -20,7 +20,7 @@ export const MainPage = styled.div`
 	${layout.row};
 	padding-bottom: ${length.margin};
 	width: calc(100%);
-	height: calc(100vh - 60px - ${length.margin} * 3);
+	height: calc(100vh - 60px - ${length.margin} * 4);
 	margin: 0;
 	overflow: auto;
 `;

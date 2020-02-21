@@ -11,7 +11,6 @@ import {
 export const DropDown = styled.div`
 	position: relative;
 	margin: 0 ${length.margin};
-
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
@@ -38,7 +37,7 @@ export const CurrentOption = styled.div`
 export const DropDownList = styled.div`
 	position: fixed;
 	//right: -1px;
-	width: ${(props) => props.width};
+	width: calc(${(props) => props.width} - 6px);
 	background-color: ${color.siteBG2};
 	z-index: 5;
 	padding: 2px;
@@ -52,7 +51,7 @@ export const DropDownList = styled.div`
 
 export const SearchInput = styled.input`
 	${components.input};
-	width: calc(100% - 4px);
+	width: calc(100% - 16px);
 	margin: 2px 2px;
 `;
 
@@ -65,6 +64,7 @@ export const Option = styled.div`
 	overflow: hidden;
 	white-space: nowrap;
 	height: 28px;
+	width: calc(100% - 16px);
 	line-height: 28px;
 	margin: 2px;
 	padding: 0 6px;

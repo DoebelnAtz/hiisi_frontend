@@ -11,13 +11,13 @@ import {
 
 export const Resources = styled.div``;
 
-export const SubmitResourceButton = styled.div`
+export const SubmitResourceButton = styled.button`
 	${components.button};
 	width: fit-content;
 	margin-right: ${length.margin};
 `;
 
-export const FilterButton = styled.div`
+export const FilterButton = styled.button`
 	${components.button};
 	width: fit-content;
 	margin-left: auto;

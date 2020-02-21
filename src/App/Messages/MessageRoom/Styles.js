@@ -89,13 +89,13 @@ export const MessageInputSend = styled.div`
 export const MessageInputTextArea = styled.textarea`
 	${components.textarea};
 	height: 38px;
-	width: 70%;
+	width: calc(70% - ${length.radius});
 	border-radius: ${length.radius};
 `;
 
 export const SendButton = styled.button`
 	${components.button};
 	height: 38px;
-	width: calc(30% - ${length.margin});
+	width: calc(30% - ${length.margin} - 10px);
 	margin-left: ${length.margin};
 `;

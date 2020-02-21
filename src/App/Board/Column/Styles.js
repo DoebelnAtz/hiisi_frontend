@@ -9,11 +9,9 @@ export const Column = styled.div`
   margin: 0 5px;
   padding: 0 5px 5px 5px;
   height: 100%;
-  width: calc(20% - 10px);
+  width: calc(20% - 20px);
   border-radius: 3px;
   background: ${color.siteBG3};
-  
-  
 `;
 
 export const ColumnList = styled.div`
@@ -21,7 +19,7 @@ export const ColumnList = styled.div`
   padding: 2px;
   border-radius: 4px;
   min-height: 20px;
-  width: 100%;
+  width: calc(100% - 4px);
   background-color: ${color.siteBG2};
 `;
 
@@ -30,7 +28,9 @@ export const ColumnTitle = styled.input`
   margin: 5px 0 0;
   text-transform: uppercase;
   border: none;
+  font-size: 20px;
   color: ${color.primary};
+  width: calc(100% - 20px);
   background: ${color.siteBG3};
 
   z-index: 3;

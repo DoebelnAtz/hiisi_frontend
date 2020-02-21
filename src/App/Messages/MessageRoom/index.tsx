@@ -3,7 +3,6 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useDismiss, useNav } from '../../../Hooks';
 import { makeRequest } from '../../../Api/Api';
-import '../messages.css';
 import { calculateTimeSince, getLocal } from '../../../utils/utils';
 
 import socketIOClient from 'socket.io-client';

@@ -57,6 +57,10 @@ export const font = {
 		font-size: 16px;
 		letter-spacing: 1px;
 	`,
+	link: css`
+		color: ${color.tertiary};
+		text-decoration: none;
+	`
 };
 
 export const layout = {
@@ -149,6 +153,7 @@ export const components = {
 		background-color: ${color.siteBG1};
 		color: ${color.primary};
 		height: 36px;
+		font-size: 16px;
 		border: 1px solid ${color.primary};
 		&:focus {
 			outline: none;

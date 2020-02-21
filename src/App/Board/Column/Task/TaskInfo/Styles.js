@@ -52,17 +52,6 @@ export const TaskInfoBody = styled.div`
 	${layout.row};
 `;
 
-export const TaskTitleEditable = styled.input`
-	${layout.row};
-	${components.input};
-	display: ${(props) => (props.editable ? 'block' : 'none')};
-	font-size: 26px;
-	width: 90%;
-	margin: 0 0 0 ${length.margin};
-	border-color: ${color.siteBG2};
-	background-color: ${color.siteBG2};
-`;
-
 export const TaskTitle = styled.div`
 	${layout.row};
 	font-size: 26px;
@@ -79,6 +68,17 @@ export const TaskFooter = styled.div`
 		margin-top: auto;
 		margin-bottom: auto;
 	}
+`;
+
+export const TaskTitleEditable = styled.input`
+	${layout.row};
+	${components.input};
+	display: ${(props) => (props.editable ? 'block' : 'none')};
+	font-size: 26px;
+	width: 80%;
+	margin-right: auto;
+	border-color: ${color.siteBG2};
+	background-color: ${color.siteBG2};
 `;
 
 export const PriorityDropdown = styled.div`

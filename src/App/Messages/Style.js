@@ -8,7 +8,7 @@ export const MessageModal = styled.div`
 	padding: 4px 0;
 	border-radius: 20px 0 5px 20px;
 	width: 350px;
-	height: 40px;
+	height: calc(40px - 10px);
 	${layout.row};
 	${cursor.clickable};
 	position: fixed;

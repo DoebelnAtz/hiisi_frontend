@@ -64,6 +64,9 @@ export const ResourceTitle = styled.div`
 	& :hover {
 		text-decoration: none;
 	}
+	& a {
+		${font.link};
+	}
 `;
 
 export const SaveButton = styled.button`
@@ -91,7 +94,7 @@ export const ResourceContent = styled.div`
 
 export const AddTagInput = styled.input`
 	${components.input};
-	width: 100%;
+	width: calc(100% - ${length.margin} - 3px);
 	margin-left: ${length.margin};
 `;
 
@@ -101,7 +104,8 @@ export const ResourceTag = styled.div`
 	border-radius: ${(props) => (props.owner ? '4px 0 0 4px' : '4px')};
 	background-color: ${(props) => props.color};
 	${font.text};
-	height: 34px;
+	height: calc(34px - 8px);
+	line-height: 26px;
 	${layout.row};
 	padding: 4px 8px;
 `;
@@ -133,10 +137,11 @@ export const SearchResultTag = styled.div`
 	${font.text};
 	height: 34px;
 	padding: 4px 8px;
-	width: 100%;
+	width: calc(100% - 16px);
 	border-radius: 4px;
 	& span {
-		${cursor.clickable}
+		${cursor.clickable};
+		line-height: 34px;
 		&:hover {
 			color: lightgray;
 		}
