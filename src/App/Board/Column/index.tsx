@@ -20,9 +20,11 @@ type ColumnProps = {
 	taskList: Array<TaskType>;
 	board: BoardType;
 	setBoard: Dispatch<SetStateAction<BoardType>>;
+	editable?: boolean;
 };
 
 const BoardColumn: React.FC<ColumnProps> = ({
+	editable = true,
 	addTask,
 	columnNum,
 	column,
@@ -41,7 +43,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	}, [column.title]);
 
 	const handleTitleEnter = async (e: KeyboardEvent) => {
-		if (e.key === 'Enter' && titleVal !== column.title) {
+		if (editable && e.key === 'Enter' && titleVal !== column.title) {
 			let res = await makeRequest(
 				'projects/boards/update_column_title',
 				'put',
@@ -54,6 +56,13 @@ const BoardColumn: React.FC<ColumnProps> = ({
 		}
 	};
 
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		if (editable) {
+			let target = e.target as HTMLInputElement;
+			setTitleVal(target.value);
+		}
+	};
+
 	return (
 		<Droppable key={columnNum} droppableId={columnNum.toString()}>
 			{(provided) => (
@@ -62,18 +71,23 @@ const BoardColumn: React.FC<ColumnProps> = ({
 						value={titleVal}
 						ref={titleInput}
 						onKeyDown={(e: KeyboardEvent) => handleTitleEnter(e)}
-						onChange={(e: React.SyntheticEvent) => {
-							let target = e.target as HTMLInputElement;
-							setTitleVal(target.value);
-						}}
+						onChange={(e: React.SyntheticEvent) =>
+							handleTitleChange(e)
+						}
+						disabled={!editable}
 					/>
-					<Input
-						customStyle={{ margin: '10px 0', width: 'calc(100%)' }}
-						placeholder={'add task'}
-						setValueState={setInputVal}
-						valueState={inputVal}
-						onEnter={() => addTask(inputVal, column.column_id)}
-					/>
+					{editable && (
+						<Input
+							customStyle={{
+								margin: '10px 0',
+								width: 'calc(100%)',
+							}}
+							placeholder={'add task'}
+							setValueState={setInputVal}
+							valueState={inputVal}
+							onEnter={() => addTask(inputVal, column.column_id)}
+						/>
+					)}
 					<ColumnList
 						{...provided.droppableProps}
 						ref={provided.innerRef}
@@ -85,6 +99,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 								index={index}
 								board={board}
 								setBoard={setBoard}
+								editable={editable}
 							/>
 						))}
 						{provided.placeholder}

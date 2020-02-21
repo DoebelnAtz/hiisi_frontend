@@ -4,12 +4,11 @@ import { color, length, layout, font, components } from '../../../Styles/sharedS
 
 export const MessageNavigation = styled.div`
 	${layout.row};
-	margin-bottom: ${length.margin};
-
 `;
 
 export const GoBackButton = styled.button`
 	${components.button};
+	margin-left: auto;
 `;
 
 export const MessageRoomDiv = styled.div`
@@ -22,14 +21,12 @@ export const MessageRoomName = styled.span`
 
 export const MessageFeedDiv = styled.div`
 	background-color: ${color.siteBG2};
-	max-height: 40vh;
+	height: 30vh;
 	padding: 5px;
 	overflow-y: auto;
 `;
 
-export const SendButton = styled.button`
-	${components.button};
-`;
+
 
 export const ConnectedUser = styled.div`
 	& img {
@@ -82,4 +79,23 @@ export const MessageInfo = styled.div`
 
 export const MessageContent = styled.div`
 	margin-top: 5px;
+`;
+
+export const MessageInputSend = styled.div`
+	${layout.row};
+	margin: ${length.margin} 0;
+`;
+
+export const MessageInputTextArea = styled.textarea`
+	${components.textarea};
+	height: 38px;
+	width: 70%;
+	border-radius: ${length.radius};
+`;
+
+export const SendButton = styled.button`
+	${components.button};
+	height: 38px;
+	width: calc(30% - ${length.margin});
+	margin-left: ${length.margin};
 `;

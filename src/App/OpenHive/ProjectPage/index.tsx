@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, Fragment } from 'react';
 import { useNav, useRequest } from '../../../Hooks';
 import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
@@ -20,7 +20,11 @@ import { RouteComponentProps, User } from '../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../Components/TextEditor';
 import { ChatContext } from '../../../Context/ChatContext';
-
+import { inspect } from 'util';
+import { color } from '../../../Styles/sharedStyles';
+import ProjectSettings from './ProjectSettingsPage';
+import { makeRequest } from '../../../Api/Api';
+import SaveButton from '../../Components/Buttons/SaveButton';
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
 	history,
@@ -48,10 +52,11 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						<Board
 							projectCollaborators={project.collaborators}
 							board_id={project.board_id}
+							editable={project.contributor}
 						/>
 					);
-				case 'chat':
-					break;
+				case 'settings':
+					return <ProjectSettings project={project} />;
 				default:
 					return (
 						<ViewPost
@@ -66,14 +71,33 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					);
 			}
 	};
-
 	const updateProjectDescription = (e: string) => {
 		if (project) setProject({ ...project, description: e });
+	};
+
+	const handleProjectSave = async () => {
+		if (project) {
+			let resp = await makeRequest(`projects/update_project`, 'PUT', {
+				projectId: project.project_id,
+				title: project.title,
+				description: project.description,
+			});
+			if (resp.data) {
+				setProject({
+					...project,
+					title: resp.data.title,
+					description: resp.data.description,
+				});
+				return true;
+			}
+		}
+		return false;
 	};
 
 	return (
 		<ProjectPage>
 			<ProjectInfo>
+				<SaveButton onClick={handleProjectSave}>Save</SaveButton>
 				<ProjectTitle>
 					{!isLoading && project
 						? capitalizeFirst(project.title)
@@ -94,21 +118,34 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 			<ProjectDashBoard>
 				<ProjectDashboardNav>
 					<ProjectDashBoardNavItem
+						focus={dashState.toLowerCase() === 'board'}
 						onClick={() => setDashState('board')}
 					>
 						<span>Board</span>
 					</ProjectDashBoardNavItem>
 					<ProjectDashBoardNavItem
+						focus={dashState.toLowerCase() === 'comments'}
 						onClick={() => setDashState('comments')}
 					>
 						<span>Comments</span>
 					</ProjectDashBoardNavItem>
 					{project?.contributor && (
-						<ProjectDashBoardNavItem
-							onClick={() => setCurrentChat(project.t_id)}
-						>
-							<span>Chat</span>
-						</ProjectDashBoardNavItem>
+						<Fragment>
+							<ProjectDashBoardNavItem
+								onClick={() => setCurrentChat(project.t_id)}
+								style={{
+									borderRight: `1px solid ${color.primary}`,
+								}}
+							>
+								<span>Chat</span>
+							</ProjectDashBoardNavItem>
+							<ProjectDashBoardNavItem
+								focus={dashState.toLowerCase() === 'settings'}
+								onClick={() => setDashState('settings')}
+							>
+								<span>Settings</span>
+							</ProjectDashBoardNavItem>
+						</Fragment>
 					)}
 				</ProjectDashboardNav>
 				{!isLoading && renderDash()}

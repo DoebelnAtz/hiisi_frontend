@@ -1,6 +1,4 @@
 import React, {
-	Dispatch,
-	SetStateAction,
 	useEffect,
 	useRef,
 	useState,
@@ -24,8 +22,7 @@ import {
 	AddUser,
 	AddUserBtn,
 	TaskTitleEditable,
-	SaveButton,
-} from './Styles.js';
+} from './Styles';
 
 import Plus from '../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../Hooks';
@@ -36,10 +33,9 @@ import Avatar from '../../../../Components/Avatar';
 import { getPriorityIcon } from '../../../../../utils/taskUtils';
 import { RouteComponentProps, User } from '../../../../../Types';
 import { TaskType } from '../../../Types';
-
-import { BrowserRouterProps, NavLinkProps } from 'react-router-dom';
 import DropDown from '../../../../Components/DropDown';
-
+import { checkUserList } from '../../../../../utils/utils';
+import SaveButton from '../../../../Components/Buttons/SaveButton'
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;
 	pid: number;
@@ -102,11 +98,16 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	useDismiss(inside, close);
 
 	const updateTask = async () => {
-		let resp = await makeRequest('projects/boards/update_task', 'put', task);
-		if (resp.data) {
-			setSaveButtonText('saved');
-			setTimeout(() => setSaveButtonText('save'), 1500)
+		if (task) {
+			console.log(task);
+			if (!task.description) {
+				setTask({...task, description: ''})
+			}
+			let resp = await makeRequest('projects/boards/update_task', 'put', task);
+			if (resp.data)
+				return true;
 		}
+		return false;
 	};
 
 	const assignUserToTask = async (userId: number, taskId: number) => {
@@ -135,25 +136,13 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		}
 	};
 
-	const handleInputChange = (e: React.SyntheticEvent) => {
-		if (task) {
-			let target = e.target as HTMLInputElement;
-			let newTask: TaskType = { ...task, priority: Number(target.value) };
-			setPriorityInputVal(target.value);
-			setTask(newTask);
-			setPriorityIcon(getPriorityIcon(Number(target.value)));
-		}
-	};
-
 	const handleSearch = async (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
 		setSearchInput(target.value);
 
 		setSearchResult([]);
 		if (target.value.length > 0) {
-			let resp = await makeRequest('users/search', 'post', {
-				search: target.value,
-			});
+			let resp = await makeRequest(`users/search?q=${target.value}`, 'get');
 
 			if (task && resp?.data) {
 				setSearchResult(
@@ -261,7 +250,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						<TaskCollaborators>
 							{!isLoading && renderTaskCollaborators()}
 						</TaskCollaborators>
-						<AddUserToTask>
+						{task && checkUserList(task.collaborators) && (<AddUserToTask>
 							<AddUserInput
 								style={{ width: '100%' }}
 								value={searchInput}
@@ -270,13 +259,14 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								}
 								placeholder={'add user'}
 							/>
-						</AddUserToTask>
+						</AddUserToTask>)}
 						{!!searchResult.length && renderSearchResults()}
 					</TaskSidebar>
 				</TaskInfoBody>
 				<TaskFooter>
 					<img src={priorityIcon} />
-					<PriorityDropdown>
+					{task && checkUserList(task.collaborators) &&
+					(<PriorityDropdown>
 						<DropDown
 							height={'34px'}
 							optionList={[
@@ -291,7 +281,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 							setSelect={handlePrioritySelect}
 							width={'200px'}
 						/>
-					</PriorityDropdown>
+					</PriorityDropdown>)
+					}
 				</TaskFooter>
 			</TaskInfo>
 		</OuterDiv>,

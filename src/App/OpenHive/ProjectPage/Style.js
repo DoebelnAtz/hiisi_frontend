@@ -6,7 +6,7 @@ import {
 	length,
 	layout,
 	border,
-	font,
+	font, components,
 } from '../../../Styles/sharedStyles';
 
 export const ProjectPage = styled.div`
@@ -35,7 +35,7 @@ export const ProjectLink = styled.div``;
 export const ProjectDashboardNav = styled.div`
 	${layout.row};
 	${cursor.clickable};
-	${border.setBorders(1, 1, 0, 1, color.primary)}
+	${border.setBorders(1, 1, 0, 1, color.primary)};
 	& div:nth-child(2) {
 		${border.setBorders(0, 1, 1, 1, color.primary)}
 	}
@@ -47,9 +47,14 @@ export const ProjectDashBoardNavItem = styled.div`
 	display: flex;
 	z-index: 5;
 	justify-content: center;
+	background-color: ${props => props.focus? color.siteBG2 : color.siteBG1};
+
 	&:hover {
 		background-color: ${color.siteBG3};
 	}
 `;
 
+export const SaveButton = styled.button`
+ ${components.button};
+`;
 export const ProjectDashBoard = styled.div``;

@@ -53,9 +53,14 @@ let boardState = {
 type BoardProps = {
 	board_id: number;
 	projectCollaborators: Array<User>;
+	editable?: boolean;
 };
 
-const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
+const Board: React.FC<BoardProps> = ({
+	editable = true,
+	board_id,
+	projectCollaborators,
+}) => {
 	// Getting TS2739 error, not sure how to solve it..
 
 	// @ts-ignore
@@ -193,6 +198,7 @@ const Board: React.FC<BoardProps> = ({ board_id, projectCollaborators }) => {
 							addTask={addTask}
 							setBoard={setBoard}
 							board={board}
+							editable={editable}
 						/>
 					))}
 				</Columns>

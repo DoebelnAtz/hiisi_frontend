@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useNav } from '../../../Hooks';
+import { useDismiss, useNav } from '../../../Hooks';
 import { makeRequest } from '../../../Api/Api';
 import '../messages.css';
 import { calculateTimeSince, getLocal } from '../../../utils/utils';
@@ -24,6 +24,8 @@ import {
 	SendButton,
 	GoBackButton,
 	MessageNavigation,
+	MessageInputTextArea,
+	MessageInputSend,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
 import { MessageNotification, SocketType, User } from '../../../Types';
@@ -50,6 +52,9 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	);
 
 	let scrollDown = useRef<HTMLDivElement>(null);
+	let inside = useRef<HTMLDivElement>(null);
+
+	useDismiss(inside, () => setCurrentChat(0));
 
 	useNav('messages');
 	useEffect(() => {
@@ -127,9 +132,14 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		setInputVal('');
 	};
 
-	const handleEnter = (event: React.KeyboardEvent) => {
-		if (event.key === 'Enter') {
-			handleClick(event);
+	const handleKeyDown = async (e: React.KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			await handleClick(e);
+		} else {
+			let target = e.target as HTMLTextAreaElement;
+			target.style.height = 'inherit';
+			target.style.height = `${target.scrollHeight}px`;
+			target.style.height = `${Math.min(target.scrollHeight, 100)}px`;
 		}
 	};
 
@@ -195,13 +205,13 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	};
 
 	return (
-		<MessageRoomDiv>
+		<MessageRoomDiv ref={inside}>
 			<MessageNavigation>
+				{renderConnectedUsers()}
 				<GoBackButton onClick={() => setCurrentChat(0)}>
 					Back
 				</GoBackButton>
 			</MessageNavigation>
-			<RowDiv>{renderConnectedUsers()}</RowDiv>
 			<RowDiv className={'row_div '}>
 				<AddToChat tid={tid} />
 			</RowDiv>
@@ -210,15 +220,22 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				{renderMessages()}
 				<div ref={scrollDown}> </div>
 			</MessageFeedDiv>
-			<textarea
-				id={'chat_input'}
-				onKeyDown={(e) => handleEnter(e)}
-				value={inputVal}
-				onChange={(e) => setInputVal(e.target.value)}
-			/>
-			<SendButton onClick={(e: React.SyntheticEvent) => handleClick(e)}>
-				{connected ? 'send' : 'loading'}
-			</SendButton>
+			<MessageInputSend>
+				<MessageInputTextArea
+					onKeyDown={(e: React.KeyboardEvent<Element>) =>
+						handleKeyDown(e)
+					}
+					value={inputVal}
+					onChange={(e: { target: { value: string } }) =>
+						setInputVal(e.target.value)
+					}
+				/>
+				<SendButton
+					onClick={(e: React.SyntheticEvent) => handleClick(e)}
+				>
+					{connected ? 'send' : 'loading'}
+				</SendButton>
+			</MessageInputSend>
 		</MessageRoomDiv>
 	);
 };

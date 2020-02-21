@@ -68,11 +68,8 @@ const AddToChat = (props) => {
 
         if (val.length) {
             let resp = await makeRequest(
-                "users/search",
-                'post',
-                {
-                    search: val
-                }
+                `users/search?q=${val}`,
+                'GET',
             );
             if (resp.data.length)
             {

@@ -16,13 +16,14 @@ import { getPriorityIcon } from '../../../../utils/taskUtils';
 import { BoardType, TaskType } from '../../Types';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 import { makeRequest } from '../../../../Api/Api';
-import * as H from 'history';
+import { checkUserList } from '../../../../utils/utils';
 
 type TaskProps = {
 	task: TaskType;
 	index: number;
 	board: BoardType;
 	setBoard: Dispatch<SetStateAction<BoardType>>;
+	editable?: boolean;
 };
 
 const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
@@ -31,6 +32,7 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 	history,
 	board,
 	setBoard,
+	editable = true,
 }) => {
 	const renderTaskCollaborators = () => {
 		return task.collaborators.map((collaborator, index) => {
@@ -74,7 +76,11 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 
 	return (
 		<Fragment>
-			<Draggable draggableId={task.task_id.toString()} index={index}>
+			<Draggable
+				isDragDisabled={!editable}
+				draggableId={task.task_id.toString()}
+				index={index}
+			>
 				{(provided: any, snapshot: any) => (
 					<TaskContent
 						ref={provided.innerRef}
@@ -93,13 +99,18 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 						>
 							<RowDiv>
 								<TaskTitle>{task.title}</TaskTitle>
-								<DeleteTaskImg
-									onClick={(e: React.SyntheticEvent) =>
-										deleteTask(e)
-									}
-								>
-									<img src={deleteImg} alt={'delete task'} />
-								</DeleteTaskImg>
+								{editable && checkUserList(task.collaborators) && (
+									<DeleteTaskImg
+										onClick={(e: React.SyntheticEvent) =>
+											deleteTask(e)
+										}
+									>
+										<img
+											src={deleteImg}
+											alt={'delete task'}
+										/>
+									</DeleteTaskImg>
+								)}
 							</RowDiv>
 							<TaskStatus>
 								<img
