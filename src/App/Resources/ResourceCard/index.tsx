@@ -101,10 +101,15 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 
 	const handleShareClick = (text: string) => {
 		setCopied(true);
-		navigator.clipboard.writeText(text);
-		setTimeout(() => {
+		try {
+			// on http connections this function fails
+			navigator.clipboard.writeText(text);
+			setTimeout(() => {
+				setCopied(false);
+			}, 700);
+		} catch (e) {
 			setCopied(false);
-		}, 700);
+		}
 	};
 	return (
 		<Card>

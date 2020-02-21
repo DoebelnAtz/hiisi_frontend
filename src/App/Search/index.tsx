@@ -52,6 +52,7 @@ const SearchBar: React.FC = () => {
 	return (
 		<SearchDiv>
 			<label>
+				Search:
 				<SearchInput
 					showingResults={!!results?.length}
 					value={searchInput}

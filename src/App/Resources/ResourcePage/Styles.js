@@ -52,12 +52,13 @@ export const ResourcePage = styled.div`
 
 export const ResourceHeader = styled.div`
 	${layout.col};
+	margin-top: ${length.margin};
 `;
 
 export const ResourceTitle = styled.div`
 	${layout.row};
 	${font.title};
-	padding-right: 50px;
+	padding-right: ${length.margin};
 	font-size: 28px;
 	margin: 0 0 0 ${length.margin};
 	color: ${color.primary};
@@ -66,6 +67,9 @@ export const ResourceTitle = styled.div`
 	}
 	& a {
 		${font.link};
+	}
+	& button {
+		margin-left: auto;
 	}
 `;
 

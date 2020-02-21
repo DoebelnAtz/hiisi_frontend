@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-import { color, colorAdjust } from "../../../Styles/sharedStyles";
+import { color, colorAdjust, components, length } from '../../../Styles/sharedStyles';
 
 export const Column = styled.div`
   display: flex;
@@ -42,4 +42,10 @@ export const ColumnTitle = styled.input`
     	background-color: ${color.siteBG1};
     	border-radius: 4px;
     }
+`;
+
+export const AddTaskInput = styled.input`
+	${components.input};
+	background-color: ${color.siteBG1};
+	margin: ${length.margin} 0;
 `;

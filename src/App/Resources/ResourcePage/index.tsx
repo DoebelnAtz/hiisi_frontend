@@ -13,7 +13,6 @@ import {
 	ResourceContent,
 	TagSearchResults,
 	SearchResultTag,
-	SaveButton,
 	OutsideDiv,
 	ModalDiv,
 	DeleteTagButton,
@@ -23,6 +22,7 @@ import ViewPost from '../../Forum/Post/ViewPost';
 import { makeRequest } from '../../../Api/Api';
 import { RouteComponentProps } from '../../../Types';
 import { ResourceType, Tag } from '../Types';
+import SaveButton from '../../Components/Buttons/SaveButton';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	match,
@@ -76,9 +76,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 		let resp = await makeRequest('resources/update_resource', 'put', {
 			resource: resource,
 		});
-		if (resp.data?.success) {
-
-		}
+		return !!resp.data?.success;
 	};
 
 	const addTag = async (tag: Tag) => {
@@ -115,7 +113,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 									{`${resource?.title}`}
 								</a>
 							)}
-							<SaveButton onClick={() => updateResource()}>
+							<SaveButton onClick={updateResource}>
 								save
 							</SaveButton>
 						</ResourceTitle>

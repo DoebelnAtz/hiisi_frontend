@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { InputSection, ButtonSection } from './Styles';
+import { InputSection, ButtonSection, InputButtonDiv } from './Styles';
 
 type InputProps = {
 	children?: ReactNode;
@@ -17,14 +17,14 @@ const InputButton: React.FC<InputProps> = ({
 	value,
 }) => {
 	return (
-		<Fragment>
+		<InputButtonDiv>
 			<InputSection
 				value={value}
 				onChange={onChange}
 				placeholder={placeholder}
 			/>
 			<ButtonSection onClick={onClick}>{children}</ButtonSection>
-		</Fragment>
+		</InputButtonDiv>
 	);
 };
 

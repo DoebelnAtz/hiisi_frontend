@@ -10,6 +10,7 @@ import {
 
 export const DropDown = styled.div`
 	position: relative;
+	${font.text};
 	margin: 0 ${length.margin};
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
@@ -29,7 +30,6 @@ export const CurrentOption = styled.div`
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	color: ${color.textColor};
 	vertical-align: middle;
 	text-align: center;
 `;

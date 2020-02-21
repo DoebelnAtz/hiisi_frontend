@@ -53,7 +53,7 @@ export const font = {
 		letter-spacing: 2px;
 	`,
 	text: css`
-		color: white;
+		color: ${colorAdjust.darken('#ffffff', 0.1)};
 		font-size: 16px;
 		letter-spacing: 1px;
 	`,
@@ -96,7 +96,7 @@ export const modal = {
 		right: 20%;
 		top: 15%;
 		bottom: 35%;
-		color: ${color.primary};
+		
 		border: 5px solid ${color.siteBG2};
 		border-radius: 2px;
 		margin: auto;
@@ -165,8 +165,8 @@ export const components = {
 		height: 36px;
 		letter-spacing: 1px;
 		line-height: 30px;
+		${font.text};
 		background-color: ${color.siteBG2};
-		color: ${colorAdjust.lighten(color.primary, 0.15)};
 		${cursor.clickable};
 		border: 1px solid ${color.primary};
 		border-radius: ${length.radius};

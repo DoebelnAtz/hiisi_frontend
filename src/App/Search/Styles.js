@@ -12,11 +12,15 @@ export const SearchDiv = styled.div`
 	${layout.row};
 	position: relative;
 	margin: auto ${length.margin} auto auto;
+	& label {
+		${font.text};
+	}
 `;
 
 export const SearchInput = styled.input`
 	${components.input};
 	height: 36px;
+	margin-left: ${length.margin};
 	border-radius: ${(props) =>
 		!props.showingResults ? '4px' : '4px 4px 0 0'};
 	min-width: 200px;

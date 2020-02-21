@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 
-import { Column, ColumnTitle, ColumnList } from './Styles';
+import { Column, ColumnTitle, ColumnList, AddTaskInput } from './Styles';
 import Task from './Task';
 import Input from '../../Components/Input';
 import { BoardType, ColumnType, TaskType } from '../Types';
@@ -77,15 +77,16 @@ const BoardColumn: React.FC<ColumnProps> = ({
 						disabled={!editable}
 					/>
 					{editable && (
-						<Input
-							customStyle={{
-								margin: '10px 0',
-								width: 'calc(100% - 14px)',
-							}}
+						<AddTaskInput
 							placeholder={'add task'}
-							setValueState={setInputVal}
-							valueState={inputVal}
-							onEnter={() => addTask(inputVal, column.column_id)}
+							onChange={(e: HTMLInputElement) => {
+								setInputVal(e.value);
+							}}
+							value={inputVal}
+							onKeyDown={(e: KeyboardEvent) => {
+								if (e.key === 'Enter')
+									addTask(inputVal, column.column_id);
+							}}
 						/>
 					)}
 					<ColumnList

@@ -11,8 +11,8 @@ import {
 
 
 export const CreateThreadRow = styled.div`
-	width: 90%;
-	margin: 0 auto;
+	calc(width: 100% - 18px);
+	
 	${layout.row};
 `;
 
@@ -21,11 +21,11 @@ export const NotificationIcon = styled.div`
 `;
 
 export const ThreadItem = styled.div`
-	width: 90%;
+	width: calc(100% - 24px);
 	${layout.row};
 	margin: ${length.margin} auto;
 	background-color: ${color.siteBG2};
-	padding: 10px 6px;
+	padding: 10px 12px;
 	border-radius: ${length.radius};
 	${cursor.clickable};
 	transition: background-color 0.1s;
