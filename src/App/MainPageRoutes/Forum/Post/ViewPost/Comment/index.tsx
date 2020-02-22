@@ -1,9 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import Reply from '../Reply/index';
+import Reply from '../Reply';
 import { formatDate } from '../../../../../../utils/utils';
 import { makeRequest } from '../../../../../../Api/Api';
 import Button from '../../../../../Components/Buttons/Button';
-import { useRequest } from '../../../../../../Hooks/index';
+import { useRequest } from '../../../../../../Hooks';
 
 import {
 	ParentComment,
@@ -15,7 +15,7 @@ import {
 	ShowRepliesButton,
 	ReplyRow,
 } from './Styles';
-import { CommentProps, CommentType } from '../../../Types/index';
+import { CommentProps, CommentType } from '../../../Types';
 import { Collaborator } from '../../../../../Components/Board/Column/Task/TaskInfo/Styles';
 import { useHistory } from 'react-router';
 

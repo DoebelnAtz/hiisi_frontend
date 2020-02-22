@@ -58,7 +58,7 @@ export const getUrlParam = (parameter, defaultValue) => {
 // Checks if current user is in user list, for example task collaborator list or project collaborator list.
 export const checkUserList = (userList) => {
 	let currentUser = getLocal('token');
-	return userList.find(user => user.u_id === currentUser.user.u_id)
+	return userList.find((user) => user.u_id === currentUser.user.u_id);
 };
 
 export const countComments = (comments, count = 0) => {
@@ -79,10 +79,8 @@ export const checkFriendList = (profile, username) => {
 };
 
 export const validateUrl = async (url) => {
-
 	if (url.slice(0, 7) !== 'http://' || url.slice(0, 8) !== 'https://') {
 		url = 'http://' + url;
-
 	}
 	let resp = await axios.get(url);
 	if (resp.status === 404) {

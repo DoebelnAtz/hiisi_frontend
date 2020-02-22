@@ -3,17 +3,20 @@ import { Notification } from '../../../../Types';
 import { NotificationListDiv, NotificationItem } from './Styles';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { useHistory } from 'react-router-dom';
+import { useRequest } from '../../../../Hooks';
+import { getLocal } from '../../../../utils/utils';
 type NotificationListProps = {
-	notifications: Notification[];
+	notifications?: Notification[];
 };
 
-const NotificationList: React.FC<NotificationListProps> = ({
-	notifications,
-}) => {
+const NotificationList: React.FC<NotificationListProps> = () => {
 	const history = useHistory();
 	const { state: currentChat, update: setCurrentChat } = useContext(
 		ChatContext,
 	);
+	const [notifications, setNotifications, isLoading] = useRequest<
+		Notification[]
+	>(`notifications/users/${getLocal('token').user.u_id}`, 'get');
 	const handleNotificationClick = async (notif: Notification) => {
 		switch (notif.type) {
 			case 'message':
@@ -28,8 +31,11 @@ const NotificationList: React.FC<NotificationListProps> = ({
 		if (notifications)
 			return notifications.map((notif: Notification, index) => {
 				return (
-					<NotificationItem key={index}>
-						{notif.type} {notif.message}
+					<NotificationItem
+						onClick={() => handleNotificationClick(notif)}
+						key={index}
+					>
+						{notif.message}
 					</NotificationItem>
 				);
 			});

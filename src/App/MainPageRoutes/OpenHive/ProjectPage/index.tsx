@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react';
-import { useNav, useRequest } from '../../../../Hooks/index';
+import { useNav, useRequest } from '../../../../Hooks';
 import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
 import Board from '../../../Components/Board/index';
 import Messages from '../../../Messages/MessageRoom/index';
-import ViewPost from '../../Forum/Post/ViewPost/index';
+import ViewPost from '../../Forum/Post/ViewPost';
 import { capitalizeFirst } from '../../../../utils/utils';
 import {
 	ProjectPage,
@@ -16,21 +16,26 @@ import {
 	ProjectLink,
 	ProjectDescription,
 } from './Style';
-import { RouteComponentProps, User } from '../../../../Types/index';
-import { Project } from '../Types/index';
-import TextEditor from '../../../Components/TextEditor/index';
+import { RouteComponentProps, User } from '../../../../Types';
+import { Project } from '../Types';
+import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { inspect } from 'util';
 import { color } from '../../../../Styles/sharedStyles';
-import ProjectSettings from './ProjectSettingsPage/index';
+import ProjectSettings from './ProjectSettingsPage';
 import { makeRequest } from '../../../../Api/Api';
-import SaveButton from '../../../Components/Buttons/SaveButton/index';
+import SaveButton from '../../../Components/Buttons/SaveButton/';
+import queryString from 'query-string';
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
 	history,
 }) => {
 	const [pid, setPid] = useState(match.params.pid);
-	const [dashState, setDashState] = useState('board');
+	const [dashState, setDashState] = useState(
+		queryString.parse(history.location.search)?.comment
+			? 'comments'
+			: 'board',
+	);
 	const [project, setProject, isLoading] = useRequest<Project>(
 		'projects/' + pid,
 		'get',

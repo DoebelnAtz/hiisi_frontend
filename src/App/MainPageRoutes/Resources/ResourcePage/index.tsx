@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useDismiss, useRequest } from '../../../../Hooks/index';
+import { useDismiss, useRequest } from '../../../../Hooks';
+import queryString from 'query-string';
+
 import {
 	ResourceComments,
 	ResourceDescription,
@@ -23,6 +25,7 @@ import { makeRequest } from '../../../../Api/Api';
 import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import SaveButton from '../../../Components/Buttons/SaveButton/index';
+import { useLocation, useParams } from 'react-router-dom';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	match,

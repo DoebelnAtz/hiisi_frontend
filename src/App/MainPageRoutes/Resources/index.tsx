@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNav, useRequest } from '../../../Hooks';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
 import ResourceCard from './ResourceCard';
 import {
 	Resources,

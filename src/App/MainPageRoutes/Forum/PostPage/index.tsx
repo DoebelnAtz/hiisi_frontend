@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
 	InsideDiv,
@@ -11,11 +11,12 @@ import {
 } from './Styles';
 import { RouteComponentProps } from '../../../../Types';
 import { useDismiss, useRequest } from '../../../../Hooks';
-import { withRouter } from 'react-router-dom';
+import { useLocation, withRouter } from 'react-router-dom';
 import { PostType } from '../Types';
 import ViewPost from '../Post/ViewPost';
 import TextEditor from '../../../Components/TextEditor';
 import { formatDate } from '../../../../utils/utils';
+import queryString from 'query-string';
 
 const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	history,

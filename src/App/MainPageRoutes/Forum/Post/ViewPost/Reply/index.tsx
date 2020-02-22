@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-
+import { useLocation } from 'react-router-dom';
 import { makeRequest } from '../../../../../../Api/Api';
-import { ReplyProps } from '../../../Types/index';
+import { ReplyProps } from '../../../Types';
 
 import {
 	CommentInput,
@@ -22,12 +22,14 @@ const ReplyButton: React.FC<ReplyProps> = ({
 	const [opened, setOpened] = useState(false);
 
 	const expandReply = useSpring({ width: opened ? '0%' : '100%' });
+	const location = useLocation();
 
 	const submitPost = async () => {
 		if (commentText.length > 0) {
 			let resp = await makeRequest('blogs/create_comment', 'post', {
 				content: commentText,
 				threadId: childThreadId,
+				originLink: location.pathname,
 			});
 			if (resp.data) {
 				!!commentThread &&

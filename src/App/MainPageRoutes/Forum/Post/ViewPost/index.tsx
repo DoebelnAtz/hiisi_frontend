@@ -1,20 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import Reply from './Reply/index';
 import Comment from './Comment/index';
-import { useRequest } from '../../../../../Hooks';
+import { useDismiss, useRequest } from '../../../../../Hooks';
 import { CommentSection, Comments, ReplyToThread } from './Styles';
 import { CommentType, ViewPostProps } from '../../Types';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
+import { ShowAllCommentsButton } from './Styles';
 
 const ShowComments: React.FC<ViewPostProps> = ({
 	commentthread,
 	focusList,
 }) => {
+	const location = useLocation();
+	console.log(commentthread);
+	const [commentThread, setCommentThread] = useState(
+		queryString.parse(location.search)?.comment
+			? Number(queryString.parse(location.search)?.comment)
+			: commentthread,
+	);
 	const [comments, setComments, isLoading] = useRequest<CommentType[]>(
-		`blogs/commentthread/${commentthread}`,
+		`blogs/commentthread/${commentThread}`,
 		'get',
 	);
-
 	const renderComments = (
 		odd = true,
 		comment = comments,
@@ -49,6 +58,16 @@ const ShowComments: React.FC<ViewPostProps> = ({
 					childThreadId={commentthread}
 				/>
 			)}
+			{commentthread !== commentThread && (
+				<ShowAllCommentsButton
+					onClick={() => {
+						setCommentThread(commentthread);
+					}}
+				>
+					All comments
+				</ShowAllCommentsButton>
+			)}
+
 			<Comments>{!!comments?.length && renderComments()}</Comments>
 		</CommentSection>
 	);
