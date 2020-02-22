@@ -12,24 +12,19 @@ import { RowDiv } from '../../../Styles/LayoutStyles';
 import {
 	ConnectedDot,
 	ConnectedUser,
-	Message,
-	MessageContent,
-	MessageDate,
 	MessageFeedDiv,
-	MessageInfo,
 	MessageRoomDiv,
 	MessageRoomName,
-	MessageImg,
 	SendButton,
 	GoBackButton,
 	MessageNavigation,
 	MessageInputTextArea,
 	MessageInputSend,
-	LoadMoreButton,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
 import { Notification, SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
+import MessageFeed from './MessageFeed';
 
 type MessageRoomPropsTypes = {
 	tid: number;
@@ -97,7 +92,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	useEffect(() => {
 		getUsersConnected(tid);
-	}, [tid]);
+	}, []);
 
 	const scrollToBottom = () => {
 		if (scrollDown.current)
@@ -142,42 +137,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		}
 	};
 
-	const renderMessages = () => {
-		if (room && room.messages?.length) {
-			return room.messages.map((message) => {
-				return (
-					<Message
-						key={message.m_id}
-						sender={
-							message.username ===
-							getLocal('currentUser').username
-						}
-					>
-						<MessageInfo>
-							<MessageImg
-								src={
-									'https://cdn.intra.42.fr/users/small_' +
-									message.username +
-									(message.username === 'marvin'
-										? '.png'
-										: '.jpg')
-								}
-							/>
-							<MessageDate>
-								{calculateTimeSince(message.time_sent)}
-							</MessageDate>
-						</MessageInfo>
-
-						<MessageContent>
-							<span className={'message_text'}>
-								{message.message}
-							</span>
-						</MessageContent>
-					</Message>
-				);
-			});
-		}
-	};
 	const renderConnectedUsers = () => {
 		// TODO: the status dot only shows the logged in user as active; fix
 		return connectedUsers.map((user: User) => {
@@ -204,14 +163,9 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			</MessageNavigation>
 			<MessageRoomName>{room?.title}</MessageRoomName>
 			<MessageFeedDiv>
-				{room && room.messages.length >= 20 && (
-					<RowDiv>
-						<LoadMoreButton onClick={() => setPage(page + 1)}>
-							Load More
-						</LoadMoreButton>
-					</RowDiv>
+				{room && (
+					<MessageFeed messages={room?.messages} page={2} tid={tid} />
 				)}
-				{renderMessages()}
 				<div ref={scrollDown}> </div>
 			</MessageFeedDiv>
 			<MessageInputSend>
