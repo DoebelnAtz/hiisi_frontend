@@ -10,40 +10,9 @@ import {
 	cursor,
 } from '../../../../../../Styles/sharedStyles';
 
-export const OuterDiv = styled.div`
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 5;
-`;
-
-export const TaskInfo = styled.div`
-	position: absolute;
-	padding: ${length.margin};
-	${layout.col};
-	left: 20%;
-	right: 20%;
-	top: 15%;
-	bottom: 35%;
-	color: ${color.primary};
-	border: 5px solid ${color.siteBG2};
-	border-radius: 2px;
-	margin: auto;
-	background: ${color.siteBG2};
-	overflow: auto;
-	z-index: 2 !important;
-`;
-
 export const TaskInfoHead = styled.div`
 	${layout.row};
 	height: 50px;
-	margin-bottom: ${length.margin};
 `;
 
 export const TaskInfoBody = styled.div`
@@ -55,6 +24,7 @@ export const TaskInfoBody = styled.div`
 export const TaskTitle = styled.div`
 	${layout.row};
 	font-size: 26px;
+	color: ${color.primary};
 	display: ${(props) => (props.editable ? 'none' : 'block')};
 	border-color: ${color.siteBG2};
 	background-color: ${color.siteBG2};
@@ -68,6 +38,11 @@ export const TaskFooter = styled.div`
 		margin-top: auto;
 		margin-bottom: auto;
 	}
+`;
+
+export const PriorityIcon = styled.img`
+	width: 60px;
+	height: 60px;
 `;
 
 export const TaskTitleEditable = styled.input`
@@ -90,8 +65,8 @@ export const AddUserInput = styled.input`
 `;
 
 export const TaskDescription = styled.div`
-	height: 100%;
 	width: 70%;
+	min-height: 40vh;
 `;
 
 export const TaskSidebar = styled.div`
@@ -126,11 +101,6 @@ export const AddUserBtn = styled.div`
 	border-radius: 0 18px 18px 0;
 	font-size: 24px;
 	color: ${color.siteBG2};
-`;
-
-export const SaveButton = styled.button`
-	${components.button};
-	margin-left: auto;
 `;
 
 export const AddUser = styled.div`

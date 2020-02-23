@@ -60,7 +60,7 @@ export const font = {
 	link: css`
 		color: ${color.tertiary};
 		text-decoration: none;
-	`
+	`,
 };
 
 export const layout = {
@@ -95,14 +95,14 @@ export const modal = {
 		left: 20%;
 		right: 20%;
 		top: 15%;
-		bottom: 35%;
-		
+		max-height: 70vh;
+		padding: ${length.margin};
 		border: 5px solid ${color.siteBG2};
 		border-radius: 2px;
 		margin: auto;
 		background: ${color.siteBG2};
 		overflow: auto;
-		z-index: 2 !important;
+		z-index: 10;
 		${layout.col};
 	`,
 	outside: css`
@@ -115,7 +115,7 @@ export const modal = {
 		bottom: 0;
 		margin: auto;
 		background-color: rgba(0, 0, 0, 0.5);
-		z-index: 1;
+		z-index: 11;
 	`,
 };
 

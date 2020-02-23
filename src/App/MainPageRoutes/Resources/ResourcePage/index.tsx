@@ -7,7 +7,6 @@ import {
 	ResourceComments,
 	ResourceDescription,
 	ResourceHeader,
-	ResourcePage,
 	ResourceTag,
 	ResourceTags,
 	ResourceTitle,
@@ -15,8 +14,6 @@ import {
 	ResourceContent,
 	TagSearchResults,
 	SearchResultTag,
-	OutsideDiv,
-	ModalDiv,
 	DeleteTagButton,
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor/index';
@@ -26,6 +23,7 @@ import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import SaveButton from '../../../Components/Buttons/SaveButton/index';
 import { useLocation, useParams } from 'react-router-dom';
+import Modal from '../../../Components/Modal';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	match,
@@ -62,14 +60,13 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			) // make sure we don't show already added tags
 			.map((tag: Tag) => {
 				return (
-					<SearchResultTag key={tag.tag_id} color={tag.color}>
-						# {tag.title}
-						<span
-							style={{ marginLeft: 'auto' }}
-							onClick={() => addTag(tag)}
-						>
-							+
-						</span>
+					<SearchResultTag
+						onClick={() => addTag(tag)}
+						key={tag.tag_id}
+						color={tag.color}
+					>
+						<span># {tag.title}</span>
+						<span style={{ marginLeft: 'auto' }}>+</span>
 					</SearchResultTag>
 				);
 			});
@@ -106,91 +103,81 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	return ReactDOM.createPortal(
-		<OutsideDiv>
-			<ModalDiv ref={insideRef}>
-				<ResourcePage>
-					<ResourceHeader>
-						<ResourceTitle>
-							{!!resource && (
-								<a href={`${resource?.link}`}>
-									{`${resource?.title}`}
-								</a>
-							)}
-							<SaveButton onClick={updateResource}>
-								save
-							</SaveButton>
-						</ResourceTitle>
-						<ResourceTags>
-							{!isLoading &&
-								!!resource?.tags.length &&
-								resource.tags.map((tag) => {
-									return (
-										<ResourceTag
-											owner={resource?.owner}
-											key={tag.tag_id}
-											color={tag.color}
-										>
-											# {tag.title}
-											<DeleteTagButton
-												owner={resource?.owner}
-												color={tag.color}
-												onClick={() =>
-													deleteResourceTag(
-														tag.tag_id,
-														resource?.r_id,
-													)
-												}
-											>
-												X
-											</DeleteTagButton>
-										</ResourceTag>
-									);
-								})}
-						</ResourceTags>
-					</ResourceHeader>
-					<ResourceContent>
-						<ResourceDescription
-							full={!!resource && resource?.tags?.length > 2}
-						>
-							{!isLoading && (
-								<TextEditor
-									editable={resource?.owner}
-									state={resource?.description}
-									setState={(e: string) =>
-										handleDescriptionChange(e)
-									}
-								/>
-							)}
-						</ResourceDescription>
-						{!!resource && resource?.tags?.length < 3 && (
-							<TagSearchResults>
-								<AddTagInput
-									value={tagSearch}
-									onChange={(e: React.SyntheticEvent) => {
-										let target = e.target as HTMLInputElement;
-										setTagSearch(target.value);
-									}}
-									placeholder={'+ Add Tag'}
-								/>
-								{!isLoadingResults && renderSearchResults()}
-							</TagSearchResults>
-						)}
-					</ResourceContent>
+		<Modal inside={insideRef}>
+			<ResourceHeader>
+				<ResourceTitle>
+					{!!resource && (
+						<a href={`${resource?.link}`}>{`${resource?.title}`}</a>
+					)}
+					<SaveButton onClick={updateResource}>save</SaveButton>
+				</ResourceTitle>
+				<ResourceTags>
+					{!isLoading &&
+						!!resource?.tags.length &&
+						resource.tags.map((tag) => {
+							return (
+								<ResourceTag
+									owner={resource?.owner}
+									key={tag.tag_id}
+									color={tag.color}
+								>
+									# {tag.title}
+									<DeleteTagButton
+										owner={resource?.owner}
+										color={tag.color}
+										onClick={() =>
+											deleteResourceTag(
+												tag.tag_id,
+												resource?.r_id,
+											)
+										}
+									>
+										X
+									</DeleteTagButton>
+								</ResourceTag>
+							);
+						})}
+				</ResourceTags>
+			</ResourceHeader>
+			<ResourceContent>
+				<ResourceDescription
+					full={!!resource && resource?.tags?.length > 2}
+				>
+					{!isLoading && (
+						<TextEditor
+							editable={resource?.owner}
+							state={resource?.description}
+							setState={(e: string) => handleDescriptionChange(e)}
+						/>
+					)}
+				</ResourceDescription>
+				{!!resource && resource?.tags?.length < 3 && (
+					<TagSearchResults>
+						<AddTagInput
+							value={tagSearch}
+							onChange={(e: React.SyntheticEvent) => {
+								let target = e.target as HTMLInputElement;
+								setTagSearch(target.value);
+							}}
+							placeholder={'+ Add Tag'}
+						/>
+						{!isLoadingResults && renderSearchResults()}
+					</TagSearchResults>
+				)}
+			</ResourceContent>
 
-					<ResourceComments>
-						{!!resource && (
-							<ViewPost
-								focusList={{
-									focus: [resource.username],
-									title: 'author',
-								}}
-								commentthread={resource.commentthread}
-							/>
-						)}
-					</ResourceComments>
-				</ResourcePage>
-			</ModalDiv>
-		</OutsideDiv>,
+			<ResourceComments>
+				{!!resource && (
+					<ViewPost
+						focusList={{
+							focus: [resource.username],
+							title: 'author',
+						}}
+						commentthread={resource.commentthread}
+					/>
+				)}
+			</ResourceComments>
+		</Modal>,
 		document.querySelector('#modal') as Element,
 	);
 };

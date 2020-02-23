@@ -9,46 +9,6 @@ import {
 	layout,
 	length,
 } from '../../../../Styles/sharedStyles';
-import { animated } from 'react-spring';
-
-export const OutsideDiv = styled(animated.div)`
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 2;
-`;
-
-export const ModalDiv = styled(animated.div)`
-	position: absolute;
-	left: 15%;
-	right: 15%;
-	top: 15%;
-	min-height: 50%;
-	height: auto;
-	max-height: 80%;
-
-	overflow-y: auto;
-	color: ${color.primary};
-	border: 5px solid ${color.siteBG2};
-	border-radius: 2px;
-	margin: auto;
-	background: ${color.siteBG2};
-	z-index: 3 !important;
-	display: flex;
-	flex-direction: column;
-`;
-
-export const ResourcePage = styled.div`
-	width: 100%;
-	min-height: 100%;
-	height: 100%;
-`;
 
 export const ResourceHeader = styled.div`
 	${layout.col};
@@ -73,13 +33,6 @@ export const ResourceTitle = styled.div`
 	}
 `;
 
-export const SaveButton = styled.button`
-	position: absolute;
-	right: 0;
-	margin: ${length.margin} ${length.margin} ${length.margin} auto;
-	${components.button};
-`;
-
 export const ResourceTags = styled.div`
 	${layout.row};
 	margin: ${length.margin} ${length.margin} 0 ${length.margin};
@@ -87,13 +40,18 @@ export const ResourceTags = styled.div`
 
 export const ResourceContent = styled.div`
 	width: calc(100% - ${length.margin} * 2);
-	min-height: 50%;
-	height: 50%;
+	min-height: 40vh;
 	padding: ${length.margin} 0;
 	${border.setBorders(4, 0, 4, 0, color.siteBG1)};
 
 	margin: ${length.margin};
 	${layout.row};
+`;
+
+export const ResourceDescription = styled.div`
+	${font.text};
+	background-color: ${color.siteBG3};
+	width: calc(${(props) => (props.full ? '100%' : '60%')});
 `;
 
 export const AddTagInput = styled.input`
@@ -143,8 +101,8 @@ export const SearchResultTag = styled.div`
 	padding: 4px 8px;
 	width: calc(100% - 16px);
 	border-radius: 4px;
+	${cursor.clickable};
 	& span {
-		${cursor.clickable};
 		line-height: 34px;
 		&:hover {
 			color: lightgray;
@@ -154,14 +112,6 @@ export const SearchResultTag = styled.div`
 
 export const TagSearchResults = styled.div`
 	width: calc(40% - ${length.margin});
-`;
-
-export const ResourceDescription = styled.div`
-	${font.text};
-	min-height: 50%;
-	height: 400px;
-	background-color: ${color.siteBG3};
-	width: calc(${(props) => (props.full ? '100%' : '60%')});
 `;
 
 export const ResourceComments = styled.div`

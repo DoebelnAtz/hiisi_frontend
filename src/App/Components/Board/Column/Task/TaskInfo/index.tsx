@@ -1,14 +1,8 @@
-import React, {
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
-	OuterDiv,
 	TaskDescription,
-	TaskInfo,
 	TaskTitle,
 	TaskInfoHead,
 	PriorityDropdown,
@@ -22,20 +16,21 @@ import {
 	AddUser,
 	AddUserBtn,
 	TaskTitleEditable,
+	PriorityIcon,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
-import { useDismiss, useRequest } from '../../../../../../Hooks/index';
+import { useDismiss, useRequest } from '../../../../../../Hooks';
 import TextEditor from '../../../../TextEditor/index';
-import Button from '../../../../Buttons/Button';
 import { makeRequest } from '../../../../../../Api/Api';
 import Avatar from '../../../../Avatar/index';
-import { getPriorityIcon } from '../../../../../../Utils/taskUtils/index';
-import { RouteComponentProps, User } from '../../../../../../Types/index';
-import { TaskType } from '../../../Types/index';
-import DropDown from '../../../../DropDown/index';
-import { checkUserList } from '../../../../../../Utils/index';
-import SaveButton from '../../../../Buttons/SaveButton/index'
+import { getPriorityIcon } from '../../../../../../Utils/taskUtils';
+import { RouteComponentProps, User } from '../../../../../../Types';
+import { TaskType } from '../../../Types';
+import DropDown from '../../../../DropDown';
+import { checkUserList } from '../../../../../../Utils';
+import SaveButton from '../../../../Buttons/SaveButton';
+import Modal from '../../../../Modal';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;
 	pid: number;
@@ -76,8 +71,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		'projects/boards/tasks/' + match.params.tid,
 		'get',
 	);
-	const [saveButtonText, setSaveButtonText] = useState('save');
-	const [priorityInputVal, setPriorityInputVal] = useState<string>('');
 	const [searchResult, setSearchResult] = useState([]);
 	const [searchInput, setSearchInput] = useState<string>('');
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
@@ -101,11 +94,14 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		if (task) {
 			console.log(task);
 			if (!task.description) {
-				setTask({...task, description: ''})
+				setTask({ ...task, description: '' });
 			}
-			let resp = await makeRequest('projects/boards/update_task', 'put', task);
-			if (resp.data)
-				return true;
+			let resp = await makeRequest(
+				'projects/boards/update_task',
+				'put',
+				task,
+			);
+			if (resp.data) return true;
 		}
 		return false;
 	};
@@ -142,7 +138,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 		setSearchResult([]);
 		if (target.value.length > 0) {
-			let resp = await makeRequest(`users/search?q=${target.value}`, 'get');
+			let resp = await makeRequest(
+				`users/search?q=${target.value}`,
+				'get',
+			);
 
 			if (task && resp?.data) {
 				setSearchResult(
@@ -201,7 +200,9 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								key={collaborator.u_id}
 								src={collaborator.profile_pic}
 								alt={`${collaborator.username} profiled pic`}
-								onClick={() => history.push(`/user/${collaborator.u_id}`)}
+								onClick={() =>
+									history.push(`/user/${collaborator.u_id}`)
+								}
 							/>
 						);
 					}
@@ -219,38 +220,34 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	};
 
 	return ReactDOM.createPortal(
-		<OuterDiv>
-			<TaskInfo ref={inside}>
-				<TaskInfoHead>
-					<TaskTitleEditable
-						editable={task?.owner}
-						onChange={(e: React.SyntheticEvent) =>
-							handleTitleChange(e)
-						}
-						value={task?.title}
-					/>
-					<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
-					{task?.owner && (
-						<SaveButton onClick={updateTask}>{saveButtonText}</SaveButton>
+		<Modal inside={inside}>
+			<TaskInfoHead>
+				<TaskTitleEditable
+					editable={task?.owner}
+					onChange={(e: React.SyntheticEvent) => handleTitleChange(e)}
+					value={task?.title}
+				/>
+				<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
+				{task?.owner && (
+					<SaveButton onClick={updateTask}>Save</SaveButton>
+				)}
+			</TaskInfoHead>
+			<TaskInfoBody>
+				<TaskDescription>
+					{!isLoading && (
+						<TextEditor
+							editable={task?.owner}
+							state={task?.description ?? ''}
+							setState={(e: string) => handleDescriptionChange(e)}
+						/>
 					)}
-				</TaskInfoHead>
-				<TaskInfoBody>
-					<TaskDescription>
-						{!isLoading && (
-							<TextEditor
-								editable={task?.owner}
-								state={task?.description ?? ''}
-								setState={(e: string) =>
-									handleDescriptionChange(e)
-								}
-							/>
-						)}
-					</TaskDescription>
-					<TaskSidebar>
-						<TaskCollaborators>
-							{!isLoading && renderTaskCollaborators()}
-						</TaskCollaborators>
-						{task && checkUserList(task.collaborators) && (<AddUserToTask>
+				</TaskDescription>
+				<TaskSidebar>
+					<TaskCollaborators>
+						{!isLoading && renderTaskCollaborators()}
+					</TaskCollaborators>
+					{task && checkUserList(task.collaborators) && (
+						<AddUserToTask>
 							<AddUserInput
 								style={{ width: '100%' }}
 								value={searchInput}
@@ -259,14 +256,18 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								}
 								placeholder={'add user'}
 							/>
-						</AddUserToTask>)}
-						{!!searchResult.length && renderSearchResults()}
-					</TaskSidebar>
-				</TaskInfoBody>
-				<TaskFooter>
-					<img src={priorityIcon} />
-					{task && checkUserList(task.collaborators) &&
-					(<PriorityDropdown>
+						</AddUserToTask>
+					)}
+					{!!searchResult.length && renderSearchResults()}
+				</TaskSidebar>
+			</TaskInfoBody>
+			<TaskFooter>
+				<PriorityIcon
+					src={priorityIcon}
+					alt={`priority ${task?.priority}`}
+				/>
+				{task && checkUserList(task.collaborators) && (
+					<PriorityDropdown>
 						<DropDown
 							height={'34px'}
 							optionList={[
@@ -281,11 +282,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 							setSelect={handlePrioritySelect}
 							width={'200px'}
 						/>
-					</PriorityDropdown>)
-					}
-				</TaskFooter>
-			</TaskInfo>
-		</OuterDiv>,
+					</PriorityDropdown>
+				)}
+			</TaskFooter>
+		</Modal>,
 		document.querySelector('#modal') as Element,
 	);
 };

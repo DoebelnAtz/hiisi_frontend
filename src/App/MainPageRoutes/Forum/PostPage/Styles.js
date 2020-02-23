@@ -1,24 +1,5 @@
 import styled from 'styled-components';
-import {
-	layout,
-	length,
-	modal,
-	font,
-	color,
-	components,
-} from '../../../../Styles/sharedStyles';
-
-export const OutsideDiv = styled.div`
-	${modal.outside};
-`;
-
-export const InsideDiv = styled.div`
-	${modal.inside};
-	top: 10%;
-	padding: ${length.margin};
-	max-height: 80%;
-	bottom: 25%;
-`;
+import { layout, font, color } from '../../../../Styles/sharedStyles';
 
 export const PostHead = styled.div`
 	${layout.row};
@@ -38,7 +19,11 @@ export const PostDate = styled.div`
 
 export const PostContent = styled.div`
 	${layout.row};
-	height: 50%;
+	min-height: 40vh;
+`;
+
+export const PostDescription = styled.div`
+	width: 100%;
 `;
 
 export const PostComments = styled.div``;

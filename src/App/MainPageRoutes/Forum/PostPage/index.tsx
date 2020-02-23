@@ -1,22 +1,21 @@
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
-	InsideDiv,
-	OutsideDiv,
 	PostComments,
 	PostContent,
 	PostHead,
 	PostTitle,
 	PostDate,
+	PostDescription,
 } from './Styles';
 import { RouteComponentProps } from '../../../../Types';
 import { useDismiss, useRequest } from '../../../../Hooks';
-import { useLocation, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { PostType } from '../Types';
 import ViewPost from '../../../Components/CommentThread';
 import TextEditor from '../../../Components/TextEditor';
-import { formatDate } from '../../../../Utils/index';
-import queryString from 'query-string';
+import { formatDate } from '../../../../Utils';
+import Modal from '../../../Components/Modal';
 
 const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	history,
@@ -40,32 +39,32 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	useDismiss(inside, close);
 
 	return ReactDOM.createPortal(
-		<OutsideDiv>
-			<InsideDiv ref={inside}>
-				<PostHead>
-					<PostTitle>{post?.title}</PostTitle>
-					<PostDate>{formatDate(post?.published_date)}</PostDate>
-				</PostHead>
-				<PostContent>
+		<Modal inside={inside}>
+			<PostHead>
+				<PostTitle>{post?.title}</PostTitle>
+				<PostDate>{formatDate(post?.published_date)}</PostDate>
+			</PostHead>
+			<PostContent>
+				<PostDescription>
 					<TextEditor
 						editable={true}
 						state={post?.content}
 						setState={handleDescriptionChange}
 					/>
-				</PostContent>
-				<PostComments>
-					{post && (
-						<ViewPost
-							commentthread={post?.commentthread}
-							focusList={{
-								focus: [post.username],
-								title: 'author',
-							}}
-						/>
-					)}
-				</PostComments>
-			</InsideDiv>
-		</OutsideDiv>,
+				</PostDescription>
+			</PostContent>
+			<PostComments>
+				{post && (
+					<ViewPost
+						commentthread={post?.commentthread}
+						focusList={{
+							focus: [post.username],
+							title: 'author',
+						}}
+					/>
+				)}
+			</PostComments>
+		</Modal>,
 		document.querySelector('#modal') as Element,
 	);
 };

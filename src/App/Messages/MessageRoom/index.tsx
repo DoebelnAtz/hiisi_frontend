@@ -37,9 +37,9 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`GET`,
 	);
 	const [connected, setConnected] = useState<boolean>(false);
-	const [page, setPage] = useState(1);
-	const [room, setRoom, isLoading] = useRequest<RoomType>(
-		`messages/threads/${tid.toString()}?page=${page}`,
+	const inputRef = useRef<HTMLTextAreaElement>(null);
+	const [room, setRoom] = useRequest<RoomType>(
+		`messages/threads/${tid.toString()}?page=1`,
 		'GET',
 	);
 	const [newMessage, setNewMessage] = useState<MessageType>();
@@ -82,6 +82,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			setNewMessage(message);
 		});
 		setSocket(socket);
+		inputRef.current && inputRef.current.focus();
 		scrollDown.current && scrollDown.current.scrollIntoView();
 		return () => {
 			socket.disconnect();
@@ -163,6 +164,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			</MessageFeedDiv>
 			<MessageInputSend>
 				<MessageInputTextArea
+					ref={inputRef}
 					onKeyDown={(e: React.KeyboardEvent<Element>) =>
 						handleKeyDown(e)
 					}

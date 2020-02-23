@@ -89,7 +89,7 @@ const AddUserToRoom: React.FC = () => {
 		<AddUserDiv>
 			<NavigationDiv>
 				<GoBackButton onClick={() => setCurrentChat(-currentChat)}>
-					Go back
+					Back
 				</GoBackButton>
 			</NavigationDiv>
 			<ChatRoomUsers>{renderConnectedUsers()}</ChatRoomUsers>
