@@ -9,24 +9,29 @@ import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
 import DropDown from '../../Components/DropDown/index';
 import ForumFeed from './ForumFeed/index';
 import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
+import { getLocal, setLocal } from '../../../Utils';
 
 const Feed = ({}) => {
 	const [popup, setPopup] = useState(false);
 
 	const isMounted = useRef(true);
 
-	const [sortBy, setSortBy] = useState('popular');
+	const [sortBy, setSortBy] = useState(
+		getLocal('forumSortPref')?.sortBy || 'popular',
+	);
 	const [reverse, setReverse] = useState('false');
 	const [posts, setPosts, isLoading] = useRequest<PostType[]>(
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 
-	const handleOrderSelect = (e: string) => {
-		if (e === sortBy) {
+	const handleOrderSelect = (sort: string) => {
+		setLocal('forumSortPref', { sortBy: sort });
+		if (sort === sortBy) {
 			setReverse(reverse === 'false' ? 'true' : 'false');
 		} else {
-			setSortBy(e);
+			setReverse('false');
+			setSortBy(sort);
 		}
 	};
 
@@ -39,10 +44,10 @@ const Feed = ({}) => {
 				<DropDown
 					state={sortBy}
 					setSelect={handleOrderSelect}
-					text={'Sort by: '}
+					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
 					height={'34px'}
-					width={'160px'}
+					width={'175px'}
 				/>
 			</FeedButtonRow>
 			<CreatePostModal

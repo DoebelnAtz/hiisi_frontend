@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useNav, useRequest } from '../../../Hooks/index';
+import { useNav, useRequest } from '../../../Hooks';
 import { ProjectList, CreateProjectButton, ProjectButtonRow } from './Style';
-import ProjectFeed from './ProjectFeed/index';
-import { Project } from './Types/index';
-import CreateProjectModal from './CreateProjectModal/index';
-import DropDown from '../../Components/DropDown/index';
+import ProjectFeed from './ProjectFeed';
+import { Project } from './Types';
+import CreateProjectModal from './CreateProjectModal';
+import DropDown from '../../Components/DropDown';
 import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
+import { getLocal, setLocal } from '../../../Utils';
 
 const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [showModal, setShowModal] = useState(false);
-	const [sortBy, setSortBy] = useState('popular');
+	const [sortBy, setSortBy] = useState(
+		getLocal('OHSortPref')?.sortBy || 'popular',
+	);
 	const [reverse, setReverse] = useState('false');
 	useNav('Open Hive');
 	const [projects, setProjects, isLoading] = useRequest<Project[]>(
@@ -20,6 +23,8 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	);
 
 	const onSortSelect = (sort: string) => {
+		// Save sorting preference to localstorage
+		setLocal('OHSortPref', { sortBy: sort });
 		if (sort === sortBy) {
 			setReverse(reverse === 'true' ? 'false' : 'true');
 		} else {
@@ -44,9 +49,9 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 				<DropDown
 					state={sortBy}
 					setSelect={onSortSelect}
-					text={'Sort By: '}
+					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
-					width={'160px'}
+					width={'175px'}
 					height={'34px'}
 				/>
 			</ProjectButtonRow>

@@ -60,6 +60,9 @@ export const font = {
 	link: css`
 		color: ${color.tertiary};
 		text-decoration: none;
+		&:hover {
+			color: ${colorAdjust.darken(color.tertiary, 0.2)};
+		}
 	`,
 };
 

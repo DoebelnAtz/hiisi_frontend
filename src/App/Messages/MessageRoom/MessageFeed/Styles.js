@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
 	color,
 	components,
+	font,
 	layout,
 	length,
 } from '../../../../Styles/sharedStyles';
@@ -49,4 +50,7 @@ export const MessageInfo = styled.div`
 
 export const MessageContent = styled.div`
 	margin-top: 5px;
+	& span a {
+		${font.link};
+	}
 `;

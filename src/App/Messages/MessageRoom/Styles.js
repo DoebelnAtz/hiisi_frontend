@@ -73,6 +73,7 @@ export const MessageInputTextArea = styled.textarea`
 	height: calc(38px - 12px);
 	max-height: 10vh;
 	width: calc(70%);
+	font-size: 14px;
 	border-radius: ${length.radius};
 `;
 

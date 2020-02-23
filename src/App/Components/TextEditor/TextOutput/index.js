@@ -35,14 +35,25 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 		}
 	};
 
-	const handleTabPress = (e) => {
-		//doesn't work, something with react DnD
-
+	const enableTab = (e) => {
 		if (e.keyCode === 9) {
+			// tab was pressed
 			e.preventDefault();
-			let space = new KeyboardEvent('keydown', { keyCode: 32 });
+			// get caret position/selection
+			let val = editOutput.current.value,
+				start = editOutput.current.selectionStart,
+				end = editOutput.current.selectionEnd;
+			console.log(val, start, end);
+			// set textarea value to: text before caret + tab + text after caret
+			editOutput.current.value =
+				val.substring(0, start) + '\t' + val.substring(end);
 
-			for (var i = 0; i < 4; i++) document.dispatchEvent(space);
+			// put caret at right position again
+			editOutput.current.selectionStart = editOutput.current.selectionEnd =
+				start + 1;
+
+			// prevent the focus lose
+			return false;
 		}
 	};
 
@@ -53,6 +64,7 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 
 	useEffect(() => {
 		document.addEventListener('click', handleFocus);
+
 		return () => {
 			document.removeEventListener('click', handleFocus);
 		};
@@ -67,9 +79,11 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 				dangerouslySetInnerHTML={{ __html: state }}
 			/>
 			<TextEditOutput
+				id={'texteditor'}
 				style={{ display: editing && editable ? 'block' : 'none' }}
 				ref={editOutput}
 				value={state}
+				onKeyDown={(e) => enableTab(e)}
 				onChange={(e) => handleChange(e)}
 			/>
 		</Fragment>

@@ -12,7 +12,7 @@ import {
 
 import SubmitResource from './SubmitResource/index';
 import { makeRequest } from '../../../Api/Api';
-import { getLocal } from '../../../Utils/index';
+import { getLocal, setLocal } from '../../../Utils';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';
 import DropDown from '../../Components/DropDown';
@@ -21,20 +21,24 @@ import PlaceHolderFeed from '../../Components/PlaceHolderFeed';
 
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [filter, setFilter] = useState('none');
-	const [sortBy, setSortBy] = useState('popular');
-	const [sortRev, setSortRev] = useState('false');
+	const [sortBy, setSortBy] = useState(
+		getLocal('resourceSortPref')?.sortBy || 'popular',
+	);
+	const [reverse, setSortRev] = useState('false');
 
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
-		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${sortRev}`,
+		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	useNav('resources');
 	const [popup, setPopup] = useState(false);
 
 	const onSortSelect = (sort: string) => {
+		// Save sorting preference to localstorage
+		setLocal('resourceSortPref', { sortBy: sort });
 		if (sort === sortBy) {
-			setSortRev(sortRev === 'true' ? 'false' : 'true');
+			setSortRev(reverse === 'true' ? 'false' : 'true');
 		} else {
 			setSortRev('false');
 			setSortBy(sort);
@@ -64,10 +68,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					Submit Resource
 				</SubmitResourceButton>
 				<DropDown
-					width={'156px'}
+					width={'175px'}
 					height={'34px'}
 					state={sortBy}
-					text={'Sort by: '}
+					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					setSelect={onSortSelect}
 					optionList={['popular', 'recent', 'title']}
 				/>
@@ -89,7 +93,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 			{(resources && (
 				<ResourcesResourceFeed
 					pagination={2}
-					reverse={sortRev}
+					reverse={reverse}
 					sortBy={sortBy}
 					filterBy={filter}
 					setFilter={setFilter}

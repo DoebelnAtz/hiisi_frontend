@@ -1,4 +1,6 @@
 import React, { useState, Fragment } from 'react';
+import Linkify from 'react-linkify';
+
 import { MessageType, RoomType } from '../../Types';
 import {
 	LoadMoreButton,
@@ -26,6 +28,7 @@ const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 		{},
 		messages.length >= 20,
 	);
+
 	const renderMessages = () => {
 		if (messages && messages?.length) {
 			return messages.map((message) => {
@@ -51,11 +54,10 @@ const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 								{calculateTimeSince(message.time_sent)}
 							</MessageDate>
 						</MessageInfo>
-
 						<MessageContent>
-							<span className={'message_text'}>
-								{message.message}
-							</span>
+							<Linkify>
+								<span>{message.message}</span>
+							</Linkify>
 						</MessageContent>
 					</Message>
 				);
