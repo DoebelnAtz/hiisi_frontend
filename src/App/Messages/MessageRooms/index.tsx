@@ -1,20 +1,11 @@
-import React, {
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-	Fragment,
-} from 'react';
+import React, { useContext, useState, Fragment } from 'react';
 import { ThreadItem, CreateThreadRow, NotificationIcon } from './Styles';
 import { makeRequest } from '../../../Api/Api';
-import Input from '../../Components/Input';
-import Button from '../../Components/Buttons/Button';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
 import InputWithButton from '../../Components/Buttons/InputWithButton';
-import { useDismiss, useRequest } from '../../../Hooks';
+import { useRequest } from '../../../Hooks';
 import { NotificationContext } from '../../../Context/NotificationContext';
-import { Notification } from '../../../Types';
 import { ChatContext } from '../../../Context/ChatContext';
 
 type MessageRoomProps = {

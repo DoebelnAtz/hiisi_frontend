@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
-import ReactDom from 'react-dom';
 import {
 	InsideDiv,
 	OutsideDiv,
@@ -15,7 +14,6 @@ import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor/index';
 import { makeRequest } from '../../../../Api/Api';
 import { validateUrl } from '../../../../Utils';
-import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type CreateProjectModalProps = {
 	setShowModal: Dispatch<SetStateAction<boolean>>;

@@ -23,8 +23,9 @@ export const TaskStatus = styled.div`
 `;
 
 export const TaskStatusText = styled.div`
-	position: absolute;
+	position: static;
 	visibility: hidden;
+	width: auto;
 	& span {
 		padding: 7px;
 		position: relative;
@@ -37,9 +38,13 @@ export const TaskStatusText = styled.div`
 `;
 
 export const TaskStatusTooltip = styled.div`
-	width: 25px;
-	height: 0;
+	position: absolute;
 	& img {
+		position: relative;
+		background-color: ${color.siteBG2};
+		border-radius: 10px;
+		top: -15px;
+		left: -20px;
 		height: 20px;
 		width: 20px;
 	}
@@ -92,7 +97,7 @@ export const Task = styled.div`
 `;
 
 export const TaskTitle = styled.div`
-	width: calc(100% - ${(props) => (props.tooltip ? '54px' : '24px')});
+	width: calc(100% - 24px);
 	& span {
 		font-size: 16px;
 	}
@@ -103,8 +108,10 @@ export const DeleteTaskImg = styled.div`
 	width: 24px;
 	& img {
 		border-radius: 12px;
+		background-color: ${color.siteBG2};
 		height: 24px;
 		width: 24px;
+		transition: background-color 0.1s;
 		&:hover {
 			background-color: ${color.siteBG1};
 		}

@@ -1,32 +1,28 @@
 import styled from 'styled-components';
 
-import { border, color, colorAdjust, components, cursor, layout, length } from '../../../../Styles/sharedStyles';
+import {
+	border,
+	color,
+	colorAdjust,
+	components,
+	cursor,
+	font,
+	layout,
+	length,
+} from '../../../../Styles/sharedStyles';
 
 export const ParentComment = styled.div`
-    margin-left: ${length.margin};
-    margin-top: ${length.margin};
-    ${border.setBorders(1, 1, 1, 1, color.primary)};
-    background-color: ${props => props.odd ? color.siteBG2 : color.siteBG3};
-    border-top-left-radius: 28px;
-    position: relative;
-    top: 1px;
-    left: 1px;
-    border-bottom-left-radius: 10px;
-    
-    & img {
-        border: 3px solid ${color.primary};
-        position: relative;
-        bottom: 1px;
-        right: 1px;
-        border-radius: 50% 0 50% 50%;
-        width: 52px;
-        height: 52px;
-  }
+	margin-left: ${length.margin};
+	margin-top: ${length.margin};
+	background-color: ${(props) => (props.odd ? color.siteBG1 : color.siteBG2)};
+	position: relative;
+	padding-bottom: ${length.margin};
+	border-radius: 26px ${length.radius} ${length.radius} ${length.radius};
 `;
 
 export const ButtonRow = styled.div`
-    margin: 0 ${length.margin};
-    ${layout.row};
+	margin: 0 ${length.margin};
+	${layout.row};
 `;
 
 export const ShowRepliesButton = styled.button`
@@ -37,36 +33,50 @@ export const ShowRepliesButton = styled.button`
 `;
 
 export const CommentInfo = styled.div`
-    position: relative;
-    right: 1px;
-    bottom: 1px;
-    height: 28px;
-    line-height: 28px;
-    padding-left: ${length.margin};
-    ${border.setBorders(1, 1, 1, 0, color.primary)};
-    border-radius: 0 15px 15px 0;
-    width: auto;
-    padding-right: ${length.margin};
+	position: relative;
+	height: 28px;
+	top: 5px;
+	line-height: 28px;
+	left: -21px;
+	z-index: 1;
+	background-color: ${(props) => (props.odd ? color.siteBG2 : color.siteBG1)};
+	padding-left: ${length.margin};
+	width: auto;
+	border-radius: 0 10px 10px 0;
+
+	padding-right: ${length.margin};
+	& span {
+		color: #ffffff;
+		margin-left: 20px;
+		margin-right: 10px;
+	}
 `;
 
 export const CommentHead = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  & img {
-  	${cursor.clickable};
-  }
+	display: flex;
+	flex-wrap: wrap;
+	& img {
+		${cursor.clickable};
+		border: 5px solid
+			${(props) => (props.odd ? color.siteBG1 : color.siteBG2)};
+		position: relative;
+		border-radius: 50%;
+		width: 42px;
+		height: 42px;
+		z-index: 2;
+	}
 `;
 
 export const CommentBody = styled.div`
-    margin: ${length.margin} calc(${length.margin} * 2) 0;
-    padding-bottom: ${length.margin};
+	margin: ${length.margin} ${length.margin} 0;
+	${font.text};
+	padding-bottom: ${length.margin};
 `;
 
 export const ReplyRow = styled.div`
-	width: calc(100% - ${props => props.full ? '110px' : '0px'});
+	width: calc(100% - ${(props) => (props.full ? '110px' : '0px')});
 `;
 
-
 export const ChildComments = styled.div`
-  margin: ${length.margin} 0 0 0;
+	padding-right: ${length.margin};
 `;

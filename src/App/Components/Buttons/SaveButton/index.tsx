@@ -10,21 +10,26 @@ const SaveButtonComponent: React.FC<SaveButtonComponentProps> = ({
 	onClick,
 }) => {
 	const [saved, setSaved] = useState(false);
+	const [error, setError] = useState(false);
 
 	const handleClick = async () => {
-		setSaved(true);
 		try {
 			let resp = await onClick();
 			console.log(resp);
+			setSaved(true);
+
 			setTimeout(() => {
 				setSaved(false);
 			}, 1000);
 		} catch (e) {
-			setSaved(false);
+			setError(true);
+			setTimeout(() => {
+				setError(false);
+			}, 1000);
 		}
 	};
 	return (
-		<SaveButton saved={saved} onClick={() => handleClick()}>
+		<SaveButton saved={saved} error={error} onClick={() => handleClick()}>
 			{children}
 		</SaveButton>
 	);

@@ -22,7 +22,6 @@ import { makeRequest } from '../../../../Api/Api';
 import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import SaveButton from '../../../Components/Buttons/SaveButton/index';
-import { useLocation, useParams } from 'react-router-dom';
 import Modal from '../../../Components/Modal';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
@@ -173,6 +172,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 							focus: [resource.username],
 							title: 'author',
 						}}
+						OPAuthorId={resource.u_id}
 						commentthread={resource.commentthread}
 					/>
 				)}

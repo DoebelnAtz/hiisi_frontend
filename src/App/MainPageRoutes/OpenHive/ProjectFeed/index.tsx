@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { useRequest } from '../../../../Hooks/index';
-import { Project } from '../Types/index';
+import { useRequest } from '../../../../Hooks';
+import { Project } from '../Types';
 import ProjectCard from './ProjectCard/index';
 import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';

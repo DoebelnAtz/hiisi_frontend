@@ -1,7 +1,14 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, {
+	Dispatch,
+	Fragment,
+	SetStateAction,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 import { makeRequest } from '../../../../Api/Api';
-import { ReplyProps } from '../../../MainPageRoutes/Forum/Types';
+import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 
 import {
 	CommentInput,
@@ -12,11 +19,20 @@ import {
 } from './Styles';
 import { useSpring } from 'react-spring';
 
+type ReplyProps = {
+	commentThread: CommentType[] | undefined;
+	expandChildThread?: Dispatch<SetStateAction<boolean>>;
+	setCommentThread: Dispatch<SetStateAction<CommentType[] | undefined>>;
+	childThreadId: number;
+	OPAuthorId: number;
+};
+
 const ReplyButton: React.FC<ReplyProps> = ({
 	commentThread,
 	expandChildThread,
 	setCommentThread,
 	childThreadId,
+	OPAuthorId,
 }) => {
 	const [commentText, setCommentText] = useState('');
 	const [opened, setOpened] = useState(false);
@@ -30,8 +46,10 @@ const ReplyButton: React.FC<ReplyProps> = ({
 				content: commentText,
 				threadId: childThreadId,
 				originLink: location.pathname,
+				OPAuthorId: OPAuthorId,
 			});
 			if (resp.data) {
+				setCommentText('');
 				!!commentThread &&
 					setCommentThread([...commentThread, resp.data]);
 			}

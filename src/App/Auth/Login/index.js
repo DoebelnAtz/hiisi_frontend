@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { setLocal } from '../../../Utils';
-import axios from 'axios';
 import {
 	BackgroundDiv,
 	LoginDiv,
@@ -15,7 +14,6 @@ import {
 	HelperDiv,
 	LoginButton,
 } from './Styles';
-import Button from '../../Components/Buttons/Button';
 import { useSpring, useChain } from 'react-spring';
 import { makeRequest } from '../../../Api/Api';
 const Login = (props) => {
@@ -176,7 +174,7 @@ const Login = (props) => {
 							/>
 						</PasswordDiv>
 						<LoginButton>
-							<Button onClick={requestLogin}>Login</Button>
+							<button onClick={requestLogin}>Login</button>
 						</LoginButton>
 					</div>
 				</InputDiv>

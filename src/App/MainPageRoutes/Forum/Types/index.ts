@@ -1,5 +1,5 @@
-import {FocusList} from "../../../../Types/index";
-import { vote } from '../../Resources/Types/index';
+import {FocusList} from "../../../../Types";
+import { vote } from '../../Resources/Types';
 
 export interface CommentType {
     c_id: number,
@@ -11,13 +11,7 @@ export interface CommentType {
     childthread: number
 }
 
-export interface CommentProps {
-    odd: boolean,
-    focusList: FocusList,
-    child: CommentType,
-    renderComments: (odd: boolean, thread: Array<CommentType> | undefined, expanded: boolean) => void,
-    isExpanded: boolean
-}
+
 
 export interface PostType {
     b_id: number,
@@ -25,23 +19,15 @@ export interface PostType {
     title: string,
     content: string,
     owner: boolean,
+    u_id: number,
     published_date: string,
     commentthread: number,
     voted: vote,
     votes: number
 }
 
-export interface ReplyProps {
-    commentThread: CommentType[] | undefined,
-    expandChildThread?: any,
-    setCommentThread: any,
-    childThreadId: number
-}
 
-export type ViewPostProps = {
-    commentthread: number,
-    focusList: FocusList,
-}
+
 
 export type CreatePostModalProps = {
     setPopup: any,

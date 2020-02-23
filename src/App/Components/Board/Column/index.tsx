@@ -9,7 +9,6 @@ import { Droppable } from 'react-beautiful-dnd';
 
 import { Column, ColumnTitle, ColumnList, AddTaskInput } from './Styles';
 import Task from './Task/index';
-import Input from '../../Input';
 import { BoardType, ColumnType, TaskType } from '../Types';
 import { makeRequest } from '../../../../Api/Api';
 
@@ -42,6 +41,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 		setTitleVal(column.title);
 	}, [column.title]);
 
+	// if pressed key is Enter send a request to the api
 	const handleTitleEnter = async (e: KeyboardEvent) => {
 		if (editable && e.key === 'Enter' && titleVal !== column.title) {
 			let res = await makeRequest(

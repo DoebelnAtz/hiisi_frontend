@@ -20,7 +20,6 @@ import { RouteComponentProps, User } from '../../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
-import { inspect } from 'util';
 import { color } from '../../../../Styles/sharedStyles';
 import ProjectSettings from './ProjectSettingsPage';
 import { makeRequest } from '../../../../Api/Api';
@@ -71,6 +70,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 								),
 								title: 'collaborator',
 							}}
+							OPAuthorId={0}
 							commentthread={project.commentthread}
 						/>
 					);

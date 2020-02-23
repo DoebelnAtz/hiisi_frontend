@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { User } from '../../../../../Types/index';
+import { User } from '../../../../../Types';
 import { useHistory } from 'react-router-dom';
-import { Project } from '../../Types/index';
+import { Project } from '../../Types';
 import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
 import ArrowDown from '../../../../../Assets/ArrowDown.png';
-import { formatDate } from '../../../../../Utils/index';
-import DeleteImg from '../../../../../Assets/x.png';
+import { formatDate } from '../../../../../Utils';
 import ShareImg from '../../../../../Assets/Share.png';
-import { vote } from '../../../Resources/Types/index';
+import { vote } from '../../../Resources/Types';
 import { CollaboratorList } from './Styles';
 import {
 	Card,

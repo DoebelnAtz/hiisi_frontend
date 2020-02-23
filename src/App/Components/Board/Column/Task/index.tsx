@@ -109,9 +109,7 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 										</TaskStatusText>
 									</TaskStatusTooltip>
 								)}
-								<TaskTitle tooltip={!!task.status.length}>
-									{task.title}
-								</TaskTitle>
+								<TaskTitle>{task.title}</TaskTitle>
 								{editable && checkUserList(task.collaborators) && (
 									<DeleteTaskImg
 										onClick={(e: React.SyntheticEvent) =>

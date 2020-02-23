@@ -12,11 +12,9 @@ import {
 import { OuterDiv } from './Styles';
 import { useDismiss } from '../../../../Hooks';
 import TextEditor from '../../../Components/TextEditor';
-import Button from '../../../Components/Buttons/Button';
 import { ButtonRow } from './Styles';
 import { makeRequest } from '../../../../Api/Api';
 import { SubmitResourceProps } from '../Types';
-import { string } from 'prop-types';
 
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
@@ -88,7 +86,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					/>
 				</EditDescription>
 				<ButtonRow>
-					<Button onClick={submitResource}>Submit</Button>
+					<button onClick={submitResource}>Submit</button>
 				</ButtonRow>
 			</SubmitResource>
 		</OuterDiv>,

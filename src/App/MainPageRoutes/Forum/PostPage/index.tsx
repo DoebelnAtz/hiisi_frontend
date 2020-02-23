@@ -61,6 +61,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 							focus: [post.username],
 							title: 'author',
 						}}
+						OPAuthorId={post.u_id}
 					/>
 				)}
 			</PostComments>

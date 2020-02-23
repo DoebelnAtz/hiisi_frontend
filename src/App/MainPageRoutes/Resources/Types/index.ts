@@ -12,6 +12,7 @@ export interface ResourceType {
 	tags: Tag[],
 	title: string,
 	username: string,
+	u_id: number,
 	link: string,
 	commentthread: number,
 	owner: boolean,

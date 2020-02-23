@@ -1,10 +1,7 @@
 import React, { useState, useRef } from 'react';
-import Post from './ForumFeed/Post/index';
-import { useRequest } from '../../../Hooks/index';
-import { useTrail, animated } from 'react-spring';
+import { useRequest } from '../../../Hooks';
 import CreatePostModal from './CreatePostModal/index';
-import Button from '../../Components/Buttons/Button';
-import { PostType } from './Types/index';
+import { PostType } from './Types';
 import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
 import DropDown from '../../Components/DropDown/index';
 import ForumFeed from './ForumFeed/index';

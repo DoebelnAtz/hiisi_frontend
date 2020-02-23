@@ -1,8 +1,6 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import Reply from '../Reply';
-import { formatDate } from '../../../../Utils/index';
-import { makeRequest } from '../../../../Api/Api';
-import Button from '../../Buttons/Button';
+import { formatDate } from '../../../../Utils';
 import { useRequest } from '../../../../Hooks';
 
 import {
@@ -15,9 +13,21 @@ import {
 	ShowRepliesButton,
 	ReplyRow,
 } from './Styles';
-import { CommentProps, CommentType } from '../../../MainPageRoutes/Forum/Types';
-import { Collaborator } from '../../Board/Column/Task/TaskInfo/Styles';
+import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 import { useHistory } from 'react-router';
+import CommentFeed from '../CommentFeed';
+import { FocusList } from '../../../../Types';
+
+export interface CommentProps {
+	odd: boolean;
+	focusList: FocusList;
+	child: CommentType;
+	renderComments: (
+		thread: Array<CommentType> | undefined,
+		expanded: boolean,
+	) => void;
+	isExpanded: boolean;
+}
 
 const CommentCard: React.FC<CommentProps> = ({
 	odd,
@@ -29,19 +39,19 @@ const CommentCard: React.FC<CommentProps> = ({
 	const history = useHistory();
 	const [expanded, setExpanded] = useState(false);
 	const [childThread, setChildThread, isLoading] = useRequest<CommentType[]>(
-		'blogs/commentthread/' + child.childthread,
+		`blogs/commentthread/${child.childthread}?page=1`,
 		'get',
 	);
 	if (isExpanded)
 		return (
 			<ParentComment key={child.c_id} odd={odd}>
-				<CommentHead>
+				<CommentHead odd={odd}>
 					<img
 						src={child.profile_pic}
 						alt={`${child.username} profiled pic`}
 						onClick={() => history.push(`/user/${child.u_id}`)}
 					/>
-					<CommentInfo>
+					<CommentInfo odd={odd}>
 						<span>
 							{child.username} | {formatDate(child.comment_date)}
 							{focusList.focus.includes(child.username)
@@ -71,12 +81,19 @@ const CommentCard: React.FC<CommentProps> = ({
 							expandChildThread={setExpanded}
 							setCommentThread={setChildThread}
 							childThreadId={child.childthread}
+							OPAuthorId={child.u_id}
 						/>
 					</ReplyRow>
 				</ButtonRow>
-				{!!childThread && (
+				{expanded && !!childThread && (
 					<ChildComments>
-						{renderComments(!odd, childThread, expanded)}
+						<CommentFeed
+							commentThread={child.childthread}
+							comments={childThread}
+							focusList={focusList}
+							page={2}
+							odd={!odd}
+						/>
 					</ChildComments>
 				)}
 			</ParentComment>

@@ -5,7 +5,6 @@ import { useDismiss, useNav, useRequest } from '../../../Hooks';
 import { getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
-import { NotificationContext } from '../../../Context/NotificationContext';
 import {
 	ConnectedDot,
 	ConnectedUser,
@@ -48,9 +47,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		'GET',
 	);
 	const [socket, setSocket] = useState<SocketType>();
-	const { state: notifications, update: setNotifications } = useContext(
-		NotificationContext,
-	);
+
 	const { state: currentChat, update: setCurrentChat } = useContext(
 		ChatContext,
 	);
