@@ -39,6 +39,12 @@ const Login = (props) => {
 		}
 	};
 
+	const handleEnterPress = (e) => {
+		if (e.key === 'Enter') {
+			requestLogin(e);
+		}
+	};
+
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [animate, setAnimate] = useState(false);
@@ -157,6 +163,7 @@ const Login = (props) => {
 							<UsernameInput
 								type={'text'}
 								value={username}
+								onKeyDown={(e) => handleEnterPress(e)}
 								onChange={(e) => setUsername(e.target.value)}
 							/>
 						</UsernameDiv>
@@ -164,6 +171,7 @@ const Login = (props) => {
 							<PasswordInput
 								type={'password'}
 								value={password}
+								onKeyDown={(e) => handleEnterPress(e)}
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</PasswordDiv>

@@ -9,7 +9,7 @@ import {
 } from '../../../Styles/sharedStyles';
 
 export const AddUserDiv = styled.div`
-	height: calc(30vh + 165px);
+	height: calc(30vh + 167px);
 	padding: ${length.margin};
 `;
 

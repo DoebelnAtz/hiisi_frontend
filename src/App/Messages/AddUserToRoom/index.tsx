@@ -13,7 +13,6 @@ import { ChatContext } from '../../../Context/ChatContext';
 import { useRequest } from '../../../Hooks';
 import { User } from '../../../Types';
 import { ConnectedUser } from '../MessageRoom/Styles';
-import { getLocal } from '../../../Utils';
 import { makeRequest } from '../../../Api/Api';
 
 const AddUserToRoom: React.FC = () => {
@@ -24,7 +23,6 @@ const AddUserToRoom: React.FC = () => {
 		User[]
 	>(`messages/threads/${-currentChat.toString()}/users`, `GET`);
 	const [searchUserInputVal, setSearchUserInputVal] = useState('');
-	console.log(searchUserInputVal.length);
 	const [userResults, setUserResults] = useRequest<User[]>(
 		`users/search?q=${searchUserInputVal}`,
 		'GET',
@@ -47,12 +45,20 @@ const AddUserToRoom: React.FC = () => {
 		setSearchUserInputVal(target.value);
 	};
 
-	const handleResultClick = async (userId: Number) => {
+	const handleInputEnter = async (e: React.KeyboardEvent) => {
+		if (userResults && e.key === 'Enter') {
+			handleResultClick(userResults[0].u_id);
+		}
+	};
+
+	const handleResultClick = async (userId: number) => {
 		let resp = await makeRequest(`messages/threads/add_user`, 'POST', {
 			targetId: userId,
 			threadId: -currentChat,
 		});
 		if (resp.data && connectedUsers) {
+			setSearchUserInputVal('');
+			setUserResults([]);
 			setConnectedUsers([...connectedUsers, resp.data]);
 		}
 	};
@@ -90,6 +96,7 @@ const AddUserToRoom: React.FC = () => {
 			<UserSearchInput
 				value={searchUserInputVal}
 				onChange={(e: React.SyntheticEvent) => handleInputChange(e)}
+				onKeyDown={(e: React.KeyboardEvent) => handleInputEnter(e)}
 				placholder={'add user'}
 			/>
 			{renderUserResults()}

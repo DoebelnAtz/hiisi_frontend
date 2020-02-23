@@ -14,7 +14,6 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	focusList,
 }) => {
 	const location = useLocation();
-	console.log(commentthread);
 	const [commentThread, setCommentThread] = useState(
 		queryString.parse(location.search)?.comment
 			? Number(queryString.parse(location.search)?.comment)

@@ -2,13 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useDismiss, useNav, useRequest } from '../../../Hooks';
-import { makeRequest } from '../../../Api/Api';
-import { calculateTimeSince, getLocal } from '../../../Utils';
+import { getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
-import AddToChat from '../../Components/Buttons/AddToChat';
 import { NotificationContext } from '../../../Context/NotificationContext';
-import { RowDiv } from '../../../Styles/LayoutStyles';
 import {
 	ConnectedDot,
 	ConnectedUser,
@@ -24,7 +21,7 @@ import {
 	ChatRoomUsers,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
-import { Notification, SocketType, User } from '../../../Types';
+import { SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
 import MessageFeed from './MessageFeed';
 
@@ -35,9 +32,10 @@ type MessageRoomPropsTypes = {
 const MessageRoom: React.FC<RouteComponentProps<{}> &
 	MessageRoomPropsTypes> = ({ match, tid }) => {
 	const [inputVal, setInputVal] = useState('');
-	const [connectedUsers, setConnectedUsers, isLoadingUsers] = useRequest<
-		User[]
-	>(`messages/threads/${tid.toString()}/users`, `GET`);
+	const [connectedUsers, ,] = useRequest<User[]>(
+		`messages/threads/${tid.toString()}/users`,
+		`GET`,
+	);
 	const [connected, setConnected] = useState<boolean>(false);
 	const [page, setPage] = useState(1);
 	const [room, setRoom, isLoading] = useRequest<RoomType>(
