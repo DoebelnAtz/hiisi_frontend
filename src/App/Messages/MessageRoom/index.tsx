@@ -36,13 +36,17 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`messages/threads/${tid.toString()}/users`,
 		`GET`,
 	);
+	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [connected, setConnected] = useState<boolean>(false);
 	const inputRef = useRef<HTMLTextAreaElement>(null);
 	const [room, setRoom] = useRequest<RoomType>(
 		`messages/threads/${tid.toString()}?page=1`,
 		'GET',
 	);
-	const [activeUsers, setActiveUsers] = useState<string[]>([]);
+	const [activeUsers, setActiveUsers] = useRequest<{ u_id: number }[]>(
+		`users/online`,
+		'GET',
+	);
 	const [socket, setSocket] = useState<SocketType>();
 	const { state: notifications, update: setNotifications } = useContext(
 		NotificationContext,
@@ -55,62 +59,61 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	let inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setCurrentChat(0));
+
 	useEffect(() => {
-		let socket: SocketType;
-		if (room) {
-			let user = getLocal('token');
-			socket = socketIOClient('http://localhost:5010', {
-				transportOptions: {
-					polling: {
-						extraHeaders: {
-							Authorization: 'Bearer ' + user.token,
-							Room: 'Chat-room: ' + tid.toString(),
-						},
+		let user = getLocal('token');
+		let socket = socketIOClient('http://localhost:5010', {
+			transportOptions: {
+				polling: {
+					extraHeaders: {
+						Authorization: 'Bearer ' + user.token,
+						Room: 'Chat-room: ' + tid.toString(),
 					},
 				},
-			});
+			},
+		});
+		setSocket(socket);
+		return () => {
+			socket && socket.disconnect();
+		};
+	}, []);
+	useEffect(() => {
+		if (socket) {
 			socket.on('connect', () => {
 				setConnected(true);
 			});
 			socket.on('joined-room', (user: User) => {
-				console.log(`${user.username} has joined the room`);
-				socket.emit('is-online', {});
-				addUser(user);
-			});
-			socket.on('is-online-resp', (user: User) => {
-				console.log(`${user.username} is online too`);
 				addUser(user);
 			});
 			socket.on('left-room', (user: User) => {
-				removeUser(user);
+				console.log(`${user.username} left the room`);
 			});
 
 			socket.on('chat-message', (message: MessageType) => {
-				appendMessage(message);
+				setNewMessage(message);
 			});
-			setSocket(socket);
 			inputRef.current && inputRef.current.focus();
 			scrollDown.current && scrollDown.current.scrollIntoView();
 		}
-		return () => {
-			socket && socket.disconnect();
-		};
-	}, [room]);
+	}, [!!room]);
+
+	useEffect(() => {
+		if (newMessage) {
+			appendMessage(newMessage);
+		}
+	}, [newMessage]);
 
 	const addUser = (user: User) => {
 		let currentUser = getLocal('token')?.user;
 		if (
+			activeUsers &&
 			currentUser.username !== user.username &&
-			!activeUsers.includes(user.username)
+			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
 			console.log(activeUsers, user.username);
-			setActiveUsers([...activeUsers, user.username]);
+			setActiveUsers([...activeUsers, { u_id: user.u_id }]);
 			console.log(activeUsers);
 		}
-	};
-
-	const removeUser = (user: User) => {
-		setActiveUsers(activeUsers.filter((usr) => usr !== user.username));
 	};
 
 	const scrollToBottom = () => {
@@ -131,6 +134,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				username: getLocal('currentUser').username,
 				time_sent: new Date().toISOString(),
 				t_id: tid,
+				activeUsers: activeUsers || [],
 			});
 		}
 		setInputVal('');
@@ -155,7 +159,10 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 						<img src={user.profile_pic} />
 						<ConnectedDot
 							active={
-								activeUsers.includes(user.username) ||
+								(activeUsers &&
+									activeUsers.find(
+										(usr) => usr.u_id === user.u_id,
+									)) ||
 								user.username ===
 									getLocal('token').user.username
 							}
@@ -197,7 +204,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				<SendButton
 					onClick={(e: React.SyntheticEvent) => handleClick(e)}
 				>
-					{connected ? 'send' : 'loading'}
+					{socket ? 'send' : 'loading'}
 				</SendButton>
 			</MessageInputSend>
 		</MessageRoomDiv>

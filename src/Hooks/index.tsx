@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { makeRequest } from '../Api/Api';
 import { CurrentNavContext } from '../Context/CurrentNavContext';
+import { ChatContext } from '../Context/ChatContext';
 import { ErrorContext } from '../Context/ErrorContext';
 import { NotificationContext } from '../Context/NotificationContext';
 import { getLocal } from '../Utils/index';
@@ -26,6 +27,7 @@ export const useNotifications = (room: string) => {
 	const { state: notifications, update: setNotifications } = useContext(
 		NotificationContext,
 	);
+	const { state: currentChat } = useContext(ChatContext);
 	const [connected, setConnected] = useState(false);
 	const [newNotif, setNewNotif] = useState<Notification>();
 	const [socket, setSocket] = useState<SocketType>();
@@ -64,7 +66,8 @@ export const useNotifications = (room: string) => {
 	}, [JSON.stringify(newNotif)]);
 
 	const appendNotification = (notif: Notification) => {
-		setNotifications([notif, ...notifications]);
+		if (Number(notif.link) !== currentChat)
+			setNotifications([notif, ...notifications]);
 		console.log(notif, notifications);
 	};
 
