@@ -10,12 +10,22 @@ import {
 
 export const MessageNavigation = styled.div`
 	${layout.row};
-	margin: ${length.margin} ${length.margin} 0 ${length.margin};
+	margin: ${length.margin} ${length.margin} 5px ${length.margin};
 `;
 
 export const GoBackButton = styled.button`
 	${components.button};
+	margin-right: auto;
+`;
+
+export const AddUserToChatBtn = styled.button`
+	${components.button};
 	margin-left: auto;
+`;
+
+export const ChatRoomUsers = styled.div`
+	${layout.row};
+	margin: 0 ${length.margin} -${length.margin} ${length.margin};
 `;
 
 export const MessageRoomDiv = styled.div``;

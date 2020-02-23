@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { border, color, colorAdjust, components, cursor, layout, length } from '../../../../../../Styles/sharedStyles';
+import { border, color, colorAdjust, components, cursor, layout, length } from '../../../../Styles/sharedStyles';
 
 export const ParentComment = styled.div`
     margin-left: ${length.margin};

@@ -6,7 +6,7 @@ import React, {
 	useRef,
 	useState,
 } from 'react';
-import Post from '../Post/index';
+import Post from './Post/index';
 import { PostType } from '../Types';
 import { useRequest } from '../../../../Hooks';
 import { MoreButton } from './Styles';

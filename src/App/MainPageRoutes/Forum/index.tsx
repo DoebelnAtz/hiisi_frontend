@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import Post from './Post/index';
+import Post from './ForumFeed/Post/index';
 import { useRequest } from '../../../Hooks/index';
 import { useTrail, animated } from 'react-spring';
 import CreatePostModal from './CreatePostModal/index';

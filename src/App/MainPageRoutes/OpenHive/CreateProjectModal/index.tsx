@@ -13,7 +13,7 @@ import { useDismiss } from '../../../../Hooks/index';
 import { Project } from '../Types/index';
 import TextEditor from '../../../Components/TextEditor/index';
 import { makeRequest } from '../../../../Api/Api';
-import { validateUrl } from '../../../../utils/utils';
+import { validateUrl } from '../../../../Utils/index';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type CreateProjectModalProps = {

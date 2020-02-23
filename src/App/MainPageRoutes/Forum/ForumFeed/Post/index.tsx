@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import { PostProps } from '../Types';
+import { PostProps } from '../../Types';
 
-import ArrowUp from '../../../../Assets/ArrowUp.png';
-import ArrowDown from '../../../../Assets/ArrowDown.png';
-import ArrowUpVoted from '../../../../Assets/ArrowUpVoted.png';
-import ArrowDownVoted from '../../../../Assets/ArrowDownVoted.png';
-import DeleteImg from '../../../../Assets/x.png';
-import { formatDate } from '../../../../utils/utils';
-import { makeRequest } from '../../../../Api/Api';
-import { RouteComponentProps } from '../../../../Types';
+import ArrowUp from '../../../../../Assets/ArrowUp.png';
+import ArrowDown from '../../../../../Assets/ArrowDown.png';
+import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
+import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
+import DeleteImg from '../../../../../Assets/x.png';
+import { formatDate } from '../../../../../Utils/index';
+import { makeRequest } from '../../../../../Api/Api';
+import { RouteComponentProps } from '../../../../../Types';
 import { withRouter } from 'react-router-dom';
 
 import {
@@ -27,9 +27,9 @@ import {
 	CopiedSpan,
 	CardAuthor,
 	CardTitleInfo,
-} from '../../../../Styles/CardStyles';
-import { vote } from '../../Resources/Types';
-import ShareImg from '../../../../Assets/Share.png';
+} from '../../../../../Styles/CardStyles';
+import { vote } from '../../../Resources/Types';
+import ShareImg from '../../../../../Assets/Share.png';
 
 const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	content,

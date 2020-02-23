@@ -30,11 +30,11 @@ import TextEditor from '../../../../TextEditor/index';
 import Button from '../../../../Buttons/Button';
 import { makeRequest } from '../../../../../../Api/Api';
 import Avatar from '../../../../Avatar/index';
-import { getPriorityIcon } from '../../../../../../utils/taskUtils/index';
+import { getPriorityIcon } from '../../../../../../Utils/taskUtils/index';
 import { RouteComponentProps, User } from '../../../../../../Types/index';
 import { TaskType } from '../../../Types/index';
 import DropDown from '../../../../DropDown/index';
-import { checkUserList } from '../../../../../../utils/utils';
+import { checkUserList } from '../../../../../../Utils/index';
 import SaveButton from '../../../../Buttons/SaveButton/index'
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;

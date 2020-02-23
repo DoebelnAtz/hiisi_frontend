@@ -13,9 +13,9 @@ import { RouteComponentProps } from '../../../../Types';
 import { useDismiss, useRequest } from '../../../../Hooks';
 import { useLocation, withRouter } from 'react-router-dom';
 import { PostType } from '../Types';
-import ViewPost from '../Post/ViewPost';
+import ViewPost from '../../../Components/CommentThread';
 import TextEditor from '../../../Components/TextEditor';
-import { formatDate } from '../../../../utils/utils';
+import { formatDate } from '../../../../Utils/index';
 import queryString from 'query-string';
 
 const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({

@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useDismiss, useNav, useRequest } from '../../../Hooks';
 import { makeRequest } from '../../../Api/Api';
-import { calculateTimeSince, getLocal } from '../../../utils/utils';
+import { calculateTimeSince, getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
 import AddToChat from '../../Components/Buttons/AddToChat';
@@ -20,6 +20,8 @@ import {
 	MessageNavigation,
 	MessageInputTextArea,
 	MessageInputSend,
+	AddUserToChatBtn,
+	ChatRoomUsers,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
 import { Notification, SocketType, User } from '../../../Types';
@@ -33,11 +35,13 @@ type MessageRoomPropsTypes = {
 const MessageRoom: React.FC<RouteComponentProps<{}> &
 	MessageRoomPropsTypes> = ({ match, tid }) => {
 	const [inputVal, setInputVal] = useState('');
-	const [connectedUsers, setConnectedUsers] = useState<User[]>([]);
+	const [connectedUsers, setConnectedUsers, isLoadingUsers] = useRequest<
+		User[]
+	>(`messages/threads/${tid.toString()}/users`, `GET`);
 	const [connected, setConnected] = useState<boolean>(false);
 	const [page, setPage] = useState(1);
 	const [room, setRoom, isLoading] = useRequest<RoomType>(
-		`messages/threads/ ${tid.toString()}?page=${page}`,
+		`messages/threads/${tid.toString()}?page=${page}`,
 		'GET',
 	);
 	const [newMessage, setNewMessage] = useState<MessageType>();
@@ -90,10 +94,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		newMessage && newMessage.username && appendMessage(newMessage);
 	}, [JSON.stringify(newMessage)]);
 
-	useEffect(() => {
-		getUsersConnected(tid);
-	}, []);
-
 	const scrollToBottom = () => {
 		if (scrollDown.current)
 			scrollDown?.current.scrollIntoView({ behavior: 'smooth' });
@@ -128,39 +128,34 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		}
 	};
 
-	const getUsersConnected = async (tid: number) => {
-		let resp = await makeRequest(
-			`messages/threads/${tid.toString()}/users`,
-		);
-		if (resp.data) {
-			setConnectedUsers(resp.data);
-		}
-	};
-
 	const renderConnectedUsers = () => {
-		// TODO: the status dot only shows the logged in user as active; fix
-		return connectedUsers.map((user: User) => {
-			return (
-				<ConnectedUser key={user.u_id}>
-					<img src={user.profile_pic} />
-					<ConnectedDot
-						active={
-							user.username === getLocal('token').user.username
-						}
-					/>
-				</ConnectedUser>
-			);
-		});
+		if (connectedUsers)
+			return connectedUsers.map((user: User) => {
+				return (
+					<ConnectedUser key={user.u_id}>
+						<img src={user.profile_pic} />
+						<ConnectedDot
+							active={
+								user.username ===
+								getLocal('token').user.username
+							}
+						/>
+					</ConnectedUser>
+				);
+			});
 	};
 
 	return (
 		<MessageRoomDiv ref={inside}>
 			<MessageNavigation>
-				{renderConnectedUsers()}
 				<GoBackButton onClick={() => setCurrentChat(0)}>
 					Back
 				</GoBackButton>
+				<AddUserToChatBtn onClick={() => setCurrentChat(-currentChat)}>
+					Add user
+				</AddUserToChatBtn>
 			</MessageNavigation>
+			<ChatRoomUsers>{renderConnectedUsers()}</ChatRoomUsers>
 			<MessageRoomName>{room?.title}</MessageRoomName>
 			<MessageFeedDiv>
 				{room && (

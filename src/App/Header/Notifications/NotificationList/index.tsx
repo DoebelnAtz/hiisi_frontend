@@ -4,7 +4,7 @@ import { NotificationListDiv, NotificationItem } from './Styles';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { useHistory } from 'react-router-dom';
 import { useRequest } from '../../../../Hooks';
-import { getLocal } from '../../../../utils/utils';
+import { getLocal } from '../../../../Utils/index';
 type NotificationListProps = {
 	notifications?: Notification[];
 };

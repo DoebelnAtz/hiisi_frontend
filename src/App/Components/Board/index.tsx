@@ -11,9 +11,9 @@ import {
 	BoardDiv,
 } from './Styles';
 import { makeRequest } from '../../../Api/Api';
-import { useRequest } from '../../../Hooks/index';
-import { BoardType, ColumnType, TaskType } from './Types/index';
-import { User } from '../../../Types/index';
+import { useRequest } from '../../../Hooks';
+import { BoardType, ColumnType, TaskType } from './Types';
+import { User } from '../../../Types';
 
 let boardState = {
 	columns: [

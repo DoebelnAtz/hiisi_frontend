@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { setLocal } from '../../../utils/utils';
+import { setLocal } from '../../../Utils';
 import axios from 'axios';
 import {
 	BackgroundDiv,

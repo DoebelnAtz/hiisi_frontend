@@ -15,16 +15,16 @@ import {
 	CardButtons,
 	CardAuthor,
 	CardTitleInfo,
-} from '../../../../Styles/CardStyles';
-import ArrowUp from '../../../../Assets/ArrowUp.png';
-import ArrowDown from '../../../../Assets/ArrowDown.png';
-import ArrowUpVoted from '../../../../Assets/ArrowUpVoted.png';
-import ArrowDownVoted from '../../../../Assets/ArrowDownVoted.png';
-import DeleteImg from '../../../../Assets/x.png';
-import ShareImg from '../../../../Assets/Share.png';
-import { ResourceListType, vote } from '../Types';
-import { makeRequest } from '../../../../Api/Api';
-import { formatDate } from '../../../../utils/utils';
+} from '../../../../../Styles/CardStyles';
+import ArrowUp from '../../../../../Assets/ArrowUp.png';
+import ArrowDown from '../../../../../Assets/ArrowDown.png';
+import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
+import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
+import DeleteImg from '../../../../../Assets/x.png';
+import ShareImg from '../../../../../Assets/Share.png';
+import { ResourceListType, vote } from '../../Types';
+import { makeRequest } from '../../../../../Api/Api';
+import { formatDate } from '../../../../../Utils/index';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;

@@ -1,8 +1,10 @@
 import React, { useContext, Fragment } from 'react';
 import { ChatContext } from '../../../Context/ChatContext';
+import { ChatWindowDiv } from './Styles';
 import MessageRoomList from '../MessageRooms';
 import MessageRoom from '../MessageRoom/index';
-import { ChatWindowDiv } from './Styles';
+import AddUserToRoom from '../AddUserToRoom';
+
 const ChatWindow = () => {
 	const { state: currentChat, update: setCurrentChat } = useContext(
 		ChatContext,
@@ -12,7 +14,11 @@ const ChatWindow = () => {
 			case 0:
 				return <MessageRoomList />;
 			default:
-				return <MessageRoom tid={currentChat} />;
+				if (currentChat < 0) {
+					return <AddUserToRoom />;
+				} else {
+					return <MessageRoom tid={currentChat} />;
+				}
 		}
 	};
 

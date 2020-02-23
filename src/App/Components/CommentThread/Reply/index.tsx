@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { makeRequest } from '../../../../../../Api/Api';
-import { ReplyProps } from '../../../Types';
+import { makeRequest } from '../../../../Api/Api';
+import { ReplyProps } from '../../../MainPageRoutes/Forum/Types';
 
 import {
 	CommentInput,
@@ -56,7 +56,7 @@ const ReplyButton: React.FC<ReplyProps> = ({
 						let target = e.target as HTMLInputElement;
 						setCommentText(target.value);
 					}}
-					onEnter={(e: KeyboardEvent) => {
+					onKeyDown={(e: KeyboardEvent) => {
 						if (e.key === 'Enter') submitPost();
 					}}
 				/>

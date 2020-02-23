@@ -19,7 +19,7 @@ import TaskInfo from '../Components/Board/Column/Task/TaskInfo';
 import Notifications from '../Header/Notifications';
 import Resources from './Resources';
 import ResourcePage from './Resources/ResourcePage';
-import { getLocal } from '../../utils/utils';
+import { getLocal } from '../../Utils/index';
 import { useNotifications } from '../../Hooks';
 import ErrorMessage from '../ErrorPages/ErrorModal/index';
 import { ErrorContext } from '../../Context/ErrorContext';

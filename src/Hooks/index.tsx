@@ -9,7 +9,7 @@ import { makeRequest } from '../Api/Api';
 import { CurrentNavContext } from '../Context/CurrentNavContext';
 import { ErrorContext } from '../Context/ErrorContext';
 import { NotificationContext } from '../Context/NotificationContext';
-import { getLocal } from '../utils/utils';
+import { getLocal } from '../Utils/index';
 import socketIOClient from 'socket.io-client';
 import { Notification } from '../Types';
 import { SocketType } from '../Types';

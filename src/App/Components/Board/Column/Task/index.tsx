@@ -12,11 +12,11 @@ import {
 	DeleteTaskImg,
 	TaskTitle,
 } from './Styles';
-import { getPriorityIcon } from '../../../../../utils/taskUtils/index';
+import { getPriorityIcon } from '../../../../../Utils/taskUtils/index';
 import { BoardType, TaskType } from '../../Types/index';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
 import { makeRequest } from '../../../../../Api/Api';
-import { checkUserList } from '../../../../../utils/utils';
+import { checkUserList } from '../../../../../Utils/index';
 
 type TaskProps = {
 	task: TaskType;

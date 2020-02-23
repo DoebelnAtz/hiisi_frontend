@@ -1,10 +1,14 @@
-import styled from 'styled-components'
-import { border, color, components, layout } from '../../../../../../Styles/sharedStyles';
+import styled from 'styled-components';
+import {
+	border,
+	color,
+	components,
+	layout,
+} from '../../../../Styles/sharedStyles';
 
 export const ReplyRow = styled.div`
 	${layout.row};
 	width: 100%;
-
 `;
 
 export const CancelButton = styled.button`
@@ -26,11 +30,11 @@ export const SendButton = styled.button`
 export const CommentInput = styled.input`
 	${components.input};
 	position: relative;
-	height: 34px;
+	height: 30px;
 	${border.setBorders(1, 1, 1, 1, color.primary)};
 	border-radius: 0;
 
-	width: calc(100% - 130px);
+	width: calc(100% - 150px);
 	background-color: ${color.siteBG3};
 	border-color: ${color.primary};
 	left: 0;

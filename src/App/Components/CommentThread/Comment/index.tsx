@@ -1,9 +1,9 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import Reply from '../Reply';
-import { formatDate } from '../../../../../../utils/utils';
-import { makeRequest } from '../../../../../../Api/Api';
-import Button from '../../../../../Components/Buttons/Button';
-import { useRequest } from '../../../../../../Hooks';
+import { formatDate } from '../../../../Utils/index';
+import { makeRequest } from '../../../../Api/Api';
+import Button from '../../Buttons/Button';
+import { useRequest } from '../../../../Hooks';
 
 import {
 	ParentComment,
@@ -15,8 +15,8 @@ import {
 	ShowRepliesButton,
 	ReplyRow,
 } from './Styles';
-import { CommentProps, CommentType } from '../../../Types';
-import { Collaborator } from '../../../../../Components/Board/Column/Task/TaskInfo/Styles';
+import { CommentProps, CommentType } from '../../../MainPageRoutes/Forum/Types';
+import { Collaborator } from '../../Board/Column/Task/TaskInfo/Styles';
 import { useHistory } from 'react-router';
 
 const CommentCard: React.FC<CommentProps> = ({

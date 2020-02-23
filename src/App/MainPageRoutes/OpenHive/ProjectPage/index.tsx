@@ -4,8 +4,8 @@ import { BrowserRouterProps, withRouter } from 'react-router-dom';
 
 import Board from '../../../Components/Board/index';
 import Messages from '../../../Messages/MessageRoom/index';
-import ViewPost from '../../Forum/Post/ViewPost';
-import { capitalizeFirst } from '../../../../utils/utils';
+import ViewPost from '../../../Components/CommentThread';
+import { capitalizeFirst } from '../../../../Utils/';
 import {
 	ProjectPage,
 	ProjectInfo,

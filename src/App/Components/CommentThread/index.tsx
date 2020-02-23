@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
 
-import Reply from './Reply/index';
-import Comment from './Comment/index';
-import { useDismiss, useRequest } from '../../../../../Hooks';
+import Reply from './Reply';
+import Comment from './Comment';
+import { useDismiss, useRequest } from '../../../Hooks';
 import { CommentSection, Comments, ReplyToThread } from './Styles';
-import { CommentType, ViewPostProps } from '../../Types';
+import { CommentType, ViewPostProps } from '../../MainPageRoutes/Forum/Types';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { ShowAllCommentsButton } from './Styles';

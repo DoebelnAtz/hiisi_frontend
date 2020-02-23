@@ -8,7 +8,7 @@ import {
 	MessageImg,
 	MessageInfo,
 } from './Styles';
-import { calculateTimeSince, getLocal } from '../../../../utils/utils';
+import { calculateTimeSince, getLocal } from '../../../../Utils/';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 import { useRequest } from '../../../../Hooks';
 

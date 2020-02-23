@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNav, useRequest } from '../../../Hooks';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
-import ResourceCard from './ResourceCard';
+import ResourceCard from './ResourceFeed/ResourceCard';
 import {
 	Resources,
 	SubmitResourceButton,
@@ -12,7 +12,7 @@ import {
 
 import SubmitResource from './SubmitResource/index';
 import { makeRequest } from '../../../Api/Api';
-import { getLocal } from '../../../utils/utils';
+import { getLocal } from '../../../Utils/index';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';
 import DropDown from '../../Components/DropDown';

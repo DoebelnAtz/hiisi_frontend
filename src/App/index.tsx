@@ -19,7 +19,7 @@ import {
 	SideNavCol,
 } from './Style';
 import Messages from './Messages';
-import { setLocal } from '../utils/utils';
+import { setLocal } from '../Utils/index';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);

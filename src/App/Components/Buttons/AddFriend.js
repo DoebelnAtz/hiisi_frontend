@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from "./Button";
-import {checkFriendList} from "../../../utils/utils";
+import {checkFriendList} from "../../../Utils";
 import {makeRequest} from "../../../Api/Api";
 
 const AddFriend = ({target}) => {

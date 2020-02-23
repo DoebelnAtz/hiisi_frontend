@@ -6,7 +6,7 @@ import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
 import ArrowDown from '../../../../../Assets/ArrowDown.png';
-import { formatDate } from '../../../../../utils/utils';
+import { formatDate } from '../../../../../Utils/index';
 import DeleteImg from '../../../../../Assets/x.png';
 import ShareImg from '../../../../../Assets/Share.png';
 import { vote } from '../../../Resources/Types/index';

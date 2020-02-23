@@ -14,7 +14,7 @@ import {
 	SearchInput,
 } from './Styles';
 import { useDismiss } from '../../../Hooks';
-import { capitalizeFirst } from '../../../utils/utils';
+import { capitalizeFirst } from '../../../Utils/index';
 type DropDownProps = {
 	// currently selected option
 	state: string;

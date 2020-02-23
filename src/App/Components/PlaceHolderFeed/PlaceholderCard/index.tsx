@@ -19,7 +19,7 @@ import ArrowUpVoted from '../../../../Assets/ArrowUpVoted.png';
 import ArrowUpPlaceholder from '../../../../Assets/ArrowUpPlaceholder.png';
 import ArrowDownVoted from '../../../../Assets/ArrowDownVoted.png';
 import ArrowDownPlaceholder from '../../../../Assets/ArrowDownPlaceholder.png';
-import { formatDate } from '../../../../utils/utils';
+import { formatDate } from '../../../../Utils/index';
 import DeleteImg from '../../../../Assets/x.png';
 import ShareImg from '../../../../Assets/Share.png';
 import PlaceholderText from '../PlaceholderText';
