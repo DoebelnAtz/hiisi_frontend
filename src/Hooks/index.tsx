@@ -13,6 +13,7 @@ import { getLocal } from '../Utils/index';
 import socketIOClient from 'socket.io-client';
 import { Notification } from '../Types';
 import { SocketType } from '../Types';
+import { MessageType } from '../App/Messages/Types';
 
 export const useNav = (current: string) => {
 	const { update } = useContext(CurrentNavContext);
@@ -26,9 +27,7 @@ export const useNotifications = (room: string) => {
 		NotificationContext,
 	);
 	const [connected, setConnected] = useState(false);
-	const [newNotification, setNewNotification] = useState<
-		Notification
-	>();
+	const [newNotif, setNewNotif] = useState<Notification>();
 	const [socket, setSocket] = useState<SocketType>();
 	useEffect(() => {
 		let user = getLocal('token');
@@ -50,7 +49,7 @@ export const useNotifications = (room: string) => {
 			setConnected(true);
 		});
 		socket.on('notification', (notification: Notification) => {
-			setNewNotification(notification);
+			setNewNotif(notification);
 		});
 		setSocket(socket);
 
@@ -58,16 +57,16 @@ export const useNotifications = (room: string) => {
 			socket.disconnect();
 		};
 	}, [room]);
-	// We cant append to notification inside the socket event function, because it
-	// creates a copy of the notification state... Probablye not the most elegant way of doing this..
+
+	// not sure why i cant call appendNotification() inside on notification...
 	useEffect(() => {
-		if (newNotification) {
-			setNotifications([
-				newNotification as Notification,
-				...notifications,
-			]);
-		}
-	}, [JSON.stringify(newNotification)]);
+		newNotif && appendNotification(newNotif);
+	}, [JSON.stringify(newNotif)]);
+
+	const appendNotification = (notif: Notification) => {
+		setNotifications([notif, ...notifications]);
+		console.log(notif, notifications);
+	};
 
 	return [notifications, connected];
 };
@@ -82,6 +81,7 @@ export const useDismiss = (
 			e.preventDefault();
 			// esc by default stops the page from refreshing,
 			// this is not a problem but causes a small delay when pressing.
+			// default prevented for performance
 			close();
 		}
 	};

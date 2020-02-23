@@ -42,7 +42,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`messages/threads/${tid.toString()}?page=1`,
 		'GET',
 	);
-	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [activeUsers, setActiveUsers] = useState<string[]>([]);
 	const [socket, setSocket] = useState<SocketType>();
 	const { state: notifications, update: setNotifications } = useContext(
@@ -57,39 +56,62 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	useDismiss(inside, () => setCurrentChat(0));
 	useEffect(() => {
-		let user = getLocal('token');
-		let socket = socketIOClient('http://localhost:5010', {
-			transportOptions: {
-				polling: {
-					extraHeaders: {
-						Authorization: 'Bearer ' + user.token,
-						Room: 'Chat-room: ' + tid.toString(),
+		let socket: SocketType;
+		if (room) {
+			let user = getLocal('token');
+			socket = socketIOClient('http://localhost:5010', {
+				transportOptions: {
+					polling: {
+						extraHeaders: {
+							Authorization: 'Bearer ' + user.token,
+							Room: 'Chat-room: ' + tid.toString(),
+						},
 					},
 				},
-			},
-		});
-		socket.on('connect', () => {
-			setConnected(true);
-		});
-		socket.on('joined-room', (user: User) => {
-			setActiveUsers([...activeUsers, user.username]);
-		});
-		socket.on('left-room', (user: string) => {});
+			});
+			socket.on('connect', () => {
+				setConnected(true);
+			});
+			socket.on('joined-room', (user: User) => {
+				console.log(`${user.username} has joined the room`);
+				socket.emit('is-online', {});
+				addUser(user);
+			});
+			socket.on('is-online-resp', (user: User) => {
+				console.log(`${user.username} is online too`);
+				addUser(user);
+			});
+			socket.on('left-room', (user: User) => {
+				removeUser(user);
+			});
 
-		socket.on('chat-message', (message: MessageType) => {
-			setNewMessage(message);
-		});
-		setSocket(socket);
-		inputRef.current && inputRef.current.focus();
-		scrollDown.current && scrollDown.current.scrollIntoView();
+			socket.on('chat-message', (message: MessageType) => {
+				appendMessage(message);
+			});
+			setSocket(socket);
+			inputRef.current && inputRef.current.focus();
+			scrollDown.current && scrollDown.current.scrollIntoView();
+		}
 		return () => {
-			socket.disconnect();
+			socket && socket.disconnect();
 		};
 	}, [room]);
 
-	useEffect(() => {
-		newMessage && newMessage.username && appendMessage(newMessage);
-	}, [JSON.stringify(newMessage)]);
+	const addUser = (user: User) => {
+		let currentUser = getLocal('token')?.user;
+		if (
+			currentUser.username !== user.username &&
+			!activeUsers.includes(user.username)
+		) {
+			console.log(activeUsers, user.username);
+			setActiveUsers([...activeUsers, user.username]);
+			console.log(activeUsers);
+		}
+	};
+
+	const removeUser = (user: User) => {
+		setActiveUsers(activeUsers.filter((usr) => usr !== user.username));
+	};
 
 	const scrollToBottom = () => {
 		if (scrollDown.current)
@@ -133,8 +155,9 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 						<img src={user.profile_pic} />
 						<ConnectedDot
 							active={
+								activeUsers.includes(user.username) ||
 								user.username ===
-								getLocal('token').user.username
+									getLocal('token').user.username
 							}
 						/>
 					</ConnectedUser>

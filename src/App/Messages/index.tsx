@@ -10,7 +10,9 @@ import ReactDOM from 'react-dom';
 import { MessageModal, MessageImg } from './Style';
 import MessageRoomList from './MessageRooms';
 import { useDismiss } from '../../Hooks';
-import MessageIcon from '../../Assets/Messages2.png';
+import MessageIcon from '../../Assets/Messages3.png';
+import MessageNotifIcon from '../../Assets/Messages2Notif.png';
+
 import { Notification } from '../../Types';
 import { NotificationIcon } from './MessageRooms/Styles';
 import { NotificationContext } from '../../Context/NotificationContext';
@@ -43,9 +45,13 @@ const MessageRoomModal: React.FC = () => {
 					setCurrentChat(0);
 				}}
 			>
-				<MessageImg src={MessageIcon} alt={'chat'} />
+				<MessageImg
+					src={
+						!!notifications.length ? MessageNotifIcon : MessageIcon
+					}
+					alt={'chat'}
+				/>
 				<span>Chat</span>
-				{!!notifications.length && <NotificationIcon />}
 			</MessageModal>
 		</div>,
 		document.querySelector('#chat') as Element,

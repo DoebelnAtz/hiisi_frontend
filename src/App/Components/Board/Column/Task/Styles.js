@@ -25,7 +25,6 @@ export const TaskStatus = styled.div`
 export const TaskStatusText = styled.div`
 	position: absolute;
 	visibility: hidden;
-
 	& span {
 		padding: 7px;
 		position: relative;
@@ -56,8 +55,8 @@ export const TaskCollaborators = styled.div`
 	margin-left: auto;
 	& img {
 		transition: border 0.3s;
-		height: 32px;
-		width: 32px;
+		height: 28px;
+		width: 28px;
 		margin-left: -8px;
 		border-radius: 50%;
 		border: 3px solid ${color.siteBG4};

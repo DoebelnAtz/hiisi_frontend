@@ -45,6 +45,15 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 		setInputVal('');
 	};
 
+	const handleChatClick = (thread: ThreadType) => {
+		setCurrentChat(thread.thread_id);
+		setNotifications(
+			notifications.filter(
+				(notif) => Number(notif.link) !== thread.thread_id,
+			),
+		);
+	};
+
 	const renderFriends = () => {
 		if (threads)
 			return threads.map((thread: ThreadType) => {
@@ -52,9 +61,12 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 					<ThreadItem
 						className={'row message_thread_item'}
 						key={thread.thread_id}
-						onClick={() => setCurrentChat(thread.thread_id)}
+						onClick={() => handleChatClick(thread)}
 					>
 						<span>{thread.thread_name}</span>
+						{!!notifications.find(
+							(notif) => Number(notif.link) === thread.thread_id,
+						) && <NotificationIcon />}
 					</ThreadItem>
 				);
 			});
