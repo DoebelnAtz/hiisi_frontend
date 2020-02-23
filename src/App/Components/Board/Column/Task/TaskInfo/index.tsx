@@ -17,6 +17,7 @@ import {
 	AddUserBtn,
 	TaskTitleEditable,
 	PriorityIcon,
+	TaskStatusInput,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -157,6 +158,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		}
 	};
 
+	const updateTaskStatus = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		task && setTask({ ...task, status: target.value });
+	};
+
 	const renderSearchResults = () => {
 		return searchResult.map((user: User) => {
 			return (
@@ -223,14 +229,12 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		<Modal inside={inside}>
 			<TaskInfoHead>
 				<TaskTitleEditable
-					editable={task?.owner}
+					disabled={!task?.owner}
 					onChange={(e: React.SyntheticEvent) => handleTitleChange(e)}
-					value={task?.title}
+					value={task?.title || ''}
+					// on undefined task keep title as '' to not invoke react error
 				/>
-				<TaskTitle editable={task?.owner}>{task?.title}</TaskTitle>
-				{task?.owner && (
-					<SaveButton onClick={updateTask}>Save</SaveButton>
-				)}
+				<SaveButton onClick={updateTask}>Save</SaveButton>
 			</TaskInfoHead>
 			<TaskInfoBody>
 				<TaskDescription>
@@ -284,6 +288,16 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						/>
 					</PriorityDropdown>
 				)}
+				<TaskStatusInput>
+					Status:{' '}
+					<input
+						value={task?.status || ''}
+						onChange={(e: React.SyntheticEvent) =>
+							updateTaskStatus(e)
+						}
+						placeholder={task?.status}
+					/>
+				</TaskStatusInput>
 			</TaskFooter>
 		</Modal>,
 		document.querySelector('#modal') as Element,

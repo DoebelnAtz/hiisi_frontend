@@ -6,8 +6,8 @@ import {
 	layout,
 	components,
 	border,
-	font,
 	cursor,
+	font,
 } from '../../../../../../Styles/sharedStyles';
 
 export const TaskInfoHead = styled.div`
@@ -48,7 +48,6 @@ export const PriorityIcon = styled.img`
 export const TaskTitleEditable = styled.input`
 	${layout.row};
 	${components.input};
-	display: ${(props) => (props.editable ? 'block' : 'none')};
 	font-size: 26px;
 	width: 80%;
 	margin-right: auto;
@@ -57,7 +56,7 @@ export const TaskTitleEditable = styled.input`
 `;
 
 export const PriorityDropdown = styled.div`
-	margin-top: calc(${length.margin} * 1.5);
+	margin: auto 0;
 `;
 
 export const AddUserInput = styled.input`
@@ -101,6 +100,18 @@ export const AddUserBtn = styled.div`
 	border-radius: 0 18px 18px 0;
 	font-size: 24px;
 	color: ${color.siteBG2};
+`;
+
+export const TaskStatusInput = styled.label`
+	margin: auto 0;
+	${font.text};
+
+	& input {
+		${components.input};
+		height: 32px;
+		position: relative;
+		top: 1px;
+	}
 `;
 
 export const AddUser = styled.div`

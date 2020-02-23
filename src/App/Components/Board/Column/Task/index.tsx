@@ -11,7 +11,10 @@ import {
 	TaskCollaborators,
 	DeleteTaskImg,
 	TaskTitle,
+	TaskStatusTooltip,
+	TaskStatusText,
 } from './Styles';
+import infoIcon from '../../../../../Assets/Info.png';
 import { getPriorityIcon } from '../../../../../Utils/taskUtils/index';
 import { BoardType, TaskType } from '../../Types/index';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
@@ -98,7 +101,17 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 							}
 						>
 							<RowDiv>
-								<TaskTitle>{task.title}</TaskTitle>
+								{!!task.status.length && (
+									<TaskStatusTooltip>
+										<img src={infoIcon} alt={'info'} />
+										<TaskStatusText>
+											<span>{task.status}</span>
+										</TaskStatusText>
+									</TaskStatusTooltip>
+								)}
+								<TaskTitle tooltip={!!task.status.length}>
+									{task.title}
+								</TaskTitle>
 								{editable && checkUserList(task.collaborators) && (
 									<DeleteTaskImg
 										onClick={(e: React.SyntheticEvent) =>

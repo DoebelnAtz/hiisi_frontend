@@ -5,7 +5,7 @@ import Comment from './Comment';
 import { useDismiss, useRequest } from '../../../Hooks';
 import { CommentSection, Comments, ReplyToThread } from './Styles';
 import { CommentType, ViewPostProps } from '../../MainPageRoutes/Forum/Types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import { ShowAllCommentsButton } from './Styles';
 
@@ -14,6 +14,7 @@ const ShowComments: React.FC<ViewPostProps> = ({
 	focusList,
 }) => {
 	const location = useLocation();
+	const history = useHistory();
 	const [commentThread, setCommentThread] = useState(
 		queryString.parse(location.search)?.comment
 			? Number(queryString.parse(location.search)?.comment)
@@ -60,6 +61,7 @@ const ShowComments: React.FC<ViewPostProps> = ({
 			{commentthread !== commentThread && (
 				<ShowAllCommentsButton
 					onClick={() => {
+						history.push(`${location.pathname}`);
 						setCommentThread(commentthread);
 					}}
 				>

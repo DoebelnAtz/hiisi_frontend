@@ -1,4 +1,4 @@
-import {User} from "../../../../Types/index";
+import {User} from "../../../../Types";
 import * as H from 'history';
 
 import {BrowserRouterProps} from "react-router-dom";
@@ -10,7 +10,8 @@ export interface TaskType {
     description: string,
     collaborators: User[],
     priority: number,
-    owner: boolean
+    owner: boolean,
+    status: string
 }
 
 export interface ColumnType {
