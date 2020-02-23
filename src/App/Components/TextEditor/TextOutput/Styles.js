@@ -11,11 +11,12 @@ export const TextEditOutput = styled.textarea`
 	border-radius: ${length.radius};
 	background-color: ${color.siteBG3};
 	${font.text};
+	resize: none;
 	font-family: 'Roboto', sans-serif;
 
 	:focus {
 		width: 100%;
-		height: calc(100% - ${length.margin} * 2);
+		height: calc(100%);
 		outline: none;
 	}
 `;

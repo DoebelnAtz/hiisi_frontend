@@ -8,12 +8,13 @@ import {
 	Description,
 	ButtonRow,
 	SubmitButton,
+	TitleAndLinkRow,
 } from './Styles';
-import { useDismiss } from '../../../../Hooks/index';
-import { Project } from '../Types/index';
+import { useDismiss } from '../../../../Hooks';
+import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor/index';
 import { makeRequest } from '../../../../Api/Api';
-import { validateUrl } from '../../../../Utils/index';
+import { validateUrl } from '../../../../Utils';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type CreateProjectModalProps = {
@@ -54,24 +55,31 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	return (
 		<OutsideDiv>
 			<InsideDiv ref={inside}>
-				<RowDiv>
-					<TitleInput
-						value={titleVal}
-						onChange={(e: React.SyntheticEvent) => {
-							let target = e.target as HTMLInputElement;
-							setTitleVal(target.value);
-						}}
-						placeholder={'title'}
-					/>
-					<LinkInput
-						value={linkVal}
-						onChange={(e: React.SyntheticEvent) => {
-							let target = e.target as HTMLInputElement;
-							setLinkVal(target.value);
-						}}
-						placeholder={'project link'}
-					/>
-				</RowDiv>
+				<TitleAndLinkRow>
+					<label>
+						Title:
+						<TitleInput
+							value={titleVal}
+							onChange={(e: React.SyntheticEvent) => {
+								let target = e.target as HTMLInputElement;
+								setTitleVal(target.value);
+							}}
+							placeholder={'title'}
+						/>
+					</label>
+					<label>
+						Link:
+						<LinkInput
+							value={linkVal}
+							onChange={(e: React.SyntheticEvent) => {
+								let target = e.target as HTMLInputElement;
+								setLinkVal(target.value);
+							}}
+							placeholder={'project link'}
+						/>
+					</label>
+				</TitleAndLinkRow>
+				<span>Description</span>
 				<Description>
 					<TextEditor
 						editable={true}

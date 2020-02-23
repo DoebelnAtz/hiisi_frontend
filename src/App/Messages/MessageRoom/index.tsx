@@ -56,8 +56,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	let inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setCurrentChat(0));
-
-	useNav('messages');
 	useEffect(() => {
 		let user = getLocal('token');
 		let socket = socketIOClient('http://localhost:5010', {
