@@ -47,9 +47,11 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 		!!resource && setResource({ ...resource, description: e });
 	};
 
-	useDismiss(insideRef, () => {
+	const close = () => {
 		history.push('/resources');
-	});
+	};
+
+	useDismiss(insideRef, close);
 
 	const renderSearchResults = () => {
 		return results

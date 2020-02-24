@@ -22,7 +22,7 @@ export const Card = styled.div`
 export const CardVotes = styled.div`
 	width: 55px;
 	padding: 14px 0;
-	border-right: 1px solid ${color.siteBG1};
+	border-right: 2px solid ${color.siteBG1};
 	${layout.col};
 `;
 
@@ -87,7 +87,7 @@ export const CardButtons = styled.div`
 	padding: 14px 0;
 	display: flex;
 	flex-direction: column;
-	border-left: 1px solid ${color.siteBG1};
+	border-left: 2px solid ${color.siteBG1};
 `;
 
 export const CardDate = styled.span`

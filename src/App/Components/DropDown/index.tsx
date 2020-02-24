@@ -15,6 +15,7 @@ import {
 } from './Styles';
 import { useDismiss } from '../../../Hooks';
 import { capitalizeFirst } from '../../../Utils/index';
+import { log } from 'util';
 type DropDownProps = {
 	// currently selected option
 	state: string;
@@ -46,13 +47,14 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	const [filterInput, setFilterInput] = useState('');
 	const inside = useRef<HTMLDivElement>(null);
 	const filterInputRef = useRef<HTMLInputElement>(null);
+	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	const renderOptions = () => {
 		return options.map((option: string, index: number) => {
 			return (
 				<Option
 					key={index}
-					highlighted={state === option}
+					highlighted={state === option || index === selectedIndex}
 					onClick={() => {
 						setSelect(option);
 						setExpanded(false);
@@ -86,6 +88,22 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 		);
 	};
 
+	const handleEnterPress = (e: React.KeyboardEvent) => {
+		if (e.key === 'Enter' && options.length > selectedIndex) {
+			setSelect(options[selectedIndex]);
+		} else if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			if (selectedIndex < options.length - 1) {
+				setSelectedIndex(selectedIndex + 1);
+			}
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			if (selectedIndex > 0) {
+				setSelectedIndex(selectedIndex - 1);
+			}
+		}
+	};
+
 	const handleClick = () => {
 		setExpanded(!expanded);
 	};
@@ -112,6 +130,9 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 							placeholder={'filter'}
 							onChange={(e: React.SyntheticEvent) =>
 								handleFilterChange(e)
+							}
+							onKeyDown={(e: React.KeyboardEvent) =>
+								handleEnterPress(e)
 							}
 							value={filterInput}
 						/>

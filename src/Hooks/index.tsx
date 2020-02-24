@@ -94,9 +94,7 @@ export const useDismiss = (
 		else close();
 	};
 	useEffect(() => {
-		document.addEventListener('keydown', (e) => {
-			handleEsc(e);
-		});
+		document.addEventListener('keydown', handleEsc);
 		document.addEventListener('mousedown', handleClick);
 		return () => {
 			document.removeEventListener('keydown', handleEsc);

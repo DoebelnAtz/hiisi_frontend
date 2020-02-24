@@ -18,7 +18,9 @@ const SearchBar: React.FC = () => {
 	const close = () => {
 		setSearchInput('');
 		setResults([]);
+		setSelectedIndex(0);
 	};
+	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	useDismiss(inside, close);
 	const history = useHistory();
@@ -28,6 +30,7 @@ const SearchBar: React.FC = () => {
 		if (!target.value.length) {
 			setSearchInput('');
 			setResults([]);
+			setSelectedIndex(0);
 		} else {
 			setSearchInput(target.value);
 		}
@@ -39,9 +42,11 @@ const SearchBar: React.FC = () => {
 				return (
 					<ResultItem
 						key={index}
+						highlighted={selectedIndex === index}
 						onClick={() => {
 							setResults([]);
 							setSearchInput('');
+							setSelectedIndex(0);
 							history.push(`${result.link}/${result.id}`);
 						}}
 					>
@@ -57,6 +62,27 @@ const SearchBar: React.FC = () => {
 			});
 		}
 	};
+
+	const handleEnterPress = (e: React.KeyboardEvent) => {
+		if (results) {
+			if (e.key === 'Enter' && results.length > selectedIndex) {
+				history.push(
+					`${results[selectedIndex].link}/${results[selectedIndex].id}`,
+				);
+			} else if (e.key === 'ArrowDown') {
+				e.preventDefault();
+				if (selectedIndex < results.length - 1) {
+					setSelectedIndex(selectedIndex + 1);
+				}
+			} else if (e.key === 'ArrowUp') {
+				e.preventDefault();
+				if (selectedIndex > 0) {
+					setSelectedIndex(selectedIndex - 1);
+				}
+			}
+		}
+	};
+
 	return (
 		<SearchDiv>
 			<SearchInput
@@ -64,6 +90,7 @@ const SearchBar: React.FC = () => {
 				value={searchInput}
 				onChange={(e: React.SyntheticEvent) => search(e)}
 				placeholder={'search'}
+				onKeyDown={(e: React.KeyboardEvent) => handleEnterPress(e)}
 			/>
 			<SearchResults ref={inside} showingResults={!!results?.length}>
 				{renderResultList()}

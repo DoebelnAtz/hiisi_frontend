@@ -44,14 +44,14 @@ export const SearchResults = styled.div`
 
 export const ResultItem = styled.div`
 	${layout.row};
-	background-color: ${color.siteBG1};
+	background-color: ${props => props.highlighted ? color.siteBG3 : color.siteBG1};
 	margin: 6px;
 	${font.text};
 	font-size: 14px;
 	${cursor.clickable};
-	border-radius: ${length.radius};
+	border-radius: 15px ${length.radius} ${length.radius} 15px;
 	&:hover {
-	transition: background-color 0.1s;
+		transition: background-color 0.1s;
 		background-color: ${colorAdjust.lighten(color.siteBG1, 0.15)};
 	}
 	& span {
