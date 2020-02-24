@@ -64,10 +64,10 @@ const AddUserToRoom: React.FC = () => {
 	};
 
 	const renderUserResults = () => {
-		if (userResults) {
+		if (userResults && connectedUsers) {
 			return userResults
 				.filter((u) => {
-					return !userResults.find((usr) => u.u_id !== usr.u_id);
+					return !connectedUsers.find((usr) => u.u_id === usr.u_id);
 				})
 				.map((user, index) => {
 					return (

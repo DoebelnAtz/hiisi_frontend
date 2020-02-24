@@ -3,7 +3,8 @@ import { SearchInput, SearchDiv, SearchResults, ResultItem } from './Styles';
 import { useDismiss, useRequest } from '../../../Hooks/index';
 import { ResultType } from './Types/index';
 import { useHistory } from 'react-router';
-
+import UsrIcon from '../../../Assets/ProfileS.png';
+import ResourceIcon from '../../../Assets/TreeS.png';
 const SearchBar: React.FC = () => {
 	const [searchInput, setSearchInput] = useState('');
 	const [results, setResults, isLoading] = useRequest<ResultType[]>(
@@ -44,8 +45,12 @@ const SearchBar: React.FC = () => {
 							history.push(`${result.link}/${result.id}`);
 						}}
 					>
-						{`${result.type}: `}
-						{result.title}
+						<img
+							src={
+								result.type === 'user' ? UsrIcon : ResourceIcon
+							}
+						/>
+						<span>{result.title}</span>
 					</ResultItem>
 				);
 			});

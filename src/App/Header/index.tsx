@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import '../base.css';
 import logo from '../../Assets/Logo6.png';
 import { CurrentNavContext } from '../../Context/CurrentNavContext';
-import { capitalizeFirst } from '../../Utils/index';
+import { capitalizeFirst } from '../../Utils';
 import { RouteComponentProps } from '../../Types';
 import {
 	HeaderDiv,

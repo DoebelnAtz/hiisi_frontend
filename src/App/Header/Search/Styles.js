@@ -51,4 +51,13 @@ export const ResultItem = styled.div`
 	font-size: 14px;
 	${cursor.clickable};
 	border-radius: ${length.radius};
+	& span {
+		width: 15vw;
+		min-width: 150px;
+		max-width: 250px;
+	}
+	& img {
+		height: 30px;
+		width: 30px;
+	}
 `;
