@@ -8,8 +8,6 @@ export interface Tag {
 
 export interface ResourceType {
 	r_id: number,
-	vote: vote,
-	published_date: string,
 	description: string,
 	tags: Tag[],
 	title: string,
@@ -36,5 +34,11 @@ export interface ResourceListType {
 	votes: number
 }
 
+export type SubmitResourceProps = {
+	popup: boolean,
+	resources: ResourceListType[],
+	setResources: Dispatch<SetStateAction<ResourceListType[] | undefined>>,
+	setPopup: Dispatch<SetStateAction<boolean>>
+}
 
 export type vote = 1 | 0 | -1;

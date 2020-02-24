@@ -14,23 +14,21 @@ import SubmitResource from './SubmitResource/index';
 import { makeRequest } from '../../../Api/Api';
 import { getLocal, setLocal } from '../../../Utils';
 import { RouteComponentProps } from 'react-router';
-import { ResourceListType, ResourceType, Tag } from './Types';
+import { ResourceListType, Tag } from './Types';
 import DropDown from '../../Components/DropDown';
 import ResourcesResourceFeed from './ResourceFeed';
 import PlaceHolderFeed from '../../Components/PlaceHolderFeed';
 
-const defaultTag = { tag_id: 0, color: '', title: 'none' };
-
 const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
-	const [filter, setFilter] = useState<Tag>(defaultTag);
+	const [filter, setFilter] = useState('none');
 	const [sortBy, setSortBy] = useState(
 		getLocal('resourceSortPref')?.sortBy || 'popular',
 	);
 	const [reverse, setSortRev] = useState('false');
 
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
-	const [resources, setResources, isLoading] = useRequest<ResourceType[]>(
-		`resources?page=1&filter=${filter.tag_id}&order=${sortBy}&reverse=${reverse}`,
+	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
+		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	useNav('resources');
@@ -48,13 +46,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	};
 
 	const onFilterSelect = (newFilter: string) => {
-		if (tags && newFilter === filter.title) {
-			setFilter(defaultTag);
+		if (newFilter === filter) {
+			setFilter('none');
 		} else {
-			if (tags) {
-				let nextFilter = tags.find((tag) => tag.title === newFilter);
-				setFilter(nextFilter ?? defaultTag);
-			}
+			setFilter(newFilter);
 		}
 	};
 
@@ -84,14 +79,14 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					<DropDown
 						width={'166px'}
 						height={'34px'}
-						state={filter.title}
+						state={filter}
 						text={'Filter: '}
 						withFilter={true}
 						setSelect={onFilterSelect}
 						optionList={tags.map((tag) => tag.title)}
 					/>
 				)}
-				<FilterButton onClick={() => setFilter(defaultTag)}>
+				<FilterButton onClick={() => setFilter('none')}>
 					Remove filter
 				</FilterButton>
 			</ResourcePageHead>
@@ -101,7 +96,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					reverse={reverse}
 					sortBy={sortBy}
 					filterBy={filter}
-					setFilter={() => setFilter(defaultTag)}
+					setFilter={setFilter}
 					resources={resources}
 					setResources={setResources}
 				/>
