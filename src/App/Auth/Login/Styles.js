@@ -50,6 +50,9 @@ export const LoginButton = styled.div`
 	${layout.row};
 	& button {
 		margin: 0 auto;
+		${components.button};
+		transition: border-color 400ms;
+		border-color: ${props => props.loginError ? 'red' : color.primary};
 	}
 `;
 

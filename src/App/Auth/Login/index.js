@@ -17,22 +17,27 @@ import {
 import { useSpring, useChain } from 'react-spring';
 import { makeRequest } from '../../../Api/Api';
 const Login = (props) => {
+	const [loginError, setLoginError] = useState(false);
 	const requestLogin = async (e) => {
 		e.preventDefault();
 		if (password.length && username.length) {
-			let resp = await makeRequest('auth/login', 'post', {
-				username: username.toLowerCase(),
-				password: password,
-			});
-
-			if (resp.data.success) {
-				setLocal('token', resp.data);
-				setAnimate(false);
-				// In a hurry? fuck you, now enjoy these animations
-				// I spent 6h creating
-				setTimeout(() => props.history.push('/openhive'), 2000);
-			} else {
-				props.history.push('/login');
+			try {
+				let resp = await makeRequest('auth/login', 'post', {
+					username: username.toLowerCase(),
+					password: password,
+				});
+				if (resp.data.success) {
+					setLocal('token', resp.data);
+					setAnimate(false);
+					// In a hurry? fuck you, now enjoy these animations
+					// I spent 6h creating
+					setTimeout(() => props.history.push('/openhive'), 2000);
+				}
+			} catch (e) {
+				setLoginError(true);
+				setTimeout(() => {
+					setLoginError(false)
+				}, 1000)
 			}
 		}
 	};
@@ -173,7 +178,7 @@ const Login = (props) => {
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</PasswordDiv>
-						<LoginButton>
+						<LoginButton loginError={loginError}>
 							<button onClick={requestLogin}>Login</button>
 						</LoginButton>
 					</div>

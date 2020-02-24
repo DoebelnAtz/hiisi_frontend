@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-	color,
+	color, colorAdjust,
 	components,
 	cursor,
 	font,
@@ -34,7 +34,7 @@ export const SearchResults = styled.div`
 	z-index: 10;
 	overflow-y: auto;
 	top: 35px;
-	width: 20vw;
+	width: calc(20vw + 11px);
 	min-width: 210px;
 	max-width: 310px;
 	border-radius: 0 0 4px 4px;
@@ -45,16 +45,22 @@ export const SearchResults = styled.div`
 export const ResultItem = styled.div`
 	${layout.row};
 	background-color: ${color.siteBG1};
-	padding: 8px;
 	margin: 6px;
 	${font.text};
 	font-size: 14px;
 	${cursor.clickable};
 	border-radius: ${length.radius};
+	&:hover {
+	transition: background-color 0.1s;
+		background-color: ${colorAdjust.lighten(color.siteBG1, 0.15)};
+	}
 	& span {
-		width: 15vw;
-		min-width: 150px;
-		max-width: 250px;
+		padding-left: 5px;;
+		line-height: 30px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		width: calc(100% - 30px - 12px);
 	}
 	& img {
 		height: 30px;

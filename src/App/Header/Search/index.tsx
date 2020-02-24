@@ -49,6 +49,7 @@ const SearchBar: React.FC = () => {
 							src={
 								result.type === 'user' ? UsrIcon : ResourceIcon
 							}
+							alt={`${result.type}`}
 						/>
 						<span>{result.title}</span>
 					</ResultItem>
