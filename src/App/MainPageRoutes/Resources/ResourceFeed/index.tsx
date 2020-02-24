@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction, Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
-import { ResourceListType } from '../Types';
+import { ResourceListType, ResourceType, Tag } from '../Types';
 import { makeRequest } from '../../../../Api/Api';
-import { getLocal } from '../../../../Utils/index';
+import { getLocal } from '../../../../Utils';
 import ResourceCard from './ResourceCard/index';
 import { useHistory } from 'react-router-dom';
 import { LoadButton } from '../Styles';
@@ -13,11 +13,12 @@ type ResourceFeedPropTypes = {
 	pagination: number;
 	reverse: string;
 	sortBy: string;
-	filterBy: string;
-	setFilter: Dispatch<SetStateAction<string>>;
-	resources: ResourceListType[];
-	setResources: Dispatch<SetStateAction<ResourceListType[] | undefined>>;
+	filterBy: Tag;
+	setFilter: Dispatch<SetStateAction<Tag>>;
+	resources: ResourceType[];
+	setResources: Dispatch<SetStateAction<ResourceType[] | undefined>>;
 };
+const defaultTag = { tag_id: 0, color: '', title: 'none' };
 
 const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	pagination,
@@ -31,9 +32,9 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	const history = useHistory();
 
 	const [nextResources, setNextResources, isLoading] = useRequest<
-		ResourceListType[]
+		ResourceType[]
 	>(
-		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}`,
+		`resources?page=${pagination}&filter=${filterBy.tag_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},
 		resources.length >= 10,
@@ -51,17 +52,15 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 			);
 			if (deleted?.data?.success) {
 				setResources(
-					resources.filter(
-						(resource: ResourceListType) => resource.r_id !== rId,
-					),
+					resources.filter((resource) => resource.r_id !== rId),
 				);
 			}
 		}
 	};
 
-	const renderResources = (rList: ResourceListType[]) => {
+	const renderResources = (rList: ResourceType[]) => {
 		if (!!resources)
-			return rList.map((resource: ResourceListType) => {
+			return rList.map((resource: ResourceType) => {
 				return (
 					<ResourceCard
 						key={resource.r_id}

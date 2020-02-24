@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
 	EditDescription,
@@ -14,7 +14,14 @@ import { useDismiss } from '../../../../Hooks';
 import TextEditor from '../../../Components/TextEditor';
 import { ButtonRow } from './Styles';
 import { makeRequest } from '../../../../Api/Api';
-import { SubmitResourceProps } from '../Types';
+import { ResourceListType, ResourceType } from '../Types';
+
+export type SubmitResourceProps = {
+	popup: boolean;
+	resources: ResourceType[];
+	setResources: Dispatch<SetStateAction<ResourceType[] | undefined>>;
+	setPopup: Dispatch<SetStateAction<boolean>>;
+};
 
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,

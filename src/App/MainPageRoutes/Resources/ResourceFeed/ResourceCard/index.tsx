@@ -22,18 +22,21 @@ import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
 import DeleteImg from '../../../../../Assets/x.png';
 import ShareImg from '../../../../../Assets/Share.png';
-import { ResourceListType, vote } from '../../Types';
+import { ResourceListType, ResourceType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api/Api';
-import { formatDate } from '../../../../../Utils/index';
+import { formatDate } from '../../../../../Utils';
+import { Tag as t } from '../../Types';
 
 type ResourceCardPropTypes = {
-	resource: ResourceListType;
-	setFilter: Dispatch<SetStateAction<string>>;
+	resource: ResourceType;
+	setFilter: Dispatch<SetStateAction<t>>;
 	deleteResource: () => void;
 	openResource: () => void;
-	filter: string;
+	filter: t;
 	key?: number;
 };
+
+const defaultTag = { tag_id: 0, color: '', title: 'none' };
 
 const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	resource,
@@ -91,11 +94,11 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}
 	};
 
-	const handleFiltering = (filterName: string) => {
-		if (filterName === filter) {
-			setFilter('none');
+	const handleFiltering = (tag: t) => {
+		if (filter.tag_id === tag.tag_id) {
+			setFilter(defaultTag);
 		} else {
-			setFilter(filterName);
+			setFilter(tag);
 		}
 	};
 
@@ -151,14 +154,14 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					{resource.tags &&
 						resource.tags?.map((tag, index) => (
 							<Tag
-								color={resource.colors[index]}
+								color={tag.color}
 								key={index}
 								onClick={(e: React.SyntheticEvent) => {
 									e.stopPropagation();
 									handleFiltering(tag);
 								}}
 							>
-								# {tag}
+								# {tag.title}
 							</Tag>
 						))}
 				</Tags>
