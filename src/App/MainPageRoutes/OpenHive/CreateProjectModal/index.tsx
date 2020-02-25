@@ -46,6 +46,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 			});
 			if (resp.data && projects) {
 				setProjects([...projects, resp.data]);
+				setShowModal(false);
 			}
 		}
 	};

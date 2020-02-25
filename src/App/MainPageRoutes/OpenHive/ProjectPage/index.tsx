@@ -5,7 +5,7 @@ import { BrowserRouterProps, withRouter } from 'react-router-dom';
 import Board from '../../../Components/Board/index';
 import Messages from '../../../Messages/MessageRoom/index';
 import ViewPost from '../../../Components/CommentThread';
-import { capitalizeFirst } from '../../../../Utils/';
+import { capitalizeFirst, validateUrl } from '../../../../Utils/';
 import {
 	ProjectPage,
 	ProjectInfo,
@@ -60,7 +60,12 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						/>
 					);
 				case 'settings':
-					return <ProjectSettings project={project} />;
+					return (
+						<ProjectSettings
+							project={project}
+							setProject={setProject}
+						/>
+					);
 				default:
 					return (
 						<ViewPost
@@ -86,6 +91,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 				projectId: project.project_id,
 				title: project.title,
 				description: project.description,
+				link: project.link,
 			});
 			if (resp.data) {
 				setProject({
@@ -109,7 +115,9 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						: 'Loading...'}
 				</ProjectTitle>
 				<ProjectLink>
-					{!isLoading && project && <a href={project.link}>link</a>}
+					{!isLoading && project && (
+						<a href={validateUrl(project.link)}>link</a>
+					)}
 				</ProjectLink>
 			</ProjectInfo>
 			<ProjectDescription>

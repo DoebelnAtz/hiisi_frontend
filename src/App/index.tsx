@@ -17,6 +17,7 @@ import {
 	MainPage,
 	MainView,
 	SideNavCol,
+	ProductionStateLabel,
 } from './Style';
 import Messages from './Messages';
 import { setLocal } from '../Utils/index';
@@ -43,6 +44,9 @@ const App: React.FC = () => {
 							/>
 							<Route path={'/'}>
 								<MainContainer>
+									<ProductionStateLabel>
+										<span>Alpha</span>
+									</ProductionStateLabel>
 									<MainPageHeader>
 										<Header />
 									</MainPageHeader>

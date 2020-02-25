@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { useRequest } from '../../../../../Hooks/index';
 import { Project } from '../../Types/index';
 import { User } from '../../../../../Types/index';
@@ -6,9 +6,13 @@ import { Collaborator, ProjectCollaborators, OptionRow } from './Styles';
 
 type ProjectSettingsProps = {
 	project: Project;
+	setProject: Dispatch<SetStateAction<Project | undefined>>;
 };
 
-const ProjectSettings: React.FC<ProjectSettingsProps> = ({ project }) => {
+const ProjectSettings: React.FC<ProjectSettingsProps> = ({
+	project,
+	setProject,
+}) => {
 	const [projectCollaborators, setProjectCollaborators] = useRequest<User[]>(
 		`projects/collaborators?projectId=${project.project_id}`,
 		'GET',
@@ -33,6 +37,16 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({ project }) => {
 		}
 	};
 
+	const handleLinkChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		setProject({ ...project, link: target.value });
+	};
+
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		setProject({ ...project, title: target.value });
+	};
+
 	return (
 		<div>
 			<OptionRow>
@@ -42,12 +56,16 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({ project }) => {
 				</ProjectCollaborators>
 			</OptionRow>
 			<OptionRow>
-				Title:
-				<span>{project.title}</span>
+				<label>
+					Title:
+					<input value={project.title} onChange={handleTitleChange} />
+				</label>
 			</OptionRow>
 			<OptionRow>
-				Link:
-				<span>{project.link}</span>
+				<label>
+					Link:
+					<input value={project.link} onChange={handleLinkChange} />
+				</label>
 			</OptionRow>
 		</div>
 	);

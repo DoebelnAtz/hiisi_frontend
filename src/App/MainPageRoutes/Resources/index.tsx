@@ -24,7 +24,9 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [sortBy, setSortBy] = useState(
 		getLocal('resourceSortPref')?.sortBy || 'popular',
 	);
-	const [reverse, setSortRev] = useState('false');
+	const [reverse, setReverse] = useState(
+		getLocal('resourceSortPref')?.reverse || 'false',
+	);
 
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
@@ -35,12 +37,16 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [popup, setPopup] = useState(false);
 
 	const onSortSelect = (sort: string) => {
-		// Save sorting preference to localstorage
-		setLocal('resourceSortPref', { sortBy: sort });
 		if (sort === sortBy) {
-			setSortRev(reverse === 'true' ? 'false' : 'true');
+			// Save sorting preference to localstorage
+			setLocal('resourceSortPref', {
+				sortBy: sort,
+				reverse: reverse === 'true' ? 'false' : 'true',
+			});
+			setReverse(reverse === 'true' ? 'false' : 'true');
 		} else {
-			setSortRev('false');
+			setLocal('resourceSortPref', { sortBy: sort });
+			setReverse('false');
 			setSortBy(sort);
 		}
 	};
@@ -70,6 +76,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				<DropDown
 					width={'175px'}
 					height={'34px'}
+					withFilter
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					setSelect={onSortSelect}

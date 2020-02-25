@@ -50,15 +50,18 @@ const ShowComments: React.FC<CommentThread> = ({
 				</ShowAllCommentsButton>
 			)}
 			<RowDiv>
-				{!Number(queryString.parse(location.search)?.comment) && (
-					<ShowRepliesButton onClick={() => setExpanded(!expanded)}>
-						<i
-							style={{ fontSize: '13px', marginRight: '5px' }}
-							className="fas fa-comment-alt"
-						/>
-						{!expanded ? 'Show' : 'Hide'}
-					</ShowRepliesButton>
-				)}
+				{!Number(queryString.parse(location.search)?.comment) &&
+					!!comments?.length && (
+						<ShowRepliesButton
+							onClick={() => setExpanded(!expanded)}
+						>
+							<i
+								style={{ fontSize: '13px', marginRight: '5px' }}
+								className="fas fa-comment-alt"
+							/>
+							{!expanded ? 'Show' : 'Hide'}
+						</ShowRepliesButton>
+					)}
 				<ReplyRow full={!!comments?.length}>
 					<Reply
 						commentThread={comments}

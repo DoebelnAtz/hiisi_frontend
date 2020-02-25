@@ -16,17 +16,25 @@ const Feed = ({}) => {
 	const [sortBy, setSortBy] = useState(
 		getLocal('forumSortPref')?.sortBy || 'popular',
 	);
-	const [reverse, setReverse] = useState('false');
+	const [reverse, setReverse] = useState(
+		getLocal('forumSortPref')?.reverse || 'false',
+	);
+
 	const [posts, setPosts, isLoading] = useRequest<PostType[]>(
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 
-	const handleOrderSelect = (sort: string) => {
-		setLocal('forumSortPref', { sortBy: sort });
+	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
-			setReverse(reverse === 'false' ? 'true' : 'false');
+			// Save sorting preference to localstorage
+			setLocal('forumSortPref', {
+				sortBy: sort,
+				reverse: reverse === 'true' ? 'false' : 'true',
+			});
+			setReverse(reverse === 'true' ? 'false' : 'true');
 		} else {
+			setLocal('forumSortPref', { sortBy: sort });
 			setReverse('false');
 			setSortBy(sort);
 		}
@@ -40,7 +48,7 @@ const Feed = ({}) => {
 				</CreatePostButton>
 				<DropDown
 					state={sortBy}
-					setSelect={handleOrderSelect}
+					setSelect={onSortSelect}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
 					height={'34px'}

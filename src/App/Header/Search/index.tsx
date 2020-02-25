@@ -36,6 +36,13 @@ const SearchBar: React.FC = () => {
 		}
 	};
 
+	const handleSelectResult = (result: ResultType) => {
+		setResults([]);
+		setSearchInput('');
+		setSelectedIndex(0);
+		history.push(`${result.link}/${result.id}`);
+	};
+
 	const renderResultList = () => {
 		if (results) {
 			return results.map((result, index: number) => {
@@ -44,10 +51,7 @@ const SearchBar: React.FC = () => {
 						key={index}
 						highlighted={selectedIndex === index}
 						onClick={() => {
-							setResults([]);
-							setSearchInput('');
-							setSelectedIndex(0);
-							history.push(`${result.link}/${result.id}`);
+							handleSelectResult(result);
 						}}
 					>
 						<img
@@ -66,9 +70,7 @@ const SearchBar: React.FC = () => {
 	const handleEnterPress = (e: React.KeyboardEvent) => {
 		if (results) {
 			if (e.key === 'Enter' && results.length > selectedIndex) {
-				history.push(
-					`${results[selectedIndex].link}/${results[selectedIndex].id}`,
-				);
+				handleSelectResult(results[selectedIndex]);
 			} else if (e.key === 'ArrowDown') {
 				e.preventDefault();
 				if (selectedIndex < results.length - 1) {

@@ -13,9 +13,12 @@ import { getLocal, setLocal } from '../../../Utils';
 const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [showModal, setShowModal] = useState(false);
 	const [sortBy, setSortBy] = useState(
-		getLocal('OHSortPref')?.sortBy || 'popular',
+		getLocal('projectsSortPref')?.sortBy || 'popular',
 	);
-	const [reverse, setReverse] = useState('false');
+	const [reverse, setReverse] = useState(
+		getLocal('projectsSortPref')?.reverse || 'false',
+	);
+
 	useNav('Open Hive');
 	const [projects, setProjects, isLoading] = useRequest<Project[]>(
 		`projects?page=1&order=${sortBy}&reverse=${reverse}`,
@@ -23,11 +26,15 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	);
 
 	const onSortSelect = (sort: string) => {
-		// Save sorting preference to localstorage
-		setLocal('OHSortPref', { sortBy: sort });
 		if (sort === sortBy) {
+			// Save sorting preference to localstorage
+			setLocal('projectsSortPref', {
+				sortBy: sort,
+				reverse: reverse === 'true' ? 'false' : 'true',
+			});
 			setReverse(reverse === 'true' ? 'false' : 'true');
 		} else {
+			setLocal('projectsSortPref', { sortBy: sort });
 			setReverse('false');
 			setSortBy(sort);
 		}

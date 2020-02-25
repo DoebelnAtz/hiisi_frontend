@@ -78,16 +78,11 @@ export const checkFriendList = (profile, username) => {
 	return true;
 };
 
-export const validateUrl = async (url) => {
-	if (url.slice(0, 7) !== 'http://' || url.slice(0, 8) !== 'https://') {
+export const validateUrl = (url) => {
+	if (url.slice(0, 7) !== 'http://' && url.slice(0, 8) !== 'https://') {
 		url = 'http://' + url;
 	}
-	let resp = await axios.get(url);
-	if (resp.status === 404) {
-		return false;
-	} else {
-		return url;
-	}
+	return url;
 };
 
 export const calculateTimeSince = (isoString) => {

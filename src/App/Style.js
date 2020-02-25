@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { color, layout, length } from '../Styles/sharedStyles';
+import { color, font, layout, length } from '../Styles/sharedStyles';
 
 export const MainContainer = styled.div`
 	max-width: 1900px;
 	margin-right: auto;
 	margin-left: auto;
+	overflow: hidden;
 	padding-right: ${length.margin};
 	padding-left: ${length.margin};
 `;
@@ -23,6 +24,23 @@ export const MainPage = styled.div`
 	height: calc(100vh - 60px - ${length.margin} * 4);
 	margin: 0;
 	overflow: auto;
+`;
+
+export const ProductionStateLabel = styled.div`
+	background-color: ${color.secondary};
+	position: absolute;
+	display: flex;
+	flex-wrap: nowrap;
+	top: 10px;
+	right: -50px;
+	opacity: 0.90;
+	overflow: hidden;
+	transform: rotateY(0deg) rotate(45deg);
+	padding: 3px 50px;
+	& span {
+		padding: 2px;
+		${font.text}
+	}
 `;
 
 export const SideNavCol = styled.div`

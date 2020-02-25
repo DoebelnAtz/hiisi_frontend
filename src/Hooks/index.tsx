@@ -109,11 +109,9 @@ export function useRequest<F>(
 	body = {},
 	conditional = true,
 ) {
-	type dataType = F;
 	const [data, setData] = useState<F>();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const { update: setError } = useContext(ErrorContext);
-
 	let resp;
 	useEffect(() => {
 		async function request() {
@@ -128,6 +126,7 @@ export function useRequest<F>(
 					localStorage.clear();
 					window.location.replace('/login');
 				} else {
+
 					setError(e.response.status.toString());
 				}
 			} finally {
@@ -135,6 +134,7 @@ export function useRequest<F>(
 			}
 		}
 		if (conditional) request();
+
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }

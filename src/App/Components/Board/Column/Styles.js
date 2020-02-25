@@ -28,7 +28,7 @@ export const ColumnTitle = styled.input`
   margin: 5px 0 0;
   text-transform: uppercase;
   border: none;
-  font-size: 20px;
+  font-size: 17px;
   color: ${color.primary};
   width: calc(100% - 20px);
   background: ${color.siteBG3};

@@ -75,7 +75,7 @@ export const GreenDiv = styled(animated.div)`
 `;
 
 export const HelperDiv = styled(animated.div)`
-	top: calc(50% - 8vw - ${length.margin});
+	top: calc(50% - 8vw - 5px);
 	left: 40vw;
 	position: absolute;
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, colorAdjust, cursor, layout, length } from '../../../../../Styles/sharedStyles';
+import { color, colorAdjust, components, cursor, font, layout, length } from '../../../../../Styles/sharedStyles';
 
 export const ProjectCollaborators = styled.div`
 	${layout.row};
@@ -29,7 +29,21 @@ export const OptionRow = styled.div`
 
 	border-bottom: 2px solid ${color.siteBG2};
 	padding: ${length.margin};
-	& span {
-	  margin-left: auto;
+	height: 34px;
+	& label {
+		line-height: 34px;
+		${layout.row};
+		width: 100%;
+	}
+	& input {
+		${components.input};
+		border-color: ${color.siteBG1};
+	  	margin-left: auto;
+	  	height: 30px;
+	  	width: 30vw;
+	  	${font.text};
+	  	min-width: fit-content;
+	  	max-width: 400px;
+	  	padding-right: 5px;
 	}
 `;
