@@ -5,7 +5,7 @@ import openHiveIcon from '../../Assets/OpenHive.png';
 import profileIcon from '../../Assets/Profile2.png';
 import treeIcon from '../../Assets/Tree8.png';
 import { CurrentNavContext } from '../../Context/CurrentNavContext';
-import { makeRequest } from '../../Api/Api';
+import { makeRequest } from '../../Api';
 import { getLocal, setLocal } from '../../Utils/index';
 
 const SideNav: React.FC = () => {

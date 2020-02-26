@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { cursor, layout, length } from '../../../../Styles/sharedStyles';
+import { cursor, layout, length } from '../../../../Styles/SharedStyles';
 
 export const MoreButton = styled.div`
 	${layout.row}

@@ -7,7 +7,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const Resources = styled.div``;
 

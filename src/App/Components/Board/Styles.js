@@ -5,7 +5,7 @@ import {
 	cursor,
 	layout,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const BoardDiv = styled.div`
 	width: 100%;

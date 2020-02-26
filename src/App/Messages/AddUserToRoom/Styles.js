@@ -6,7 +6,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const AddUserDiv = styled.div`
 	height: calc(30vh + 167px);

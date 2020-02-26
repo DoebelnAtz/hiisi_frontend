@@ -4,7 +4,7 @@ import {
 	components,
 	layout,
 	length,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const OuterDiv = styled.div`
 	position: fixed;

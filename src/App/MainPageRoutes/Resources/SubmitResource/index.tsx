@@ -13,7 +13,7 @@ import { OuterDiv } from './Styles';
 import { useDismiss } from '../../../../Hooks';
 import TextEditor from '../../../Components/TextEditor';
 import { ButtonRow } from './Styles';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 import { SubmitResourceProps } from '../Types';
 
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({

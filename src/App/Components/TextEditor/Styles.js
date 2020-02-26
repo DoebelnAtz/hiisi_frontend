@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { length } from '../../../Styles/sharedStyles';
+import { length } from '../../../Styles/SharedStyles';
 
 export const TextEditor = styled.div`
 	width: calc(100% - ${length.margin} * 2);

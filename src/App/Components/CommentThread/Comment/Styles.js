@@ -9,7 +9,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const ParentComment = styled.div`
 	margin-left: ${length.margin};

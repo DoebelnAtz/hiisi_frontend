@@ -6,7 +6,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const SearchDiv = styled.div`
 	${layout.row};

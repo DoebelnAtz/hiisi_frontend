@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, components } from '../../../../Styles/sharedStyles';
+import { color, components } from '../../../../Styles/SharedStyles';
 
 export const SaveButton = styled.button`
 	${components.button};

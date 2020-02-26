@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layout } from '../../../Styles/sharedStyles';
+import { layout } from '../../../Styles/SharedStyles';
 
 export const ErrorDiv = styled.div`
 	background-color: red;

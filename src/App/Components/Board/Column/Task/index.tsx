@@ -18,7 +18,7 @@ import infoIcon from '../../../../../Assets/Info.png';
 import { getPriorityIcon } from '../../../../../Utils/taskUtils/index';
 import { BoardType, TaskType } from '../../Types/index';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
-import { makeRequest } from '../../../../../Api/Api';
+import { makeRequest } from '../../../../../Api';
 import { checkUserList } from '../../../../../Utils/index';
 
 type TaskProps = {

@@ -10,7 +10,7 @@ import {
 	ProjectCollaborators,
 	BoardDiv,
 } from './Styles';
-import { makeRequest } from '../../../Api/Api';
+import { makeRequest } from '../../../Api';
 import { useRequest } from '../../../Hooks';
 import { BoardType, ColumnType, TaskType } from './Types';
 import { User } from '../../../Types';

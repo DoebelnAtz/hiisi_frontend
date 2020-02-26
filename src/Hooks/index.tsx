@@ -5,7 +5,7 @@ import React, {
 	useEffect,
 	useState,
 } from 'react';
-import { makeRequest } from '../Api/Api';
+import { makeRequest } from '../Api';
 import { CurrentNavContext } from '../Context/CurrentNavContext';
 import { ChatContext } from '../Context/ChatContext';
 import { ErrorContext } from '../Context/ErrorContext';

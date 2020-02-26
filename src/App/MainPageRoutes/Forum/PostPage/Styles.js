@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layout, font, color } from '../../../../Styles/sharedStyles';
+import { layout, font, color } from '../../../../Styles/SharedStyles';
 
 export const PostHead = styled.div`
 	${layout.row};

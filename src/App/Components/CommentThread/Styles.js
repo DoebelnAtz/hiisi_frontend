@@ -6,7 +6,7 @@ import {
 	colorAdjust,
 	components,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const CommentSection = styled.div`
 	margin: ${length.margin} 0;

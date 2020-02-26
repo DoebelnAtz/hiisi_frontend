@@ -6,7 +6,7 @@ import {
 	font,
 	layout,
 	length,
-} from './sharedStyles';
+} from './SharedStyles';
 
 export const Card = styled.div`
 	${font.text};

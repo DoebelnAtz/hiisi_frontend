@@ -4,7 +4,7 @@ import {
 	components,
 	layout,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 import { animated } from 'react-spring';
 
 export const BackgroundDiv = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, font, layout, length } from '../Styles/sharedStyles';
+import { color, font, layout, length } from '../Styles/SharedStyles';
 
 export const MainContainer = styled.div`
 	max-width: 1900px;

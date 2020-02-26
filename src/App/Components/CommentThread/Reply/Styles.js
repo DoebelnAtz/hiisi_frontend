@@ -4,7 +4,7 @@ import {
 	color,
 	components,
 	layout,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const ReplyRow = styled.div`
 	${layout.row};

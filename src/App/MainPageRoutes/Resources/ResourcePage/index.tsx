@@ -18,7 +18,7 @@ import {
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor/index';
 import ViewPost from '../../../Components/CommentThread/index';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import SaveButton from '../../../Components/Buttons/SaveButton/index';

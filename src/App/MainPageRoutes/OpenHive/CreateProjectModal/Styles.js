@@ -5,7 +5,7 @@ import {
 	length,
 	layout,
 	color,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const OutsideDiv = styled.div`
 	${modal.outside};

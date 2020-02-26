@@ -10,7 +10,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import { Column, ColumnTitle, ColumnList, AddTaskInput } from './Styles';
 import Task from './Task/index';
 import { BoardType, ColumnType, TaskType } from '../Types';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 
 type ColumnProps = {
 	addTask: any;

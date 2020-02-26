@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { useSpring, useTransition } from 'react-spring';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
 import { useDismiss } from '../../../../Hooks';
 import { CreatePostModalProps } from '../Types';

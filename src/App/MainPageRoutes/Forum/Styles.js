@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { components, layout, length } from '../../../Styles/sharedStyles';
+import { components, layout, length } from '../../../Styles/SharedStyles';
 
 export const FeedPage = styled.div`
 	height: calc(100% - ${length.margin});

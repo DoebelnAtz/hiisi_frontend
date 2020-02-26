@@ -1,5 +1,5 @@
 import React from 'react';
-import { color, colorAdjust } from '../../../../Styles/sharedStyles';
+import { color, colorAdjust } from '../../../../Styles/SharedStyles';
 
 type PlaceholderTextProps = {
 	height: string;

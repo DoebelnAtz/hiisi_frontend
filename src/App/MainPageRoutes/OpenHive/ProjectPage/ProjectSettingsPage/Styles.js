@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, colorAdjust, components, cursor, font, layout, length } from '../../../../../Styles/sharedStyles';
+import { color, colorAdjust, components, cursor, font, layout, length } from '../../../../../Styles/SharedStyles';
 
 export const ProjectCollaborators = styled.div`
 	${layout.row};

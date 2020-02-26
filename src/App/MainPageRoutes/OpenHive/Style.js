@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, components, layout, length } from '../../../Styles/sharedStyles';
+import { color, components, layout, length } from '../../../Styles/SharedStyles';
 
 export const ProjectList = styled.div`
 	color: ${color.primary};

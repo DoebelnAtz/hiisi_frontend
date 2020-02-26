@@ -6,7 +6,7 @@ import {
 	cursor,
 	font,
 	length,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const DropDown = styled.div`
 	position: relative;

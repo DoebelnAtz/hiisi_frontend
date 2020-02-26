@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { components, cursor, length } from '../../../../Styles/sharedStyles';
+import { components, cursor, length } from '../../../../Styles/SharedStyles';
 
 export const MoreButton = styled.img`
 	${cursor.clickable};

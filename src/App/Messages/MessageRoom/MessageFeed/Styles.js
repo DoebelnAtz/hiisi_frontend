@@ -5,7 +5,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const MessageFeedDiv = styled.div`
 	background-color: ${color.siteBG2};

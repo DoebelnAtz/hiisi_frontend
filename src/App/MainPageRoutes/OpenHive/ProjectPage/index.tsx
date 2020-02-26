@@ -20,9 +20,9 @@ import { RouteComponentProps, User } from '../../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
-import { color } from '../../../../Styles/sharedStyles';
+import { color } from '../../../../Styles/SharedStyles';
 import ProjectSettings from './ProjectSettingsPage';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 import SaveButton from '../../../Components/Buttons/SaveButton/';
 import queryString from 'query-string';
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { components } from '../../../../Styles/sharedStyles';
+import { components } from '../../../../Styles/SharedStyles';
 
 export const InputButtonDiv = styled.div`
 	width: 100%;

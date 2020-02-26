@@ -23,7 +23,7 @@ import { formatDate } from '../../../../Utils/index';
 import DeleteImg from '../../../../Assets/x.png';
 import ShareImg from '../../../../Assets/Share.png';
 import PlaceholderText from '../PlaceholderText';
-import { color, colorAdjust } from '../../../../Styles/sharedStyles';
+import { color, colorAdjust } from '../../../../Styles/SharedStyles';
 
 const PlaceholderCard: React.FC = () => {
 	return (

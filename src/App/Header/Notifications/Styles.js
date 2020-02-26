@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, length } from '../../../Styles/sharedStyles';
+import { color, length } from '../../../Styles/SharedStyles';
 
 export const NotificationIcon = styled.div`
 	width: 40px;

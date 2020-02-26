@@ -7,7 +7,7 @@ import {
 	layout,
 	border,
 	font, components,
-} from '../../../../Styles/sharedStyles';
+} from '../../../../Styles/SharedStyles';
 
 export const ProjectPage = styled.div`
 	color: white;

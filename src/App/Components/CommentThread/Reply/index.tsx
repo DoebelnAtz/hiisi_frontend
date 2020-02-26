@@ -7,7 +7,7 @@ import React, {
 	useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
-import { makeRequest } from '../../../../Api/Api';
+import { makeRequest } from '../../../../Api';
 import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 
 import {

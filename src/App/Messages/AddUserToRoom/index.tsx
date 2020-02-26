@@ -13,7 +13,7 @@ import { ChatContext } from '../../../Context/ChatContext';
 import { useRequest } from '../../../Hooks';
 import { User } from '../../../Types';
 import { ConnectedUser } from '../MessageRoom/Styles';
-import { makeRequest } from '../../../Api/Api';
+import { makeRequest } from '../../../Api';
 
 const AddUserToRoom: React.FC = () => {
 	const { state: currentChat, update: setCurrentChat } = useContext(

@@ -23,7 +23,7 @@ import {
 import Plus from '../../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../../Hooks';
 import TextEditor from '../../../../TextEditor/index';
-import { makeRequest } from '../../../../../../Api/Api';
+import { makeRequest } from '../../../../../../Api';
 import Avatar from '../../../../Avatar/index';
 import { getPriorityIcon } from '../../../../../../Utils/taskUtils';
 import { RouteComponentProps, User } from '../../../../../../Types';

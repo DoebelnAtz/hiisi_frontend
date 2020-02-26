@@ -15,7 +15,7 @@ import {
 	LoginButton,
 } from './Styles';
 import { useSpring, useChain } from 'react-spring';
-import { makeRequest } from '../../../Api/Api';
+import { makeRequest } from '../../../Api';
 const Login = (props) => {
 	const [loginError, setLoginError] = useState(false);
 	const requestLogin = async (e) => {

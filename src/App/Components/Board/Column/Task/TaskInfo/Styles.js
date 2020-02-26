@@ -8,7 +8,7 @@ import {
 	border,
 	cursor,
 	font,
-} from '../../../../../../Styles/sharedStyles';
+} from '../../../../../../Styles/SharedStyles';
 
 export const TaskInfoHead = styled.div`
 	${layout.row};

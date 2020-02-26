@@ -29,7 +29,7 @@ If a component is used in multiple Directories it should be in ./src/Components
 Each folder should have a index.tsx/ts/tsx file and a Styles.js file if necessary.
 
 This way style rules are easy to find. If a style is used in several component, it should be defined in
-.Styles/sharedStyles.js
+.Styles/SharedStyles.js
 
 Every view should have one Types folder with a index.ts file that holds all the types used by that view.
 

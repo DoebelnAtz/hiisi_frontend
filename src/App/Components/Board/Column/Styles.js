@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-import { color, colorAdjust, components, length } from '../../../../Styles/sharedStyles';
+import { color, colorAdjust, components, length } from '../../../../Styles/SharedStyles';
 
 export const Column = styled.div`
   display: flex;

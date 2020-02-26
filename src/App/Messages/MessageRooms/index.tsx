@@ -1,6 +1,6 @@
 import React, { useContext, useState, Fragment } from 'react';
 import { ThreadItem, CreateThreadRow, NotificationIcon } from './Styles';
-import { makeRequest } from '../../../Api/Api';
+import { makeRequest } from '../../../Api';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
 import InputWithButton from '../../Components/Buttons/InputWithButton';

@@ -6,7 +6,7 @@ import {
 	layout,
 	font,
 	components,
-} from '../../../Styles/sharedStyles';
+} from '../../../Styles/SharedStyles';
 
 export const MessageNavigation = styled.div`
 	${layout.row};

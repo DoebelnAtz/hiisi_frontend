@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { length, modal } from '../../../Styles/sharedStyles';
+import { length, modal } from '../../../Styles/SharedStyles';
 
 export const OutsideDiv = styled.div`
 	${modal.outside}

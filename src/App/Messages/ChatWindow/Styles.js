@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, colorAdjust, length } from '../../../Styles/sharedStyles';
+import { color, colorAdjust, length } from '../../../Styles/SharedStyles';
 
 export const ChatWindowDiv = styled.div`
 	position: absolute;

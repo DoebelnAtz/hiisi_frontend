@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, length, font } from '../../../../Styles/sharedStyles';
+import { color, length, font } from '../../../../Styles/SharedStyles';
 
 export const TextEditOutput = styled.textarea`
 	width: calc(100%);

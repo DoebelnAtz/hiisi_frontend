@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, components, cursor, layout, length } from '../../Styles/sharedStyles';
+import { color, components, cursor, layout, length } from '../../Styles/SharedStyles';
 
 export const MessageModal = styled.div`
 	color: white;

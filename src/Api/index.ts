@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { getLocal } from '../Utils';
-import { useContext } from 'react';
 
-export const makeRequest = async (url, method, data) => {
+export const makeRequest = async (url: string, method: any, data: any) => {
 	let resp;
 	resp = await axios({
 		url: `http://localhost:5000/api/${url}`,

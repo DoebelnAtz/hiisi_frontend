@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, font, layout, length } from '../../Styles/sharedStyles';
+import { color, font, layout, length } from '../../Styles/SharedStyles';
 
 export const HeaderDiv = styled.div`
 	height: 70px;
