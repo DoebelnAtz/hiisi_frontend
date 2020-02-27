@@ -1,7 +1,7 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import { useRequest } from '../../../../../Hooks/index';
-import { Project } from '../../Types/index';
-import { User } from '../../../../../Types/index';
+import React, { Dispatch, SetStateAction } from 'react';
+import { useRequest } from '../../../../../Hooks';
+import { Project } from '../../Types';
+import { User } from '../../../../../Types';
 import { Collaborator, ProjectCollaborators, OptionRow } from './Styles';
 
 type ProjectSettingsProps = {

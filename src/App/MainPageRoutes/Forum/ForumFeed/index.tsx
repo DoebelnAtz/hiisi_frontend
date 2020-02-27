@@ -2,7 +2,6 @@ import React, {
 	Dispatch,
 	Fragment,
 	SetStateAction,
-	useEffect,
 	useRef,
 	useState,
 } from 'react';
@@ -11,7 +10,6 @@ import { PostType } from '../Types';
 import { useRequest } from '../../../../Hooks';
 import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
-import PlaceholderCard from '../../../Components/PlaceHolderFeed/PlaceholderCard/index';
 import { makeRequest } from '../../../../Api';
 type ForumFeedProps = {
 	sortBy: string;

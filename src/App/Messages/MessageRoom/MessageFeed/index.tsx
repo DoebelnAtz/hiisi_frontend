@@ -22,7 +22,7 @@ type MessageFeedProps = {
 
 const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 	const [showNext, setShowNext] = useState(false);
-	const [nextRoom, setNextRoom, isLoading] = useRequest<RoomType>(
+	const [nextRoom, , ] = useRequest<RoomType>(
 		`messages/threads/${tid.toString()}?page=${page}`,
 		'GET',
 		{},

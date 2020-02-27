@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import { ChatContext } from '../../../Context/ChatContext';
 import { ChatWindowDiv } from './Styles';
 import MessageRoomList from '../MessageRooms';

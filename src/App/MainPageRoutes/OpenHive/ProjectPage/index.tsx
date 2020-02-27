@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react';
 import { useNav, useRequest } from '../../../../Hooks';
-import { BrowserRouterProps, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Board from '../../../Components/Board/index';
-import Messages from '../../../Messages/MessageRoom/index';
 import ViewPost from '../../../Components/CommentThread';
 import { capitalizeFirst, validateUrl } from '../../../../Utils/';
 import {

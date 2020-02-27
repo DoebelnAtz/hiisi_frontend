@@ -2,10 +2,9 @@ import React, { Dispatch, SetStateAction, Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
 import { ResourceListType } from '../Types';
 import { makeRequest } from '../../../../Api';
-import { getLocal } from '../../../../Utils/index';
+import { getLocal } from '../../../../Utils';
 import ResourceCard from './ResourceCard/index';
 import { useHistory } from 'react-router-dom';
-import { LoadButton } from '../Styles';
 import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
 

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { SearchInput, SearchDiv, SearchResults, ResultItem } from './Styles';
-import { useDismiss, useRequest } from '../../../Hooks/index';
-import { ResultType } from './Types/index';
+import { useDismiss, useRequest } from '../../../Hooks';
+import { ResultType } from './Types';
 import { useHistory } from 'react-router';
 import UsrIcon from '../../../Assets/ProfileS.png';
 import ResourceIcon from '../../../Assets/TreeS.png';

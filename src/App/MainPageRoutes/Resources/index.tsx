@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNav, useRequest } from '../../../Hooks';
-import { useLocation, useHistory, useParams } from 'react-router-dom';
-import ResourceCard from './ResourceFeed/ResourceCard';
 import {
 	Resources,
 	SubmitResourceButton,
 	FilterButton,
-	ResourcePageHead,
-	LoadButton,
+	ResourcePageHead
+	,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
-import { makeRequest } from '../../../Api';
 import { getLocal, setLocal } from '../../../Utils';
 import { RouteComponentProps } from 'react-router';
 import { ResourceListType, Tag } from './Types';

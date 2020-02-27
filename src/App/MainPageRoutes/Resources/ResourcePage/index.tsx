@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useDismiss, useRequest } from '../../../../Hooks';
-import queryString from 'query-string';
 
 import {
 	ResourceComments,

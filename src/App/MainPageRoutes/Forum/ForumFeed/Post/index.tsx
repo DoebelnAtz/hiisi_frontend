@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { RouteComponentProps } from '../../../../../Types';
 
 import { PostProps } from '../../Types';
-
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../../../Assets/ArrowDown.png';
 import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
 import DeleteImg from '../../../../../Assets/x.png';
-import { formatDate } from '../../../../../Utils/index';
+import { formatDate } from '../../../../../Utils';
 import { makeRequest } from '../../../../../Api';
-import { RouteComponentProps } from '../../../../../Types';
 import { withRouter } from 'react-router-dom';
 
 import {

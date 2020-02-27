@@ -3,23 +3,19 @@ import Profile from './Profile/Profile';
 import React, {
 	Fragment,
 	useContext,
-	useEffect,
-	useRef,
-	useState,
+
 } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 import UserPage from './Profile/UserPage';
 import PostPage from './Forum/PostPage';
-import { useTransition, animated } from 'react-spring';
 import OpenHive from './OpenHive';
 import ProjectPage from './OpenHive/ProjectPage';
 import TaskInfo from '../Components/Board/Column/Task/TaskInfo';
-import Notifications from '../Header/Notifications';
 import Resources from './Resources';
 import ResourcePage from './Resources/ResourcePage';
-import { getLocal } from '../../Utils/index';
+import { getLocal } from '../../Utils';
 import { useNotifications } from '../../Hooks';
 import ErrorMessage from '../ErrorPages/ErrorModal/index';
 import { ErrorContext } from '../../Context/ErrorContext';

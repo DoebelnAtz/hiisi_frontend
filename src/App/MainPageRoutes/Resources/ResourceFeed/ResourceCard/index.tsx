@@ -24,7 +24,7 @@ import DeleteImg from '../../../../../Assets/x.png';
 import ShareImg from '../../../../../Assets/Share.png';
 import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
-import { formatDate } from '../../../../../Utils/index';
+import { formatDate } from '../../../../../Utils';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;

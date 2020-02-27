@@ -1,4 +1,4 @@
-import React, { SetStateAction, useContext, useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Redirect from './Auth/Redirect';
 import Header from './Header';
@@ -20,7 +20,7 @@ import {
 	ProductionStateLabel,
 } from './Style';
 import Messages from './Messages';
-import { setLocal } from '../Utils/index';
+import { setLocal } from '../Utils';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);

@@ -10,11 +10,10 @@ import { CurrentNavContext } from '../Context/CurrentNavContext';
 import { ChatContext } from '../Context/ChatContext';
 import { ErrorContext } from '../Context/ErrorContext';
 import { NotificationContext } from '../Context/NotificationContext';
-import { getLocal } from '../Utils/index';
+import { getLocal } from '../Utils';
 import socketIOClient from 'socket.io-client';
 import { Notification } from '../Types';
 import { SocketType } from '../Types';
-import { MessageType } from '../App/Messages/Types';
 
 export const useNav = (current: string) => {
 	const { update } = useContext(CurrentNavContext);
