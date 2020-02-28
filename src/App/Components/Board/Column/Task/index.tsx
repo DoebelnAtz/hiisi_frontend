@@ -7,19 +7,20 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import {
 	Task,
 	TaskContent,
-	TaskStatus,
+	TaskPriority,
 	TaskCollaborators,
 	DeleteTaskImg,
 	TaskTitle,
-	TaskStatusTooltip,
+	TaskStatusRow,
 	TaskStatusText,
+	TaskStatusImg,
 } from './Styles';
 import infoIcon from '../../../../../Assets/Info.png';
-import { getPriorityIcon } from '../../../../../Utils/taskUtils/index';
-import { BoardType, TaskType } from '../../Types/index';
+import { getPriorityIcon } from '../../../../../Utils/taskUtils';
+import { BoardType, TaskType } from '../../Types';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
 import { makeRequest } from '../../../../../Api';
-import { checkUserList } from '../../../../../Utils/index';
+import { checkUserList } from '../../../../../Utils';
 
 type TaskProps = {
 	task: TaskType;
@@ -100,16 +101,15 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 								snapshot.isDragging && !snapshot.isDropAnimating
 							}
 						>
-							<RowDiv>
+							<TaskStatusRow>
 								{!!task.status.length && (
-									<TaskStatusTooltip>
+									<TaskStatusImg>
 										<img src={infoIcon} alt={'info'} />
 										<TaskStatusText>
 											<span>{task.status}</span>
 										</TaskStatusText>
-									</TaskStatusTooltip>
+									</TaskStatusImg>
 								)}
-								<TaskTitle>{task.title}</TaskTitle>
 								{editable && checkUserList(task.collaborators) && (
 									<DeleteTaskImg
 										onClick={(e: React.SyntheticEvent) =>
@@ -122,16 +122,20 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 										/>
 									</DeleteTaskImg>
 								)}
+								<TaskPriority>
+									<img
+										src={getPriorityIcon(task.priority)}
+										alt={'priorityIcon'}
+									/>
+								</TaskPriority>
+							</TaskStatusRow>
+							<RowDiv>
+								<TaskTitle>{task.title}</TaskTitle>
 							</RowDiv>
-							<TaskStatus>
-								<img
-									src={getPriorityIcon(task.priority)}
-									alt={'priorityIcon'}
-								/>
-								<TaskCollaborators>
-									{renderTaskCollaborators()}
-								</TaskCollaborators>
-							</TaskStatus>
+
+							<TaskCollaborators>
+								{renderTaskCollaborators()}
+							</TaskCollaborators>
 						</Task>
 					</TaskContent>
 				)}

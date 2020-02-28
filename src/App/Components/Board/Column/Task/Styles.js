@@ -13,19 +13,19 @@ export const TaskContent = styled.div`
 	z-index: 100 !important;
 `;
 
-export const TaskStatus = styled.div`
-	margin-top: ${length.margin};
-	${layout.row}
-	& img {
-		height: 28px;
-		width: 28px;
-	}
+export const TaskStatusRow = styled.div`
+	${layout.row};
+	padding: 4px 2px 4px 4px;
+	border-radius: ${length.radius};
+	margin-bottom: 4px;
+	background-color: ${colorAdjust.lighten(color.siteBG2, 0.2)};
 `;
 
 export const TaskStatusText = styled.div`
 	position: static;
 	visibility: hidden;
-	width: auto;
+	width: fit-content;
+    white-space: nowrap;
 	& span {
 		padding: 7px;
 		position: relative;
@@ -37,27 +37,61 @@ export const TaskStatusText = styled.div`
 	}
 `;
 
-export const TaskStatusTooltip = styled.div`
-	position: absolute;
+export const TaskStatusImg = styled.div`
+	height: 20px;
+	width: 20px;
+	margin: auto ${length.margin} auto 0;
 	& img {
 		position: relative;
 		background-color: ${color.siteBG2};
 		border-radius: 10px;
-		top: -15px;
-		left: -20px;
 		height: 20px;
 		width: 20px;
+		&:hover {
+			border-radius: 10px;
+			transition: background-color 0.1s;
+			background-color: ${color.siteBG1};
+		}
+		
 	}
 	&:hover {
 		& ${TaskStatusText} {
 			visibility: visible;
 		}
+		
+	}
+`;
+
+export const DeleteTaskImg = styled.div`
+	height: 20px;
+	width: 20px;
+	margin: auto ${length.margin} auto 0;
+
+	& img {
+		border-radius: 12px;
+		background-color: ${color.siteBG2};
+		height: 20px;
+		width: 20px;
+		transition: background-color 0.1s;
+		&:hover {
+			background-color: ${color.siteBG1};
+		}
+	}
+`;
+
+export const TaskPriority = styled.div`
+	height: 24px;
+	width: 24px;
+	margin: auto 0 auto auto;
+	& img {
+		height: 24px;
+		width: 24px;
 	}
 `;
 
 export const TaskCollaborators = styled.div`
 	${layout.row};
-	margin-left: auto;
+	margin-left: 8px;
 	& img {
 		transition: border 0.3s;
 		height: 28px;
@@ -69,7 +103,7 @@ export const TaskCollaborators = styled.div`
 `;
 
 export const Task = styled.div`
-	padding: 10px;
+	padding: 2px;
 	margin: 0 0;
 	border: 4px solid ${color.siteBG2};
 	color: white;
@@ -85,35 +119,30 @@ export const Task = styled.div`
 	&:hover ${TaskCollaborators} img {
 		border: 3px solid ${color.siteBG3};
 	}
+	
+	&:hover ${TaskStatusRow} {
+		background-color: ${color.siteBG3};
+	}
 
 	${(props) =>
 		props.isBeingDragged &&
 		css`
 			border: 2px solid ${color.siteBG3};
-			background-color: ${colorAdjust.lighten(color.siteBG2, 0.5)};
+			background-color: ${color.siteBG3};
 			transform: scale(1.2);
 			z-index: 100 !important;
+			${TaskStatusRow} {
+				background-color: ${color.siteBG3};
+			}
 		`}
 `;
 
 export const TaskTitle = styled.div`
+	margin: 4px;
 	width: calc(100% - 24px);
 	& span {
 		font-size: 16px;
 	}
 `;
 
-export const DeleteTaskImg = styled.div`
-	height: 24px;
-	width: 24px;
-	& img {
-		border-radius: 12px;
-		background-color: ${color.siteBG2};
-		height: 24px;
-		width: 24px;
-		transition: background-color 0.1s;
-		&:hover {
-			background-color: ${color.siteBG1};
-		}
-	}
-`;
+

@@ -53,6 +53,7 @@ export const SearchInput = styled.input`
 	${components.input};
 	width: calc(100% - 16px);
 	margin: 2px 2px;
+	height: 28px;
 `;
 
 export const Option = styled.div`

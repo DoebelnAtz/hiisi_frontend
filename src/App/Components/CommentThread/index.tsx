@@ -16,16 +16,18 @@ type CommentThread = {
 	commentthread: number;
 	focusList: FocusList;
 	OPAuthorId: number;
+	expand?: boolean;
 };
 
 const ShowComments: React.FC<CommentThread> = ({
 	commentthread,
 	focusList,
 	OPAuthorId,
+	expand = false,
 }) => {
 	const location = useLocation();
 	const history = useHistory();
-	const [expanded, setExpanded] = useState(false);
+	const [expanded, setExpanded] = useState(expand);
 	const [commentThread, setCommentThread] = useState(
 		queryString.parse(location.search)?.comment
 			? Number(queryString.parse(location.search)?.comment)

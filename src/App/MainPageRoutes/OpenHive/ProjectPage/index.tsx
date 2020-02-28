@@ -14,16 +14,21 @@ import {
 	ProjectDashBoardNavItem,
 	ProjectLink,
 	ProjectDescription,
+	BackToProjectsButton,
+	DashBoard,
 } from './Style';
 import { RouteComponentProps, User } from '../../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { color } from '../../../../Styles/SharedStyles';
+import ArrowLeft from '../../../../Assets/ArrowLeft.png';
 import ProjectSettings from './ProjectSettingsPage';
 import { makeRequest } from '../../../../Api';
-import SaveButton from '../../../Components/Buttons/SaveButton/';
+import SaveButton from '../../../Components/Buttons/SaveButton';
 import queryString from 'query-string';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
+
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
 	history,
@@ -48,6 +53,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	}, [match.params.pid]);
 
 	const renderDash = () => {
+		console.log(dashState);
 		if (project)
 			switch (dashState) {
 				case 'board':
@@ -76,6 +82,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 							}}
 							OPAuthorId={0}
 							commentthread={project.commentthread}
+							expand={true}
 						/>
 					);
 			}
@@ -107,6 +114,12 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	return (
 		<ProjectPage>
 			<ProjectInfo>
+				<BackToProjectsButton onClick={() => history.push('/openhive')}>
+					<RowDiv>
+						<img src={ArrowLeft} alt={'back to projects'} />
+						<span>Projects</span>
+					</RowDiv>
+				</BackToProjectsButton>
 				<SaveButton onClick={handleProjectSave}>Save</SaveButton>
 				<ProjectTitle>
 					{!isLoading && project
@@ -145,9 +158,6 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						<Fragment>
 							<ProjectDashBoardNavItem
 								onClick={() => setCurrentChat(project.t_id)}
-								style={{
-									borderRight: `1px solid ${color.primary}`,
-								}}
 							>
 								<span>Chat</span>
 							</ProjectDashBoardNavItem>
@@ -160,7 +170,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						</Fragment>
 					)}
 				</ProjectDashboardNav>
-				{!isLoading && renderDash()}
+				<DashBoard>{!isLoading && renderDash()}</DashBoard>
 			</ProjectDashBoard>
 		</ProjectPage>
 	);

@@ -45,7 +45,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				description: description,
 			});
 
-			setResources([...resources, resp.data]);
+			setResources([resp.data, ...resources]);
 			setPopup(false);
 		}
 	};

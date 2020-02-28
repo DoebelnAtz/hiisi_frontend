@@ -1,20 +1,32 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
 	color,
-	colorAdjust,
 	cursor,
 	length,
 	layout,
 	border,
-	font, components,
+	font, components, colorAdjust,
 } from '../../../../Styles/SharedStyles';
 
 export const ProjectPage = styled.div`
 	color: white;
+	display: flex;
+	flex-flow: column;
 	width: calc(100% - ${length.margin} * 2);
 	height: calc(100% - ${length.margin} * 2);
 	padding: ${length.margin};
 	background-color: ${color.siteBG1};
+`;
+
+export const BackToProjectsButton = styled.div`
+	${components.button};
+	height: 30px;
+	margin-right: ${length.margin};
+	& img {
+		margin: auto ${length.margin} auto 4px;
+		height: 20px;
+		width: 20px;
+	}
 `;
 
 export const ProjectInfo = styled.div`
@@ -41,27 +53,35 @@ export const ProjectLink = styled.div`
 export const ProjectDashboardNav = styled.div`
 	${layout.row};
 	${cursor.clickable};
-	${border.setBorders(1, 1, 0, 1, color.primary)};
-	& div:nth-child(2) {
-		${border.setBorders(0, 1, 1, 1, color.primary)}
-	}
+	border-radius: 6px 6px 0 0;
+	overflow: hidden;
+	background: linear-gradient(0deg, ${color.siteBG2} 50%, ${colorAdjust.lighten(color.siteBG1, 0.15)} 50%);
 `;
 
 export const ProjectDashBoardNavItem = styled.div`
 	${layout.col};
-	border-bottom: 1px solid ${color.primary};
 	display: flex;
+	border-radius: ${props => props.focus? '6px 6px 0 0' : '0 0 6px 6px'};
 	padding: 5px;
-	z-index: 5;
+	z-index: ${props => props.focus? 4 : 5};
 	justify-content: center;
-	background-color: ${props => props.focus? color.siteBG2 : color.siteBG1};
+	background-color: ${props => props.focus? color.siteBG2 :  colorAdjust.lighten(color.siteBG1, 0.15)};
 
 	&:hover {
-		background-color: ${color.siteBG3};
+		border-radius: 6px 6px 0 0;
+		background-color: ${props => props.focus? color.siteBG2 : colorAdjust.lighten(color.siteBG1, 0.25)};
 	}
 `;
 
-export const SaveButton = styled.button`
- 	${components.button};
+export const DashBoard = styled.div`
+	padding: ${length.margin};
+	background-color: ${color.siteBG2};
+	height: calc(100% - ${length.margin} * 5);
 `;
-export const ProjectDashBoard = styled.div``;
+
+export const ProjectDashBoard = styled.div`
+	flex-grow: 1;
+	border-radius: 6px;
+
+	
+`;
