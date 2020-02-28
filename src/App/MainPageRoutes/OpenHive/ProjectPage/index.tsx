@@ -12,17 +12,18 @@ import {
 	ProjectTitle,
 	ProjectDashboardNav,
 	ProjectDashBoardNavItem,
-	ProjectLink,
 	ProjectDescription,
 	BackToProjectsButton,
 	DashBoard,
+	GitHubLink,
+	GitIconDiv,
 } from './Style';
 import { RouteComponentProps, User } from '../../../../Types';
 import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
-import { color } from '../../../../Styles/SharedStyles';
 import ArrowLeft from '../../../../Assets/ArrowLeft.png';
+import giticon from '../../../../Assets/giticon.png';
 import ProjectSettings from './ProjectSettingsPage';
 import { makeRequest } from '../../../../Api';
 import SaveButton from '../../../Components/Buttons/SaveButton';
@@ -126,11 +127,16 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 						? capitalizeFirst(project.title)
 						: 'Loading...'}
 				</ProjectTitle>
-				<ProjectLink>
-					{!isLoading && project && (
-						<a href={validateUrl(project.link)}>link</a>
-					)}
-				</ProjectLink>
+				{project && (
+					<GitHubLink
+						onClick={() => window.location.replace(project?.link)}
+					>
+						<GitIconDiv>
+							<img src={giticon} alt={'github'} />
+						</GitIconDiv>
+						<a href={validateUrl(project?.link)}>Github</a>
+					</GitHubLink>
+				)}
 			</ProjectInfo>
 			<ProjectDescription>
 				<TextEditor
@@ -157,15 +163,15 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					{project?.contributor && (
 						<Fragment>
 							<ProjectDashBoardNavItem
-								onClick={() => setCurrentChat(project.t_id)}
-							>
-								<span>Chat</span>
-							</ProjectDashBoardNavItem>
-							<ProjectDashBoardNavItem
 								focus={dashState.toLowerCase() === 'settings'}
 								onClick={() => setDashState('settings')}
 							>
 								<span>Settings</span>
+							</ProjectDashBoardNavItem>
+							<ProjectDashBoardNavItem
+								onClick={() => setCurrentChat(project.t_id)}
+							>
+								<span>Chat</span>
 							</ProjectDashBoardNavItem>
 						</Fragment>
 					)}

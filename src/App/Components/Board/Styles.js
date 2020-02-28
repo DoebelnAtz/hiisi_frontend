@@ -27,7 +27,7 @@ export const ProjectCollaborators = styled.div`
 		width: 42px;
 		border-radius: 50%;
 		margin-left: -8px;
-		border: 4px solid ${color.siteBG2};
+		border: 4px solid ${color.siteBG3};
 	}
 `;
 
@@ -42,7 +42,7 @@ export const Collaborator = styled.div`
 		border-color: ${(props) =>
 			props.filtered
 				? colorAdjust.darken(color.tertiary, 0.7)
-				: color.siteBG1};
+				: color.siteBG2};
 	}
 	&:hover {
 		bottom: 10px;
