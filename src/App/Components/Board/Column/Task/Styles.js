@@ -25,8 +25,9 @@ export const TaskStatusText = styled.div`
 	position: static;
 	visibility: hidden;
 	width: fit-content;
-    white-space: nowrap;
+	white-space: nowrap;
 	& span {
+		z-index: 6;
 		padding: 7px;
 		position: relative;
 		bottom: 55px;
@@ -52,13 +53,11 @@ export const TaskStatusImg = styled.div`
 			transition: background-color 0.1s;
 			background-color: ${color.siteBG1};
 		}
-		
 	}
 	&:hover {
 		& ${TaskStatusText} {
 			visibility: visible;
 		}
-		
 	}
 `;
 
@@ -119,7 +118,7 @@ export const Task = styled.div`
 	&:hover ${TaskCollaborators} img {
 		border: 3px solid ${color.siteBG3};
 	}
-	
+
 	&:hover ${TaskStatusRow} {
 		background-color: ${color.siteBG3};
 	}
@@ -144,5 +143,3 @@ export const TaskTitle = styled.div`
 		font-size: 16px;
 	}
 `;
-
-

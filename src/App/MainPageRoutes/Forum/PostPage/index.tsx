@@ -16,6 +16,8 @@ import ViewPost from '../../../Components/CommentThread';
 import TextEditor from '../../../Components/TextEditor';
 import { formatDate } from '../../../../Utils';
 import Modal from '../../../Components/Modal';
+import { makeRequest } from '../../../../Api';
+import SaveButton from '../../../Components/Buttons/SaveButton';
 
 const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	history,
@@ -32,6 +34,21 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 		'get',
 	);
 
+	const updatePost = async () => {
+		if (post) {
+			let resp = await makeRequest('blogs/update_blog', 'PUT', {
+				content: post.content,
+				title: post.title,
+				postId: post.b_id,
+			});
+			if (resp.data) {
+				setPost(resp.data);
+				return true;
+			}
+		}
+		return false;
+	};
+
 	const handleDescriptionChange = (e: string) => {
 		post && setPost({ ...post, content: e });
 	};
@@ -43,11 +60,14 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 			<PostHead>
 				<PostTitle>{post?.title}</PostTitle>
 				<PostDate>{formatDate(post?.published_date)}</PostDate>
+				{post?.owner && (
+					<SaveButton onClick={updatePost}>Save</SaveButton>
+				)}
 			</PostHead>
 			<PostContent>
 				<PostDescription>
 					<TextEditor
-						editable={!post?.owner}
+						editable={post?.owner}
 						state={post?.content}
 						setState={handleDescriptionChange}
 					/>

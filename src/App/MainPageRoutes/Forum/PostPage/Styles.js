@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layout, font, color } from '../../../../Styles/SharedStyles';
+import { layout, font, color, length } from '../../../../Styles/SharedStyles';
 
 export const PostHead = styled.div`
 	${layout.row};
@@ -14,7 +14,8 @@ export const PostTitle = styled.div`
 export const PostDate = styled.div`
 	${layout.row};
 	${font.text};
-	margin-left: auto;
+	margin-right: auto;
+	margin-left: ${length.margin};
 `;
 
 export const PostContent = styled.div`
