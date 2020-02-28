@@ -47,7 +47,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 			<PostContent>
 				<PostDescription>
 					<TextEditor
-						editable={true}
+						editable={!post?.owner}
 						state={post?.content}
 						setState={handleDescriptionChange}
 					/>

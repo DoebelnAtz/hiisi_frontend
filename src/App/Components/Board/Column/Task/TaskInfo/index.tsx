@@ -234,7 +234,9 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					value={task?.title || ''}
 					// on undefined task keep title as '' to not invoke react error
 				/>
-				<SaveButton onClick={updateTask}>Save</SaveButton>
+				{task?.owner && (
+					<SaveButton onClick={updateTask}>Save</SaveButton>
+				)}
 			</TaskInfoHead>
 			<TaskInfoBody>
 				<TaskDescription>
@@ -288,16 +290,18 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						/>
 					</PriorityDropdown>
 				)}
-				<TaskStatusInput>
-					Status:{' '}
-					<input
-						value={task?.status || ''}
-						onChange={(e: React.SyntheticEvent) =>
-							updateTaskStatus(e)
-						}
-						placeholder={task?.status}
-					/>
-				</TaskStatusInput>
+				{task?.owner && (
+					<TaskStatusInput>
+						Status:{' '}
+						<input
+							value={task?.status || ''}
+							onChange={(e: React.SyntheticEvent) =>
+								updateTaskStatus(e)
+							}
+							placeholder={task?.status}
+						/>
+					</TaskStatusInput>
+				)}
 			</TaskFooter>
 		</Modal>,
 		document.querySelector('#modal') as Element,

@@ -109,7 +109,9 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 					{!!resource && (
 						<a href={`${resource?.link}`}>{`${resource?.title}`}</a>
 					)}
-					<SaveButton onClick={updateResource}>save</SaveButton>
+					{resource?.owner && (
+						<SaveButton onClick={updateResource}>save</SaveButton>
+					)}
 				</ResourceTitle>
 				<ResourceTags>
 					{!isLoading &&
@@ -141,7 +143,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			</ResourceHeader>
 			<ResourceContent>
 				<ResourceDescription
-					full={!!resource && resource?.tags?.length > 2}
+					full={
+						(!!resource && resource?.tags?.length > 2) ||
+						!resource?.owner
+					}
 				>
 					{!isLoading && (
 						<TextEditor
@@ -151,7 +156,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						/>
 					)}
 				</ResourceDescription>
-				{!!resource && resource?.tags?.length < 3 && (
+				{!!resource && resource?.tags?.length < 3 && resource?.owner && (
 					<TagSearchResults>
 						<AddTagInput
 							value={tagSearch}

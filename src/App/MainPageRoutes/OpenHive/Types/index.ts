@@ -5,7 +5,6 @@ export interface Project {
 	project_id: number,
 	title: string,
 	link: string,
-
 	contributor: boolean, // True if the user viewing the page is a contributor
 	collaborators: User[], // List of contributors TODO: fix inconsistent wording here
 	commentthread: number, // Comment thread id

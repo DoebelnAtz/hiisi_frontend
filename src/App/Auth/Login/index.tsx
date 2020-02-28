@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { setLocal } from '../../../Utils';
 import {
 	BackgroundDiv,
@@ -14,12 +14,15 @@ import {
 	HelperDiv,
 	LoginButton,
 } from './Styles';
-import { useSpring, useChain } from 'react-spring';
+import { useSpring, useChain, ReactSpringHook } from 'react-spring';
 import { makeRequest } from '../../../Api';
-const Login = (props) => {
+
+type LoginProps = {};
+
+const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
-	const requestLogin = async (e) => {
-		e.preventDefault();
+	const history = useHistory();
+	const requestLogin = async () => {
 		if (password.length && username.length) {
 			try {
 				let resp = await makeRequest('auth/login', 'post', {
@@ -31,20 +34,21 @@ const Login = (props) => {
 					setAnimate(false);
 					// In a hurry? fuck you, now enjoy these animations
 					// I spent 6h creating
-					setTimeout(() => props.history.push('/openhive'), 2000);
+					setTimeout(() => history.push('/openhive'), 2000);
 				}
 			} catch (e) {
 				setLoginError(true);
 				setTimeout(() => {
-					setLoginError(false)
-				}, 1000)
+					setLoginError(false);
+				}, 1000);
 			}
 		}
 	};
 
-	const handleEnterPress = (e) => {
+	const handleEnterPress = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter') {
-			requestLogin(e);
+			e.preventDefault();
+			requestLogin();
 		}
 	};
 
@@ -56,14 +60,14 @@ const Login = (props) => {
 		setTimeout(() => setAnimate(true), 300);
 	}, []);
 
-	const widthRef = useRef();
-	const radiusRef = useRef();
-	const greenTRRadiusRef = useRef();
-	const greenBLRadiusRef = useRef();
-	const moveRightRef = useRef();
-	const moveLeftRef = useRef();
-	const moveUpRef = useRef();
-	const moveDownRef = useRef();
+	const widthRef = useRef<ReactSpringHook>(null);
+	const radiusRef = useRef<ReactSpringHook>(null);
+	const greenTRRadiusRef = useRef<ReactSpringHook>(null);
+	const greenBLRadiusRef = useRef<ReactSpringHook>(null);
+	const moveRightRef = useRef<ReactSpringHook>(null);
+	const moveLeftRef = useRef<ReactSpringHook>(null);
+	const moveUpRef = useRef<ReactSpringHook>(null);
+	const moveDownRef = useRef<ReactSpringHook>(null);
 
 	const moveRight = useSpring({
 		ref: moveRightRef,
@@ -166,16 +170,26 @@ const Login = (props) => {
 							<UsernameInput
 								type={'text'}
 								value={username}
-								onKeyDown={(e) => handleEnterPress(e)}
-								onChange={(e) => setUsername(e.target.value)}
+								onKeyDown={(e: React.KeyboardEvent) =>
+									handleEnterPress(e)
+								}
+								onChange={(e: React.SyntheticEvent) => {
+									let target = e.target as HTMLInputElement;
+									setUsername(target.value);
+								}}
 							/>
 						</UsernameDiv>
 						<PasswordDiv>
 							<PasswordInput
 								type={'password'}
 								value={password}
-								onKeyDown={(e) => handleEnterPress(e)}
-								onChange={(e) => setPassword(e.target.value)}
+								onKeyDown={(e: React.KeyboardEvent) =>
+									handleEnterPress(e)
+								}
+								onChange={(e: React.SyntheticEvent) => {
+									let target = e.target as HTMLInputElement;
+									setPassword(target.value);
+								}}
 							/>
 						</PasswordDiv>
 						<LoginButton loginError={loginError}>
