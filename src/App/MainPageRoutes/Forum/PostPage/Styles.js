@@ -3,19 +3,31 @@ import { layout, font, color, length } from '../../../../Styles/SharedStyles';
 
 export const PostHead = styled.div`
 	${layout.row};
+	margin-bottom: ${length.margin};
+`;
+
+export const PostInfo = styled.div`
+	${layout.col};
+`;
+
+export const PostAuthor = styled.div`
+	${layout.row};
+	& span {
+		${font.text};
+	}
 `;
 
 export const PostTitle = styled.div`
 	${layout.row};
 	${font.title};
+	margin-bottom: ${length.margin};
 	color: ${color.primary};
 `;
 
 export const PostDate = styled.div`
 	${layout.row};
 	${font.text};
-	margin-right: auto;
-	margin-left: ${length.margin};
+	margin-bottom: ${length.margin};
 `;
 
 export const PostContent = styled.div`

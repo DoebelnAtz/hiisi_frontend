@@ -24,6 +24,10 @@ type DropDownProps = {
 	// component would read sort by: popular
 	text?: string;
 	withFilter?: boolean;
+	// in cases where we want the drop down to overflow a modal
+	// the drop down list has to be fixed. the only use case for this is in the taskinfo modal
+	// but this causes problems in scrolling pages like resources / forum / projects
+	modalOverflow?: boolean;
 };
 
 const DropDownComponent: React.FC<DropDownProps> = ({
@@ -34,6 +38,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	height,
 	text,
 	withFilter = false,
+	modalOverflow = false,
 }) => {
 	const [expanded, setExpanded] = useState(false);
 	const [options, setOptions] = useState(optionList);
@@ -116,7 +121,11 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 				<span>{`${text ? text : ''}${capitalizeFirst(state)}`}</span>
 			</CurrentOption>
 			{expanded && (
-				<DropDownList width={width} height={height}>
+				<DropDownList
+					modalOverflow={modalOverflow}
+					width={width}
+					height={height}
+				>
 					{withFilter && (
 						<SearchInput
 							ref={filterInputRef}

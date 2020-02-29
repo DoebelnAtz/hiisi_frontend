@@ -4,8 +4,7 @@ import {
 	Resources,
 	SubmitResourceButton,
 	FilterButton,
-	ResourcePageHead
-	,
+	ResourcePageHead,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';

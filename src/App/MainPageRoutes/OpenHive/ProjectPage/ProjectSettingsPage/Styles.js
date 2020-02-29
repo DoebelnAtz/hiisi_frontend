@@ -1,5 +1,13 @@
 import styled from 'styled-components';
-import { color, colorAdjust, components, cursor, font, layout, length } from '../../../../../Styles/SharedStyles';
+import {
+	color,
+	colorAdjust,
+	components,
+	cursor,
+	font,
+	layout,
+	length,
+} from '../../../../../Styles/SharedStyles';
 
 export const ProjectCollaborators = styled.div`
 	${layout.row};
@@ -16,18 +24,15 @@ export const ProjectCollaborators = styled.div`
 `;
 
 export const Collaborator = styled.div`
-
-
 	&:hover {
 		${cursor.clickable};
-
 	}
 `;
 
 export const OptionRow = styled.div`
 	${layout.row};
 
-	border-bottom: 2px solid ${color.siteBG2};
+	border-bottom: 2px solid ${color.siteBG3};
 	padding: ${length.margin};
 	height: 34px;
 	& label {
@@ -38,12 +43,13 @@ export const OptionRow = styled.div`
 	& input {
 		${components.input};
 		border-color: ${color.siteBG1};
-	  	margin-left: auto;
-	  	height: 30px;
-	  	width: 30vw;
-	  	${font.text};
-	  	min-width: fit-content;
-	  	max-width: 400px;
-	  	padding-right: 5px;
+		background-color: ${color.siteBG2};
+		margin-left: auto;
+		height: 30px;
+		width: 30vw;
+		${font.text};
+		min-width: fit-content;
+		max-width: 400px;
+		padding-right: 5px;
 	}
 `;

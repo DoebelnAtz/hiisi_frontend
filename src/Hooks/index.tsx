@@ -125,7 +125,6 @@ export function useRequest<F>(
 					localStorage.clear();
 					window.location.replace('/login');
 				} else {
-
 					setError(e.response.status.toString());
 				}
 			} finally {
@@ -133,7 +132,6 @@ export function useRequest<F>(
 			}
 		}
 		if (conditional) request();
-
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }

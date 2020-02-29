@@ -42,8 +42,6 @@ export const ResourceContent = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	min-height: 40vh;
 	padding: ${length.margin} 0;
-	${border.setBorders(4, 0, 4, 0, color.siteBG1)};
-
 	margin: ${length.margin};
 	${layout.row};
 `;

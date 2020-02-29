@@ -30,6 +30,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	const [resource, setResource, isLoading] = useRequest<ResourceType>(
 		`resources/${match.params.rid}`,
 		'get',
+		{},
 	);
 	const [description, setDescription] = useState(resource?.description);
 	const [tagSearch, setTagSearch] = useState('');

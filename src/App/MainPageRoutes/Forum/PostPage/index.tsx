@@ -7,6 +7,8 @@ import {
 	PostTitle,
 	PostDate,
 	PostDescription,
+	PostAuthor,
+	PostInfo,
 } from './Styles';
 import { RouteComponentProps } from '../../../../Types';
 import { useDismiss, useRequest } from '../../../../Hooks';
@@ -58,8 +60,17 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	return ReactDOM.createPortal(
 		<Modal inside={inside}>
 			<PostHead>
-				<PostTitle>{post?.title}</PostTitle>
-				<PostDate>{formatDate(post?.published_date)}</PostDate>
+				<PostInfo>
+					<PostTitle>
+						<span>{post?.title}</span>
+					</PostTitle>
+					<PostDate>
+						<span>{formatDate(post?.published_date)}</span>
+					</PostDate>
+					<PostAuthor>
+						<span>{post?.username}</span>
+					</PostAuthor>
+				</PostInfo>
 				{post?.owner && (
 					<SaveButton onClick={updatePost}>Save</SaveButton>
 				)}

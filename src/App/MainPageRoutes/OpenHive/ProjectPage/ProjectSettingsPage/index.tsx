@@ -50,12 +50,6 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 	return (
 		<div>
 			<OptionRow>
-				Collaborators:{' '}
-				<ProjectCollaborators>
-					{mapCollaborators()}
-				</ProjectCollaborators>
-			</OptionRow>
-			<OptionRow>
 				<label>
 					Title:
 					<input value={project.title} onChange={handleTitleChange} />

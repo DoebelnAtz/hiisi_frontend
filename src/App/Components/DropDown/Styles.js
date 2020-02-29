@@ -35,7 +35,7 @@ export const CurrentOption = styled.div`
 `;
 
 export const DropDownList = styled.div`
-	position: fixed;
+	position: ${(props) => (props.modalOverflow ? 'fixed' : 'absolute')};
 	//right: -1px;
 	width: calc(${(props) => props.width} - 6px);
 	background-color: ${color.siteBG2};

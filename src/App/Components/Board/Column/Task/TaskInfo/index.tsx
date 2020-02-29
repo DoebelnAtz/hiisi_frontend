@@ -287,6 +287,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 							state={priority}
 							setSelect={handlePrioritySelect}
 							width={'200px'}
+							modalOverflow={true}
 						/>
 					</PriorityDropdown>
 				)}
