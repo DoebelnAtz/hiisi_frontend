@@ -44,7 +44,7 @@ export const TaskColorTag = styled.div`
 
 export const TaskColorPicker = styled.div`
 	position: absolute;
-	transform: translateY(25px);
+	transform: translateY(30px);
 `;
 
 export const TaskFooter = styled.div`

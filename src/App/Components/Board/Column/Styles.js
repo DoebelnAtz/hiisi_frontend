@@ -139,7 +139,7 @@ export const ColumnTitle = styled.input`
 	border: none;
 	font-size: 17px;
 	color: ${color.primary};
-	width: calc(100% - 70px);
+	width: calc(100% - 60px);
 	background: ${color.siteBG3};
 
 	z-index: 3;

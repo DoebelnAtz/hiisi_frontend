@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ColorChangeHandler, ColorResult, TwitterPicker } from 'react-color';
 
 import {
 	TaskDescription,
-	TaskTitle,
 	TaskInfoHead,
 	PriorityDropdown,
 	TaskCollaborators,
@@ -31,6 +29,7 @@ import { makeRequest } from '../../../../../../Api';
 import Avatar from '../../../../Avatar/index';
 import { getPriorityIcon } from '../../../../../../Utils/taskUtils';
 import { RouteComponentProps, User } from '../../../../../../Types';
+import ColorPicker from '../../../../ColorPicker';
 import { TaskType } from '../../../Types';
 import DropDown from '../../../../DropDown';
 import { checkUserList } from '../../../../../../Utils';
@@ -82,7 +81,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 	const [priority, setPriority] = useState(getPriorityText(0));
-	const [expandColorPicker, setExpandColorPicker] = useState(false);
+	const [expandColorPicker, setExpandColorPicker] = useState(true);
 	const colorPickerDiv = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -232,8 +231,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		task && setTask({ ...task, title: target.value });
 	};
 
-	const handleTagColorChange = (color: ColorResult) => {
-		task && setTask({ ...task, color_tag: color.hex });
+	const handleTagColorChange = (color: string) => {
+		task && setTask({ ...task, color_tag: color });
 		console.log(color);
 	};
 
@@ -258,19 +257,19 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					/>
 					<TaskColorPicker ref={colorPickerDiv}>
 						{expandColorPicker && (
-							<TwitterPicker
+							<ColorPicker
 								onChange={handleTagColorChange}
 								colors={[
-									'#729de0',
-									'#6fb4c9',
-									'#9b88cf',
-									'#dbcb6e',
-									'#b893cf',
-									'#cf97c8',
-									'#cc7a81',
-									'#8aba86',
-									'#d6b376',
 									'#c76177',
+									'#cc7a81',
+									'#d6b376',
+									'#dbcb6e',
+									'#a8c47e',
+									'#8aba86',
+									'#6fb4c9',
+									'#729de0',
+									'#9b88cf',
+									'#cf97c8',
 								]}
 							/>
 						)}

@@ -53,7 +53,7 @@ export const font = {
 		letter-spacing: 2px;
 	`,
 	text: css`
-		color: ${colorAdjust.darken('#ffffff', 0.1)};
+		color: ${colorAdjust.darken('#ffffff', 0.15)};
 		font-size: 16px;
 		letter-spacing: 1px;
 	`,
