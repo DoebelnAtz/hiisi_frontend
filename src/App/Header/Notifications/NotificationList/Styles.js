@@ -12,7 +12,7 @@ export const NotificationListDropDown = styled.div`
 	z-index: 10;
 	position: absolute;
 	background-color: ${color.siteBG3};
-	transform: translate(-40px, 50px);
+	transform: translate(-40px, 10px);
 	border-radius: ${length.radius};
 	padding: ${length.margin} 0;
 	&::before {

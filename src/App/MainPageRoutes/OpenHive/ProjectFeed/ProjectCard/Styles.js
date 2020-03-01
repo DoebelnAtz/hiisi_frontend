@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, cursor, layout, length } from '../../../../../Styles/SharedStyles';
+import { color, layout, length } from '../../../../../Styles/SharedStyles';
 
 export const CollaboratorList = styled.div`
 	margin-top: auto;

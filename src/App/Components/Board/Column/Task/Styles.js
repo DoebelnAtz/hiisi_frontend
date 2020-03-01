@@ -19,7 +19,6 @@ export const TaskStatusRow = styled.div`
 	padding: 4px 2px 4px 4px;
 	border-radius: ${length.radius};
 	margin-bottom: 4px;
-	background-color: ${colorAdjust.lighten(color.siteBG2, 0.2)};
 `;
 
 export const TaskStatusText = styled.div`
@@ -129,25 +128,21 @@ export const Task = styled.div`
 	z-index: 100;
 
 	&:hover {
-		background-color: ${colorAdjust.lighten(color.siteBG3, 0)};
+		background-color: ${colorAdjust.lighten(color.siteBG3, 0.1)};
 	}
 	&:hover ${TaskCollaborators} img {
 		border: 3px solid ${color.siteBG3};
-	}
-
-	&:hover ${TaskStatusRow} {
-		background-color: ${color.siteBG3};
 	}
 
 	${(props) =>
 		props.isBeingDragged &&
 		css`
 			border: 2px solid ${color.siteBG3};
-			background-color: ${color.siteBG3};
+			background-color: ${colorAdjust.lighten(color.siteBG3, 0.1)};
 			transform: scale(1.2);
 			z-index: 100 !important;
 			${TaskStatusRow} {
-				background-color: ${color.siteBG3};
+				background-color: ${colorAdjust.lighten(color.siteBG3, 0.1)};
 			}
 		`}
 `;

@@ -64,6 +64,7 @@ export const ResourceTag = styled.div`
 	border-radius: ${(props) => (props.owner ? '4px 0 0 4px' : '4px')};
 	background-color: ${(props) => props.color};
 	${font.text};
+
 	height: calc(34px - 8px);
 	line-height: 26px;
 	${layout.row};
@@ -97,10 +98,15 @@ export const SearchResultTag = styled.div`
 	${font.text};
 	height: 34px;
 	padding: 4px 8px;
+
 	width: calc(100% - 16px);
 	border-radius: 4px;
 	${cursor.clickable};
 	& span {
+		white-space: nowrap;
+		overflow: hidden;
+		max-width: calc(100% - 16px);
+		text-overflow: ellipsis !important;
 		line-height: 34px;
 		&:hover {
 			color: lightgray;

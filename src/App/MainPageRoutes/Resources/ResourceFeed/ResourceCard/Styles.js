@@ -23,4 +23,7 @@ export const Tag = styled.div`
 	&:hover {
 		background-color: ${(props) => colorAdjust.darken(props.color, 0.1)};
 	}
+	@media (max-width: 768px) {
+		font-size: 2vw;
+	}
 `;

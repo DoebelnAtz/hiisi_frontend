@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { SideNavDiv } from './Styles';
 import NavItem from './NavItem';
-import openHiveIcon from '../../Assets/OpenHive.png';
+import openHiveIcon from '../../Assets/OpenHive2.png';
+import codeIcon from '../../Assets/CodeIcon2.png';
 import profileIcon from '../../Assets/Profile2.png';
 import treeIcon from '../../Assets/Tree8.png';
 import { makeRequest } from '../../Api';
@@ -22,11 +23,7 @@ const SideNav: React.FC = () => {
 
 	return (
 		<SideNavDiv>
-			<NavItem
-				icon={openHiveIcon}
-				title={'Open Hive'}
-				link={'/openhive'}
-			/>
+			<NavItem icon={codeIcon} title={'Open Hive'} link={'/openhive'} />
 			<NavItem icon={openHiveIcon} title={'Forum'} link={'/forum'} />
 			<NavItem icon={treeIcon} title={'Resources'} link={'/resources'} />
 			<NavItem icon={profileIcon} title={'Profile'} link={'/profile'} />

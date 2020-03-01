@@ -5,6 +5,8 @@ import { ResultType } from './Types';
 import { useHistory } from 'react-router';
 import UsrIcon from '../../../Assets/ProfileS.png';
 import ResourceIcon from '../../../Assets/TreeS.png';
+import CodeIcon from '../../../Assets/CodeIconS.png';
+import ForumIcon from '../../../Assets/OH2S.png';
 const SearchBar: React.FC = () => {
 	const [searchInput, setSearchInput] = useState('');
 	const [results, setResults, isLoading] = useRequest<ResultType[]>(
@@ -56,7 +58,13 @@ const SearchBar: React.FC = () => {
 					>
 						<img
 							src={
-								result.type === 'user' ? UsrIcon : ResourceIcon
+								result.type === 'user'
+									? UsrIcon
+									: result.type === 'resource'
+									? ResourceIcon
+									: result.type === 'post'
+									? ForumIcon
+									: CodeIcon
 							}
 							alt={`${result.type}`}
 						/>

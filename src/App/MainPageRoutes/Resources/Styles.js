@@ -21,14 +21,14 @@ export const FilterButton = styled.button`
 	${components.button};
 	width: fit-content;
 	margin-left: auto;
+	@media (max-width: 768px) {
+		margin-left: 0;
+	}
 `;
 
 export const ResourcePageHead = styled.div`
 	${layout.row};
 	margin: ${length.margin};
-`;
-
-export const LoadButton = styled.button`
-	margin: 0 ${length.margin} ${length.margin};
-	${components.button};
+	display: flex;
+	flex-wrap: wrap;
 `;

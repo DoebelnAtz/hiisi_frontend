@@ -11,7 +11,7 @@ import {
 export const DropDown = styled.div`
 	position: relative;
 	${font.text};
-	margin: 0 ${length.margin};
+	margin-right: ${length.margin};
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
