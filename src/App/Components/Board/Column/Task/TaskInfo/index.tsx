@@ -83,6 +83,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 	const [priority, setPriority] = useState(getPriorityText(0));
 	const [expandColorPicker, setExpandColorPicker] = useState(false);
+	const colorPickerDiv = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (task) {
@@ -96,7 +97,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	};
 
 	useDismiss(inside, close);
-
+	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
 	const updateTask = async () => {
 		if (task) {
 			console.log(task);
@@ -255,7 +256,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						onClick={() => setExpandColorPicker(!expandColorPicker)}
 						tagColor={task?.color_tag}
 					/>
-					<TaskColorPicker>
+					<TaskColorPicker ref={colorPickerDiv}>
 						{expandColorPicker && (
 							<TwitterPicker
 								onChange={handleTagColorChange}

@@ -33,6 +33,7 @@ export const BackToProjectsButton = styled.div`
 
 export const ProjectInfo = styled.div`
 	${layout.row};
+	width: 100%;
 `;
 
 export const ProjectDescription = styled.div`
@@ -40,14 +41,18 @@ export const ProjectDescription = styled.div`
 `;
 
 export const ProjectTitle = styled.div`
-	${layout.centered};
 	${font.title};
-`;
-
-export const ProjectLink = styled.div`
-	& a {
-		${font.link};
-		font-size: 20px;
+	${layout.row};
+	width: 100%;
+	position: relative;
+	& div {
+		${layout.row};
+		transform: translateY(-34px);
+		position: absolute;
+		width: 100%;
+	}
+	& div span {
+		margin: 0 auto;
 	}
 `;
 
@@ -55,7 +60,6 @@ export const GitIconDiv = styled.div`
 	background-color: #ffffff;
 	border-radius: 7px;
 	padding: 0 4px;
-	margin: auto 0;
 	& img {
 		height: 24px;
 		width: 24px;
@@ -64,6 +68,7 @@ export const GitIconDiv = styled.div`
 
 export const GitHubLink = styled.div`
 	${layout.row};
+	margin: 0 0 0 auto;
 	background-color: #ffffff;
 	border: 4px solid black;
 	border-radius: 7px;

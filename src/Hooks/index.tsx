@@ -65,6 +65,7 @@ export const useNotifications = (room: string) => {
 	}, [JSON.stringify(newNotif)]);
 
 	const appendNotification = (notif: Notification) => {
+		console.log(notif);
 		if (Number(notif.link) !== currentChat)
 			setNotifications([notif, ...notifications]);
 		console.log(notif, notifications);

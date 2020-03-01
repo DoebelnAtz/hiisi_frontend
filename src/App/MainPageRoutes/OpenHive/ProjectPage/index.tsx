@@ -122,11 +122,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					</RowDiv>
 				</BackToProjectsButton>
 				<SaveButton onClick={handleProjectSave}>Save</SaveButton>
-				<ProjectTitle>
-					{!isLoading && project
-						? capitalizeFirst(project.title)
-						: 'Loading...'}
-				</ProjectTitle>
+
 				{project && (
 					<GitHubLink
 						onClick={() => window.location.replace(project?.link)}
@@ -138,6 +134,15 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					</GitHubLink>
 				)}
 			</ProjectInfo>
+			<ProjectTitle>
+				<div>
+					<span>
+						{!isLoading && project
+							? capitalizeFirst(project.title)
+							: 'Loading...'}
+					</span>
+				</div>
+			</ProjectTitle>
 			<ProjectDescription>
 				<TextEditor
 					editable={project?.contributor}

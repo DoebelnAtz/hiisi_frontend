@@ -1,6 +1,7 @@
 export interface ThreadType {
 	thread_name: string,
 	thread_id: number,
+	project_thread: boolean,
 }
 
 export interface MessageType {

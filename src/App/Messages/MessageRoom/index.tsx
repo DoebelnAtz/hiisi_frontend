@@ -108,7 +108,13 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
 			console.log(activeUsers, user.username);
-			setActiveUsers([...activeUsers, { u_id: user.u_id }]);
+			connectedUsers &&
+				setActiveUsers([
+					...connectedUsers.filter(
+						(usr) => !activeUsers.find((u) => u.u_id !== usr.u_id),
+					),
+					{ u_id: user.u_id },
+				]);
 			console.log(activeUsers);
 		}
 	};

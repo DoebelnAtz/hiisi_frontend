@@ -1,5 +1,10 @@
 import React, { useContext, useState, Fragment } from 'react';
-import { ThreadItem, CreateThreadRow, NotificationIcon } from './Styles';
+import {
+	ThreadItem,
+	CreateThreadRow,
+	NotificationIcon,
+	DeleteButton,
+} from './Styles';
 import { makeRequest } from '../../../Api';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
@@ -7,7 +12,7 @@ import InputWithButton from '../../Components/Buttons/InputWithButton';
 import { useRequest } from '../../../Hooks';
 import { NotificationContext } from '../../../Context/NotificationContext';
 import { ChatContext } from '../../../Context/ChatContext';
-
+import DeleteImg from '../../../Assets/x.png';
 type MessageRoomProps = {
 	close?: () => void;
 };
@@ -45,6 +50,22 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 		);
 	};
 
+	const handleDelete = async (targetId: number, e: React.SyntheticEvent) => {
+		e.stopPropagation();
+		let resp = await makeRequest(
+			'messages/threads/delete_thread',
+			'delete',
+			{
+				targetId: targetId,
+			},
+		);
+		if (resp.data) {
+			setThreads(
+				threads?.filter((thread) => thread.thread_id !== targetId),
+			);
+		}
+	};
+
 	const renderFriends = () => {
 		if (threads)
 			return threads.map((thread: ThreadType) => {
@@ -58,6 +79,15 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 						{!!notifications.find(
 							(notif) => Number(notif.link) === thread.thread_id,
 						) && <NotificationIcon />}
+						{!thread.project_thread && (
+							<DeleteButton
+								onClick={(e: React.SyntheticEvent) =>
+									handleDelete(thread.thread_id, e)
+								}
+							>
+								<img src={DeleteImg} alt={'delete thread'} />
+							</DeleteButton>
+						)}
 					</ThreadItem>
 				);
 			});
