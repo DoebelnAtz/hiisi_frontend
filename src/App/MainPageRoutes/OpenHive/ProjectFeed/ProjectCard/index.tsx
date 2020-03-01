@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { User } from '../../../../../Types';
 import { useHistory } from 'react-router-dom';
-import { Project } from '../../Types';
+import { ProjectCardType } from '../../Types';
 import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
@@ -27,7 +27,7 @@ import {
 import { makeRequest } from '../../../../../Api';
 
 type ProjectCardProps = {
-	project: Project;
+	project: ProjectCardType;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
@@ -124,11 +124,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 					</CardInfo>
 				</CardTitleInfo>
 				<CollaboratorList>
-					{project.collaborators.map((collaborator: User) => {
+					{project.collaborators.map((profile_pic, index: number) => {
 						return (
 							<img
-								key={collaborator.u_id}
-								src={collaborator.profile_pic}
+								key={index}
+								src={profile_pic}
 								alt={'profile_pic'}
 							/>
 						);

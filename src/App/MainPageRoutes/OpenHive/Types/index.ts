@@ -16,3 +16,14 @@ export interface Project {
 	board_id: number, // Board id
 	t_id: number, // Chat id
 }
+
+export interface ProjectCardType {
+	project_id: number,
+	title: string,
+	contributor: boolean, // True if the user viewing the page is a contributor
+	collaborators: string[], // List of contributors
+	published_date: string,
+	vote: vote,
+	creator: number,
+	votes: number
+}

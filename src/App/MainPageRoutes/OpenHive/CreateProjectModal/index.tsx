@@ -10,15 +10,15 @@ import {
 	TitleAndLinkRow,
 } from './Styles';
 import { useDismiss } from '../../../../Hooks';
-import { Project } from '../Types';
+import { Project, ProjectCardType } from '../Types';
 import TextEditor from '../../../Components/TextEditor/index';
 import { makeRequest } from '../../../../Api';
 import { validateUrl } from '../../../../Utils';
 
 type CreateProjectModalProps = {
 	setShowModal: Dispatch<SetStateAction<boolean>>;
-	projects: Project[] | undefined;
-	setProjects: Dispatch<SetStateAction<Project[] | undefined>>;
+	projects: ProjectCardType[] | undefined;
+	setProjects: Dispatch<SetStateAction<ProjectCardType[] | undefined>>;
 };
 
 const CreateProjectModal: React.FC<CreateProjectModalProps> = ({

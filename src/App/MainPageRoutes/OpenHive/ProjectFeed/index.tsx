@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
-import { Project } from '../Types';
+import { Project, ProjectCardType } from '../Types';
 import ProjectCard from './ProjectCard/index';
 import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
 import { Feed } from '../../../../Styles/CardStyles';
 
 type ProjectFeedProps = {
-	projects: Project[];
+	projects: ProjectCardType[];
 	page: number;
 	reverse: string;
 	sortBy: string;
@@ -19,7 +19,9 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 	sortBy,
 	reverse,
 }) => {
-	const [nextProjects, setNextProjects, isLoading] = useRequest<Project[]>(
+	const [nextProjects, setNextProjects, isLoading] = useRequest<
+		ProjectCardType[]
+	>(
 		`projects?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},
@@ -28,7 +30,7 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 	const [showNext, setShowNext] = useState(false);
 
 	const renderProject = () => {
-		return projects.map((project: Project) => {
+		return projects.map((project: ProjectCardType) => {
 			return <ProjectCard key={project.project_id} project={project} />;
 		});
 	};
