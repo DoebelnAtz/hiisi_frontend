@@ -14,6 +14,7 @@ import {
 	TaskStatusRow,
 	TaskStatusText,
 	TaskStatusImg,
+	TaskColorTag,
 } from './Styles';
 import infoIcon from '../../../../../Assets/Info.png';
 import { getPriorityIcon } from '../../../../../Utils/taskUtils';
@@ -122,6 +123,7 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 										/>
 									</DeleteTaskImg>
 								)}
+								<TaskColorTag tagColor={task.color_tag} />
 								<TaskPriority>
 									<img
 										src={getPriorityIcon(task.priority)}

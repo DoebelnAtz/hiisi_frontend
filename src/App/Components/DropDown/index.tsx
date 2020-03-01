@@ -52,7 +52,10 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 			return (
 				<Option
 					key={index}
-					highlighted={state === option || index === selectedIndex}
+					highlighted={
+						state === option ||
+						(withFilter && index === selectedIndex)
+					}
 					onClick={() => {
 						setSelect(option);
 						setExpanded(false);

@@ -16,6 +16,7 @@ export interface ResourceType {
 	link: string,
 	commentthread: number,
 	owner: boolean,
+	edited: string,
 	votes: number
 }
 
@@ -31,6 +32,7 @@ export interface ResourceListType {
 	link: string,
 	commentthread: number,
 	owner: boolean,
+	edited: string,
 	votes: number
 }
 

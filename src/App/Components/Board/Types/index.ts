@@ -11,14 +11,16 @@ export interface TaskType {
     collaborators: User[],
     priority: number,
     owner: boolean,
+    color_tag: string | null
     status: string
 }
 
-export interface ColumnType {
+export type ColumnType = {
     column_id: number,
     title: string,
     column_number: number,
-    tasks: Array<TaskType>
+    wip_limit: number,
+    tasks: Array<TaskType>,
 }
 
 export interface BoardType {

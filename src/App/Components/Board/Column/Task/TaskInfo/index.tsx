@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { ColorChangeHandler, ColorResult, TwitterPicker } from 'react-color';
 
 import {
 	TaskDescription,
@@ -18,6 +19,9 @@ import {
 	TaskTitleEditable,
 	PriorityIcon,
 	TaskStatusInput,
+	TaskColorTag,
+	TaskColorPicker,
+	TaskColorRow,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -32,6 +36,7 @@ import DropDown from '../../../../DropDown';
 import { checkUserList } from '../../../../../../Utils';
 import SaveButton from '../../../../Buttons/SaveButton';
 import Modal from '../../../../Modal';
+import { RowDiv } from '../../../../../../Styles/LayoutStyles';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;
 	pid: number;
@@ -77,6 +82,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 	const [priority, setPriority] = useState(getPriorityText(0));
+	const [expandColorPicker, setExpandColorPicker] = useState(false);
 
 	useEffect(() => {
 		if (task) {
@@ -225,6 +231,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 		task && setTask({ ...task, title: target.value });
 	};
 
+	const handleTagColorChange = (color: ColorResult) => {
+		task && setTask({ ...task, color_tag: color.hex });
+		console.log(color);
+	};
+
 	return ReactDOM.createPortal(
 		<Modal inside={inside}>
 			<TaskInfoHead>
@@ -238,6 +249,34 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					<SaveButton onClick={updateTask}>Save</SaveButton>
 				)}
 			</TaskInfoHead>
+			{task?.owner && (
+				<TaskColorRow>
+					<TaskColorTag
+						onClick={() => setExpandColorPicker(!expandColorPicker)}
+						tagColor={task?.color_tag}
+					/>
+					<TaskColorPicker>
+						{expandColorPicker && (
+							<TwitterPicker
+								onChange={handleTagColorChange}
+								colors={[
+									'#729de0',
+									'#6fb4c9',
+									'#9b88cf',
+									'#dbcb6e',
+									'#b893cf',
+									'#cf97c8',
+									'#cc7a81',
+									'#8aba86',
+									'#d6b376',
+									'#c76177',
+								]}
+							/>
+						)}
+					</TaskColorPicker>
+				</TaskColorRow>
+			)}
+
 			<TaskInfoBody>
 				<TaskDescription>
 					{!isLoading && (

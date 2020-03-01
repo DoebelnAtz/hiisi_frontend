@@ -186,21 +186,21 @@ const Board: React.FC<BoardProps> = ({
 			<ProjectCollaborators>{mapCollaborators()}</ProjectCollaborators>
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
-					{(!isLoading
-						? filterBoard().columns
-						: boardState.columns
-					).map((column: ColumnType) => (
-						<Column
-							column={column}
-							columnNum={column.column_number}
-							key={column.column_number}
-							taskList={column.tasks}
-							addTask={addTask}
-							setBoard={setBoard}
-							board={board}
-							editable={editable}
-						/>
-					))}
+					{(!isLoading ? filterBoard().columns : boardState.columns)
+						// @ts-ignore
+						.map((column: ColumnType) => (
+							<Column
+								column={column}
+								columnNum={column.column_number}
+								key={column.column_number}
+								taskList={column.tasks}
+								addTask={addTask}
+								setBoard={setBoard}
+								board={board}
+								wipLimit={column.wip_limit}
+								editable={editable}
+							/>
+						))}
 				</Columns>
 			</DragDropContext>
 		</BoardDiv>

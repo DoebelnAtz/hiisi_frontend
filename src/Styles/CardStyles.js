@@ -78,7 +78,7 @@ export const CardTitle = styled.span`
 export const CardAuthor = styled.div`
 	${layout.row};
 	color: #ffffff;
-
+	margin-top: 4px;
 	margin-left: auto;
 `;
 
@@ -88,6 +88,13 @@ export const CardButtons = styled.div`
 	display: flex;
 	flex-direction: column;
 	border-left: 2px solid ${color.siteBG1};
+`;
+
+export const CardEdited = styled.span`
+	${font.text};
+	margin-top: 4px;
+	margin-left: auto;
+	font-size: 10px;
 `;
 
 export const CardDate = styled.span`

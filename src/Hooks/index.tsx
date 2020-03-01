@@ -120,7 +120,7 @@ export function useRequest<F>(
 				setData(resp.data);
 			} catch (e) {
 				if (!e.response) {
-					window.location.replace('/505');
+					// window.location.replace('/505');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
 					window.location.replace('/login');

@@ -15,6 +15,7 @@ import {
 	CardButtons,
 	CardAuthor,
 	CardTitleInfo,
+	CardEdited,
 } from '../../../../../Styles/CardStyles';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../../../Assets/ArrowDown.png';
@@ -145,6 +146,10 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							{formatDate(resource.published_date)}
 						</CardDate>
 						<CardAuthor>{resource.username}</CardAuthor>
+						<CardEdited>
+							{resource.edited &&
+								`edited: ${formatDate(resource.edited)}`}
+						</CardEdited>
 					</CardInfo>
 				</CardTitleInfo>
 				<Tags>

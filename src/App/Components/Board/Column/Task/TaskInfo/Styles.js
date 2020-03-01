@@ -30,6 +30,23 @@ export const TaskTitle = styled.div`
 	background-color: ${color.siteBG2};
 `;
 
+export const TaskColorRow = styled.div`
+	${layout.row};
+	margin-bottom: ${length.margin};
+`;
+
+export const TaskColorTag = styled.div`
+	background-color: ${(props) => props.tagColor || color.siteBG3};
+	width: 10%;
+	height: 20px;
+	border-radius: ${length.radius};
+`;
+
+export const TaskColorPicker = styled.div`
+	position: absolute;
+	transform: translateY(25px);
+`;
+
 export const TaskFooter = styled.div`
 	${layout.row};
 	margin-top: auto;
@@ -50,6 +67,7 @@ export const TaskTitleEditable = styled.input`
 	${components.input};
 	font-size: 26px;
 	width: 80%;
+	padding-left: 0;
 	margin-right: auto;
 	border-color: ${color.siteBG2};
 	background-color: ${color.siteBG2};
@@ -108,8 +126,11 @@ export const TaskStatusInput = styled.label`
 
 	& input {
 		${components.input};
+		background-color: ${color.siteBG2};
 		height: 32px;
+		padding-right: 7px;
 		position: relative;
+		${font.text};
 		top: 1px;
 	}
 `;

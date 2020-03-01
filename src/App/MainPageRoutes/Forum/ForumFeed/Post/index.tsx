@@ -26,6 +26,7 @@ import {
 	CopiedSpan,
 	CardAuthor,
 	CardTitleInfo,
+	CardEdited,
 } from '../../../../../Styles/CardStyles';
 import { vote } from '../../../Resources/Types';
 import ShareImg from '../../../../../Assets/Share.png';
@@ -125,6 +126,10 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 							{formatDate(content.published_date)}
 						</CardDate>
 						<CardAuthor>{content.username}</CardAuthor>
+						<CardEdited>
+							{content.edited &&
+								`edited: ${formatDate(content.edited)}`}
+						</CardEdited>
 					</CardInfo>
 				</CardTitleInfo>
 			</CardContent>

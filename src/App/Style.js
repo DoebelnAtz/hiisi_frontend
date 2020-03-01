@@ -28,15 +28,15 @@ export const MainPage = styled.div`
 
 export const ProductionStateLabel = styled.div`
 	background-color: ${color.secondary};
-	position: absolute;
+	position: fixed;
 	display: flex;
 	flex-wrap: nowrap;
 	top: 10px;
-	right: -50px;
-	opacity: 0.90;
+	right: -25px;
+	opacity: 0.9;
 	overflow: hidden;
 	transform: rotateY(0deg) rotate(45deg);
-	padding: 3px 50px;
+	padding: 3px 25px 3px 25px;
 	& span {
 		padding: 2px;
 		${font.text}

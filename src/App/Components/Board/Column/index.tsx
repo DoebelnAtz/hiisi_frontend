@@ -7,15 +7,24 @@ import React, {
 } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 
-import { Column, ColumnTitle, ColumnList, AddTaskInput } from './Styles';
+import {
+	Column,
+	ColumnTitle,
+	ColumnList,
+	AddTaskInput,
+	TaskCount,
+	WipLimit,
+} from './Styles';
 import Task from './Task/index';
 import { BoardType, ColumnType, TaskType } from '../Types';
 import { makeRequest } from '../../../../Api';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type ColumnProps = {
 	addTask: any;
 	columnNum: number;
 	column: ColumnType;
+	wipLimit: number;
 	taskList: Array<TaskType>;
 	board: BoardType;
 	setBoard: Dispatch<SetStateAction<BoardType>>;
@@ -30,6 +39,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	taskList,
 	board,
 	setBoard,
+	wipLimit,
 }) => {
 	const [inputVal, setInputVal] = useState('');
 	const [titleVal, setTitleVal] = useState(column.title);
@@ -67,15 +77,32 @@ const BoardColumn: React.FC<ColumnProps> = ({
 		<Droppable key={columnNum} droppableId={columnNum.toString()}>
 			{(provided) => (
 				<Column>
-					<ColumnTitle
-						value={titleVal}
-						ref={titleInput}
-						onKeyDown={(e: KeyboardEvent) => handleTitleEnter(e)}
-						onChange={(e: React.SyntheticEvent) =>
-							handleTitleChange(e)
-						}
-						disabled={!editable}
-					/>
+					<RowDiv>
+						<ColumnTitle
+							value={titleVal}
+							ref={titleInput}
+							onKeyDown={(e: KeyboardEvent) =>
+								handleTitleEnter(e)
+							}
+							onChange={(e: React.SyntheticEvent) =>
+								handleTitleChange(e)
+							}
+							disabled={!editable}
+						/>
+						<TaskCount
+							wipExceeded={
+								wipLimit ? taskList.length > wipLimit : false
+							}
+						>
+							{`${taskList.length} / ${!!board &&
+								board.columns.find(
+									(col) => col.column_id === column.column_id,
+								)?.tasks.length}`}
+							<WipLimit>
+								<span>WIP limit: {wipLimit || '∞'}</span>
+							</WipLimit>
+						</TaskCount>
+					</RowDiv>
 					{editable && (
 						<AddTaskInput
 							placeholder={'add task'}
@@ -90,6 +117,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 							}}
 						/>
 					)}
+
 					<ColumnList
 						{...provided.droppableProps}
 						ref={provided.innerRef}

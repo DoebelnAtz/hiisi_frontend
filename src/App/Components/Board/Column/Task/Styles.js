@@ -3,6 +3,7 @@ import {
 	color,
 	colorAdjust,
 	cursor,
+	font,
 	layout,
 	length,
 } from '../../../../../Styles/SharedStyles';
@@ -22,19 +23,26 @@ export const TaskStatusRow = styled.div`
 `;
 
 export const TaskStatusText = styled.div`
-	position: static;
+	position: absolute;
 	visibility: hidden;
-	width: fit-content;
-	white-space: nowrap;
+	z-index: 6;
+	padding: 4px;
+	border-radius: ${length.radius};
+	background-color: ${color.siteBG5};
+	transform: translate(calc(-50% + 9px), -230%);
+	&::after {
+		content: '  ';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -6px;
+		border-width: 6px;
+		border-style: solid;
+		border-color: ${color.siteBG5} transparent transparent transparent;
+	}
 	& span {
-		z-index: 6;
-		padding: 7px;
-		position: relative;
-		bottom: 55px;
-		right: 5px;
-		border: 1px solid ${color.siteBG2};
-		border-radius: 4px;
-		background-color: ${color.siteBG5};
+		${font.text};
+		font-size: 14px;
 	}
 `;
 
@@ -59,6 +67,14 @@ export const TaskStatusImg = styled.div`
 			visibility: visible;
 		}
 	}
+`;
+
+export const TaskColorTag = styled.div`
+	background-color: ${(props) => props.tagColor || color.siteBG3};
+	width: 20%;
+	height: 14px;
+	margin: auto 0;
+	border-radius: 7px;
 `;
 
 export const DeleteTaskImg = styled.div`

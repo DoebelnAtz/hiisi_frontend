@@ -23,7 +23,8 @@ export interface PostType {
     published_date: string,
     commentthread: number,
     voted: vote,
-    votes: number
+    votes: number,
+    edited: string,
 }
 
 

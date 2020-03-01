@@ -77,6 +77,6 @@ export const Option = styled.div`
 	transition: background-color 0.1s;
 	${cursor.clickable};
 	&:hover {
-		background-color: ${color.siteBG1};
+		background-color: ${colorAdjust.darken(color.siteBG1, 0.11)};
 	}
 `;
