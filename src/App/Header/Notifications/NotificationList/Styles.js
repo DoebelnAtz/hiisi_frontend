@@ -14,6 +14,7 @@ export const NotificationListDropDown = styled.div`
 	background-color: ${color.siteBG3};
 	transform: translate(-40px, 50px);
 	border-radius: ${length.radius};
+	padding: ${length.margin} 0;
 	&::before {
 		content: '  ';
 		position: absolute;
@@ -32,7 +33,6 @@ export const NotificationListDiv = styled.div`
 	overflow-y: auto;
 	z-index: 11;
 	border-radius: ${length.radius};
-
 	background-color: ${color.siteBG3};
 `;
 
@@ -43,6 +43,6 @@ export const NotificationItem = styled.div`
 	z-index: 12;
 	${cursor.clickable};
 	background-color: ${color.siteBG2};
-	margin: ${length.margin} 5px;
+	margin: 0 5px ${length.margin} 5px;
 	border-radius: ${length.radius};
 `;

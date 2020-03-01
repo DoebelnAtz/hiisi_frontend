@@ -29,6 +29,7 @@ import { makeRequest } from '../../../../Api';
 import SaveButton from '../../../Components/Buttons/SaveButton';
 import queryString from 'query-string';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
+import { getLocal } from '../../../../Utils';
 
 const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	match,
@@ -167,12 +168,17 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					</ProjectDashBoardNavItem>
 					{project?.contributor && (
 						<Fragment>
-							<ProjectDashBoardNavItem
-								focus={dashState.toLowerCase() === 'settings'}
-								onClick={() => setDashState('settings')}
-							>
-								<span>Settings</span>
-							</ProjectDashBoardNavItem>
+							{project?.creator ===
+								getLocal('token').user.u_id && (
+								<ProjectDashBoardNavItem
+									focus={
+										dashState.toLowerCase() === 'settings'
+									}
+									onClick={() => setDashState('settings')}
+								>
+									<span>Settings</span>
+								</ProjectDashBoardNavItem>
+							)}
 							<ProjectDashBoardNavItem
 								onClick={() => setCurrentChat(project.t_id)}
 							>

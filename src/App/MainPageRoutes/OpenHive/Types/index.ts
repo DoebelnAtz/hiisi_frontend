@@ -6,10 +6,11 @@ export interface Project {
 	title: string,
 	link: string,
 	contributor: boolean, // True if the user viewing the page is a contributor
-	collaborators: User[], // List of contributors TODO: fix inconsistent wording here
+	collaborators: User[], // List of contributors
 	commentthread: number, // Comment thread id
 	published_date: string,
 	vote: vote,
+	creator: number,
 	votes: number
 	description: string,
 	board_id: number, // Board id
