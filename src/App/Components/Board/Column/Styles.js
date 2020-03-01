@@ -88,7 +88,7 @@ export const ColumnOptions = styled.div`
 	background-color: ${color.siteBG2};
 	transition: height 0.3s, margin-bottom 0.5s;
 	border-radius: ${length.radius};
-	height: ${(props) => (props.expanded ? '28px' : '0')};
+	height: ${(props) => (props.expanded ? '58px' : '0')};
 	margin-bottom: ${(props) => (props.expanded ? length.margin : '0')};
 	overflow: hidden;
 `;
@@ -129,6 +129,37 @@ export const WipLimitInput = styled.div`
 	${layout.row};
 	& span {
 		${font.text};
+	}
+`;
+
+export const ColumnOptionsButtonRow = styled.div`
+	${layout.row};
+	& button {
+	}
+`;
+
+export const AcceptOptionBtn = styled.button`
+	${components.button};
+	background-color: ${color.siteBG3};
+	border: none;
+	line-height: 24px;
+	height: 24px;
+	margin-left: auto;
+	&:hover {
+		background-color: ${colorAdjust.darken(color.siteBG3, 0.05)};
+	}
+`;
+
+export const RejectOptionBtn = styled.button`
+	${components.button};
+	background-color: ${color.siteBG3};
+	border: none;
+	line-height: 24px;
+	height: 24px;
+	margin-left: 5px;
+	margin-right: 5px;
+	&:hover {
+		background-color: ${colorAdjust.darken(color.siteBG3, 0.05)};
 	}
 `;
 

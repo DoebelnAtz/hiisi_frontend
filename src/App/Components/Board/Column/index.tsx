@@ -21,6 +21,9 @@ import {
 	WipLimitToggler,
 	WipDecrease,
 	WipIncrease,
+	ColumnOptionsButtonRow,
+	AcceptOptionBtn,
+	RejectOptionBtn,
 } from './Styles';
 import Task from './Task/index';
 import { BoardType, ColumnType, TaskType } from '../Types';
@@ -77,22 +80,19 @@ const BoardColumn: React.FC<ColumnProps> = ({
 		}
 	};
 
-	const handleWipLimitChange = async (change: number) => {
+	const handleWipLimitChange = (change: number) => {
 		if (wipState + change >= 0) {
 			setWipState(wipState + change);
-			let resp = await makeRequest(
-				'projects/boards/update_column',
-				'put',
-				{
-					title: titleVal,
-					wipLimit: wipState + change,
-					columnId: column.column_id,
-				},
-			);
-			if (!resp.data) {
-				setWipState(wipState - change);
-			}
 		}
+	};
+
+	const handleOptionConfirm = async () => {
+		let resp = await makeRequest('projects/boards/update_column', 'put', {
+			title: titleVal,
+			wipLimit: wipState,
+			columnId: column.column_id,
+		});
+		setExpandOptions(false);
 	};
 
 	return (
@@ -153,12 +153,22 @@ const BoardColumn: React.FC<ColumnProps> = ({
 								onClick={() => handleWipLimitChange(-1)}
 							/>
 							<WipLimitToggler>
-								{!wipState ? 'none' : wipState}
+								{!wipState ? '∞' : wipState}
 							</WipLimitToggler>
 							<WipIncrease
 								onClick={() => handleWipLimitChange(1)}
 							/>
 						</WipLimitInput>
+						<ColumnOptionsButtonRow>
+							<AcceptOptionBtn onClick={handleOptionConfirm}>
+								✔
+							</AcceptOptionBtn>
+							<RejectOptionBtn
+								onClick={() => setExpandOptions(false)}
+							>
+								✗
+							</RejectOptionBtn>
+						</ColumnOptionsButtonRow>
 					</ColumnOptions>
 					<ColumnList
 						{...provided.droppableProps}
