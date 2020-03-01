@@ -60,7 +60,9 @@ export const GitIconDiv = styled.div`
 	background-color: #ffffff;
 	border-radius: 7px;
 	padding: 0 4px;
+	display: flex;
 	& img {
+		margin: auto 0;
 		height: 24px;
 		width: 24px;
 	}

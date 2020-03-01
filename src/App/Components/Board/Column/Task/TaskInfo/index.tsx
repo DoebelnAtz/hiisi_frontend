@@ -81,7 +81,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const [maxDisplayedUsers, setMaxDisplayedUsers] = useState<number>(3);
 	const [priorityIcon, setPriorityIcon] = useState(getPriorityIcon(0));
 	const [priority, setPriority] = useState(getPriorityText(0));
-	const [expandColorPicker, setExpandColorPicker] = useState(true);
+	const [expandColorPicker, setExpandColorPicker] = useState(false);
 	const colorPickerDiv = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {

@@ -7,13 +7,32 @@ import {
 	length,
 } from '../../../../Styles/SharedStyles';
 
+export const NotificationListDropDown = styled.div`
+	width: 300px;
+	z-index: 10;
+	position: absolute;
+	background-color: ${color.siteBG3};
+	transform: translate(-40px, 50px);
+	border-radius: ${length.radius};
+	&::before {
+		content: '  ';
+		position: absolute;
+		left: 20%;
+		top: -12px;
+		margin-left: -6px;
+		border-width: 6px;
+		border-style: solid;
+		border-color: transparent transparent ${color.siteBG3} transparent;
+	}
+`;
+
 export const NotificationListDiv = styled.div`
 	width: 300px;
-	position: absolute;
 	max-height: 20vh;
-	top: 65px;
 	overflow-y: auto;
-	z-index: 10;
+	z-index: 11;
+	border-radius: ${length.radius};
+
 	background-color: ${color.siteBG3};
 `;
 
@@ -21,6 +40,7 @@ export const NotificationItem = styled.div`
 	${layout.row};
 	${font.text};
 	padding: 8px;
+	z-index: 12;
 	${cursor.clickable};
 	background-color: ${color.siteBG2};
 	margin: ${length.margin} 5px;

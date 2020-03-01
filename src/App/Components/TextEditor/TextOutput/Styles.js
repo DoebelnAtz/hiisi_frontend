@@ -3,7 +3,7 @@ import { color, length, font } from '../../../../Styles/SharedStyles';
 
 export const TextEditOutput = styled.textarea`
 	width: calc(100%);
-	height: calc(100% - ${length.margin});
+	height: calc(100%);
 	padding: ${length.margin};
 	border: none;
 	font-size: 16px;
@@ -16,7 +16,6 @@ export const TextEditOutput = styled.textarea`
 
 	:focus {
 		width: 100%;
-		height: calc(100%);
 		outline: none;
 	}
 `;

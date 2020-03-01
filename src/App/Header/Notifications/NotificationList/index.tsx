@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { Notification } from '../../../../Types';
-import { NotificationListDiv, NotificationItem } from './Styles';
+import {
+	NotificationListDiv,
+	NotificationItem,
+	NotificationListDropDown,
+} from './Styles';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { useHistory } from 'react-router-dom';
 import { useRequest } from '../../../../Hooks';
@@ -41,7 +45,11 @@ const NotificationList: React.FC<NotificationListProps> = () => {
 			});
 	};
 
-	return <NotificationListDiv>{renderNotifications()}</NotificationListDiv>;
+	return (
+		<NotificationListDropDown>
+			<NotificationListDiv>{renderNotifications()}</NotificationListDiv>
+		</NotificationListDropDown>
+	);
 };
 
 export default NotificationList;
