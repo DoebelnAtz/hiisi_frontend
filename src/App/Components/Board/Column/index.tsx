@@ -14,6 +14,13 @@ import {
 	AddTaskInput,
 	TaskCount,
 	WipLimit,
+	ExpandOptions,
+	Dot,
+	ColumnOptions,
+	WipLimitInput,
+	WipLimitToggler,
+	WipDecrease,
+	WipIncrease,
 } from './Styles';
 import Task from './Task/index';
 import { BoardType, ColumnType, TaskType } from '../Types';
@@ -26,8 +33,8 @@ type ColumnProps = {
 	column: ColumnType;
 	wipLimit: number;
 	taskList: Array<TaskType>;
-	board: BoardType;
-	setBoard: Dispatch<SetStateAction<BoardType>>;
+	board: BoardType | undefined;
+	setBoard: Dispatch<SetStateAction<BoardType | undefined>>;
 	editable?: boolean;
 };
 
@@ -44,21 +51,18 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	const [inputVal, setInputVal] = useState('');
 	const [titleVal, setTitleVal] = useState(column.title);
 	const titleInput = useRef<HTMLInputElement>(null);
-
-	useEffect(() => {
-		// To make sure title value updates from 'loading...' after we
-		// fetch columns.
-		setTitleVal(column.title);
-	}, [column.title]);
+	const [wipState, setWipState] = useState(wipLimit);
+	const [expandOptions, setExpandOptions] = useState(false);
 
 	// if pressed key is Enter send a request to the api
 	const handleTitleEnter = async (e: KeyboardEvent) => {
 		if (editable && e.key === 'Enter' && titleVal !== column.title) {
 			let res = await makeRequest(
-				'projects/boards/update_column_title',
+				'projects/boards/update_column',
 				'put',
 				{
 					title: titleVal,
+					wipLimit: wipState,
 					columnId: column.column_id,
 				},
 			);
@@ -70,6 +74,24 @@ const BoardColumn: React.FC<ColumnProps> = ({
 		if (editable) {
 			let target = e.target as HTMLInputElement;
 			setTitleVal(target.value);
+		}
+	};
+
+	const handleWipLimitChange = async (change: number) => {
+		if (wipState + change >= 0) {
+			setWipState(wipState + change);
+			let resp = await makeRequest(
+				'projects/boards/update_column',
+				'put',
+				{
+					title: titleVal,
+					wipLimit: wipState + change,
+					columnId: column.column_id,
+				},
+			);
+			if (!resp.data) {
+				setWipState(wipState - change);
+			}
 		}
 	};
 
@@ -91,7 +113,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 						/>
 						<TaskCount
 							wipExceeded={
-								wipLimit ? taskList.length > wipLimit : false
+								wipState ? taskList.length > wipState : false
 							}
 						>
 							{`${taskList.length} / ${!!board &&
@@ -99,7 +121,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 									(col) => col.column_id === column.column_id,
 								)?.tasks.length}`}
 							<WipLimit>
-								<span>WIP limit: {wipLimit || '∞'}</span>
+								<span>WIP limit: {wipState || '∞'}</span>
 							</WipLimit>
 						</TaskCount>
 					</RowDiv>
@@ -117,7 +139,27 @@ const BoardColumn: React.FC<ColumnProps> = ({
 							}}
 						/>
 					)}
-
+					<ExpandOptions
+						onClick={() => setExpandOptions(!expandOptions)}
+					>
+						<Dot />
+						<Dot />
+						<Dot />
+					</ExpandOptions>
+					<ColumnOptions expanded={expandOptions}>
+						<WipLimitInput>
+							<span>WIP limit:</span>
+							<WipDecrease
+								onClick={() => handleWipLimitChange(-1)}
+							/>
+							<WipLimitToggler>
+								{!wipState ? 'none' : wipState}
+							</WipLimitToggler>
+							<WipIncrease
+								onClick={() => handleWipLimitChange(1)}
+							/>
+						</WipLimitInput>
+					</ColumnOptions>
 					<ColumnList
 						{...provided.droppableProps}
 						ref={provided.innerRef}

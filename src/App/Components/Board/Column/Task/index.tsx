@@ -26,8 +26,8 @@ import { checkUserList } from '../../../../../Utils';
 type TaskProps = {
 	task: TaskType;
 	index: number;
-	board: BoardType;
-	setBoard: Dispatch<SetStateAction<BoardType>>;
+	board: BoardType | undefined;
+	setBoard: Dispatch<SetStateAction<BoardType | undefined>>;
 	editable?: boolean;
 };
 
@@ -64,7 +64,7 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 			'delete',
 			{ taskId: task.task_id },
 		);
-		if (resp.data) {
+		if (resp.data && board) {
 			setBoard({
 				...board,
 				columns: board.columns.map((column) => {

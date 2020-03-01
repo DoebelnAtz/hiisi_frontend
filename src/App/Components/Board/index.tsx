@@ -63,8 +63,7 @@ const Board: React.FC<BoardProps> = ({
 }) => {
 	// Getting TS2739 error, not sure how to solve it..
 
-	// @ts-ignore
-	const [board, setBoard, isLoading]: [BoardType, any, boolean] = useRequest(
+	const [board, setBoard, isLoading] = useRequest<BoardType>(
 		'projects/boards/' + board_id,
 		'get',
 	);
@@ -72,13 +71,12 @@ const Board: React.FC<BoardProps> = ({
 	const [filteredUser, setFilteredUser] = useState<number>(0);
 
 	const filterBoard = () => {
-		let b;
 		if (!filteredUser) {
 			return board;
 		} else {
-			b = {
+			return {
 				...board,
-				columns: board.columns.map((col) => {
+				columns: board?.columns.map((col) => {
 					return {
 						...col,
 						tasks: col.tasks.filter((task) =>
@@ -89,47 +87,54 @@ const Board: React.FC<BoardProps> = ({
 						),
 					};
 				}),
-			};
-			return b;
+			} as BoardType;
 		}
 	};
 	// Not the prettiest function, basically, handles board state modification
 	// When moving task from one column to another and makes a put request to
 	// the backend.
 	const handleTaskDrop = ({ draggableId, destination, source }: any) => {
-		if (!destination) return;
-		let destColId = Number(destination.droppableId);
-		let srcColId = Number(source.droppableId);
-		let taskId = Number(draggableId);
-		if (srcColId === destColId && source.index === destination.index)
-			return;
-		let draggedTask: TaskType = filterBoard().columns[srcColId].tasks[
-			source.index
-		];
-		let targetCol = filterBoard().columns[destColId];
-		let updatedTask = { ...draggedTask, column_id: targetCol.column_id };
+		if (destination && board) {
+			let destColId = Number(destination.droppableId);
+			let srcColId = Number(source.droppableId);
+			let taskId = Number(draggableId);
+			if (srcColId === destColId && source.index === destination.index)
+				return;
+			// @ts-ignore
+			let draggedTask: TaskType = filterBoard().columns[srcColId].tasks[
+				source.index
+			];
+			let targetCol = filterBoard()?.columns[destColId] as ColumnType;
+			let updatedTask = {
+				...draggedTask,
+				column_id: targetCol.column_id,
+			} as TaskType;
+			draggedTask.column_id = targetCol.column_id;
+			setBoard({
+				columns: board.columns.map((column) => ({
+					...column,
+					tasks: _.flow(
+						// check Lodash docs on flow.
+						(ids: Array<TaskType>) =>
+							ids.filter((id) => id.task_id !== taskId),
 
-		draggedTask.column_id = targetCol.column_id;
-		setBoard({
-			columns: board.columns.map((column) => ({
-				...column,
-				tasks: _.flow(
-					// check Lodash docs on flow.
-					(ids: Array<TaskType>) =>
-						ids.filter((id) => id.task_id !== taskId),
-
-					(ids: Array<TaskType>) =>
-						column.column_number === destColId
-							? [
-									...ids.slice(0, destination.index),
-									draggedTask,
-									...ids.slice(destination.index),
-							  ]
-							: ids,
-				)(column.tasks),
-			})),
-		});
-		makeRequest('projects/boards/update_task_position', 'put', updatedTask);
+						(ids: Array<TaskType>) =>
+							column.column_number === destColId
+								? [
+										...ids.slice(0, destination.index),
+										draggedTask,
+										...ids.slice(destination.index),
+								  ]
+								: ids,
+					)(column.tasks),
+				})),
+			});
+			makeRequest(
+				'projects/boards/update_task_position',
+				'put',
+				updatedTask,
+			);
+		}
 	};
 
 	const addTask = async (taskTitle: string, taskColumnId: number) => {
@@ -137,7 +142,7 @@ const Board: React.FC<BoardProps> = ({
 			taskTitle,
 			taskColumnId,
 		});
-		if (resp?.data) {
+		if (resp?.data && board) {
 			let addedTask = resp.data;
 			setBoard({
 				...board,
@@ -186,21 +191,19 @@ const Board: React.FC<BoardProps> = ({
 			<ProjectCollaborators>{mapCollaborators()}</ProjectCollaborators>
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
-					{(!isLoading ? filterBoard().columns : boardState.columns)
-						// @ts-ignore
-						.map((column: ColumnType) => (
-							<Column
-								column={column}
-								columnNum={column.column_number}
-								key={column.column_number}
-								taskList={column.tasks}
-								addTask={addTask}
-								setBoard={setBoard}
-								board={board}
-								wipLimit={column.wip_limit}
-								editable={editable}
-							/>
-						))}
+					{filterBoard()?.columns.map((column: ColumnType) => (
+						<Column
+							column={column}
+							columnNum={column.column_number}
+							key={column.column_number}
+							taskList={column.tasks}
+							addTask={addTask}
+							setBoard={setBoard}
+							board={board}
+							wipLimit={column.wip_limit}
+							editable={editable}
+						/>
+					))}
 				</Columns>
 			</DragDropContext>
 		</BoardDiv>

@@ -20,10 +20,10 @@ export type ColumnType = {
     title: string,
     column_number: number,
     wip_limit: number,
-    tasks: Array<TaskType>,
+    tasks: TaskType[],
 }
 
 export interface BoardType {
-    columns: Array<ColumnType>
+    columns: ColumnType[]
 }
 
