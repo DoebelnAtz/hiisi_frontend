@@ -11,6 +11,7 @@ import { useRequest } from '../../../../Hooks';
 import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
 import { makeRequest } from '../../../../Api';
+import { Feed } from '../../../../Styles/CardStyles';
 type ForumFeedProps = {
 	sortBy: string;
 	page: number;
@@ -59,16 +60,18 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 
 	return (
 		<Fragment>
-			{renderList()}
-			{showNext && nextPosts && (
-				<ForumFeed
-					sortBy={sortBy}
-					page={page + 1}
-					reverse={reverse}
-					posts={nextPosts}
-					setPosts={setNextPosts}
-				/>
-			)}
+			<Feed>
+				{renderList()}
+				{showNext && nextPosts && (
+					<ForumFeed
+						sortBy={sortBy}
+						page={page + 1}
+						reverse={reverse}
+						posts={nextPosts}
+						setPosts={setNextPosts}
+					/>
+				)}
+			</Feed>
 			{!showNext && posts.length >= 10 && (
 				<MoreButton>
 					<img

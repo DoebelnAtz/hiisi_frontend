@@ -8,6 +8,11 @@ import {
 	length,
 } from './SharedStyles';
 
+export const Feed = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
+
 export const Card = styled.div`
 	${font.text};
 	${layout.row};
@@ -17,6 +22,9 @@ export const Card = styled.div`
 	min-height: 122px;
 	background-color: ${color.siteBG2};
 	margin: ${length.margin};
+	@media (min-width: 1367px) {
+		width: calc(50% - 20px);
+	}
 `;
 
 export const CardVotes = styled.div`

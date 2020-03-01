@@ -4,6 +4,7 @@ import { Project } from '../Types';
 import ProjectCard from './ProjectCard/index';
 import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
+import { Feed } from '../../../../Styles/CardStyles';
 
 type ProjectFeedProps = {
 	projects: Project[];
@@ -34,15 +35,17 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 
 	return (
 		<Fragment>
-			{renderProject()}
-			{showNext && nextProjects && (
-				<ProjectFeed
-					page={page + 1}
-					projects={nextProjects}
-					sortBy={sortBy}
-					reverse={reverse}
-				/>
-			)}
+			<Feed>
+				{renderProject()}
+				{showNext && nextProjects && (
+					<ProjectFeed
+						page={page + 1}
+						projects={nextProjects}
+						sortBy={sortBy}
+						reverse={reverse}
+					/>
+				)}
+			</Feed>
 			{!showNext && projects.length >= 10 && (
 				<MoreButton>
 					<img

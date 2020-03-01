@@ -5,8 +5,10 @@ import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
 import ResourceCard from './ResourceCard/index';
 import { useHistory } from 'react-router-dom';
-import { MoreButton } from '../../Forum/ForumFeed/Styles';
+import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
+import { Feed } from '../../../../Styles/CardStyles';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type ResourceFeedPropTypes = {
 	pagination: number;
@@ -77,18 +79,20 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	};
 	return (
 		<Fragment>
-			{resources && renderResources(resources)}
-			{next && nextResources && setNextResources && (
-				<ResourcesResourceFeed
-					pagination={pagination + 1}
-					reverse={reverse}
-					sortBy={sortBy}
-					filterBy={filterBy}
-					setFilter={setFilter}
-					resources={nextResources}
-					setResources={setNextResources}
-				/>
-			)}
+			<Feed>
+				{resources && renderResources(resources)}
+				{next && nextResources && setNextResources && (
+					<ResourcesResourceFeed
+						pagination={pagination + 1}
+						reverse={reverse}
+						sortBy={sortBy}
+						filterBy={filterBy}
+						setFilter={setFilter}
+						resources={nextResources}
+						setResources={setNextResources}
+					/>
+				)}
+			</Feed>
 			{!next && resources.length >= 10 && (
 				<MoreButton>
 					<img
