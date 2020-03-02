@@ -183,7 +183,7 @@ select:-webkit-autofill:focus {
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 
     height: 100%;
     width: 100%;

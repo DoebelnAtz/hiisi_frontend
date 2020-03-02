@@ -32,6 +32,10 @@ export const CardVotes = styled.div`
 	padding: 14px 0;
 	border-right: 2px solid ${color.siteBG1};
 	${layout.col};
+	@media (min-width: 1367px) {
+		width: calc(50% - 20px);
+	}
+	
 `;
 
 export const ArrowImage = styled.div`
@@ -81,13 +85,19 @@ export const CardTitle = styled.span`
 	${layout.row};
 	font-size: 20px;
 	width: 70%;
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
 `;
 
 export const CardAuthor = styled.div`
 	${layout.row};
-	color: #ffffff;
 	margin-top: 4px;
 	margin-left: auto;
+	${font.text};
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
 `;
 
 export const CardButtons = styled.div`
@@ -110,6 +120,9 @@ export const CardDate = styled.span`
 	font-size: 16px;
 	padding-left: 10px;
 	${layout.row};
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
 `;
 
 export const DeleteButton = styled.div`
@@ -150,4 +163,7 @@ export const CopiedSpan = styled.span`
 	transition: opacity 0.3s;
 	user-select: none;
 	opacity: ${(props) => (props.copied ? '1' : '0')};
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
 `;

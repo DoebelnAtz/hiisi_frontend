@@ -12,6 +12,7 @@ import {
 	NavTitleDiv,
 	Logo,
 	SiteTitle,
+	SearchLabel,
 } from './Styles';
 import SearchBar from './Search';
 import Notifications from './Notifications';
@@ -31,8 +32,10 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 				<SiteTitle>Hivemind</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
-			<Notifications />
-			<SearchBar />
+			<SearchLabel>
+				<Notifications />
+				<SearchBar />
+			</SearchLabel>
 			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
 		</HeaderDiv>
 	);

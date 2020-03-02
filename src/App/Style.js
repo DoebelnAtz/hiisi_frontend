@@ -23,7 +23,8 @@ export const MainPage = styled.div`
 	width: calc(100%);
 	height: calc(100vh - 60px - ${length.margin} * 4);
 	margin: 0;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 `;
 
 export const ProductionStateLabel = styled.div`
@@ -55,7 +56,9 @@ export const MainView = styled.div`
 	width: calc(100% - 210px - ${length.margin} * 3);
 	background-color: ${color.siteBG1};
 	margin-left: ${length.margin};
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+
 	height: calc(100vh - 60px - ${length.margin} * 4);
 	transition: width 0.2s;
 	@media (max-width: 1024px) {

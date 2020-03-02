@@ -157,12 +157,14 @@ const Login: React.FC = () => {
 
 	return (
 		<BackgroundDiv>
-			<button
-				style={{ position: 'absolute' }}
-				onClick={() => setAnimate(!animate)}
-			>
-				animate
-			</button>
+			{
+				//<button
+				//style={{ position: 'absolute' }}
+				//onClick={() => setAnimate(!animate)}
+				//>
+				//animate
+				//</button>
+			}
 			<LoginDiv style={{ ...expandMain, ...expandBorderMain }}>
 				<InputDiv>
 					<div style={{ position: 'relative', left: '-50%' }}>

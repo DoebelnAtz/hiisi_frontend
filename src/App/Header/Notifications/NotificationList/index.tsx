@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Dispatch, SetStateAction, useContext, useRef } from 'react';
 import { Notification } from '../../../../Types';
 import {
 	NotificationListDiv,
@@ -7,13 +7,16 @@ import {
 } from './Styles';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { useHistory } from 'react-router-dom';
-import { useRequest } from '../../../../Hooks';
-import { getLocal } from '../../../../Utils';
+import { useDismiss, useRequest } from '../../../../Hooks';
+import { getLocal, formatDate } from '../../../../Utils';
 type NotificationListProps = {
 	notifications?: Notification[];
+	setExpandNotifications: Dispatch<SetStateAction<boolean>>;
 };
 
-const NotificationList: React.FC<NotificationListProps> = () => {
+const NotificationList: React.FC<NotificationListProps> = ({
+	setExpandNotifications,
+}) => {
 	const history = useHistory();
 	const { state: currentChat, update: setCurrentChat } = useContext(
 		ChatContext,
@@ -30,7 +33,9 @@ const NotificationList: React.FC<NotificationListProps> = () => {
 				history.push(`${notif.link}`);
 		}
 	};
+	const inside = useRef<HTMLDivElement>(null);
 
+	//useDismiss(inside, () => setExpandNotifications(false));
 	const renderNotifications = () => {
 		if (notifications)
 			return notifications.map((notif: Notification, index) => {
@@ -39,7 +44,8 @@ const NotificationList: React.FC<NotificationListProps> = () => {
 						onClick={() => handleNotificationClick(notif)}
 						key={index}
 					>
-						{notif.message}
+						<span> {notif.message}</span>
+						<span>{formatDate(notif.date)}</span>
 					</NotificationItem>
 				);
 			});
@@ -47,7 +53,9 @@ const NotificationList: React.FC<NotificationListProps> = () => {
 
 	return (
 		<NotificationListDropDown>
-			<NotificationListDiv>{renderNotifications()}</NotificationListDiv>
+			<NotificationListDiv ref={inside}>
+				{renderNotifications()}
+			</NotificationListDiv>
 		</NotificationListDropDown>
 	);
 };

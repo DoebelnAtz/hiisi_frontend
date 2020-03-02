@@ -14,6 +14,7 @@ export const BoardDiv = styled.div`
 export const Columns = styled.div`
 	display: flex;
 	width: 100%;
+
 	z-index: 3;
 `;
 

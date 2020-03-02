@@ -74,6 +74,7 @@ export const GitHubLink = styled.div`
 	background-color: #ffffff;
 	border: 4px solid black;
 	border-radius: 7px;
+	height: 28px;
 	${cursor.clickable};
 	padding-right: 4px;
 	& a {

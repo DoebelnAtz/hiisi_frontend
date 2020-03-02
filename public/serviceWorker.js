@@ -53,7 +53,7 @@ function register(config) {
 		});
 		let CACHE_NAME = 'hivemind-cache-v1';
 
-		let urlsToCache = ['/', '/Assets', '/Nav/navIcons'];
+		let urlsToCache = ['/static/media', '/static/css', '/static/js'];
 
 		self.addEventListener('install', function(event) {
 			// Perform install steps

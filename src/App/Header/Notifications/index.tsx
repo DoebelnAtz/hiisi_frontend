@@ -8,10 +8,18 @@ const Notifications: React.FC = () => {
 
 	return (
 		<NotificationIcon
-			onClick={() => setExpandNotifications(!expandNotifications)}
+			onClick={(e: React.SyntheticEvent) => {
+				e.preventDefault();
+				e.stopPropagation();
+				setExpandNotifications(!expandNotifications);
+			}}
 		>
 			<img src={NotificationImg} alt={'notifications'} />
-			{expandNotifications && <NotificationList />}
+			{expandNotifications && (
+				<NotificationList
+					setExpandNotifications={setExpandNotifications}
+				/>
+			)}
 		</NotificationIcon>
 	);
 };

@@ -36,7 +36,7 @@ export const useNotifications = (room: string) => {
 			localStorage.clear();
 			window.location.replace('/login');
 		}
-		let socket: SocketType = socketIOClient('http://localhost:5010', {
+		let socket: SocketType = socketIOClient('http://hivemind-42.com', {
 			transportOptions: {
 				polling: {
 					extraHeaders: {

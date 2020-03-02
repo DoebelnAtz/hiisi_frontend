@@ -38,6 +38,11 @@ export const SiteTitle = styled.span`
 	}
 `;
 
+export const SearchLabel = styled.label`
+	margin-left: auto;
+	${layout.row};
+`;
+
 export const NavTitleDiv = styled.div`
 	font-size: 24px;
 	color: ${color.primary};
