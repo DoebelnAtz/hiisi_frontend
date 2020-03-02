@@ -59,7 +59,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	useEffect(() => {
 		let user = getLocal('token');
-		let socket = socketIOClient('http://hivemind-42.com', {
+		let socket = socketIOClient('https://hivemind-42.com', {
 			transportOptions: {
 				polling: {
 					extraHeaders: {
