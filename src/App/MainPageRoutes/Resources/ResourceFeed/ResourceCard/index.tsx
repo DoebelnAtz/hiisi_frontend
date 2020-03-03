@@ -1,5 +1,11 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Tag, Tags } from './Styles';
+import {
+	ResourceRow,
+	ResourceThumbnail,
+	ResourceTitleInfo,
+	Tag,
+	Tags,
+} from './Styles';
 import {
 	VoteCount,
 	ArrowImage,
@@ -26,6 +32,7 @@ import ShareImg from '../../../../../Assets/Share.png';
 import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
 import { formatDate } from '../../../../../Utils';
+import { RowDiv } from '../../../../../Styles/LayoutStyles';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -139,19 +146,28 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					openResource();
 				}}
 			>
-				<CardTitleInfo>
-					<CardTitle>{resource.title}</CardTitle>
-					<CardInfo>
-						<CardDate>
-							{formatDate(resource.published_date)}
-						</CardDate>
-						<CardAuthor>{resource.username}</CardAuthor>
-						<CardEdited>
-							{resource.edited &&
-								`edited: ${formatDate(resource.edited)}`}
-						</CardEdited>
-					</CardInfo>
-				</CardTitleInfo>
+				<ResourceRow>
+					{resource.thumbnail && (
+						<ResourceThumbnail
+							src={resource.thumbnail}
+							alt={'thumbnail'}
+						/>
+					)}
+					<ResourceTitleInfo full={!resource.thumbnail}>
+						<CardTitle>{resource.title}</CardTitle>
+						<CardInfo>
+							<CardDate>
+								{formatDate(resource.published_date)}
+							</CardDate>
+							<CardAuthor>{resource.username}</CardAuthor>
+							<CardEdited>
+								{resource.edited &&
+									`edited: ${formatDate(resource.edited)}`}
+							</CardEdited>
+						</CardInfo>
+					</ResourceTitleInfo>
+				</ResourceRow>
+
 				<Tags>
 					{resource.tags &&
 						resource.tags?.map((tag, index) => (

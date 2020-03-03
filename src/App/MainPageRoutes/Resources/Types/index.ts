@@ -15,6 +15,7 @@ export interface ResourceType {
 	u_id: number,
 	link: string,
 	commentthread: number,
+	thumbnail: string,
 	owner: boolean,
 	edited: string,
 	votes: number
@@ -30,6 +31,7 @@ export interface ResourceListType {
 	title: string,
 	username: string,
 	link: string,
+	thumbnail: string,
 	commentthread: number,
 	owner: boolean,
 	edited: string,

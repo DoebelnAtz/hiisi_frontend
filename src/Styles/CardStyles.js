@@ -75,6 +75,10 @@ export const CardInfo = styled.div`
 	flex-direction: column;
 	margin-left: auto;
 	width: 30%;
+	font-size: 14px;
+	@media (min-width: 1367px) {
+		font-size: 14px;
+	}
 `;
 
 export const CardTitle = styled.span`
@@ -85,7 +89,8 @@ export const CardTitle = styled.span`
 
 export const CardAuthor = styled.div`
 	${layout.row};
-	color: #ffffff;
+	${font.text};
+	font-size: inherit;
 	margin-top: 4px;
 	margin-left: auto;
 `;
@@ -107,8 +112,8 @@ export const CardEdited = styled.span`
 
 export const CardDate = styled.span`
 	margin-left: auto;
-	font-size: 16px;
 	padding-left: 10px;
+	text-align: right;
 	${layout.row};
 `;
 
