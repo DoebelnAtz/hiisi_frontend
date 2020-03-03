@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
 	ResourceRow,
 	ResourceThumbnail,
@@ -57,6 +58,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
+	const history = useHistory();
 
 	const voteResource = async (
 		vote: vote,
@@ -152,6 +154,10 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				<ResourceRow>
 					{resource.thumbnail && (
 						<ResourceThumbnail
+							onClick={(e: React.SyntheticEvent) => {
+								e.stopPropagation();
+								window.location.replace(resource.link);
+							}}
 							src={resource.thumbnail}
 							alt={'thumbnail'}
 						/>

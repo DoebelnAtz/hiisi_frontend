@@ -31,7 +31,7 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 		`blogs?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},
-		posts.length >= 10,
+		posts.length >= 14,
 	);
 	const isVisible = useRef<HTMLElement>(null);
 	const [showNext, setShowNext] = useState(false);
@@ -72,7 +72,7 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 					/>
 				)}
 			</Feed>
-			{!showNext && posts.length >= 10 && (
+			{!showNext && posts.length >= 14 && (
 				<MoreButton>
 					<img
 						src={PlusIcon}
