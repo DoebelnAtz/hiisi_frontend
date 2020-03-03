@@ -2,7 +2,10 @@ import React, { Dispatch, SetStateAction, useState } from 'react';
 import {
 	ResourceRow,
 	ResourceThumbnail,
+	ResourceTitle,
 	ResourceTitleInfo,
+	ResourceTitleType,
+	ResourceType,
 	Tag,
 	Tags,
 } from './Styles';
@@ -154,7 +157,12 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 						/>
 					)}
 					<ResourceTitleInfo full={!resource.thumbnail}>
-						<CardTitle>{resource.title}</CardTitle>
+						<ResourceTitleType>
+							<ResourceTitle>{resource.title}</ResourceTitle>
+							<ResourceType>
+								{resource.resource_type}
+							</ResourceType>
+						</ResourceTitleType>
 						<CardInfo>
 							<CardDate>
 								{formatDate(resource.published_date)}

@@ -1,13 +1,15 @@
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
-	EditDescription,
+	EditDescriptionCol,
 	LinkInput,
 	LinkInputDiv,
 	SubmitResource,
-	TitleAndLinkRow,
+	TitleLinkTypeCol,
 	TitleInput,
 	TitleInputDiv,
+	TypeDropDown,
+	TypeDropDownSpan,
 } from './Styles';
 import { OuterDiv } from './Styles';
 import { useDismiss } from '../../../../Hooks';
@@ -15,6 +17,7 @@ import TextEditor from '../../../Components/TextEditor';
 import { ButtonRow } from './Styles';
 import { makeRequest } from '../../../../Api';
 import { SubmitResourceProps } from '../Types';
+import DropDownComponent from '../../../Components/DropDown';
 
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
@@ -26,7 +29,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	const [description, setDescription] = useState<string>('');
 	const [titleInput, setTitleInput] = useState<string>('');
 	const [linkInput, setLinkInput] = useState<string>('');
-
+	const [type, setType] = useState('article');
 	const close = () => {
 		setPopup(false);
 	};
@@ -43,6 +46,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				title: titleInput,
 				link: linkInput,
 				description: description,
+				type: type,
 			});
 
 			setResources([resp.data, ...resources]);
@@ -50,10 +54,14 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		}
 	};
 
+	const handleTypeChange = (newType: string) => {
+		setType(newType);
+	};
+
 	return ReactDOM.createPortal(
 		<OuterDiv>
 			<SubmitResource ref={inside}>
-				<TitleAndLinkRow>
+				<TitleLinkTypeCol>
 					<TitleInputDiv>
 						<span>Title: </span>
 						<TitleInput
@@ -65,6 +73,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							placeholder={'title'}
 						/>
 					</TitleInputDiv>
+
 					<LinkInputDiv>
 						<span>Link: </span>
 						<LinkInput
@@ -76,15 +85,25 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							placeholder={'link'}
 						/>
 					</LinkInputDiv>
-				</TitleAndLinkRow>
-				<EditDescription>
+					<TypeDropDownSpan>Resource type:</TypeDropDownSpan>
+					<TypeDropDown>
+						<DropDownComponent
+							state={type}
+							setSelect={handleTypeChange}
+							optionList={['article', 'video', 'course']}
+							width={'140px'}
+							height={'34px'}
+						/>
+					</TypeDropDown>
+				</TitleLinkTypeCol>
+				<EditDescriptionCol>
 					<span>Description: </span>
 					<TextEditor
 						editable
 						state={description}
 						setState={(e: string) => handleDescriptionChange(e)}
 					/>
-				</EditDescription>
+				</EditDescriptionCol>
 				<ButtonRow>
 					<button onClick={submitResource}>Submit</button>
 				</ButtonRow>

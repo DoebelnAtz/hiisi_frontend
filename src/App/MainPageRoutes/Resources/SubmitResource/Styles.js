@@ -19,44 +19,61 @@ export const OuterDiv = styled.div`
 	z-index: 5;
 `;
 
-export const TitleAndLinkRow = styled.div`
-	${layout.row};
+export const TitleLinkTypeCol = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 30%;
 `;
 
 export const TitleInputDiv = styled.div`
 	${layout.row};
-	width: 40%;
+	margin-top: ${length.margin};
+	width: calc(100% - ${length.margin});
 	& span {
 		font-size: 20px;
-		margin-top: 3px;
+		margin-bottom: ${length.margin};
 		margin-right: ${length.margin};
 	}
 `;
 
 export const TitleInput = styled.input`
 	${components.input};
-	width: calc(100% - 55px);
+	width: 100%;
 `;
 
 export const LinkInputDiv = styled.div`
 	${layout.row};
-	margin-left: auto;
-	width: 40%;
+	margin-top: ${length.margin};
+	width: calc(100% - ${length.margin});
 	& span {
 		font-size: 20px;
-		margin-top: 3px;
+		margin-bottom: ${length.margin};
 		margin-right: ${length.margin};
 	}
 `;
 
 export const LinkInput = styled.input`
 	${components.input};
-	width: calc(100% - 55px);
+	width: 100%;
 `;
 
-export const EditDescription = styled.div`
+export const TypeDropDownSpan = styled.span`
+	font-size: 20px;
 	margin-top: ${length.margin};
-	height: calc(100% - 140px);
+`;
+
+export const TypeDropDown = styled.div`
+	margin-top: calc(${length.margin});
+	margin-right: ${length.margin};
+	${layout.row};
+`;
+
+export const EditDescriptionCol = styled.div`
+	margin-top: ${length.margin};
+	width: calc(70%);
+	display: flex;
+	height: calc(100% - 60px);
+	flex-direction: column;
 	& span {
 		margin-bottom: ${length.margin};
 		font-size: 20px;
@@ -65,14 +82,16 @@ export const EditDescription = styled.div`
 
 export const ButtonRow = styled.div`
 	${layout.row};
-	position: absolute;
-	top: calc(100% - 45px);
+	& button {
+		margin-right: auto;
+		${components.button};
+	}
 `;
 
 export const SubmitResource = styled.div`
 	position: absolute;
 	padding: ${length.margin};
-	${layout.col};
+	${layout.row};
 	left: 20%;
 	right: 20%;
 	top: 15%;

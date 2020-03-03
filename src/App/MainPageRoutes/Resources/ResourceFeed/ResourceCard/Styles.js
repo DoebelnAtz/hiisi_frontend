@@ -30,6 +30,23 @@ export const ResourceRow = styled.div`
 	height: 100%;
 `;
 
+export const ResourceTitleType = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 130px);
+`;
+
+export const ResourceTitle = styled.span`
+	${font.text};
+	font-size: 18px;
+`;
+
+export const ResourceType = styled.span`
+	${font.text};
+	margin-top: 5px;
+	font-size: 14px;
+`;
+
 export const ResourceTitleInfo = styled.div`
 	${layout.row};
 	width: calc(100% - ${(props) => (props.full ? '0px' : '64px')});
