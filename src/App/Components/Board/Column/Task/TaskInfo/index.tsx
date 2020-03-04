@@ -20,6 +20,7 @@ import {
 	TaskColorTag,
 	TaskColorPicker,
 	TaskColorRow,
+	TaskSetting,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -264,15 +265,17 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								onChange={handleTagColorChange}
 								colors={[
 									'#c76177',
-									'#cc7a81',
+									'#f7ae79',
 									'#d6b376',
 									'#dbcb6e',
 									'#a8c47e',
 									'#8aba86',
+									'#81d4ac',
 									'#6fb4c9',
 									'#729de0',
 									'#9b88cf',
 									'#cf97c8',
+									'#fa89b8',
 								]}
 							/>
 						)}
@@ -307,44 +310,53 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						</AddUserToTask>
 					)}
 					{!!searchResult.length && renderSearchResults()}
+					<TaskSetting>
+					{task?.owner && (
+						<TaskStatusInput>
+							Status:{' '}
+							<input
+								value={task?.status || ''}
+								onChange={(e: React.SyntheticEvent) =>
+									updateTaskStatus(e)
+								}
+								placeholder={task?.status}
+							/>
+						</TaskStatusInput>
+					)}
+					</TaskSetting>
+					<TaskSetting>
+
+					<PriorityIcon
+						src={priorityIcon}
+						alt={`priority ${task?.priority}`}
+					/>
+					{task && checkUserList(task.collaborators) && (
+						<PriorityDropdown>
+							<DropDown
+								height={'34px'}
+								optionList={[
+									'very low',
+									'low',
+									'medium',
+									'high',
+									'very high',
+								]}
+								text={'Priority:'}
+								state={priority}
+								setSelect={handlePrioritySelect}
+								width={'200px'}
+								modalOverflow={true}
+							/>
+						</PriorityDropdown>
+					)}
+					</TaskSetting>
+
 				</TaskSidebar>
 			</TaskInfoBody>
 			<TaskFooter>
-				<PriorityIcon
-					src={priorityIcon}
-					alt={`priority ${task?.priority}`}
-				/>
-				{task && checkUserList(task.collaborators) && (
-					<PriorityDropdown>
-						<DropDown
-							height={'34px'}
-							optionList={[
-								'very low',
-								'low',
-								'medium',
-								'high',
-								'very high',
-							]}
-							text={'Priority:'}
-							state={priority}
-							setSelect={handlePrioritySelect}
-							width={'200px'}
-							modalOverflow={true}
-						/>
-					</PriorityDropdown>
-				)}
-				{task?.owner && (
-					<TaskStatusInput>
-						Status:{' '}
-						<input
-							value={task?.status || ''}
-							onChange={(e: React.SyntheticEvent) =>
-								updateTaskStatus(e)
-							}
-							placeholder={task?.status}
-						/>
-					</TaskStatusInput>
-				)}
+
+
+
 			</TaskFooter>
 		</Modal>,
 		document.querySelector('#modal') as Element,

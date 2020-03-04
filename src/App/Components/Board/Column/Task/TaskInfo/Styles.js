@@ -91,6 +91,11 @@ export const TaskSidebar = styled.div`
 	width: 30%;
 `;
 
+export const TaskSetting = styled.div`
+	${layout.row};
+	margin-bottom: ${length.margin};
+`;
+
 export const AddUserToTask = styled.div`
 	${layout.row};
 	padding: ${length.margin};
