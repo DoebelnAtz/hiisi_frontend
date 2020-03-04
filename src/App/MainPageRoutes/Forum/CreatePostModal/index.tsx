@@ -11,12 +11,13 @@ import {
 	TitleInput,
 	TitleText,
 	LengthCounter,
-	ContentInput,
+	ContentTextEditor,
 	ContentText,
 	ButtonRow,
 	SubmitButton,
 	BackButton,
 } from './Styles';
+import TextEditor from '../../../Components/TextEditor';
 
 const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	setPopup,
@@ -83,8 +84,8 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 		slideIn.map(
 			({ item, key, props }, i) =>
 				item && (
-					<OutsideDiv key={i} style={fadeIn} id={'popup_background'}>
-						<ModalDiv style={props} id={'popup_cont'}>
+					<OutsideDiv key={i} style={fadeIn}>
+						<ModalDiv style={props}>
 							<div
 								ref={inside}
 								style={{
@@ -107,17 +108,13 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 									</span>
 								</LengthCounter>
 								<ContentText>Content</ContentText>
-								<ContentInput
-									placeholder={'Content'}
-									onChange={(e: React.SyntheticEvent) =>
-										handleChange(e, setContent)
-									}
-								/>
-								<LengthCounter warning={content.length > 500}>
-									<span>
-										{content.length}/{500}
-									</span>
-								</LengthCounter>
+								<ContentTextEditor>
+									<TextEditor
+										editable={true}
+										state={'content'}
+										setState={setContent}
+									/>
+								</ContentTextEditor>
 								<ButtonRow>
 									<BackButton onClick={() => setPopup(false)}>
 										Back

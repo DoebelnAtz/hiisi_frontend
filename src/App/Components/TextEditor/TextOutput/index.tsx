@@ -7,23 +7,34 @@ import { TextEditOutput, TextOutput } from './Styles';
 console.error = (function() {
 	let error = console.error;
 
-	return function(exception) {
+	return function(exception: any) {
 		if (
 			(exception + '').indexOf(
 				'Warning: A component is `contentEditable`',
 			) !== 0
 		) {
+			// @ts-ignore
 			error.apply(console, arguments);
 		}
 	};
 })();
 
-const TextEditWindowOutput = ({ editable, state, setState }) => {
-	const editOutput = useRef();
-	const showOutput = useRef();
+type TextEditWindowOutputProps = {
+	editable: boolean;
+	state: string;
+	setState: any;
+};
+
+const TextEditWindowOutput: React.FC<TextEditWindowOutputProps> = ({
+	editable,
+	state,
+	setState,
+}) => {
+	const editOutput = useRef<HTMLTextAreaElement>(null);
+	const showOutput = useRef<HTMLDivElement>(null);
 	const [editing, setEditing] = useState(false);
 
-	const handleFocus = (e) => {
+	const handleFocus = (e: any) => {
 		if (
 			!editOutput.current?.contains(e.target) &&
 			!showOutput.current?.contains(e.target)
@@ -31,18 +42,18 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 			setEditing(false);
 		} else if (showOutput.current?.contains(e.target)) {
 			setEditing(true);
-			editOutput.current.focus();
+			editOutput.current?.focus();
 		}
 	};
 
-	const enableTab = (e) => {
-		if (e.keyCode === 9) {
+	const enableTab = (e: React.KeyboardEvent) => {
+		if (e.keyCode === 9 && editOutput.current) {
 			// tab was pressed
 			e.preventDefault();
 			// get caret position/selection
-			let val = editOutput.current.value,
-				start = editOutput.current.selectionStart,
-				end = editOutput.current.selectionEnd;
+			let val = editOutput.current?.value,
+				start = editOutput.current?.selectionStart,
+				end = editOutput.current?.selectionEnd;
 			console.log(val, start, end);
 			// set textarea value to: text before caret + tab + text after caret
 			editOutput.current.value =
@@ -57,9 +68,9 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 		}
 	};
 
-	const handleChange = (e) => {
-		let input = e.target.value;
-		setState(input);
+	const handleChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		setState(target.value);
 	};
 
 	useEffect(() => {
@@ -83,8 +94,8 @@ const TextEditWindowOutput = ({ editable, state, setState }) => {
 				style={{ display: editing && editable ? 'block' : 'none' }}
 				ref={editOutput}
 				value={state}
-				onKeyDown={(e) => enableTab(e)}
-				onChange={(e) => handleChange(e)}
+				onKeyDown={(e: React.KeyboardEvent) => enableTab(e)}
+				onChange={(e: React.KeyboardEvent) => handleChange(e)}
 			/>
 		</Fragment>
 	);

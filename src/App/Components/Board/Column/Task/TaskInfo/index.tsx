@@ -26,7 +26,7 @@ import {
 
 import Plus from '../../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../../Hooks';
-import TextEditor from '../../../../TextEditor/index';
+import TextEditor from '../../../../TextEditor';
 import { makeRequest } from '../../../../../../Api';
 import Avatar from '../../../../Avatar/index';
 import { getPriorityIcon } from '../../../../../../Utils/taskUtils';
@@ -181,7 +181,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					}
 					key={user.u_id}
 				>
-					<img src={user.profile_pic} alt={user.username}/>
+					<img src={user.profile_pic} alt={user.username} />
 					<span>{user.username}</span>
 				</AddUser>
 			);
@@ -286,10 +286,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 			<TaskInfoBody>
 				<TaskDescription>
-					{!isLoading && (
+					{!isLoading && task && (
 						<TextEditor
-							editable={task?.owner}
-							state={task?.description ?? ''}
+							editable={task.owner}
+							state={task.description ?? ''}
 							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					)}
@@ -352,13 +352,22 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						</AddUserToTask>
 					)}
 					{!!searchResult.length && renderSearchResults()}
-
 				</TaskSidebar>
 			</TaskInfoBody>
 			<TaskComments>
-				{task && task.commentthread &&
-				<CommentThread expand={true} commentthread={task.commentthread} focusList={{focus: task.collaborators.map(usr => usr.username), title: 'collaborator'}} OPAuthorId={task.collaborators[0].u_id}/>
-				}
+				{task && task.commentthread && (
+					<CommentThread
+						expand={true}
+						commentthread={task.commentthread}
+						focusList={{
+							focus: task.collaborators.map(
+								(usr) => usr.username,
+							),
+							title: 'collaborator',
+						}}
+						OPAuthorId={task.collaborators[0].u_id}
+					/>
+				)}
 			</TaskComments>
 		</Modal>,
 		document.querySelector('#modal') as Element,

@@ -46,26 +46,27 @@ export const TitleText = styled.div`
 
 export const TitleInput = styled.textarea`
 	${components.textarea};
-	border-color: ${color.primary};
+	${font.text};
 	background-color: ${color.siteBG3};
 	margin: 0 auto;
+	resize: vertical;
+	border-radius: 5px;
+	border-color: ${color.siteBG3};
 	height: 15%;
 	width: 90%;
 `;
 
 export const ContentText = styled.div`
-	${font.text};
-	${layout.row};
 	margin: ${length.margin} auto;
+	${font.text};
 `;
 
-export const ContentInput = styled.textarea`
-	${components.textarea};
-	border-color: ${color.primary};
-	background-color: ${color.siteBG3};
+export const ContentTextEditor = styled.div`
 	margin: 0 auto;
 	height: 50%;
-	width: 90%;
+	width: calc(90% + 10px);
+	${font.text};
+	z-index: 5;
 `;
 
 export const LengthCounter = styled.div`

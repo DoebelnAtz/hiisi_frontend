@@ -76,13 +76,15 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 				)}
 			</PostHead>
 			<PostContent>
-				<PostDescription>
-					<TextEditor
-						editable={post?.owner}
-						state={post?.content}
-						setState={handleDescriptionChange}
-					/>
-				</PostDescription>
+				{post && (
+					<PostDescription>
+						<TextEditor
+							editable={post.owner}
+							state={post.content}
+							setState={handleDescriptionChange}
+						/>
+					</PostDescription>
+				)}
 			</PostContent>
 			<PostComments>
 				{post && (

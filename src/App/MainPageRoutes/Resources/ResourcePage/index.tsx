@@ -15,7 +15,7 @@ import {
 	SearchResultTag,
 	DeleteTagButton,
 } from './Styles';
-import TextEditor from '../../../Components/TextEditor/index';
+import TextEditor from '../../../Components/TextEditor';
 import ViewPost from '../../../Components/CommentThread/index';
 import { makeRequest } from '../../../../Api';
 import { RouteComponentProps } from '../../../../Types';
@@ -149,10 +149,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						!resource?.owner
 					}
 				>
-					{!isLoading && (
+					{!isLoading && resource && (
 						<TextEditor
-							editable={resource?.owner}
-							state={resource?.description}
+							editable={resource.owner}
+							state={resource.description}
 							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					)}
