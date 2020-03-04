@@ -4,6 +4,7 @@ import { MixedFeedItem, Profile } from './Types';
 import { getLocal, setLocal } from '../../../Utils';
 import MixedFeed from './MixedFeed';
 import DropDown from '../../Components/DropDown';
+import { ProfileButtonRow } from './Styles';
 
 type ProfilePageProps = {
 	profile: Profile;
@@ -38,6 +39,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		}
 	};
 
+	// @ts-ignore
 	return (
 		<div id={'profile_page'} className={'container'}>
 			<div className={'row justify-content-center'}>
@@ -62,15 +64,17 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 				{/*<AddFriend target={profile}/>*/}
 			</div>
 			<div className={'container'}>
-				<DropDown
-					width={'175px'}
-					height={'34px'}
-					withFilter
-					state={sortBy}
-					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
-					setSelect={onSortSelect}
-					optionList={['popular', 'recent', 'title']}
-				/>
+				<ProfileButtonRow>
+					<DropDown
+						width={'175px'}
+						height={'34px'}
+						withFilter
+						state={sortBy}
+						text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
+						setSelect={onSortSelect}
+						optionList={['popular', 'recent', 'title']}
+					/>
+				</ProfileButtonRow>
 				{feed && (
 					<MixedFeed
 						feed={feed}
