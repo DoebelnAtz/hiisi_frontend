@@ -12,6 +12,7 @@ export interface TaskType {
     priority: number,
     owner: boolean,
     color_tag: string | null
+    commentthread: number,
     status: string
 }
 

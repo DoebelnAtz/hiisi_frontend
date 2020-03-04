@@ -47,14 +47,8 @@ export const TaskColorPicker = styled.div`
 	transform: translateY(30px);
 `;
 
-export const TaskFooter = styled.div`
-	${layout.row};
-	margin-top: auto;
-	height: 50px;
-	& input {
-		margin-top: auto;
-		margin-bottom: auto;
-	}
+export const TaskComments = styled.div`
+	width: 100%;
 `;
 
 export const PrioritySetting = styled.div`

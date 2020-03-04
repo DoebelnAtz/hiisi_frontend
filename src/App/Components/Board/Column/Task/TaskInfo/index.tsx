@@ -6,7 +6,7 @@ import {
 	TaskInfoHead,
 	PriorityDropdown,
 	TaskCollaborators,
-	TaskFooter,
+	TaskComments,
 	TaskInfoBody,
 	Collaborator,
 	TaskSidebar,
@@ -38,6 +38,7 @@ import { checkUserList } from '../../../../../../Utils';
 import SaveButton from '../../../../Buttons/SaveButton';
 import Modal from '../../../../Modal';
 import { RowDiv } from '../../../../../../Styles/LayoutStyles';
+import CommentThread from '../../../../CommentThread/index';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;
 	pid: number;
@@ -354,11 +355,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 				</TaskSidebar>
 			</TaskInfoBody>
-			<TaskFooter>
-
-
-
-			</TaskFooter>
+			<TaskComments>
+				{task && task.commentthread &&
+				<CommentThread expand={true} commentthread={task.commentthread} focusList={{focus: task.collaborators.map(usr => usr.username), title: 'collaborator'}} OPAuthorId={task.collaborators[0].u_id}/>
+				}
+			</TaskComments>
 		</Modal>,
 		document.querySelector('#modal') as Element,
 	);
