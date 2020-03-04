@@ -21,6 +21,7 @@ import {
 	TaskColorPicker,
 	TaskColorRow,
 	TaskSetting,
+	PrioritySetting,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -52,7 +53,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 3:
 				return 'high';
 			default:
-				return 'very high;';
+				return 'very high';
 		}
 	};
 
@@ -179,9 +180,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					}
 					key={user.u_id}
 				>
-					<Avatar src={user.profile_pic} />
+					<img src={user.profile_pic} alt={user.username}/>
 					<span>{user.username}</span>
-					<AddUserBtn>+</AddUserBtn>
 				</AddUser>
 			);
 		});
@@ -294,6 +294,47 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					)}
 				</TaskDescription>
 				<TaskSidebar>
+					<TaskSetting>
+						{task?.owner && (
+							<TaskStatusInput>
+								Status:{' '}
+								<input
+									value={task?.status || ''}
+									onChange={(e: React.SyntheticEvent) =>
+										updateTaskStatus(e)
+									}
+									placeholder={task?.status}
+								/>
+							</TaskStatusInput>
+						)}
+					</TaskSetting>
+					<TaskSetting>
+						<PrioritySetting>
+							<PriorityIcon
+								src={priorityIcon}
+								alt={`priority ${task?.priority}`}
+							/>
+							{task && checkUserList(task.collaborators) && (
+								<PriorityDropdown>
+									<DropDown
+										height={'34px'}
+										optionList={[
+											'very low',
+											'low',
+											'medium',
+											'high',
+											'very high',
+										]}
+										text={'Priority: '}
+										state={priority}
+										setSelect={handlePrioritySelect}
+										width={'170px'}
+										modalOverflow={true}
+									/>
+								</PriorityDropdown>
+							)}
+						</PrioritySetting>
+					</TaskSetting>
 					<TaskCollaborators>
 						{!isLoading && renderTaskCollaborators()}
 					</TaskCollaborators>
@@ -310,46 +351,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						</AddUserToTask>
 					)}
 					{!!searchResult.length && renderSearchResults()}
-					<TaskSetting>
-					{task?.owner && (
-						<TaskStatusInput>
-							Status:{' '}
-							<input
-								value={task?.status || ''}
-								onChange={(e: React.SyntheticEvent) =>
-									updateTaskStatus(e)
-								}
-								placeholder={task?.status}
-							/>
-						</TaskStatusInput>
-					)}
-					</TaskSetting>
-					<TaskSetting>
-
-					<PriorityIcon
-						src={priorityIcon}
-						alt={`priority ${task?.priority}`}
-					/>
-					{task && checkUserList(task.collaborators) && (
-						<PriorityDropdown>
-							<DropDown
-								height={'34px'}
-								optionList={[
-									'very low',
-									'low',
-									'medium',
-									'high',
-									'very high',
-								]}
-								text={'Priority:'}
-								state={priority}
-								setSelect={handlePrioritySelect}
-								width={'200px'}
-								modalOverflow={true}
-							/>
-						</PriorityDropdown>
-					)}
-					</TaskSetting>
 
 				</TaskSidebar>
 			</TaskInfoBody>

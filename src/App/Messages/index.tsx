@@ -1,8 +1,4 @@
-import React, {
-	useState,
-	useRef,
-	useContext,
-} from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import { MessageModal, MessageImg } from './Style';

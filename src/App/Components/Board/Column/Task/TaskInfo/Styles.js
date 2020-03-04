@@ -57,9 +57,15 @@ export const TaskFooter = styled.div`
 	}
 `;
 
+export const PrioritySetting = styled.div`
+	${layout.row};
+	width: 100%;
+`;
+
 export const PriorityIcon = styled.img`
-	width: 60px;
-	height: 60px;
+	width: 34px;
+	height: 34px;
+	margin-left: ${length.margin};
 `;
 
 export const TaskTitleEditable = styled.input`
@@ -74,7 +80,8 @@ export const TaskTitleEditable = styled.input`
 `;
 
 export const PriorityDropdown = styled.div`
-	margin: auto 0;
+	margin-left: auto;
+	margin-right: -${length.margin};
 `;
 
 export const AddUserInput = styled.input`
@@ -82,19 +89,42 @@ export const AddUserInput = styled.input`
 `;
 
 export const TaskDescription = styled.div`
-	width: 70%;
+	width: calc(100% - 250px - ${length.margin});
 	min-height: 40vh;
 `;
 
 export const TaskSidebar = styled.div`
 	height: 100%;
-	width: 30%;
+	margin-left: ${length.margin};
+	width: 250px;
 `;
 
 export const TaskSetting = styled.div`
 	${layout.row};
+	padding-bottom: ${length.margin};
 	margin-bottom: ${length.margin};
+	border-bottom: 1px solid ${color.siteBG3};
 `;
+
+export const TaskStatusInput = styled.label`
+	margin-left: ${length.margin};
+	${font.text};
+	${layout.row};
+	width: 100%;
+	line-height: 32px;
+	& input {
+		${components.input};
+		background-color: ${color.siteBG2};
+		height: 32px;
+		width: 150px;
+		margin-left: auto;
+		padding-right: 7px;
+		position: relative;
+		${font.text};
+		top: 1px;
+	}
+`;
+
 
 export const AddUserToTask = styled.div`
 	${layout.row};
@@ -108,7 +138,8 @@ export const TaskCollaborators = styled.div`
 `;
 
 export const Collaborator = styled.img`
-	width: 25%;
+	width: 48px;
+	height: 48px;
 	max-width: 60px;
 	margin-left: -10px;
 	border-radius: 50%;
@@ -125,39 +156,24 @@ export const AddUserBtn = styled.div`
 	color: ${color.siteBG2};
 `;
 
-export const TaskStatusInput = styled.label`
-	margin: auto 0;
-	${font.text};
-
-	& input {
-		${components.input};
-		background-color: ${color.siteBG2};
-		height: 32px;
-		padding-right: 7px;
-		position: relative;
-		${font.text};
-		top: 1px;
-	}
-`;
 
 export const AddUser = styled.div`
 	${layout.row};
 	${cursor.clickable};
-
+	margin-bottom: ${length.margin};
+	background-color: ${color.siteBG5};
+	height: 40px;
+	margin-left: ${length.margin};
+	border-radius: 20px 4px 4px 20px;
 	& img {
 		height: 40px;
 		width: 40px;
-		margin-left: 8px;
-		border-radius: 50% 0 0 50%;
-		border: 2px solid ${color.primary};
+		border-radius: 20px;
 	}
 	& span {
-		font-size: 18px;
 		width: calc(100% - 40px - 48px);
-		padding: 4px 12px 4px 12px;
-		${border.setBorders(2, 2, 2, 0, color.primary)};
-		letter-spacing: 1px;
-		color: ${color.primary};
+		${font.text};
+		margin: auto 0 auto ${length.margin};
 	}
 	&:hover span {
 		border-color: ${colorAdjust.darken(color.primary, 0.1)}!important;
