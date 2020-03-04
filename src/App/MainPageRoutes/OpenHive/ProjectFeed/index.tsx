@@ -25,7 +25,7 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 		`projects?page=${page}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},
-		projects.length >= 10,
+		projects.length >= 14,
 	);
 	const [showNext, setShowNext] = useState(false);
 
@@ -48,7 +48,7 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 					/>
 				)}
 			</Feed>
-			{!showNext && projects.length >= 10 && (
+			{!showNext && projects.length >= 14 && (
 				<MoreButton>
 					<img
 						src={PlusIcon}

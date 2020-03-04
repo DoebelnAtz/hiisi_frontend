@@ -1,5 +1,15 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Tag, Tags } from './Styles';
+import { useHistory } from 'react-router-dom';
+import {
+	ResourceRow,
+	ResourceThumbnail,
+	ResourceTitle,
+	ResourceTitleInfo,
+	ResourceTitleType,
+	ResourceType,
+	Tag,
+	Tags,
+} from './Styles';
 import {
 	VoteCount,
 	ArrowImage,
@@ -26,6 +36,7 @@ import ShareImg from '../../../../../Assets/Share.png';
 import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
 import { formatDate } from '../../../../../Utils';
+import { RowDiv } from '../../../../../Styles/LayoutStyles';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -47,6 +58,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
+	const history = useHistory();
 
 	const voteResource = async (
 		vote: vote,
@@ -139,19 +151,37 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					openResource();
 				}}
 			>
-				<CardTitleInfo>
-					<CardTitle>{resource.title}</CardTitle>
-					<CardInfo>
-						<CardDate>
-							{formatDate(resource.published_date)}
-						</CardDate>
-						<CardAuthor>{resource.username}</CardAuthor>
-						<CardEdited>
-							{resource.edited &&
-								`edited: ${formatDate(resource.edited)}`}
-						</CardEdited>
-					</CardInfo>
-				</CardTitleInfo>
+				<ResourceRow>
+					{resource.thumbnail && (
+						<ResourceThumbnail
+							onClick={(e: React.SyntheticEvent) => {
+								e.stopPropagation();
+								window.location.replace(resource.link);
+							}}
+							src={resource.thumbnail}
+							alt={'thumbnail'}
+						/>
+					)}
+					<ResourceTitleInfo full={!resource.thumbnail}>
+						<ResourceTitleType>
+							<ResourceTitle>{resource.title}</ResourceTitle>
+							<ResourceType>
+								{resource.resource_type}
+							</ResourceType>
+						</ResourceTitleType>
+						<CardInfo>
+							<CardDate>
+								{formatDate(resource.published_date)}
+							</CardDate>
+							<CardAuthor>{resource.username}</CardAuthor>
+							<CardEdited>
+								{resource.edited &&
+									`edited: ${formatDate(resource.edited)}`}
+							</CardEdited>
+						</CardInfo>
+					</ResourceTitleInfo>
+				</ResourceRow>
+
 				<Tags>
 					{resource.tags &&
 						resource.tags?.map((tag, index) => (

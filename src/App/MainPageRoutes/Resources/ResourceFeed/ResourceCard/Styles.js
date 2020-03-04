@@ -8,9 +8,49 @@ import {
 	length,
 } from '../../../../../Styles/SharedStyles';
 
+export const ResourceThumbnail = styled.div`
+	width: 54px;
+	height: 54px;
+	margin-right: ${length.margin};
+	border-radius: ${length.radius};
+	background-image: url(${(props) => props.src});
+	background-size: 54px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: ${color.siteBG1};
+`;
+
 export const Tags = styled.div`
 	margin-top: auto;
 	${layout.row};
+`;
+
+export const ResourceRow = styled.div`
+	${layout.row};
+	height: 100%;
+`;
+
+export const ResourceTitleType = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - 130px);
+`;
+
+export const ResourceTitle = styled.span`
+	${font.text};
+	word-break: break-word;
+	font-size: 18px;
+`;
+
+export const ResourceType = styled.span`
+	${font.text};
+	margin-top: 5px;
+	font-size: 14px;
+`;
+
+export const ResourceTitleInfo = styled.div`
+	${layout.row};
+	width: calc(100% - ${(props) => (props.full ? '0px' : '64px')});
 `;
 
 export const Tag = styled.div`

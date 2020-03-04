@@ -78,13 +78,17 @@ export const CardInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: auto;
-	width: 30%;
+	width: 120px;
+	font-size: 14px;
+	@media (min-width: 1367px) {
+		font-size: 14px;
+	}
 `;
 
 export const CardTitle = styled.span`
 	${layout.row};
-	font-size: 20px;
-	width: 70%;
+	font-size: 18px;
+	width: calc(100% - 120px);;
 	@media (max-width: 768px) {
 		font-size: 16px;
 	}
@@ -92,6 +96,8 @@ export const CardTitle = styled.span`
 
 export const CardAuthor = styled.div`
 	${layout.row};
+	${font.text};
+	font-size: inherit;
 	margin-top: 4px;
 	margin-left: auto;
 	${font.text};
@@ -101,7 +107,7 @@ export const CardAuthor = styled.div`
 `;
 
 export const CardButtons = styled.div`
-	width: 55px;
+	width: 51px;
 	padding: 14px 0;
 	display: flex;
 	flex-direction: column;
@@ -117,8 +123,8 @@ export const CardEdited = styled.span`
 
 export const CardDate = styled.span`
 	margin-left: auto;
-	font-size: 16px;
 	padding-left: 10px;
+	text-align: right;
 	${layout.row};
 	@media (max-width: 768px) {
 		font-size: 12px;
@@ -131,7 +137,7 @@ export const DeleteButton = styled.div`
 	& img {
 		${cursor.clickable};
 		margin: 0 auto;
-		height: 30px;
+		height: 26px;
 		border-radius: 50%;
 		background-color: ${color.siteBG2};
 		transition: background-color 0.2s;
@@ -147,7 +153,7 @@ export const ShareButton = styled.div`
 	& img {
 		${cursor.clickable};
 		margin: 0 auto;
-		height: 30px;
+		height: 26px;
 		border-radius: 50%;
 		background-color: ${color.siteBG2};
 		transition: background-color 0.2s;

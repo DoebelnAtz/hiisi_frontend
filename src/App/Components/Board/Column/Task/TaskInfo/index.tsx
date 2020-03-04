@@ -6,7 +6,7 @@ import {
 	TaskInfoHead,
 	PriorityDropdown,
 	TaskCollaborators,
-	TaskFooter,
+	TaskComments,
 	TaskInfoBody,
 	Collaborator,
 	TaskSidebar,
@@ -20,6 +20,8 @@ import {
 	TaskColorTag,
 	TaskColorPicker,
 	TaskColorRow,
+	TaskSetting,
+	PrioritySetting,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -36,6 +38,7 @@ import { checkUserList } from '../../../../../../Utils';
 import SaveButton from '../../../../Buttons/SaveButton';
 import Modal from '../../../../Modal';
 import { RowDiv } from '../../../../../../Styles/LayoutStyles';
+import CommentThread from '../../../../CommentThread/index';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;
 	pid: number;
@@ -51,7 +54,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 3:
 				return 'high';
 			default:
-				return 'very high;';
+				return 'very high';
 		}
 	};
 
@@ -178,9 +181,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					}
 					key={user.u_id}
 				>
-					<Avatar src={user.profile_pic} />
+					<img src={user.profile_pic} alt={user.username}/>
 					<span>{user.username}</span>
-					<AddUserBtn>+</AddUserBtn>
 				</AddUser>
 			);
 		});
@@ -228,7 +230,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		task && setTask({ ...task, title: target.value });
+		if (target.value.length <= 200) {
+			// max title length in DB = 200
+			task && setTask({ ...task, title: target.value });
+		}
 	};
 
 	const handleTagColorChange = (color: string) => {
@@ -261,15 +266,17 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								onChange={handleTagColorChange}
 								colors={[
 									'#c76177',
-									'#cc7a81',
+									'#f7ae79',
 									'#d6b376',
 									'#dbcb6e',
 									'#a8c47e',
 									'#8aba86',
+									'#81d4ac',
 									'#6fb4c9',
 									'#729de0',
 									'#9b88cf',
 									'#cf97c8',
+									'#fa89b8',
 								]}
 							/>
 						)}
@@ -288,6 +295,47 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					)}
 				</TaskDescription>
 				<TaskSidebar>
+					<TaskSetting>
+						{task?.owner && (
+							<TaskStatusInput>
+								Status:{' '}
+								<input
+									value={task?.status || ''}
+									onChange={(e: React.SyntheticEvent) =>
+										updateTaskStatus(e)
+									}
+									placeholder={task?.status}
+								/>
+							</TaskStatusInput>
+						)}
+					</TaskSetting>
+					<TaskSetting>
+						<PrioritySetting>
+							<PriorityIcon
+								src={priorityIcon}
+								alt={`priority ${task?.priority}`}
+							/>
+							{task && checkUserList(task.collaborators) && (
+								<PriorityDropdown>
+									<DropDown
+										height={'34px'}
+										optionList={[
+											'very low',
+											'low',
+											'medium',
+											'high',
+											'very high',
+										]}
+										text={'Priority: '}
+										state={priority}
+										setSelect={handlePrioritySelect}
+										width={'170px'}
+										modalOverflow={true}
+									/>
+								</PriorityDropdown>
+							)}
+						</PrioritySetting>
+					</TaskSetting>
 					<TaskCollaborators>
 						{!isLoading && renderTaskCollaborators()}
 					</TaskCollaborators>
@@ -304,45 +352,14 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						</AddUserToTask>
 					)}
 					{!!searchResult.length && renderSearchResults()}
+
 				</TaskSidebar>
 			</TaskInfoBody>
-			<TaskFooter>
-				<PriorityIcon
-					src={priorityIcon}
-					alt={`priority ${task?.priority}`}
-				/>
-				{task && checkUserList(task.collaborators) && (
-					<PriorityDropdown>
-						<DropDown
-							height={'34px'}
-							optionList={[
-								'very low',
-								'low',
-								'medium',
-								'high',
-								'very high',
-							]}
-							text={'Priority:'}
-							state={priority}
-							setSelect={handlePrioritySelect}
-							width={'200px'}
-							modalOverflow={true}
-						/>
-					</PriorityDropdown>
-				)}
-				{task?.owner && (
-					<TaskStatusInput>
-						Status:{' '}
-						<input
-							value={task?.status || ''}
-							onChange={(e: React.SyntheticEvent) =>
-								updateTaskStatus(e)
-							}
-							placeholder={task?.status}
-						/>
-					</TaskStatusInput>
-				)}
-			</TaskFooter>
+			<TaskComments>
+				{task && task.commentthread &&
+				<CommentThread expand={true} commentthread={task.commentthread} focusList={{focus: task.collaborators.map(usr => usr.username), title: 'collaborator'}} OPAuthorId={task.collaborators[0].u_id}/>
+				}
+			</TaskComments>
 		</Modal>,
 		document.querySelector('#modal') as Element,
 	);

@@ -23,6 +23,7 @@ export const ProjectPage = styled.div`
 export const BackToProjectsButton = styled.div`
 	${components.button};
 	height: 30px;
+	z-index: 2;
 	margin-right: ${length.margin};
 	& img {
 		margin: auto ${length.margin} auto 4px;
@@ -43,6 +44,7 @@ export const ProjectDescription = styled.div`
 export const ProjectTitle = styled.div`
 	${font.title};
 	${layout.row};
+	z-index: 1;
 	width: 100%;
 	position: relative;
 	& div {
