@@ -7,5 +7,6 @@ export const OutsideDiv = styled.div`
 `;
 
 export const InsideDiv = styled.div`
-	${modal.inside}
+	${modal.inside};
+	border-radius: 8px;
 `;

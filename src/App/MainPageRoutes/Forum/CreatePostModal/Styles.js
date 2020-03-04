@@ -46,7 +46,8 @@ export const TitleText = styled.div`
 
 export const TitleInput = styled.textarea`
 	${components.textarea};
-	background-color: ${color.siteBG2};
+	border-color: ${color.primary};
+	background-color: ${color.siteBG3};
 	margin: 0 auto;
 	height: 15%;
 	width: 90%;
@@ -60,8 +61,9 @@ export const ContentText = styled.div`
 
 export const ContentInput = styled.textarea`
 	${components.textarea};
+	border-color: ${color.primary};
+	background-color: ${color.siteBG3};
 	margin: 0 auto;
-	background-color: ${color.siteBG2};
 	height: 50%;
 	width: 90%;
 `;
@@ -80,6 +82,7 @@ export const ButtonRow = styled.div`
 	margin: ${length.margin} auto;
 	& button {
 		width: 50%;
+		background-color: ${color.siteBG3};
 	}
 `;
 
