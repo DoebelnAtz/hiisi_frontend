@@ -58,6 +58,18 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		setType(newType);
 	};
 
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		if (target.value.length <= 100) {
+			setTitleInput(target.value);
+		}
+	};
+
+	const handleLinkChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		setLinkInput(target.value);
+	};
+
 	return ReactDOM.createPortal(
 		<OuterDiv>
 			<SubmitResource ref={inside}>
@@ -66,10 +78,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						<span>Title: </span>
 						<TitleInput
 							value={titleInput}
-							onChange={(e: React.SyntheticEvent) => {
-								let target = e.target as HTMLInputElement;
-								setTitleInput(target.value);
-							}}
+							onChange={handleTitleChange}
 							placeholder={'title'}
 						/>
 					</TitleInputDiv>
@@ -78,10 +87,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						<span>Link: </span>
 						<LinkInput
 							value={linkInput}
-							onChange={(e: React.SyntheticEvent) => {
-								let target = e.target as HTMLInputElement;
-								setLinkInput(target.value);
-							}}
+							onChange={handleLinkChange}
 							placeholder={'link'}
 						/>
 					</LinkInputDiv>

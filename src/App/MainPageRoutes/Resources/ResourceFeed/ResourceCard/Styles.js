@@ -38,6 +38,7 @@ export const ResourceTitleType = styled.div`
 
 export const ResourceTitle = styled.span`
 	${font.text};
+	word-break: break-word;
 	font-size: 18px;
 `;
 

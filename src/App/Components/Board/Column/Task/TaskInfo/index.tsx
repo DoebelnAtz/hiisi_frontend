@@ -228,7 +228,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		task && setTask({ ...task, title: target.value });
+		if (target.value.length <= 200) {
+			// max title length in DB = 200
+			task && setTask({ ...task, title: target.value });
+		}
 	};
 
 	const handleTagColorChange = (color: string) => {

@@ -76,7 +76,10 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		if (editable) {
 			let target = e.target as HTMLInputElement;
-			setTitleVal(target.value);
+			if (target.value.length <= 100) {
+				// max length for title in DB is 100 characters
+				setTitleVal(target.value);
+			}
 		}
 	};
 

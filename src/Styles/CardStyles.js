@@ -83,8 +83,8 @@ export const CardInfo = styled.div`
 
 export const CardTitle = styled.span`
 	${layout.row};
-	font-size: 20px;
-	width: 70%;
+	font-size: 18px;
+	width: calc(100% - 120px);;
 `;
 
 export const CardAuthor = styled.div`
