@@ -67,6 +67,10 @@ export const UserResult = styled.div`
 	}
 `;
 
+export const DeleteProjectButton = styled.button`
+	${components.button};
+`;
+
 export const OptionRow = styled.div`
 	${layout.row};
 

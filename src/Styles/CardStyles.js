@@ -106,6 +106,7 @@ export const CardButtons = styled.div`
 export const CardEdited = styled.span`
 	${font.text};
 	margin-top: 4px;
+	text-align: right;
 	margin-left: auto;
 	font-size: 10px;
 `;

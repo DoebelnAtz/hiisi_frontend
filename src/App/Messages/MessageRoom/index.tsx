@@ -1,4 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+	Dispatch,
+	SetStateAction,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { useDismiss, useRequest } from '../../../Hooks';
@@ -26,10 +33,11 @@ import MessageFeed from './MessageFeed';
 
 type MessageRoomPropsTypes = {
 	tid: number;
+	setExpandRoomList: Dispatch<SetStateAction<boolean>>;
 };
 
 const MessageRoom: React.FC<RouteComponentProps<{}> &
-	MessageRoomPropsTypes> = ({ match, tid }) => {
+	MessageRoomPropsTypes> = ({ match, tid, setExpandRoomList }) => {
 	const [inputVal, setInputVal] = useState('');
 	const [connectedUsers, ,] = useRequest<User[]>(
 		`messages/threads/${tid.toString()}/users`,
@@ -54,8 +62,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	let scrollDown = useRef<HTMLDivElement>(null);
 	let inside = useRef<HTMLDivElement>(null);
-
-	useDismiss(inside, () => setCurrentChat(0));
 
 	useEffect(() => {
 		let user = getLocal('token');
@@ -178,7 +184,12 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 	return (
 		<MessageRoomDiv ref={inside}>
 			<MessageNavigation>
-				<GoBackButton onClick={() => setCurrentChat(0)}>
+				<GoBackButton
+					onClick={() => {
+						setCurrentChat(0);
+						setExpandRoomList(true);
+					}}
+				>
 					Back
 				</GoBackButton>
 				<AddUserToChatBtn onClick={() => setCurrentChat(-currentChat)}>

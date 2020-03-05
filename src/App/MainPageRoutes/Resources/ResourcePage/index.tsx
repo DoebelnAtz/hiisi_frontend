@@ -108,7 +108,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			<ResourceHeader>
 				<ResourceTitle>
 					{!!resource && (
-						<a href={`${resource?.link}`}>{`${resource?.title}`}</a>
+						<a
+							href={`${resource?.link}`}
+							target="_blank"
+						>{`${resource?.title}`}</a>
 					)}
 					{resource?.owner && (
 						<SaveButton onClick={updateResource}>save</SaveButton>

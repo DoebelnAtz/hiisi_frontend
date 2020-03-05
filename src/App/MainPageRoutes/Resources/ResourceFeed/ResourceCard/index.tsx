@@ -156,7 +156,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 						<ResourceThumbnail
 							onClick={(e: React.SyntheticEvent) => {
 								e.stopPropagation();
-								window.location.replace(resource.link);
+								window.open(resource.link);
 							}}
 							src={resource.thumbnail}
 							alt={'thumbnail'}

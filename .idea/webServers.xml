@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="f0d641cb-8c3c-4096-8b75-8e60a576c5ce" name="Hivemind-2" url="http://207.154.211.76">
+      <webServer id="d2108b82-55d0-42ca-bacc-cd790059ef0c" name="Hivemind-2" url="http://207.154.211.76">
         <fileTransfer host="207.154.211.76" port="22" rootFolder="/www" accessType="SFTP">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
           </advancedOptions>
           <option name="port" value="22" />
         </fileTransfer>
