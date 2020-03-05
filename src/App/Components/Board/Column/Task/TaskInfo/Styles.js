@@ -119,7 +119,6 @@ export const TaskStatusInput = styled.label`
 	}
 `;
 
-
 export const AddUserToTask = styled.div`
 	${layout.row};
 	padding: ${length.margin};
@@ -149,7 +148,6 @@ export const AddUserBtn = styled.div`
 	font-size: 24px;
 	color: ${color.siteBG2};
 `;
-
 
 export const AddUser = styled.div`
 	${layout.row};

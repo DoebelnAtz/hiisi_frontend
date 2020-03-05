@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import {
 	color,
-	components, font,
+	components,
+	font,
 	layout,
 	length,
 } from '../../../../Styles/SharedStyles';
@@ -28,7 +29,7 @@ export const TitleLinkTypeCol = styled.div`
 export const TitleError = styled.span`
 	${font.text};
 	margin-top: 2px;
-	font-size: 14px!important;
+	font-size: 14px !important;
 	color: red;
 `;
 
@@ -45,7 +46,7 @@ export const TitleInputDiv = styled.div`
 
 export const TitleInput = styled.input`
 	${components.input};
-	border-color: ${props => props.error ? 'red' : color.primary};
+	border-color: ${(props) => (props.error ? 'red' : color.primary)};
 	width: 100%;
 `;
 
@@ -62,7 +63,7 @@ export const LinkInputDiv = styled.div`
 
 export const LinkInput = styled.input`
 	${components.input};
-	border-color: ${props => props.error ? 'red' : color.primary};
+	border-color: ${(props) => (props.error ? 'red' : color.primary)};
 	width: 100%;
 `;
 
@@ -79,15 +80,15 @@ export const TypeDropDown = styled.div`
 
 export const EditDescriptionCol = styled.div`
 	margin-top: ${length.margin};
-	width: calc(70% );
+	width: calc(70%);
 	display: flex;
-	
+
 	height: calc(100% - 60px);
 	flex-direction: column;
 	& span {
 		margin-bottom: ${length.margin};
 		font-size: 20px;
-		color: 	${props => props.error ? 'red' : color.primary};
+		color: ${(props) => (props.error ? 'red' : color.primary)};
 	}
 `;
 

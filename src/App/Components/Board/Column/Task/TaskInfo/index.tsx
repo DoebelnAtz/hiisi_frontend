@@ -111,7 +111,10 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 				'put',
 				task,
 			);
-			if (resp.data) return true;
+			if (resp.data) {
+				close();
+				return true;
+			}
 		}
 		return false;
 	};

@@ -41,6 +41,7 @@ export const ModalDiv = styled(animated.div)`
 export const TitleText = styled.div`
 	${font.text};
 	${layout.row};
+	color: ${(props) => (props.error ? 'red' : 'inherit')};
 	margin: ${length.margin} auto;
 `;
 
@@ -59,6 +60,7 @@ export const TitleInput = styled.textarea`
 export const ContentText = styled.div`
 	margin: ${length.margin} auto;
 	${font.text};
+	color: ${(props) => (props.error ? 'red' : 'inherit')};
 `;
 
 export const ContentTextEditor = styled.div`

@@ -1,10 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+	useState,
+	useEffect,
+	useRef,
+	Dispatch,
+	SetStateAction,
+} from 'react';
 import ReactDOM from 'react-dom';
 import { useSpring, useTransition } from 'react-spring';
 import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
 import { useDismiss } from '../../../../Hooks';
-import { CreatePostModalProps } from '../Types';
 import {
 	ModalDiv,
 	OutsideDiv,
@@ -18,58 +23,80 @@ import {
 	BackButton,
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor';
+import { PostType } from '../Types';
+
+type CreatePostModalProps = {
+	setPopup: any;
+	popup: boolean;
+	isMounted: any;
+	setPosts: Dispatch<SetStateAction<PostType[] | undefined>>;
+	posts: PostType[] | undefined;
+};
 
 const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	setPopup,
 	popup,
+	setPosts,
+	posts,
 	isMounted,
 }) => {
-	const [title, setTitle] = useState<string>('');
-	const [content, setContent] = useState<string>('');
-	const [submitDisabled, setSubmitDisabled] = useState<boolean>(true);
+	const [inputVal, setInputVal] = useState({
+		titleVal: '',
+		contentVal: '',
+	});
+	const [errors, setErrors] = useState({
+		titleError: false,
+		contentError: false,
+	});
 	const inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setPopup(false));
 
-	const createPost = async (title: string, content: string) => {
-		let now = new Date().toISOString();
+	const createPost = async () => {
+		if (!!inputVal.titleVal.length && !!inputVal.contentVal.length) {
+			let now = new Date().toISOString();
+			let resp = await makeRequest('blogs/create_blog', 'post', {
+				authorId: getLocal('token').user.u_id,
+				content: inputVal.contentVal,
+				title: inputVal.titleVal,
+				published_date: now,
+			});
 
-		let resp = await makeRequest('blogs/create_blog', 'post', {
-			authorId: getLocal('token').user.u_id,
-			content,
-			title,
-			published_date: now,
-		});
-
-		if (isMounted) {
-			setPopup(false);
-		}
-		setTitle('');
-		setContent('');
-	};
-
-	useEffect(() => {
-		if (isMounted) {
-			validateInput(); // eslint-disable-next-line
-		}
-	}, [title.length, content.length]);
-
-	const handleChange = (e: React.SyntheticEvent, func: any) => {
-		let target = e.target as HTMLInputElement;
-		func(target.value);
-	};
-
-	const validateInput = () => {
-		if (
-			title.length &&
-			content.length &&
-			title.length <= 80 &&
-			content.length <= 500
-		) {
-			setSubmitDisabled(false);
+			if (isMounted && posts && resp.data) {
+				setPosts([resp.data, ...posts]);
+				setPopup(false);
+			}
 		} else {
-			setSubmitDisabled(true);
+			setErrors({
+				titleError: !inputVal.titleVal.length,
+				contentError: !inputVal.contentVal.length,
+			});
 		}
+	};
+
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		let target = e.target as HTMLInputElement;
+		errors.titleError &&
+			setErrors({
+				...errors,
+				titleError: false,
+			});
+		setInputVal({
+			...inputVal,
+			titleVal: target.value,
+		});
+	};
+
+	const handleContentChange = (e: string) => {
+		errors.contentError &&
+			setErrors({
+				...errors,
+				contentError: false,
+			});
+		setInputVal({
+			...inputVal,
+			contentVal: e,
+		});
 	};
 
 	const slideIn = useTransition(popup, null, {
@@ -95,24 +122,30 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 									flexDirection: 'inherit',
 								}}
 							>
-								<TitleText>Title</TitleText>
+								<TitleText error={errors.titleError}>
+									Title
+								</TitleText>
 								<TitleInput
 									placeholder={'Title'}
 									onChange={(e: React.SyntheticEvent) =>
-										handleChange(e, setTitle)
+										handleTitleChange(e)
 									}
 								/>
-								<LengthCounter warning={title.length > 80}>
+								<LengthCounter
+									warning={inputVal.titleVal.length > 80}
+								>
 									<span>
-										{title.length}/{80}
+										{inputVal.titleVal.length}/{80}
 									</span>
 								</LengthCounter>
-								<ContentText>Content</ContentText>
+								<ContentText error={errors.contentError}>
+									Content
+								</ContentText>
 								<ContentTextEditor>
 									<TextEditor
 										editable={true}
-										state={'content'}
-										setState={setContent}
+										state={inputVal.contentVal}
+										setState={handleContentChange}
 									/>
 								</ContentTextEditor>
 								<ButtonRow>
@@ -120,10 +153,11 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 										Back
 									</BackButton>
 									<SubmitButton
-										disabled={submitDisabled}
-										onClick={() =>
-											createPost(title, content)
+										disabled={
+											errors.contentError ||
+											errors.titleError
 										}
+										onClick={() => createPost()}
 									>
 										Submit Post
 									</SubmitButton>

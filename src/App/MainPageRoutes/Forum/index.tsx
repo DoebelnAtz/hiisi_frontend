@@ -39,7 +39,6 @@ const Feed = ({}) => {
 			setSortBy(sort);
 		}
 	};
-
 	return (
 		<FeedPage>
 			<FeedButtonRow>
@@ -57,6 +56,8 @@ const Feed = ({}) => {
 			</FeedButtonRow>
 			<CreatePostModal
 				popup={popup}
+				posts={posts}
+				setPosts={setPosts}
 				setPopup={setPopup}
 				isMounted={isMounted}
 			/>

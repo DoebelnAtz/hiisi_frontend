@@ -45,6 +45,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 			});
 			if (resp.data) {
 				setPost(resp.data);
+				close();
 				return true;
 			}
 		}

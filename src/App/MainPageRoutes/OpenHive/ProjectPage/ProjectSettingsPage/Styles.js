@@ -67,8 +67,9 @@ export const UserResult = styled.div`
 	}
 `;
 
-export const DeleteProjectButton = styled.button`
+export const DeleteProjectButton = styled.div`
 	${components.button};
+	height: 28px;
 `;
 
 export const OptionRow = styled.div`

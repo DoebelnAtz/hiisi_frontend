@@ -72,7 +72,6 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				<DropDown
 					width={'175px'}
 					height={'34px'}
-					withFilter
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					setSelect={onSortSelect}
