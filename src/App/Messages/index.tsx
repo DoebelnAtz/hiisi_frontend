@@ -28,7 +28,9 @@ const MessageRoomModal: React.FC = () => {
 
 	return ReactDOM.createPortal(
 		<div ref={inside} style={{ zIndex: 100 }}>
-			{(expandRoomList || !!currentChat) && <ChatWindow />}
+			{(expandRoomList || !!currentChat) && (
+				<ChatWindow setExpandRoomList={setExpandRoomList} />
+			)}
 			<MessageModal
 				onClick={() => {
 					setExpandRoomList(!expandRoomList);

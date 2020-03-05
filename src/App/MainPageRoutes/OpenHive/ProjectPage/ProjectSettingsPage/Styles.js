@@ -22,7 +22,6 @@ export const ProjectCollaborators = styled.div`
 	}
 `;
 
-
 export const Collaborator = styled.div`
 	size: 22px;
 `;
@@ -56,6 +55,11 @@ export const UserResult = styled.div`
 		${font.text};
 		margin: auto 0 auto ${length.margin};
 	}
+`;
+
+export const DeleteProjectButton = styled.div`
+	${components.button};
+	height: 28px;
 `;
 
 export const OptionRow = styled.div`

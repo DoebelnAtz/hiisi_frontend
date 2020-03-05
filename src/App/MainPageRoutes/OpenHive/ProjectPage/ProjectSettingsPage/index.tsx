@@ -8,8 +8,10 @@ import {
 	OptionRow,
 	UserResult,
 	UserResultList,
+	DeleteProjectButton,
 } from './Styles';
 import { makeRequest } from '../../../../../Api';
+import { useHistory } from 'react-router-dom';
 
 type ProjectSettingsProps = {
 	project: Project;
@@ -31,6 +33,7 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 		{},
 		!!searchUserInputVal.length,
 	);
+	const history = useHistory();
 
 	const mapCollaborators = () => {
 		if (projectCollaborators) {
@@ -104,8 +107,22 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 		}
 	};
 
+	const handleProjectDelete = async () => {
+		let resp = await makeRequest('projects/delete_project', 'DELETE', {
+			projectId: project.project_id,
+		});
+		if (resp.data) {
+			history.push('/openhive');
+		}
+	};
+
 	return (
 		<div>
+			<OptionRow>
+				<DeleteProjectButton onClick={() => handleProjectDelete()}>
+					DELETE PROJECT NO CONFIRMATION
+				</DeleteProjectButton>
+			</OptionRow>
 			<OptionRow>
 				<label>
 					Title:

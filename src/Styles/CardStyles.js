@@ -35,7 +35,6 @@ export const CardVotes = styled.div`
 	@media (min-width: 1367px) {
 		width: calc(50% - 20px);
 	}
-	
 `;
 
 export const ArrowImage = styled.div`
@@ -88,7 +87,7 @@ export const CardInfo = styled.div`
 export const CardTitle = styled.span`
 	${layout.row};
 	font-size: 18px;
-	width: calc(100% - 120px);;
+	width: calc(100% - 120px);
 	@media (max-width: 768px) {
 		font-size: 16px;
 	}
@@ -117,6 +116,7 @@ export const CardButtons = styled.div`
 export const CardEdited = styled.span`
 	${font.text};
 	margin-top: 4px;
+	text-align: right;
 	margin-left: auto;
 	font-size: 10px;
 `;

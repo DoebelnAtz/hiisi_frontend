@@ -45,6 +45,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 			});
 			if (resp.data) {
 				setPost(resp.data);
+				close();
 				return true;
 			}
 		}
@@ -76,13 +77,15 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 				)}
 			</PostHead>
 			<PostContent>
-				<PostDescription>
-					<TextEditor
-						editable={post?.owner}
-						state={post?.content}
-						setState={handleDescriptionChange}
-					/>
-				</PostDescription>
+				{post && (
+					<PostDescription>
+						<TextEditor
+							editable={post.owner}
+							state={post.content}
+							setState={handleDescriptionChange}
+						/>
+					</PostDescription>
+				)}
 			</PostContent>
 			<PostComments>
 				{post && (

@@ -11,7 +11,7 @@ import {
 } from './Styles';
 import { useDismiss } from '../../../../Hooks';
 import { Project, ProjectCardType } from '../Types';
-import TextEditor from '../../../Components/TextEditor/index';
+import TextEditor from '../../../Components/TextEditor';
 import { makeRequest } from '../../../../Api';
 import { validateUrl } from '../../../../Utils';
 

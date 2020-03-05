@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
 import { Feed } from '../../../../Styles/CardStyles';
-import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type ResourceFeedPropTypes = {
 	pagination: number;
@@ -30,7 +29,6 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	setResources,
 }) => {
 	const history = useHistory();
-
 	const [nextResources, setNextResources, isLoading] = useRequest<
 		ResourceListType[]
 	>(
@@ -60,9 +58,9 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 		}
 	};
 
-	const renderResources = (rList: ResourceListType[]) => {
+	const renderResources = () => {
 		if (!!resources)
-			return rList.map((resource: ResourceListType) => {
+			return resources.map((resource: ResourceListType) => {
 				return (
 					<ResourceCard
 						key={resource.r_id}
@@ -80,10 +78,10 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	return (
 		<Fragment>
 			<Feed>
-				{resources && renderResources(resources)}
+				{resources && renderResources()}
 				{next && nextResources && setNextResources && (
 					<ResourcesResourceFeed
-						pagination={pagination + 1}
+						pagination={++pagination}
 						reverse={reverse}
 						sortBy={sortBy}
 						filterBy={filterBy}

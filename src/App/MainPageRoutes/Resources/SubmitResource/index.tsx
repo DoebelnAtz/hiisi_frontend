@@ -10,6 +10,7 @@ import {
 	TitleInputDiv,
 	TypeDropDown,
 	TypeDropDownSpan,
+	TitleError,
 } from './Styles';
 import { OuterDiv } from './Styles';
 import { useDismiss } from '../../../../Hooks';
@@ -18,39 +19,75 @@ import { ButtonRow } from './Styles';
 import { makeRequest } from '../../../../Api';
 import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
-
+import { validateUrl } from '../../../../Utils';
+import { log } from 'util';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
 	setResources,
 	setPopup,
 }) => {
 	const inside = useRef<HTMLDivElement>(null);
+	// when state is updated react re-renders a component
+	// to avoid re-rendering twice when two components are updated
+	// we cant combine states like this. I should probably do this in other components
+	// as well
+	const [errorState, setErrorState] = useState({
+		titleExistsError: false,
+		titleError: false,
+		descriptionError: false,
+		linkError: false,
+	});
 
-	const [description, setDescription] = useState<string>('');
-	const [titleInput, setTitleInput] = useState<string>('');
-	const [linkInput, setLinkInput] = useState<string>('');
+	const [inputState, setInputState] = useState({
+		descriptionVal: '',
+		titleVal: '',
+		linkVal: '',
+	});
 	const [type, setType] = useState('article');
 	const close = () => {
 		setPopup(false);
 	};
 
 	const handleDescriptionChange = (e: string) => {
-		setDescription(e);
+		errorState.descriptionError &&
+			setErrorState({ ...errorState, descriptionError: false });
+		setInputState({ ...inputState, descriptionVal: e });
 	};
 
 	useDismiss(inside, close);
 
 	const submitResource = async () => {
-		if (!!titleInput.length && !!linkInput.length && !!description.length) {
-			let resp = await makeRequest('resources/add_resource', 'post', {
-				title: titleInput,
-				link: linkInput,
-				description: description,
-				type: type,
+		if (
+			!!inputState.descriptionVal.length &&
+			!!inputState.linkVal.length &&
+			!!inputState.titleVal.length
+		) {
+			try {
+				new URL(validateUrl(inputState.linkVal));
+			} catch (e) {
+				setErrorState({ ...errorState, linkError: true });
+			}
+			try {
+				let resp = await makeRequest('resources/add_resource', 'post', {
+					title: inputState.titleVal,
+					link: validateUrl(inputState.linkVal),
+					description: inputState.descriptionVal,
+					type: type,
+				});
+				setResources([resp.data, ...resources]);
+				setPopup(false);
+			} catch (e) {
+				if (e.response.status === 400) {
+					setErrorState({ ...errorState, titleExistsError: true });
+				}
+			}
+		} else {
+			setErrorState({
+				titleExistsError: false,
+				titleError: !inputState.titleVal.length,
+				descriptionError: !inputState.descriptionVal.length,
+				linkError: !inputState.linkVal.length,
 			});
-
-			setResources([resp.data, ...resources]);
-			setPopup(false);
 		}
 	};
 
@@ -60,14 +97,22 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
+		(errorState.titleError || errorState.titleExistsError) &&
+			setErrorState({
+				...errorState,
+				titleError: false,
+				titleExistsError: false,
+			});
 		if (target.value.length <= 100) {
-			setTitleInput(target.value);
+			setInputState({ ...inputState, titleVal: target.value });
 		}
 	};
 
 	const handleLinkChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		setLinkInput(target.value);
+		errorState.linkError &&
+			setErrorState({ ...errorState, linkError: false });
+		setInputState({ ...inputState, linkVal: target.value });
 	};
 
 	return ReactDOM.createPortal(
@@ -77,16 +122,21 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					<TitleInputDiv>
 						<span>Title: </span>
 						<TitleInput
-							value={titleInput}
+							error={errorState.titleError}
+							value={inputState.titleVal}
 							onChange={handleTitleChange}
 							placeholder={'title'}
 						/>
+						{errorState.titleExistsError && (
+							<TitleError>Title already exists</TitleError>
+						)}
 					</TitleInputDiv>
 
 					<LinkInputDiv>
 						<span>Link: </span>
 						<LinkInput
-							value={linkInput}
+							error={errorState.linkError}
+							value={inputState.linkVal}
 							onChange={handleLinkChange}
 							placeholder={'link'}
 						/>
@@ -102,11 +152,11 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						/>
 					</TypeDropDown>
 				</TitleLinkTypeCol>
-				<EditDescriptionCol>
+				<EditDescriptionCol error={errorState.descriptionError}>
 					<span>Description: </span>
 					<TextEditor
 						editable
-						state={description}
+						state={inputState.descriptionVal}
 						setState={(e: string) => handleDescriptionChange(e)}
 					/>
 				</EditDescriptionCol>

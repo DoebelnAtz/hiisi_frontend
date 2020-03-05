@@ -28,14 +28,6 @@ export interface PostType {
 }
 
 
-
-
-export type CreatePostModalProps = {
-    setPopup: any,
-    popup: boolean,
-    isMounted: any
-}
-
 export type PostProps = {
     content: PostType
     deletePost: () => void

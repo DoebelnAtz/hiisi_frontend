@@ -15,7 +15,7 @@ import {
 	SearchResultTag,
 	DeleteTagButton,
 } from './Styles';
-import TextEditor from '../../../Components/TextEditor/index';
+import TextEditor from '../../../Components/TextEditor';
 import ViewPost from '../../../Components/CommentThread/index';
 import { makeRequest } from '../../../../Api';
 import { RouteComponentProps } from '../../../../Types';
@@ -77,7 +77,11 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 		let resp = await makeRequest('resources/update_resource', 'put', {
 			resource: resource,
 		});
-		return !!resp.data?.success;
+		if (resp.data) {
+			close();
+			return true;
+		}
+		return false;
 	};
 
 	const addTag = async (tag: Tag) => {
@@ -108,7 +112,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			<ResourceHeader>
 				<ResourceTitle>
 					{!!resource && (
-						<a href={`${resource?.link}`}>{`${resource?.title}`}</a>
+						<a
+							href={`${resource?.link}`}
+							target="_blank"
+						>{`${resource?.title}`}</a>
 					)}
 					{resource?.owner && (
 						<SaveButton onClick={updateResource}>save</SaveButton>
@@ -149,10 +156,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						!resource?.owner
 					}
 				>
-					{!isLoading && (
+					{!isLoading && resource && (
 						<TextEditor
-							editable={resource?.owner}
-							state={resource?.description}
+							editable={resource.owner}
+							state={resource.description}
 							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					)}

@@ -144,14 +144,15 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					</span>
 				</div>
 			</ProjectTitle>
-			<ProjectDescription>
-				<TextEditor
-					editable={project?.contributor}
-					state={project?.description}
-					setState={(e: string) => updateProjectDescription(e)}
-				/>
-			</ProjectDescription>
-
+			{project && (
+				<ProjectDescription>
+					<TextEditor
+						editable={project.contributor}
+						state={project.description}
+						setState={(e: string) => updateProjectDescription(e)}
+					/>
+				</ProjectDescription>
+			)}
 			<ProjectDashBoard>
 				<ProjectDashboardNav>
 					<ProjectDashBoardNavItem
