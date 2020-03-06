@@ -89,7 +89,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				addUser(user);
 			});
 			socket.on('left-room', (user: User) => {
-				console.log(`${user.username} left the room`);
+
 			});
 
 			socket.on('chat-message', (message: MessageType) => {
@@ -113,7 +113,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			currentUser.username !== user.username &&
 			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
-			console.log(activeUsers, user.username);
+
 			connectedUsers &&
 				setActiveUsers([
 					...connectedUsers.filter(
@@ -121,7 +121,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 					),
 					{ u_id: user.u_id },
 				]);
-			console.log(activeUsers);
+
 		}
 	};
 

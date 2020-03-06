@@ -80,7 +80,7 @@ export const ResourceTag = styled.div`
 	border-radius: ${(props) => (props.owner ? '4px 0 0 4px' : '4px')};
 	background-color: ${(props) => props.color};
 	${font.text};
-
+	margin-bottom: 4px;
 	height: calc(34px - 8px);
 	line-height: 26px;
 	${layout.row};

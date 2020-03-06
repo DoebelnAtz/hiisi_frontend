@@ -193,7 +193,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 									handleFiltering(tag);
 								}}
 							>
-								# {tag}
+								<span>{`${tag}`}</span>
 							</Tag>
 						))}
 				</Tags>

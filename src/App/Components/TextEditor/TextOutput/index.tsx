@@ -54,7 +54,7 @@ const TextEditWindowOutput: React.FC<TextEditWindowOutputProps> = ({
 			let val = editOutput.current?.value,
 				start = editOutput.current?.selectionStart,
 				end = editOutput.current?.selectionEnd;
-			console.log(val, start, end);
+
 			// set textarea value to: text before caret + tab + text after caret
 			editOutput.current.value =
 				val.substring(0, start) + '\t' + val.substring(end);

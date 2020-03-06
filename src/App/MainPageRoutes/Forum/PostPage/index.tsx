@@ -69,7 +69,11 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 						<span>{formatDate(post?.published_date)}</span>
 					</PostDate>
 					<PostAuthor>
-						<span>{post?.username}</span>
+						<span
+							onClick={() => history.push(`/user/${post?.u_id}`)}
+						>
+							{post?.username}
+						</span>
 					</PostAuthor>
 				</PostInfo>
 				{post?.owner && (

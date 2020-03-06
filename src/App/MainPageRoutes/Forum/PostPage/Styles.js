@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layout, font, color, length } from '../../../../Styles/SharedStyles';
+import { layout, font, color, length, cursor } from '../../../../Styles/SharedStyles';
 
 export const PostHead = styled.div`
 	${layout.row};
@@ -12,6 +12,7 @@ export const PostInfo = styled.div`
 
 export const PostAuthor = styled.div`
 	${layout.row};
+	${cursor.clickable};
 	& span {
 		${font.text};
 	}

@@ -17,8 +17,12 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 		},
 	});
 	} catch (e) {
-		if (e.response.status === 401) {
-			console.log(e);
+		if (!e.response) {
+			window.location.replace('/505');
+
+		}
+		else if (e.response.status === 401) {
+
 			let refreshAttempt = await axios({
 				url: `http://localhost:5000/api/auth/refresh_token`,
 				method: 'POST',
@@ -34,7 +38,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 				setLocal('token',
 					refreshAttempt.data
 				);
-				console.log('refreshed token')
+
 			}
 		}
 		resp = await axios({

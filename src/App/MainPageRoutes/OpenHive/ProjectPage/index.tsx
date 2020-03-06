@@ -55,7 +55,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	}, [match.params.pid]);
 
 	const renderDash = () => {
-		console.log(dashState);
+
 		if (project)
 			switch (dashState) {
 				case 'board':

@@ -20,7 +20,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
 	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
-		`users/all?page=1&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
+		`users/all?page=1&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 
@@ -37,6 +37,10 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 			setReverse('false');
 			setSortBy(sort);
 		}
+	};
+
+	const onFilterSelect = (newFilter: string) => {
+		setFilter(newFilter === filter ? 'none' : newFilter);
 	};
 
 	// @ts-ignore
@@ -68,16 +72,24 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 					<DropDown
 						width={'175px'}
 						height={'34px'}
-						withFilter
 						state={sortBy}
 						text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 						setSelect={onSortSelect}
 						optionList={['popular', 'recent', 'title']}
 					/>
+					<DropDown
+						state={filter}
+						setSelect={onFilterSelect}
+						optionList={['resources', 'projects', 'posts']}
+						width={'158px'}
+						text={`Filter: `}
+						height={'34px'}
+					/>
 				</ProfileButtonRow>
 				{feed && (
 					<MixedFeed
 						feed={feed}
+						filter={filter}
 						page={2}
 						profile={profile}
 						reverse={reverse}

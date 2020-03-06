@@ -51,6 +51,15 @@ export const TaskComments = styled.div`
 	width: 100%;
 `;
 
+export const PriorityText = styled.span`
+	${font.text};
+	margin-left: auto;
+	margin-right: ${length.margin};
+	font-size: 20px;
+	line-height: 35px;
+	color: ${color.primary};
+`
+
 export const PrioritySetting = styled.div`
 	${layout.row};
 	width: 100%;

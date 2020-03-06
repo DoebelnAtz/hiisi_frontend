@@ -2,7 +2,8 @@ import React, {
 	RefObject,
 	SetStateAction,
 	useContext,
-	useEffect, useRef,
+	useEffect,
+	useRef,
 	useState,
 } from 'react';
 import { makeRequest } from '../Api';
@@ -65,10 +66,8 @@ export const useNotifications = (room: string) => {
 	}, [JSON.stringify(newNotif)]);
 
 	const appendNotification = (notif: Notification) => {
-		console.log(notif);
 		if (Number(notif.link) !== currentChat)
 			setNotifications([notif, ...notifications]);
-		console.log(notif, notifications);
 	};
 
 	return [notifications, connected];
@@ -121,7 +120,7 @@ export function useRequest<F>(
 				setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
-					window.location.replace('/505');
+					//window.location.replace('/505');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
 					window.location.replace('/login');

@@ -22,6 +22,7 @@ import {
 	TaskColorRow,
 	TaskSetting,
 	PrioritySetting,
+	PriorityText,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -102,7 +103,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
 	const updateTask = async () => {
 		if (task) {
-			console.log(task);
 			if (!task.description) {
 				setTask({ ...task, description: '' });
 			}
@@ -241,7 +241,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 	const handleTagColorChange = (color: string) => {
 		task && setTask({ ...task, color_tag: color });
-		console.log(color);
 	};
 
 	return ReactDOM.createPortal(
@@ -318,15 +317,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								src={priorityIcon}
 								alt={`priority ${task?.priority}`}
 							/>
-							{task && checkUserList(task.collaborators) && (
+							{(task && checkUserList(task.collaborators) && (
 								<PriorityDropdown>
 									<DropDown
 										height={'34px'}
-										optionList={[
-											'low',
-											'medium',
-											'high',
-										]}
+										optionList={['low', 'medium', 'high']}
 										text={'Priority: '}
 										state={priority}
 										setSelect={handlePrioritySelect}
@@ -334,7 +329,12 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 										modalOverflow={true}
 									/>
 								</PriorityDropdown>
-							)}
+							)) ||
+								(task && (
+									<PriorityText>{`Priority: ${getPriorityText(
+										task?.priority,
+									)}`}</PriorityText>
+								))}
 						</PrioritySetting>
 					</TaskSetting>
 					<TaskCollaborators>

@@ -15,7 +15,7 @@ const SaveButtonComponent: React.FC<SaveButtonComponentProps> = ({
 	const handleClick = async () => {
 		try {
 			let resp = await onClick();
-			console.log(resp);
+
 			setSaved(true);
 
 			setTimeout(() => {

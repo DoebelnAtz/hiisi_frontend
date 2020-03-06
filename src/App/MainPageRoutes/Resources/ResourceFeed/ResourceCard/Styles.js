@@ -9,12 +9,12 @@ import {
 } from '../../../../../Styles/SharedStyles';
 
 export const ResourceThumbnail = styled.div`
-	width: 54px;
-	height: 54px;
+	width: 68px;
+	height: 68px;
 	margin-right: ${length.margin};
 	border-radius: ${length.radius};
 	background-image: url(${(props) => props.src});
-	background-size: 54px;
+	background-size: 68px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: ${color.siteBG1};
@@ -50,16 +50,21 @@ export const ResourceType = styled.span`
 
 export const ResourceTitleInfo = styled.div`
 	${layout.row};
-	width: calc(100% - ${(props) => (props.full ? '0px' : '64px')});
+	width: calc(100% - ${(props) => (props.full ? '0px' : '78px')});
 `;
 
 export const Tag = styled.div`
 	z-index: 2;
 	${cursor.clickable};
-	margin: 2px 4px 2px 0;
+	margin: 2px 2px 2px 2px;
 	background-color: ${(props) => props.color};
-	padding: 4px 8px;
+	padding: 2px 6px;
+	height: 20px;
 	border-radius: 4px;
+	& span {
+		line-height: 20px;
+		font-size: 14px;
+	}
 	&:hover {
 		background-color: ${(props) => colorAdjust.darken(props.color, 0.1)};
 	}

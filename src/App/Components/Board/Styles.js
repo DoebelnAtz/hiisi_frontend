@@ -9,6 +9,7 @@ import {
 
 export const BoardDiv = styled.div`
 	width: 100%;
+	height: 100%;
 	overflow-x: hidden;
 `;
 
@@ -30,6 +31,15 @@ export const ProjectCollaborators = styled.div`
 		margin-left: -8px;
 		border: 4px solid ${color.siteBG3};
 	}
+`;
+
+export const PlaceHolderCollaborator = styled.div`
+	display: block;
+	height: 42px;
+	width: 42px;
+	border-radius: 50%;
+	margin-bottom: 25px;
+	background-color: ${color.siteBG3};
 `;
 
 export const Collaborator = styled.div`

@@ -32,17 +32,17 @@ export const WipLimit = styled.div`
 		padding: 4px;
 		border-radius: ${length.radius};
 		background-color: ${color.siteBG4};
-		transform: translate(-39px, -54px);
+		transform: translate(-110px, -22px);
 	}
 	& div::after {
 		content: '  ';
 		position: absolute;
-		top: 100%;
-		left: 50%;
+		top: 25%;
+		left: 105%;
 		margin-left: -6px;
 		border-width: 6px;
 		border-style: solid;
-		border-color: ${color.siteBG4} transparent transparent transparent;
+		border-color: transparent transparent transparent ${color.siteBG4};
 	}
 	& span {
 		${font.text};

@@ -56,7 +56,7 @@ export const VoteCount = styled.div`
 
 export const CardContent = styled.div`
 	width: calc(100% - 124px);
-	padding: 14px;
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	${cursor.clickable};

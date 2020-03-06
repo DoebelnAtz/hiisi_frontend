@@ -17,6 +17,7 @@ type MixedFeedProps = {
 	page: number;
 	reverse?: string;
 	sortBy?: string;
+	filter: string;
 	profile: Profile;
 };
 
@@ -24,11 +25,12 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 	feed,
 	page,
 	profile,
+	filter,
 	sortBy,
 	reverse,
 }) => {
 	const [nextFeed, setNextFeed, isLoading] = useRequest<MixedFeedItem[]>(
-		`users/all?page=${page}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
+		`users/all?page=${page}&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},
 		feed.length >= 14,
@@ -46,7 +48,7 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 			);
 		});
 	};
-	console.log(feed);
+
 	return (
 		<Fragment>
 			<Feed>
@@ -55,6 +57,7 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 					<MixedFeed
 						page={page + 1}
 						feed={nextFeed}
+						filter={filter}
 						profile={profile}
 					/>
 				)}
