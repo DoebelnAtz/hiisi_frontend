@@ -108,7 +108,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	return ReactDOM.createPortal(
-		<Modal inside={insideRef}>
+		<Modal close={close} inside={insideRef}>
 			<ResourceHeader>
 				<ResourceTitle>
 					{!!resource && (
@@ -142,7 +142,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 											)
 										}
 									>
-										X
+										✕
 									</DeleteTagButton>
 								</ResourceTag>
 							);

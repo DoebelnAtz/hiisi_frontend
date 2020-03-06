@@ -59,7 +59,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	useDismiss(inside, close);
 
 	return ReactDOM.createPortal(
-		<Modal inside={inside}>
+		<Modal close={close} inside={inside}>
 			<PostHead>
 				<PostInfo>
 					<PostTitle>

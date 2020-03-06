@@ -35,7 +35,7 @@ export const ResourceTitle = styled.div`
 
 export const ResourceTags = styled.div`
 	${layout.row};
-	margin: ${length.margin} ${length.margin} 0 ${length.margin};
+	margin: 4px 4px 0 4px;
 `;
 
 export const ResourceContent = styled.div`
@@ -68,7 +68,7 @@ export const ResourceTag = styled.div`
 	height: calc(34px - 8px);
 	line-height: 26px;
 	${layout.row};
-	padding: 4px 8px;
+	padding: 2px 4px;
 `;
 
 export const DeleteTagButton = styled.div`
@@ -77,12 +77,12 @@ export const DeleteTagButton = styled.div`
 	border-radius: 0 4px 4px 0;
 	border-left: 1px solid ${color.siteBG2};
 	width: 30px;
-	height: 34px;
+	height: 30px;
 	position: relative;
-	top: -4px;
+	top: -2px;
 	right: -12px;
 	font-size: 16px;
-	line-height: 34px;
+	line-height: 30px;
 	${cursor.clickable};
 	text-align: center;
 	&:hover {
@@ -96,8 +96,8 @@ export const SearchResultTag = styled.div`
 	${layout.row};
 	background-color: ${(props) => props.color};
 	${font.text};
-	height: 34px;
-	padding: 4px 8px;
+	height: 30px;
+	padding: 2px 6px;
 
 	width: calc(100% - 16px);
 	border-radius: 4px;
@@ -107,7 +107,7 @@ export const SearchResultTag = styled.div`
 		overflow: hidden;
 		max-width: calc(100% - 16px);
 		text-overflow: ellipsis !important;
-		line-height: 34px;
+		line-height: 30px;
 		&:hover {
 			color: lightgray;
 		}

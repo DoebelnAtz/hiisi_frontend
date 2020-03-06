@@ -245,7 +245,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	};
 
 	return ReactDOM.createPortal(
-		<Modal inside={inside}>
+		<Modal close={close} inside={inside}>
 			<TaskInfoHead>
 				<TaskTitleEditable
 					disabled={!task?.owner}
