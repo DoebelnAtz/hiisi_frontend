@@ -21,6 +21,7 @@ export const PostAuthor = styled.div`
 export const PostTitle = styled.div`
 	${layout.row};
 	${font.title};
+	font-size: 28px;
 	margin-bottom: ${length.margin};
 	color: ${color.primary};
 `;

@@ -244,7 +244,12 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	};
 
 	return ReactDOM.createPortal(
-		<Modal close={close} inside={inside}>
+		<Modal
+			saveCondition={task?.owner}
+			save={updateTask}
+			close={close}
+			inside={inside}
+		>
 			<TaskInfoHead>
 				<TaskTitleEditable
 					disabled={!task?.owner}
@@ -252,9 +257,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					value={task?.title || ''}
 					// on undefined task keep title as '' to not invoke react error
 				/>
-				{task?.owner && (
-					<SaveButton onClick={updateTask}>Save</SaveButton>
-				)}
 			</TaskInfoHead>
 			{task?.owner && (
 				<TaskColorRow>

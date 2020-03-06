@@ -58,8 +58,9 @@ export const Tag = styled.div`
 	${cursor.clickable};
 	margin: 2px 2px 2px 2px;
 	background-color: ${(props) => props.color};
-	padding: 2px 6px;
+	padding: 2px 8px;
 	height: 20px;
+	text-align: center;
 	border-radius: 4px;
 	& span {
 		line-height: 20px;

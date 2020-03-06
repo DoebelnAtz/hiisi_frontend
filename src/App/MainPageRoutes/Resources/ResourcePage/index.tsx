@@ -13,7 +13,8 @@ import {
 	ResourceContent,
 	TagSearchResults,
 	SearchResultTag,
-	DeleteTagButton, ResourceThumbnail,
+	DeleteTagButton,
+	ResourceThumbnail,
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor';
 import ViewPost from '../../../Components/CommentThread/index';
@@ -108,17 +109,23 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	return ReactDOM.createPortal(
-		<Modal close={close} inside={insideRef}>
+		<Modal
+			save={updateResource}
+			saveCondition={resource?.owner}
+			close={close}
+			inside={insideRef}
+		>
 			<ResourceHeader>
-				{resource?.thumbnail &&
+				{resource?.thumbnail && (
 					<ResourceThumbnail
 						onClick={(e: React.SyntheticEvent) => {
 							e.stopPropagation();
 							window.open(resource.link);
 						}}
 						src={resource.thumbnail}
-						alt={'thumbnail'}/>
-				}
+						alt={'thumbnail'}
+					/>
+				)}
 				<ResourceTitle full={!resource?.thumbnail}>
 					{!!resource && (
 						<a
@@ -126,9 +133,6 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 							target="_blank"
 							rel="noopener noreferrer"
 						>{`${resource?.title}`}</a>
-					)}
-					{resource?.owner && (
-						<SaveButton onClick={updateResource}>save</SaveButton>
 					)}
 				</ResourceTitle>
 				<ResourceTags full={!resource?.thumbnail}>

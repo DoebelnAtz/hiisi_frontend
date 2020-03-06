@@ -81,10 +81,10 @@ export const ResourceTag = styled.div`
 	background-color: ${(props) => props.color};
 	${font.text};
 	margin-bottom: 4px;
-	height: calc(34px - 8px);
+	height: 26px;
 	line-height: 26px;
 	${layout.row};
-	padding: 2px 4px;
+	padding: 0 4px;
 `;
 
 export const DeleteTagButton = styled.div`
@@ -92,13 +92,12 @@ export const DeleteTagButton = styled.div`
 	background-color: ${(props) => props.color};
 	border-radius: 0 4px 4px 0;
 	border-left: 1px solid ${color.siteBG2};
-	width: 30px;
-	height: 30px;
+	width: 26px;
+	height: 26px;
 	position: relative;
-	top: -2px;
 	right: -12px;
 	font-size: 16px;
-	line-height: 30px;
+	line-height: 26px;
 	${cursor.clickable};
 	text-align: center;
 	&:hover {
