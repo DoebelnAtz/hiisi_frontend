@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/hivemind_frontend__1.6.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/aadlercr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hivemind_frontend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +78,7 @@
       <workItem from="1583397486215" duration="7057000" />
       <workItem from="1583435108160" duration="7876000" />
       <workItem from="1583486742421" duration="4479000" />
-      <workItem from="1583502459099" duration="2897000" />
+      <workItem from="1583502459099" duration="5436000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -97,12 +87,12 @@
       <option name="project" value="LOCAL" />
       <updated>1583489427578</updated>
     </task>
-    <task id="LOCAL-00002" summary="Added sorting functionality to resources, small ui improvements">
-      <created>1581525006549</created>
+    <task id="LOCAL-00002" summary="Added refresh token">
+      <created>1583505613466</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1581525006549</updated>
+      <updated>1583505613466</updated>
     </task>
     <task id="LOCAL-00003" summary="improved filtering system">
       <created>1581532008595</created>
@@ -139,7 +129,7 @@
       <option name="project" value="LOCAL" />
       <updated>1583333621854</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,9 +143,14 @@
     <MESSAGE value="added comments to tasks" />
     <MESSAGE value="profile fix" />
     <MESSAGE value="css is the hardest &quot;language&quot; I've used, at least C makes sense" />
-    <option name="LAST_COMMIT_MESSAGE" value="css is the hardest &quot;language&quot; I've used, at least C makes sense" />
+    <MESSAGE value="Added refresh token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added refresh token" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583505613416">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583505613416" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583446955625">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

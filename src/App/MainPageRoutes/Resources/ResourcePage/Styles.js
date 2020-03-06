@@ -15,12 +15,27 @@ export const ResourceHeader = styled.div`
 	margin-top: ${length.margin};
 `;
 
+export const ResourceThumbnail = styled.div`
+	width: 71px;
+	height: 71px;
+	${cursor.clickable};
+	${layout.col};
+	position: absolute;
+	margin: 0 ${length.margin};
+	border-radius: ${length.radius};
+	background-image: url(${(props) => props.src});
+	background-size: 74px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: ${color.siteBG1};
+`
+
 export const ResourceTitle = styled.div`
 	${layout.row};
 	${font.title};
 	padding-right: ${length.margin};
 	font-size: 28px;
-	margin: 0 0 0 ${length.margin};
+	margin: 0 0 0 ${props => props.full ? length.margin : '94px'};
 	color: ${color.primary};
 	& :hover {
 		text-decoration: none;
@@ -35,12 +50,13 @@ export const ResourceTitle = styled.div`
 
 export const ResourceTags = styled.div`
 	${layout.row};
-	margin: 4px 4px 0 4px;
+	margin: 4px 4px 0 ${props => props.full ? length.margin : '94px'};
 `;
 
 export const ResourceContent = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	min-height: 40vh;
+	border-radius: ${length.radius};
 	padding: ${length.margin} 0;
 	margin: ${length.margin};
 	${layout.row};

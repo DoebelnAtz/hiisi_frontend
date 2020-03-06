@@ -65,6 +65,11 @@ const TextEditWindowOutput: React.FC<TextEditWindowOutputProps> = ({
 
 			// prevent the focus lose
 			return false;
+		} else {
+
+			if (e.keyCode === 191 && state.slice(-1) === '<') {
+				// TODO: autoclose bracket here.
+			}
 		}
 	};
 
