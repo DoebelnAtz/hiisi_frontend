@@ -9,6 +9,7 @@ import {
 
 export const BoardDiv = styled.div`
 	width: 100%;
+	overflow-x: hidden;
 `;
 
 export const Columns = styled.div`

@@ -107,7 +107,9 @@ const BoardColumnTask: React.FC<RouteComponentProps<{}> & TaskProps> = ({
 									<TaskStatusImg>
 										<img src={infoIcon} alt={'info'} />
 										<TaskStatusText>
-											<span>{task.status}</span>
+											<div>
+												<span>{task.status}</span>
+											</div>
 										</TaskStatusText>
 									</TaskStatusImg>
 								)}

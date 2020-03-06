@@ -22,14 +22,19 @@ export const Column = styled.div`
 `;
 
 export const WipLimit = styled.div`
-	position: absolute;
-	visibility: hidden;
-	z-index: 6;
-	padding: 4px;
-	border-radius: ${length.radius};
-	background-color: ${color.siteBG4};
-	transform: translate(-32px, -54px);
-	&::after {
+	position: relative;
+	& div {
+		position: absolute;
+		visibility: hidden;
+		width: 95px;
+		z-index: 8;
+		text-align: center;
+		padding: 4px;
+		border-radius: ${length.radius};
+		background-color: ${color.siteBG4};
+		transform: translate(-39px, -54px);
+	}
+	& div::after {
 		content: '  ';
 		position: absolute;
 		top: 100%;
@@ -49,7 +54,7 @@ export const TaskCount = styled.span`
 	margin: 10px 0 0 auto;
 	color: ${(props) => (props.wipExceeded ? color.secondary : 'inherit')};
 	&:hover {
-		& ${WipLimit} {
+		& ${WipLimit} div {
 			visibility: visible;
 		}
 	}

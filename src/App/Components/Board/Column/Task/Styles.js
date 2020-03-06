@@ -22,14 +22,18 @@ export const TaskStatusRow = styled.div`
 `;
 
 export const TaskStatusText = styled.div`
+	position: relative;
+	& div {
 	position: absolute;
 	visibility: hidden;
 	z-index: 6;
 	padding: 4px;
+	width: auto;
 	border-radius: ${length.radius};
 	background-color: ${color.siteBG5};
-	transform: translate(calc(-50% + 9px), -230%);
-	&::after {
+	transform: translate(calc(-50% + 10px), -60px);
+	}
+	& div::after {
 		content: '  ';
 		position: absolute;
 		top: 100%;
@@ -41,6 +45,8 @@ export const TaskStatusText = styled.div`
 	}
 	& span {
 		${font.text};
+		white-space: nowrap;
+		max-width: unset!important;
 		font-size: 14px;
 	}
 `;
@@ -62,7 +68,7 @@ export const TaskStatusImg = styled.div`
 		}
 	}
 	&:hover {
-		& ${TaskStatusText} {
+		& ${TaskStatusText} div {
 			visibility: visible;
 		}
 	}
