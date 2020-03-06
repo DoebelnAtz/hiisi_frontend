@@ -2,7 +2,7 @@ import React, {
 	RefObject,
 	SetStateAction,
 	useContext,
-	useEffect,
+	useEffect, useRef,
 	useState,
 } from 'react';
 import { makeRequest } from '../Api';
@@ -112,16 +112,16 @@ export function useRequest<F>(
 	const [data, setData] = useState<F>();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const { update: setError } = useContext(ErrorContext);
-	let resp;
+	const resp = useRef<any>(null);
 	useEffect(() => {
 		async function request() {
 			try {
 				setIsLoading(true);
-				resp = await makeRequest(url, method, body);
-				setData(resp.data);
+				resp.current = await makeRequest(url, method, body);
+				setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
-					// window.location.replace('/505');
+					window.location.replace('/505');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
 					window.location.replace('/login');

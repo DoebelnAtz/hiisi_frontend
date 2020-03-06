@@ -54,7 +54,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 3:
 				return 'high';
 			default:
-				return 'very high';
+				return 'high';
 		}
 	};
 
@@ -69,7 +69,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 'high':
 				return 3;
 			default:
-				return 4;
+				return 3;
 		}
 	};
 
@@ -323,11 +323,9 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 									<DropDown
 										height={'34px'}
 										optionList={[
-											'very low',
 											'low',
 											'medium',
 											'high',
-											'very high',
 										]}
 										text={'Priority: '}
 										state={priority}
