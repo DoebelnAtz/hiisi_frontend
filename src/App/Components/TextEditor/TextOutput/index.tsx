@@ -54,7 +54,7 @@ const TextEditWindowOutput: React.FC<TextEditWindowOutputProps> = ({
 			let val = editOutput.current?.value,
 				start = editOutput.current?.selectionStart,
 				end = editOutput.current?.selectionEnd;
-			console.log(val, start, end);
+
 			// set textarea value to: text before caret + tab + text after caret
 			editOutput.current.value =
 				val.substring(0, start) + '\t' + val.substring(end);
@@ -65,6 +65,11 @@ const TextEditWindowOutput: React.FC<TextEditWindowOutputProps> = ({
 
 			// prevent the focus lose
 			return false;
+		} else {
+
+			if (e.keyCode === 191 && state.slice(-1) === '<') {
+				// TODO: autoclose bracket here.
+			}
 		}
 	};
 

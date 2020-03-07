@@ -22,6 +22,7 @@ import {
 	TaskColorRow,
 	TaskSetting,
 	PrioritySetting,
+	PriorityText,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -54,7 +55,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 3:
 				return 'high';
 			default:
-				return 'very high';
+				return 'high';
 		}
 	};
 
@@ -69,7 +70,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			case 'high':
 				return 3;
 			default:
-				return 4;
+				return 3;
 		}
 	};
 
@@ -102,7 +103,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
 	const updateTask = async () => {
 		if (task) {
-			console.log(task);
 			if (!task.description) {
 				setTask({ ...task, description: '' });
 			}
@@ -241,11 +241,15 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 
 	const handleTagColorChange = (color: string) => {
 		task && setTask({ ...task, color_tag: color });
-		console.log(color);
 	};
 
 	return ReactDOM.createPortal(
-		<Modal inside={inside}>
+		<Modal
+			saveCondition={task?.owner}
+			save={updateTask}
+			close={close}
+			inside={inside}
+		>
 			<TaskInfoHead>
 				<TaskTitleEditable
 					disabled={!task?.owner}
@@ -253,9 +257,6 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					value={task?.title || ''}
 					// on undefined task keep title as '' to not invoke react error
 				/>
-				{task?.owner && (
-					<SaveButton onClick={updateTask}>Save</SaveButton>
-				)}
 			</TaskInfoHead>
 			{task?.owner && (
 				<TaskColorRow>
@@ -269,7 +270,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								onChange={handleTagColorChange}
 								colors={[
 									'#c76177',
-									'#f7ae79',
+									'#bd8b59',
 									'#d6b376',
 									'#dbcb6e',
 									'#a8c47e',
@@ -318,17 +319,11 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								src={priorityIcon}
 								alt={`priority ${task?.priority}`}
 							/>
-							{task && checkUserList(task.collaborators) && (
+							{(task && checkUserList(task.collaborators) && (
 								<PriorityDropdown>
 									<DropDown
 										height={'34px'}
-										optionList={[
-											'very low',
-											'low',
-											'medium',
-											'high',
-											'very high',
-										]}
+										optionList={['low', 'medium', 'high']}
 										text={'Priority: '}
 										state={priority}
 										setSelect={handlePrioritySelect}
@@ -336,7 +331,12 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 										modalOverflow={true}
 									/>
 								</PriorityDropdown>
-							)}
+							)) ||
+								(task && (
+									<PriorityText>{`Priority: ${getPriorityText(
+										task?.priority,
+									)}`}</PriorityText>
+								))}
 						</PrioritySetting>
 					</TaskSetting>
 					<TaskCollaborators>

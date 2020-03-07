@@ -14,6 +14,7 @@ import {
 	TagSearchResults,
 	SearchResultTag,
 	DeleteTagButton,
+	ResourceThumbnail,
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor';
 import ViewPost from '../../../Components/CommentThread/index';
@@ -66,7 +67,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						key={tag.tag_id}
 						color={tag.color}
 					>
-						<span># {tag.title}</span>
+						<span>{tag.title}</span>
 						<span style={{ marginLeft: 'auto' }}>+</span>
 					</SearchResultTag>
 				);
@@ -108,20 +109,33 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	return ReactDOM.createPortal(
-		<Modal inside={insideRef}>
+		<Modal
+			save={updateResource}
+			saveCondition={resource?.owner}
+			close={close}
+			inside={insideRef}
+		>
 			<ResourceHeader>
-				<ResourceTitle>
+				{resource?.thumbnail && (
+					<ResourceThumbnail
+						onClick={(e: React.SyntheticEvent) => {
+							e.stopPropagation();
+							window.open(resource.link);
+						}}
+						src={resource.thumbnail}
+						alt={'thumbnail'}
+					/>
+				)}
+				<ResourceTitle full={!resource?.thumbnail}>
 					{!!resource && (
 						<a
 							href={`${resource?.link}`}
 							target="_blank"
+							rel="noopener noreferrer"
 						>{`${resource?.title}`}</a>
 					)}
-					{resource?.owner && (
-						<SaveButton onClick={updateResource}>save</SaveButton>
-					)}
 				</ResourceTitle>
-				<ResourceTags>
+				<ResourceTags full={!resource?.thumbnail}>
 					{!isLoading &&
 						!!resource?.tags.length &&
 						resource.tags.map((tag) => {
@@ -131,7 +145,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 									key={tag.tag_id}
 									color={tag.color}
 								>
-									# {tag.title}
+									<span>{tag.title}</span>
 									<DeleteTagButton
 										owner={resource?.owner}
 										color={tag.color}
@@ -142,7 +156,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 											)
 										}
 									>
-										X
+										✕
 									</DeleteTagButton>
 								</ResourceTag>
 							);

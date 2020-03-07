@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-
+import { useLocation } from 'react-router-dom'
 import Column from './Column/index';
 import _ from 'lodash';
 
@@ -8,7 +8,7 @@ import {
 	Columns,
 	Collaborator,
 	ProjectCollaborators,
-	BoardDiv,
+	BoardDiv, PlaceHolderCollaborator,
 } from './Styles';
 import { makeRequest } from '../../../Api';
 import { useRequest } from '../../../Hooks';
@@ -62,9 +62,11 @@ const Board: React.FC<BoardProps> = ({
 	projectCollaborators,
 }) => {
 	// Getting TS2739 error, not sure how to solve it..
-
+	const location = useLocation();
+	// We wan't the board to update when user saves changes to task, adding a
+	// dummy query parameter to the request url updates the board
 	const [board, setBoard, isLoading] = useRequest<BoardType>(
-		'projects/boards/' + board_id,
+		`projects/boards/${board_id}?loc=${location.pathname}`,
 		'get',
 	);
 
@@ -157,7 +159,7 @@ const Board: React.FC<BoardProps> = ({
 		}
 	};
 
-	const mapCollaborators = () => {
+	const renderCollaborators = () => {
 		if (!isLoading) {
 			return projectCollaborators.map((collaborator) => {
 				return (
@@ -182,13 +184,13 @@ const Board: React.FC<BoardProps> = ({
 				);
 			});
 		} else {
-			return <div style={{ marginBottom: '28px' }}>Loading...</div>;
+			return <PlaceHolderCollaborator/>;
 		}
 	};
 
 	return (
 		<BoardDiv>
-			<ProjectCollaborators>{mapCollaborators()}</ProjectCollaborators>
+			<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
 					{filterBoard()?.columns.map((column: ColumnType) => (

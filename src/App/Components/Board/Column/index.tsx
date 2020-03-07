@@ -124,7 +124,9 @@ const BoardColumn: React.FC<ColumnProps> = ({
 									(col) => col.column_id === column.column_id,
 								)?.tasks.length}`}
 							<WipLimit>
-								<span>WIP limit: {wipState || '∞'}</span>
+								<div>
+									<span>WIP limit: {wipState || '∞'}</span>
+								</div>
 							</WipLimit>
 						</TaskCount>
 					</RowDiv>

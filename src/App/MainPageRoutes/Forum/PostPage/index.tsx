@@ -59,7 +59,12 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	useDismiss(inside, close);
 
 	return ReactDOM.createPortal(
-		<Modal inside={inside}>
+		<Modal
+			saveCondition={post?.owner}
+			save={updatePost}
+			close={close}
+			inside={inside}
+		>
 			<PostHead>
 				<PostInfo>
 					<PostTitle>
@@ -69,12 +74,13 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 						<span>{formatDate(post?.published_date)}</span>
 					</PostDate>
 					<PostAuthor>
-						<span>{post?.username}</span>
+						<span
+							onClick={() => history.push(`/user/${post?.u_id}`)}
+						>
+							{post?.username}
+						</span>
 					</PostAuthor>
 				</PostInfo>
-				{post?.owner && (
-					<SaveButton onClick={updatePost}>Save</SaveButton>
-				)}
 			</PostHead>
 			<PostContent>
 				{post && (

@@ -4,8 +4,18 @@ import { MixedFeedItem, Profile } from './Types';
 import { getLocal, setLocal } from '../../../Utils';
 import MixedFeed from './MixedFeed';
 import DropDown from '../../Components/DropDown';
-import { ProfileButtonRow } from './Styles';
-
+import {
+	ProfileBackground,
+	ProfileButtonRow,
+	ProfileHead,
+	ProfileInfo,
+	ProfilePageDiv,
+	ProfilePic,
+	ProfileStats,
+	ProfileText,
+	ProfileUsername,
+} from './Styles';
+import GuardsBG from '../../../Assets/GuardsBGDark2.png';
 type ProfilePageProps = {
 	profile: Profile;
 };
@@ -20,7 +30,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
 	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
-		`users/all?page=1&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
+		`users/all?page=1&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 
@@ -39,53 +49,56 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		}
 	};
 
+	const onFilterSelect = (newFilter: string) => {
+		setFilter(newFilter === filter ? 'none' : newFilter);
+	};
+
 	// @ts-ignore
 	return (
-		<div id={'profile_page'} className={'container'}>
-			<div className={'row justify-content-center'}>
-				<img
-					className={'profile_profile_pic'}
-					src={profile.profile_pic}
-					alt={profile.username}
+		<ProfilePageDiv>
+			<ProfileHead>
+				<ProfileBackground src={GuardsBG}>
+					<ProfilePic
+						src={profile.profile_pic}
+						alt={profile.username}
+					/>
+				</ProfileBackground>
+				<ProfileStats>
+					<ProfileInfo>
+						<ProfileUsername>{profile.username}</ProfileUsername>
+						<ProfileText>class of: {profile.class_of}</ProfileText>
+					</ProfileInfo>
+				</ProfileStats>
+			</ProfileHead>
+			<ProfileButtonRow>
+				<DropDown
+					width={'175px'}
+					height={'34px'}
+					state={sortBy}
+					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
+					setSelect={onSortSelect}
+					optionList={['popular', 'recent', 'title']}
 				/>
-			</div>
-			<div>
-				<p>username: {profile.username}</p>
-				<p>achievement points: {profile.achievement_points}</p>
-				<p>grade: {profile.grade}</p>
-				<p>class of: {profile.class_of}</p>
-				<p>evaluation points: {profile.correction_points}</p>
-				<p>coalition rank: {profile.coalition_rank}</p>
-				<p>level: {profile.level}</p>
-				<p>location: {profile.location}</p>
-				<p>coalition points: {profile.coalition_points}</p>
-				<p>wallet: {profile.wallet}</p>
-				<p>active: {profile.active ? 'active' : 'inactive'}</p>
-				{/*<AddFriend target={profile}/>*/}
-			</div>
-			<div className={'container'}>
-				<ProfileButtonRow>
-					<DropDown
-						width={'175px'}
-						height={'34px'}
-						withFilter
-						state={sortBy}
-						text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
-						setSelect={onSortSelect}
-						optionList={['popular', 'recent', 'title']}
-					/>
-				</ProfileButtonRow>
-				{feed && (
-					<MixedFeed
-						feed={feed}
-						page={2}
-						profile={profile}
-						reverse={reverse}
-						sortBy={sortBy}
-					/>
-				)}
-			</div>
-		</div>
+				<DropDown
+					state={filter}
+					setSelect={onFilterSelect}
+					optionList={['resources', 'projects', 'posts']}
+					width={'158px'}
+					text={`Filter: `}
+					height={'34px'}
+				/>
+			</ProfileButtonRow>
+			{feed && (
+				<MixedFeed
+					feed={feed}
+					filter={filter}
+					page={2}
+					profile={profile}
+					reverse={reverse}
+					sortBy={sortBy}
+				/>
+			)}
+		</ProfilePageDiv>
 	);
 };
 

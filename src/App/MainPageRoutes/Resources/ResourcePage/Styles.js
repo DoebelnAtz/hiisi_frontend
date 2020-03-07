@@ -15,12 +15,27 @@ export const ResourceHeader = styled.div`
 	margin-top: ${length.margin};
 `;
 
+export const ResourceThumbnail = styled.div`
+	width: 71px;
+	height: 71px;
+	${cursor.clickable};
+	${layout.col};
+	position: absolute;
+	margin: 0 ${length.margin};
+	border-radius: ${length.radius};
+	background-image: url(${(props) => props.src});
+	background-size: 74px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: ${color.siteBG1};
+`
+
 export const ResourceTitle = styled.div`
 	${layout.row};
 	${font.title};
 	padding-right: ${length.margin};
 	font-size: 28px;
-	margin: 0 0 0 ${length.margin};
+	margin: 0 0 0 ${props => props.full ? length.margin : '94px'};
 	color: ${color.primary};
 	& :hover {
 		text-decoration: none;
@@ -35,12 +50,13 @@ export const ResourceTitle = styled.div`
 
 export const ResourceTags = styled.div`
 	${layout.row};
-	margin: ${length.margin} ${length.margin} 0 ${length.margin};
+	margin: 4px 4px 0 ${props => props.full ? length.margin : '94px'};
 `;
 
 export const ResourceContent = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	min-height: 40vh;
+	border-radius: ${length.radius};
 	padding: ${length.margin} 0;
 	margin: ${length.margin};
 	${layout.row};
@@ -64,11 +80,15 @@ export const ResourceTag = styled.div`
 	border-radius: ${(props) => (props.owner ? '4px 0 0 4px' : '4px')};
 	background-color: ${(props) => props.color};
 	${font.text};
-
-	height: calc(34px - 8px);
-	line-height: 26px;
+	margin-bottom: 4px;
+	height: 26px;
 	${layout.row};
-	padding: 4px 8px;
+	padding: 0 4px;
+	& span {
+		${font.text};
+		margin-left: 4px;
+		line-height: 22px;
+	}
 `;
 
 export const DeleteTagButton = styled.div`
@@ -76,13 +96,12 @@ export const DeleteTagButton = styled.div`
 	background-color: ${(props) => props.color};
 	border-radius: 0 4px 4px 0;
 	border-left: 1px solid ${color.siteBG2};
-	width: 30px;
-	height: 34px;
+	width: 26px;
+	height: 26px;
 	position: relative;
-	top: -4px;
 	right: -12px;
 	font-size: 16px;
-	line-height: 34px;
+	line-height: 26px;
 	${cursor.clickable};
 	text-align: center;
 	&:hover {
@@ -96,18 +115,18 @@ export const SearchResultTag = styled.div`
 	${layout.row};
 	background-color: ${(props) => props.color};
 	${font.text};
-	height: 34px;
-	padding: 4px 8px;
-
+	height: 30px;
+	padding: 2px 6px;
 	width: calc(100% - 16px);
 	border-radius: 4px;
 	${cursor.clickable};
 	& span {
 		white-space: nowrap;
 		overflow: hidden;
+		margin-left: 4px;
 		max-width: calc(100% - 16px);
 		text-overflow: ellipsis !important;
-		line-height: 34px;
+		line-height: 30px;
 		&:hover {
 			color: lightgray;
 		}
