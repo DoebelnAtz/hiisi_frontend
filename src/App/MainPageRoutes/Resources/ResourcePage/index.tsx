@@ -67,7 +67,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						key={tag.tag_id}
 						color={tag.color}
 					>
-						<span># {tag.title}</span>
+						<span>{tag.title}</span>
 						<span style={{ marginLeft: 'auto' }}>+</span>
 					</SearchResultTag>
 				);
@@ -145,7 +145,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 									key={tag.tag_id}
 									color={tag.color}
 								>
-									# {tag.title}
+									<span>{tag.title}</span>
 									<DeleteTagButton
 										owner={resource?.owner}
 										color={tag.color}

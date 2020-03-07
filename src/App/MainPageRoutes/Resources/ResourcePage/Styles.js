@@ -82,9 +82,13 @@ export const ResourceTag = styled.div`
 	${font.text};
 	margin-bottom: 4px;
 	height: 26px;
-	line-height: 26px;
 	${layout.row};
 	padding: 0 4px;
+	& span {
+		${font.text};
+		margin-left: 4px;
+		line-height: 22px;
+	}
 `;
 
 export const DeleteTagButton = styled.div`
@@ -113,13 +117,13 @@ export const SearchResultTag = styled.div`
 	${font.text};
 	height: 30px;
 	padding: 2px 6px;
-
 	width: calc(100% - 16px);
 	border-radius: 4px;
 	${cursor.clickable};
 	& span {
 		white-space: nowrap;
 		overflow: hidden;
+		margin-left: 4px;
 		max-width: calc(100% - 16px);
 		text-overflow: ellipsis !important;
 		line-height: 30px;
