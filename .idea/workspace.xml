@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +75,7 @@
       <workItem from="1583435108160" duration="7876000" />
       <workItem from="1583486742421" duration="4479000" />
       <workItem from="1583502459099" duration="5436000" />
-      <workItem from="1583519415173" duration="13600000" />
+      <workItem from="1583519415173" duration="18873000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -102,12 +105,12 @@
       <option name="project" value="LOCAL" />
       <updated>1583536822590</updated>
     </task>
-    <task id="LOCAL-00005" summary="added comments to tasks">
-      <created>1583325530696</created>
+    <task id="LOCAL-00005" summary="ui fixes">
+      <created>1583539506768</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1583325530696</updated>
+      <updated>1583539506768</updated>
     </task>
     <task id="LOCAL-00006" summary="profile fix">
       <created>1583326166979</created>
@@ -123,7 +126,7 @@
       <option name="project" value="LOCAL" />
       <updated>1583333621854</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,25 +143,34 @@
     <MESSAGE value="Added refresh token" />
     <MESSAGE value="UX fixes here and there, added filtering option to profile feed" />
     <MESSAGE value="added save button to modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="added save button to modal" />
+    <MESSAGE value="ui fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui fixes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583536822559">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583539506733">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583536822559" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583539506733" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583526777922" />
+    <state x="4521" y="411" width="491" height="567" key="RollbackChangesDialog" timestamp="1583582384766">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="4521" y="411" width="491" height="567" key="RollbackChangesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583582384766" />
     <state x="4972" y="337" key="SettingsEditor" timestamp="1583526779217">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583526779217" />
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1583536823601">
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1583539507773">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583536823601" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583539507773" />
+    <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583581913678">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583581913678" />
     <state x="4376" y="402" width="791" height="590" key="find.popup" timestamp="1583528953966">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

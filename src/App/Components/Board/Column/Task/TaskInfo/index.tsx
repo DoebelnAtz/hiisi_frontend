@@ -270,7 +270,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								onChange={handleTagColorChange}
 								colors={[
 									'#c76177',
-									'#f7ae79',
+									'#bd8b59',
 									'#d6b376',
 									'#dbcb6e',
 									'#a8c47e',

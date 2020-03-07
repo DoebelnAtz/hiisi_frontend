@@ -34,7 +34,9 @@ export const UsernameDiv = styled.div`
 `;
 
 export const UsernameInput = styled.input`
-	${components.input}
+	${components.input};
+	max-width: 120px;
+	height: 30px;
 `;
 
 export const PasswordDiv = styled.div`
@@ -43,7 +45,9 @@ export const PasswordDiv = styled.div`
 `;
 
 export const PasswordInput = styled.input`
-	${components.input}
+	${components.input};
+	max-width: 120px;
+	height: 30px;
 `;
 
 export const LoginButton = styled.div`
