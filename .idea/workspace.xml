@@ -2,17 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Context/WidthContext.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectFeed/ProjectCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectFeed/ProjectCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/Style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/MixedFeed/MixedCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/MixedFeed/MixedCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/SharedStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/SharedStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +90,7 @@
       <workItem from="1583486742421" duration="4479000" />
       <workItem from="1583502459099" duration="5436000" />
       <workItem from="1583519415173" duration="20386000" />
-      <workItem from="1583662068960" duration="7157000" />
+      <workItem from="1583662068960" duration="11817000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -126,14 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583583835569</updated>
     </task>
-    <task id="LOCAL-00007" summary="profile fix">
-      <created>1583333621854</created>
+    <task id="LOCAL-00007" summary="added mobile navbar and mobile resource cards">
+      <created>1583670037815</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1583333621854</updated>
+      <updated>1583670037815</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,13 +160,14 @@
     <MESSAGE value="added save button to modal" />
     <MESSAGE value="ui fixes" />
     <MESSAGE value="Profile page mvp update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile page mvp update" />
+    <MESSAGE value="added mobile navbar and mobile resource cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mobile navbar and mobile resource cards" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583539506733">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583670037736">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583539506733" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583670037736" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -183,5 +192,9 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583528953966" />
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1583671221654">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583671221654" />
   </component>
 </project>

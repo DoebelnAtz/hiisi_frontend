@@ -59,7 +59,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
 					width={'175px'}
-					height={'34px'}
+					height={'32px'}
 				/>
 			</ProjectButtonRow>
 			{(projects && (

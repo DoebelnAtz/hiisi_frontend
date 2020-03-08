@@ -32,8 +32,8 @@ export const MobileCardVotes = styled.div`
 export const MobileArrowImage = styled.div`
 	${layout.row};
 	& img {
-		height: 30px;
-		width: 30px;
+		height: 24px;
+		width: 24px;
 		margin: 0 auto;
 		${cursor.clickable};
 	}
@@ -81,11 +81,20 @@ export const MobileCardInfo = styled.div`
 
 export const MobileCardTitle = styled.span`
 	${layout.row};
-	font-size: 18px;
+	font-size: 16px;
 	width: calc(100%);
-	@media (max-width: 768px) {
-		font-size: 16px;
-	}
+`;
+
+export const MobileCardThumbnail = styled.div`
+	width: 58px;
+	height: 58px;
+	margin-right: ${length.margin};
+	border-radius: ${length.radius};
+	background-image: url(${(props) => props.src});
+	background-size: 58px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: ${color.siteBG1};
 `;
 
 export const MobileCardAuthor = styled.div`
@@ -94,15 +103,6 @@ export const MobileCardAuthor = styled.div`
 	font-size: inherit;
 	margin-right: auto;
 	${font.text};
-`;
-
-
-export const MobileCardEdited = styled.span`
-	${font.text};
-	margin-top: 4px;
-	text-align: right;
-	margin-left: auto;
-	font-size: 10px;
 `;
 
 export const MobileCardDate = styled.span`
@@ -115,7 +115,7 @@ export const MobileCardDate = styled.span`
 
 export const MobileCardButtons = styled.div`
 	width: calc(100% - ${length.margin} * 2);
-	padding: ${length.margin};
+	padding: 5px ${length.margin};
 	${layout.row};
 	border-top: 2px solid ${color.siteBG1};
 `;
@@ -125,7 +125,7 @@ export const MobileDeleteButton = styled.div`
 	margin: auto ${length.margin} auto ${length.margin};
 	& img {
 		${cursor.clickable};
-		height: 26px;
+		height: 24px;
 		border-radius: 50%;
 		background-color: ${color.siteBG2};
 		transition: background-color 0.2s;
@@ -140,7 +140,8 @@ export const MobileShareButton = styled.div`
 	margin: auto ${length.margin} auto ${length.margin};
 	& img {
 		${cursor.clickable};
-		height: 26px;
+		height: 24px;
+		width: 24px;
 		border-radius: 50%;
 		background-color: ${color.siteBG2};
 		transition: background-color 0.2s;

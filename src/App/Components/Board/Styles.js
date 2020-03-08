@@ -9,7 +9,8 @@ import {
 
 export const BoardDiv = styled.div`
 	width: 100%;
-	height: 100%;
+	height: calc(100%);
+	overflow-y: hidden;
 	overflow-x: hidden;
 `;
 

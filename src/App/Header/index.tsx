@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../base.css';
 import logo from '../../Assets/Logo6.png';
@@ -16,10 +16,11 @@ import {
 } from './Styles';
 import SearchBar from './Search';
 import Notifications from './Notifications';
+import { useWidth } from '../../Hooks';
 
 const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	const { state } = useContext(CurrentNavContext);
-
+	const [width, isMobile] = useWidth();
 	const requestLogout = () => {
 		localStorage.clear();
 		history.push('/login');
@@ -32,11 +33,15 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 				<SiteTitle>Hivemind</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
-			<SearchLabel>
-				<Notifications />
-				<SearchBar />
-			</SearchLabel>
-			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
+			{!isMobile && (
+				<Fragment>
+					<SearchLabel>
+						<Notifications />
+						<SearchBar />
+					</SearchLabel>
+					<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
+				</Fragment>
+			)}
 		</HeaderDiv>
 	);
 };

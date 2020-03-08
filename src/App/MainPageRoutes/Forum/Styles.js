@@ -8,7 +8,8 @@ export const FeedPage = styled.div`
 `;
 
 export const CreatePostButton = styled.button`
-	${components.button};	
+	${components.button};
+	height: 34px;	
 	margin-right: ${length.margin};
 `;
 

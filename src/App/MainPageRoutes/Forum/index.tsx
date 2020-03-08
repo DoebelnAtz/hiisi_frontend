@@ -50,7 +50,7 @@ const Feed = ({}) => {
 					setSelect={onSortSelect}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
-					height={'34px'}
+					height={'32px'}
 					width={'175px'}
 				/>
 			</FeedButtonRow>

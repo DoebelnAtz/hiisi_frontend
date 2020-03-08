@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNav, useRequest } from '../../../Hooks';
+import { useNav, useRequest, useWidth } from '../../../Hooks';
 import {
 	Resources,
 	SubmitResourceButton,
 	FilterButton,
 	ResourcePageHead,
+	ResourceFilters,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
@@ -23,7 +24,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [reverse, setReverse] = useState(
 		getLocal('resourceSortPref')?.reverse || 'false',
 	);
-
+	const [width, isMobile] = useWidth();
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
 		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}`,
@@ -66,31 +67,44 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				/>
 			)}
 			<ResourcePageHead>
-				<SubmitResourceButton onClick={() => setPopup(true)}>
+				<SubmitResourceButton
+					isMobile={isMobile}
+					onClick={() => setPopup(true)}
+				>
 					Submit Resource
 				</SubmitResourceButton>
-				<DropDown
-					width={'175px'}
-					height={'34px'}
-					state={sortBy}
-					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
-					setSelect={onSortSelect}
-					optionList={['popular', 'recent', 'title']}
-				/>
-				{tags && (
+				<ResourceFilters>
 					<DropDown
-						width={'166px'}
-						height={'34px'}
-						state={filter}
-						text={'Filter: '}
-						withFilter={true}
-						setSelect={onFilterSelect}
-						optionList={tags.map((tag) => tag.title)}
+						width={`${
+							isMobile ? `calc(${width}px / 2 - 30px)` : `176px`
+						}`}
+						height={'32px'}
+						state={sortBy}
+						text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
+						setSelect={onSortSelect}
+						optionList={['popular', 'recent', 'title']}
 					/>
+					{tags && (
+						<DropDown
+							width={`${
+								isMobile
+									? `calc(${width}px / 2 - 30px)`
+									: `166px`
+							}`}
+							height={'32px'}
+							state={filter}
+							text={'Filter: '}
+							withFilter={true}
+							setSelect={onFilterSelect}
+							optionList={tags.map((tag) => tag.title)}
+						/>
+					)}
+				</ResourceFilters>
+				{!isMobile && (
+					<FilterButton onClick={() => setFilter('none')}>
+						Remove filter
+					</FilterButton>
 				)}
-				<FilterButton onClick={() => setFilter('none')}>
-					Remove filter
-				</FilterButton>
 			</ResourcePageHead>
 			{(resources && (
 				<ResourcesResourceFeed

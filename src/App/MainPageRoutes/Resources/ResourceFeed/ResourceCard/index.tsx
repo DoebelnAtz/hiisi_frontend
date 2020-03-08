@@ -47,6 +47,7 @@ import {
 	MobileCardContent,
 	MobileCardDate,
 	MobileCardInfo,
+	MobileCardThumbnail,
 	MobileCardThumbnailTitle,
 	MobileCardTitle,
 	MobileCardTitleInfo,
@@ -152,10 +153,14 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							{formatDate(resource.published_date)}
 						</MobileCardDate>
 					</MobileCardInfo>
-					<MobileCardContent>
+					<MobileCardContent
+						onClick={() => {
+							openResource();
+						}}
+					>
 						<MobileCardThumbnailTitle>
 							{resource.thumbnail && (
-								<ResourceThumbnail
+								<MobileCardThumbnail
 									onClick={(e: React.SyntheticEvent) => {
 										e.stopPropagation();
 										window.open(resource.link);

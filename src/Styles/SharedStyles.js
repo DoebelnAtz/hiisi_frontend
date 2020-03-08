@@ -98,7 +98,7 @@ export const modal = {
 		left: 20%;
 		right: 20%;
 		top: 15%;
-		max-height: 70vh;
+		max-height: 80vh;
 		padding: ${length.margin};
 		border: 5px solid ${color.siteBG2};
 		border-radius: 2px;

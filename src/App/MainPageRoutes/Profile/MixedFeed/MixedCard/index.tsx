@@ -22,18 +22,37 @@ import {
 	CardInfo,
 	CardButtons,
 	CardDate,
-	CardTitle,
 	ArrowImage,
 	VoteCount,
-	CardTitleInfo,
 	ShareButton,
 	CopiedSpan,
 	CardAuthor,
 } from '../../../../../Styles/CardStyles';
 import { makeRequest } from '../../../../../Api';
 import { MixedFeedItem, Profile } from '../../Types';
-import { ResourceThumbnail } from '../../../Resources/ResourceFeed/ResourceCard/Styles';
+import {
+	ResourceThumbnail,
+	ResourceType,
+} from '../../../Resources/ResourceFeed/ResourceCard/Styles';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
+import {
+	MobileArrowImage,
+	MobileCard,
+	MobileCardAuthor,
+	MobileCardButtons,
+	MobileCardContainer,
+	MobileCardContent,
+	MobileCardDate,
+	MobileCardInfo,
+	MobileCardThumbnail,
+	MobileCardThumbnailTitle,
+	MobileCardTitle,
+	MobileCardTitleInfo,
+	MobileCopiedSpan,
+	MobileShareButton,
+	MobileVoteCount,
+} from '../../../../../Styles/MobileCardStyles';
+import { useWidth } from '../../../../../Hooks';
 
 const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 	item,
@@ -44,6 +63,7 @@ const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 	const [voted, setVoted] = useState<vote>(item.vote ? item.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
+	const [width, isMobile] = useWidth();
 
 	const voteProject = async (
 		vote: vote,
@@ -119,71 +139,139 @@ const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 		}
 	};
 
-	return (
-		<Card>
-			<CardVotes>
-				<ArrowImage>
-					<img
-						src={voted > 0 ? ArrowUpVoted : ArrowUp}
-						alt={'arrow_up'}
-						onClick={() => handleUpClick(1, item.id)}
-					/>
-				</ArrowImage>
-				<VoteCount>
-					<span>{votes}</span>
-				</VoteCount>
-				<ArrowImage>
-					<img
-						src={voted < 0 ? ArrowDownVoted : ArrowDown}
-						alt={'arrow_down'}
-						onClick={() => handleDownClick(-1, item.id)}
-					/>
-				</ArrowImage>
-			</CardVotes>
-			<CardContent
-				onClick={() => history.push(`${item.link}/${item.id}`)}
-			>
-				<RowDiv>
-					{item.thumbnail && (
-						<Thumbnail
-							onClick={(e: React.SyntheticEvent) => {
-								e.stopPropagation();
-								window.location.replace(item.link);
-							}}
-							src={item.thumbnail}
-							alt={'thumbnail'}
+	if (isMobile) {
+		return (
+			<MobileCard>
+				<MobileCardContainer>
+					<MobileCardInfo>
+						<MobileCardAuthor>{profile.username}</MobileCardAuthor>
+						<MobileCardDate>
+							{formatDate(item.published_date)}
+						</MobileCardDate>
+					</MobileCardInfo>
+					<MobileCardContent
+						onClick={() => history.push(`${item.link}/${item.id}`)}
+					>
+						<MobileCardThumbnailTitle>
+							{item.thumbnail && (
+								<MobileCardThumbnail
+									onClick={(e: React.SyntheticEvent) => {
+										e.stopPropagation();
+										window.open(item.link);
+									}}
+									src={item.thumbnail}
+									alt={'thumbnail'}
+								/>
+							)}{' '}
+							<MobileCardTitleInfo>
+								<MobileCardTitle>{item.title}</MobileCardTitle>
+								<ResourceType>{item.type}</ResourceType>
+							</MobileCardTitleInfo>
+						</MobileCardThumbnailTitle>
+					</MobileCardContent>
+					<MobileCardButtons>
+						<MobileArrowImage>
+							<img
+								src={voted > 0 ? ArrowUpVoted : ArrowUp}
+								alt={'arrow up'}
+								onClick={() => handleUpClick(1, item.id)}
+							/>
+						</MobileArrowImage>
+						<MobileVoteCount>
+							<span>{votes}</span>
+						</MobileVoteCount>
+						<MobileArrowImage>
+							<img
+								src={voted < 0 ? ArrowDownVoted : ArrowDown}
+								alt={'arrow down'}
+								onClick={() => handleDownClick(-1, item.id)}
+							/>
+						</MobileArrowImage>
+						<MobileCopiedSpan copied={copied}>
+							Copied!
+						</MobileCopiedSpan>
+						<MobileShareButton>
+							<img
+								onClick={() =>
+									handleShareClick(
+										`${window.location.href}/${item.id}`,
+									)
+								}
+								src={ShareImg}
+								alt={'share'}
+							/>
+						</MobileShareButton>
+					</MobileCardButtons>
+				</MobileCardContainer>
+			</MobileCard>
+		);
+	} else {
+		return (
+			<Card>
+				<CardVotes>
+					<ArrowImage>
+						<img
+							src={voted > 0 ? ArrowUpVoted : ArrowUp}
+							alt={'arrow_up'}
+							onClick={() => handleUpClick(1, item.id)}
 						/>
-					)}
-					<MixedTitleInfo full={!item.thumbnail}>
-						<MixedTitleType>
-							<MixedTitle>{item.title}</MixedTitle>
-							<MixedType>{item.type}</MixedType>
-						</MixedTitleType>
-						<CardInfo>
-							<CardDate>
-								{formatDate(item.published_date)}
-							</CardDate>
-							<CardAuthor>{profile.username}</CardAuthor>
-						</CardInfo>
-					</MixedTitleInfo>
-				</RowDiv>
-			</CardContent>
-			<CardButtons>
-				<ShareButton>
-					<img
-						onClick={() =>
-							handleShareClick(
-								`${window.location.origin}/${item.link}/${item.id}`,
-							)
-						}
-						src={ShareImg}
-						alt={'share'}
-					/>
-					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
-				</ShareButton>
-			</CardButtons>
-		</Card>
-	);
+					</ArrowImage>
+					<VoteCount>
+						<span>{votes}</span>
+					</VoteCount>
+					<ArrowImage>
+						<img
+							src={voted < 0 ? ArrowDownVoted : ArrowDown}
+							alt={'arrow_down'}
+							onClick={() => handleDownClick(-1, item.id)}
+						/>
+					</ArrowImage>
+				</CardVotes>
+				<CardContent
+					onClick={() => history.push(`${item.link}/${item.id}`)}
+				>
+					<RowDiv>
+						{item.thumbnail && (
+							<Thumbnail
+								onClick={(e: React.SyntheticEvent) => {
+									e.stopPropagation();
+									window.location.replace(item.link);
+								}}
+								src={item.thumbnail}
+								alt={'thumbnail'}
+							/>
+						)}
+						<MixedTitleInfo full={!item.thumbnail}>
+							<MixedTitleType>
+								<MixedTitle>{item.title}</MixedTitle>
+								<MixedType>{item.type}</MixedType>
+							</MixedTitleType>
+							<CardInfo>
+								<CardDate>
+									{formatDate(item.published_date)}
+								</CardDate>
+								<CardAuthor>{profile.username}</CardAuthor>
+							</CardInfo>
+						</MixedTitleInfo>
+					</RowDiv>
+				</CardContent>
+				<CardButtons>
+					<ShareButton>
+						<img
+							onClick={() =>
+								handleShareClick(
+									`${window.location.origin}/${item.link}/${item.id}`,
+								)
+							}
+							src={ShareImg}
+							alt={'share'}
+						/>
+						<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+					</ShareButton>
+				</CardButtons>
+			</Card>
+		);
+	}
 };
 
 export default MixedCard;
