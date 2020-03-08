@@ -3,20 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Header/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Header/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/AddUserToRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/AddUserToRoom/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MobileMessagePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MobileMessagePage/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +77,7 @@
       <workItem from="1583502459099" duration="5436000" />
       <workItem from="1583519415173" duration="20386000" />
       <workItem from="1583662068960" duration="21849000" />
-      <workItem from="1583689700919" duration="1959000" />
+      <workItem from="1583689700919" duration="3645000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -153,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583681398403</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="create resource, project, post modals fixed for mobile">
+      <created>1583691713657</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1583691713657</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,17 +171,18 @@
     <MESSAGE value="added mobile navbar and mobile resource cards" />
     <MESSAGE value="profile feed mobile improvements, modal mobile improvements" />
     <MESSAGE value="css mobile bugfixes, mobile chat page" />
-    <option name="LAST_COMMIT_MESSAGE" value="css mobile bugfixes, mobile chat page" />
+    <MESSAGE value="create resource, project, post modals fixed for mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="create resource, project, post modals fixed for mobile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583681398313">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583691713608">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583681398313" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583691713608" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

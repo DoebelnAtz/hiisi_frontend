@@ -79,7 +79,8 @@ export const CardInfo = styled.div`
 	margin-left: auto;
 	width: 120px;
 	font-size: 14px;
-	@media (min-width: 1367px) {
+	@media (max-width: 1367px) {
+		width: 80px;
 		font-size: 14px;
 	}
 `;

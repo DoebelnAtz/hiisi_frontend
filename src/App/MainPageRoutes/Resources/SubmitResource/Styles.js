@@ -24,6 +24,8 @@ export const TitleLinkTypeCol = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 50%;
+	max-width: 200px;
+
 `;
 
 export const TitleError = styled.span`
@@ -80,7 +82,7 @@ export const TypeDropDown = styled.div`
 
 export const EditDescriptionCol = styled.div`
 	margin-top: ${length.margin};
-	width: calc(50%);
+	width: max(50%, calc(100% - 200px));
 	display: flex;
 	flex-direction: column;
 	& span {
@@ -111,8 +113,7 @@ export const SubmitResource = styled.div`
 	` : `
 	left: 20%;
 	right: 20%;
-	top: 15%;
-	bottom: 35%;
+	top: 25%;
 	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};

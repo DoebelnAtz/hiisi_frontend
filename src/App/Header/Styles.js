@@ -44,11 +44,13 @@ export const SearchLabel = styled.label`
 `;
 
 export const NavTitleDiv = styled.div`
-	font-size: 24px;
+	font-size: 26px;
+	margin-top: auto;
+	margin-bottom: 20px;
 	margin-right: auto;
 	color: ${color.primary};
 	font-family: 'Share Tech', sans-serif;
-	line-height: 70px;
+	line-height: 26px;
 `;
 
 export const LogOutDiv = styled.div`
