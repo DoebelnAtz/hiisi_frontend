@@ -61,7 +61,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					optionList={['popular', 'recent', 'title']}
 					width={
 						isMobile
-							? `min(calc(${width}px - 190px), 176px)`
+							? `min(calc(${width}px - 180px), 176px)`
 							: `176px`
 					}
 					height={'32px'}

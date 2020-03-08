@@ -104,7 +104,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			appendMessage(newMessage);
 		}
 	}, [newMessage]);
-	console.log(getLocal('token')?.user);
 	const addUser = (user: User) => {
 		let currentUser = getLocal('token')?.user;
 		if (

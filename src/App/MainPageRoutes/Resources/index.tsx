@@ -76,7 +76,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				<ResourceFilters>
 					<DropDown
 						width={`${
-							isMobile ? `calc(${width}px / 2 - 30px)` : `176px`
+							isMobile ? `calc(${width}px / 2 - 20px)` : `176px`
 						}`}
 						height={'32px'}
 						state={sortBy}
@@ -88,7 +88,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 						<DropDown
 							width={`${
 								isMobile
-									? `calc(${width}px / 2 - 30px)`
+									? `calc(${width}px / 2 - 20px)`
 									: `166px`
 							}`}
 							height={'32px'}

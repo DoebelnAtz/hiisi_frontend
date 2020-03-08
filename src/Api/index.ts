@@ -6,7 +6,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 
 	try {
 		resp = await axios({
-		url: `https://hivemind-42.com/api/${url}`,
+		url: `http://localhost:5000/api/${url}`,
 		method: method,
 		data: data,
 		headers: {
@@ -25,7 +25,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 		else if (e.response.status === 401) {
 
 			let refreshAttempt = await axios({
-				url: `https://hivemind-42.com/api/auth/refresh_token`,
+				url: `http://localhost:5000/api/auth/refresh_token`,
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 			}
 		}
 		resp = await axios({
-				url: `https://hivemind-42.com/api/${url}`,
+				url: `hhttp://localhost:5000/api/${url}`,
 				method: method,
 				data: data,
 				headers: {

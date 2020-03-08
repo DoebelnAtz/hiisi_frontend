@@ -124,8 +124,14 @@ export const modal = {
 
 export const cursor = {
 	clickable: css`
-		cursor: pointer;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
 		user-select: none;
+		-webkit-tap-highlight-color: transparent;
+		cursor: pointer;
 	`,
 	draggable: css`
 		cursor: grab;

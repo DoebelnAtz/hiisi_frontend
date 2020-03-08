@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useRequest, useWidth } from '../../../Hooks';
+import { useRequest, useWidth, useNav } from '../../../Hooks';
 import CreatePostModal from './CreatePostModal/index';
 import { PostType } from './Types';
 import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
@@ -25,7 +25,7 @@ const Feed = ({}) => {
 		'get',
 	);
 	const [width, isMobile] = useWidth();
-
+	useNav('forum')
 	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
 			// Save sorting preference to localstorage
@@ -54,7 +54,7 @@ const Feed = ({}) => {
 					height={'32px'}
 					width={
 						isMobile
-							? `min(calc(${width}px - 180px), 176px)`
+							? `min(calc(${width}px - 160px), 176px)`
 							: `176px`
 					}
 				/>
