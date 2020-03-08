@@ -15,6 +15,16 @@ export const OutsideDiv = styled.div`
 export const InsideDiv = styled.div`
 	padding: ${length.margin};
 	${modal.inside};
+	${props => props.isMobile ? `
+		left: 5%;
+		right: 5%;
+		top: 20%;
+	` : `
+	left: 20%;
+	right: 20%;
+	top: 15%;
+	bottom: 35%;
+	`};
 	z-index: 5;
 `;
 

@@ -23,10 +23,17 @@ export const OutsideDiv = styled(animated.div)`
 
 export const ModalDiv = styled(animated.div)`
 	position: absolute;
-	left: 25%;
-	right: 25%;
+	${props => props.isMobile ? `
+		left: 5%;
+		right: 5%;
+		top: 20%;
+		bottom: 20%;
+	` : `
+	left: 20%;
+	right: 20%;
 	top: 15%;
-	bottom: 45%;
+	bottom: 35%;
+	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
 	border-radius: 2px;

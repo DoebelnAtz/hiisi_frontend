@@ -13,7 +13,7 @@ import {
 	TitleError,
 } from './Styles';
 import { OuterDiv } from './Styles';
-import { useDismiss } from '../../../../Hooks';
+import { useDismiss, useWidth } from '../../../../Hooks';
 import TextEditor from '../../../Components/TextEditor';
 import { ButtonRow } from './Styles';
 import { makeRequest } from '../../../../Api';
@@ -21,6 +21,7 @@ import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
 import { validateUrl } from '../../../../Utils';
 import { log } from 'util';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
 	setResources,
@@ -37,6 +38,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		descriptionError: false,
 		linkError: false,
 	});
+	const [width, isMobile] = useWidth();
 
 	const [inputState, setInputState] = useState({
 		descriptionVal: '',
@@ -117,7 +119,8 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 
 	return ReactDOM.createPortal(
 		<OuterDiv>
-			<SubmitResource ref={inside}>
+			<SubmitResource isMobile={isMobile} ref={inside}>
+				<RowDiv>
 				<TitleLinkTypeCol>
 					<TitleInputDiv>
 						<span>Title: </span>
@@ -152,6 +155,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						/>
 					</TypeDropDown>
 				</TitleLinkTypeCol>
+
 				<EditDescriptionCol error={errorState.descriptionError}>
 					<span>Description: </span>
 					<TextEditor
@@ -160,6 +164,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						setState={(e: string) => handleDescriptionChange(e)}
 					/>
 				</EditDescriptionCol>
+					</RowDiv>
 				<ButtonRow>
 					<button onClick={submitResource}>Submit</button>
 				</ButtonRow>

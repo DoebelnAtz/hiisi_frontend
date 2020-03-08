@@ -6,16 +6,24 @@ export const MobileNavContainer = styled.div`
 	min-height: 60px;
 	z-index: 42;
 	${layout.row};
-	margin-bottom: ${length.margin};
 	background-color: ${color.siteBG3};
 `;
 
-export const MobileNavItem = styled.img`
-	height: 40px;
-	margin: auto;
-	border-radius: 50% 50% 0 50%;
-	background-color: ${props => props.selected ? color.siteBG4 : color.siteBG2};
-	&:hover{
+export const MobileNavItem = styled.div`
+	
+	margin: auto 5px 0 5px;
+	padding-bottom: ${props => props.selected ? `8px` : '10px'};
+	display: flex;
+	${props => props.selected ? `border-bottom: 2px solid ${color.primary}` : ''};
+
+	width: calc(20% - 10px);
+	& img {
+		border-radius: 50% 50% 0 50%;
+		height: 40px;
+		margin: 0 auto;
+		background-color: ${props => props.selected ? color.siteBG4 : color.siteBG2};
+	}
+	& img:hover{
 		background-color: ${color.siteBG4};
 	}
 `;

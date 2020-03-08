@@ -60,7 +60,7 @@ export const ConnectedUser = styled.div`
 	& img {
 		height: 38px;
 		margin-right: -${length.margin};
-		border: 4px solid ${color.siteBG3};
+		border: 4px solid ${props => props.isMobile ? color.siteBG1 : color.siteBG3};
 		border-radius: 24px;
 	}
 `;

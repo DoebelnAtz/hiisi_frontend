@@ -80,7 +80,8 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		return () => {
 			socket && socket.disconnect();
 		};
-	}, []);
+	}, [tid]);
+
 	useEffect(() => {
 		if (socket) {
 			socket.on('connect', () => {
@@ -160,7 +161,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (connectedUsers)
 			return connectedUsers.map((user: User) => {
 				return (
-					<ConnectedUser key={user.u_id}>
+					<ConnectedUser isMobile={isMobile} key={user.u_id}>
 						<img src={user.profile_pic} />
 						<ConnectedDot
 							active={

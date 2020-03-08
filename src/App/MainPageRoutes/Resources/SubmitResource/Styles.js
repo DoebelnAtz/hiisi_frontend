@@ -23,7 +23,7 @@ export const OuterDiv = styled.div`
 export const TitleLinkTypeCol = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 30%;
+	width: 50%;
 `;
 
 export const TitleError = styled.span`
@@ -80,10 +80,8 @@ export const TypeDropDown = styled.div`
 
 export const EditDescriptionCol = styled.div`
 	margin-top: ${length.margin};
-	width: calc(70%);
+	width: calc(50%);
 	display: flex;
-
-	height: calc(100% - 60px);
 	flex-direction: column;
 	& span {
 		margin-bottom: ${length.margin};
@@ -94,8 +92,9 @@ export const EditDescriptionCol = styled.div`
 
 export const ButtonRow = styled.div`
 	${layout.row};
+	margin-top: 40px;
 	& button {
-		margin-right: auto;
+		margin-left: auto;
 		${components.button};
 	}
 `;
@@ -103,11 +102,18 @@ export const ButtonRow = styled.div`
 export const SubmitResource = styled.div`
 	position: absolute;
 	padding: ${length.margin};
-	${layout.row};
+	display: flex;
+	flex-direction: column;
+	${props => props.isMobile ? `
+		left: 5%;
+		right: 5%;
+		top: 20%;
+	` : `
 	left: 20%;
 	right: 20%;
 	top: 15%;
 	bottom: 35%;
+	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
 	border-radius: 2px;

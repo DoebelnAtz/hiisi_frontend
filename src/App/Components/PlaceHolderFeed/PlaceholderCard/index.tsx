@@ -53,7 +53,7 @@ const PlaceholderCard: React.FC = () => {
 					</CardTitle>
 					<CardInfo>
 						<CardDate>
-							<PlaceholderText height={'20px'} width={'120px'} />
+							<PlaceholderText height={'20px'} width={'100px'} />
 						</CardDate>
 						<CardAuthor>
 							<PlaceholderText height={'20px'} width={'60px'} />

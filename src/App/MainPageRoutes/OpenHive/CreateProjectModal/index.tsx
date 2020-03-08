@@ -9,7 +9,7 @@ import {
 	SubmitButton,
 	TitleAndLinkRow,
 } from './Styles';
-import { useDismiss } from '../../../../Hooks';
+import { useDismiss, useWidth } from '../../../../Hooks';
 import { Project, ProjectCardType } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { makeRequest } from '../../../../Api';
@@ -33,6 +33,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	const close = () => {
 		setShowModal(false);
 	};
+	const [width, isMobile] = useWidth();
 
 	useDismiss(inside, close);
 	const createProject = async () => {
@@ -53,7 +54,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 
 	return (
 		<OutsideDiv>
-			<InsideDiv ref={inside}>
+			<InsideDiv isMobile={isMobile}  ref={inside}>
 				<TitleAndLinkRow>
 					<label>
 						Title:

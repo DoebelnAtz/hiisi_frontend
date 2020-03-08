@@ -20,9 +20,9 @@ export const MainPageHeader = styled.div`
 export const MainPage = styled.div`
 	max-width: 1900px;
 	${layout.row};
-	padding-bottom: ${length.margin};
+	${props => !props.isMobile && `padding-bottom: ${length.margin}`};
 	width: calc(100%);
-	height: calc(100% - ${props => props.isMobile ? '50px' :'70px'} - ${length.margin} * 3);
+	height: calc(100% - ${props => props.isMobile ? '30px' :'70px'} - ${length.margin} * 3);
 	margin: 0;
 	overflow-y: hidden;
 	overflow-x: hidden;

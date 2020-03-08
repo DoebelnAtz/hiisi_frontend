@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import { useSpring, useTransition } from 'react-spring';
 import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
-import { useDismiss } from '../../../../Hooks';
+import { useDismiss, useWidth } from '../../../../Hooks';
 import {
 	ModalDiv,
 	OutsideDiv,
@@ -51,6 +51,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	const inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setPopup(false));
+	const [width, isMobile] = useWidth();
 
 	const createPost = async () => {
 		if (!!inputVal.titleVal.length && !!inputVal.contentVal.length) {
@@ -112,7 +113,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			({ item, key, props }, i) =>
 				item && (
 					<OutsideDiv key={i} style={fadeIn}>
-						<ModalDiv style={props}>
+						<ModalDiv isMobile={isMobile} style={props}>
 							<div
 								ref={inside}
 								style={{

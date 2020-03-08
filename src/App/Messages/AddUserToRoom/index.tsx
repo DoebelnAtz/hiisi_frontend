@@ -10,7 +10,7 @@ import {
 	UserResultUsername,
 } from './Styles';
 import { ChatContext } from '../../../Context/ChatContext';
-import { useRequest } from '../../../Hooks';
+import { useRequest, useWidth } from '../../../Hooks';
 import { User } from '../../../Types';
 import { ConnectedUser } from '../MessageRoom/Styles';
 import { makeRequest } from '../../../Api';
@@ -29,11 +29,13 @@ const AddUserToRoom: React.FC = () => {
 		{},
 		!!searchUserInputVal.length,
 	);
+	const [width, isMobile] = useWidth();
+
 	const renderConnectedUsers = () => {
 		if (connectedUsers)
 			return connectedUsers.map((user: User) => {
 				return (
-					<ConnectedUser key={user.u_id}>
+					<ConnectedUser isMobile={isMobile} key={user.u_id}>
 						<img src={user.profile_pic} />
 					</ConnectedUser>
 				);

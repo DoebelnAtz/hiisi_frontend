@@ -18,34 +18,42 @@ const MobileNav: React.FC = () => {
 	return (
 		<MobileNavContainer>
 			<MobileNavItem
-				src={codeIcon}
-				selected={currentNav === 'Open Hive'}
+				selected={history.location.pathname === '/openhive' || history.location.pathname.includes('/projects')}
 				onClick={() => handleNavClick('/openhive')}
-				alt={'Open Hive'}
-			/>
+			>
+				<img src={codeIcon}
+				alt={'Open Hive'}/>
+			</MobileNavItem>
 			<MobileNavItem
-				src={ForumIcon}
-				selected={currentNav === 'forum'}
+
+				selected={history.location.pathname === '/forum'}
 				onClick={() => handleNavClick('/forum')}
-				alt={'Forum'}
-			/>
+
+			>
+				<img src={ForumIcon}
+				alt={'forum'}/>
+			</MobileNavItem>
 			<MobileNavItem
-				src={treeIcon}
-				selected={currentNav === 'resources'}
+				selected={history.location.pathname === '/resources'}
 				onClick={() => handleNavClick('/resources')}
-				alt={'Resources'}
-			/>
+			>
+				<img src={treeIcon}
+				alt={'resources'}/>
+			</MobileNavItem>
 			<MobileNavItem
-				src={profileIcon}
-				selected={currentNav === 'profile'}
+				selected={history.location.pathname === '/profile'}
 				onClick={() => handleNavClick('/profile')}
-				alt={'Profile'}
-			/>
+			>
+				<img src={profileIcon}
+				alt={'Open Hive'}/>
+			</MobileNavItem>
 			<MobileNavItem
-				src={MessageIcon}
+				selected={history.location.pathname === '/messages'}
 				onClick={() => handleNavClick('/messages')}
-				alt={'Chat'}
-			/>
+			>
+				<img src={MessageIcon}
+				alt={'Messages'}/>
+			</MobileNavItem>
 		</MobileNavContainer>
 	);
 };
