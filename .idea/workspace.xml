@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Context/WidthContext.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -46,7 +38,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -89,7 +81,8 @@
       <workItem from="1583435108160" duration="7876000" />
       <workItem from="1583486742421" duration="4479000" />
       <workItem from="1583502459099" duration="5436000" />
-      <workItem from="1583519415173" duration="19107000" />
+      <workItem from="1583519415173" duration="20386000" />
+      <workItem from="1583662068960" duration="7157000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>

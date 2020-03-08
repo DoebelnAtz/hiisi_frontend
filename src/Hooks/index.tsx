@@ -15,6 +15,7 @@ import { getLocal } from '../Utils';
 import socketIOClient from 'socket.io-client';
 import { Notification } from '../Types';
 import { SocketType } from '../Types';
+import { WidthContext } from '../Context/WidthContext';
 
 export const useNav = (current: string) => {
 	const { update } = useContext(CurrentNavContext);
@@ -71,6 +72,24 @@ export const useNotifications = (room: string) => {
 	};
 
 	return [notifications, connected];
+};
+
+export const useWidth = () => {
+	const { state: width, update: setWidth } = useContext(WidthContext);
+	//const [width, setWidth] = useState(window.innerWidth);
+	const handleResize = (e: UIEvent) => {
+		let target = e.target as Window;
+		setWidth(target.innerWidth);
+	};
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	});
+	// return value for width and a boolean for convenient isMobile check
+	return [width, width <= 600];
 };
 
 export const useDismiss = (

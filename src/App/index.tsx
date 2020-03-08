@@ -21,10 +21,12 @@ import {
 } from './Style';
 import Messages from './Messages';
 import { setLocal } from '../Utils';
+import { useWidth } from '../Hooks';
+import MobileNav from './MobileNav';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);
-
+	const [width, isMobile] = useWidth();
 	return (
 		<ErrorContextProvider>
 			<CurrentNavContextProvider>
@@ -47,19 +49,28 @@ const App: React.FC = () => {
 									<ProductionStateLabel>
 										<span>Alpha</span>
 									</ProductionStateLabel>
-									<MainPageHeader>
+									<MainPageHeader
+										is={'MainPageHeader'}
+										isMobile={isMobile}
+									>
 										<Header />
 									</MainPageHeader>
-									<MainPage>
-										<SideNavCol>
-											<Nav />
-										</SideNavCol>
-										<MainView>
+									<MainPage id={'MainPage'}>
+										{!isMobile && (
+											<SideNavCol>
+												<Nav />
+											</SideNavCol>
+										)}
+										<MainView
+											id={'MainView'}
+											isMobile={isMobile}
+										>
 											<Main />
 										</MainView>
 									</MainPage>
-									<Messages />
+									{!isMobile && <Messages />}
 								</MainContainer>
+								{isMobile && <MobileNav />}
 							</Route>
 						</Switch>
 					</ChatContextProvider>

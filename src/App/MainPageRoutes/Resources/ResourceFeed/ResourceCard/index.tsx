@@ -37,6 +37,24 @@ import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
 import { formatDate } from '../../../../../Utils';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
+import { useWidth } from '../../../../../Hooks';
+import {
+	MobileArrowImage,
+	MobileCard,
+	MobileCardAuthor,
+	MobileCardButtons,
+	MobileCardContainer,
+	MobileCardContent,
+	MobileCardDate,
+	MobileCardInfo,
+	MobileCardThumbnailTitle,
+	MobileCardTitle,
+	MobileCardTitleInfo,
+	MobileCopiedSpan,
+	MobileDeleteButton,
+	MobileShareButton,
+	MobileVoteCount,
+} from '../../../../../Styles/MobileCardStyles';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -59,7 +77,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
 	const history = useHistory();
-
+	const [width, isMobile] = useWidth();
 	const voteResource = async (
 		vote: vote,
 		resourceId: number,
@@ -124,105 +142,203 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 			setCopied(false);
 		}
 	};
-	return (
-		<Card>
-			<CardVotes>
-				<ArrowImage>
-					<img
-						src={voted > 0 ? ArrowUpVoted : ArrowUp}
-						alt={'arrow up'}
-						onClick={() => handleUpClick(1, resource.r_id)}
-					/>
-				</ArrowImage>
-				<VoteCount>
-					<span>{votes}</span>
-				</VoteCount>
-				<ArrowImage>
-					<img
-						src={voted < 0 ? ArrowDownVoted : ArrowDown}
-						alt={'arrow down'}
-						onClick={() => handleDownClick(-1, resource.r_id)}
-					/>
-				</ArrowImage>
-			</CardVotes>
-			<CardContent
-				key={resource.r_id}
-				onClick={() => {
-					openResource();
-				}}
-			>
-				<ResourceRow>
-					{resource.thumbnail && (
-						<ResourceThumbnail
-							onClick={(e: React.SyntheticEvent) => {
-								e.stopPropagation();
-								window.open(resource.link);
-							}}
-							src={resource.thumbnail}
-							alt={'thumbnail'}
+	if (isMobile) {
+		return (
+			<MobileCard>
+				<MobileCardContainer>
+					<MobileCardInfo>
+						<MobileCardAuthor>{resource.username}</MobileCardAuthor>
+						<MobileCardDate>
+							{formatDate(resource.published_date)}
+						</MobileCardDate>
+					</MobileCardInfo>
+					<MobileCardContent>
+						<MobileCardThumbnailTitle>
+							{resource.thumbnail && (
+								<ResourceThumbnail
+									onClick={(e: React.SyntheticEvent) => {
+										e.stopPropagation();
+										window.open(resource.link);
+									}}
+									src={resource.thumbnail}
+									alt={'thumbnail'}
+								/>
+							)}{' '}
+							<MobileCardTitleInfo>
+								<MobileCardTitle>
+									{resource.title}
+								</MobileCardTitle>
+								<ResourceType>
+									{resource.resource_type}
+								</ResourceType>
+							</MobileCardTitleInfo>
+						</MobileCardThumbnailTitle>
+						<Tags>
+							{resource.tags &&
+								resource.tags?.map((tag, index) => (
+									<Tag
+										color={resource.colors[index]}
+										key={index}
+										onClick={(e: React.SyntheticEvent) => {
+											e.stopPropagation();
+											handleFiltering(tag);
+										}}
+									>
+										<span>{`${tag}`}</span>
+									</Tag>
+								))}
+						</Tags>
+					</MobileCardContent>
+					<MobileCardButtons>
+						<MobileArrowImage>
+							<img
+								src={voted > 0 ? ArrowUpVoted : ArrowUp}
+								alt={'arrow up'}
+								onClick={() => handleUpClick(1, resource.r_id)}
+							/>
+						</MobileArrowImage>
+						<MobileVoteCount>
+							<span>{votes}</span>
+						</MobileVoteCount>
+						<MobileArrowImage>
+							<img
+								src={voted < 0 ? ArrowDownVoted : ArrowDown}
+								alt={'arrow down'}
+								onClick={() =>
+									handleDownClick(-1, resource.r_id)
+								}
+							/>
+						</MobileArrowImage>
+						<MobileCopiedSpan copied={copied}>
+							Copied!
+						</MobileCopiedSpan>
+						<MobileShareButton>
+							<img
+								onClick={() =>
+									handleShareClick(
+										`${window.location.href}/${resource.r_id}`,
+									)
+								}
+								src={ShareImg}
+								alt={'share'}
+							/>
+						</MobileShareButton>
+						{resource.owner && (
+							<MobileDeleteButton>
+								<img
+									onClick={() => deleteResource()}
+									src={DeleteImg}
+									alt={'delete resource'}
+								/>
+							</MobileDeleteButton>
+						)}
+					</MobileCardButtons>
+				</MobileCardContainer>
+			</MobileCard>
+		);
+	} else {
+		return (
+			<Card>
+				<CardVotes>
+					<ArrowImage>
+						<img
+							src={voted > 0 ? ArrowUpVoted : ArrowUp}
+							alt={'arrow up'}
+							onClick={() => handleUpClick(1, resource.r_id)}
 						/>
-					)}
-					<ResourceTitleInfo full={!resource.thumbnail}>
-						<ResourceTitleType>
-							<ResourceTitle>{resource.title}</ResourceTitle>
-							<ResourceType>
-								{resource.resource_type}
-							</ResourceType>
-						</ResourceTitleType>
-						<CardInfo>
-							<CardDate>
-								{formatDate(resource.published_date)}
-							</CardDate>
-							<CardAuthor>{resource.username}</CardAuthor>
-							<CardEdited>
-								{resource.edited &&
-									`edited: ${formatDate(resource.edited)}`}
-							</CardEdited>
-						</CardInfo>
-					</ResourceTitleInfo>
-				</ResourceRow>
-
-				<Tags>
-					{resource.tags &&
-						resource.tags?.map((tag, index) => (
-							<Tag
-								color={resource.colors[index]}
-								key={index}
+					</ArrowImage>
+					<VoteCount>
+						<span>{votes}</span>
+					</VoteCount>
+					<ArrowImage>
+						<img
+							src={voted < 0 ? ArrowDownVoted : ArrowDown}
+							alt={'arrow down'}
+							onClick={() => handleDownClick(-1, resource.r_id)}
+						/>
+					</ArrowImage>
+				</CardVotes>
+				<CardContent
+					key={resource.r_id}
+					onClick={() => {
+						openResource();
+					}}
+				>
+					<ResourceRow>
+						{resource.thumbnail && (
+							<ResourceThumbnail
 								onClick={(e: React.SyntheticEvent) => {
 									e.stopPropagation();
-									handleFiltering(tag);
+									window.open(resource.link);
 								}}
-							>
-								<span>{`${tag}`}</span>
-							</Tag>
-						))}
-				</Tags>
-			</CardContent>
-			<CardButtons>
-				{resource.owner && (
-					<DeleteButton>
+								src={resource.thumbnail}
+								alt={'thumbnail'}
+							/>
+						)}
+						<ResourceTitleInfo full={!resource.thumbnail}>
+							<ResourceTitleType>
+								<ResourceTitle>{resource.title}</ResourceTitle>
+								<ResourceType>
+									{resource.resource_type}
+								</ResourceType>
+							</ResourceTitleType>
+							<CardInfo>
+								<CardDate>
+									{formatDate(resource.published_date)}
+								</CardDate>
+								<CardAuthor>{resource.username}</CardAuthor>
+								<CardEdited>
+									{resource.edited &&
+										`edited: ${formatDate(
+											resource.edited,
+										)}`}
+								</CardEdited>
+							</CardInfo>
+						</ResourceTitleInfo>
+					</ResourceRow>
+
+					<Tags>
+						{resource.tags &&
+							resource.tags?.map((tag, index) => (
+								<Tag
+									color={resource.colors[index]}
+									key={index}
+									onClick={(e: React.SyntheticEvent) => {
+										e.stopPropagation();
+										handleFiltering(tag);
+									}}
+								>
+									<span>{`${tag}`}</span>
+								</Tag>
+							))}
+					</Tags>
+				</CardContent>
+				<CardButtons>
+					{resource.owner && (
+						<DeleteButton>
+							<img
+								onClick={() => deleteResource()}
+								src={DeleteImg}
+								alt={'delete resource'}
+							/>
+						</DeleteButton>
+					)}
+					<ShareButton>
 						<img
-							onClick={() => deleteResource()}
-							src={DeleteImg}
-							alt={'delete resource'}
+							onClick={() =>
+								handleShareClick(
+									`${window.location.href}/${resource.r_id}`,
+								)
+							}
+							src={ShareImg}
+							alt={'share'}
 						/>
-					</DeleteButton>
-				)}
-				<ShareButton>
-					<img
-						onClick={() =>
-							handleShareClick(
-								`${window.location.href}/${resource.r_id}`,
-							)
-						}
-						src={ShareImg}
-						alt={'share'}
-					/>
-					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
-				</ShareButton>
-			</CardButtons>
-		</Card>
-	);
+						<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+					</ShareButton>
+				</CardButtons>
+			</Card>
+		);
+	}
 };
 
 export default ResourcesResourceCard;
