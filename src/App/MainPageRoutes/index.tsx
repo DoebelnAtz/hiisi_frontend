@@ -1,10 +1,6 @@
 import Feed from './Forum/index';
 import Profile from './Profile/Profile';
-import React, {
-	Fragment,
-	useContext,
-
-} from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
