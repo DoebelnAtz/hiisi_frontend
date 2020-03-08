@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useRequest } from '../../../Hooks';
+import { useRequest, useWidth } from '../../../Hooks';
 import CreatePostModal from './CreatePostModal/index';
 import { PostType } from './Types';
 import { FeedPage, FeedButtonRow, CreatePostButton } from './Styles';
@@ -24,6 +24,7 @@ const Feed = ({}) => {
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
+	const [width, isMobile] = useWidth();
 
 	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
@@ -51,7 +52,11 @@ const Feed = ({}) => {
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
 					height={'32px'}
-					width={'175px'}
+					width={
+						isMobile
+							? `min(calc(${width}px - 180px), 176px)`
+							: `176px`
+					}
 				/>
 			</FeedButtonRow>
 			<CreatePostModal

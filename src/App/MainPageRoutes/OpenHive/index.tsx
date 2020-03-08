@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useNav, useRequest } from '../../../Hooks';
+import { useNav, useRequest, useWidth } from '../../../Hooks';
 import { ProjectList, CreateProjectButton, ProjectButtonRow } from './Style';
 import ProjectFeed from './ProjectFeed';
 import { Project, ProjectCardType } from './Types';
@@ -18,6 +18,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [reverse, setReverse] = useState(
 		getLocal('projectsSortPref')?.reverse || 'false',
 	);
+	const [width, isMobile] = useWidth();
 
 	useNav('Open Hive');
 	const [projects, setProjects, isLoading] = useRequest<ProjectCardType[]>(
@@ -58,7 +59,11 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					setSelect={onSortSelect}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
-					width={'175px'}
+					width={
+						isMobile
+							? `min(calc(${width}px - 190px), 176px)`
+							: `176px`
+					}
 					height={'32px'}
 				/>
 			</ProjectButtonRow>

@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useDismiss, useRequest } from '../../../Hooks';
+import { useDismiss, useRequest, useWidth } from '../../../Hooks';
 import { getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
@@ -33,7 +33,7 @@ import MessageFeed from './MessageFeed';
 
 type MessageRoomPropsTypes = {
 	tid: number;
-	setExpandRoomList: Dispatch<SetStateAction<boolean>>;
+	setExpandRoomList?: Dispatch<SetStateAction<boolean>>;
 };
 
 const MessageRoom: React.FC<RouteComponentProps<{}> &
@@ -43,6 +43,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`messages/threads/${tid.toString()}/users`,
 		`GET`,
 	);
+	const [width, isMobile] = useWidth();
 	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [connected, setConnected] = useState<boolean>(false);
 	const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -88,9 +89,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			socket.on('joined-room', (user: User) => {
 				addUser(user);
 			});
-			socket.on('left-room', (user: User) => {
-
-			});
+			socket.on('left-room', (user: User) => {});
 
 			socket.on('chat-message', (message: MessageType) => {
 				setNewMessage(message);
@@ -113,7 +112,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			currentUser.username !== user.username &&
 			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
-
 			connectedUsers &&
 				setActiveUsers([
 					...connectedUsers.filter(
@@ -121,7 +119,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 					),
 					{ u_id: user.u_id },
 				]);
-
 		}
 	};
 
@@ -129,7 +126,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (scrollDown.current)
 			scrollDown?.current.scrollIntoView({ behavior: 'smooth' });
 	};
-
 	const appendMessage = (message: MessageType) => {
 		room && setRoom({ ...room, messages: [...room.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
@@ -187,7 +183,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				<GoBackButton
 					onClick={() => {
 						setCurrentChat(0);
-						setExpandRoomList(true);
+						setExpandRoomList && setExpandRoomList(true);
 					}}
 				>
 					Back
@@ -198,7 +194,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			</MessageNavigation>
 			<ChatRoomUsers>{renderConnectedUsers()}</ChatRoomUsers>
 			<MessageRoomName>{room?.title}</MessageRoomName>
-			<MessageFeedDiv>
+			<MessageFeedDiv isMobile={isMobile}>
 				{room && (
 					<MessageFeed messages={room?.messages} page={2} tid={tid} />
 				)}

@@ -66,102 +66,8 @@ select:-webkit-autofill:focus {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: calc(100% - 10px);
-}
-
-#main_container{
-    max-width: 1900px;
-    min-width: 568px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: var(--viewMargin);
-    padding-left: var(--viewMargin);
-    width: calc(100% - var(--viewMargin));
-    height: calc(100% - calc(70px + var(--viewMargin) * 2));
-}
-
-#main_page
-{
-    max-width: 1900px;
-    min-width: 100%;
-    padding-bottom: var(--viewMargin);
-    width: calc(100% - var(--viewMargin) * 1);
-    height: calc(100%);
-    overflow: auto;
-
-}
-
-#main_page_header {
-
-    width: calc(100%);
-}
-
-@media (max-width: 765px) {
-    #main_view {
-        width: calc(100% - 320px)!important;
-
-    }
-}
-
-#main_view {
-    width: calc(100% - 300px - var(--viewMargin));
-    background-color: var(--siteBG2);
-    margin-left: var(--viewMargin);
-    overflow: auto;
+    position: relative;
     height: 100%;
-}
-
-
-
-#header_logout{
-    font-size: 24px;
-    color: var(--navTextColor);
-    font-family: 'Share Tech', sans-serif;
-    cursor: pointer;
-    margin-top: 22px;
-    margin-right: var(--viewMargin);
-}
-
-#header_nav_title{
-    font-size: 24px;
-    color: var(--navTextColor);
-    font-family: 'Share Tech', sans-serif;
-    cursor: pointer;
-    margin-top: 22px;
-    margin-left: calc(var(--viewMargin) * 2);
-
-}
-
-#nav_col {
-    max-width: 300px;
-    height: 100%;
-    background-color: var(--siteBG2);
-}
-
-.avatar_sm {
-    height: 20px;
-}
-
-.avatar_md {
-    height: 30px;
-}
-
-.avatar_lg {
-    height: 50px;
-}
-
-.header_nav{
-    height: 70px;
-    width: 100%;
-    border-radius: var(--borderRadius);
-    background-color: var(--siteBG2);
-    margin: var(--viewMargin) 0;
-
-}
-
-.logo_section {
-    margin-top: 9px;
-    width: 300px;
 }
 
 .noselect {
@@ -172,21 +78,8 @@ select:-webkit-autofill:focus {
     user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }
-
-.row_div {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col_div {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-}
-
 body {
     overflow-x: hidden;
-
     height: 100%;
     width: 100%;
     margin: 0;

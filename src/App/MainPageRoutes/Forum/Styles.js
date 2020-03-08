@@ -9,11 +9,14 @@ export const FeedPage = styled.div`
 
 export const CreatePostButton = styled.button`
 	${components.button};
-	height: 34px;	
+	height: 34px;
+	min-width: 120px;
 	margin-right: ${length.margin};
 `;
 
 export const FeedButtonRow = styled.div`
 	${layout.row};
+	flex-wrap: nowrap;
+	overflow: visible;
 	margin: ${length.margin};
 `;

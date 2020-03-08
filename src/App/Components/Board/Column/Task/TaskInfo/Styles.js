@@ -75,7 +75,7 @@ export const TaskTitleEditable = styled.input`
 	${layout.row};
 	${components.input};
 	font-size: 26px;
-	width: 80%;
+	width: 100%;
 	padding-left: 0;
 	margin-right: auto;
 	border-color: ${color.siteBG2};

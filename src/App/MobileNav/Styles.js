@@ -3,7 +3,7 @@ import { color, length, layout } from '../../Styles/SharedStyles';
 
 export const MobileNavContainer = styled.div`
 	width: calc(100vw - ${length.margin} * 2);
-	position: sticky;
+	position: absolute;
 	bottom: 0;
 	height: 7vh;
 	z-index: 42;

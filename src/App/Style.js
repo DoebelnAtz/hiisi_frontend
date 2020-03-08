@@ -5,8 +5,8 @@ export const MainContainer = styled.div`
 	max-width: 1900px;
 	margin-right: auto;
 	margin-left: auto;
-	height: 100vh;
-	width: calc(100vw - ${length.margin} * 2);
+	height: 100%;
+	width: calc(100%- ${length.margin} * 2);
 	overflow: hidden;
 `;
 
@@ -21,9 +21,9 @@ export const MainPage = styled.div`
 	${layout.row};
 	padding-bottom: ${length.margin};
 	width: calc(100%);
-	height: calc(100vh - 60px - ${length.margin} * 4);
+	height: calc(100% - 70px - ${length.margin} * 3);
 	margin: 0;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 `;
 
@@ -46,7 +46,7 @@ export const ProductionStateLabel = styled.div`
 
 export const SideNavCol = styled.div`
 	max-width: 300px;
-	height: calc(100vh - 60px - ${length.margin} * 5);
+	height: calc(100% - ${length.margin});
 	border-radius: ${length.radius};
 	margin-right: ${length.margin};
 	background-color: ${color.siteBG1};
@@ -58,8 +58,8 @@ export const MainView = styled.div`
 	background-color: ${color.siteBG1};
 	overflow-y: auto;
 	overflow-x: hidden;
-
-	height: calc(100vh - 60px - ${length.margin} * 4);
+	margin-bottom: auto;
+	height: calc(100%);
 	transition: width 0.2s;
 	@media (max-width: 1024px) {
 		width: calc(100% - ${props => props.isMobile ? `0px` : `50px - ${length.margin} * 3`});

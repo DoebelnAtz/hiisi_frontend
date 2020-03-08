@@ -1,10 +1,6 @@
 import Feed from './Forum/index';
 import Profile from './Profile/Profile';
-import React, {
-	Fragment,
-	useContext,
-
-} from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
@@ -19,6 +15,7 @@ import { getLocal } from '../../Utils';
 import { useNotifications } from '../../Hooks';
 import ErrorMessage from '../ErrorPages/ErrorModal/index';
 import { ErrorContext } from '../../Context/ErrorContext';
+import MobileMessagePage from '../Messages/MobileMessagePage';
 
 const MainRoutes: React.FC = (prop) => {
 	const location = useLocation();
@@ -44,6 +41,11 @@ const MainRoutes: React.FC = (prop) => {
 					exact
 					path={'/profile/'}
 					render={(props) => <Profile {...props} />}
+				/>
+				<Route
+					exact
+					path={'/messages'}
+					render={() => <MobileMessagePage />}
 				/>
 				<Route exact path={'/user/:uid'}>
 					<UserPage />

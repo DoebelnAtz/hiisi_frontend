@@ -122,7 +122,7 @@ export const MobileCardButtons = styled.div`
 
 export const MobileDeleteButton = styled.div`
 	${layout.row};
-	margin: auto ${length.margin} auto ${length.margin};
+	margin: auto 0 auto 20px;
 	& img {
 		${cursor.clickable};
 		height: 24px;
@@ -137,7 +137,7 @@ export const MobileDeleteButton = styled.div`
 
 export const MobileShareButton = styled.div`
 	${layout.row};
-	margin: auto ${length.margin} auto ${length.margin};
+	margin: auto 0 auto ${length.margin};
 	& img {
 		${cursor.clickable};
 		height: 24px;

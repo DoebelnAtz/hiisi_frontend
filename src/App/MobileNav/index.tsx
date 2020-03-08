@@ -38,7 +38,7 @@ const MobileNav: React.FC = () => {
 			/>
 			<MobileNavItem
 				src={MessageIcon}
-				onClick={() => handleNavClick('/openhive')}
+				onClick={() => handleNavClick('/messages')}
 				alt={'Chat'}
 			/>
 			<MobileNavItem

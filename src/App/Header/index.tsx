@@ -34,14 +34,12 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
 			{!isMobile && (
-				<Fragment>
-					<SearchLabel>
-						<Notifications />
-						<SearchBar />
-					</SearchLabel>
-					<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
-				</Fragment>
+				<SearchLabel>
+					<Notifications />
+					<SearchBar />
+				</SearchLabel>
 			)}
+			<LogOutDiv onClick={requestLogout}>Logout</LogOutDiv>
 		</HeaderDiv>
 	);
 };

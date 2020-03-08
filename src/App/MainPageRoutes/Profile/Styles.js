@@ -50,10 +50,16 @@ export const ProfilePic = styled.img`
 	height: 120px;
 	width: 120px;
 	position: relative;
-	top: calc(100% - 80px);
+	top: 50px;
 	left: 60px;
 	border-radius: 50%;
 	border: 5px solid ${color.siteBG2};
+	@media (max-width: 768px) {
+		height: 60px;
+		width: 60px;
+		top: 35px;
+		left: 30px;
+	}
 `;
 
 export const ProfileButtonRow = styled.div`

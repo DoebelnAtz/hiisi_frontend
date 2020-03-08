@@ -45,6 +45,7 @@ export const SearchLabel = styled.label`
 
 export const NavTitleDiv = styled.div`
 	font-size: 24px;
+	margin-right: auto;
 	color: ${color.primary};
 	font-family: 'Share Tech', sans-serif;
 	line-height: 70px;

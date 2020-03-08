@@ -55,7 +55,10 @@ const App: React.FC = () => {
 									>
 										<Header />
 									</MainPageHeader>
-									<MainPage id={'MainPage'}>
+									<MainPage
+										isMobile={isMobile}
+										id={'MainPage'}
+									>
 										{!isMobile && (
 											<SideNavCol>
 												<Nav />

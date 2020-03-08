@@ -28,7 +28,11 @@ export const ChatRoomUsers = styled.div`
 	margin: 0 ${length.margin} -${length.margin} ${length.margin};
 `;
 
-export const MessageRoomDiv = styled.div``;
+export const MessageRoomDiv = styled.div`
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+`;
 
 export const MessageRoomName = styled.span`
 	${font.text};
@@ -39,7 +43,16 @@ export const MessageRoomName = styled.span`
 
 export const MessageFeedDiv = styled.div`
 	background-color: ${color.siteBG2};
-	height: 30vh;
+	height: 80%;
+	${props => !props.isMobile && `
+		max-height: 30vh;
+	`};
+	width: calc(100% - ${length.margin} * 2);
+	min-height: 30vh;
+	margin: 0 auto auto auto;
+	padding-bottom: ${length.margin};
+	width: calc(100% - ${length.margin} * 2);
+	border-radius: ${length.radius};
 	overflow-y: auto;
 `;
 
