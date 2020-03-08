@@ -87,7 +87,7 @@ export const validateUrl = (url) => {
 
 export const calculateTimeSince = (isoString) => {
 	let then = new Date(isoString);
-	var seconds = Math.floor((new Date() - then) / 1000) - 3600 * 2; // remove two hours for timezone...
+	var seconds = Math.floor((new Date() - then) / 1000); // remove two hours for timezone...
 
 	var interval = Math.floor(seconds / 31536000);
 

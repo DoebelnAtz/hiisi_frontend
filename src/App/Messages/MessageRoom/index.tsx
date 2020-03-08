@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useDismiss, useRequest } from '../../../Hooks';
+import { useDismiss, useRequest, useWidth } from '../../../Hooks';
 import { getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
@@ -33,7 +33,7 @@ import MessageFeed from './MessageFeed';
 
 type MessageRoomPropsTypes = {
 	tid: number;
-	setExpandRoomList: Dispatch<SetStateAction<boolean>>;
+	setExpandRoomList?: Dispatch<SetStateAction<boolean>>;
 };
 
 const MessageRoom: React.FC<RouteComponentProps<{}> &
@@ -43,6 +43,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`messages/threads/${tid.toString()}/users`,
 		`GET`,
 	);
+	const [width, isMobile] = useWidth();
 	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [connected, setConnected] = useState<boolean>(false);
 	const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -65,7 +66,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	useEffect(() => {
 		let user = getLocal('token');
-		let socket = socketIOClient('http://localhost:5010', {
+		let socket = socketIOClient('https://hivemind-42.com', {
 			transportOptions: {
 				polling: {
 					extraHeaders: {
@@ -88,9 +89,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			socket.on('joined-room', (user: User) => {
 				addUser(user);
 			});
-			socket.on('left-room', (user: User) => {
-
-			});
+			socket.on('left-room', (user: User) => {});
 
 			socket.on('chat-message', (message: MessageType) => {
 				setNewMessage(message);
@@ -105,15 +104,15 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			appendMessage(newMessage);
 		}
 	}, [newMessage]);
-
+	console.log(getLocal('token')?.user);
 	const addUser = (user: User) => {
 		let currentUser = getLocal('token')?.user;
 		if (
+			currentUser &&
 			activeUsers &&
-			currentUser.username !== user.username &&
+			currentUser?.username !== user?.username &&
 			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
-
 			connectedUsers &&
 				setActiveUsers([
 					...connectedUsers.filter(
@@ -121,7 +120,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 					),
 					{ u_id: user.u_id },
 				]);
-
 		}
 	};
 
@@ -129,7 +127,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (scrollDown.current)
 			scrollDown?.current.scrollIntoView({ behavior: 'smooth' });
 	};
-
 	const appendMessage = (message: MessageType) => {
 		room && setRoom({ ...room, messages: [...room.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
@@ -140,7 +137,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (inputVal.length && socket) {
 			socket.emit('send-message', {
 				message: inputVal,
-				username: getLocal('currentUser').username,
+				username: getLocal('token')?.user?.username,
 				time_sent: new Date().toISOString(),
 				t_id: tid,
 				activeUsers: activeUsers || [],
@@ -172,8 +169,8 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 									activeUsers.find(
 										(usr) => usr.u_id === user.u_id,
 									)) ||
-								user.username ===
-									getLocal('token').user.username
+								user?.username ===
+									getLocal('token')?.user?.username
 							}
 						/>
 					</ConnectedUser>
@@ -187,7 +184,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				<GoBackButton
 					onClick={() => {
 						setCurrentChat(0);
-						setExpandRoomList(true);
+						setExpandRoomList && setExpandRoomList(true);
 					}}
 				>
 					Back
@@ -198,7 +195,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			</MessageNavigation>
 			<ChatRoomUsers>{renderConnectedUsers()}</ChatRoomUsers>
 			<MessageRoomName>{room?.title}</MessageRoomName>
-			<MessageFeedDiv>
+			<MessageFeedDiv isMobile={isMobile}>
 				{room && (
 					<MessageFeed messages={room?.messages} page={2} tid={tid} />
 				)}

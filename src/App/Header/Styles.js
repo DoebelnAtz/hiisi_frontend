@@ -38,8 +38,14 @@ export const SiteTitle = styled.span`
 	}
 `;
 
+export const SearchLabel = styled.label`
+	margin-left: auto;
+	${layout.row};
+`;
+
 export const NavTitleDiv = styled.div`
 	font-size: 24px;
+	margin-right: auto;
 	color: ${color.primary};
 	font-family: 'Share Tech', sans-serif;
 	line-height: 70px;

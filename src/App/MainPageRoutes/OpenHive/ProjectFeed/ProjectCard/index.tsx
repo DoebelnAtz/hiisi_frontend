@@ -25,6 +25,30 @@ import {
 	CopiedSpan,
 } from '../../../../../Styles/CardStyles';
 import { makeRequest } from '../../../../../Api';
+import { useWidth } from '../../../../../Hooks';
+import {
+	MobileArrowImage,
+	MobileCard,
+	MobileCardAuthor,
+	MobileCardButtons,
+	MobileCardContainer,
+	MobileCardContent,
+	MobileCardDate,
+	MobileCardInfo,
+	MobileCardThumbnail,
+	MobileCardThumbnailTitle,
+	MobileCardTitle,
+	MobileCardTitleInfo,
+	MobileCopiedSpan,
+	MobileDeleteButton,
+	MobileShareButton,
+	MobileVoteCount,
+} from '../../../../../Styles/MobileCardStyles';
+import {
+	ResourceType,
+	Tag,
+	Tags,
+} from '../../../Resources/ResourceFeed/ResourceCard/Styles';
 
 type ProjectCardProps = {
 	project: ProjectCardType;
@@ -36,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 	const [voted, setVoted] = useState<vote>(project.vote ? project.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
-
+	const [width, isMobile] = useWidth();
 	const voteProject = async (vote: vote, projectId: number, diff: number) => {
 		if (!disabled) {
 			// prevent possible bugs caused by spamming
@@ -90,7 +114,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			setCopied(false);
 		}
 	};
-
 	return (
 		<Card>
 			<CardVotes>

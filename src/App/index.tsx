@@ -21,10 +21,12 @@ import {
 } from './Style';
 import Messages from './Messages';
 import { setLocal } from '../Utils';
+import { useWidth } from '../Hooks';
+import MobileNav from './MobileNav';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);
-
+	const [width, isMobile] = useWidth();
 	return (
 		<ErrorContextProvider>
 			<CurrentNavContextProvider>
@@ -43,22 +45,35 @@ const App: React.FC = () => {
 								component={Redirect}
 							/>
 							<Route path={'/'}>
-								<MainContainer>
+								<MainContainer isMobile={isMobile}>
 									<ProductionStateLabel>
 										<span>Alpha</span>
 									</ProductionStateLabel>
-									<MainPageHeader>
-										<Header />
-									</MainPageHeader>
-									<MainPage>
-										<SideNavCol>
-											<Nav />
-										</SideNavCol>
-										<MainView>
+									{(isMobile && <MobileNav />) || (
+										<MainPageHeader
+											is={'MainPageHeader'}
+											isMobile={isMobile}
+										>
+											<Header />
+										</MainPageHeader>
+									)}
+									<MainPage
+										isMobile={isMobile}
+										id={'MainPage'}
+									>
+										{!isMobile && (
+											<SideNavCol>
+												<Nav />
+											</SideNavCol>
+										)}
+										<MainView
+											id={'MainView'}
+											isMobile={isMobile}
+										>
 											<Main />
 										</MainView>
 									</MainPage>
-									<Messages />
+									{!isMobile && <Messages />}
 								</MainContainer>
 							</Route>
 						</Switch>

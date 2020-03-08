@@ -6,7 +6,6 @@ import {
 	Collaborator,
 	ProjectCollaborators,
 	OptionRow,
-	AddCollaboratorInput,
 	UserResult,
 	UserResultList,
 	DeleteProjectButton,

@@ -9,21 +9,19 @@ export const ProfilePageDiv = styled.div`
 
 export const ProfileHead = styled.div`
 	${layout.col};
-	height: 30%;
 	border-radius: ${length.radius};
 	margin: ${length.margin};
 `;
 
 export const ProfileStats = styled.div`
 	background-color: ${color.siteBG2};
-	height: calc(40% - ${length.margin} * 2);
+	height: min(10vh, 100px);
 	padding: ${length.margin};
-	overflow-y: auto;
 `;
 
 export const ProfileInfo = styled.div`
 	position: relative;
-	top: 50px;
+	top: min(4vh, 40px);
 	& span {
 		${layout.row};
 	}
@@ -44,17 +42,24 @@ export const ProfileBackground = styled.div`
 	border-radius: ${length.radius} ${length.radius} 0 0;
 	background-position: right;
 	width: calc(100%);
-	height: 60%;	
+	height: min(15vh, 18
+	0px);	
 `;
 
 export const ProfilePic = styled.img`
 	height: 120px;
 	width: 120px;
 	position: relative;
-	top: calc(100% - 80px);
+	top: 50px;
 	left: 60px;
 	border-radius: 50%;
 	border: 5px solid ${color.siteBG2};
+	@media (max-width: 768px) {
+		height: 60px;
+		width: 60px;
+		top: 35px;
+		left: 30px;
+	}
 `;
 
 export const ProfileButtonRow = styled.div`

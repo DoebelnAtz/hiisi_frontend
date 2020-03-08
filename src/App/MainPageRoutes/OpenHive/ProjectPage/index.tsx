@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react';
-import { useNav, useRequest } from '../../../../Hooks';
+import { useNav, useRequest, useWidth } from '../../../../Hooks';
 import { withRouter } from 'react-router-dom';
 
 import Board from '../../../Components/Board/index';
@@ -36,8 +36,11 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	history,
 }) => {
 	const [pid, setPid] = useState(match.params.pid);
+	const [width, isMobile] = useWidth();
 	const [dashState, setDashState] = useState(
 		queryString.parse(history.location.search)?.comment
+			? 'comments'
+			: isMobile
 			? 'comments'
 			: 'board',
 	);
@@ -55,7 +58,6 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	}, [match.params.pid]);
 
 	const renderDash = () => {
-
 		if (project)
 			switch (dashState) {
 				case 'board':
@@ -126,12 +128,18 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 
 				{project && (
 					<GitHubLink
-						onClick={() => window.location.replace(project?.link)}
+						onClick={() => window.open(validateUrl(project?.link))}
 					>
 						<GitIconDiv>
 							<img src={giticon} alt={'github'} />
 						</GitIconDiv>
-						<a href={validateUrl(project?.link)}>Github</a>
+						<span
+							onClick={() =>
+								window.open(validateUrl(project?.link))
+							}
+						>
+							Github
+						</span>
 					</GitHubLink>
 				)}
 			</ProjectInfo>
@@ -155,12 +163,14 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 			)}
 			<ProjectDashBoard>
 				<ProjectDashboardNav>
-					<ProjectDashBoardNavItem
-						focus={dashState.toLowerCase() === 'board'}
-						onClick={() => setDashState('board')}
-					>
-						<span>Board</span>
-					</ProjectDashBoardNavItem>
+					{!isMobile && (
+						<ProjectDashBoardNavItem
+							focus={dashState.toLowerCase() === 'board'}
+							onClick={() => setDashState('board')}
+						>
+							<span>Board</span>
+						</ProjectDashBoardNavItem>
+					)}
 					<ProjectDashBoardNavItem
 						focus={dashState.toLowerCase() === 'comments'}
 						onClick={() => setDashState('comments')}

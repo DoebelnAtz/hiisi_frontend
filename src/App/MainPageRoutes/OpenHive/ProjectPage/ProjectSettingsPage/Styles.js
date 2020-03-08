@@ -22,18 +22,8 @@ export const ProjectCollaborators = styled.div`
 	}
 `;
 
-export const AddCollaboratorInput = styled.label`
-	${layout.row};
-	& input {
-		margin-left: auto;
-		${components.input};
-	}
-`;
-
 export const Collaborator = styled.div`
-	&:hover {
-		${cursor.clickable};
-	}
+	size: 22px;
 `;
 
 export const UserResultList = styled.div`

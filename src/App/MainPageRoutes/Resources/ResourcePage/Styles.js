@@ -11,31 +11,29 @@ import {
 } from '../../../../Styles/SharedStyles';
 
 export const ResourceHeader = styled.div`
-	${layout.col};
+	${layout.row};
 	margin-top: ${length.margin};
 `;
 
 export const ResourceThumbnail = styled.div`
 	width: 71px;
 	height: 71px;
+	margin-left: ${length.margin};
+
 	${cursor.clickable};
-	${layout.col};
-	position: absolute;
-	margin: 0 ${length.margin};
 	border-radius: ${length.radius};
 	background-image: url(${(props) => props.src});
 	background-size: 74px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: ${color.siteBG1};
-`
+`;
 
 export const ResourceTitle = styled.div`
-	${layout.row};
 	${font.title};
-	padding-right: ${length.margin};
-	font-size: 28px;
-	margin: 0 0 0 ${props => props.full ? length.margin : '94px'};
+	font-size: 24px;
+	margin-left: ${length.margin};
+	width: calc(100% - ${props => props.full ? '0px' : '91px'});
 	color: ${color.primary};
 	& :hover {
 		text-decoration: none;
@@ -43,14 +41,11 @@ export const ResourceTitle = styled.div`
 	& a {
 		${font.link};
 	}
-	& button {
-		margin-left: auto;
-	}
 `;
 
 export const ResourceTags = styled.div`
 	${layout.row};
-	margin: 4px 4px 0 ${props => props.full ? length.margin : '94px'};
+	margin: ${length.margin} ${length.margin} 0 ${length.margin};
 `;
 
 export const ResourceContent = styled.div`
@@ -87,7 +82,7 @@ export const ResourceTag = styled.div`
 	& span {
 		${font.text};
 		margin-left: 4px;
-		line-height: 22px;
+		line-height: 26px;
 	}
 `;
 
@@ -138,6 +133,6 @@ export const TagSearchResults = styled.div`
 `;
 
 export const ResourceComments = styled.div`
-	margin: ${length.margin};
+	margin: 0 ${length.margin} 0 ${length.margin} ;
 	width: calc(100% - ${length.margin} * 2);
 `;

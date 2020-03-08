@@ -10,7 +10,7 @@ import {
 } from '../../../Styles/SharedStyles';
 
 export const CreateThreadRow = styled.div`
-	width: calc(100% - ${length.margin} * 2 -2px);
+	width: calc(100% - ${length.margin} * 2);
 	margin: ${length.margin};
 
 	${layout.row};

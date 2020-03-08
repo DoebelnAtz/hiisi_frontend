@@ -34,6 +34,11 @@ export const BackToProjectsButton = styled.div`
 
 export const ProjectInfo = styled.div`
 	${layout.row};
+	position: relative;
+	right: ${length.margin};
+	bottom: ${length.margin};
+	background-color: ${color.siteBG2};
+	padding: ${length.margin};
 	width: 100%;
 `;
 
@@ -46,11 +51,9 @@ export const ProjectTitle = styled.div`
 	${layout.row};
 	z-index: 1;
 	width: 100%;
-	position: relative;
 	& div {
 		${layout.row};
-		transform: translateY(-34px);
-		position: absolute;
+		margin-top: ${length.margin};
 		width: 100%;
 	}
 	& div span {
@@ -76,9 +79,10 @@ export const GitHubLink = styled.div`
 	background-color: #ffffff;
 	border: 4px solid black;
 	border-radius: 7px;
+	height: 28px;
 	${cursor.clickable};
 	padding-right: 4px;
-	& a {
+	& span {
 		margin: auto 0;
 		font-size: 18px;
 		text-decoration: none;

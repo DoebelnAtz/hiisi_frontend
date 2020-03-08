@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/TaskInfo/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/MessageFeed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/MessageFeed/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -32,7 +39,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -42,6 +49,7 @@
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
@@ -75,7 +83,8 @@
       <workItem from="1583435108160" duration="7876000" />
       <workItem from="1583486742421" duration="4479000" />
       <workItem from="1583502459099" duration="5436000" />
-      <workItem from="1583519415173" duration="18873000" />
+      <workItem from="1583519415173" duration="20386000" />
+      <workItem from="1583662068960" duration="21849000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -112,21 +121,35 @@
       <option name="project" value="LOCAL" />
       <updated>1583539506768</updated>
     </task>
-    <task id="LOCAL-00006" summary="profile fix">
-      <created>1583326166979</created>
+    <task id="LOCAL-00006" summary="Profile page mvp update">
+      <created>1583583835569</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1583326166979</updated>
+      <updated>1583583835569</updated>
     </task>
-    <task id="LOCAL-00007" summary="profile fix">
-      <created>1583333621854</created>
+    <task id="LOCAL-00007" summary="added mobile navbar and mobile resource cards">
+      <created>1583670037815</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1583333621854</updated>
+      <updated>1583670037815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00008" summary="profile feed mobile improvements, modal mobile improvements">
+      <created>1583674715485</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583674715485</updated>
+    </task>
+    <task id="LOCAL-00009" summary="css mobile bugfixes, mobile chat page">
+      <created>1583681398403</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583681398403</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,13 +167,21 @@
     <MESSAGE value="UX fixes here and there, added filtering option to profile feed" />
     <MESSAGE value="added save button to modal" />
     <MESSAGE value="ui fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui fixes" />
+    <MESSAGE value="Profile page mvp update" />
+    <MESSAGE value="added mobile navbar and mobile resource cards" />
+    <MESSAGE value="profile feed mobile improvements, modal mobile improvements" />
+    <MESSAGE value="css mobile bugfixes, mobile chat page" />
+    <option name="LAST_COMMIT_MESSAGE" value="css mobile bugfixes, mobile chat page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583539506733">
+    <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583539506733" />
+    <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1583681398313">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583681398313" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -171,9 +202,13 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583581913678" />
-    <state x="4376" y="402" width="791" height="590" key="find.popup" timestamp="1583528953966">
+    <state x="4376" y="402" width="791" height="590" key="find.popup" timestamp="1583683114385">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583528953966" />
+    <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583683114385" />
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1583671221654">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583671221654" />
   </component>
 </project>

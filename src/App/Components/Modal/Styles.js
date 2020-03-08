@@ -10,6 +10,11 @@ export const InsideDiv = styled.div`
 	${modal.inside};
 	border-radius: 8px;
 	padding: 0;
+	${props => props.isMobile && `
+		top: 5%;
+		left: 5%;
+		right: 5%;
+	`};
 	border-color: ${color.siteBG3};
 `;
 
@@ -34,7 +39,7 @@ export const CloseButton = styled.span`
 `;
 
 export const ModalContent = styled.div`
-	height: calc(100% - 40px);
+	height: calc(100%);
 	border-radius: ${length.radius};
 	padding: ${length.margin};
 `;

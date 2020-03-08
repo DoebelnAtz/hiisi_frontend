@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useDismiss, useRequest } from '../../../../Hooks';
+import { useDismiss, useRequest, useWidth } from '../../../../Hooks';
 
 import {
 	ResourceComments,
@@ -23,6 +23,7 @@ import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import SaveButton from '../../../Components/Buttons/SaveButton/index';
 import Modal from '../../../Components/Modal';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	match,
@@ -35,9 +36,9 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	);
 	const [description, setDescription] = useState(resource?.description);
 	const [tagSearch, setTagSearch] = useState('');
-
+	const [width, isMobile] = useWidth();
 	const [results, setResults, isLoadingResults] = useRequest(
-		`resources/tags?q=${tagSearch}&limit=10`,
+		`resources/tags?q=${tagSearch}&limit=${isMobile ? '7' : '9'}`,
 		'get',
 	);
 
@@ -135,6 +136,8 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						>{`${resource?.title}`}</a>
 					)}
 				</ResourceTitle>
+			</ResourceHeader>
+			<RowDiv>
 				<ResourceTags full={!resource?.thumbnail}>
 					{!isLoading &&
 						!!resource?.tags.length &&
@@ -162,7 +165,8 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 							);
 						})}
 				</ResourceTags>
-			</ResourceHeader>
+			</RowDiv>
+
 			<ResourceContent>
 				<ResourceDescription
 					full={

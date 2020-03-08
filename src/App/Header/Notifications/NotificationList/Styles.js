@@ -41,6 +41,7 @@ export const NotificationItem = styled.div`
 	${font.text};
 	padding: 8px;
 	z-index: 12;
+	font-size: 14px;
 	${cursor.clickable};
 	background-color: ${color.siteBG2};
 	margin: 0 5px ${length.margin} 5px;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRequest } from '../../../Hooks';
+import { useRequest, useWidth } from '../../../Hooks';
 import { MixedFeedItem, Profile } from './Types';
 import { getLocal, setLocal } from '../../../Utils';
 import MixedFeed from './MixedFeed';
@@ -33,6 +33,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		`users/all?page=1&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
+	const [width, isMobile] = useWidth();
 
 	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
@@ -72,8 +73,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={'175px'}
-					height={'34px'}
+					width={isMobile ? `calc(${width}px / 2 - 30px)` : `176px`}
+					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					setSelect={onSortSelect}
@@ -83,9 +84,9 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 					state={filter}
 					setSelect={onFilterSelect}
 					optionList={['resources', 'projects', 'posts']}
-					width={'158px'}
+					width={isMobile ? `calc(${width}px / 2 - 30px)` : `160px`}
 					text={`Filter: `}
-					height={'34px'}
+					height={'32px'}
 				/>
 			</ProfileButtonRow>
 			{feed && (

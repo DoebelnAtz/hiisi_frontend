@@ -8,6 +8,7 @@ import {
 	CloseButton,
 } from './Styles';
 import SaveButton from '../Buttons/SaveButton';
+import { useWidth } from '../../../Hooks';
 
 type ModalProps = {
 	inside: RefObject<HTMLDivElement>;
@@ -23,9 +24,10 @@ const Modal: React.FC<ModalProps> = ({
 	inside,
 	close,
 }) => {
+	const [width, isMobile] = useWidth();
 	return (
 		<OutsideDiv>
-			<InsideDiv ref={inside}>
+			<InsideDiv isMobile={isMobile} ref={inside}>
 				<ModalButtonsRow>
 					{saveCondition && (
 						<SaveButton onClick={save}>Save</SaveButton>
