@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
 	margin-right: auto;
 	margin-left: auto;
 	height: 100%;
+	padding: 0 ${props => !props.isMobile ? length.margin : '0'};
 	width: calc(100%- ${length.margin} * 2);
 	overflow: hidden;
 `;
@@ -21,7 +22,7 @@ export const MainPage = styled.div`
 	${layout.row};
 	padding-bottom: ${length.margin};
 	width: calc(100%);
-	height: calc(100% - 70px - ${length.margin} * 3);
+	height: calc(100% - ${props => props.isMobile ? '50px' :'70px'} - ${length.margin} * 3);
 	margin: 0;
 	overflow-y: hidden;
 	overflow-x: hidden;
@@ -63,7 +64,5 @@ export const MainView = styled.div`
 	transition: width 0.2s;
 	@media (max-width: 1024px) {
 		width: calc(100% - ${props => props.isMobile ? `0px` : `50px - ${length.margin} * 3`});
-		height: calc(100% - ${props => props.isMobile ? `calc(7vh)` : `0px`});
-
 	}
 `;

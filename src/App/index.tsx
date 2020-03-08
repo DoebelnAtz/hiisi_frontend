@@ -45,16 +45,18 @@ const App: React.FC = () => {
 								component={Redirect}
 							/>
 							<Route path={'/'}>
-								<MainContainer>
+								<MainContainer isMobile={isMobile}>
 									<ProductionStateLabel>
 										<span>Alpha</span>
 									</ProductionStateLabel>
-									<MainPageHeader
-										is={'MainPageHeader'}
-										isMobile={isMobile}
-									>
-										<Header />
-									</MainPageHeader>
+									{(isMobile && <MobileNav />) || (
+										<MainPageHeader
+											is={'MainPageHeader'}
+											isMobile={isMobile}
+										>
+											<Header />
+										</MainPageHeader>
+									)}
 									<MainPage
 										isMobile={isMobile}
 										id={'MainPage'}
@@ -73,7 +75,6 @@ const App: React.FC = () => {
 									</MainPage>
 									{!isMobile && <Messages />}
 								</MainContainer>
-								{isMobile && <MobileNav />}
 							</Route>
 						</Switch>
 					</ChatContextProvider>

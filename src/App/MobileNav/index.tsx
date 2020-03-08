@@ -41,11 +41,6 @@ const MobileNav: React.FC = () => {
 				onClick={() => handleNavClick('/messages')}
 				alt={'Chat'}
 			/>
-			<MobileNavItem
-				src={SearchIcon}
-				onClick={() => handleNavClick('/openhive')}
-				alt={'Search'}
-			/>
 		</MobileNavContainer>
 	);
 };

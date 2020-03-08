@@ -22,7 +22,7 @@ type MessageFeedProps = {
 
 const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 	const [showNext, setShowNext] = useState(false);
-	const [nextRoom, , ] = useRequest<RoomType>(
+	const [nextRoom, ,] = useRequest<RoomType>(
 		`messages/threads/${tid.toString()}?page=${page}`,
 		'GET',
 		{},
@@ -36,8 +36,7 @@ const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 					<Message
 						key={message.m_id}
 						sender={
-							message.username ===
-							getLocal('currentUser').username
+							message.username === getLocal('token').user.username
 						}
 					>
 						<MessageInfo>

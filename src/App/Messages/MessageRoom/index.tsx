@@ -104,12 +104,13 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			appendMessage(newMessage);
 		}
 	}, [newMessage]);
-
+	console.log(getLocal('token')?.user);
 	const addUser = (user: User) => {
 		let currentUser = getLocal('token')?.user;
 		if (
+			currentUser &&
 			activeUsers &&
-			currentUser.username !== user.username &&
+			currentUser?.username !== user?.username &&
 			!activeUsers.find((usr) => usr.u_id === user.u_id)
 		) {
 			connectedUsers &&
@@ -136,7 +137,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (inputVal.length && socket) {
 			socket.emit('send-message', {
 				message: inputVal,
-				username: getLocal('currentUser').username,
+				username: getLocal('token')?.user?.username,
 				time_sent: new Date().toISOString(),
 				t_id: tid,
 				activeUsers: activeUsers || [],
@@ -168,8 +169,8 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 									activeUsers.find(
 										(usr) => usr.u_id === user.u_id,
 									)) ||
-								user.username ===
-									getLocal('token').user.username
+								user?.username ===
+									getLocal('token')?.user?.username
 							}
 						/>
 					</ConnectedUser>
