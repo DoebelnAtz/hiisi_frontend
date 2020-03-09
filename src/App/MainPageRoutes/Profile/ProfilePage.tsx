@@ -73,7 +73,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={isMobile ? `calc(${width}px / 2 - 20px)` : `176px`}
+					width={isMobile ? `calc(${width}px / 2 - 20px)` : `156px`}
 					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}

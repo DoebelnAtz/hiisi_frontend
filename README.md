@@ -1,3 +1,27 @@
+<h2>Hivemind</h2>
+
+<p>
+    Hivemind is a website for Hive students where they can:
+</p>
+<ul>
+    <li>Share and find resources for learning.</li>
+    <li>Manage and share their projects</li>
+    <li>Engage in general discussion in a forum exclusive for Hive students</li>
+</ul>
+
+
+<p>
+    I created this site because i noticed there were a lot of Hive students with personal lists of good
+    resources for learning programming. But there was no convenient way to effectively share theese resources with their peers
+</p>
+
+<p>
+    I also wanted to create a place where students could list and manage the projects they are currently working on.
+</p>
+<p>
+    If you would like to contribute to this project, please contact me at: aadlercr@student.hive.fi
+</p>
+
 <h3>Demo Login:</h2>
 
     Currently not available
@@ -53,29 +77,6 @@ Example:
     |
     |-- index.tsx
     |-- Styles.js
-    
- 
-<h3>Resources:</h3>
-
-Arrow functions explained:
-
-https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
-
-What is a rest API?:
-
-https://www.youtube.com/watch?v=7YcW25PHnAA&t=307s
-
-react-spring:
-
-https://www.react-spring.io/docs/hooks/
-
-React good practices:
-
-https://www.youtube.com/watch?v=BncMF2aTL0w
-
-Lodash docs:
-
-https://lodash.com/docs/4.17.15
 
 
 

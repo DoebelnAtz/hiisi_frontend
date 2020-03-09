@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { cursor, layout, length } from '../../../../Styles/SharedStyles';
 
 export const MoreButton = styled.div`
-	${layout.row}
+	${layout.row};
+	width: 100%;
 	margin-bottom: ${length.margin};
 	& img {
 		${cursor.clickable};
