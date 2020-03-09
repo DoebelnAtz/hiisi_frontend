@@ -11,6 +11,7 @@ import {
 export const DropDown = styled.div`
 	position: relative;
 	${font.text};
+	font-size: 14px;
 	margin-right: ${length.margin};
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
@@ -23,6 +24,7 @@ export const DropDown = styled.div`
 export const CurrentOption = styled.div`
 	padding: 0 ${length.margin};
 	${font.text};
+	font-size: 14px;
 	border: 1px solid ${color.primary};
 	border-radius: 4px 4px ${(props) => (props.expanded ? '0 0' : '4px 4px')};
 	border-bottom: ${(props) => (props.expanded ? 'none' : '')};

@@ -113,16 +113,8 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			({ item, key, props }, i) =>
 				item && (
 					<OutsideDiv key={i} style={fadeIn}>
-						<ModalDiv isMobile={isMobile} style={props}>
-							<div
-								ref={inside}
-								style={{
-									width: '100%',
-									height: '100%',
-									display: 'inherit',
-									flexDirection: 'inherit',
-								}}
-							>
+						<ModalDiv ref={inside} isMobile={isMobile} style={props}>
+
 								<TitleText error={errors.titleError}>
 									Title
 								</TitleText>
@@ -163,7 +155,6 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 										Submit Post
 									</SubmitButton>
 								</ButtonRow>
-							</div>
 						</ModalDiv>
 					</OutsideDiv>
 				),

@@ -34,11 +34,13 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 	);
 
 	const createThread = async () => {
-		let resp = await makeRequest('messages/threads/create_thread', 'post', {
-			threadName: inputVal,
-		});
-		threads && setThreads([...threads, resp.data]);
-		setInputVal('');
+		if (!!inputVal.length) {
+			let resp = await makeRequest('messages/threads/create_thread', 'post', {
+				threadName: inputVal,
+			});
+			threads && setThreads([...threads, resp.data]);
+			setInputVal('');
+		}
 	};
 
 	const handleChatClick = (thread: ThreadType) => {

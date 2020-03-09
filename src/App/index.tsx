@@ -23,6 +23,7 @@ import Messages from './Messages';
 import { setLocal } from '../Utils';
 import { useWidth } from '../Hooks';
 import MobileNav from './MobileNav';
+import Signup from './Auth/Signup/index';
 
 const App: React.FC = () => {
 	setLocal('darkmode', true);
@@ -33,6 +34,11 @@ const App: React.FC = () => {
 				<NotificationContextProvider>
 					<ChatContextProvider>
 						<Switch>
+							<Route
+								exact
+								path={'/signup/'}
+								component={Signup}
+							/>
 							<Route
 								exact
 								path={'/505/'}

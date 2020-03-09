@@ -54,7 +54,7 @@ export const font = {
 	`,
 	text: css`
 		color: ${colorAdjust.darken('#ffffff', 0.15)};
-		font-size: 16px;
+		font-size: 14px;
 		letter-spacing: 1px;
 	`,
 	link: css`
@@ -180,7 +180,7 @@ export const components = {
 		border: 1px solid ${color.primary};
 		border-radius: ${length.radius};
 		transition: background-color 0.1s;
-		font-size: 16px;
+		font-size: 14px;
 		&:focus {
 			outline: none;
 		}

@@ -15,6 +15,7 @@ export const SubmitResourceButton = styled.button`
 	${components.button};
 	width: fit-content;
 	height: 34px;
+	line-height: 28px;
 	margin-right: ${length.margin};
 	margin-bottom: ${length.margin};
 `;

@@ -10,6 +10,7 @@ export const FeedPage = styled.div`
 export const CreatePostButton = styled.button`
 	${components.button};
 	height: 34px;
+	line-height: 28px;
 	min-width: 120px;
 	margin-right: ${length.margin};
 `;

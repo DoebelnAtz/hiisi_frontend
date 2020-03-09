@@ -4,7 +4,7 @@ import {
 	color,
 	colorAdjust,
 	components,
-	cursor,
+	cursor, font,
 	layout,
 	length,
 } from '../../../Styles/SharedStyles';
@@ -38,12 +38,12 @@ export const ThreadItem = styled.div`
 	border-radius: ${length.radius};
 	${cursor.clickable};
 	height: 26px;
+	${font.text};
 	transition: background-color 0.1s;
 	&:hover {
 		background-color: ${color.siteBG1};
 	}
 	& span {
 		line-height: 26px;
-		color: ${color.primary};
 	}
 `;

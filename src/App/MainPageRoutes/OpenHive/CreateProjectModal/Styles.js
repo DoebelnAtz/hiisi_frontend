@@ -23,7 +23,6 @@ export const InsideDiv = styled.div`
 	left: 20%;
 	right: 20%;
 	top: 15%;
-	bottom: 35%;
 	`};
 	z-index: 5;
 `;

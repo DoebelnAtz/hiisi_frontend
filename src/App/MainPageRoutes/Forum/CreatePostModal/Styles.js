@@ -11,6 +11,7 @@ import {
 export const OutsideDiv = styled(animated.div)`
 	position: fixed;
 	width: 100%;
+	
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -32,7 +33,7 @@ export const ModalDiv = styled(animated.div)`
 	left: 20%;
 	right: 20%;
 	top: 15%;
-	bottom: 35%;
+	min-height: 400px;
 	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
@@ -72,7 +73,8 @@ export const ContentText = styled.div`
 
 export const ContentTextEditor = styled.div`
 	margin: 0 auto;
-	height: 50%;
+	height: 250px;
+	margin-bottom: ${length.margin};
 	width: calc(90% + 10px);
 	${font.text};
 	z-index: 5;
@@ -90,6 +92,7 @@ export const ButtonRow = styled.div`
 	${layout.row};
 	width: 90%;
 	margin: ${length.margin} auto;
+	margin-top: auto;
 	& button {
 		width: 50%;
 		background-color: ${color.siteBG3};
