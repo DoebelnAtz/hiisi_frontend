@@ -39,21 +39,23 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	);
 	const [next, setNext] = useState(false);
 	const deleteResource = async (rId: number) => {
-		if (resources) {
-			let deleted = await makeRequest(
-				'resources/delete_resource',
-				'delete',
-				{
-					userId: getLocal('token').user.u_id,
-					resourceId: rId,
-				},
-			);
-			if (deleted?.data?.success) {
-				setResources(
-					resources.filter(
-						(resource: ResourceListType) => resource.r_id !== rId,
-					),
+		if (window.confirm('Are you sure you want to delete this resource?')) {
+			if (resources) {
+				let deleted = await makeRequest(
+					'resources/delete_resource',
+					'delete',
+					{
+						userId: getLocal('token').user.u_id,
+						resourceId: rId,
+					},
 				);
+				if (deleted?.data?.success) {
+					setResources(
+						resources.filter(
+							(resource: ResourceListType) => resource.r_id !== rId,
+						),
+					);
+				}
 			}
 		}
 	};

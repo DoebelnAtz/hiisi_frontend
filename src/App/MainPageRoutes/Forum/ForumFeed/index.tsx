@@ -33,14 +33,15 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 		{},
 		posts.length >= 14,
 	);
-	const isVisible = useRef<HTMLElement>(null);
 	const [showNext, setShowNext] = useState(false);
 	const deletePost = async (blogId: number) => {
-		let resp = await makeRequest('blogs/delete_blog', 'delete', {
-			blogId: blogId,
-		});
-		if (resp.data) {
-			setPosts(posts.filter((post) => post.b_id !== blogId));
+		if (window.confirm('Are you sure you want to delete this post?')) {
+			let resp = await makeRequest('blogs/delete_blog', 'delete', {
+				blogId: blogId,
+			});
+			if (resp.data) {
+				setPosts(posts.filter((post) => post.b_id !== blogId));
+			}
 		}
 	};
 

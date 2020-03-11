@@ -108,11 +108,13 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 	};
 
 	const handleProjectDelete = async () => {
-		let resp = await makeRequest('projects/delete_project', 'DELETE', {
-			projectId: project.project_id,
-		});
-		if (resp.data) {
-			history.push('/openhive');
+		if (window.confirm('Are you sure you want to delete this project')) {
+			let resp = await makeRequest('projects/delete_project', 'DELETE', {
+				projectId: project.project_id,
+			});
+			if (resp.data) {
+				history.push('/openhive');
+			}
 		}
 	};
 
@@ -120,7 +122,7 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 		<div>
 			<OptionRow>
 				<DeleteProjectButton onClick={() => handleProjectDelete()}>
-					DELETE PROJECT NO CONFIRMATION
+					DELETE PROJECT
 				</DeleteProjectButton>
 			</OptionRow>
 			<OptionRow>

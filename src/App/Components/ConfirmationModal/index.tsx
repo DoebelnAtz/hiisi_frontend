@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModalInside, ModalOutside } from './Style';
 
-const ConfirmationModal = () => {
+const ConfirmationModal: React.FC = () => {
 	return ReactDOM.createPortal(
 		<ModalOutside>
 			<ModalInside>ConfirmationModal</ModalInside>

@@ -8,7 +8,7 @@ import ForumFeed from './ForumFeed/index';
 import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
 import { getLocal, setLocal } from '../../../Utils';
 
-const Feed = ({}) => {
+const Feed = () => {
 	const [popup, setPopup] = useState(false);
 
 	const isMounted = useRef(true);
@@ -20,7 +20,7 @@ const Feed = ({}) => {
 		getLocal('forumSortPref')?.reverse || 'false',
 	);
 
-	const [posts, setPosts, isLoading] = useRequest<PostType[]>(
+	const [posts, setPosts, ] = useRequest<PostType[]>(
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
@@ -40,6 +40,7 @@ const Feed = ({}) => {
 			setSortBy(sort);
 		}
 	};
+
 	return (
 		<FeedPage>
 			<FeedButtonRow>
