@@ -58,6 +58,7 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 						page={page + 1}
 						feed={nextFeed}
 						filter={filter}
+						sortBy={sortBy}
 						profile={profile}
 					/>
 				)}
