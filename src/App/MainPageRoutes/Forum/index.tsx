@@ -55,8 +55,8 @@ const Feed = () => {
 					height={'32px'}
 					width={
 						isMobile
-							? `min(calc(${width}px - 160px), 156px)`
-							: `156px`
+							? `min(calc(${width}px - 160px), 160px)`
+							: `160px`
 					}
 				/>
 			</FeedButtonRow>
