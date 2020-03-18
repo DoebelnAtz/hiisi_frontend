@@ -6,6 +6,7 @@ import React, {
 	useRef,
 	useState,
 } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeRequest } from '../Api';
 import { CurrentNavContext } from '../Context/CurrentNavContext';
 import { ChatContext } from '../Context/ChatContext';
@@ -32,11 +33,12 @@ export const useNotifications = (room: string) => {
 	const [connected, setConnected] = useState(false);
 	const [newNotif, setNewNotif] = useState<Notification>();
 	const [socket, setSocket] = useState<SocketType>();
+	const history = useHistory();
 	useEffect(() => {
 		let user = getLocal('token');
 		if (!user) {
 			localStorage.clear();
-			window.location.replace('/login');
+			window.location.replace(`/login?next=${history.location.pathname}`);
 		}
 		let socket: SocketType = socketIOClient('https://hivemind-42.com', {
 			transportOptions: {
@@ -102,7 +104,6 @@ export const useDismiss = (
 			e.preventDefault();
 			// esc by default stops the page from refreshing,
 			// this is not a problem but causes a small delay when pressing.
-			// default prevented for performance
 			close();
 		}
 	};
@@ -131,6 +132,7 @@ export function useRequest<F>(
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const { update: setError } = useContext(ErrorContext);
 	const resp = useRef<any>(null);
+	const history = useHistory();
 	useEffect(() => {
 		async function request() {
 			try {
@@ -139,10 +141,11 @@ export function useRequest<F>(
 				setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
-					//window.location.replace('/505');
+					window.location.replace('/505');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
-					window.location.replace('/login');
+					console.log('unauth');
+					history.push(`/login?next=${history.location.pathname}`);
 				} else {
 					setError(e.response.status.toString());
 				}

@@ -21,7 +21,6 @@ import ViewPost from '../../../Components/CommentThread/index';
 import { makeRequest } from '../../../../Api';
 import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
-import SaveButton from '../../../Components/Buttons/SaveButton/index';
 import Modal from '../../../Components/Modal';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 

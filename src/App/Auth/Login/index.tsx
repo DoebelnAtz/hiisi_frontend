@@ -16,12 +16,14 @@ import {
 } from './Styles';
 import { useSpring, useChain, ReactSpringHook } from 'react-spring';
 import { makeRequest } from '../../../Api';
+import queryString from 'query-string';
 
 type LoginProps = {};
 
 const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
 	const history = useHistory();
+	const next: any = queryString.parse(history.location.search)?.next ? queryString.parse(history.location.search).next : '/openhive';
 	const requestLogin = async () => {
 		if (password.length && username.length) {
 			try {
@@ -34,7 +36,8 @@ const Login: React.FC = () => {
 					setAnimate(false);
 					// In a hurry? fuck you, now enjoy these animations
 					// I spent 6h creating
-					setTimeout(() => history.push('/openhive'), 2000);
+					console.log(next);
+					setTimeout(() => history.push(next), 2000);
 				}
 			} catch (e) {
 				setLoginError(true);
@@ -51,6 +54,12 @@ const Login: React.FC = () => {
 			requestLogin();
 		}
 	};
+
+	const handleLoginClick = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		requestLogin();
+	};
+
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -168,9 +177,10 @@ const Login: React.FC = () => {
 			<LoginDiv style={{ ...expandMain, ...expandBorderMain }}>
 				<InputDiv>
 					<div style={{ position: 'relative', left: '-50%' }}>
+						<form>
 						<UsernameDiv>
 							<UsernameInput
-								type={'text'}
+								type={'username'}
 								value={username}
 								onKeyDown={(e: React.KeyboardEvent) =>
 									handleEnterPress(e)
@@ -184,6 +194,7 @@ const Login: React.FC = () => {
 						<PasswordDiv>
 							<PasswordInput
 								type={'password'}
+								autocomplete={'on'}
 								value={password}
 								onKeyDown={(e: React.KeyboardEvent) =>
 									handleEnterPress(e)
@@ -195,8 +206,9 @@ const Login: React.FC = () => {
 							/>
 						</PasswordDiv>
 						<LoginButton loginError={loginError}>
-							<button onClick={requestLogin}>Login</button>
+							<button onClick={handleLoginClick}>Login</button>
 						</LoginButton>
+						</form>
 					</div>
 				</InputDiv>
 			</LoginDiv>

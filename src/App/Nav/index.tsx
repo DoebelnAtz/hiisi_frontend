@@ -11,14 +11,12 @@ import { getLocal, setLocal } from '../../Utils';
 const SideNav: React.FC = () => {
 	const checkAuth = async () => {
 		let resp = await makeRequest(`users/me`, 'get');
-		setLocal('currentUser', resp.data);
 	};
 
 	useEffect(() => {
 		checkAuth();
 	}, [
 		JSON.stringify(getLocal('token')),
-		JSON.stringify(getLocal('currentUser')),
 	]);
 
 	return (
