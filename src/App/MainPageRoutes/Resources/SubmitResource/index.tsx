@@ -79,6 +79,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				setResources([resp.data, ...resources]);
 				setPopup(false);
 			} catch (e) {
+				console.log(e.response, e);
 				if (e.response.status === 400) {
 					setErrorState({ ...errorState, titleExistsError: true });
 				}

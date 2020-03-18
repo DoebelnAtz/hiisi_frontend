@@ -42,6 +42,9 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 
 			}
 		}
+		else {
+			throw e;
+		}
 		resp = await axios({
 				url: `hhttp://localhost:5000/api/${url}`,
 				method: method,

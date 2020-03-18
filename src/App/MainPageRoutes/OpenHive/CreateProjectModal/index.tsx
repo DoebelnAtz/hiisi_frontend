@@ -8,6 +8,7 @@ import {
 	ButtonRow,
 	SubmitButton,
 	TitleAndLinkRow,
+	ErrorSpan,
 } from './Styles';
 import { useDismiss, useWidth } from '../../../../Hooks';
 import { Project, ProjectCardType } from '../Types';
@@ -27,64 +28,144 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	projects,
 }) => {
 	const inside = useRef<HTMLDivElement>(null);
-	const [titleVal, setTitleVal] = useState('');
-	const [linkVal, setLinkVal] = useState('');
-	const [description, setDescription] = useState('');
+	const [input, setInput] = useState({
+		title: '',
+		link: '',
+		description: '',
+	});
+	const [error, setError] = useState({
+		title: '',
+		link: '',
+		description: '',
+	});
 	const close = () => {
 		setShowModal(false);
 	};
 	const [width, isMobile] = useWidth();
 
 	useDismiss(inside, close);
-	const createProject = async () => {
-		let url = await validateUrl(linkVal);
 
-		if (url) {
-			let resp = await makeRequest('projects/create_project', 'post', {
-				title: titleVal,
-				link: linkVal,
-				description: description,
+	const createProject = async () => {
+		let url = validateUrl(input.link);
+		if (
+			!input.title.length ||
+			!input.link.length ||
+			!input.description.length
+		) {
+			setError({
+				title: !input.title.length ? 'Title is required' : '',
+				link: !input.link.length ? 'Link is required' : '',
+				description: !input.description.length
+					? 'Description is required'
+					: '',
 			});
-			if (resp.data && projects) {
-				setProjects([...projects, resp.data]);
-				setShowModal(false);
+		} else {
+			if (url) {
+				try {
+					let resp = await makeRequest(
+						'projects/create_project',
+						'post',
+						{
+							title: input.title,
+							link: input.link,
+							description: input.description,
+						},
+					);
+					if (resp.data && projects) {
+						setProjects([...projects, resp.data]);
+						setShowModal(false);
+					}
+				} catch (e) {
+					console.log(e);
+					if (e.response.status === 400) {
+						setError({
+							...error,
+							title: 'Title already exists',
+						});
+					}
+				}
+			} else {
+				setError({
+					...error,
+					link: 'invalid link',
+				});
 			}
 		}
 	};
 
+	const handleTitleChange = (e: React.SyntheticEvent) => {
+		setError({
+			...error,
+			title: '',
+		});
+		const target = e.target as HTMLInputElement;
+		setInput({
+			...input,
+			title: target.value,
+		});
+	};
+
+	const handleLinkChange = (e: React.SyntheticEvent) => {
+		const target = e.target as HTMLInputElement;
+		setError({
+			...error,
+			link: '',
+		});
+		setInput({
+			...input,
+			link: target.value,
+		});
+	};
+
+	const handleDescriptionChange = (e: string) => {
+		setError({
+			...error,
+			description: '',
+		});
+		setInput({
+			...input,
+			description: e,
+		});
+	};
+
 	return (
 		<OutsideDiv>
-			<InsideDiv isMobile={isMobile}  ref={inside}>
+			<InsideDiv isMobile={isMobile} ref={inside}>
 				<TitleAndLinkRow>
 					<label>
 						Title:
+						{!!error.title.length && (
+							<ErrorSpan>{error.title}</ErrorSpan>
+						)}
 						<TitleInput
-							value={titleVal}
-							onChange={(e: React.SyntheticEvent) => {
-								let target = e.target as HTMLInputElement;
-								setTitleVal(target.value);
-							}}
+							value={input.title}
+							error={!!error.title.length}
+							onChange={handleTitleChange}
 							placeholder={'title'}
 						/>
 					</label>
 					<label>
 						Link:
+						{!!error.link.length && (
+							<ErrorSpan>{error.link}</ErrorSpan>
+						)}
 						<LinkInput
-							value={linkVal}
-							onChange={(e: React.SyntheticEvent) => {
-								let target = e.target as HTMLInputElement;
-								setLinkVal(target.value);
-							}}
+							value={input.link}
+							error={!!error.link.length}
+							onChange={handleLinkChange}
 							placeholder={'project link'}
 						/>
 					</label>
 				</TitleAndLinkRow>
 				<span>Description</span>
+				{!!error.description.length && (
+					<ErrorSpan>{error.description}</ErrorSpan>
+				)}
 				<Description>
 					<TextEditor
 						editable={true}
-						state={description}
-						setState={(e: string) => setDescription(e)}
+						state={input.description}
+						setState={handleDescriptionChange}
 					/>
 				</Description>
 				<ButtonRow>

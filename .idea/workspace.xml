@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="Ui improvements, resources set to &quot;main&quot; page">
-      <change afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" afterDir="false" />
+    <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserProfile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserPage.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +90,7 @@
       <workItem from="1583662068960" duration="21849000" />
       <workItem from="1583689700919" duration="3645000" />
       <workItem from="1584478271460" duration="6654000" />
-      <workItem from="1584534796573" duration="2537000" />
+      <workItem from="1584534796573" duration="6097000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -186,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584527328441</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Profile page routing refactor and">
+      <created>1584539408204</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1584539408204</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +216,8 @@
     <MESSAGE value="Ui fixes" />
     <MESSAGE value="Added redirect to previous on successful login" />
     <MESSAGE value="Ui improvements, resources set to &quot;main&quot; page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ui improvements, resources set to &quot;main&quot; page" />
+    <MESSAGE value="Profile page routing refactor and" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile page routing refactor and" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -227,14 +232,14 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584536497682">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584539408146">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584536497682" />
-    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584539408146" />
+    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1584545081679">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583526777922" />
+    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584545081679" />
     <state x="4927" y="460" width="424" height="479" key="FileChooserDialogImpl" timestamp="1584478274064">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -243,14 +248,14 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4521" y="411" width="491" height="567" key="RollbackChangesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583582384766" />
-    <state x="4972" y="337" key="SettingsEditor" timestamp="1583526779217">
+    <state x="4972" y="337" key="SettingsEditor" timestamp="1584545083396">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583526779217" />
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1584471588478">
+    <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584545083396" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1584539409489">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584471588478" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584539409489" />
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583581913678">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

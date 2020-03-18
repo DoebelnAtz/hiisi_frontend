@@ -12,6 +12,11 @@ export const OutsideDiv = styled.div`
 	z-index: 5;
 `;
 
+export const ErrorSpan = styled.span`
+	color: red;
+	margin-left: ${length.margin};
+`;
+
 export const InsideDiv = styled.div`
 	padding: ${length.margin};
 	${modal.inside};
@@ -43,11 +48,13 @@ export const TitleAndLinkRow = styled.div`
 export const TitleInput = styled.input`
 	${components.input};
 	width: 100%;
+	border-color: ${props => props.error ? 'red' : color.primary}; 
 `;
 
 export const LinkInput = styled.input`
 	${components.input};
 	width: 100%;
+	border-color: ${props => props.error ? 'red' : color.primary}; 
 `;
 
 export const Description = styled.div`
