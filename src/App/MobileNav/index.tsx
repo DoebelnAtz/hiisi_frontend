@@ -41,8 +41,8 @@ const MobileNav: React.FC = () => {
 				alt={'forum'}/>
 			</MobileNavItem>
 			<MobileNavItem
-				selected={history.location.pathname === '/profile'}
-				onClick={() => handleNavClick('/profile')}
+				selected={history.location.pathname === '/user'}
+				onClick={() => handleNavClick('/user')}
 			>
 				<img src={profileIcon}
 				alt={'Open Hive'}/>

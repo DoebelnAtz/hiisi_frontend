@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { useRequest, useWidth } from '../../../Hooks';
-import { MixedFeedItem, Profile } from './Types';
-import { getLocal, setLocal } from '../../../Utils';
-import MixedFeed from './MixedFeed';
-import DropDown from '../../Components/DropDown';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+
+import { useRequest, useWidth } from '../../../../Hooks';
+import { MixedFeedItem, Profile } from '../Types';
+import { getLocal, setLocal } from '../../../../Utils/index';
+import MixedFeed from '../MixedFeed';
+import DropDown from '../../../Components/DropDown';
 import {
 	ProfileBackground,
 	ProfileButtonRow,
@@ -14,14 +16,14 @@ import {
 	ProfileStats,
 	ProfileText,
 	ProfileUsername,
-} from './Styles';
-import GuardsBG from '../../../Assets/GuardsBGDark2.png';
-type ProfilePageProps = {
-	profile: Profile;
-};
+} from '../Styles';
+import GuardsBG from '../../../../Assets/GuardsBGDark2.png';
 
-const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
+
+const UserProfile: React.FC = () => {
 	//TODO: add friend button
+	const params = useParams<{uid: string}>();
+	const [profile] = useRequest<Profile>(`users/${params.uid}`, 'get');
 	const [filter, setFilter] = useState('none');
 	const [sortBy, setSortBy] = useState(
 		getLocal('mixedSortPref')?.sortBy || 'popular',
@@ -30,7 +32,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
 	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
-		`users/all?page=1&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
+		`users/all?page=1&filter=${filter}&user=${params.uid}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	const [width, isMobile] = useWidth();
@@ -60,20 +62,20 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 			<ProfileHead>
 				<ProfileBackground src={GuardsBG}>
 					<ProfilePic
-						src={profile.profile_pic}
-						alt={profile.username}
+						src={profile?.profile_pic}
+						alt={profile?.username}
 					/>
 				</ProfileBackground>
 				<ProfileStats>
 					<ProfileInfo>
-						<ProfileUsername>{profile.username}</ProfileUsername>
-						<ProfileText>Piscine: {profile.class_of}</ProfileText>
+						<ProfileUsername>{profile?.username}</ProfileUsername>
+						<ProfileText>Piscine: {profile?.class_of}</ProfileText>
 					</ProfileInfo>
 				</ProfileStats>
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={isMobile ? `calc(${width}px / 2 - 20px)` : `160x`}
+					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160x`}
 					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
@@ -89,7 +91,7 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 					height={'32px'}
 				/>
 			</ProfileButtonRow>
-			{feed && (
+			{feed && profile && (
 				<MixedFeed
 					feed={feed}
 					filter={filter}
@@ -103,4 +105,4 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profile }) => {
 	);
 };
 
-export default ProfilePage;
+export default UserProfile;

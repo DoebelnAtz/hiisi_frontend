@@ -1,10 +1,9 @@
 import Feed from './Forum/index';
-import Profile from './Profile/Profile';
+import Profile from './Profile';
 import React, { Fragment, useContext } from 'react';
 
 import { Route, Switch, useLocation } from 'react-router-dom';
 
-import UserPage from './Profile/UserPage';
 import PostPage from './Forum/PostPage';
 import OpenHive from './OpenHive';
 import ProjectPage from './OpenHive/ProjectPage';
@@ -38,18 +37,14 @@ const MainRoutes: React.FC = (prop) => {
 					render={(props) => <OpenHive {...props} />}
 				/>
 				<Route
-					exact
-					path={'/profile/'}
-					render={(props) => <Profile {...props} />}
+					path={'/user'}
+					render={(props) => <Profile/>}
 				/>
 				<Route
 					exact
 					path={'/messages'}
 					render={() => <MobileMessagePage />}
 				/>
-				<Route exact path={'/user/:uid'}>
-					<UserPage />
-				</Route>
 			</Switch>
 			<Route path={'/forum'} render={() => <Feed />} />
 			<Route exact path={'/forum/:bid'} render={() => <PostPage />} />

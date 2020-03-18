@@ -24,7 +24,7 @@ const SideNav: React.FC = () => {
 			<NavItem icon={treeIcon} title={'Resources'} link={'/resources'} />
 			<NavItem icon={codeIcon} title={'Open Hive'} link={'/openhive'} />
 			<NavItem icon={openHiveIcon} title={'Forum'} link={'/forum'} />
-			<NavItem icon={profileIcon} title={'Profile'} link={'/profile'} />
+			<NavItem icon={profileIcon} title={'Profile'} link={'/user/me'} />
 		</SideNavDiv>
 	);
 };

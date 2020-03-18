@@ -15,15 +15,18 @@ export const ProfileHead = styled.div`
 
 export const ProfileStats = styled.div`
 	background-color: ${color.siteBG2};
-	height: min(10vh, 100px);
 	padding: ${length.margin};
 `;
 
 export const ProfileInfo = styled.div`
-	position: relative;
-	top: min(4vh, 40px);
+	margin-top: 40px;
+	margin-left: 30px;
 	& span {
 		${layout.row};
+	}
+	@media (max-width: 768px) {
+		margin-top: 20px;
+		margin-left: 10px;
 	}
 `;
 
@@ -42,8 +45,10 @@ export const ProfileBackground = styled.div`
 	border-radius: ${length.radius} ${length.radius} 0 0;
 	background-position: right;
 	width: calc(100%);
-	height: min(15vh, 18
-	0px);	
+	height: 130px;	
+	@media (max-width: 768px) {
+		height: 80px;	
+	}
 `;
 
 export const ProfilePic = styled.img`
@@ -51,14 +56,14 @@ export const ProfilePic = styled.img`
 	width: 120px;
 	position: relative;
 	top: 50px;
-	left: 60px;
+	left: 40px;
 	border-radius: 50%;
 	border: 5px solid ${color.siteBG2};
 	@media (max-width: 768px) {
 		height: 60px;
 		width: 60px;
 		top: 35px;
-		left: 30px;
+		left: 20px;
 	}
 `;
 

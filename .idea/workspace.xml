@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
+    <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="Ui improvements, resources set to &quot;main&quot; page">
+      <change afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserProfile/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Nav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Context/CurrentNavContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/CurrentNavContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="hivemind_frontend__1.6" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -51,6 +53,12 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage" />
+      <recent name="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserProfile" />
+    </key>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -84,7 +92,8 @@
       <workItem from="1583519415173" duration="20386000" />
       <workItem from="1583662068960" duration="21849000" />
       <workItem from="1583689700919" duration="3645000" />
-      <workItem from="1584478271460" duration="6275000" />
+      <workItem from="1584478271460" duration="6654000" />
+      <workItem from="1584534796573" duration="2537000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -170,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584525353430</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Ui improvements, resources set to &quot;main&quot; page">
+      <created>1584527328441</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1584527328441</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,21 +211,26 @@
     <MESSAGE value="create resource, project, post modals fixed for mobile" />
     <MESSAGE value="Ui fixes" />
     <MESSAGE value="Added redirect to previous on successful login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added redirect to previous on successful login" />
+    <MESSAGE value="Ui improvements, resources set to &quot;main&quot; page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ui improvements, resources set to &quot;main&quot; page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584525497030">
+    <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584525497030" />
+    <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535318101" />
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584535716563">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535716563" />
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584525353366">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584536497682">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584525353366" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584536497682" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -238,9 +259,9 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583686518655" />
-    <state x="4808" y="329" key="run.anything.popup" timestamp="1583671221654">
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1584535947548">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583671221654" />
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535947548" />
   </component>
 </project>
