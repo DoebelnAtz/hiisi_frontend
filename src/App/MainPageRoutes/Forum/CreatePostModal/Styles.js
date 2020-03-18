@@ -33,7 +33,7 @@ export const ModalDiv = styled(animated.div)`
 	left: 20%;
 	right: 20%;
 	top: 15%;
-	min-height: 400px;
+	min-height: 40vh;
 	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
@@ -73,7 +73,7 @@ export const ContentText = styled.div`
 
 export const ContentTextEditor = styled.div`
 	margin: 0 auto;
-	height: 250px;
+	height: 30vh;
 	margin-bottom: ${length.margin};
 	width: calc(90% + 10px);
 	${font.text};

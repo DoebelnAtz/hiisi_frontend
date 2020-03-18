@@ -4,10 +4,14 @@
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/InputWithButton/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Nav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Context/CurrentNavContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Context/CurrentNavContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +84,7 @@
       <workItem from="1583519415173" duration="20386000" />
       <workItem from="1583662068960" duration="21849000" />
       <workItem from="1583689700919" duration="3645000" />
-      <workItem from="1584478271460" duration="4204000" />
+      <workItem from="1584478271460" duration="6275000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -159,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584471586885</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added redirect to previous on successful login">
+      <created>1584525353430</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1584525353430</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,17 +194,22 @@
     <MESSAGE value="css mobile bugfixes, mobile chat page" />
     <MESSAGE value="create resource, project, post modals fixed for mobile" />
     <MESSAGE value="Ui fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ui fixes" />
+    <MESSAGE value="Added redirect to previous on successful login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added redirect to previous on successful login" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584525497030">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584525497030" />
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584471586817">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584525353366">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584471586817" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584525353366" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1583526777922">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

@@ -20,7 +20,7 @@ export const ButtonSection = styled.button`
 	border-left: none;
 	padding: 0;
 	position: relative;
-	top: -1px;
+	top: 1px;
 	line-height: 38px;
 	border-radius: 0 4px 4px 0;
 	width: 70px;

@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 
 import ProfilePage from './ProfilePage';
-import './profile.css';
 import { withRouter } from 'react-router-dom';
 import { useNav, useRequest } from '../../../Hooks';
 
 // this component is nearly identical to UserPage but we retrieve the profile
-// from users/me instead, this allow for further customization to your own page
+// from users/me instead, this allows for further customization to your own page
 // vs visiting page in the future
 
 const Profile: React.FC = () => {

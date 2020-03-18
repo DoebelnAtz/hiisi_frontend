@@ -23,7 +23,8 @@ type LoginProps = {};
 const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
 	const history = useHistory();
-	const next: any = queryString.parse(history.location.search)?.next ? queryString.parse(history.location.search).next : '/openhive';
+	const next: any = queryString.parse(history.location.search)?.next
+		? queryString.parse(history.location.search).next : '/resources';
 	const requestLogin = async () => {
 		if (password.length && username.length) {
 			try {

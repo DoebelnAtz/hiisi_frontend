@@ -18,6 +18,13 @@ const MobileNav: React.FC = () => {
 	return (
 		<MobileNavContainer>
 			<MobileNavItem
+				selected={history.location.pathname === '/resources'}
+				onClick={() => handleNavClick('/resources')}
+			>
+				<img src={treeIcon}
+				alt={'resources'}/>
+			</MobileNavItem>
+			<MobileNavItem
 				selected={history.location.pathname === '/openhive' || history.location.pathname.includes('/projects')}
 				onClick={() => handleNavClick('/openhive')}
 			>
@@ -32,13 +39,6 @@ const MobileNav: React.FC = () => {
 			>
 				<img src={ForumIcon}
 				alt={'forum'}/>
-			</MobileNavItem>
-			<MobileNavItem
-				selected={history.location.pathname === '/resources'}
-				onClick={() => handleNavClick('/resources')}
-			>
-				<img src={treeIcon}
-				alt={'resources'}/>
 			</MobileNavItem>
 			<MobileNavItem
 				selected={history.location.pathname === '/profile'}
