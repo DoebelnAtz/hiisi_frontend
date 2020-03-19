@@ -60,10 +60,7 @@ const UserProfile: React.FC = () => {
 		<ProfilePageDiv>
 			<ProfileHead>
 				<ProfileBackground src={GuardsBG}>
-					<ProfilePic
-						src={profile?.profile_pic}
-						alt={profile?.username}
-					/>
+					<ProfilePic src={profile?.profile_pic} />
 				</ProfileBackground>
 				<ProfileStats>
 					<ProfileInfo>

@@ -58,6 +58,7 @@ export const ProfilePic = styled.img`
 	top: 50px;
 	left: 40px;
 	border-radius: 50%;
+	background-color: ${color.siteBG2};
 	border: 5px solid ${color.siteBG2};
 	@media (max-width: 768px) {
 		height: 60px;

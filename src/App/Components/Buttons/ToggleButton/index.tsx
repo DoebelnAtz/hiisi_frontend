@@ -9,18 +9,27 @@ type ToggleButtonProps = {
 };
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({ state, onClick }) => {
-	const BGConfig = {
-		mass: 11,
-		tension: 150,
-		friction: 60,
+	const slideConfig = {
+		mass: 3,
+		tension: 1000,
+		friction: 100,
 		clamp: true,
-		velocity: 6,
+		velocity: 2,
+	};
+
+	const BGConfig = {
+		mass: 100,
+		tension: 370,
+		friction: 10,
+		clamp: true,
+		velocity: 1,
 	};
 	const animateSlider = useSpring({
-		config: BGConfig,
-		transform: state ? 'translateX(22px)' : 'translateX(0px)',
+		config: slideConfig,
+		transform: state ? 'translateX(18px)' : 'translateX(0px)',
 	});
 	const animateBGColor = useSpring({
+		config: BGConfig,
 		backgroundColor: !state
 			? colorAdjust.darken(color.secondary, 0.2)
 			: colorAdjust.darken(color.tertiary, 0.2),
