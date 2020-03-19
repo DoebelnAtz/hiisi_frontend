@@ -133,7 +133,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	};
 
 	const handlePrivacyToggle = () => {
-		console.log('change', privateProject);
+		setPrivateProject(!privateProject);
 	};
 
 	return (
@@ -182,8 +182,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 					</span>
 					<ToggleButton
 						state={privateProject}
-						setState={setPrivateProject}
-						onChange={handlePrivacyToggle}
+						onClick={handlePrivacyToggle}
 					/>
 				</RowDiv>
 				<ButtonRow>

@@ -5,15 +5,10 @@ import { color, colorAdjust } from '../../../../Styles/SharedStyles';
 
 type ToggleButtonProps = {
 	state: boolean;
-	setState: Dispatch<SetStateAction<boolean>>;
-	onChange: any;
+	onClick: any;
 };
 
-const ToggleButton: React.FC<ToggleButtonProps> = ({
-	state,
-	setState,
-	onChange,
-}) => {
+const ToggleButton: React.FC<ToggleButtonProps> = ({ state, onClick }) => {
 	const BGConfig = {
 		mass: 11,
 		tension: 150,
@@ -30,12 +25,10 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
 			? colorAdjust.darken(color.secondary, 0.2)
 			: colorAdjust.darken(color.tertiary, 0.2),
 	});
-	useEffect(() => {
-		onChange();
-	}, [onChange, state]);
+
 	return (
 		<ButtonContainer style={animateBGColor}>
-			<Slider onClick={() => setState(!state)} style={animateSlider} />
+			<Slider onClick={onClick} style={animateSlider} />
 		</ButtonContainer>
 	);
 };

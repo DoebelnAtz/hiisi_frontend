@@ -3,6 +3,7 @@ import { vote } from '../../Resources/Types';
 
 export interface Project {
 	project_id: number,
+	private: boolean,
 	title: string,
 	link: string,
 	contributor: boolean, // True if the user viewing the page is a contributor
@@ -19,6 +20,7 @@ export interface Project {
 
 export interface ProjectCardType {
 	project_id: number,
+	private: boolean,
 	title: string,
 	contributor: boolean, // True if the user viewing the page is a contributor
 	collaborators: string[], // List of contributors

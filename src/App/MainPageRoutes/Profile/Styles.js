@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { layout, color, length, font } from '../../../Styles/SharedStyles';
 
 export const ProfilePageDiv = styled.div`
-	height: 100%;
+	height: calc(100% - ${length.margin});
 	width: 100%;
 `;
 

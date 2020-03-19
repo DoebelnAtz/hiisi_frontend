@@ -12,6 +12,7 @@ import {
 } from './Styles';
 import { makeRequest } from '../../../../../Api';
 import { useHistory } from 'react-router-dom';
+import ToggleButton from '../../../../Components/Buttons/ToggleButton';
 
 type ProjectSettingsProps = {
 	project: Project;
@@ -118,6 +119,10 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 		}
 	};
 
+	const handleProjectPrivacyChange = () => {
+		setProject({ ...project, private: !project.private });
+	};
+
 	return (
 		<div>
 			<OptionRow>
@@ -136,6 +141,13 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 					Link:
 					<input value={project.link} onChange={handleLinkChange} />
 				</label>
+			</OptionRow>
+			<OptionRow>
+				<span style={{ margin: 'auto auto auto 0' }}>Private:</span>
+				<ToggleButton
+					state={project.private}
+					onClick={handleProjectPrivacyChange}
+				/>
 			</OptionRow>
 			<ProjectCollaborators>{mapCollaborators()}</ProjectCollaborators>
 			<OptionRow>
