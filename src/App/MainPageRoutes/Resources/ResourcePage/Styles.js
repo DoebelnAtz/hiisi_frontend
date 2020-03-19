@@ -78,10 +78,9 @@ export const ResourceTag = styled.div`
 	margin-bottom: 4px;
 	height: 26px;
 	${layout.row};
-	padding: 0 4px;
+	padding: 0 8px;
 	& span {
 		${font.text};
-		margin-left: 4px;
 		line-height: 26px;
 	}
 `;

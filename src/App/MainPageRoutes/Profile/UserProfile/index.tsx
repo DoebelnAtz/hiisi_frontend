@@ -19,10 +19,9 @@ import {
 } from '../Styles';
 import GuardsBG from '../../../../Assets/GuardsBGDark2.png';
 
-
 const UserProfile: React.FC = () => {
 	//TODO: add friend button
-	const params = useParams<{uid: string}>();
+	const params = useParams<{ uid: string }>();
 	const [profile] = useRequest<Profile>(`users/${params.uid}`, 'get');
 	const [filter, setFilter] = useState('none');
 	const [sortBy, setSortBy] = useState(
@@ -75,7 +74,7 @@ const UserProfile: React.FC = () => {
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160x`}
+					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160px`}
 					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}

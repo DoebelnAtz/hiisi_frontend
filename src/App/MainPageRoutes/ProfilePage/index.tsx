@@ -17,7 +17,6 @@ import {
 } from '../Profile/Styles';
 import GuardsBG from '../../../Assets/GuardsBGDark2.png';
 
-
 const ProfilePage: React.FC = () => {
 	//TODO: add friend button
 	const [profile] = useRequest<Profile>(`users/me`, 'get');
@@ -29,7 +28,9 @@ const ProfilePage: React.FC = () => {
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
 	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
-		`users/all?page=1&filter=${filter}&user=${getLocal('token').user.u_id}&order=${sortBy}&reverse=${reverse}`,
+		`users/all?page=1&filter=${filter}&user=${
+			getLocal('token').user.u_id
+		}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	const [width, isMobile] = useWidth();
@@ -72,7 +73,7 @@ const ProfilePage: React.FC = () => {
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160x`}
+					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160px`}
 					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
