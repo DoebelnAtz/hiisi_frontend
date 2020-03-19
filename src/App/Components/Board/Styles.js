@@ -54,7 +54,7 @@ export const Collaborator = styled.div`
 	& img {
 		border-color: ${(props) =>
 			props.filtered
-				? colorAdjust.darken(color.tertiary, 0.7)
+				? color.siteBG3
 				: color.siteBG2};
 	}
 	&:hover {

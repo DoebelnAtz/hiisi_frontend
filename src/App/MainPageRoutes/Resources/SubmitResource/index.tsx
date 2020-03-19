@@ -20,7 +20,6 @@ import { makeRequest } from '../../../../Api';
 import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
 import { validateUrl } from '../../../../Utils';
-import { log } from 'util';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
@@ -122,50 +121,50 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		<OuterDiv>
 			<SubmitResource isMobile={isMobile} ref={inside}>
 				<RowDiv>
-				<TitleLinkTypeCol>
-					<TitleInputDiv>
-						<span>Title: </span>
-						<TitleInput
-							error={errorState.titleError}
-							value={inputState.titleVal}
-							onChange={handleTitleChange}
-							placeholder={'title'}
-						/>
-						{errorState.titleExistsError && (
-							<TitleError>Title already exists</TitleError>
-						)}
-					</TitleInputDiv>
+					<TitleLinkTypeCol>
+						<TitleInputDiv>
+							<span>Title: </span>
+							<TitleInput
+								error={errorState.titleError}
+								value={inputState.titleVal}
+								onChange={handleTitleChange}
+								placeholder={'title'}
+							/>
+							{errorState.titleExistsError && (
+								<TitleError>Title already exists</TitleError>
+							)}
+						</TitleInputDiv>
 
-					<LinkInputDiv>
-						<span>Link: </span>
-						<LinkInput
-							error={errorState.linkError}
-							value={inputState.linkVal}
-							onChange={handleLinkChange}
-							placeholder={'link'}
-						/>
-					</LinkInputDiv>
-					<TypeDropDownSpan>Resource type:</TypeDropDownSpan>
-					<TypeDropDown>
-						<DropDownComponent
-							state={type}
-							setSelect={handleTypeChange}
-							optionList={['article', 'video', 'course']}
-							width={'140px'}
-							height={'34px'}
-						/>
-					</TypeDropDown>
-				</TitleLinkTypeCol>
+						<LinkInputDiv>
+							<span>Link: </span>
+							<LinkInput
+								error={errorState.linkError}
+								value={inputState.linkVal}
+								onChange={handleLinkChange}
+								placeholder={'link'}
+							/>
+						</LinkInputDiv>
+						<TypeDropDownSpan>Resource type:</TypeDropDownSpan>
+						<TypeDropDown>
+							<DropDownComponent
+								state={type}
+								setSelect={handleTypeChange}
+								optionList={['article', 'video', 'course']}
+								width={'140px'}
+								height={'34px'}
+							/>
+						</TypeDropDown>
+					</TitleLinkTypeCol>
 
-				<EditDescriptionCol error={errorState.descriptionError}>
-					<span>Description: </span>
-					<TextEditor
-						editable
-						state={inputState.descriptionVal}
-						setState={(e: string) => handleDescriptionChange(e)}
-					/>
-				</EditDescriptionCol>
-					</RowDiv>
+					<EditDescriptionCol error={errorState.descriptionError}>
+						<span>Description: </span>
+						<TextEditor
+							editable
+							state={inputState.descriptionVal}
+							setState={(e: string) => handleDescriptionChange(e)}
+						/>
+					</EditDescriptionCol>
+				</RowDiv>
 				<ButtonRow>
 					<button onClick={submitResource}>Submit</button>
 				</ButtonRow>

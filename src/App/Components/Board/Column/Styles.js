@@ -175,7 +175,7 @@ export const ColumnTitle = styled.input`
 	border: none;
 	font-size: 17px;
 	color: ${color.primary};
-	width: calc(100% - 60px);
+	width: calc(100% - 62px);
 	background: ${color.siteBG3};
 
 	z-index: 3;

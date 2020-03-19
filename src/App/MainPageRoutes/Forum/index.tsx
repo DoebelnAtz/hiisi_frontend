@@ -20,12 +20,12 @@ const Feed = () => {
 		getLocal('forumSortPref')?.reverse || 'false',
 	);
 
-	const [posts, setPosts, ] = useRequest<PostType[]>(
+	const [posts, setPosts] = useRequest<PostType[]>(
 		`blogs?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);
 	const [width, isMobile] = useWidth();
-	useNav('forum')
+	useNav('forum');
 	const onSortSelect = (sort: string) => {
 		if (sort === sortBy) {
 			// Save sorting preference to localstorage

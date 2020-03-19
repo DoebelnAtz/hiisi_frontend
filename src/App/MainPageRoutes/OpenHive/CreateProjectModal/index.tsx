@@ -15,6 +15,8 @@ import { Project, ProjectCardType } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { makeRequest } from '../../../../Api';
 import { validateUrl } from '../../../../Utils';
+import ToggleButton from '../../../Components/Buttons/ToggleButton';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type CreateProjectModalProps = {
 	setShowModal: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +30,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	projects,
 }) => {
 	const inside = useRef<HTMLDivElement>(null);
+	const [privateProject, setPrivateProject] = useState(false);
 	const [input, setInput] = useState({
 		title: '',
 		link: '',
@@ -68,6 +71,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 						{
 							title: input.title,
 							link: input.link,
+							private: privateProject,
 							description: input.description,
 						},
 					);
@@ -128,6 +132,10 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 		});
 	};
 
+	const handlePrivacyToggle = () => {
+		console.log('change', privateProject);
+	};
+
 	return (
 		<OutsideDiv>
 			<InsideDiv isMobile={isMobile} ref={inside}>
@@ -168,6 +176,16 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 						setState={handleDescriptionChange}
 					/>
 				</Description>
+				<RowDiv margin={'10px 0'}>
+					<span style={{ margin: 'auto 10px auto 0' }}>
+						Private:{' '}
+					</span>
+					<ToggleButton
+						state={privateProject}
+						setState={setPrivateProject}
+						onChange={handlePrivacyToggle}
+					/>
+				</RowDiv>
 				<ButtonRow>
 					<SubmitButton onClick={() => createProject()}>
 						Submit
