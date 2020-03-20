@@ -17,6 +17,7 @@ import {
 import SearchBar from './Search';
 import Notifications from './Notifications';
 import { useWidth } from '../../Hooks';
+import { color } from '../../Styles/SharedStyles';
 
 const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	const { state } = useContext(CurrentNavContext);
@@ -35,7 +36,16 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
 			{!isMobile && (
 				<SearchLabel>
-					<Notifications />
+					<span
+						style={{
+							color: color.siteBG1,
+							margin: 'auto',
+							userSelect: 'none',
+						}}
+					>
+						Search
+					</span>
+					{/*<Notifications />*/}
 					<SearchBar />
 				</SearchLabel>
 			)}

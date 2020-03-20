@@ -15,7 +15,7 @@ export const getPriorityIcon = (priority=4) => {
         case (3):
             return Priority3;
         default:
-            return Priority4;
+            return Priority3;
     }
 };
 
