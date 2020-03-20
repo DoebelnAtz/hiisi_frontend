@@ -2,33 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/service-worker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/registerServiceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/getHttpsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jest/cssTransform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/jest/fileTransform.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/modules.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/paths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/pnpTs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpackDevServer.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sw-build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sw-template.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/precache-manifest.d71f4627574fef38215e775e5d161033.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/serviceWorker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.096b169f.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.096b169f.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.02e9b689.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.02e9b689.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.02e9b689.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.06cdc53a.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.06cdc53a.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sw-register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/npm-debug.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/serviceWorker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sw-register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRooms/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRooms/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRooms/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRooms/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/service-worker.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/registerServiceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/registerServiceWorker.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +68,14 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/App" />
       <recent name="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage" />
       <recent name="$PROJECT_DIR$/src/App/MainPageRoutes/Profile/UserProfile" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -120,6 +115,7 @@
       <workItem from="1584534796573" duration="6810000" />
       <workItem from="1584607762747" duration="9988000" />
       <workItem from="1584703212096" duration="9443000" />
+      <workItem from="1584717530555" duration="4792000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -300,10 +296,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535318101" />
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584535716563">
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584721236233">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535716563" />
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584721236233" />
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -336,17 +332,25 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583581913678" />
+    <state x="5097" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584719857936">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5097" y="622" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584719857936" />
     <state x="4376" y="402" width="791" height="590" key="find.popup" timestamp="1583686518655">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583686518655" />
-    <state x="4808" y="329" key="run.anything.popup" timestamp="1584711328450">
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1584718828500">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584711328450" />
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584718828500" />
     <state x="4963" y="322" key="search.everywhere.popup" timestamp="1584711322065">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4963" y="322" key="search.everywhere.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584711322065" />
+    <state x="5025" y="617" width="540" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584719162382">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5025" y="617" width="540" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584719162382" />
   </component>
 </project>
