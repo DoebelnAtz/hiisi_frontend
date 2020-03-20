@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d71f4627574fef38215e775e5d161033.js"
+  "/precache-manifest.f76f30c20463b58a20cbdad3a412711d.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -22,6 +22,27 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+
+workbox.routing.registerRoute(
+    new RegExp('^http://localhost:5000/api/.*'),
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'test-build-api-cache',
+    })
+);
+
+workbox.routing.registerRoute(
+    new RegExp('^https://cdn.intra.42.fr/.*'),
+    new workbox.strategies.CacheFirst({
+      cacheName: 'cdn-cache',
+    })
+);
+
+workbox.routing.registerRoute(
+    new RegExp('^https://hivemind-42.com/api/.*'),
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'api-cache',
+    })
+);
 
 workbox.core.clientsClaim();
 

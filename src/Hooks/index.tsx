@@ -141,7 +141,7 @@ export function useRequest<F>(
 				setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
-					window.location.replace('/505');
+					//window.location.replace('/505');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
 					console.log('unauth');

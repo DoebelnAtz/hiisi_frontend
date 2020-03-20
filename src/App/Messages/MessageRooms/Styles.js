@@ -9,7 +9,7 @@ import {
 	length,
 } from '../../../Styles/SharedStyles';
 
-export const CreateThreadRow = styled.div`
+export const CreateRoomRow = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	margin: ${length.margin};
 
@@ -29,7 +29,22 @@ export const DeleteButton = styled.div`
 	}
 `;
 
-export const ThreadItem = styled.div`
+export const AddRoomInput = styled.input`
+	${components.input};
+	height: 32px;
+	width: calc(100% - 72px - ${length.margin});
+	border-radius: ${length.radius} 0 0 ${length.radius};
+
+`;
+
+export const AddRoomButton = styled.button`
+	${components.button};
+	width: 70px;
+	border-left: none;
+	border-radius: 0 ${length.radius} ${length.radius} 0;
+`;
+
+export const MessageRoomItem = styled.div`
 	width: calc(100% - ${length.margin} * 2 - 24px);
 	${layout.row};
 	margin: ${length.margin};

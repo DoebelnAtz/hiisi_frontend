@@ -1,9 +1,11 @@
 import React, { useContext, useState, Fragment } from 'react';
 import {
-	ThreadItem,
-	CreateThreadRow,
+	MessageRoomItem,
+	CreateRoomRow,
 	NotificationIcon,
 	DeleteButton,
+	AddRoomInput,
+	AddRoomButton,
 } from './Styles';
 import { makeRequest } from '../../../Api';
 import { RouteComponentProps, withRouter } from 'react-router';
@@ -35,9 +37,13 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 
 	const createThread = async () => {
 		if (!!inputVal.length) {
-			let resp = await makeRequest('messages/threads/create_thread', 'post', {
-				threadName: inputVal,
-			});
+			let resp = await makeRequest(
+				'messages/threads/create_thread',
+				'post',
+				{
+					threadName: inputVal,
+				},
+			);
 			threads && setThreads([...threads, resp.data]);
 			setInputVal('');
 		}
@@ -68,11 +74,11 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 		}
 	};
 
-	const renderFriends = () => {
+	const renderMessageRooms = () => {
 		if (threads)
 			return threads.map((thread: ThreadType) => {
 				return (
-					<ThreadItem
+					<MessageRoomItem
 						className={'row message_thread_item'}
 						key={thread.thread_id}
 						onClick={() => handleChatClick(thread)}
@@ -90,27 +96,29 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 								<img src={DeleteImg} alt={'delete thread'} />
 							</DeleteButton>
 						)}
-					</ThreadItem>
+					</MessageRoomItem>
 				);
 			});
 	};
 
 	return (
 		<Fragment>
-			<CreateThreadRow>
-				<InputWithButton
+			<CreateRoomRow>
+				<AddRoomInput
 					value={inputVal}
 					onChange={(e: React.SyntheticEvent) => {
 						let target = e.target as HTMLInputElement;
 						setInputVal(target.value);
 					}}
+					onKeyDown={(e: React.KeyboardEvent) => {
+						if (e.key === 'Enter') createThread();
+					}}
 					placeholder={'create thread'}
 					onClick={createThread}
-				>
-					Create
-				</InputWithButton>
-			</CreateThreadRow>
-			{renderFriends()}
+				/>
+				<AddRoomButton>Create</AddRoomButton>
+			</CreateRoomRow>
+			{renderMessageRooms()}
 		</Fragment>
 	);
 };

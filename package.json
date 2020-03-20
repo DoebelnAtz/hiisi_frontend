@@ -26,7 +26,11 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "latest",
     "styled-components": "^5.0.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "workbox-cacheable-response": "latest",
+    "workbox-strategies": "latest",
+    "workbox-routing": "latest",
+    "workbox-build": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

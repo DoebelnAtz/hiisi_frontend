@@ -15,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/openhive",
+  "start_url": "/resources",
   "background_color": "#AC7BC2",
   "display": "standalone",
   "scope": "/",
