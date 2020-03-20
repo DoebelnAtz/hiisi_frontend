@@ -6,7 +6,6 @@ import App from './App/index';
 import registerServiceWorker from "./registerServiceWorker";
 
 
-
 ReactDOM.render(
 	<WidthContextProvider>
 
@@ -17,4 +16,3 @@ ReactDOM.render(
 ,
 	document.querySelector('#root'),
 );
-registerServiceWorker();
