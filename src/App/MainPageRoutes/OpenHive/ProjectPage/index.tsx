@@ -192,7 +192,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 								</ProjectDashBoardNavItem>
 							)}
 							<ProjectDashBoardNavItem
-								onClick={() => setCurrentChat(project.t_id)}
+								onClick={() => {setCurrentChat(project.t_id); if(isMobile) history.push('/messages')}}
 							>
 								<span>Chat</span>
 							</ProjectDashBoardNavItem>

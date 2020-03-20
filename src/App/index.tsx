@@ -26,8 +26,6 @@ import MobileNav from './MobileNav';
 import Signup from './Auth/Signup/index';
 
 const App: React.FC = () => {
-	console.log(process.env);
-	setLocal('darkmode', true);
 	const [width, isMobile] = useWidth();
 	return (
 		<ErrorContextProvider>
