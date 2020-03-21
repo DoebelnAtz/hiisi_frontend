@@ -145,13 +145,13 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 				)}
 			</ProjectInfo>
 			<ProjectTitle>
-				<div>
+
 					<span>
 						{!isLoading && project
 							? capitalizeFirst(project.title)
 							: 'Loading...'}
 					</span>
-				</div>
+
 			</ProjectTitle>
 			{project && (
 				<ProjectDescription>

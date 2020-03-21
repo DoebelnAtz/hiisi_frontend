@@ -84,6 +84,7 @@ export const EditDescriptionCol = styled.div`
 	margin-top: ${length.margin};
 	width: max(50%, calc(100% - 200px));
 	display: flex;
+	height: 40vh;
 	flex-direction: column;
 	& span {
 		margin-bottom: ${length.margin};
@@ -109,7 +110,7 @@ export const SubmitResource = styled.div`
 	${props => props.isMobile ? `
 		left: 5%;
 		right: 5%;
-		top: 20%;
+		top: 15%;
 	` : `
 	left: 20%;
 	right: 20%;

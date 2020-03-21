@@ -25,6 +25,7 @@ export const BackToProjectsButton = styled.div`
 	height: 30px;
 	z-index: 2;
 	margin-right: ${length.margin};
+
 	& img {
 		margin: auto ${length.margin} auto 4px;
 		height: 20px;
@@ -35,6 +36,7 @@ export const BackToProjectsButton = styled.div`
 export const ProjectInfo = styled.div`
 	${layout.row};
 	position: relative;
+	height: 34px;
 	right: ${length.margin};
 	bottom: ${length.margin};
 	background-color: ${color.siteBG2};
@@ -49,16 +51,12 @@ export const ProjectDescription = styled.div`
 export const ProjectTitle = styled.div`
 	${font.title};
 	${layout.row};
+	margin: ${length.margin} 0;
 	z-index: 1;
 	width: 100%;
-	& div {
-		${layout.row};
-		margin-top: ${length.margin};
-		width: 100%;
-	}
-	& div span {
+	span {
 		margin: 0 auto;
-	}
+
 `;
 
 export const GitIconDiv = styled.div`

@@ -143,7 +143,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								</ContentTextEditor>
 								<ButtonRow>
 									<BackButton onClick={() => setPopup(false)}>
-										Back
+										Cancel
 									</BackButton>
 									<SubmitButton
 										disabled={

@@ -13,10 +13,10 @@ export const Resources = styled.div``;
 
 export const SubmitResourceButton = styled.button`
 	${components.button};
-	width: fit-content;
+	width: ${props => props.isMobile ? '100%' : 'fit-content'};
 	height: 34px;
 	line-height: 28px;
-	margin-right: ${length.margin};
+	margin-right: ${props => props.isMobile ? '0' : length.margin};
 	margin-bottom: ${length.margin};
 `;
 

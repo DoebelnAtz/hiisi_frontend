@@ -9,6 +9,7 @@ import {
 	SubmitButton,
 	TitleAndLinkRow,
 	ErrorSpan,
+	CancelButton,
 } from './Styles';
 import { useDismiss, useWidth } from '../../../../Hooks';
 import { Project, ProjectCardType } from '../Types';
@@ -186,6 +187,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 					/>
 				</RowDiv>
 				<ButtonRow>
+					<CancelButton onClick={() => close()}>Cancel</CancelButton>
 					<SubmitButton onClick={() => createProject()}>
 						Submit
 					</SubmitButton>

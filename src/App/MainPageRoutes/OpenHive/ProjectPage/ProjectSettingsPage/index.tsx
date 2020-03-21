@@ -155,6 +155,7 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 					Add Collaborators
 					<input
 						value={searchUserInputVal}
+						placeholder={'Search users:'}
 						onChange={(e: React.SyntheticEvent) =>
 							handleCollaboratorChange(e)
 						}

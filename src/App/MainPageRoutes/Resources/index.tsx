@@ -84,21 +84,21 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 						setSelect={onSortSelect}
 						optionList={['popular', 'recent', 'title']}
 					/>
-					{tags && (
-						<DropDown
-							width={`${
-								isMobile
-									? `calc(${width}px / 2 - 20px)`
-									: `166px`
-							}`}
-							height={'32px'}
-							state={filter}
-							text={'Filter: '}
-							withFilter={true}
-							setSelect={onFilterSelect}
-							optionList={tags.map((tag) => tag.title)}
-						/>
-					)}
+
+					<DropDown
+						width={`${
+							isMobile
+								? `calc(${width}px / 2 - 20px)`
+								: `166px`
+						}`}
+						height={'32px'}
+						state={filter}
+						text={'Filter: '}
+						withFilter={true}
+						setSelect={onFilterSelect}
+						optionList={tags ? tags.map((tag) => tag.title) : ['loading..']}
+					/>
+
 				</ResourceFilters>
 				{!isMobile && (
 					<FilterButton onClick={() => setFilter('none')}>

@@ -28,7 +28,6 @@ export const ModalDiv = styled(animated.div)`
 		left: 5%;
 		right: 5%;
 		top: 20%;
-		bottom: 20%;
 	` : `
 	left: 20%;
 	right: 20%;
@@ -53,15 +52,12 @@ export const TitleText = styled.div`
 	margin: ${length.margin} auto;
 `;
 
-export const TitleInput = styled.textarea`
-	${components.textarea};
+export const TitleInput = styled.input`
+	${components.input};
 	${font.text};
-	background-color: ${color.siteBG3};
 	margin: 0 auto;
 	resize: vertical;
 	border-radius: 5px;
-	border-color: ${color.siteBG3};
-	height: 15%;
 	width: 90%;
 `;
 

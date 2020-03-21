@@ -67,6 +67,11 @@ export const ButtonRow = styled.div`
 	${layout.row};
 `;
 
+export const CancelButton = styled.button`
+	${components.button};
+	margin-right: auto;
+`;
+
 export const SubmitButton = styled.button`
 	${components.button};
 `;

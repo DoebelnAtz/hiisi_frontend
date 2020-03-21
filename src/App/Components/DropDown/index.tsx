@@ -76,6 +76,12 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 		}
 	}, [expanded]);
 
+	// we copy the optionList to a state, here we make sure it updates when the
+	// input changes
+	useEffect(() => {
+		setOptions(optionList);
+	}, [optionList.length]);
+
 	// Filter options
 	const handleFilterChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
