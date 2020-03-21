@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/ipad-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ipad-retina-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/iphone-retina-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderText/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/PlaceHolderFeed/PlaceholderText/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/ProjectSettingsPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/ProjectSettingsPage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/ProjectPage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/SharedStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/SharedStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +100,7 @@
       <workItem from="1584607762747" duration="9988000" />
       <workItem from="1584703212096" duration="9443000" />
       <workItem from="1584717530555" duration="4792000" />
-      <workItem from="1584727376609" duration="5747000" />
+      <workItem from="1584727376609" duration="7459000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -257,14 +249,20 @@
       <option name="project" value="LOCAL" />
       <updated>1584728745503</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="mobile ui fixes">
+      <created>1584784696946</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1584784696946</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added sorting functionality to resources, small ui improvements" />
     <MESSAGE value="improved filtering system" />
     <MESSAGE value="updated taskinfo UI" />
     <MESSAGE value="added comments to tasks" />
@@ -289,7 +287,8 @@
     <MESSAGE value="Ui fixes" />
     <MESSAGE value="Removed notifications" />
     <MESSAGE value="mobile fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="mobile fix" />
+    <MESSAGE value="mobile ui fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile ui fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -304,10 +303,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584728745413">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1584784696912">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584728745413" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584784696912" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1584545081679">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -340,14 +339,14 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583686518655" />
-    <state x="4808" y="329" key="run.anything.popup" timestamp="1584718828500">
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1584786560986">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584718828500" />
-    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1584780839807">
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584786560986" />
+    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1584786566036">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584780839807" />
+    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584786566036" />
     <state x="5025" y="617" width="540" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584719162382">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

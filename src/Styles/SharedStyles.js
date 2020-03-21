@@ -1,24 +1,26 @@
 import { css } from 'styled-components';
 import Color from 'color';
 
+const baseColor = '#161616';
+
 export const color = {
 	primary: '#AC7BC2',
 	secondary: '#E0AB79',
 	tertiary: '#86D889',
-	siteBG: '#161616',
-	siteBG1: Color('#161616')
+	siteBG: baseColor,
+	siteBG1: Color(baseColor)
 		.lighten(0.5)
 		.string(),
-	siteBG2: Color('#161616')
+	siteBG2: Color(baseColor)
 		.lighten(1)
 		.string(),
-	siteBG3: Color('#161616')
+	siteBG3: Color(baseColor)
 		.lighten(1.5)
 		.string(),
-	siteBG4: Color('#161616')
+	siteBG4: Color(baseColor)
 		.lighten(2)
 		.string(),
-	siteBG5: Color('#161616')
+	siteBG5: Color(baseColor)
 		.lighten(2.5)
 		.string(),
 	textColor: Color('#AC7BC2')
