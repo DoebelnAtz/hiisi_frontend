@@ -16,6 +16,7 @@ export const DropDown = styled.div`
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
+	overflow-x: hidden;
 	&:hover {
 		background-color: ${colorAdjust.darken(color.siteBG2, 0.1)};
 	}
@@ -45,6 +46,7 @@ export const DropDownList = styled.div`
 	padding: 2px;
 	max-height: 300px;
 	overflow-y: auto;
+	overflow-x: hidden;
 	//top: calc(${(props) => `${props.height}`} - 1px);
 	border-radius: 0 0 4px 4px;
 	border: 1px solid ${color.primary};
