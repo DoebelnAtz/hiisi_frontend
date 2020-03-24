@@ -133,15 +133,19 @@ export function useRequest<F>(
 	const { update: setError } = useContext(ErrorContext);
 	const resp = useRef<any>(null);
 	const history = useHistory();
+	const mounted = useRef(false);
 	useEffect(() => {
+		mounted.current = true;
 		async function request() {
 			try {
+
 				setIsLoading(true);
 				resp.current = await makeRequest(url, method, body);
-				setData(resp.current.data);
+				if (mounted.current)
+					setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
-					//window.location.replace('/505');
+					setError('offline');
 				} else if (e.response.status === 401) {
 					localStorage.clear();
 					console.log('unauth');
@@ -153,7 +157,11 @@ export function useRequest<F>(
 				setIsLoading(false);
 			}
 		}
-		if (conditional) request();
+		if (conditional && mounted.current)
+			request();
+		return () => {
+			mounted.current = false;
+		}
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }

@@ -3,21 +3,21 @@ import { color, colorAdjust } from '../../../../Styles/SharedStyles';
 
 type PlaceholderTextProps = {
 	height: string;
-	width: string;
 	style?: any
 };
 
-const PlaceholderText: React.FC<PlaceholderTextProps> = ({ height, width, style }) => {
+const PlaceholderText: React.FC<PlaceholderTextProps> = ({height, children, style }) => {
 	return (
 		<span
 			style={{
 				...style,
 				backgroundColor: colorAdjust.darken(color.siteBG2, 0.1),
-				width: width,
-				height: height,
-				margin: '2px',
+				fontSize: height,
+				color: colorAdjust.darken(color.siteBG2, 0.1)
 			}}
-		/>
+		>
+			{children}
+		</span>
 	);
 };
 

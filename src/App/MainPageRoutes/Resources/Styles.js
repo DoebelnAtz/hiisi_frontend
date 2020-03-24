@@ -40,5 +40,6 @@ export const ResourcePageHead = styled.div`
 export const ResourceFilters = styled.div`
  	${layout.row};
  	flex-wrap: nowrap;
+ 	margin-bottom: ${length.margin};
  	overflow: visible;
 `;

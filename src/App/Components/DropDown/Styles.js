@@ -16,7 +16,6 @@ export const DropDown = styled.div`
 	background-color: ${color.siteBG2};
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
-	overflow-x: hidden;
 	&:hover {
 		background-color: ${colorAdjust.darken(color.siteBG2, 0.1)};
 	}
