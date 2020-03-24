@@ -135,6 +135,7 @@ export const CardDate = styled.span`
 
 export const DeleteButton = styled.div`
 	${layout.row};
+	width: 100%;
 	margin-bottom: 10px;
 	& img {
 		${cursor.clickable};

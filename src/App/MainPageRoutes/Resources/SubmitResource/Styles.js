@@ -97,7 +97,6 @@ export const ButtonRow = styled.div`
 	${layout.row};
 	margin-top: 40px;
 	& button {
-		margin-left: auto;
 		${components.button};
 	}
 `;

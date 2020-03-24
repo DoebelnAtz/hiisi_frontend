@@ -6,7 +6,7 @@ import {
 	font,
 	layout,
 	length,
-} from '../../../Styles/SharedStyles';
+} from '../../Styles/SharedStyles';
 
 export const SearchDiv = styled.div`
 	${layout.row};
@@ -20,24 +20,21 @@ export const SearchDiv = styled.div`
 
 export const SearchInput = styled.input`
 	${components.input};
-	height: 28px;
+	height: 34px;
+	margin-top: ${length.margin};
 	border-radius: ${(props) =>
 		!props.showingResults ? '4px' : '4px 4px 0 0'};
-	min-width: 200px;
-	max-width: 300px;
-	width: 20vw;
+	width: 100vw;
 `;
 
 export const SearchResults = styled.div`
 	display: ${(props) => (props.showingResults ? 'block' : 'none')};
 	position: absolute;
-	max-height: 200px;
+	width: calc(100% - 2px);
 	z-index: 10;
 	overflow-y: auto;
-	top: 30px;
-	width: calc(20vw + 10px);
-	min-width: 210px;
-	max-width: 310px;
+	top: 46px;
+	max-height: 50vh;
 	border-radius: 0 0 4px 4px;
 	border: 1px solid ${color.primary};
 	background-color: ${color.siteBG2};

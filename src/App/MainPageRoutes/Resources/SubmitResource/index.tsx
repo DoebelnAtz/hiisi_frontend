@@ -37,7 +37,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		descriptionError: false,
 		linkError: false,
 	});
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	const [inputState, setInputState] = useState({
 		descriptionVal: '',
@@ -166,6 +166,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					</EditDescriptionCol>
 				</RowDiv>
 				<ButtonRow>
+					<button style={{marginRight: 'auto'}} onClick={close}>Cancel</button>
 					<button onClick={submitResource}>Submit</button>
 				</ButtonRow>
 			</SubmitResource>

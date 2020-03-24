@@ -21,10 +21,8 @@ import {
 	CardDate,
 	Card,
 	CardVotes,
-	CardTitle,
 	CardButtons,
 	CardAuthor,
-	CardTitleInfo,
 	CardEdited,
 } from '../../../../../Styles/CardStyles';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
@@ -36,7 +34,6 @@ import ShareImg from '../../../../../Assets/Share.png';
 import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
 import { formatDate } from '../../../../../Utils';
-import { RowDiv } from '../../../../../Styles/LayoutStyles';
 import { useWidth } from '../../../../../Hooks';
 import {
 	MobileArrowImage,
@@ -319,6 +316,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					</Tags>
 				</CardContent>
 				<CardButtons>
+					<ShareButton>
 					{resource.owner && (
 						<DeleteButton>
 							<img
@@ -328,7 +326,6 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							/>
 						</DeleteButton>
 					)}
-					<ShareButton>
 						<img
 							onClick={() =>
 								handleShareClick(

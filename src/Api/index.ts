@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { getLocal, setLocal } from '../Utils';
 
+const backendUrl = 'https://hivemind-42.com';
+const backendUrl2 = 'http://localhost:5000';
+
 export const makeRequest = async (url: string, method: any, data: any = {}) => {
 	let resp;
 
 	try {
 		resp = await axios({
-		url: `http://localhost:5000/api/${url}`,
+		url: `${backendUrl}/api/${url}`,
 		method: method,
 		data: data,
 		headers: {
@@ -25,7 +28,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 		else if (e.response.status === 401) {
 
 			let refreshAttempt = await axios({
-				url: `http://localhost:5000/api/auth/refresh_token`,
+				url: `${backendUrl}/api/auth/refresh_token`,
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -46,7 +49,7 @@ export const makeRequest = async (url: string, method: any, data: any = {}) => {
 			throw e;
 		}
 		resp = await axios({
-				url: `hhttp://localhost:5000/api/${url}`,
+				url: `${backendUrl}/api/${url}`,
 				method: method,
 				data: data,
 				headers: {

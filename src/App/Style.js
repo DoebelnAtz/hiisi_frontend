@@ -11,6 +11,8 @@ export const MainContainer = styled.div`
 	overflow: hidden;
 `;
 
+
+
 export const MainPageHeader = styled.div`
 	width: calc(100% - ${props => props.isMobile ? `${length.margin} * 2` : `0px`});
 	margin: 0;
@@ -37,6 +39,7 @@ export const ProductionStateLabel = styled.div`
 	right: -25px;
 	opacity: 0.9;
 	overflow: hidden;
+	z-index: 10;
 	transform: rotateY(0deg) rotate(45deg);
 	padding: 3px 25px 3px 25px;
 	& span {
