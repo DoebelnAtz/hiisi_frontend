@@ -18,6 +18,7 @@ const LoadingDots: React.FC<LoadingDotsProps> = ({
 
 	// not sure if this is a good solution but it works..
 	const cycleDots = async () => {
+		if (!mounted.current) return;
 		setTimeout(() => {
 			mounted.current && setDotState(2);
 

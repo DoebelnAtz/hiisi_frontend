@@ -16,6 +16,7 @@ import { useRequest } from '../../../Hooks';
 import { BoardType, ColumnType, TaskType } from './Types';
 import { User } from '../../../Types';
 import LoadingDots from '../Loading';
+import { LoadingDot } from '../Loading/Styles';
 
 let boardState = {
 	columns: [
@@ -193,6 +194,7 @@ const Board: React.FC<BoardProps> = ({
 	return (
 		<BoardDiv>
 			<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
+			<LoadingDots height={20} color={'#424242'} />
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
 					{filterBoard()?.columns.map((column: ColumnType) => (

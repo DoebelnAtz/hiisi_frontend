@@ -145,14 +145,15 @@ export function useRequest<F>(
 	const { update: setError } = useContext(ErrorContext);
 	const resp = useRef<any>(null);
 	const history = useHistory();
-	const mounted = useRef(false);
+	const mounted = useMounted();
 	useEffect(() => {
-		mounted.current = true;
 		async function request() {
 			try {
 				setIsLoading(true);
 				resp.current = await makeRequest(url, method, body);
-				if (mounted.current) setData(resp.current.data);
+				if (mounted.current) {
+					setData(resp.current.data);
+				}
 			} catch (e) {
 				if (!e.response) {
 					setError('offline');
@@ -164,13 +165,12 @@ export function useRequest<F>(
 					setError(e.response.status.toString());
 				}
 			} finally {
-				setIsLoading(false);
+				if (mounted.current) {
+					setIsLoading(false);
+				}
 			}
 		}
 		if (conditional && mounted.current) request();
-		return () => {
-			mounted.current = false;
-		};
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }
