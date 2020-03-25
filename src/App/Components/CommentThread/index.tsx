@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Dispatch, Fragment, SetStateAction, useState } from 'react';
 
 import Reply from './Reply';
 import { useRequest } from '../../../Hooks';
@@ -23,7 +23,7 @@ const ShowComments: React.FC<CommentThread> = ({
 	commentthread,
 	focusList,
 	OPAuthorId,
-	expand = false,
+	expand = true,
 }) => {
 	const location = useLocation();
 	const history = useHistory();
@@ -65,13 +65,15 @@ const ShowComments: React.FC<CommentThread> = ({
 						</ShowRepliesButton>
 					)}
 				<ReplyRow full={!!comments?.length}>
-					<Reply
-						commentThread={comments}
-						expandChildThread={setExpanded}
-						setCommentThread={setComments}
-						childThreadId={commentthread}
-						OPAuthorId={OPAuthorId}
-					/>
+
+						<Reply
+							commentThread={comments}
+							expandChildThread={setExpanded}
+							setCommentThread={setComments as Dispatch<SetStateAction<CommentType[]>>}
+							childThreadId={commentthread}
+							OPAuthorId={OPAuthorId}
+						/>
+
 				</ReplyRow>
 			</RowDiv>
 			<Comments>
@@ -79,7 +81,8 @@ const ShowComments: React.FC<CommentThread> = ({
 					expanded) &&
 					comments && (
 						<CommentFeed
-							comments={comments}
+							comments={comments?.filter(comment => comment.parentthread === commentThread)}
+							allComments={comments}
 							commentThread={commentThread}
 							page={2}
 							focusList={focusList}

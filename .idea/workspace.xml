@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/MobileSearch/Styles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/MobileSearch/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.19356ea6.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.19356ea6.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/2.19356ea6.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.7a8f63fb.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/main.7a8f63fb.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/sw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Header/Search/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Header/Search/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MobileNav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/CommentFeed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/CommentFeed/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +109,8 @@
       <workItem from="1584727376609" duration="7840000" />
       <workItem from="1584795721982" duration="11763000" />
       <workItem from="1584974869357" duration="4763000" />
-      <workItem from="1585045742289" duration="9442000" />
+      <workItem from="1585045742289" duration="13047000" />
+      <workItem from="1585076327005" duration="4149000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -298,14 +287,20 @@
       <option name="project" value="LOCAL" />
       <updated>1585047338585</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added search tab to mobile">
+      <created>1585056404438</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1585056404438</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added comments to tasks" />
     <MESSAGE value="profile fix" />
     <MESSAGE value="css is the hardest &quot;language&quot; I've used, at least C makes sense" />
     <MESSAGE value="Added refresh token" />
@@ -330,7 +325,8 @@
     <MESSAGE value="meta tag changes to index.html for better iOS support" />
     <MESSAGE value="ui fixes" />
     <MESSAGE value="ui fixes, improved api hook" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui fixes, improved api hook" />
+    <MESSAGE value="added search tab to mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="added search tab to mobile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -345,10 +341,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585047338555">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585056404372">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585047338555" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585056404372" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1584545081679">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -366,10 +362,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584545083396" />
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585047340120">
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585056405378">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585047340120" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585056405378" />
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583581913678">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

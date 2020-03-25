@@ -34,7 +34,7 @@ export const CommentInput = styled.input`
 	${border.setBorders(1, 1, 1, 1, color.primary)};
 	border-radius: 0;
 
-	width: calc(100% - 150px);
+	width: calc(100% - 142px);
 	background-color: ${color.siteBG3};
 	border-color: ${color.primary};
 	left: 0;

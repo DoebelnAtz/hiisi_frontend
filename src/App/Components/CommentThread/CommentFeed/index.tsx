@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { useRequest } from '../../../../Hooks';
 import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 import Comment from '../Comment';
 import { FocusList } from '../../../../Types';
@@ -8,6 +7,7 @@ import { RowDiv } from '../../../../Styles/LayoutStyles';
 import PlusIcon from '../../../../Assets/Plus.png';
 type CommentFeedProps = {
 	commentThread: number;
+	allComments: CommentType[];
 	page: number;
 	focusList: FocusList;
 	comments: CommentType[];
@@ -18,17 +18,10 @@ const CommentFeed: React.FC<CommentFeedProps> = ({
 	comments,
 	commentThread,
 	page,
+	allComments,
 	focusList,
 	odd = true,
 }) => {
-	const [nextComments, setNextComments, isLoading] = useRequest<
-		CommentType[]
-	>(
-		`blogs/commentthread/${commentThread}?page=${page}`,
-		'get',
-		{},
-		comments.length >= 10,
-	);
 	const [showNext, setShowNext] = useState(false);
 	const renderComments = (comment = comments, isExpanded = true) => {
 		if (comment) {
@@ -37,6 +30,7 @@ const CommentFeed: React.FC<CommentFeedProps> = ({
 					<Comment
 						key={child.c_id}
 						odd={odd}
+						allComments={allComments}
 						focusList={focusList}
 						isExpanded={isExpanded}
 						child={child}
@@ -51,24 +45,6 @@ const CommentFeed: React.FC<CommentFeedProps> = ({
 	return (
 		<Fragment>
 			{comments && renderComments()}
-			{showNext && nextComments && (
-				<CommentFeed
-					comments={nextComments}
-					commentThread={commentThread}
-					page={page + 1}
-					odd={odd}
-					focusList={focusList}
-				/>
-			)}
-			{!showNext && comments && comments?.length >= 10 && (
-				<RowDiv>
-					<MoreButton
-						src={PlusIcon}
-						alt={'more comments'}
-						onClick={() => setShowNext(true)}
-					/>
-				</RowDiv>
-			)}
 		</Fragment>
 	);
 };

@@ -22,6 +22,7 @@ export interface CommentProps {
 	odd: boolean;
 	focusList: FocusList;
 	child: CommentType;
+	allComments: CommentType[];
 	renderComments: (
 		thread: Array<CommentType> | undefined,
 		expanded: boolean,
@@ -34,14 +35,12 @@ const CommentCard: React.FC<CommentProps> = ({
 	focusList,
 	child,
 	renderComments,
+	allComments,
 	isExpanded,
 }) => {
 	const history = useHistory();
-	const [expanded, setExpanded] = useState(false);
-	const [childThread, setChildThread, isLoading] = useRequest<CommentType[]>(
-		`blogs/commentthread/${child.childthread}?page=1`,
-		'get',
-	);
+	const [childThread, setChildThread] = useState(allComments.filter(comment => comment.parentthread === child.childthread));
+	const [expanded, setExpanded] = useState(true);
 	if (isExpanded)
 		return (
 			<ParentComment key={child.c_id} odd={odd}>
@@ -89,7 +88,8 @@ const CommentCard: React.FC<CommentProps> = ({
 					<ChildComments>
 						<CommentFeed
 							commentThread={child.childthread}
-							comments={childThread}
+							comments={allComments.filter(comment => comment.parentthread === child.childthread)}
+							allComments={allComments}
 							focusList={focusList}
 							page={2}
 							odd={!odd}

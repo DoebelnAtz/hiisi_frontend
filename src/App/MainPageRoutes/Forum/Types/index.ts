@@ -3,6 +3,7 @@ import { vote } from '../../Resources/Types';
 
 export interface CommentType {
     c_id: number,
+    parentthread: number,
     comment_date: string,
     profile_pic: string,
     username: string,

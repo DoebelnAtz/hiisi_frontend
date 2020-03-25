@@ -22,7 +22,7 @@ import { useSpring } from 'react-spring';
 type ReplyProps = {
 	commentThread: CommentType[] | undefined;
 	expandChildThread?: Dispatch<SetStateAction<boolean>>;
-	setCommentThread: Dispatch<SetStateAction<CommentType[] | undefined>>;
+	setCommentThread: Dispatch<SetStateAction<CommentType[]>>;
 	childThreadId: number;
 	OPAuthorId: number;
 };
@@ -65,6 +65,7 @@ const ReplyButton: React.FC<ReplyProps> = ({
 		return (
 			<ReplyBtn
 				onClick={() => {
+					expandChildThread && expandChildThread(true);
 					setOpened(true);
 				}}
 			>

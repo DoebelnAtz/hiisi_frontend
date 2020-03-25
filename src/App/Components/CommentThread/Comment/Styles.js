@@ -27,17 +27,17 @@ export const ButtonRow = styled.div`
 
 export const ShowRepliesButton = styled.button`
 	${components.button};
-	width: 100px;
+	width: 80px;
 	height: 34px;
 	margin-right: ${length.margin};
 `;
 
 export const CommentInfo = styled.div`
-	position: relative;
+	position: absolute;
 	height: 28px;
 	top: 5px;
 	line-height: 28px;
-	left: -21px;
+	left: 30px;
 	z-index: 1;
 	background-color: ${(props) => (props.odd ? color.siteBG2 : color.siteBG1)};
 	padding-left: ${length.margin};
@@ -47,6 +47,7 @@ export const CommentInfo = styled.div`
 	padding-right: ${length.margin};
 	& span {
 		color: #ffffff;
+		font-size: 14px;
 		margin-left: 20px;
 		margin-right: 10px;
 	}
@@ -74,7 +75,7 @@ export const CommentBody = styled.div`
 `;
 
 export const ReplyRow = styled.div`
-	width: calc(100% - ${(props) => (props.full ? '110px' : '0px')});
+	width: calc(100% - ${(props) => (props.full ? '90px' : '0px')});
 `;
 
 export const ChildComments = styled.div`
