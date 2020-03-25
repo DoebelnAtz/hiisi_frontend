@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { RefObject, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
 	OutsideDiv,
@@ -34,9 +34,12 @@ const Modal: React.FC<ModalProps> = ({
 					)}
 					<CloseButton onClick={close}>✕</CloseButton>
 				</ModalButtonsRow>
-				<ModalContent id={'modal-content'}
-							  className={'scrollbar-animation'}
->{children}</ModalContent>
+				<ModalContent
+					id={'modal-content'}
+					className={'scrollbar-animation'}
+				>
+					{children}
+				</ModalContent>
 			</InsideDiv>
 		</OutsideDiv>
 	);

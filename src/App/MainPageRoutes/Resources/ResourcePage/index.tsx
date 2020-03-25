@@ -79,7 +79,9 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 			resource: resource,
 		});
 		if (resp.data) {
-			close();
+			setTimeout(() => {
+				close();
+			}, 500);
 			return true;
 		}
 		return false;

@@ -76,6 +76,18 @@ export const useNotifications = (room: string) => {
 	return [notifications, connected];
 };
 
+export const useMounted = () => {
+	const isMounted = useRef(false);
+
+	useEffect(() => {
+		isMounted.current = true;
+		return () => {
+			isMounted.current = false;
+		};
+	}, []);
+	return isMounted;
+};
+
 export const useWidth = () => {
 	const { state: width, update: setWidth } = useContext(WidthContext);
 	//const [width, setWidth] = useState(window.innerWidth);
@@ -138,11 +150,9 @@ export function useRequest<F>(
 		mounted.current = true;
 		async function request() {
 			try {
-
 				setIsLoading(true);
 				resp.current = await makeRequest(url, method, body);
-				if (mounted.current)
-					setData(resp.current.data);
+				if (mounted.current) setData(resp.current.data);
 			} catch (e) {
 				if (!e.response) {
 					setError('offline');
@@ -157,11 +167,10 @@ export function useRequest<F>(
 				setIsLoading(false);
 			}
 		}
-		if (conditional && mounted.current)
-			request();
+		if (conditional && mounted.current) request();
 		return () => {
 			mounted.current = false;
-		}
+		};
 	}, [url, method]);
 	return [data, setData, isLoading] as const;
 }

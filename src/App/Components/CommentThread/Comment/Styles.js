@@ -45,8 +45,8 @@ export const CommentInfo = styled.div`
 	background-color: ${(props) => (props.odd ? color.siteBG2 : color.siteBG1)};
 	padding-left: ${length.margin};
 	width: auto;
-	border-radius: 0 10px 10px 0;
-	padding-right: ${length.margin};
+	border-radius: 0 4px 4px 0;
+	padding-right: 4px;
 	& span {
 		color: #ffffff;
 		font-size: 14px;

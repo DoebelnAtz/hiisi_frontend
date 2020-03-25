@@ -9,7 +9,7 @@ import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
 import { getLocal, setLocal } from '../../../Utils';
 
 const Feed = () => {
-	const [popup, setPopup] = useState(true);
+	const [popup, setPopup] = useState(false);
 
 	const isMounted = useRef(true);
 
@@ -45,12 +45,9 @@ const Feed = () => {
 		<FeedPage>
 			<FeedButtonRow>
 				<CreatePostButton
-					width={
-					isMobile
-						? `calc(${width}px / 2 - 15px)`
-						: `160px`
-				}
-					onClick={() => setPopup(true)}>
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
+					onClick={() => setPopup(true)}
+				>
 					Submit Post
 				</CreatePostButton>
 				<DropDown
@@ -59,11 +56,7 @@ const Feed = () => {
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
 					height={'32px'}
-					width={
-						isMobile
-							? `calc(${width}px / 2 - 15px)`
-							: `160px`
-					}
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
 				/>
 			</FeedButtonRow>
 			<CreatePostModal

@@ -26,6 +26,7 @@
     --borderRadius: 4px;
     --fontMain: 'Share Tech', sans-serif;
     --fontMainLS: 2px;
+    scrollbar-width: thin;
 }
 
 .scrollbar-animation::-webkit-scrollbar-thumb {
@@ -42,8 +43,8 @@
     .scrollbar-animation::-webkit-scrollbar-thumb {
         background-color: rgba(200,200,200, 0.2);
 
+    }
 }
-	}
 
 .scrollbar-animation:hover {
     transition: all 0.2s;
@@ -51,11 +52,14 @@
 }
 
 .scrollbar-animation {
+    scrollbar-color: rgba(200,200,200, 0.2) rgba(0,0,0,0);
+    scrollbar-width: thin;
     border-right-color: rgba(200,200,200, 0.0);
     transition: all 0.2s;
 }
 
 ::-webkit-scrollbar {
+    z-index: 42;
     width: 7px;
     border-radius: 4px;
 }

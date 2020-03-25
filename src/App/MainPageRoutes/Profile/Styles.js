@@ -10,7 +10,7 @@ export const ProfilePageDiv = styled.div`
 export const ProfileHead = styled.div`
 	${layout.col};
 	border-radius: ${length.radius};
-	margin: ${length.margin};
+	margin: ${length.margin} 3px ${length.margin} ${length.margin};
 `;
 
 export const ProfileStats = styled.div`

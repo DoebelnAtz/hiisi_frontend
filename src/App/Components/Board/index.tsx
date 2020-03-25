@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import Column from './Column/index';
 import _ from 'lodash';
 
@@ -8,12 +8,14 @@ import {
 	Columns,
 	Collaborator,
 	ProjectCollaborators,
-	BoardDiv, PlaceHolderCollaborator,
+	BoardDiv,
+	PlaceHolderCollaborator,
 } from './Styles';
 import { makeRequest } from '../../../Api';
 import { useRequest } from '../../../Hooks';
 import { BoardType, ColumnType, TaskType } from './Types';
 import { User } from '../../../Types';
+import LoadingDots from '../Loading';
 
 let boardState = {
 	columns: [
@@ -184,7 +186,7 @@ const Board: React.FC<BoardProps> = ({
 				);
 			});
 		} else {
-			return <PlaceHolderCollaborator/>;
+			return <PlaceHolderCollaborator />;
 		}
 	};
 

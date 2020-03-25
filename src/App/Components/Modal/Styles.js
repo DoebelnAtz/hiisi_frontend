@@ -45,6 +45,6 @@ export const ModalContent = styled.div`
 	border-top: 4px solid ${color.siteBG2};
 	max-height: 70vh;
 	border-radius: ${length.radius};
-	padding: 7px 0 7px 7px;
+	padding: 7px 2px 0 7px;
 	
 `;

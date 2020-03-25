@@ -21,7 +21,7 @@ export const ResourceThumbnail = styled.div`
 `;
 
 export const Tags = styled.div`
-	margin-top: auto;
+	margin-top: ${length.margin};
 	${layout.row};
 `;
 
