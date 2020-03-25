@@ -3,15 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/CommentFeed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/CommentFeed/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRooms/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRooms/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/Style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/SharedStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/SharedStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sw-template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sw-template.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +113,7 @@
       <workItem from="1584974869357" duration="4763000" />
       <workItem from="1585045742289" duration="13047000" />
       <workItem from="1585076327005" duration="4149000" />
+      <workItem from="1585134990214" duration="6947000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -378,10 +381,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583686518655" />
-    <state x="4808" y="329" key="run.anything.popup" timestamp="1584786560986">
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1585135759635">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584786560986" />
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585135759635" />
     <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1585048079913">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

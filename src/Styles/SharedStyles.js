@@ -51,8 +51,9 @@ export const length = {
 export const font = {
 	title: css`
 		font-family: Share Tech, sans-serif;
-		font-size: 36px;
 		letter-spacing: 2px;
+		font-size: ${props => props?.isMobile ? '22px' : '26px'};
+
 	`,
 	text: css`
 		color: ${colorAdjust.darken('#ffffff', 0.15)};
@@ -97,23 +98,33 @@ export const border = {
 export const modal = {
 	inside: css`
 		position: absolute;
-		left: 20%;
-		right: 20%;
-		top: 15%;
+		left: 15%;
+		right: 15%;
+		top: 8%;
 		max-height: 80vh;
 		padding: ${length.margin};
 		border: 5px solid ${color.siteBG2};
 		border-radius: 2px;
-		margin: auto;
 		background: ${color.siteBG2};
 		overflow: auto;
 		z-index: 10;
 		${layout.col};
+		@media (max-width: 1024px) {
+			left: 10%;
+			top: 8%;
+			right: 10%;
+		}
+		@media (max-width: 600px) {
+			left: 4%;
+			top: 5%;
+			right: 4%;
+		}
 	`,
 	outside: css`
 		position: fixed;
 		width: 100%;
 		height: 100%;
+		display: flex;
 		top: 0;
 		left: 0;
 		right: 0;

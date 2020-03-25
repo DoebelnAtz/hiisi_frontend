@@ -9,9 +9,8 @@ if ('function' === typeof importScripts) {
 
     /* injection point for manifest files.  */
 
-/* custom cache rules*/
-
-
+	/* custom cache rules*/
+	  
 		workbox.routing.registerRoute(
 			new RegExp('^http://localhost:5000/api/.*'),
 			new workbox.strategies.StaleWhileRevalidate({

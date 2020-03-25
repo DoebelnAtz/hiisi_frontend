@@ -64,7 +64,6 @@ export const MainView = styled.div`
 	overflow-x: hidden;
 	margin-bottom: auto;
 	height: calc(100%);
-	transition: width 0.2s;
 	@media (max-width: 1024px) {
 		width: calc(100% - ${props => props.isMobile ? `0px` : `50px - ${length.margin} * 3`});
 	}

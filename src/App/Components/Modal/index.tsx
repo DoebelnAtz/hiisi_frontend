@@ -27,14 +27,16 @@ const Modal: React.FC<ModalProps> = ({
 	const [width, isMobile] = useWidth();
 	return (
 		<OutsideDiv>
-			<InsideDiv isMobile={isMobile} ref={inside}>
+			<InsideDiv id={'modal-inside'} isMobile={isMobile} ref={inside}>
 				<ModalButtonsRow>
 					{saveCondition && (
 						<SaveButton onClick={save}>Save</SaveButton>
 					)}
 					<CloseButton onClick={close}>✕</CloseButton>
 				</ModalButtonsRow>
-				<ModalContent>{children}</ModalContent>
+				<ModalContent id={'modal-content'}
+							  className={'scrollbar-animation'}
+>{children}</ModalContent>
 			</InsideDiv>
 		</OutsideDiv>
 	);

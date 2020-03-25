@@ -3,12 +3,11 @@ import { color, components, cursor, layout, length } from '../../Styles/SharedSt
 
 export const MessageModal = styled.div`
 	color: white;
-	border: 1px solid ${color.primary};
+	border: 2px solid ${color.siteBG1};
 	background-color: ${color.siteBG2};
-	padding: 4px 0;
-	border-radius: 20px 0 5px 20px;
+	border-radius: 24px 0 5px 24px;
 	width: 350px;
-	height: calc(40px - 10px);
+	height: calc(40px);
 	${layout.row};
 	${cursor.clickable};
 	position: fixed;
@@ -16,8 +15,8 @@ export const MessageModal = styled.div`
 	z-index: ${42 + 42};
 	right: 0;
 	& span {
-	
-		padding: 3px ${length.margin} 8px;
+		line-height: 40px;
+		margin-left: ${length.margin};
 		font-size: 18px;
 	}
 `;
@@ -29,6 +28,5 @@ export const NotificationIcon = styled.div`
 export const MessageImg = styled.img`
 	height: 40px;
 	position: relative;
-	bottom: 5px;
 	left: 0;
 `;

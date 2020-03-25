@@ -20,7 +20,6 @@ import {
 	ProductionStateLabel,
 } from './Style';
 import Messages from './Messages';
-import { setLocal } from '../Utils';
 import { useWidth } from '../Hooks';
 import MobileNav from './MobileNav';
 import Signup from './Auth/Signup/index';
@@ -73,6 +72,7 @@ const App: React.FC = () => {
 										)}
 										<MainView
 											id={'MainView'}
+											className={'scrollbar-animation'}
 											isMobile={isMobile}
 										>
 											<Main />

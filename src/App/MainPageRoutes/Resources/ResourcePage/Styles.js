@@ -18,8 +18,7 @@ export const ResourceHeader = styled.div`
 export const ResourceThumbnail = styled.div`
 	width: 71px;
 	height: 71px;
-	margin-left: ${length.margin};
-
+	margin-left: 4px;
 	${cursor.clickable};
 	border-radius: ${length.radius};
 	background-image: url(${(props) => props.src});
@@ -31,7 +30,6 @@ export const ResourceThumbnail = styled.div`
 
 export const ResourceTitle = styled.div`
 	${font.title};
-	font-size: 24px;
 	margin-left: ${length.margin};
 	width: calc(100% - ${props => props.full ? '0px' : '91px'});
 	color: ${color.primary};
@@ -45,15 +43,15 @@ export const ResourceTitle = styled.div`
 
 export const ResourceTags = styled.div`
 	${layout.row};
-	margin: ${length.margin} ${length.margin} 0 ${length.margin};
+	margin: ${length.margin} ${length.margin} 0 4px;
 `;
 
 export const ResourceContent = styled.div`
-	width: calc(100% - ${length.margin} * 2);
+	width: calc(100% - 4px * 2);
 	min-height: 40vh;
 	border-radius: ${length.radius};
 	padding: ${length.margin} 0;
-	margin: ${length.margin};
+	margin: 4px;
 	${layout.row};
 `;
 
@@ -132,6 +130,6 @@ export const TagSearchResults = styled.div`
 `;
 
 export const ResourceComments = styled.div`
-	margin: 0 ${length.margin} 0 ${length.margin} ;
-	width: calc(100% - ${length.margin} * 2);
+	margin: 0 4px 0 4px;
+	width: calc(100% - 4px * 2);
 `;

@@ -126,7 +126,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 						alt={'thumbnail'}
 					/>
 				)}
-				<ResourceTitle full={!resource?.thumbnail}>
+				<ResourceTitle isMobile={isMobile} full={!resource?.thumbnail}>
 					{!!resource && (
 						<a
 							href={`${resource?.link}`}

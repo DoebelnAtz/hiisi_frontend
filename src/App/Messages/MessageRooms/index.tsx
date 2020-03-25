@@ -60,17 +60,19 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 
 	const handleDelete = async (targetId: number, e: React.SyntheticEvent) => {
 		e.stopPropagation();
-		let resp = await makeRequest(
-			'messages/threads/delete_thread',
-			'delete',
-			{
-				targetId: targetId,
-			},
-		);
-		if (resp.data) {
-			setThreads(
-				threads?.filter((thread) => thread.thread_id !== targetId),
+		if (window.confirm('Are you sure you want to leave this chat?')) {
+			let resp = await makeRequest(
+				'messages/threads/delete_thread',
+				'delete',
+				{
+					targetId: targetId,
+				},
 			);
+			if (resp.data) {
+				setThreads(
+					threads?.filter((thread) => thread.thread_id !== targetId),
+				);
+			}
 		}
 	};
 
