@@ -104,19 +104,19 @@ export const modal = {
 		max-height: 80vh;
 		padding: ${length.margin};
 		border: 5px solid ${color.siteBG2};
-		border-radius: 2px;
+		border-radius: 4px;
 		background: ${color.siteBG2};
 		overflow: auto;
 		z-index: 10;
 		${layout.col};
 		@media (max-width: 1024px) {
 			left: 10%;
-			top: 8%;
+			top: 15%;
 			right: 10%;
 		}
 		@media (max-width: 600px) {
 			left: 4%;
-			top: 5%;
+			top: 10%;
 			right: 4%;
 		}
 	`,

@@ -5,6 +5,7 @@ import {
 	font,
 	layout,
 	length,
+	modal
 } from '../../../../Styles/SharedStyles';
 
 export const OuterDiv = styled.div`
@@ -102,19 +103,10 @@ export const ButtonRow = styled.div`
 `;
 
 export const SubmitResource = styled.div`
-	position: absolute;
+	${modal.inside};
 	padding: ${length.margin};
 	display: flex;
 	flex-direction: column;
-	${props => props.isMobile ? `
-		left: 5%;
-		right: 5%;
-		top: 15%;
-	` : `
-	left: 20%;
-	right: 20%;
-	top: 25%;
-	`};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
 	border-radius: 2px;

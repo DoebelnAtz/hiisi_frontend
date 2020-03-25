@@ -24,6 +24,7 @@ import {
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor';
 import { PostType } from '../Types';
+import { RowDiv } from '../../../../Styles/LayoutStyles';
 
 type CreatePostModalProps = {
 	setPopup: any;
@@ -113,17 +114,15 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			({ item, key, props }, i) =>
 				item && (
 					<OutsideDiv key={i} style={fadeIn}>
-						<ModalDiv ref={inside} isMobile={isMobile} style={props}>
-
+						<ModalDiv
+							ref={inside}
+							isMobile={isMobile}
+							style={props}
+						>
+							<RowDiv margin={'0 0 10px 0'}>
 								<TitleText error={errors.titleError}>
 									Title
 								</TitleText>
-								<TitleInput
-									placeholder={'Title'}
-									onChange={(e: React.SyntheticEvent) =>
-										handleTitleChange(e)
-									}
-								/>
 								<LengthCounter
 									warning={inputVal.titleVal.length > 80}
 								>
@@ -131,30 +130,45 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 										{inputVal.titleVal.length}/{80}
 									</span>
 								</LengthCounter>
+							</RowDiv>
+							<TitleInput
+								placeholder={'Title'}
+								onChange={(e: React.SyntheticEvent) =>
+									handleTitleChange(e)
+								}
+							/>
+							<RowDiv margin={'10px 0 10px 0'}>
 								<ContentText error={errors.contentError}>
 									Content
 								</ContentText>
-								<ContentTextEditor>
-									<TextEditor
-										editable={true}
-										state={inputVal.contentVal}
-										setState={handleContentChange}
-									/>
-								</ContentTextEditor>
-								<ButtonRow>
-									<BackButton onClick={() => setPopup(false)}>
-										Cancel
-									</BackButton>
-									<SubmitButton
-										disabled={
-											errors.contentError ||
-											errors.titleError
-										}
-										onClick={() => createPost()}
-									>
-										Submit Post
-									</SubmitButton>
-								</ButtonRow>
+								<LengthCounter
+									warning={inputVal.contentVal.length > 500}
+								>
+									<span>
+										{inputVal.contentVal.length}/{500}
+									</span>
+								</LengthCounter>
+							</RowDiv>
+							<ContentTextEditor>
+								<TextEditor
+									editable={true}
+									state={inputVal.contentVal}
+									setState={handleContentChange}
+								/>
+							</ContentTextEditor>
+							<ButtonRow>
+								<BackButton onClick={() => setPopup(false)}>
+									Cancel
+								</BackButton>
+								<SubmitButton
+									disabled={
+										errors.contentError || errors.titleError
+									}
+									onClick={() => createPost()}
+								>
+									Submit Post
+								</SubmitButton>
+							</ButtonRow>
 						</ModalDiv>
 					</OutsideDiv>
 				),

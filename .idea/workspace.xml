@@ -3,22 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Reply/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/SharedStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/SharedStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +108,7 @@
       <workItem from="1584974869357" duration="4763000" />
       <workItem from="1585045742289" duration="13047000" />
       <workItem from="1585076327005" duration="4149000" />
-      <workItem from="1585134990214" duration="12767000" />
+      <workItem from="1585134990214" duration="14608000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -309,14 +299,20 @@
       <option name="project" value="LOCAL" />
       <updated>1585141990625</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Ui improvements">
+      <created>1585147890113</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1585147890113</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="css is the hardest &quot;language&quot; I've used, at least C makes sense" />
     <MESSAGE value="Added refresh token" />
     <MESSAGE value="UX fixes here and there, added filtering option to profile feed" />
     <MESSAGE value="added save button to modal" />
@@ -341,7 +337,8 @@
     <MESSAGE value="ui fixes, improved api hook" />
     <MESSAGE value="added search tab to mobile" />
     <MESSAGE value="scrollbar animation and UI fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="scrollbar animation and UI fixes" />
+    <MESSAGE value="Ui improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ui improvements" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -356,14 +353,14 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585141990559">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585147890084">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585141990559" />
-    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1584545081679">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585147890084" />
+    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1585149597587">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584545081679" />
+    <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585149597587" />
     <state x="1631" y="447" width="424" height="479" key="FileChooserDialogImpl" timestamp="1584802771282">
       <screen x="0" y="0" width="3840" height="1400" />
     </state>
@@ -373,10 +370,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4521" y="411" width="491" height="567" key="RollbackChangesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583582384766" />
-    <state x="4972" y="337" key="SettingsEditor" timestamp="1584545083396">
+    <state x="4972" y="337" key="SettingsEditor" timestamp="1585149602153">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584545083396" />
+    <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585149602153" />
     <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585141991592">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

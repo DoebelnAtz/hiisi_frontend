@@ -9,7 +9,7 @@ import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
 import { getLocal, setLocal } from '../../../Utils';
 
 const Feed = () => {
-	const [popup, setPopup] = useState(false);
+	const [popup, setPopup] = useState(true);
 
 	const isMounted = useRef(true);
 
