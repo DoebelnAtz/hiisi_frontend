@@ -14,7 +14,8 @@ export const ReplyRow = styled.div`
 export const CancelButton = styled.button`
 	${components.button};
 	width: 70px;
-	height: 34px;
+	height: 30px;
+	line-height: 24px;
 	${border.setBorders(1, 0, 1, 1, color.primary)};
 	border-radius: 4px 0 0 4px;
 `;
@@ -22,7 +23,8 @@ export const CancelButton = styled.button`
 export const SendButton = styled.button`
 	${components.button};
 	width: 60px;
-	height: 34px;
+	height: 30px;
+	line-height: 24px;
 	${border.setBorders(1, 1, 1, 0, color.primary)};
 	border-radius: 0 4px 4px 0;
 `;
@@ -30,7 +32,8 @@ export const SendButton = styled.button`
 export const CommentInput = styled.input`
 	${components.input};
 	position: relative;
-	height: 30px;
+	height: 26px;
+	line-height: 26px;
 	${border.setBorders(1, 1, 1, 1, color.primary)};
 	border-radius: 0;
 
@@ -42,5 +45,7 @@ export const CommentInput = styled.input`
 
 export const ReplyBtn = styled.button`
 	${components.button};
-	height: 34px;
+	height: 30px;
+	line-height: 24px;
+
 `;

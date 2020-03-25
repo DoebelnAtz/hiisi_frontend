@@ -9,13 +9,17 @@ export const ProjectButtonRow = styled.div`
 	${layout.row};
 	flex-wrap: nowrap;
 	overflow: visible;
-	margin: ${length.margin};
+	margin: ${length.margin} 3px ${length.margin} ${length.margin};
+	& > div:first-of-type {
+ 		margin-right: 0;
+ 	}
 `;
 
 export const CreateProjectButton = styled.button`
 	${components.button};
 	height: 34px;
 	line-height: 28px;
-	min-width: 140px;
+	min-width: 125px;
+	width: ${props => props.width};
 	margin-right: ${length.margin};
 `;

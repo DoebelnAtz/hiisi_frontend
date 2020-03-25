@@ -92,6 +92,9 @@ export const validateUrl = (url) => {
 };
 
 export const calculateTimeSince = (isoString) => {
+	if (!isoString) {
+		return 'a while ago'
+	}
 	let then = new Date(isoString);
 	var seconds = Math.floor((new Date() - then) / 1000); // remove two hours for timezone...
 
@@ -102,7 +105,7 @@ export const calculateTimeSince = (isoString) => {
 	}
 	interval = Math.floor(seconds / 2592000);
 	if (interval >= 1) {
-		return interval + (interval === 1 ? ' month' : 'months') + ' ago';
+		return interval + (interval === 1 ? ' month' : ' months') + ' ago';
 	}
 	interval = Math.floor(seconds / 86400);
 	if (interval >= 1) {

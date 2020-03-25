@@ -44,7 +44,13 @@ const Feed = () => {
 	return (
 		<FeedPage>
 			<FeedButtonRow>
-				<CreatePostButton onClick={() => setPopup(true)}>
+				<CreatePostButton
+					width={
+					isMobile
+						? `calc(${width}px / 2 - 15px)`
+						: `160px`
+				}
+					onClick={() => setPopup(true)}>
 					Submit Post
 				</CreatePostButton>
 				<DropDown
@@ -55,7 +61,7 @@ const Feed = () => {
 					height={'32px'}
 					width={
 						isMobile
-							? `min(calc(${width}px - 160px), 160px)`
+							? `calc(${width}px / 2 - 15px)`
 							: `160px`
 					}
 				/>

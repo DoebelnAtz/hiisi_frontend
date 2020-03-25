@@ -11,6 +11,7 @@ export const CreatePostButton = styled.button`
 	${components.button};
 	height: 34px;
 	line-height: 28px;
+	width: ${props => props.width};
 	min-width: 120px;
 	margin-right: ${length.margin};
 `;
@@ -19,5 +20,8 @@ export const FeedButtonRow = styled.div`
 	${layout.row};
 	flex-wrap: nowrap;
 	overflow: visible;
-	margin: ${length.margin};
+	margin: ${length.margin} 3px ${length.margin} ${length.margin};
+	& > div:first-of-type {
+ 		margin-right: 0;
+ 	}
 `;

@@ -28,44 +28,45 @@
     --fontMainLS: 2px;
 }
 
-div {
-    border-color: rgba(0, 0, 0, 0.05);
-}
-
 .scrollbar-animation::-webkit-scrollbar-thumb {
     border-right-style: inset;
     /* sum viewport dimensions to guarantee border will fill scrollbar */
     border-right-width: calc(100vw + 100vh);
     /* inherit border-color to inherit transitions */
     border-right-color: inherit;
+    background-color: rgba(0,0,0,0);
+
 }
 
+@media (hover:none) {
+    .scrollbar-animation::-webkit-scrollbar-thumb {
+        background-color: rgba(200,200,200, 0.2);
+
+}
+	}
+
 .scrollbar-animation:hover {
-    transition: border-right-color 0.2s;
-    border-right-color: rgba(200,200,200, 0.2);
+    transition: all 0.2s;
+    border-right-color: rgba(200,200,200, 0.3);
 }
 
 .scrollbar-animation {
-    border-right-width: 0;
+    border-right-color: rgba(200,200,200, 0.0);
     transition: all 0.2s;
 }
 
-/*div:hover::-webkit-scrollbar-thumb {*/
-/*    background-color: rgba(200,200,200,0.8);*/
-/*}*/
-
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: rgba(200,200,200,0);
+    background-color: rgba(20,20,20,0);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(200,200,200,0.1);
+    background-color: rgba(200,200,200,0.2);
     border-radius: 4px;
 }
 

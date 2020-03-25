@@ -60,7 +60,7 @@ export const MainView = styled.div`
 	border-radius: ${length.radius};
 	width: calc(100% - 210px - ${length.margin} * 3);
 	background-color: ${color.siteBG1};
-	overflow-y: auto;
+	overflow-y: scroll;
 	overflow-x: hidden;
 	margin-bottom: auto;
 	height: calc(100%);

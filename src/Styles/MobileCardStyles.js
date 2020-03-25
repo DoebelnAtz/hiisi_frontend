@@ -6,11 +6,11 @@ import {length, color, layout, font, cursor, colorAdjust} from './SharedStyles';
 export const MobileCard = styled.div`
 	${font.text};
 	${layout.row};
-	width: calc(100% - ${length.margin} * 2);
+	width: calc(100% - ${length.margin} - 3px);
 	border-radius: 8px;
 	z-index: 1;
 	background-color: ${color.siteBG2};
-	margin: ${length.margin};
+	margin: ${length.margin} 3px ${length.margin} ${length.margin};
 `;
 
 export const MobileCardContainer = styled.div`

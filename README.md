@@ -24,7 +24,8 @@
 
 <h3>Demo Login:</h2>
 
-    Currently not available
+    username: morko
+    passowrd: demologin
 
 <h4>Setup:</h4>
     

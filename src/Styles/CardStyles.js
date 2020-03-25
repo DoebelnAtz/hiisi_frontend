@@ -17,12 +17,12 @@ export const Feed = styled.div`
 export const Card = styled.div`
 	${font.text};
 	${layout.row};
-	width: calc(100% - ${length.margin} * 2);
+	width: calc(100% - ${length.margin} - 3px);
 	border-radius: 8px;
 	z-index: 1;
-	min-height: 122px;
+	min-height: 100px;
 	background-color: ${color.siteBG2};
-	margin: ${length.margin};
+	margin: ${length.margin} 3px ${length.margin} ${length.margin};
 	@media (min-width: 1367px) {
 		width: calc(50% - 20px);
 	}
@@ -80,8 +80,8 @@ export const CardInfo = styled.div`
 	margin-left: auto;
 	width: 120px;
 	font-size: 14px;
-	@media (max-width: 1367px) {
-		width: 80px;
+	@media (max-width: 768px) {
+		width: 90px;
 		font-size: 14px;
 	}
 `;
@@ -92,6 +92,7 @@ export const CardTitle = styled.span`
 	width: calc(100% - 120px);
 	@media (max-width: 768px) {
 		font-size: 16px;
+		width: calc(100% - 90px);
 	}
 `;
 

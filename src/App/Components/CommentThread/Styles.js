@@ -19,7 +19,8 @@ export const ReplyToThread = styled.div``;
 export const ShowAllCommentsButton = styled.button`
 	${components.button};
 	margin-bottom: ${length.margin};
-	height: 34px;
+	height: 30px;
+	line-height: 24;
 `;
 
 export const Comments = styled.div`

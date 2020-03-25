@@ -28,7 +28,8 @@ export const ButtonRow = styled.div`
 export const ShowRepliesButton = styled.button`
 	${components.button};
 	width: 80px;
-	height: 34px;
+	height: 30px;
+	line-height: 26px;
 	margin-right: ${length.margin};
 `;
 
@@ -39,15 +40,17 @@ export const CommentInfo = styled.div`
 	line-height: 28px;
 	left: 30px;
 	z-index: 1;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	background-color: ${(props) => (props.odd ? color.siteBG2 : color.siteBG1)};
 	padding-left: ${length.margin};
 	width: auto;
 	border-radius: 0 10px 10px 0;
-
 	padding-right: ${length.margin};
 	& span {
 		color: #ffffff;
 		font-size: 14px;
+		line-height: 28px;
 		margin-left: 20px;
 		margin-right: 10px;
 	}

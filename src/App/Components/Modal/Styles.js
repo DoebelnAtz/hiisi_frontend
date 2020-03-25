@@ -16,6 +16,7 @@ export const InsideDiv = styled.div`
 		left: 2%;
 		right: 2%;
 	`};
+	border-width: 5px;
 	border-color: ${color.siteBG3};
 `;
 
@@ -40,13 +41,10 @@ export const CloseButton = styled.span`
 `;
 
 export const ModalContent = styled.div`
-	overflow-y: auto;
+	overflow-y: scroll;
+	border-top: 4px solid ${color.siteBG2};
 	max-height: 70vh;
-	border: 2px solid ${color.siteBG2};
 	border-radius: ${length.radius};
-	padding: 5px;
-	&:hover{
-		border-right-width: 0;
-		padding-right: 7px;
-	}
+	padding: 7px 0 7px 7px;
+	
 `;

@@ -32,7 +32,7 @@ export const FilterButton = styled.button`
 
 export const ResourcePageHead = styled.div`
 	${layout.row};
-	margin: ${length.margin} ${length.margin} 0 ${length.margin};
+	margin: ${length.margin} 3px 0 ${length.margin};
 	display: flex;
 	flex-wrap: wrap;
 `;
@@ -42,4 +42,5 @@ export const ResourceFilters = styled.div`
  	flex-wrap: nowrap;
  	margin-bottom: ${length.margin};
  	overflow: visible;
+ 	
 `;
