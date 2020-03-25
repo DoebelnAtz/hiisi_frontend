@@ -14,7 +14,7 @@ if ('function' === typeof importScripts) {
 
 		workbox.routing.registerRoute(
 			new RegExp('^http://localhost:5000/api/.*'),
-			new workbox.strategies.CacheFirst({
+			new workbox.strategies.StaleWhileRevalidate({
 				cacheName: 'test-build-api-cache',
 			})
 		);
@@ -28,7 +28,7 @@ if ('function' === typeof importScripts) {
 
 		workbox.routing.registerRoute(
 			new RegExp('^https://hivemind-42.com/api/.*'),
-			new workbox.strategies.CacheFirst({
+			new workbox.strategies.StaleWhileRevalidate({
 				cacheName: 'api-cache',
 			})
 		);
