@@ -42,6 +42,7 @@ export const CloseButton = styled.span`
 
 export const ModalContent = styled.div`
 	overflow-y: scroll;
+	overflow-x: hidden;
 	border-top: 4px solid ${color.siteBG2};
 	max-height: 70vh;
 	border-radius: ${length.radius};

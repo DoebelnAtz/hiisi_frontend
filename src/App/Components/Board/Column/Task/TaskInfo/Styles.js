@@ -18,6 +18,7 @@ export const TaskInfoHead = styled.div`
 export const TaskInfoBody = styled.div`
 	height: calc(100% - 120px);
 	width: calc(100%);
+	margin-bottom: ${length.margin};
 	${layout.row};
 `;
 

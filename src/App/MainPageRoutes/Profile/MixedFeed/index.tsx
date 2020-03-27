@@ -1,16 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
-import ProjectCard from './MixedCard/index';
-import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
-import { Feed } from '../../../../Styles/CardStyles';
-
-import { ResourceListType, vote } from '../../Resources/Types';
-import { PostType } from '../../Forum/Types';
-import { ProjectCardType } from '../../OpenHive/Types';
+import { Feed, MoreButton } from '../../../../Styles/CardStyles';
 import MixedCard from './MixedCard';
 import { MixedFeedItem, Profile } from '../Types';
-import { Profiler } from 'inspector';
 
 type MixedFeedProps = {
 	feed: MixedFeedItem[];

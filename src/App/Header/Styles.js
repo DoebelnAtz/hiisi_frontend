@@ -31,6 +31,7 @@ export const Logo = styled.img`
 
 export const SiteTitle = styled.span`
 	${font.title};
+	font-size: 36px;
 	line-height: 70px;
 	color: ${color.primary};
 	@media (max-width: 1024px) {

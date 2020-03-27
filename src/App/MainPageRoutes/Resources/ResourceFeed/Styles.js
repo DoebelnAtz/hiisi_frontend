@@ -3,7 +3,7 @@ import { cursor, layout, length } from '../../../../Styles/SharedStyles';
 
 export const MoreButton = styled.div`
 	${layout.row};
-	width: 100%;
+	width: calc(100% - 7px);
 	margin-bottom: ${length.margin};
 	& img {
 		${layout.centered};

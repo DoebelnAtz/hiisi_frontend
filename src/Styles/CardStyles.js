@@ -19,13 +19,13 @@ export const Card = styled.div`
 	${layout.row};
 	width: calc(100% - ${length.margin} - 3px);
 	border-radius: 8px;
-	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
 	z-index: 1;
 	min-height: 100px;
 	background-color: ${color.siteBG2};
 	margin: ${length.margin} 3px ${length.margin} ${length.margin};
 	@media (min-width: 1367px) {
-		width: calc(50% - 20px);
+		width: calc(50% - 13px);
 	}
 `;
 
@@ -176,5 +176,18 @@ export const CopiedSpan = styled.span`
 	opacity: ${(props) => (props.copied ? '1' : '0')};
 	@media (max-width: 768px) {
 		font-size: 12px;
+	}
+`;
+
+export const MoreButton = styled.div`
+	${layout.row};
+	width: calc(100% + 7px);
+	margin-bottom: ${length.margin};
+	& img {
+		${layout.centered};
+		${cursor.clickable};
+		margin: 0 auto;
+		height: 54px;
+		width: 54px;
 	}
 `;

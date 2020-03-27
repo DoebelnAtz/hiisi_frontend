@@ -2,9 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
 import { Project, ProjectCardType } from '../Types';
 import ProjectCard from './ProjectCard/index';
-import { MoreButton } from '../../Forum/ForumFeed/Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
-import { Feed } from '../../../../Styles/CardStyles';
+import { Feed, MoreButton } from '../../../../Styles/CardStyles';
 
 type ProjectFeedProps = {
 	projects: ProjectCardType[];

@@ -8,10 +8,9 @@ import React, {
 import Post from './Post/index';
 import { PostType } from '../Types';
 import { useRequest } from '../../../../Hooks';
-import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
 import { makeRequest } from '../../../../Api';
-import { Feed } from '../../../../Styles/CardStyles';
+import { Feed, MoreButton } from '../../../../Styles/CardStyles';
 type ForumFeedProps = {
 	sortBy: string;
 	page: number;

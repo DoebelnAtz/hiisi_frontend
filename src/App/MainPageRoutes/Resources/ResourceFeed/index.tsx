@@ -5,9 +5,8 @@ import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
 import ResourceCard from './ResourceCard/index';
 import { useHistory } from 'react-router-dom';
-import { MoreButton } from './Styles';
 import PlusIcon from '../../../../Assets/Plus.png';
-import { Feed } from '../../../../Styles/CardStyles';
+import { Feed, MoreButton } from '../../../../Styles/CardStyles';
 
 type ResourceFeedPropTypes = {
 	pagination: number;
@@ -52,7 +51,8 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 				if (deleted?.data?.success) {
 					setResources(
 						resources.filter(
-							(resource: ResourceListType) => resource.r_id !== rId,
+							(resource: ResourceListType) =>
+								resource.r_id !== rId,
 						),
 					);
 				}
