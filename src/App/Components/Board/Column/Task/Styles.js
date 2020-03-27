@@ -145,8 +145,9 @@ export const Task = styled.div`
 		css`
 			border: 2px solid ${color.siteBG3};
 			background-color: ${colorAdjust.lighten(color.siteBG3, 0.1)};
-			transform: scale(1.2);
+			transform: scale(1.1);
 			z-index: 100 !important;
+			box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 			${TaskStatusRow} {
 				background-color: ${colorAdjust.lighten(color.siteBG3, 0.1)};
 			}

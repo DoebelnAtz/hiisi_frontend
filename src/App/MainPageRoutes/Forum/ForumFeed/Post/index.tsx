@@ -44,18 +44,17 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	const voteBlog = async (vote: vote, blogId: number, diff: number) => {
 		if (!disabled) {
 			setDisabled(true); // prevent possible bugs caused by spamming
-			setVotes(votes + diff);
+			setVotes(Number(votes) + diff);
 			let backUp = voted;
 			setVoted(vote);
-			let resp = await makeRequest('blogs/vote_blog', 'post', {
-				vote: vote,
-				blogId: blogId,
-			});
-			if (!resp?.data) {
-				// To make the UI feel more responsive we set states before we make a
-				// request, then set them back if the request fails
+			try {
+				let resp = await makeRequest('blogs/vote_blog', 'post', {
+					vote: vote,
+					blogId: blogId,
+				});
+			} catch (e) {
 				setVoted(voted);
-				setVotes(votes - diff);
+				setVotes(Number(votes) - diff);
 			}
 			setDisabled(false);
 		}

@@ -83,7 +83,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	) => {
 		if (!disabled) {
 			setDisabled(true); // prevent possible bugs caused by spamming
-			setVotes(votes + diff);
+			setVotes(Number(votes) + diff);
 			let backUp = voted;
 			setVoted(vote);
 			let resp = await makeRequest('resources/vote_resource', 'post', {
@@ -94,7 +94,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				// To make the UI feel more responsive we set states before we make a
 				// request, then set them back if the request fails
 				setVoted(voted);
-				setVotes(votes - diff);
+				setVotes(Number(votes) - diff);
 			}
 			setDisabled(false);
 		}
@@ -317,15 +317,15 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 				</CardContent>
 				<CardButtons>
 					<ShareButton>
-					{resource.owner && (
-						<DeleteButton>
-							<img
-								onClick={() => deleteResource()}
-								src={DeleteImg}
-								alt={'delete resource'}
-							/>
-						</DeleteButton>
-					)}
+						{resource.owner && (
+							<DeleteButton>
+								<img
+									onClick={() => deleteResource()}
+									src={DeleteImg}
+									alt={'delete resource'}
+								/>
+							</DeleteButton>
+						)}
 						<img
 							onClick={() =>
 								handleShareClick(

@@ -19,6 +19,7 @@ export const Card = styled.div`
 	${layout.row};
 	width: calc(100% - ${length.margin} - 3px);
 	border-radius: 8px;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
 	z-index: 1;
 	min-height: 100px;
 	background-color: ${color.siteBG2};

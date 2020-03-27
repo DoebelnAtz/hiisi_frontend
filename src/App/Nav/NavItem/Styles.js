@@ -18,6 +18,7 @@ export const NavItemDiv = styled.div`
 		props.selected ? color.siteBG3 : color.siteBG2};
 	${cursor.clickable};
 	transition: all 0.2s;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
 
 	&:hover {
 		background-color: ${color.siteBG3};

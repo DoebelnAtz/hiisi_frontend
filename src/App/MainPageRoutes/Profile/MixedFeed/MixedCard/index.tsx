@@ -74,21 +74,22 @@ const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 		if (!disabled) {
 			// prevent possible bugs caused by spamming
 			setDisabled(true);
-			setVotes(votes + diff);
+			setVotes(Number(votes) + diff);
 			let backUp = voted;
 			setVoted(vote);
 			// endpoint expects projectId | blogId | resourceId, we give them all
-			let resp = await makeRequest(voteUrl, 'post', {
-				vote: vote,
-				projectId: id,
-				blogId: id,
-				resourceId: id,
-			});
-			if (!resp?.data) {
+			try {
+				let resp = await makeRequest(voteUrl, 'post', {
+					vote: vote,
+					projectId: id,
+					blogId: id,
+					resourceId: id,
+				});
+			} catch (e) {
 				// To make the UI feel more responsive we set states before we make a
 				// request, then set them back if the request fails
 				setVoted(voted);
-				setVotes(votes - diff);
+				setVotes(Number(votes) - diff);
 			}
 			setDisabled(false);
 		}

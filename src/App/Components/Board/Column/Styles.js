@@ -17,6 +17,8 @@ export const Column = styled.div`
 	padding: 0 5px 5px 5px;
 	height: 100%;
 	width: calc(20% - 20px);
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+
 	border-radius: 3px;
 	background: ${color.siteBG3};
 `;
@@ -63,6 +65,7 @@ export const TaskCount = styled.span`
 export const ColumnList = styled.div`
 	height: 100%;
 	padding: 2px;
+	box-shadow: inset 0 0 7px rgba(0,0,0,0.2);
 	border-radius: 4px;
 	min-height: 20px;
 	width: calc(100% - 4px);

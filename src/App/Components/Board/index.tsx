@@ -194,7 +194,6 @@ const Board: React.FC<BoardProps> = ({
 	return (
 		<BoardDiv>
 			<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
-			<LoadingDots height={20} color={'#424242'} />
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
 					{filterBoard()?.columns.map((column: ColumnType) => (

@@ -65,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 		if (!disabled) {
 			// prevent possible bugs caused by spamming
 			setDisabled(true);
-			setVotes(votes + diff);
+			setVotes(Number(votes) + diff);
 			let backUp = voted;
 			setVoted(vote);
 			let resp = await makeRequest('projects/vote_project', 'post', {
@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 				// To make the UI feel more responsive we set states before we make a
 				// request, then set them back if the request fails
 				setVoted(voted);
-				setVotes(votes - diff);
+				setVotes(Number(votes) - diff);
 			}
 			setDisabled(false);
 		}
