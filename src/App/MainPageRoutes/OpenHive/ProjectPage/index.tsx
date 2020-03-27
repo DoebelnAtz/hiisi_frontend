@@ -16,7 +16,6 @@ import {
 	BackToProjectsButton,
 	DashBoard,
 	GitHubLink,
-	GitIconDiv,
 } from './Style';
 import { RouteComponentProps, User } from '../../../../Types';
 import { Project } from '../Types';
@@ -131,27 +130,16 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 					<GitHubLink
 						onClick={() => window.open(validateUrl(project?.link))}
 					>
-						<GitIconDiv>
-							<img src={giticon} alt={'github'} />
-						</GitIconDiv>
-						<span
-							onClick={() =>
-								window.open(validateUrl(project?.link))
-							}
-						>
-							Github
-						</span>
+						Code
 					</GitHubLink>
 				)}
 			</ProjectInfo>
 			<ProjectTitle>
-
-					<span>
-						{!isLoading && project
-							? capitalizeFirst(project.title)
-							: 'Loading...'}
-					</span>
-
+				<span>
+					{!isLoading && project
+						? capitalizeFirst(project.title)
+						: 'Loading...'}
+				</span>
 			</ProjectTitle>
 			{project && (
 				<ProjectDescription>
@@ -192,7 +180,10 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 								</ProjectDashBoardNavItem>
 							)}
 							<ProjectDashBoardNavItem
-								onClick={() => {setCurrentChat(project.t_id); if(isMobile) history.push('/messages')}}
+								onClick={() => {
+									setCurrentChat(project.t_id);
+									if (isMobile) history.push('/messages');
+								}}
 							>
 								<span>Chat</span>
 							</ProjectDashBoardNavItem>

@@ -25,6 +25,7 @@ export const useNav = (current: string) => {
 	}, [current]);
 };
 
+// Not in use
 export const useNotifications = (room: string) => {
 	const { state: notifications, update: setNotifications } = useContext(
 		NotificationContext,
@@ -63,7 +64,7 @@ export const useNotifications = (room: string) => {
 		};
 	}, [room]);
 
-	// not sure why i cant call appendNotification() inside on notification...
+	// not sure why i cant call appendNotification() inside socket.on notification...
 	useEffect(() => {
 		newNotif && appendNotification(newNotif);
 	}, [JSON.stringify(newNotif)]);
@@ -76,6 +77,8 @@ export const useNotifications = (room: string) => {
 	return [notifications, connected];
 };
 
+// A hook that helps with checking if a component is mounted,
+// used to check if a component is still mounted before updating a state
 export const useMounted = () => {
 	const isMounted = useRef(false);
 
@@ -88,6 +91,7 @@ export const useMounted = () => {
 	return isMounted;
 };
 
+// A hook that keeps track of width used for mobile specific styles
 export const useWidth = () => {
 	const { state: width, update: setWidth } = useContext(WidthContext);
 	//const [width, setWidth] = useState(window.innerWidth);
@@ -106,6 +110,7 @@ export const useWidth = () => {
 	return [width, width <= 600];
 };
 
+// A hook that lets you dismiss a modal by clicking outside or pressing esc
 export const useDismiss = (
 	refInside: RefObject<HTMLDivElement | null>,
 	close: () => void,
@@ -134,9 +139,10 @@ export const useDismiss = (
 	}, []);
 };
 
+// A hook that helps with get requests
 export function useRequest<F>(
 	url: string,
-	method: string,
+	method = 'GET',
 	body = {},
 	conditional = true,
 ) {

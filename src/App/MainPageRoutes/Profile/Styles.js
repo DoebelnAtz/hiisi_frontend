@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { layout, color, length, font } from '../../../Styles/SharedStyles';
 
 export const ProfilePageDiv = styled.div`
-	height: calc(100% - ${length.margin});
+	height: calc(100%);
 	width: 100%;
 `;
 
 export const ProfileHead = styled.div`
 	${layout.col};
 	border-radius: ${length.radius};
-	margin: ${length.margin} 3px ${length.margin} ${length.margin};
+	margin-bottom: ${length.margin};
 `;
 
 export const ProfileStats = styled.div`
@@ -68,7 +68,15 @@ export const ProfilePic = styled.img`
 	}
 `;
 
+export const ProfileFeed = styled.div`
+	margin-bottom: ${length.margin};
+`;
+
 export const ProfileButtonRow = styled.div`
-	margin: 0 0 ${length.margin} ${length.margin};
 	${layout.row};
+	flex-wrap: nowrap;
+	overflow: visible;
+	& > div:nth-child(2n) {
+ 		margin-right: 0;
+ 	}
 `;

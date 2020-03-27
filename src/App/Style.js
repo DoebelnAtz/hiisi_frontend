@@ -58,13 +58,14 @@ export const SideNavCol = styled.div`
 
 export const MainView = styled.div`
 	border-radius: ${length.radius};
-	width: calc(100% - 210px - ${length.margin} * 3);
+	width: calc(100% - 223px - ${length.margin} * 3);
 	background-color: ${color.siteBG1};
 	overflow-y: scroll;
 	overflow-x: hidden;
+	padding: ${length.margin} 3px ${length.margin} ${length.margin};
 	margin-bottom: auto;
-	height: calc(100%);
+	height: calc(100% - ${length.margin} * 2);
 	@media (max-width: 1024px) {
-		width: calc(100% - ${props => props.isMobile ? `0px` : `50px - ${length.margin} * 3`});
+		width: calc(100% - ${props => props.isMobile ? `0px` : `63px - ${length.margin} * 3`});
 	}
 `;

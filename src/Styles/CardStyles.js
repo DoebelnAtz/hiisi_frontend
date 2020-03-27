@@ -12,20 +12,25 @@ export const Feed = styled.div`
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
+	@media (min-width: 1367px) {
+		& > div:nth-child(2n + 1) {
+			margin-right: ${length.margin};
+		}
+	}
 `;
 
 export const Card = styled.div`
 	${font.text};
 	${layout.row};
-	width: calc(100% - ${length.margin} - 3px);
+	width: calc(100%);
 	border-radius: 8px;
 	box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
 	z-index: 1;
 	min-height: 100px;
 	background-color: ${color.siteBG2};
-	margin: ${length.margin} 3px ${length.margin} ${length.margin};
+	margin: ${length.margin} 0;
 	@media (min-width: 1367px) {
-		width: calc(50% - 13px);
+		width: calc(50% - 5px);
 	}
 `;
 
@@ -181,8 +186,7 @@ export const CopiedSpan = styled.span`
 
 export const MoreButton = styled.div`
 	${layout.row};
-	width: calc(100% + 7px);
-	margin-bottom: ${length.margin};
+	width: calc(100%);
 	& img {
 		${layout.centered};
 		${cursor.clickable};

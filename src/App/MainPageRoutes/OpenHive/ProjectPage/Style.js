@@ -14,9 +14,8 @@ export const ProjectPage = styled.div`
 	color: white;
 	display: flex;
 	flex-flow: column;
-	width: calc(100% - ${length.margin} * 2);
-	height: calc(100% - ${length.margin} * 2);
-	padding: ${length.margin};
+	width: calc(100%);
+	height: calc(100% );
 	background-color: ${color.siteBG1};
 `;
 
@@ -35,12 +34,8 @@ export const BackToProjectsButton = styled.div`
 
 export const ProjectInfo = styled.div`
 	${layout.row};
-	position: relative;
 	height: 34px;
-	right: ${length.margin};
 	bottom: ${length.margin};
-	background-color: ${color.siteBG2};
-	padding: ${length.margin};
 	width: 100%;
 `;
 
@@ -59,33 +54,10 @@ export const ProjectTitle = styled.div`
 
 `;
 
-export const GitIconDiv = styled.div`
-	background-color: #ffffff;
-	border-radius: 7px;
-	padding: 0 4px;
-	display: flex;
-	& img {
-		margin: auto 0;
-		height: 24px;
-		width: 24px;
-	}
-`;
-
 export const GitHubLink = styled.div`
-	${layout.row};
-	margin: 0 0 0 auto;
-	background-color: #ffffff;
-	border: 4px solid black;
-	border-radius: 7px;
-	height: 28px;
-	${cursor.clickable};
-	padding-right: 4px;
-	& span {
-		margin: auto 0;
-		font-size: 18px;
-		text-decoration: none;
-		color: #000;
-	}
+	${components.button};
+	height: 30px;
+	margin-left: auto;
 `;
 
 export const ProjectDashboardNav = styled.div`

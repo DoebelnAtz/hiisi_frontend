@@ -29,16 +29,13 @@ import Plus from '../../../../../../Assets/Dots.png';
 import { useDismiss, useRequest } from '../../../../../../Hooks';
 import TextEditor from '../../../../TextEditor';
 import { makeRequest } from '../../../../../../Api';
-import Avatar from '../../../../Avatar/index';
 import { getPriorityIcon } from '../../../../../../Utils/taskUtils';
 import { RouteComponentProps, User } from '../../../../../../Types';
 import ColorPicker from '../../../../ColorPicker';
 import { TaskType } from '../../../Types';
 import DropDown from '../../../../DropDown';
 import { checkUserList } from '../../../../../../Utils';
-import SaveButton from '../../../../Buttons/SaveButton';
 import Modal from '../../../../Modal';
-import { RowDiv } from '../../../../../../Styles/LayoutStyles';
 import CommentThread from '../../../../CommentThread/index';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	tid: number;

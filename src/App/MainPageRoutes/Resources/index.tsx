@@ -6,6 +6,10 @@ import {
 	FilterButton,
 	ResourcePageHead,
 	ResourceFilters,
+	ResourceTabbedView,
+	ResourceTabs,
+	ResourceActiveTab,
+	ResourceTab,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
@@ -66,6 +70,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					setPopup={setPopup}
 				/>
 			)}
+
 			<ResourcePageHead>
 				<SubmitResourceButton
 					isMobile={isMobile}
@@ -87,18 +92,17 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 
 					<DropDown
 						width={`${
-							isMobile
-								? `calc(${width}px / 2 - 15px)`
-								: `166px`
+							isMobile ? `calc(${width}px / 2 - 15px)` : `166px`
 						}`}
 						height={'32px'}
 						state={filter}
 						text={'Filter: '}
 						withFilter={true}
 						setSelect={onFilterSelect}
-						optionList={tags ? tags.map((tag) => tag.title) : ['loading..']}
+						optionList={
+							tags ? tags.map((tag) => tag.title) : ['loading..']
+						}
 					/>
-
 				</ResourceFilters>
 				{!isMobile && (
 					<FilterButton onClick={() => setFilter('none')}>

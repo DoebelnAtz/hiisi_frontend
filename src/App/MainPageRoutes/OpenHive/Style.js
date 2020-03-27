@@ -9,7 +9,6 @@ export const ProjectButtonRow = styled.div`
 	${layout.row};
 	flex-wrap: nowrap;
 	overflow: visible;
-	margin: ${length.margin} 3px ${length.margin} ${length.margin};
 	& > div:first-of-type {
  		margin-right: 0;
  	}

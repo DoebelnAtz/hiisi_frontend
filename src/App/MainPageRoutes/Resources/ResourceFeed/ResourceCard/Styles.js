@@ -56,7 +56,7 @@ export const ResourceTitleInfo = styled.div`
 export const Tag = styled.div`
 	z-index: 2;
 	${cursor.clickable};
-	margin: 2px 2px 2px 2px;
+	margin-right: 4px;
 	background-color: ${(props) => props.color};
 	padding: 2px 8px;
 	height: 20px;

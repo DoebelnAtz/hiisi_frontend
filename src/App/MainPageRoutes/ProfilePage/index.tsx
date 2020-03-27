@@ -7,6 +7,7 @@ import DropDown from '../../Components/DropDown';
 import {
 	ProfileBackground,
 	ProfileButtonRow,
+	ProfileFeed,
 	ProfileHead,
 	ProfileInfo,
 	ProfilePageDiv,
@@ -70,7 +71,7 @@ const ProfilePage: React.FC = () => {
 			</ProfileHead>
 			<ProfileButtonRow>
 				<DropDown
-					width={isMobile ? `calc(${width}px / 2 - 21px)` : `160px`}
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
 					height={'32px'}
 					state={sortBy}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
@@ -81,20 +82,22 @@ const ProfilePage: React.FC = () => {
 					state={filter}
 					setSelect={onFilterSelect}
 					optionList={['resources', 'projects', 'posts']}
-					width={isMobile ? `calc(${width}px / 2 - 20px)` : `160px`}
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
 					text={`Filter: `}
 					height={'32px'}
 				/>
 			</ProfileButtonRow>
 			{feed && profile && (
-				<MixedFeed
-					feed={feed}
-					filter={filter}
-					page={2}
-					profile={profile}
-					reverse={reverse}
-					sortBy={sortBy}
-				/>
+				<ProfileFeed>
+					<MixedFeed
+						feed={feed}
+						filter={filter}
+						page={2}
+						profile={profile}
+						reverse={reverse}
+						sortBy={sortBy}
+					/>
+				</ProfileFeed>
 			)}
 		</ProfilePageDiv>
 	);
