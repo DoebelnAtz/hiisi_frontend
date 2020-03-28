@@ -24,6 +24,7 @@ import {
 	CardButtons,
 	CardAuthor,
 	CardEdited,
+	SaveButton,
 } from '../../../../../Styles/CardStyles';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
 import ArrowDown from '../../../../../Assets/ArrowDown.png';
@@ -31,6 +32,8 @@ import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowDownVoted from '../../../../../Assets/ArrowDownVoted.png';
 import DeleteImg from '../../../../../Assets/x.png';
 import ShareImg from '../../../../../Assets/Share.png';
+import SaveBtn from '../../../../../Assets/SaveBtn.png';
+import SavedBtn from '../../../../../Assets/SavedBtn.png';
 import { ResourceListType, vote } from '../../Types';
 import { makeRequest } from '../../../../../Api';
 import { formatDate } from '../../../../../Utils';
@@ -73,6 +76,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [votes, setVotes] = useState<number>(resource.votes);
 	const [voted, setVoted] = useState<vote>(resource.vote ? resource.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
+	const [saved, setSaved] = useState(resource.saved);
 	const [copied, setCopied] = useState(false);
 	const history = useHistory();
 	const [width, isMobile] = useWidth();
@@ -120,11 +124,34 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		}
 	};
 
+	const handleSave = async (del = false) => {
+		try {
+			setSaved(!del);
+			await makeRequest(
+				'resources/save_resource',
+				del ? 'DELETE' : 'POST',
+				{
+					rId: resource.r_id,
+				},
+			);
+		} catch (e) {
+			setSaved(del);
+		}
+	};
+
 	const handleFiltering = (filterName: string) => {
 		if (filterName === filter) {
 			setFilter('none');
 		} else {
 			setFilter(filterName);
+		}
+	};
+
+	const handleSaveClick = async () => {
+		if (saved) {
+			await handleSave(true);
+		} else {
+			await handleSave();
 		}
 	};
 
@@ -316,16 +343,23 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 					</Tags>
 				</CardContent>
 				<CardButtons>
+					{resource.owner && (
+						<DeleteButton>
+							<img
+								onClick={() => deleteResource()}
+								src={DeleteImg}
+								alt={'delete resource'}
+							/>
+						</DeleteButton>
+					)}
+					<SaveButton>
+						<img
+							onClick={handleSaveClick}
+							src={saved ? SavedBtn : SaveBtn}
+							alt={'save'}
+						/>
+					</SaveButton>
 					<ShareButton>
-						{resource.owner && (
-							<DeleteButton>
-								<img
-									onClick={() => deleteResource()}
-									src={DeleteImg}
-									alt={'delete resource'}
-								/>
-							</DeleteButton>
-						)}
 						<img
 							onClick={() =>
 								handleShareClick(

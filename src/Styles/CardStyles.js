@@ -159,6 +159,7 @@ export const DeleteButton = styled.div`
 
 export const ShareButton = styled.div`
 	${layout.row};
+	width: 100%;
 
 	& img {
 		${cursor.clickable};
@@ -172,6 +173,23 @@ export const ShareButton = styled.div`
 		}
 	}
 `;
+
+export const SaveButton = styled.div`
+	${layout.row};
+	width: 100%;
+	& img {
+		${cursor.clickable};
+		margin: 0 auto;
+		margin-bottom: ${length.margin};
+		height: 26px;
+		border-radius: 50%;
+		background-color: ${color.siteBG2};
+		transition: background-color 0.2s;
+		&:hover {
+			background-color: ${color.siteBG1};
+		}
+	}
+`
 
 export const CopiedSpan = styled.span`
 	position: relative;

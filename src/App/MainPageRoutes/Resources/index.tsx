@@ -62,7 +62,11 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	};
 
 	const onShowSelect = (newShow: string) => {
-		setShow(newShow);
+		if (newShow === show) {
+			setShow('all');
+		} else {
+			setShow(newShow);
+		}
 	};
 
 	return (
