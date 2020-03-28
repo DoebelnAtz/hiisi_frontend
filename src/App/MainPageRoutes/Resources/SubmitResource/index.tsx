@@ -21,6 +21,8 @@ import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
 import { validateUrl } from '../../../../Utils';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
+import LoadingDots from '../../../Components/Loading';
+import SaveButton from '../../../Components/Buttons/SaveButton';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
 	setResources,
@@ -37,6 +39,9 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		descriptionError: false,
 		linkError: false,
 	});
+
+	const [saving, setSaving] = useState(true);
+
 	const [, isMobile] = useWidth();
 
 	const [inputState, setInputState] = useState({
@@ -82,6 +87,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				if (e.response.status === 400) {
 					setErrorState({ ...errorState, titleExistsError: true });
 				}
+				return false;
 			}
 		} else {
 			setErrorState({
@@ -90,7 +96,9 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				descriptionError: !inputState.descriptionVal.length,
 				linkError: !inputState.linkVal.length,
 			});
+			return false;
 		}
+		return true;
 	};
 
 	const handleTypeChange = (newType: string) => {
@@ -166,8 +174,10 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					</EditDescriptionCol>
 				</RowDiv>
 				<ButtonRow>
-					<button style={{marginRight: 'auto'}} onClick={close}>Cancel</button>
-					<button onClick={submitResource}>Submit</button>
+					<button style={{ marginRight: 'auto' }} onClick={close}>
+						Cancel
+					</button>
+					<SaveButton onClick={submitResource}>Submit</SaveButton>
 				</ButtonRow>
 			</SubmitResource>
 		</OuterDiv>,

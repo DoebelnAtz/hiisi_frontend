@@ -57,6 +57,7 @@ export const Tag = styled.div`
 	z-index: 2;
 	${cursor.clickable};
 	margin-right: 4px;
+	margin-bottom: 5px;
 	background-color: ${(props) => props.color};
 	padding: 2px 8px;
 	height: 20px;

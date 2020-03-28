@@ -135,6 +135,21 @@ export const MobileDeleteButton = styled.div`
 	}
 `;
 
+export const MobileSaveButton = styled.div`
+	${layout.row};
+	margin: auto 0 auto 20px;
+	& img {
+		${cursor.clickable};
+		height: 24px;
+		border-radius: 50%;
+		background-color: ${color.siteBG2};
+		transition: background-color 0.2s;
+		&:hover {
+			background-color: ${color.siteBG1};
+		}
+	}
+`;
+
 export const MobileShareButton = styled.div`
 	${layout.row};
 	margin: auto 0 auto ${length.margin};

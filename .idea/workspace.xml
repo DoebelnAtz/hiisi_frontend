@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Assets/SaveBtn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assets/SavedBtn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Components/Tooltip/Styles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Components/Tooltip/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Task/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/SaveButton/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourceFeed/ResourceCard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/Types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/MobileCardStyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +120,7 @@
       <workItem from="1585163882692" duration="7145000" />
       <workItem from="1585318128038" duration="14857000" />
       <workItem from="1585386664046" duration="1977000" />
-      <workItem from="1585388809940" duration="4982000" />
+      <workItem from="1585388809940" duration="8813000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -351,14 +360,20 @@
       <option name="project" value="LOCAL" />
       <updated>1585393169771</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added support for saving resources">
+      <created>1585397392100</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1585397392100</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="profile feed mobile improvements, modal mobile improvements" />
     <MESSAGE value="css mobile bugfixes, mobile chat page" />
     <MESSAGE value="create resource, project, post modals fixed for mobile" />
     <MESSAGE value="Added redirect to previous on successful login" />
@@ -383,7 +398,8 @@
     <MESSAGE value="ui fixes and code refactoring" />
     <MESSAGE value="UI fixes added support for filtering saved and submitted resources" />
     <MESSAGE value="added endpoint for saving resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="added endpoint for saving resources" />
+    <MESSAGE value="added support for saving resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="added support for saving resources" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -398,10 +414,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585393169737">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585397392015">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585393169737" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585397392015" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1585149597587">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -419,10 +435,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585149602153" />
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585393171235">
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585397393043">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585393171235" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585397393043" />
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583581913678">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -439,10 +455,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585389478973" />
-    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1585396794746">
+    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1585398152063">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585396794746" />
+    <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585398152063" />
     <state x="5025" y="617" width="540" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584719162382">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

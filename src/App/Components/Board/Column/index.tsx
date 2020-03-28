@@ -60,15 +60,11 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	// if pressed key is Enter send a request to the api
 	const handleTitleEnter = async (e: KeyboardEvent) => {
 		if (editable && e.key === 'Enter' && titleVal !== column.title) {
-			let res = await makeRequest(
-				'projects/boards/update_column',
-				'put',
-				{
-					title: titleVal,
-					wipLimit: wipState,
-					columnId: column.column_id,
-				},
-			);
+			await makeRequest('projects/boards/update_column', 'put', {
+				title: titleVal,
+				wipLimit: wipState,
+				columnId: column.column_id,
+			});
 			titleInput?.current?.blur();
 		}
 	};
@@ -90,7 +86,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 	};
 
 	const handleOptionConfirm = async () => {
-		let resp = await makeRequest('projects/boards/update_column', 'put', {
+		await makeRequest('projects/boards/update_column', 'put', {
 			title: titleVal,
 			wipLimit: wipState,
 			columnId: column.column_id,

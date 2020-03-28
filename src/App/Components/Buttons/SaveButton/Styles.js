@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, components } from '../../../../Styles/SharedStyles';
 
-export const SaveButton = styled.button`
+export const SaveBtn = styled.button`
 	${components.button};
 	z-index: 2;
 	transition: border-color 0.4s;
@@ -9,3 +9,5 @@ export const SaveButton = styled.button`
 		${(props) =>
 			props.saved ? color.tertiary : props.error ? 'red' : color.primary};
 `;
+
+

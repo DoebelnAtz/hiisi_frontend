@@ -155,6 +155,13 @@ export const DeleteButton = styled.div`
 			background-color: ${color.siteBG1};
 		}
 	}
+	&:hover {
+		& .tooltip {
+			visibility: visible;
+			opacity: 1;
+			transition: opacity 0.2s 1s, visibility 0.2s 1s;
+		}
+	}
 `;
 
 export const ShareButton = styled.div`
@@ -172,6 +179,13 @@ export const ShareButton = styled.div`
 			background-color: ${color.siteBG1};
 		}
 	}
+	&:hover {
+		& .tooltip {
+			visibility: visible;
+			opacity: 1;
+			transition: opacity 0.2s 1s, visibility 0.2s 1s;
+		}
+	}
 `;
 
 export const SaveButton = styled.div`
@@ -187,9 +201,19 @@ export const SaveButton = styled.div`
 		transition: background-color 0.2s;
 		&:hover {
 			background-color: ${color.siteBG1};
+			& .tooltip {
+				visibility: visible;
+			}
 		}
 	}
-`
+	&:hover {
+		& .tooltip {
+			visibility: visible;
+			opacity: 1;
+			transition: opacity 0.2s 1s, visibility 0.2s 1s;
+		}
+	}
+`;
 
 export const CopiedSpan = styled.span`
 	position: relative;

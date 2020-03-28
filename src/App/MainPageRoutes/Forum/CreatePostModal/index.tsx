@@ -25,6 +25,7 @@ import {
 import TextEditor from '../../../Components/TextEditor';
 import { PostType } from '../Types';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
+import SaveButtonComponent from '../../../Components/Buttons/SaveButton';
 
 type CreatePostModalProps = {
 	setPopup: any;
@@ -66,14 +67,19 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 			if (isMounted && posts && resp.data) {
 				setPosts([resp.data, ...posts]);
-				setPopup(false);
+				setTimeout(() => {
+					setPopup(false);
+				}, 300);
+				return true;
 			}
 		} else {
 			setErrors({
 				titleError: !inputVal.titleVal.length,
 				contentError: !inputVal.contentVal.length,
 			});
+			return false;
 		}
+		return true;
 	};
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
@@ -160,14 +166,11 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								<BackButton onClick={() => setPopup(false)}>
 									Cancel
 								</BackButton>
-								<SubmitButton
-									disabled={
-										errors.contentError || errors.titleError
-									}
+								<SaveButtonComponent
 									onClick={() => createPost()}
 								>
 									Submit Post
-								</SubmitButton>
+								</SaveButtonComponent>
 							</ButtonRow>
 						</ModalDiv>
 					</OutsideDiv>

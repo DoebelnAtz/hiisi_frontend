@@ -53,9 +53,11 @@ import {
 	MobileCardTitleInfo,
 	MobileCopiedSpan,
 	MobileDeleteButton,
+	MobileSaveButton,
 	MobileShareButton,
 	MobileVoteCount,
 } from '../../../../../Styles/MobileCardStyles';
+import Tooltip from '../../../../Components/Tooltip';
 
 type ResourceCardPropTypes = {
 	resource: ResourceListType;
@@ -206,6 +208,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							{resource.tags &&
 								resource.tags?.map((tag, index) => (
 									<Tag
+										isMobile={isMobile}
 										color={resource.colors[index]}
 										key={index}
 										onClick={(e: React.SyntheticEvent) => {
@@ -252,6 +255,13 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 								alt={'share'}
 							/>
 						</MobileShareButton>
+						<MobileSaveButton>
+							<img
+								onClick={handleSaveClick}
+								src={saved ? SavedBtn : SaveBtn}
+								alt={'save'}
+							/>
+						</MobileSaveButton>
 						{resource.owner && (
 							<MobileDeleteButton>
 								<img
@@ -350,6 +360,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 								src={DeleteImg}
 								alt={'delete resource'}
 							/>
+							<Tooltip>delete</Tooltip>
 						</DeleteButton>
 					)}
 					<SaveButton>
@@ -358,6 +369,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							src={saved ? SavedBtn : SaveBtn}
 							alt={'save'}
 						/>
+						<Tooltip>save</Tooltip>
 					</SaveButton>
 					<ShareButton>
 						<img
@@ -369,6 +381,8 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 							src={ShareImg}
 							alt={'share'}
 						/>
+						<Tooltip>copy</Tooltip>
+
 						<CopiedSpan copied={copied}>Copied!</CopiedSpan>
 					</ShareButton>
 				</CardButtons>

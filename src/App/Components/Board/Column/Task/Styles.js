@@ -23,9 +23,9 @@ export const TaskStatusRow = styled.div`
 
 export const TaskStatusText = styled.div`
 	position: relative;
+	visibility: hidden;
 	& div {
 	position: absolute;
-	visibility: hidden;
 	z-index: 6;
 	padding: 4px;
 	width: auto;
@@ -68,7 +68,7 @@ export const TaskStatusImg = styled.div`
 		}
 	}
 	&:hover {
-		& ${TaskStatusText} div {
+		& ${TaskStatusText} {
 			visibility: visible;
 		}
 	}

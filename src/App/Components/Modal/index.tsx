@@ -1,5 +1,4 @@
-import React, { RefObject, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { RefObject } from 'react';
 import {
 	OutsideDiv,
 	InsideDiv,

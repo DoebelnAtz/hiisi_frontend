@@ -18,7 +18,7 @@ import { makeRequest } from '../../../../Api';
 import { validateUrl } from '../../../../Utils';
 import ToggleButton from '../../../Components/Buttons/ToggleButton';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
-
+import SaveButton from '../../../Components/Buttons/SaveButton';
 type CreateProjectModalProps = {
 	setShowModal: Dispatch<SetStateAction<boolean>>;
 	projects: ProjectCardType[] | undefined;
@@ -63,6 +63,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 					? 'Description is required'
 					: '',
 			});
+			return false;
 		} else {
 			if (url) {
 				try {
@@ -88,14 +89,17 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 							title: 'Title already exists',
 						});
 					}
+					return false;
 				}
 			} else {
 				setError({
 					...error,
 					link: 'invalid link',
 				});
+				return false;
 			}
 		}
+		return true;
 	};
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
@@ -188,9 +192,9 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 				</RowDiv>
 				<ButtonRow>
 					<CancelButton onClick={() => close()}>Cancel</CancelButton>
-					<SubmitButton onClick={() => createProject()}>
+					<SaveButton onClick={() => createProject()}>
 						Submit
-					</SubmitButton>
+					</SaveButton>
 				</ButtonRow>
 			</InsideDiv>
 		</OutsideDiv>

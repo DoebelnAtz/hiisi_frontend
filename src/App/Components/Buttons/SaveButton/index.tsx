@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SaveButton } from './Styles';
+import { SaveBtn } from './Styles';
 import LoadingDots from '../../Loading';
 import { color } from '../../../../Styles/SharedStyles';
 import { useMounted } from '../../../../Hooks';
@@ -20,14 +20,23 @@ const SaveButtonComponent: React.FC<SaveButtonComponentProps> = ({
 	const handleClick = async () => {
 		isMounted && setIsSaving(true);
 		try {
-			await onClick();
-			if (isMounted.current) {
-				setSaved(true);
-				setIsSaving(false);
+			if (await onClick()) {
+				if (isMounted.current) {
+					setSaved(true);
+					setIsSaving(false);
+				}
+				setTimeout(() => {
+					isMounted.current && setSaved(false);
+				}, 500);
+			} else {
+				if (isMounted.current) {
+					setIsSaving(false);
+					setError(true);
+				}
+				setTimeout(() => {
+					isMounted.current && setError(false);
+				}, 500);
 			}
-			setTimeout(() => {
-				isMounted.current && setSaved(false);
-			}, 500);
 		} catch (e) {
 			if (isMounted.current) {
 				setIsSaving(false);
@@ -40,7 +49,7 @@ const SaveButtonComponent: React.FC<SaveButtonComponentProps> = ({
 	};
 
 	return (
-		<SaveButton saved={saved} error={error} onClick={() => handleClick()}>
+		<SaveBtn saved={saved} error={error} onClick={() => handleClick()}>
 			{isSaving ? (
 				<LoadingDots
 					height={13}
@@ -50,7 +59,7 @@ const SaveButtonComponent: React.FC<SaveButtonComponentProps> = ({
 			) : (
 				children
 			)}
-		</SaveButton>
+		</SaveBtn>
 	);
 };
 
