@@ -114,66 +114,152 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 			setCopied(false);
 		}
 	};
-	return (
-		<Card>
-			<CardVotes>
-				<ArrowImage>
-					<img
-						src={voted > 0 ? ArrowUpVoted : ArrowUp}
-						alt={'arrow_up'}
-						onClick={() => handleUpClick(1, project.project_id)}
-					/>
-				</ArrowImage>
-				<VoteCount>
-					<span>{votes}</span>
-				</VoteCount>
-				<ArrowImage>
-					<img
-						src={voted < 0 ? ArrowDownVoted : ArrowDown}
-						alt={'arrow_down'}
-						onClick={() => handleDownClick(-1, project.project_id)}
-					/>
-				</ArrowImage>
-			</CardVotes>
-			<CardContent
-				onClick={() => history.push(`/projects/${project.project_id}`)}
-			>
-				<CardTitleInfo>
-					<CardTitle>{project.title}</CardTitle>
-					<CardInfo>
-						<CardDate>
+	if (isMobile) {
+		return (
+			<MobileCard>
+				<MobileCardContainer>
+					<MobileCardInfo>
+						<MobileCardAuthor>
+							{project.private ? 'Private' : 'Public'}
+						</MobileCardAuthor>
+						<MobileCardDate>
 							{formatDate(project.published_date)}
-						</CardDate>
-					</CardInfo>
-				</CardTitleInfo>
-				<CollaboratorList>
-					{project.collaborators.map((profile_pic, index: number) => {
-						return (
-							<img
-								key={index}
-								src={profile_pic}
-								alt={'profile_pic'}
-							/>
-						);
-					})}
-				</CollaboratorList>
-			</CardContent>
-			<CardButtons>
-				<ShareButton>
-					<img
+						</MobileCardDate>
+					</MobileCardInfo>
+					<MobileCardContent
 						onClick={() =>
-							handleShareClick(
-								`${window.location.origin}/projects/${project.project_id}`,
-							)
+							history.push(`/projects/${project.project_id}`)
 						}
-						src={ShareImg}
-						alt={'share'}
-					/>
-					<CopiedSpan copied={copied}>Copied!</CopiedSpan>
-				</ShareButton>
-			</CardButtons>
-		</Card>
-	);
+					>
+						<MobileCardTitleInfo>
+							<MobileCardTitle>{project.title}</MobileCardTitle>
+						</MobileCardTitleInfo>
+						<CollaboratorList style={{ margin: '10px 0 0 -4px' }}>
+							{project.collaborators.map(
+								(profile_pic, index: number) => {
+									return (
+										<img
+											style={{
+												height: '36px',
+												width: '36px',
+											}}
+											key={index}
+											src={profile_pic}
+											alt={'profile_pic'}
+										/>
+									);
+								},
+							)}
+						</CollaboratorList>
+					</MobileCardContent>
+					<MobileCardButtons>
+						<MobileArrowImage>
+							<img
+								src={voted > 0 ? ArrowUpVoted : ArrowUp}
+								alt={'arrow up'}
+								onClick={() =>
+									handleUpClick(1, project.project_id)
+								}
+							/>
+						</MobileArrowImage>
+						<MobileVoteCount>
+							<span>{votes}</span>
+						</MobileVoteCount>
+						<MobileArrowImage>
+							<img
+								src={voted < 0 ? ArrowDownVoted : ArrowDown}
+								alt={'arrow down'}
+								onClick={() =>
+									handleDownClick(-1, project.project_id)
+								}
+							/>
+						</MobileArrowImage>
+						<MobileCopiedSpan copied={copied}>
+							Copied!
+						</MobileCopiedSpan>
+						<MobileShareButton>
+							<img
+								onClick={() =>
+									handleShareClick(
+										`${window.location.href}/${project.project_id}`,
+									)
+								}
+								src={ShareImg}
+								alt={'share'}
+							/>
+						</MobileShareButton>
+					</MobileCardButtons>
+				</MobileCardContainer>
+			</MobileCard>
+		);
+	} else {
+		return (
+			<Card>
+				<CardVotes>
+					<ArrowImage>
+						<img
+							src={voted > 0 ? ArrowUpVoted : ArrowUp}
+							alt={'arrow_up'}
+							onClick={() => handleUpClick(1, project.project_id)}
+						/>
+					</ArrowImage>
+					<VoteCount>
+						<span>{votes}</span>
+					</VoteCount>
+					<ArrowImage>
+						<img
+							src={voted < 0 ? ArrowDownVoted : ArrowDown}
+							alt={'arrow_down'}
+							onClick={() =>
+								handleDownClick(-1, project.project_id)
+							}
+						/>
+					</ArrowImage>
+				</CardVotes>
+				<CardContent
+					onClick={() =>
+						history.push(`/projects/${project.project_id}`)
+					}
+				>
+					<CardTitleInfo>
+						<CardTitle>{project.title}</CardTitle>
+						<CardInfo>
+							<CardDate>
+								{formatDate(project.published_date)}
+							</CardDate>
+						</CardInfo>
+					</CardTitleInfo>
+					<CollaboratorList>
+						{project.collaborators.map(
+							(profile_pic, index: number) => {
+								return (
+									<img
+										key={index}
+										src={profile_pic}
+										alt={'profile_pic'}
+									/>
+								);
+							},
+						)}
+					</CollaboratorList>
+				</CardContent>
+				<CardButtons>
+					<ShareButton>
+						<img
+							onClick={() =>
+								handleShareClick(
+									`${window.location.origin}/projects/${project.project_id}`,
+								)
+							}
+							src={ShareImg}
+							alt={'share'}
+						/>
+						<CopiedSpan copied={copied}>Copied!</CopiedSpan>
+					</ShareButton>
+				</CardButtons>
+			</Card>
+		);
+	}
 };
 
 export default ProjectCard;

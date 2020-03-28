@@ -176,7 +176,7 @@ export const ShareButton = styled.div`
 		background-color: ${color.siteBG2};
 		transition: background-color 0.2s;
 		&:hover {
-			background-color: ${color.siteBG1};
+			background-color: ${color.siteBG1};	
 		}
 	}
 	&:hover {
@@ -216,10 +216,10 @@ export const SaveButton = styled.div`
 `;
 
 export const CopiedSpan = styled.span`
-	position: relative;
-	bottom: 0;
+	position: absolute;
 	transition: opacity 0.3s;
 	user-select: none;
+	transform: translateY(160%);
 	opacity: ${(props) => (props.copied ? '1' : '0')};
 	@media (max-width: 768px) {
 		font-size: 12px;

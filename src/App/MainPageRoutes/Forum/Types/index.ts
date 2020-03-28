@@ -30,6 +30,6 @@ export interface PostType {
 
 
 export type PostProps = {
-    content: PostType
+    post: PostType
     deletePost: () => void
 }

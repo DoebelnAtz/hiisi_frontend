@@ -54,6 +54,7 @@ export const MobileCardContent = styled.div`
 	width: calc(100% - ${length.margin} * 2);
 	padding: 10px;
 	display: flex;
+	min-height: 50px;
 	flex-direction: column;
 	${cursor.clickable};
 	z-index: 1;
@@ -83,6 +84,15 @@ export const MobileCardTitle = styled.span`
 	${layout.row};
 	font-size: 16px;
 	width: calc(100%);
+`;
+
+export const MobileCardEdited = styled.span`
+	${layout.row};
+	${font.text};
+	margin-top: auto;
+	
+	width: calc(100% - ${length.margin} * 2);
+	font-size: 12px;
 `;
 
 export const MobileCardThumbnail = styled.div`

@@ -50,7 +50,7 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 				return (
 					<Post
 						deletePost={() => deletePost(post.b_id)}
-						content={post}
+						post={post}
 						key={post.b_id}
 					/>
 				);
