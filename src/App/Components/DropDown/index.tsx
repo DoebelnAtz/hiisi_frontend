@@ -36,6 +36,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	optionList,
 	width = 100,
 	height,
+	children,
 	text,
 	withFilter = false,
 	modalOverflow = false,
@@ -125,9 +126,18 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 			<CurrentOption
 				expanded={expanded}
 				onClick={() => handleClick()}
-				style={{ lineHeight: `${height}` }}
+				height={height}
 			>
-				<span>{`${text ? text : ''}${capitalizeFirst(state)}`}</span>
+				{text ? (
+					<span>{`${text ? text : ''}${capitalizeFirst(
+						state,
+					)}`}</span>
+				) : (
+					<div>
+						{children}
+						<span>{state}</span>
+					</div>
+				)}
 			</CurrentOption>
 			{expanded && (
 				<DropDownList

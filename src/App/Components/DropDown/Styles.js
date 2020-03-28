@@ -24,6 +24,7 @@ export const DropDown = styled.div`
 export const CurrentOption = styled.div`
 	padding: 0 ${length.margin};
 	${font.text};
+	height: ${props => props.height};
 	font-size: 14px;
 	border: 1px solid ${color.primary};
 	border-radius: 4px 4px ${(props) => (props.expanded ? '0 0' : '4px 4px')};
@@ -34,6 +35,13 @@ export const CurrentOption = styled.div`
 	white-space: nowrap;
 	vertical-align: middle;
 	text-align: center;
+	& span {
+		line-height: ${props => props.height};
+	}
+	& div i {
+		font-size: 18px;
+		line-height: ${props => props.height};
+	}
 `;
 
 export const DropDownList = styled.div`

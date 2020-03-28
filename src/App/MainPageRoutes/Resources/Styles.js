@@ -50,6 +50,9 @@ export const SubmitResourceButton = styled.button`
 	padding: 0 10px;
 	margin: ${props => props.isMobile ? `0 0 ${length.margin} 0` : `0 ${length.margin} 0 0`};
 	line-height: 28px;
+	@media (max-width: 800px) {
+		margin-bottom: ${length.margin};
+	}
 `;
 
 export const FilterButton = styled.button`
@@ -58,7 +61,7 @@ export const FilterButton = styled.button`
 	margin-left: auto;
 	height: 34px;
 	line-height: 26px;
-	@media (max-width: 731px) {
+	@media (max-width: 761px) {
 		margin-top: ${length.margin};
 		margin-left: 0;
 	}

@@ -28,10 +28,11 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [reverse, setReverse] = useState(
 		getLocal('resourceSortPref')?.reverse || 'false',
 	);
+	const [show, setShow] = useState('all');
 	const [width, isMobile] = useWidth();
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
 	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
-		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}`,
+		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}&show=${show}`,
 		'get',
 	);
 	useNav('resources');
@@ -60,6 +61,10 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 		}
 	};
 
+	const onShowSelect = (newShow: string) => {
+		setShow(newShow);
+	};
+
 	return (
 		<Resources>
 			{popup && resources && (
@@ -81,18 +86,20 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 				<ResourceFilters>
 					<DropDown
 						width={`${
-							isMobile ? `calc(${width}px / 2 - 15px)` : `160px`
+							isMobile ? `calc(${width}px / 3 - 13px)` : `160px`
 						}`}
+						text={'Sort: '}
 						height={'32px'}
 						state={sortBy}
-						text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 						setSelect={onSortSelect}
 						optionList={['popular', 'recent', 'title']}
-					/>
+					>
+						<i className={'fas fa-sort'} />
+					</DropDown>
 
 					<DropDown
 						width={`${
-							isMobile ? `calc(${width}px / 2 - 15px)` : `166px`
+							isMobile ? `calc(${width}px / 3 - 13px)` : `166px`
 						}`}
 						height={'32px'}
 						state={filter}
@@ -103,8 +110,19 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 							tags ? tags.map((tag) => tag.title) : ['loading..']
 						}
 					/>
+
+					<DropDown
+						state={show}
+						text={`Show: `}
+						setSelect={onShowSelect}
+						optionList={['all', 'submitted', 'saved']}
+						width={`${
+							isMobile ? `calc(${width}px / 3 - 14px)` : `146px`
+						}`}
+						height={'32px'}
+					/>
 				</ResourceFilters>
-				{!isMobile && (
+				{width > 870 && (
 					<FilterButton onClick={() => setFilter('none')}>
 						Remove filter
 					</FilterButton>
@@ -115,6 +133,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 					pagination={2}
 					reverse={reverse}
 					sortBy={sortBy}
+					show={show}
 					filterBy={filter}
 					setFilter={setFilter}
 					resources={resources}

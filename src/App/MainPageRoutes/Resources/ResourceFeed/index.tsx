@@ -16,6 +16,7 @@ type ResourceFeedPropTypes = {
 	setFilter: Dispatch<SetStateAction<string>>;
 	resources: ResourceListType[];
 	setResources: Dispatch<SetStateAction<ResourceListType[] | undefined>>;
+	show: string;
 };
 
 const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
@@ -26,12 +27,13 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	setFilter,
 	resources,
 	setResources,
+	show,
 }) => {
 	const history = useHistory();
 	const [nextResources, setNextResources, isLoading] = useRequest<
 		ResourceListType[]
 	>(
-		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}`,
+		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}}&show=${show}`,
 		'get',
 		{},
 		resources.length >= 14,
@@ -86,6 +88,7 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 						pagination={++pagination}
 						reverse={reverse}
 						sortBy={sortBy}
+						show={show}
 						filterBy={filterBy}
 						setFilter={setFilter}
 						resources={nextResources}

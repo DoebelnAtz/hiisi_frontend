@@ -39,6 +39,12 @@
 
 }
 
+.scrollbar-animation::-webkit-scrollbar {
+
+    background-color: rgba(0,0,0,0);
+
+}
+
 @media (hover:none) {
     .scrollbar-animation::-webkit-scrollbar-thumb {
         background-color: rgba(200,200,200, 0.2);
@@ -61,6 +67,7 @@
 
 ::-webkit-scrollbar {
     z-index: 42;
+
     width: 7px;
     border-radius: 4px;
 }
@@ -72,6 +79,8 @@
 
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
+        background-color: rgba(200,200,200,0.3);
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
