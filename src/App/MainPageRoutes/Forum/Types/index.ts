@@ -5,9 +5,9 @@ export interface CommentType {
     c_id: number,
     parentthread: number,
     comment_date: string,
-    profile_pic: string,
-    username: string,
-    u_id: number,
+    profile_pic: string | null,
+    username: string | null,
+    u_id: number | null,
     commentcontent: string,
     childthread: number
 }

@@ -71,6 +71,18 @@ export const CommentHead = styled.div`
 	}
 `;
 
+export const DeleteCommentBtn = styled.div`
+	color: ${(props) => (props.odd ? color.siteBG2 : color.siteBG1)};
+	${cursor.clickable};
+	font-size: 28px;
+	margin-left: auto;
+	&:hover {
+		color: ${(props) => (props.odd 
+	? colorAdjust.lighten(color.siteBG2, 0.1) 
+	: colorAdjust.darken(color.siteBG1, 0.1))};
+	}
+`;
+
 export const CommentBody = styled.div`
 	margin: ${length.margin} ${length.margin} 0;
 	${font.text};

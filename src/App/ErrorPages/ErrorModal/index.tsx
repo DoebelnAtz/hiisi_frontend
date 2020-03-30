@@ -10,11 +10,15 @@ const ErrorModal: React.FC = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setError('');
-		}, 2000);
+		}, 3000);
 	}, [error]);
 
 	return ReactDOM.createPortal(
 		<ErrorDiv>
+			<img
+				src={'https://cdn.intra.42.fr/users/small_marvin.png'}
+				alt={'error'}
+			/>
 			<span>{error}</span>
 		</ErrorDiv>,
 

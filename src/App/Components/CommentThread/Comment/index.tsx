@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import Reply from '../Reply';
-import { formatDate } from '../../../../Utils';
+import { formatDate, getLocal } from '../../../../Utils';
 import { useRequest } from '../../../../Hooks';
 
 import {
@@ -12,11 +12,13 @@ import {
 	ButtonRow,
 	ShowRepliesButton,
 	ReplyRow,
+	DeleteCommentBtn,
 } from './Styles';
 import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 import { useHistory } from 'react-router';
 import CommentFeed from '../CommentFeed';
 import { FocusList } from '../../../../Types';
+import { makeRequest } from '../../../../Api';
 
 export interface CommentProps {
 	odd: boolean;
@@ -39,28 +41,66 @@ const CommentCard: React.FC<CommentProps> = ({
 	isExpanded,
 }) => {
 	const history = useHistory();
-	const [childThread, setChildThread] = useState(allComments.filter(comment => comment.parentthread === child.childthread));
+	const [childThread, setChildThread] = useState(
+		allComments.filter(
+			(comment) => comment.parentthread === child.childthread,
+		),
+	);
+	const [comment, setComment] = useState(child);
+
 	const [expanded, setExpanded] = useState(true);
+
+	const handleDelete = async () => {
+		try {
+			if (
+				window.confirm('Are you sure you want to delete this comment?')
+			) {
+				await makeRequest('blogs/delete_comment', 'DELETE', {
+					commentId: child.c_id,
+				});
+				setComment({
+					...comment,
+					username: null,
+					u_id: null,
+					profile_pic: null,
+					commentcontent: 'deleted',
+				});
+			}
+		} catch (e) {
+			console.log('Failed to delete comment');
+		}
+	};
+
 	if (isExpanded)
 		return (
-			<ParentComment key={child.c_id} odd={odd}>
+			<ParentComment key={comment.c_id} odd={odd}>
 				<CommentHead odd={odd}>
 					<img
-						src={child.profile_pic}
-						alt={`${child.username} profiled pic`}
-						onClick={() => history.push(`/user/${child.u_id}`)}
+						src={
+							comment.profile_pic ??
+							'https://cdn.intra.42.fr/users/small_marvin.png'
+						}
+						alt={`${comment.username} profiled pic`}
+						onClick={() => history.push(`/user/${comment.u_id}`)}
 					/>
 					<CommentInfo odd={odd}>
 						<span>
-							{child.username} | {formatDate(child.comment_date)}
-							{focusList.focus.includes(child.username)
+							{comment.username ?? 'deleted'} |{' '}
+							{formatDate(comment.comment_date)}
+							{comment.username &&
+							focusList.focus.includes(comment.username)
 								? ' | ' + focusList.title
 								: ''}
 						</span>
 					</CommentInfo>
+					{comment.u_id === getLocal('token').u_id && (
+						<DeleteCommentBtn odd={odd} onClick={handleDelete}>
+							✕
+						</DeleteCommentBtn>
+					)}
 				</CommentHead>
 				<CommentBody>
-					<span>{child.commentcontent}</span>
+					<span>{comment.commentcontent}</span>
 				</CommentBody>
 				<ButtonRow>
 					{!!childThread?.length && (
@@ -75,20 +115,25 @@ const CommentCard: React.FC<CommentProps> = ({
 						</ShowRepliesButton>
 					)}
 					<ReplyRow full={!!childThread?.length}>
-						<Reply
-							commentThread={childThread}
-							expandChildThread={setExpanded}
-							setCommentThread={setChildThread}
-							childThreadId={child.childthread}
-							OPAuthorId={child.u_id}
-						/>
+						{comment.u_id && (
+							<Reply
+								commentThread={childThread}
+								expandChildThread={setExpanded}
+								setCommentThread={setChildThread}
+								childThreadId={comment.childthread}
+								OPAuthorId={comment.u_id}
+							/>
+						)}
 					</ReplyRow>
 				</ButtonRow>
 				{expanded && !!childThread && (
 					<ChildComments>
 						<CommentFeed
 							commentThread={child.childthread}
-							comments={allComments.filter(comment => comment.parentthread === child.childthread)}
+							comments={allComments.filter(
+								(comment) =>
+									comment.parentthread === child.childthread,
+							)}
 							allComments={allComments}
 							focusList={focusList}
 							page={2}

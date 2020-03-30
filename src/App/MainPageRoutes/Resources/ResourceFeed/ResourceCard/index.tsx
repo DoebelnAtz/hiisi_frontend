@@ -206,7 +206,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 						</MobileCardThumbnailTitle>
 						<Tags>
 							{resource.tags &&
-								resource.tags?.map((tag, index) => (
+								resource.tags.map((tag, index) => (
 									<Tag
 										isMobile={isMobile}
 										color={resource.colors[index]}

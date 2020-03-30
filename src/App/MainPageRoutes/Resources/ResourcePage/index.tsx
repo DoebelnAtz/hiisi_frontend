@@ -75,16 +75,18 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	const updateResource = async () => {
-		let resp = await makeRequest('resources/update_resource', 'put', {
-			resource: resource,
-		});
-		if (resp.data) {
-			setTimeout(() => {
-				close();
-			}, 500);
-			return true;
+		try {
+			let resp = await makeRequest('resources/update_resource', 'put', {
+				resource: resource,
+			});
+		} catch (e) {
+			return false;
 		}
-		return false;
+
+		setTimeout(() => {
+			close();
+		}, 500);
+		return true;
 	};
 
 	const addTag = async (tag: Tag) => {

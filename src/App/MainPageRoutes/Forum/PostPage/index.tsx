@@ -38,18 +38,21 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 
 	const updatePost = async () => {
 		if (post) {
-			let resp = await makeRequest('blogs/update_blog', 'PUT', {
-				content: post.content,
-				title: post.title,
-				postId: post.b_id,
-			});
-			if (resp.data) {
+			try {
+				let resp = await makeRequest('blogs/update_blog', 'PUT', {
+					content: post.content,
+					title: post.title,
+					postId: post.b_id,
+				});
 				setPost(resp.data);
-				close();
-				return true;
+			} catch (e) {
+				return false;
 			}
 		}
-		return false;
+		setTimeout(() => {
+			close();
+		}, 500);
+		return true;
 	};
 
 	const handleDescriptionChange = (e: string) => {
