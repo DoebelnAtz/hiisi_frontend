@@ -51,12 +51,10 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 				/>
 			)}
 			<ProjectButtonRow>
-				<CreateProjectButton width={
-					isMobile
-						? `calc(${width}px / 2 - 15px)`
-						: `160px`
-				}
-				onClick={() => setShowModal(true)}>
+				<CreateProjectButton
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
+					onClick={() => setShowModal(true)}
+				>
 					Start a project
 				</CreateProjectButton>
 				<DropDown
@@ -64,11 +62,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 					setSelect={onSortSelect}
 					text={`${reverse === 'false' ? '▼' : '▲'} Sort by: `}
 					optionList={['popular', 'recent', 'title']}
-					width={
-						isMobile
-							? `calc(${width}px / 2 - 15px)`
-							: `160px`
-					}
+					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
 					height={'32px'}
 				/>
 			</ProjectButtonRow>

@@ -37,20 +37,13 @@ const MainRoutes: React.FC = (prop) => {
 					path={'/openhive'}
 					render={(props) => <OpenHive {...props} />}
 				/>
-				<Route
-					path={'/user'}
-					render={(props) => <Profile/>}
-				/>
+				<Route path={'/user'} render={(props) => <Profile />} />
 				<Route
 					exact
 					path={'/messages'}
 					render={() => <MobileMessagePage />}
 				/>
-				<Route
-					exact
-					path={'/search'}
-					render={() => <MobileSearch />}
-				/>
+				<Route exact path={'/search'} render={() => <MobileSearch />} />
 			</Switch>
 			<Route path={'/forum'} render={() => <Feed />} />
 			<Route exact path={'/forum/:bid'} render={() => <PostPage />} />
