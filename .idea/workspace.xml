@@ -3,17 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.cc57ad11.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/css/main.cc57ad11.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/media/giticon.4f3a185e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/sw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Logout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Redirect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/ToggleButton/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/ToggleButton/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/ColorPicker/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/ColorPicker/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +124,7 @@
       <workItem from="1585431027672" duration="1548000" />
       <workItem from="1585557967496" duration="4727000" />
       <workItem from="1585563825100" duration="3191000" />
+      <workItem from="1585592193471" duration="6258000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -433,10 +435,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4862" y="431" width="624" height="533" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585409901948" />
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584721236233">
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585595298122">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584721236233" />
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585595298122" />
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

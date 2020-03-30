@@ -57,10 +57,10 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 			!input.description.length
 		) {
 			setError({
-				title: !input.title.length ? 'Title is required' : '',
-				link: !input.link.length ? 'Link is required' : '',
+				title: !input.title.length ? 'required' : '',
+				link: !input.link.length ? 'required' : '',
 				description: !input.description.length
-					? 'Description is required'
+					? 'required'
 					: '',
 			});
 			return false;

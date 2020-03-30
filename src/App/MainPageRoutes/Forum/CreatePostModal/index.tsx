@@ -83,8 +83,8 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 			}
 		} else {
 			setError({
-				title: 'Title required',
-				content: 'Content required',
+				title: 'required',
+				content: 'required',
 			});
 			return false;
 		}

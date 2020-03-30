@@ -30,6 +30,7 @@ import { ChatContext } from '../../../Context/ChatContext';
 import { SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
 import MessageFeed from './MessageFeed';
+import LoadingDots from '../../Components/Loading';
 
 type MessageRoomPropsTypes = {
 	tid: number;
@@ -87,10 +88,17 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			socket.on('connect', () => {
 				setConnected(true);
 			});
+			socket.on('disconnect', () => {
+				setConnected(false)
+			});
 			socket.on('joined-room', (user: User) => {
 				addUser(user);
 			});
-			socket.on('left-room', (user: User) => {});
+			socket.on('left-room', (user: User) => {
+				if (user.u_id === getLocal('token').user.u_id) {
+					setConnected(false)
+				}
+			});
 
 			socket.on('chat-message', (message: MessageType) => {
 				setNewMessage(message);
@@ -151,7 +159,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			await handleClick(e);
 		} else {
 			let target = e.target as HTMLTextAreaElement;
-			target.style.height = 'inherit';
 			target.style.height = `${target.scrollHeight}px`;
 			target.style.height = `${Math.min(target.scrollHeight, 100)}px`;
 		}
@@ -215,7 +222,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				<SendButton
 					onClick={(e: React.SyntheticEvent) => handleClick(e)}
 				>
-					{socket ? 'send' : 'loading'}
+					{connected ? 'send' : <LoadingDots color={'#323232'} height={18} cycleSpeed={250}/>}
 				</SendButton>
 			</MessageInputSend>
 		</MessageRoomDiv>

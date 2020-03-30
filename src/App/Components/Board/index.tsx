@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useLocation } from 'react-router-dom';
 import Column from './Column/index';
@@ -9,14 +9,17 @@ import {
 	Collaborator,
 	ProjectCollaborators,
 	BoardDiv,
-	PlaceHolderCollaborator,
+	PlaceHolderCollaborator, ColorFilter, ColorFilterPicker, ResetColorFilterDiv,
 } from './Styles';
 import { makeRequest } from '../../../Api';
-import { useRequest } from '../../../Hooks';
+import { useDismiss, useRequest } from '../../../Hooks';
 import { BoardType, ColumnType, TaskType } from './Types';
 import { User } from '../../../Types';
 import LoadingDots from '../Loading';
 import { LoadingDot } from '../Loading/Styles';
+import { RowDiv } from '../../../Styles/LayoutStyles';
+import { color } from '../../../Styles/SharedStyles';
+import ColorPicker from '../ColorPicker';
 
 let boardState = {
 	columns: [
@@ -73,10 +76,16 @@ const Board: React.FC<BoardProps> = ({
 		'get',
 	);
 
+	const [colorFilter, setColorFilter] = useState<string | null>(null);
+	const [expandColorPicker, setExpandColorPicker] = useState(false);
 	const [filteredUser, setFilteredUser] = useState<number>(0);
+	const colorPickerDiv = useRef<HTMLDivElement>(null);
+
+
+	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
 
 	const filterBoard = () => {
-		if (!filteredUser) {
+		if (!filteredUser && !colorFilter) {
 			return board;
 		} else {
 			return {
@@ -87,9 +96,9 @@ const Board: React.FC<BoardProps> = ({
 						tasks: col.tasks.filter((task) =>
 							task.collaborators.find(
 								(collaborator) =>
-									collaborator.u_id === filteredUser,
+									collaborator.u_id === filteredUser || !filteredUser,
 							),
-						),
+						).filter((t) => t.color_tag === colorFilter || !colorFilter),
 					};
 				}),
 			} as BoardType;
@@ -162,6 +171,15 @@ const Board: React.FC<BoardProps> = ({
 		}
 	};
 
+	const handleColorFilterChange = (newColor: string) => {
+		if (newColor === colorFilter) {
+			setColorFilter(null)
+		} else {
+			setColorFilter(newColor);
+		}
+		setExpandColorPicker(false)
+	};
+
 	const renderCollaborators = () => {
 		if (!isLoading) {
 			return projectCollaborators.map((collaborator) => {
@@ -193,7 +211,35 @@ const Board: React.FC<BoardProps> = ({
 
 	return (
 		<BoardDiv>
-			<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
+			<RowDiv>
+				<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
+				<ColorFilter  color={colorFilter} onClick={() => setExpandColorPicker(!expandColorPicker)}>
+					{colorFilter &&
+					<ResetColorFilterDiv onClick={(e: React.SyntheticEvent) => {
+						e.stopPropagation(); setColorFilter(null)
+					}}><span>✕</span></ResetColorFilterDiv>
+					}
+				</ColorFilter>
+				<ColorFilterPicker ref={colorPickerDiv}>
+					{expandColorPicker &&
+					<ColorPicker onChange={handleColorFilterChange} colors={[
+						'#c76177',
+						'#bd8b59',
+						'#d6b376',
+						'#dbcb6e',
+						'#a8c47e',
+						'#8aba86',
+						'#81d4ac',
+						'#6fb4c9',
+						'#729de0',
+						'#9b88cf',
+						'#cf97c8',
+						'#fa89b8',
+					]}
+					/>
+					}
+				</ColorFilterPicker>
+			</RowDiv>
 			<DragDropContext onDragEnd={handleTaskDrop}>
 				<Columns>
 					{filterBoard()?.columns.map((column: ColumnType) => (

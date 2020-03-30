@@ -36,8 +36,8 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ state, onClick }) => {
 	});
 
 	return (
-		<ButtonContainer style={animateBGColor}>
-			<Slider onClick={onClick} style={animateSlider} />
+		<ButtonContainer onClick={onClick} style={animateBGColor}>
+			<Slider style={animateSlider} />
 		</ButtonContainer>
 	);
 };

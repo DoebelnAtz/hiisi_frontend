@@ -22,8 +22,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	onChange,
 }) => {
 	const mapColor = () => {
-		return colors.map((color) => {
-			return <ColorDiv onClick={() => onChange(color)} color={color} />;
+		return colors.map((color, index) => {
+			return <ColorDiv key={index} onClick={() => onChange(color)} color={color} />;
 		});
 	};
 

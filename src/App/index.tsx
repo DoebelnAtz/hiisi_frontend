@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Redirect from './Auth/Redirect';
 import Header from './Header';
 import Nav from './Nav';
 import Main from './MainPageRoutes';
@@ -39,11 +38,6 @@ const App: React.FC = () => {
 								component={ServerDown}
 							/>
 							<Route exact path={'/login/'} component={Login} />
-							<Route
-								exact
-								path={'/redirect/'}
-								component={Redirect}
-							/>
 							<Route path={'/'}>
 								<MainContainer isMobile={isMobile}>
 									<ProductionStateLabel>
