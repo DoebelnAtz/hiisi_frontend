@@ -32,7 +32,12 @@ export const TitleText = styled.div`
 	font-size: 20px;
 	${layout.row};
 	color: ${(props) => (props.error ? 'red' : 'inherit')};
-		margin: auto auto 0 0;
+	margin: auto ${length.margin} 0 0;
+`;
+
+export const TitleError = styled.span`
+	color: ${(props) => (props.error ? 'red' : 'inherit')};
+	margin: auto auto 0 0;
 `;
 
 export const TitleInput = styled.input`
@@ -45,10 +50,15 @@ export const TitleInput = styled.input`
 `;
 
 export const ContentText = styled.div`
-		margin: auto auto 0 0;
+	margin: auto ${length.margin} 0 0;
 	${font.text};
 	font-size: 20px;
 	color: ${(props) => (props.error ? 'red' : 'inherit')};
+`;
+
+export const ContentError = styled.span`
+	color: ${(props) => (props.error ? 'red' : 'inherit')};
+	margin: auto auto 0 0;
 `;
 
 export const ContentTextEditor = styled.div`

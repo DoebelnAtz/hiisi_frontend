@@ -82,7 +82,6 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 						setShowModal(false);
 					}
 				} catch (e) {
-					console.log(e);
 					if (e.response.status === 400) {
 						setError({
 							...error,

@@ -20,6 +20,8 @@ import {
 	ContentText,
 	ButtonRow,
 	SubmitButton,
+	TitleError,
+	ContentError,
 	BackButton,
 } from './Styles';
 import TextEditor from '../../../Components/TextEditor';
@@ -46,9 +48,9 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 		titleVal: '',
 		contentVal: '',
 	});
-	const [errors, setErrors] = useState({
-		titleError: false,
-		contentError: false,
+	const [error, setError] = useState({
+		title: '',
+		content: '',
 	});
 	const inside = useRef<HTMLDivElement>(null);
 
@@ -57,25 +59,33 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 	const createPost = async () => {
 		if (!!inputVal.titleVal.length && !!inputVal.contentVal.length) {
-			let now = new Date().toISOString();
-			let resp = await makeRequest('blogs/create_blog', 'post', {
-				authorId: getLocal('token').user.u_id,
-				content: inputVal.contentVal,
-				title: inputVal.titleVal,
-				published_date: now,
-			});
+			try {
+				let resp = await makeRequest('blogs/create_blog', 'post', {
+					authorId: getLocal('token').user.u_id,
+					content: inputVal.contentVal,
+					title: inputVal.titleVal,
+				});
 
-			if (isMounted && posts && resp.data) {
-				setPosts([resp.data, ...posts]);
-				setTimeout(() => {
-					setPopup(false);
-				}, 300);
-				return true;
+				if (isMounted && posts && resp.data) {
+					setPosts([resp.data, ...posts]);
+					setTimeout(() => {
+						setPopup(false);
+					}, 300);
+					return true;
+				}
+			} catch (e) {
+				if (e.response.status === 400) {
+					setError({
+						...error,
+						title: 'Title already exists',
+					});
+				}
+				return false;
 			}
 		} else {
-			setErrors({
-				titleError: !inputVal.titleVal.length,
-				contentError: !inputVal.contentVal.length,
+			setError({
+				title: 'Title required',
+				content: 'Content required',
 			});
 			return false;
 		}
@@ -84,10 +94,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		errors.titleError &&
-			setErrors({
-				...errors,
-				titleError: false,
+		error.title &&
+			setError({
+				...error,
+				title: '',
 			});
 		setInputVal({
 			...inputVal,
@@ -96,10 +106,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	};
 
 	const handleContentChange = (e: string) => {
-		errors.contentError &&
-			setErrors({
-				...errors,
-				contentError: false,
+		error.content &&
+			setError({
+				...error,
+				content: '',
 			});
 		setInputVal({
 			...inputVal,
@@ -126,9 +136,12 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 							style={props}
 						>
 							<RowDiv margin={'0 0 10px 0'}>
-								<TitleText error={errors.titleError}>
+								<TitleText error={!!error.title.length}>
 									Title
 								</TitleText>
+								<TitleError error={!!error.title.length}>
+									{error.title}
+								</TitleError>
 								<LengthCounter
 									warning={inputVal.titleVal.length > 80}
 								>
@@ -144,9 +157,12 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								}
 							/>
 							<RowDiv margin={'10px 0 10px 0'}>
-								<ContentText error={errors.contentError}>
+								<ContentText error={!!error.content.length}>
 									Content
 								</ContentText>
+								<ContentError error={!!error.content.length}>
+									{error.content}
+								</ContentError>
 								<LengthCounter
 									warning={inputVal.contentVal.length > 500}
 								>

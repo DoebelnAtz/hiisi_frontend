@@ -142,13 +142,15 @@ const BoardColumn: React.FC<ColumnProps> = ({
 							}}
 						/>
 					)}
-					<ExpandOptions
-						onClick={() => setExpandOptions(!expandOptions)}
-					>
-						<Dot />
-						<Dot />
-						<Dot />
-					</ExpandOptions>
+					{editable && (
+						<ExpandOptions
+							onClick={() => setExpandOptions(!expandOptions)}
+						>
+							<Dot />
+							<Dot />
+							<Dot />
+						</ExpandOptions>
+					)}
 					<ColumnOptions expanded={expandOptions}>
 						<WipLimitInput>
 							<span>WIP limit:</span>
@@ -173,6 +175,7 @@ const BoardColumn: React.FC<ColumnProps> = ({
 							</RejectOptionBtn>
 						</ColumnOptionsButtonRow>
 					</ColumnOptions>
+
 					<ColumnList
 						{...provided.droppableProps}
 						ref={provided.innerRef}
