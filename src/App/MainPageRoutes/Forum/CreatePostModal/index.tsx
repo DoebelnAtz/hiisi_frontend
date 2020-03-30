@@ -19,7 +19,6 @@ import {
 	ContentTextEditor,
 	ContentText,
 	ButtonRow,
-	SubmitButton,
 	TitleError,
 	ContentError,
 	BackButton,
