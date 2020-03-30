@@ -32,11 +32,7 @@ const App: React.FC = () => {
 				<NotificationContextProvider>
 					<ChatContextProvider>
 						<Switch>
-							<Route
-								exact
-								path={'/signup/'}
-								component={Signup}
-							/>
+							<Route exact path={'/signup/'} component={Signup} />
 							<Route
 								exact
 								path={'/505/'}

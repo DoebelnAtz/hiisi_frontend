@@ -24,7 +24,8 @@ const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
 	const history = useHistory();
 	const next: any = queryString.parse(history.location.search)?.next
-		? queryString.parse(history.location.search).next : '/resources';
+		? queryString.parse(history.location.search).next
+		: '/resources';
 	const requestLogin = async () => {
 		if (password.length && username.length) {
 			try {
@@ -60,7 +61,6 @@ const Login: React.FC = () => {
 		e.preventDefault();
 		requestLogin();
 	};
-
 
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -179,36 +179,38 @@ const Login: React.FC = () => {
 				<InputDiv>
 					<div style={{ position: 'relative', left: '-50%' }}>
 						<form>
-						<UsernameDiv>
-							<UsernameInput
-								type={'username'}
-								value={username}
-								onKeyDown={(e: React.KeyboardEvent) =>
-									handleEnterPress(e)
-								}
-								onChange={(e: React.SyntheticEvent) => {
-									let target = e.target as HTMLInputElement;
-									setUsername(target.value);
-								}}
-							/>
-						</UsernameDiv>
-						<PasswordDiv>
-							<PasswordInput
-								type={'password'}
-								autocomplete={'on'}
-								value={password}
-								onKeyDown={(e: React.KeyboardEvent) =>
-									handleEnterPress(e)
-								}
-								onChange={(e: React.SyntheticEvent) => {
-									let target = e.target as HTMLInputElement;
-									setPassword(target.value);
-								}}
-							/>
-						</PasswordDiv>
-						<LoginButton loginError={loginError}>
-							<button onClick={handleLoginClick}>Login</button>
-						</LoginButton>
+							<UsernameDiv>
+								<UsernameInput
+									type={'username'}
+									value={username}
+									onKeyDown={(e: React.KeyboardEvent) =>
+										handleEnterPress(e)
+									}
+									onChange={(e: React.SyntheticEvent) => {
+										let target = e.target as HTMLInputElement;
+										setUsername(target.value);
+									}}
+								/>
+							</UsernameDiv>
+							<PasswordDiv>
+								<PasswordInput
+									type={'password'}
+									autocomplete={'on'}
+									value={password}
+									onKeyDown={(e: React.KeyboardEvent) =>
+										handleEnterPress(e)
+									}
+									onChange={(e: React.SyntheticEvent) => {
+										let target = e.target as HTMLInputElement;
+										setPassword(target.value);
+									}}
+								/>
+							</PasswordDiv>
+							<LoginButton loginError={loginError}>
+								<button onClick={handleLoginClick}>
+									Login
+								</button>
+							</LoginButton>
 						</form>
 					</div>
 				</InputDiv>
