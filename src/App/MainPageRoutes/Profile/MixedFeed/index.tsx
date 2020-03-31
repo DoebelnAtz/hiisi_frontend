@@ -46,7 +46,9 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 		<Fragment>
 			<Feed>
 				{renderAll()}
-				{showNext && setNextFeed && nextFeed && (
+
+			</Feed>
+			{showNext && setNextFeed && nextFeed && (
 					<MixedFeed
 						page={page + 1}
 						feed={nextFeed}
@@ -55,8 +57,7 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 						profile={profile}
 					/>
 				)}
-			</Feed>
-			{!showNext && feed.length >= 14 && (
+			{!showNext && feed.length >= 14 && !!nextFeed?.length && (
 				<MoreButton>
 					<img
 						src={PlusIcon}

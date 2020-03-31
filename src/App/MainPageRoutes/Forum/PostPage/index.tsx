@@ -41,7 +41,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 				let resp = await makeRequest('blogs/update_blog', 'PUT', {
 					content: post.content,
 					title: post.title,
-					postId: post.b_id,
+					blogId: post.b_id,
 				});
 				setPost(resp.data);
 			} catch (e) {

@@ -38,7 +38,9 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 		<Fragment>
 			<Feed>
 				{renderProject()}
-				{showNext && nextProjects && (
+
+			</Feed>
+			{showNext && nextProjects && (
 					<ProjectFeed
 						page={page + 1}
 						projects={nextProjects}
@@ -46,8 +48,7 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 						reverse={reverse}
 					/>
 				)}
-			</Feed>
-			{!showNext && projects.length >= 14 && (
+			{!showNext && projects.length >= 14 && !!nextProjects?.length &&(
 				<MoreButton>
 					<img
 						src={PlusIcon}

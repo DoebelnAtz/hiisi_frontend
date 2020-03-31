@@ -62,7 +62,9 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 		<Fragment>
 			<Feed>
 				{renderList()}
-				{showNext && nextPosts && (
+
+			</Feed>
+			{showNext && nextPosts && (
 					<ForumFeed
 						sortBy={sortBy}
 						page={page + 1}
@@ -71,8 +73,7 @@ const ForumFeed: React.FC<ForumFeedProps> = ({
 						setPosts={setNextPosts}
 					/>
 				)}
-			</Feed>
-			{!showNext && posts.length >= 14 && (
+			{!showNext && posts.length >= 14 && !!nextPosts?.length && (
 				<MoreButton>
 					<img
 						src={PlusIcon}

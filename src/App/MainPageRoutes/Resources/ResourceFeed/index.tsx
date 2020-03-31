@@ -83,7 +83,9 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 		<Fragment>
 			<Feed>
 				{resources && renderResources()}
-				{next && nextResources && setNextResources && (
+
+			</Feed>
+			{next && nextResources && setNextResources && (
 					<ResourcesResourceFeed
 						pagination={++pagination}
 						reverse={reverse}
@@ -95,8 +97,7 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 						setResources={setNextResources}
 					/>
 				)}
-			</Feed>
-			{!next && resources.length >= 14 && (
+			{!next && resources.length >= 14 && !!nextResources?.length &&(
 				<MoreButton>
 					<img
 						src={PlusIcon}

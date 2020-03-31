@@ -70,7 +70,7 @@ const CommentCard: React.FC<CommentProps> = ({
 			console.log('Failed to delete comment');
 		}
 	};
-	if (isExpanded)
+		if (isExpanded)
 		return (
 			<ParentComment key={comment.c_id} odd={odd}>
 				<CommentHead odd={odd}>
