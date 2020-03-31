@@ -205,12 +205,12 @@ const Login: React.FC = () => {
 	return (
 		<BackgroundDiv>
 
-				<button
-				style={{ position: 'absolute' }}
-				onClick={() => setAnimate(!animate)}
-				>
-				animate
-				</button>
+				{/*<button*/}
+				{/*style={{ position: 'absolute' }}*/}
+				{/*onClick={() => setAnimate(!animate)}*/}
+				{/*>*/}
+				{/*animate*/}
+				{/*</button>*/}
 
 			<LoginDiv style={{ ...expandMain, ...expandBorderMain }}>
 				<InputDiv>
@@ -234,7 +234,7 @@ const Login: React.FC = () => {
 								<PasswordInput
 									style={expandInputs}
 									type={'password'}
-									autocomplete={'on'}
+									autoComplete={'on'}
 									value={password}
 									onKeyDown={(e: React.KeyboardEvent) =>
 										handleEnterPress(e)
@@ -249,6 +249,7 @@ const Login: React.FC = () => {
 								<button onClick={handleLoginClick}>
 									Login
 								</button>
+								<button onClick={() => history.push('/signup')}>Sign up</button>
 							</LoginButton>
 						</form>
 					</div>

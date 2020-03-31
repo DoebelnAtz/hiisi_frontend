@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
-import { UsernameInput, Password2Input, Password1Input, SignupButton } from './Styles';
+import {
+	UsernameInput,
+	Password2Input,
+	Password1Input,
+	SignupButton,
+	BackgroundDiv,
+	InputDiv,
+	TitleDiv, BackToLoginButton,
+} from './Styles';
 import { makeRequest } from '../../../Api';
 import { useHistory } from 'react-router';
+import { RowDiv } from '../../../Styles/LayoutStyles';
 
 const Signup: React.FC = () => {
 
@@ -69,21 +78,29 @@ const Signup: React.FC = () => {
 	};
 
 	return (
-		<div style={{height: '50%'}}>
-			<UsernameInput>
-				<input value={input.username} onChange={(e: React.SyntheticEvent) => handleUsernameChange(e)} placeholder={'intra username'}/>
-			<span>{errors.usernameError}</span>
-			</UsernameInput>
-			<Password1Input>
-				<input type={'password'}  value={input.password1} onChange={(e: React.SyntheticEvent) => handlePassword1Change(e)}  placeholder={'password'}/>
-			<span>{errors.password1Error}</span>
-			</Password1Input>
-			<Password2Input>
-				<input type={'password'}  value={input.password2} onChange={(e: React.SyntheticEvent) => handlePassword2Change(e)}  placeholder={'confirm password'}/>
-				<span>{errors.password2Error}</span>
-			</Password2Input>
-			<SignupButton onClick={handleSignup}>Submit</SignupButton>
-		</div>
+		<BackgroundDiv>
+			<InputDiv>
+				<TitleDiv>
+					Hivemind
+				</TitleDiv>
+				<UsernameInput>
+					<input value={input.username} onChange={(e: React.SyntheticEvent) => handleUsernameChange(e)} placeholder={'intra username'}/>
+					<span>{errors.usernameError}</span>
+				</UsernameInput>
+				<Password1Input>
+					<input type={'password'}  value={input.password1} onChange={(e: React.SyntheticEvent) => handlePassword1Change(e)}  placeholder={'password'}/>
+					<span>{errors.password1Error}</span>
+				</Password1Input>
+				<Password2Input>
+					<input type={'password'}  value={input.password2} onChange={(e: React.SyntheticEvent) => handlePassword2Change(e)}  placeholder={'confirm password'}/>
+					<span>{errors.password2Error}</span>
+				</Password2Input>
+				<RowDiv>
+					<BackToLoginButton onClick={() => history.push('/login')}>Login</BackToLoginButton>
+					<SignupButton onClick={handleSignup}>Submit</SignupButton>
+				</RowDiv>
+			</InputDiv>
+		</BackgroundDiv>
 	);
 };
 

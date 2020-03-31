@@ -58,6 +58,8 @@ export const PasswordInput = styled(animated.input)`
 
 export const LoginButton = styled(animated.div)`
 	${layout.row};
+	overflow: visible;
+	flex-wrap: nowrap;
 	& button {
 		z-index: 2;
 		margin: 0 auto;
