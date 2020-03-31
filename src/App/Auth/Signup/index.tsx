@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import {
 	UsernameInput,
-	Password2Input,
-	Password1Input,
 	SignupButton,
 	BackgroundDiv,
 	InputDiv,
-	TitleDiv, BackToLoginButton,
+	TitleDiv, BackToLoginButton, PasswordInput,
 } from './Styles';
 import { makeRequest } from '../../../Api';
 import { useHistory } from 'react-router';
@@ -29,12 +27,19 @@ const Signup: React.FC = () => {
 	const handleSignup = async () => {
 		if (!!input.username.length && !!input.password2.length && !!input.password1.length) {
 			if (input.password1 === input.password2) {
+				if (input.password1.length > 7) {
 				let resp = await makeRequest('auth/signup', 'POST', {
 					username: input.username,
 					password: input.password1,
 				});
 				if (resp.data) {
 					history.push('/login');
+				}
+				} else {
+					setErrors({
+						...errors,
+						password1Error: 'Password has to be minimum 8 characters long'
+					})
 				}
 			} else {
 				setErrors({
@@ -85,16 +90,16 @@ const Signup: React.FC = () => {
 				</TitleDiv>
 				<UsernameInput>
 					<input value={input.username} onChange={(e: React.SyntheticEvent) => handleUsernameChange(e)} placeholder={'intra username'}/>
-					<span>{errors.usernameError}</span>
+					<span>{errors.usernameError} </span>
 				</UsernameInput>
-				<Password1Input>
+				<PasswordInput>
 					<input type={'password'}  value={input.password1} onChange={(e: React.SyntheticEvent) => handlePassword1Change(e)}  placeholder={'password'}/>
-					<span>{errors.password1Error}</span>
-				</Password1Input>
-				<Password2Input>
+					<span>{errors.password1Error} </span>
+				</PasswordInput>
+				<PasswordInput>
 					<input type={'password'}  value={input.password2} onChange={(e: React.SyntheticEvent) => handlePassword2Change(e)}  placeholder={'confirm password'}/>
-					<span>{errors.password2Error}</span>
-				</Password2Input>
+					<span>{errors.password2Error} </span>
+				</PasswordInput>
 				<RowDiv>
 					<BackToLoginButton onClick={() => history.push('/login')}>Login</BackToLoginButton>
 					<SignupButton onClick={handleSignup}>Submit</SignupButton>

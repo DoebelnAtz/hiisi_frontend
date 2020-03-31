@@ -9,6 +9,7 @@ export const BackgroundDiv = styled.div`
 
 export const InputDiv = styled.div`
 	margin: auto;
+	width: max(20vw, 300px);
 	display: flex;
 	flex-direction: column;
 	border-radius: ${length.radius};
@@ -39,7 +40,7 @@ export const UsernameInput = styled.div`
 	}
 `;
 
-export const Password1Input = styled.div`
+export const PasswordInput = styled.div`
 	${layout.row};
 	margin: ${length.margin} auto;
 	width: 90%;
@@ -49,27 +50,11 @@ export const Password1Input = styled.div`
 	}
 	& span {
 		${font.text};
-		color: red;
+		font-size: 14px;
+		color: #992222;
 		margin-left: ${length.margin};
-		line-height: 36px;
 	}
 `;
-
-export const Password2Input = styled.div`
-	${layout.row};
-	margin: ${length.margin} auto;
-	width: 90%;
-	& input {
-		${components.input};
-		width: 100%;
-	& span {
-		${font.text};
-		color: red;
-		margin-left: ${length.margin};
-		line-height: 36px;
-	}
-`;
-
 export const BackToLoginButton = styled.button`
 	${components.button};
 	width: calc(50% - ${length.margin} * 2);

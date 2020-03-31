@@ -26,6 +26,7 @@ export const LoginDiv = styled(animated.div)`
 export const InputDiv = styled.div`
 	position: absolute;
 	left: 50%;
+	top: calc(50% - max(5vw, 64px));
 	padding: ${length.margin} 0;
 
 `;
