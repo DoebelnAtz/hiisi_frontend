@@ -19,7 +19,6 @@ import TextEditor from '../../../Components/TextEditor';
 import { formatDate } from '../../../../Utils';
 import Modal from '../../../Components/Modal';
 import { makeRequest } from '../../../../Api';
-import SaveButton from '../../../Components/Buttons/SaveButton';
 
 const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 	history,
@@ -49,9 +48,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 				return false;
 			}
 		}
-		setTimeout(() => {
-			close();
-		}, 500);
+		close();
 		return true;
 	};
 

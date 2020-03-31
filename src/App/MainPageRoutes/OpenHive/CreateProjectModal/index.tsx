@@ -57,10 +57,10 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 			!input.description.length
 		) {
 			setError({
-				title: !input.title.length ? 'Title is required' : '',
-				link: !input.link.length ? 'Link is required' : '',
+				title: !input.title.length ? 'required' : '',
+				link: !input.link.length ? 'required' : '',
 				description: !input.description.length
-					? 'Description is required'
+					? 'required'
 					: '',
 			});
 			return false;
@@ -169,12 +169,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 						/>
 					</label>
 				</TitleAndLinkRow>
-				<span>Description</span>
+				<span>Description:</span>
 				{!!error.description.length && (
 					<ErrorSpan>{error.description}</ErrorSpan>
 				)}
 				<Description>
 					<TextEditor
+						error={!!error.description.length}
 						editable={true}
 						state={input.description}
 						setState={handleDescriptionChange}

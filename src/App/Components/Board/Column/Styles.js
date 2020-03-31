@@ -54,6 +54,7 @@ export const WipLimit = styled.div`
 
 export const TaskCount = styled.span`
 	margin: 10px 0 0 auto;
+	font-size: 14px;
 	color: ${(props) => (props.wipExceeded ? color.secondary : 'inherit')};
 	&:hover {
 		& ${WipLimit} div {
@@ -180,7 +181,7 @@ export const ColumnTitle = styled.input`
 	color: ${color.primary};
 	width: calc(100% - 62px);
 	background: ${color.siteBG3};
-
+	height: 22px;
 	z-index: 3;
 	&:hover {
 		background: ${color.siteBG3};
@@ -194,6 +195,7 @@ export const ColumnTitle = styled.input`
 
 export const AddTaskInput = styled.input`
 	${components.input};
+	height: 30px;
 	background-color: ${color.siteBG1};
-	margin: ${length.margin} 0;
+	margin-bottom: ${length.margin};
 `;

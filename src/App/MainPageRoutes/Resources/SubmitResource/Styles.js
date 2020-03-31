@@ -29,11 +29,11 @@ export const TitleLinkTypeCol = styled.div`
 
 `;
 
-export const TitleError = styled.span`
+export const ErrorMessage = styled.span`
 	${font.text};
-	margin-top: 2px;
-	font-size: 14px !important;
-	color: red;
+	font-size: 16px !important;
+	margin-top: auto;
+	color: red !important;
 `;
 
 export const TitleInputDiv = styled.div`
@@ -90,6 +90,7 @@ export const EditDescriptionCol = styled.div`
 	& span {
 		margin-bottom: ${length.margin};
 		font-size: 20px;
+		margin-right: ${length.margin};
 		color: ${(props) => (props.error ? 'red' : color.primary)};
 	}
 `;

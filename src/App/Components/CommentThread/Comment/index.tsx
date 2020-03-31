@@ -70,7 +70,6 @@ const CommentCard: React.FC<CommentProps> = ({
 			console.log('Failed to delete comment');
 		}
 	};
-
 	if (isExpanded)
 		return (
 			<ParentComment key={comment.c_id} odd={odd}>
@@ -93,7 +92,7 @@ const CommentCard: React.FC<CommentProps> = ({
 								: ''}
 						</span>
 					</CommentInfo>
-					{comment.u_id === getLocal('token').u_id && (
+					{comment.u_id === getLocal('token').user.u_id && (
 						<DeleteCommentBtn odd={odd} onClick={handleDelete}>
 							✕
 						</DeleteCommentBtn>

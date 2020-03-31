@@ -2,9 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Logout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Redirect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Signup/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Signup/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Auth/Signup/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Auth/Signup/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Buttons/ToggleButton/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Buttons/ToggleButton/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/ColorPicker/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/ColorPicker/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Loading/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Loading/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/ProfilePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Messages/MessageRoom/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hooks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hooks/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/CardStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/CardStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +157,8 @@
       <workItem from="1585431027672" duration="1548000" />
       <workItem from="1585557967496" duration="4727000" />
       <workItem from="1585563825100" duration="3191000" />
+      <workItem from="1585592193471" duration="21447000" />
+      <workItem from="1585659742895" duration="85000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -380,18 +426,55 @@
       <option name="project" value="LOCAL" />
       <updated>1585564289095</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="added the ability to filter tasks by color tag">
+      <created>1585598899930</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1585598899930</updated>
+    </task>
+    <task id="LOCAL-00040" summary="added the ability to filter tasks by color tag">
+      <created>1585599027901</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1585599027901</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ui fixes to login screen">
+      <created>1585651368114</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1585651368114</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Erro message improvement to create post/project/resource">
+      <created>1585655974417</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1585655974417</updated>
+    </task>
+    <task id="LOCAL-00043" summary="code refactor">
+      <created>1585658105769</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1585658105769</updated>
+    </task>
+    <task id="LOCAL-00044" summary="improvements to signup page">
+      <created>1585659646904</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1585659646904</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ui improvements, resources set to &quot;main&quot; page" />
-    <MESSAGE value="Profile page routing refactor and" />
-    <MESSAGE value="Added input validation to create project" />
-    <MESSAGE value="added private project option to projects" />
-    <MESSAGE value="added option to change project privacy settings" />
     <MESSAGE value="ui fixes and profile private projects hidden from visitors" />
     <MESSAGE value="Ui fixes" />
     <MESSAGE value="Removed notifications" />
@@ -412,29 +495,38 @@
     <MESSAGE value="mobile UI fixes" />
     <MESSAGE value="added option to delete comments" />
     <MESSAGE value="improved error feedback on post creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved error feedback on post creation" />
+    <MESSAGE value="added the ability to filter tasks by color tag" />
+    <MESSAGE value="ui fixes to login screen" />
+    <MESSAGE value="Erro message improvement to create post/project/resource" />
+    <MESSAGE value="code refactor" />
+    <MESSAGE value="improvements to signup page" />
+    <option name="LAST_COMMIT_MESSAGE" value="improvements to signup page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584535318101" />
+    <state x="5014" y="381" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1585648152425">
+      <screen x="3840" y="0" width="2560" height="1440" />
+    </state>
+    <state x="5014" y="381" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585648152425" />
     <state x="4862" y="431" width="624" height="533" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585409901948">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4862" y="431" width="624" height="533" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585409901948" />
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584721236233">
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585595298122">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1584721236233" />
+    <state x="5451" y="447" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585595298122" />
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583676503983">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585564289055">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585658105725">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585564289055" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585658105725" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1585149597587">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -452,10 +544,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4972" y="337" key="SettingsEditor/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585149602153" />
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585431976313">
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2" timestamp="1585658106761">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585431976313" />
+    <state x="5063" y="438" width="800" height="523" key="Vcs.Push.Dialog.v2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585658106761" />
     <state x="4382" y="311" width="770" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583581913678">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
@@ -468,10 +560,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4376" y="402" width="791" height="590" key="find.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583686518655" />
-    <state x="4808" y="329" key="run.anything.popup" timestamp="1585389478973">
+    <state x="4808" y="329" key="run.anything.popup" timestamp="1585648169114">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585389478973" />
+    <state x="4808" y="329" key="run.anything.popup/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585648169114" />
     <state x="4963" y="322" width="672" height="678" key="search.everywhere.popup" timestamp="1585411249478">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

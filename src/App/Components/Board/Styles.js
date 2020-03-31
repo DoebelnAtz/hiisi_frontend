@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {
 	color,
-	colorAdjust,
 	cursor,
 	layout,
 	length,
@@ -9,7 +8,7 @@ import {
 
 export const BoardDiv = styled.div`
 	width: 100%;
-	height: calc(100%);
+	height: 100%;
 	overflow-y: hidden;
 	overflow-x: hidden;
 `;
@@ -18,6 +17,35 @@ export const Columns = styled.div`
 	display: flex;
 	width: 100%;
 	z-index: 3;
+`;
+
+export const ColorFilterPicker = styled.div`
+	position: absolute;
+	z-index: 4;
+	transform: translate(calc(100% + 10px), calc(100% - 8px));
+`;
+
+export const ResetColorFilterDiv = styled.div`
+	height: 20px;
+	width: 20px;
+	display: flex;
+	border-radius: 10px;
+	background-color: #ee6666;
+	${cursor.clickable};
+	transform: translate(30px, -12px);
+	& span {
+		line-height: 20px;
+		margin: auto;
+	}
+`;
+
+export const ColorFilter = styled.div`
+	height: 36px;
+	width: 36px;
+	margin: auto ${length.margin};
+	border-radius: 7px;
+	background-color: ${props => props.color ?? color.siteBG3};
+	border: 4px solid ${color.siteBG4};
 `;
 
 export const ProjectCollaborators = styled.div`

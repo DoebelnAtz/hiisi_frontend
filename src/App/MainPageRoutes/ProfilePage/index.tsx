@@ -65,7 +65,7 @@ const ProfilePage: React.FC = () => {
 				<ProfileStats>
 					<ProfileInfo>
 						<ProfileUsername>{profile?.username}</ProfileUsername>
-						<ProfileText>Piscine: {profile?.class_of}</ProfileText>
+						<ProfileText>{profile?.class_of}</ProfileText>
 					</ProfileInfo>
 				</ProfileStats>
 			</ProfileHead>

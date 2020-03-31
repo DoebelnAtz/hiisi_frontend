@@ -10,7 +10,7 @@ import {
 	TitleInputDiv,
 	TypeDropDown,
 	TypeDropDownSpan,
-	TitleError,
+	ErrorMessage,
 } from './Styles';
 import { OuterDiv } from './Styles';
 import { useDismiss, useWidth } from '../../../../Hooks';
@@ -31,70 +31,65 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	const inside = useRef<HTMLDivElement>(null);
 	// when state is updated react re-renders a component
 	// to avoid re-rendering twice when two components are updated
-	// we cant combine states like this. I should probably do this in other components
+	// we can combine states like this. I should probably do this in other components
 	// as well
-	const [errorState, setErrorState] = useState({
-		titleExistsError: false,
-		titleError: false,
-		descriptionError: false,
-		linkError: false,
+	const [error, setError] = useState({
+		title: '',
+		description: '',
+		link: '',
 	});
-
-	const [saving, setSaving] = useState(true);
-
+	const [input, setInput] = useState({
+		description: '',
+		title: '',
+		link: '',
+	});
 	const [, isMobile] = useWidth();
 
-	const [inputState, setInputState] = useState({
-		descriptionVal: '',
-		titleVal: '',
-		linkVal: '',
-	});
 	const [type, setType] = useState('article');
 	const close = () => {
 		setPopup(false);
-	};
-
-	const handleDescriptionChange = (e: string) => {
-		errorState.descriptionError &&
-			setErrorState({ ...errorState, descriptionError: false });
-		setInputState({ ...inputState, descriptionVal: e });
 	};
 
 	useDismiss(inside, close);
 
 	const submitResource = async () => {
 		if (
-			!!inputState.descriptionVal.length &&
-			!!inputState.linkVal.length &&
-			!!inputState.titleVal.length
+			!!input.description.length &&
+			!!input.link.length &&
+			!!input.title.length
 		) {
 			try {
-				new URL(validateUrl(inputState.linkVal));
+				new URL(validateUrl(input.link));
+
 			} catch (e) {
-				setErrorState({ ...errorState, linkError: true });
+					setError({ ...error, link: 'invalid link' });
 			}
-			try {
-				let resp = await makeRequest('resources/add_resource', 'post', {
-					title: inputState.titleVal,
-					link: validateUrl(inputState.linkVal),
-					description: inputState.descriptionVal,
-					type: type,
-				});
-				setResources([resp.data, ...resources]);
-				setPopup(false);
-			} catch (e) {
-				console.log(e.response, e);
-				if (e.response.status === 400) {
-					setErrorState({ ...errorState, titleExistsError: true });
+			if (!validateUrl(input.link)) {
+					setError({ ...error, link: 'invalid link' });
+
+			} else {
+				try {
+					let resp = await makeRequest('resources/add_resource', 'post', {
+						title: input.title,
+						link: validateUrl(input.link),
+						description: input.description,
+						type: type,
+					});
+					setResources([resp.data, ...resources]);
+					setPopup(false);
+				} catch (e) {
+					console.log(e.response, e);
+					if (e.response.status === 400) {
+						setError({ ...error, title: 'title exists' });
+					}
+					return false;
 				}
-				return false;
 			}
 		} else {
-			setErrorState({
-				titleExistsError: false,
-				titleError: !inputState.titleVal.length,
-				descriptionError: !inputState.descriptionVal.length,
-				linkError: !inputState.linkVal.length,
+			setError({
+				title: !input.title.length ? 'required' : '',
+				description: !input.description.length? 'required' : '',
+				link: !input.link.length? 'required' : '',
 			});
 			return false;
 		}
@@ -107,22 +102,32 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		(errorState.titleError || errorState.titleExistsError) &&
-			setErrorState({
-				...errorState,
-				titleError: false,
-				titleExistsError: false,
+		if (!!error.title.length) {
+			setError({
+				...error,
+				title: '',
 			});
+		}
 		if (target.value.length <= 100) {
-			setInputState({ ...inputState, titleVal: target.value });
+			setInput({ ...input, title: target.value });
 		}
 	};
 
 	const handleLinkChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		errorState.linkError &&
-			setErrorState({ ...errorState, linkError: false });
-		setInputState({ ...inputState, linkVal: target.value });
+		if (!!error.link.length) {
+			setError({
+				...error,
+				link: '',
+			});
+		}
+		setInput({ ...input, link: target.value });
+	};
+
+	const handleDescriptionChange = (e: string) => {
+		error.description.length &&
+			setError({ ...error, description: '' });
+		setInput({ ...input, description: e });
 	};
 
 	return ReactDOM.createPortal(
@@ -132,22 +137,26 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					<TitleLinkTypeCol>
 						<TitleInputDiv>
 							<span>Title: </span>
+							{!!error.title.length && (
+								<ErrorMessage>{error.title}</ErrorMessage>
+							)}
 							<TitleInput
-								error={errorState.titleError}
-								value={inputState.titleVal}
+								error={!!error.title.length}
+								value={input.title}
 								onChange={handleTitleChange}
 								placeholder={'title'}
 							/>
-							{errorState.titleExistsError && (
-								<TitleError>Title already exists</TitleError>
-							)}
+
 						</TitleInputDiv>
 
 						<LinkInputDiv>
 							<span>Link: </span>
+							{!!error.link.length && (
+								<ErrorMessage>{error.link}</ErrorMessage>
+							)}
 							<LinkInput
-								error={errorState.linkError}
-								value={inputState.linkVal}
+								error={!!error.link.length}
+								value={input.link}
 								onChange={handleLinkChange}
 								placeholder={'link'}
 							/>
@@ -157,18 +166,23 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							<DropDownComponent
 								state={type}
 								setSelect={handleTypeChange}
-								optionList={['article', 'video', 'course']}
+								optionList={['article', 'video', 'course', 'documentation', 'other']}
 								width={'140px'}
 								height={'34px'}
 							/>
 						</TypeDropDown>
 					</TitleLinkTypeCol>
 
-					<EditDescriptionCol error={errorState.descriptionError}>
-						<span>Description: </span>
+					<EditDescriptionCol>
+						<RowDiv><span>Description: </span>
+						{!!error.description.length && (
+								<ErrorMessage>{error.description}</ErrorMessage>
+							)}
+						</RowDiv>
 						<TextEditor
+							 error={!!error.description.length}
 							editable
-							state={inputState.descriptionVal}
+							state={input.description}
 							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					</EditDescriptionCol>

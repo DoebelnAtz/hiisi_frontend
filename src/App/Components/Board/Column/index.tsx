@@ -127,22 +127,6 @@ const BoardColumn: React.FC<ColumnProps> = ({
 						</TaskCount>
 					</RowDiv>
 					{editable && (
-						<AddTaskInput
-							placeholder={'add task'}
-							onChange={(e: React.SyntheticEvent) => {
-								let target = e.target as HTMLInputElement;
-								setInputVal(target.value);
-							}}
-							value={inputVal}
-							onKeyDown={(e: KeyboardEvent) => {
-								if (e.key === 'Enter' && !!inputVal.length) {
-									setInputVal('');
-									addTask(inputVal, column.column_id);
-								}
-							}}
-						/>
-					)}
-					{editable && (
 						<ExpandOptions
 							onClick={() => setExpandOptions(!expandOptions)}
 						>
@@ -175,6 +159,22 @@ const BoardColumn: React.FC<ColumnProps> = ({
 							</RejectOptionBtn>
 						</ColumnOptionsButtonRow>
 					</ColumnOptions>
+					{editable && (
+						<AddTaskInput
+							placeholder={'add task'}
+							onChange={(e: React.SyntheticEvent) => {
+								let target = e.target as HTMLInputElement;
+								setInputVal(target.value);
+							}}
+							value={inputVal}
+							onKeyDown={(e: KeyboardEvent) => {
+								if (e.key === 'Enter' && !!inputVal.length) {
+									setInputVal('');
+									addTask(inputVal, column.column_id);
+								}
+							}}
+						/>
+					)}
 
 					<ColumnList
 						{...provided.droppableProps}

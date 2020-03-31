@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
 					{saveCondition && (
 						<SaveButton onClick={save}>Save</SaveButton>
 					)}
-					<CloseButton onClick={close}>✕</CloseButton>
+					<CloseButton onClick={close}><span>✕</span></CloseButton>
 				</ModalButtonsRow>
 				<ModalContent
 					id={'modal-content'}

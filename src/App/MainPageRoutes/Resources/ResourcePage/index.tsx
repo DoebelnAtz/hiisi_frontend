@@ -37,7 +37,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	const [tagSearch, setTagSearch] = useState('');
 	const [width, isMobile] = useWidth();
 	const [results, setResults, isLoadingResults] = useRequest(
-		`resources/tags?q=${tagSearch}&limit=${isMobile ? '7' : '9'}`,
+		`resources/tags?q=${tagSearch.toLowerCase()}&limit=${isMobile ? '7' : '9'}`,
 		'get',
 	);
 
@@ -90,6 +90,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	const addTag = async (tag: Tag) => {
+		setTagSearch('');
 		let resp = await makeRequest('resources/add_tags', 'post', {
 			tag: tag,
 			rId: match.params.rid,

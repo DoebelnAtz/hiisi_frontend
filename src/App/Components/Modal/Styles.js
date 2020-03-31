@@ -31,6 +31,7 @@ export const CloseButton = styled.span`
 	font-size: 28px;
 	color: ${color.siteBG1};
 	line-height: 40px;
+	font-weight: 600;
 	margin-left: auto;
 	margin-right: ${length.margin};
 	&:hover {
