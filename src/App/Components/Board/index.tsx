@@ -50,20 +50,23 @@ const Board: React.FC<BoardProps> = ({
 		if (!filteredUser && !colorFilter) {
 			return board;
 		} else {
-			return {
+			return ({
 				...board,
 				columns: board?.columns.map((col) => {
 					return {
 						...col,
-						tasks: col.tasks.filter((task) =>
-							task.collaborators.find(
-								(collaborator) =>
-									collaborator.u_id === filteredUser || !filteredUser,
-							),
-						).filter((t) => t.color_tag === colorFilter || !colorFilter),
-					};
-				}),
-			} as BoardType;
+						tasks: _.flow(
+							(tasks: TaskType[]) => tasks.filter((task) => {
+								return task.color_tag === colorFilter || !colorFilter
+							}),
+							(tasks: TaskType[]) => tasks.filter((task) => {
+								return task.collaborators.find((collaborator) => {
+									return collaborator.u_id === filteredUser || !filteredUser
+								})
+							})
+						)(col.tasks)
+					} })
+			}) as BoardType;
 		}
 	};
 	// Not the prettiest function, basically, handles board state modification

@@ -48,9 +48,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 				return false;
 			}
 		}
-		setTimeout(() => {
-			close();
-		}, 500);
+		close();
 		return true;
 	};
 

@@ -9,12 +9,11 @@ import {
 	modal
 } from '../../../../Styles/SharedStyles';
 
-export const OutsideDiv = styled(animated.div)`
+export const OutsideDiv = styled.div`
 	${modal.outside};
 `;
 
-export const ModalDiv = styled(animated.div)`
-	position: absolute;
+export const ModalDiv = styled.div`
 	${modal.inside};
 	color: ${color.primary};
 	border: 5px solid ${color.siteBG2};
@@ -46,6 +45,7 @@ export const TitleInput = styled.input`
 	margin: 0 auto;
 	resize: vertical;
 	border-radius: 5px;
+	border: ${props => props.error ? '2px solid red' : `1px solid ${color.primary}`};
 	width: calc(100% - ${length.margin});
 `;
 

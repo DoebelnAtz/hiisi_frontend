@@ -83,7 +83,6 @@ export const validateUrl = (url) => {
 	if (url.slice(0, 7) !== 'http://' && url.slice(0, 8) !== 'https://') {
 		url = 'http://' + url;
 	}
-	console.log(/^(http:\/\/|https:\/\/)(www.)?.*\..*$/.test(url), url);
 	if (/^(http:\/\/|https:\/\/)(www.)?.*\..*$/.test(url)) {
 		return url;
 	} else {

@@ -169,12 +169,13 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 						/>
 					</label>
 				</TitleAndLinkRow>
-				<span>Description</span>
+				<span>Description:</span>
 				{!!error.description.length && (
 					<ErrorSpan>{error.description}</ErrorSpan>
 				)}
 				<Description>
 					<TextEditor
+						error={!!error.description.length}
 						editable={true}
 						state={input.description}
 						setState={handleDescriptionChange}

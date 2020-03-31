@@ -59,6 +59,7 @@ const Feed = () => {
 					width={isMobile ? `calc(${width}px / 2 - 15px)` : `160px`}
 				/>
 			</FeedButtonRow>
+			{popup &&
 			<CreatePostModal
 				popup={popup}
 				posts={posts}
@@ -66,6 +67,7 @@ const Feed = () => {
 				setPopup={setPopup}
 				isMounted={isMounted}
 			/>
+			}
 			{(posts && (
 				<ForumFeed
 					reverse={reverse}

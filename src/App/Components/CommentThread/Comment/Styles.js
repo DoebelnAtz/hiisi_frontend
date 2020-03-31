@@ -76,6 +76,8 @@ export const DeleteCommentBtn = styled.div`
 	${cursor.clickable};
 	font-size: 28px;
 	margin-left: auto;
+	margin-right: 5px;
+	font-weight: 600;
 	&:hover {
 		color: ${(props) => (props.odd 
 	? colorAdjust.lighten(color.siteBG2, 0.1) 

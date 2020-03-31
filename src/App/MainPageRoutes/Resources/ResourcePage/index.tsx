@@ -90,6 +90,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	};
 
 	const addTag = async (tag: Tag) => {
+		setTagSearch('');
 		let resp = await makeRequest('resources/add_tags', 'post', {
 			tag: tag,
 			rId: match.params.rid,

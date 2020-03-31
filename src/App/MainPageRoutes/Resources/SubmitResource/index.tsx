@@ -10,7 +10,7 @@ import {
 	TitleInputDiv,
 	TypeDropDown,
 	TypeDropDownSpan,
-	TitleError,
+	ErrorMessage,
 } from './Styles';
 import { OuterDiv } from './Styles';
 import { useDismiss, useWidth } from '../../../../Hooks';
@@ -33,11 +33,10 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	// to avoid re-rendering twice when two components are updated
 	// we cant combine states like this. I should probably do this in other components
 	// as well
-	const [errorState, setErrorState] = useState({
-		titleExistsError: false,
-		titleError: false,
-		descriptionError: false,
-		linkError: false,
+	const [error, setError] = useState({
+		title: '',
+		description: '',
+		link: '',
 	});
 
 	const [saving, setSaving] = useState(true);
@@ -55,8 +54,8 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	};
 
 	const handleDescriptionChange = (e: string) => {
-		errorState.descriptionError &&
-			setErrorState({ ...errorState, descriptionError: false });
+		error.description.length &&
+			setError({ ...error, description: '' });
 		setInputState({ ...inputState, descriptionVal: e });
 	};
 
@@ -70,31 +69,36 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 		) {
 			try {
 				new URL(validateUrl(inputState.linkVal));
+
 			} catch (e) {
-				setErrorState({ ...errorState, linkError: true });
+					setError({ ...error, link: 'invalid link' });
 			}
-			try {
-				let resp = await makeRequest('resources/add_resource', 'post', {
-					title: inputState.titleVal,
-					link: validateUrl(inputState.linkVal),
-					description: inputState.descriptionVal,
-					type: type,
-				});
-				setResources([resp.data, ...resources]);
-				setPopup(false);
-			} catch (e) {
-				console.log(e.response, e);
-				if (e.response.status === 400) {
-					setErrorState({ ...errorState, titleExistsError: true });
+			if (!validateUrl(inputState.linkVal)) {
+					setError({ ...error, link: 'invalid link' });
+
+			} else {
+				try {
+					let resp = await makeRequest('resources/add_resource', 'post', {
+						title: inputState.titleVal,
+						link: validateUrl(inputState.linkVal),
+						description: inputState.descriptionVal,
+						type: type,
+					});
+					setResources([resp.data, ...resources]);
+					setPopup(false);
+				} catch (e) {
+					console.log(e.response, e);
+					if (e.response.status === 400) {
+						setError({ ...error, title: 'title exists' });
+					}
+					return false;
 				}
-				return false;
 			}
 		} else {
-			setErrorState({
-				titleExistsError: false,
-				titleError: !inputState.titleVal.length,
-				descriptionError: !inputState.descriptionVal.length,
-				linkError: !inputState.linkVal.length,
+			setError({
+				title: !inputState.titleVal.length ? 'required' : '',
+				description: !inputState.descriptionVal.length? 'required' : '',
+				link: !inputState.linkVal.length? 'required' : '',
 			});
 			return false;
 		}
@@ -107,12 +111,12 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 
 	const handleTitleChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		(errorState.titleError || errorState.titleExistsError) &&
-			setErrorState({
-				...errorState,
-				titleError: false,
-				titleExistsError: false,
+		if (!!error.title.length) {
+			setError({
+				...error,
+				title: '',
 			});
+		}
 		if (target.value.length <= 100) {
 			setInputState({ ...inputState, titleVal: target.value });
 		}
@@ -120,8 +124,12 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 
 	const handleLinkChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
-		errorState.linkError &&
-			setErrorState({ ...errorState, linkError: false });
+		if (!!error.link.length) {
+			setError({
+				...error,
+				link: '',
+			});
+		}
 		setInputState({ ...inputState, linkVal: target.value });
 	};
 
@@ -132,21 +140,25 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					<TitleLinkTypeCol>
 						<TitleInputDiv>
 							<span>Title: </span>
+							{!!error.title.length && (
+								<ErrorMessage>{error.title}</ErrorMessage>
+							)}
 							<TitleInput
-								error={errorState.titleError}
+								error={!!error.title.length}
 								value={inputState.titleVal}
 								onChange={handleTitleChange}
 								placeholder={'title'}
 							/>
-							{errorState.titleExistsError && (
-								<TitleError>Title already exists</TitleError>
-							)}
+
 						</TitleInputDiv>
 
 						<LinkInputDiv>
 							<span>Link: </span>
+							{!!error.link.length && (
+								<ErrorMessage>{error.link}</ErrorMessage>
+							)}
 							<LinkInput
-								error={errorState.linkError}
+								error={!!error.link.length}
 								value={inputState.linkVal}
 								onChange={handleLinkChange}
 								placeholder={'link'}
@@ -164,9 +176,14 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						</TypeDropDown>
 					</TitleLinkTypeCol>
 
-					<EditDescriptionCol error={errorState.descriptionError}>
-						<span>Description: </span>
+					<EditDescriptionCol>
+						<RowDiv><span>Description: </span>
+						{!!error.description.length && (
+								<ErrorMessage>{error.description}</ErrorMessage>
+							)}
+						</RowDiv>
 						<TextEditor
+							 error={!!error.description.length}
 							editable
 							state={inputState.descriptionVal}
 							setState={(e: string) => handleDescriptionChange(e)}

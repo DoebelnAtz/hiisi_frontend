@@ -54,6 +54,7 @@ export const WipLimit = styled.div`
 
 export const TaskCount = styled.span`
 	margin: 10px 0 0 auto;
+	font-size: 14px;
 	color: ${(props) => (props.wipExceeded ? color.secondary : 'inherit')};
 	&:hover {
 		& ${WipLimit} div {

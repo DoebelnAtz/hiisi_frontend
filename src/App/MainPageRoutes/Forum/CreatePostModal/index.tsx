@@ -124,19 +124,15 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
 	const fadeIn = useSpring({ opacity: popup ? 1 : 0 });
 
-	return ReactDOM.createPortal(
-		slideIn.map(
-			({ item, key, props }, i) =>
-				item && (
-					<OutsideDiv key={i} style={fadeIn}>
+	return ReactDOM.createPortal((
+					<OutsideDiv>
 						<ModalDiv
 							ref={inside}
 							isMobile={isMobile}
-							style={props}
 						>
 							<RowDiv margin={'0 0 10px 0'}>
-								<TitleText error={!!error.title.length}>
-									Title
+								<TitleText>
+									Title:
 								</TitleText>
 								<TitleError error={!!error.title.length}>
 									{error.title}
@@ -150,14 +146,15 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								</LengthCounter>
 							</RowDiv>
 							<TitleInput
+								error={!!error.title.length}
 								placeholder={'Title'}
 								onChange={(e: React.SyntheticEvent) =>
 									handleTitleChange(e)
 								}
 							/>
 							<RowDiv margin={'10px 0 10px 0'}>
-								<ContentText error={!!error.content.length}>
-									Content
+								<ContentText>
+									Content:
 								</ContentText>
 								<ContentError error={!!error.content.length}>
 									{error.content}
@@ -172,6 +169,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 							</RowDiv>
 							<ContentTextEditor>
 								<TextEditor
+									 error={!!error.content.length}
 									editable={true}
 									state={inputVal.contentVal}
 									setState={handleContentChange}
@@ -188,9 +186,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								</SaveButtonComponent>
 							</ButtonRow>
 						</ModalDiv>
-					</OutsideDiv>
-				),
-		),
+					</OutsideDiv>),
 		document.querySelector('#modal') as Element,
 	);
 };
