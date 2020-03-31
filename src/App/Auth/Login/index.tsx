@@ -17,6 +17,7 @@ import {
 import { useSpring, useChain, ReactSpringHook } from 'react-spring';
 import { makeRequest } from '../../../Api';
 import queryString from 'query-string';
+import { color } from '../../../Styles/SharedStyles';
 
 type LoginProps = {};
 
@@ -78,109 +79,146 @@ const Login: React.FC = () => {
 	const moveLeftRef = useRef<ReactSpringHook>(null);
 	const moveUpRef = useRef<ReactSpringHook>(null);
 	const moveDownRef = useRef<ReactSpringHook>(null);
+	const expandInputRef = useRef<ReactSpringHook>(null);
+	const expandButtonRef = useRef<ReactSpringHook>(null);
 
 	const moveRight = useSpring({
 		ref: moveRightRef,
-		from: { transform: 'translateX(2vw)' },
-		to: { transform: !animate ? 'translateX(2vw)' : 'translateX(14vw)' },
+		from: { transform: 'translateX(max(0vw, 0px))' },
+		to: { transform: !animate ? 'translateX(max(0vw, 0px))' : 'translateX(max(24vw, 192px))' },
 	});
 
 	const moveLeft = useSpring({
 		ref: moveLeftRef,
-		from: { transform: 'translateX(2vw)' },
-		to: { transform: !animate ? 'translateX(2vw)' : 'translateX(-10vw)' },
+		from: { transform: 'translateX(0vw)' },
+		to: { transform: !animate ? 'translateX(0vw)' : 'translateX(0vw)' },
 	});
 
 	const moveUp = useSpring({
 		ref: moveUpRef,
-		from: { transform: 'translateY(0vw)' },
-		to: { transform: !animate ? 'translateY(0vw)' : 'translateY(-16vw)' },
+		from: { transform: 'translateY(min(0vw, 0px))' },
+		to: { transform: !animate ? 'translateY(min(0vw, 0px))' : 'translateY(min(-16vw, -128px))' },
 	});
 
 	const moveDown = useSpring({
 		ref: moveDownRef,
-		from: { transform: 'translateY(0vw)' },
-		to: { transform: !animate ? 'translateY(0vw)' : 'translateY(16vw)' },
+		from: { transform: 'translateY(max(0vw, 0px))' },
+		to: { transform: !animate ? 'translateY(max(0vw, 0px))' : 'translateY(max(16vw, 128px))' },
 	});
 
 	const expandMain = useSpring({
 		ref: widthRef,
-		from: { width: '16vw' },
-		to: { width: !animate ? '16vw' : '40vw' },
+		from: { width: 'max(16vw, 128px)' },
+		to: { width: !animate ? 'max(16vw, 128px)' : 'max(40vw, 320px)' },
 	});
 	const expandBorderMain = useSpring({
 		ref: radiusRef,
 		from: {
-			borderTopLeftRadius: '8vw',
-			borderBottomRightRadius: '8vw',
+			borderTopLeftRadius: 'max(8vw, 64px)',
+			borderBottomRightRadius: 'max(8vw, 64px)',
 		},
 		to: {
-			borderTopLeftRadius: !animate ? '8vw' : '0',
-			borderBottomRightRadius: !animate ? '8vw' : '0',
+			borderTopLeftRadius: !animate ? 'max(8vw, 64px)' : 'max(0vw, 0px)',
+			borderBottomRightRadius: !animate ? 'max(8vw, 64px)' : 'max(0vw, 0px)',
 		},
 	});
 
 	const expandBorderTRGreen = useSpring({
 		ref: greenTRRadiusRef,
 		from: {
-			borderTopRightRadius: '8vw',
+			borderTopRightRadius: 'max(8vw, 64px)',
 		},
 		to: {
-			borderTopRightRadius: !animate ? '8vw' : '0',
+			borderTopRightRadius: !animate ? 'max(8vw, 64px)' : 'max(0vw, 0px)',
 		},
 	});
 
 	const expandBorderBLGreen = useSpring({
 		ref: greenBLRadiusRef,
 		from: {
-			borderBottomLeftRadius: '8vw',
+			borderBottomLeftRadius: 'max(8vw, 64px)',
 		},
 		to: {
-			borderBottomLeftRadius: !animate ? '8vw' : '0',
+			borderBottomLeftRadius: !animate ? 'max(8vw, 64px)' : 'max(0vw, 0px)',
+		},
+	});
+
+	const expandInputs = useSpring({
+		ref: expandInputRef,
+		from: {
+			width: '0px',
+			paddingLeft: '0px',
+			opacity: '0',
+			borderRadius: '0px'
+		},
+		to: {
+			width: !animate ? '0px' : '120px',
+			paddingLeft: !animate ? '0px' : '10px',
+			opacity: !animate ? '0' : '1',
+			borderRadius: !animate ? '0' : '4px'
+		},
+	});
+
+	const expandButtons = useSpring({
+		ref: expandButtonRef,
+		from: {
+			height: '0px',
+			padding: '0px',
+			color: color.primary
+		},
+		to: {
+			height: !animate ? '0px' : '30px',
+			padding: !animate ? '0px' : '5px',
+			color: !animate ? color.primary : '#eeeeee'
 		},
 	});
 
 	useChain(
 		animate
 			? [
-					radiusRef,
-					widthRef,
-					moveRightRef,
-					moveLeftRef,
-					moveDownRef,
-					moveUpRef,
-					greenTRRadiusRef,
-					greenBLRadiusRef,
+				radiusRef,
+				widthRef,
+				moveRightRef,
+				moveLeftRef,
+				moveDownRef,
+				moveUpRef,
+				greenTRRadiusRef,
+				greenBLRadiusRef,
+				expandInputRef,
+				expandButtonRef
 			  ]
 			: [
-					widthRef,
-					radiusRef,
-					moveRightRef,
-					moveLeftRef,
-					moveUpRef,
-					moveDownRef,
-					greenTRRadiusRef,
-					greenBLRadiusRef,
+				widthRef,
+				radiusRef,
+				moveRightRef,
+				moveLeftRef,
+				moveUpRef,
+				moveDownRef,
+				greenTRRadiusRef,
+				greenBLRadiusRef,
+				expandInputRef,
+				expandButtonRef
 			  ],
-		animate ? [1, 0, 0, 0, 0.5, 0.5, 1, 1] : [0, 0.5, 0.5, 0.5, 1, 1, 0, 0],
+		animate ? [1, 0, 0, 0, 0.5, 0.5, 1, 1, 1, 1] : [1, 0, 1, 1, 0.5, 0.5, 0, 0, 0, 0],
 	);
 
 	return (
 		<BackgroundDiv>
-			{
-				//<button
-				//style={{ position: 'absolute' }}
-				//onClick={() => setAnimate(!animate)}
-				//>
-				//animate
-				//</button>
-			}
+
+				<button
+				style={{ position: 'absolute' }}
+				onClick={() => setAnimate(!animate)}
+				>
+				animate
+				</button>
+
 			<LoginDiv style={{ ...expandMain, ...expandBorderMain }}>
 				<InputDiv>
 					<div style={{ position: 'relative', left: '-50%' }}>
 						<form>
 							<UsernameDiv>
 								<UsernameInput
+									style={expandInputs}
 									type={'username'}
 									value={username}
 									onKeyDown={(e: React.KeyboardEvent) =>
@@ -194,6 +232,7 @@ const Login: React.FC = () => {
 							</UsernameDiv>
 							<PasswordDiv>
 								<PasswordInput
+									style={expandInputs}
 									type={'password'}
 									autocomplete={'on'}
 									value={password}
@@ -206,7 +245,7 @@ const Login: React.FC = () => {
 									}}
 								/>
 							</PasswordDiv>
-							<LoginButton loginError={loginError}>
+							<LoginButton style={expandButtons} loginError={loginError}>
 								<button onClick={handleLoginClick}>
 									Login
 								</button>
@@ -214,9 +253,7 @@ const Login: React.FC = () => {
 						</form>
 					</div>
 				</InputDiv>
-			</LoginDiv>
 			<HelperDiv style={moveUp}>
-				{' '}
 				{/*the two transforms overwrite each other, so we need a helper div*/}
 				<OrangeDiv style={moveRight} />
 			</HelperDiv>
@@ -229,6 +266,8 @@ const Login: React.FC = () => {
 			<HelperDiv style={moveUp}>
 				<GreenDiv style={{ ...moveLeft, ...expandBorderBLGreen }} />
 			</HelperDiv>
+						</LoginDiv>
+
 		</BackgroundDiv>
 	);
 };

@@ -234,6 +234,12 @@ export const MoreButton = styled.div`
 		${cursor.clickable};
 		margin: 0 auto;
 		height: 54px;
+		background-color: transparent;
+		border-radius: 27px;
 		width: 54px;
+	}
+	& img:hover {
+		transition: background-color 0.1s;
+		background-color: ${color.siteBG2};
 	}
 `;

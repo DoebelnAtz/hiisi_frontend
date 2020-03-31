@@ -37,7 +37,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	const [tagSearch, setTagSearch] = useState('');
 	const [width, isMobile] = useWidth();
 	const [results, setResults, isLoadingResults] = useRequest(
-		`resources/tags?q=${tagSearch}&limit=${isMobile ? '7' : '9'}`,
+		`resources/tags?q=${tagSearch.toLowerCase()}&limit=${isMobile ? '7' : '9'}`,
 		'get',
 	);
 

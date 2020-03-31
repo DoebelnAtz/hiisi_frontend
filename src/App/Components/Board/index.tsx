@@ -15,46 +15,8 @@ import { makeRequest } from '../../../Api';
 import { useDismiss, useRequest } from '../../../Hooks';
 import { BoardType, ColumnType, TaskType } from './Types';
 import { User } from '../../../Types';
-import LoadingDots from '../Loading';
-import { LoadingDot } from '../Loading/Styles';
 import { RowDiv } from '../../../Styles/LayoutStyles';
-import { color } from '../../../Styles/SharedStyles';
 import ColorPicker from '../ColorPicker';
-
-let boardState = {
-	columns: [
-		{
-			column_id: 0,
-			column_number: 0,
-			title: 'Loading',
-			tasks: [],
-		},
-		{
-			column_id: 1,
-			column_number: 1,
-			title: 'Loading...',
-			tasks: [],
-		},
-		{
-			column_id: 2,
-			column_number: 2,
-			title: 'Loading...',
-			tasks: [],
-		},
-		{
-			column_id: 3,
-			column_number: 3,
-			title: 'Loading...',
-			tasks: [],
-		},
-		{
-			column_id: 4,
-			column_number: 4,
-			title: 'Loading...',
-			tasks: [],
-		},
-	],
-};
 
 type BoardProps = {
 	board_id: number;
@@ -80,9 +42,9 @@ const Board: React.FC<BoardProps> = ({
 	const [expandColorPicker, setExpandColorPicker] = useState(false);
 	const [filteredUser, setFilteredUser] = useState<number>(0);
 	const colorPickerDiv = useRef<HTMLDivElement>(null);
+	const colorPickerBtn = useRef<HTMLDivElement>(null);
 
-
-	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
+	useDismiss(colorPickerDiv, () => setExpandColorPicker(false), colorPickerBtn);
 
 	const filterBoard = () => {
 		if (!filteredUser && !colorFilter) {
@@ -213,7 +175,7 @@ const Board: React.FC<BoardProps> = ({
 		<BoardDiv>
 			<RowDiv>
 				<ProjectCollaborators>{renderCollaborators()}</ProjectCollaborators>
-				<ColorFilter  color={colorFilter} onClick={() => setExpandColorPicker(!expandColorPicker)}>
+				<ColorFilter ref={colorPickerBtn}  color={colorFilter} onClick={() => setExpandColorPicker(!expandColorPicker)}>
 					{colorFilter &&
 					<ResetColorFilterDiv onClick={(e: React.SyntheticEvent) => {
 						e.stopPropagation(); setColorFilter(null)

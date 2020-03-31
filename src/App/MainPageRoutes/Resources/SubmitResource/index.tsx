@@ -157,7 +157,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							<DropDownComponent
 								state={type}
 								setSelect={handleTypeChange}
-								optionList={['article', 'video', 'course']}
+								optionList={['article', 'video', 'course', 'documentation', 'other']}
 								width={'140px'}
 								height={'34px'}
 							/>
