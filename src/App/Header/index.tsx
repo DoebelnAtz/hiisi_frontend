@@ -15,7 +15,6 @@ import {
 	SearchLabel,
 } from './Styles';
 import SearchBar from './Search';
-import Notifications from './Notifications';
 import { useWidth } from '../../Hooks';
 import { color } from '../../Styles/SharedStyles';
 

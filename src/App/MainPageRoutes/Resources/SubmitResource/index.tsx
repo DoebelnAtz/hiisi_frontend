@@ -31,57 +31,48 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	const inside = useRef<HTMLDivElement>(null);
 	// when state is updated react re-renders a component
 	// to avoid re-rendering twice when two components are updated
-	// we cant combine states like this. I should probably do this in other components
+	// we can combine states like this. I should probably do this in other components
 	// as well
 	const [error, setError] = useState({
 		title: '',
 		description: '',
 		link: '',
 	});
-
-	const [saving, setSaving] = useState(true);
-
+	const [input, setInput] = useState({
+		description: '',
+		title: '',
+		link: '',
+	});
 	const [, isMobile] = useWidth();
 
-	const [inputState, setInputState] = useState({
-		descriptionVal: '',
-		titleVal: '',
-		linkVal: '',
-	});
 	const [type, setType] = useState('article');
 	const close = () => {
 		setPopup(false);
-	};
-
-	const handleDescriptionChange = (e: string) => {
-		error.description.length &&
-			setError({ ...error, description: '' });
-		setInputState({ ...inputState, descriptionVal: e });
 	};
 
 	useDismiss(inside, close);
 
 	const submitResource = async () => {
 		if (
-			!!inputState.descriptionVal.length &&
-			!!inputState.linkVal.length &&
-			!!inputState.titleVal.length
+			!!input.description.length &&
+			!!input.link.length &&
+			!!input.title.length
 		) {
 			try {
-				new URL(validateUrl(inputState.linkVal));
+				new URL(validateUrl(input.link));
 
 			} catch (e) {
 					setError({ ...error, link: 'invalid link' });
 			}
-			if (!validateUrl(inputState.linkVal)) {
+			if (!validateUrl(input.link)) {
 					setError({ ...error, link: 'invalid link' });
 
 			} else {
 				try {
 					let resp = await makeRequest('resources/add_resource', 'post', {
-						title: inputState.titleVal,
-						link: validateUrl(inputState.linkVal),
-						description: inputState.descriptionVal,
+						title: input.title,
+						link: validateUrl(input.link),
+						description: input.description,
 						type: type,
 					});
 					setResources([resp.data, ...resources]);
@@ -96,9 +87,9 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 			}
 		} else {
 			setError({
-				title: !inputState.titleVal.length ? 'required' : '',
-				description: !inputState.descriptionVal.length? 'required' : '',
-				link: !inputState.linkVal.length? 'required' : '',
+				title: !input.title.length ? 'required' : '',
+				description: !input.description.length? 'required' : '',
+				link: !input.link.length? 'required' : '',
 			});
 			return false;
 		}
@@ -118,7 +109,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 			});
 		}
 		if (target.value.length <= 100) {
-			setInputState({ ...inputState, titleVal: target.value });
+			setInput({ ...input, title: target.value });
 		}
 	};
 
@@ -130,7 +121,13 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 				link: '',
 			});
 		}
-		setInputState({ ...inputState, linkVal: target.value });
+		setInput({ ...input, link: target.value });
+	};
+
+	const handleDescriptionChange = (e: string) => {
+		error.description.length &&
+			setError({ ...error, description: '' });
+		setInput({ ...input, description: e });
 	};
 
 	return ReactDOM.createPortal(
@@ -145,7 +142,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							)}
 							<TitleInput
 								error={!!error.title.length}
-								value={inputState.titleVal}
+								value={input.title}
 								onChange={handleTitleChange}
 								placeholder={'title'}
 							/>
@@ -159,7 +156,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 							)}
 							<LinkInput
 								error={!!error.link.length}
-								value={inputState.linkVal}
+								value={input.link}
 								onChange={handleLinkChange}
 								placeholder={'link'}
 							/>
@@ -185,7 +182,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 						<TextEditor
 							 error={!!error.description.length}
 							editable
-							state={inputState.descriptionVal}
+							state={input.description}
 							setState={(e: string) => handleDescriptionChange(e)}
 						/>
 					</EditDescriptionCol>

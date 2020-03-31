@@ -3,23 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dd268716-1174-48ff-8f07-5135dce5ba71" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/Column/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/Column/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Board/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/CommentThread/Comment/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/DropDown/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/Modal/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/TextOutput/Styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Components/TextEditor/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Components/TextEditor/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/Styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/CreatePostModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/PostPage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Forum/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/OpenHive/CreateProjectModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/ResourcePage/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/MainPageRoutes/Resources/SubmitResource/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +114,7 @@
       <workItem from="1585431027672" duration="1548000" />
       <workItem from="1585557967496" duration="4727000" />
       <workItem from="1585563825100" duration="3191000" />
-      <workItem from="1585592193471" duration="18768000" />
+      <workItem from="1585592193471" duration="19731000" />
     </task>
     <task id="LOCAL-00001" summary="css is the hardest &quot;language&quot; I've used, at least C makes sense">
       <created>1583489427578</created>
@@ -417,14 +403,20 @@
       <option name="project" value="LOCAL" />
       <updated>1585651368114</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Erro message improvement to create post/project/resource">
+      <created>1585655974417</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1585655974417</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added input validation to create project" />
     <MESSAGE value="added private project option to projects" />
     <MESSAGE value="added option to change project privacy settings" />
     <MESSAGE value="ui fixes and profile private projects hidden from visitors" />
@@ -449,7 +441,8 @@
     <MESSAGE value="improved error feedback on post creation" />
     <MESSAGE value="added the ability to filter tasks by color tag" />
     <MESSAGE value="ui fixes to login screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui fixes to login screen" />
+    <MESSAGE value="Erro message improvement to create post/project/resource" />
+    <option name="LAST_COMMIT_MESSAGE" value="Erro message improvement to create post/project/resource" />
   </component>
   <component name="WindowStateProjectService">
     <state x="5032" y="508" width="525" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584535318101">
@@ -472,10 +465,10 @@
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
     <state x="4889" y="561" width="500" height="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1583676503983" />
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585651368066">
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2" timestamp="1585655974384">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>
-    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585651368066" />
+    <state x="5013" y="299" width="900" height="801" key="CommitChangelistDialog2/3840.0.2560.1440/0.0.3840.1400@3840.0.2560.1440" timestamp="1585655974384" />
     <state x="5125" y="483" width="676" height="432" key="EditFileWatcherDialog" timestamp="1585149597587">
       <screen x="3840" y="0" width="2560" height="1440" />
     </state>

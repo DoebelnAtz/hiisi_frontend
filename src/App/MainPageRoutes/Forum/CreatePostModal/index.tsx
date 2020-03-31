@@ -1,12 +1,10 @@
 import React, {
 	useState,
-	useEffect,
 	useRef,
 	Dispatch,
 	SetStateAction,
 } from 'react';
 import ReactDOM from 'react-dom';
-import { useSpring, useTransition } from 'react-spring';
 import { makeRequest } from '../../../../Api';
 import { getLocal } from '../../../../Utils';
 import { useDismiss, useWidth } from '../../../../Hooks';
@@ -43,9 +41,9 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	posts,
 	isMounted,
 }) => {
-	const [inputVal, setInputVal] = useState({
-		titleVal: '',
-		contentVal: '',
+	const [input, setInput] = useState({
+		title: '',
+		content: '',
 	});
 	const [error, setError] = useState({
 		title: '',
@@ -57,12 +55,12 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	const [width, isMobile] = useWidth();
 
 	const createPost = async () => {
-		if (!!inputVal.titleVal.length && !!inputVal.contentVal.length) {
+		if (!!input.title.length && !!input.content.length) {
 			try {
 				let resp = await makeRequest('blogs/create_blog', 'post', {
 					authorId: getLocal('token').user.u_id,
-					content: inputVal.contentVal,
-					title: inputVal.titleVal,
+					content: input.content,
+					title: input.title,
 				});
 
 				if (isMounted && posts && resp.data) {
@@ -98,9 +96,9 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 				...error,
 				title: '',
 			});
-		setInputVal({
-			...inputVal,
-			titleVal: target.value,
+		setInput({
+			...input,
+			title: target.value,
 		});
 	};
 
@@ -110,19 +108,11 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 				...error,
 				content: '',
 			});
-		setInputVal({
-			...inputVal,
-			contentVal: e,
+		setInput({
+			...input,
+			content: e,
 		});
 	};
-
-	const slideIn = useTransition(popup, null, {
-		from: { transform: 'translateY(100%)' },
-		enter: { transform: 'translateY(0%)' },
-		leave: { transform: 'translateY(-200px)' },
-	});
-
-	const fadeIn = useSpring({ opacity: popup ? 1 : 0 });
 
 	return ReactDOM.createPortal((
 					<OutsideDiv>
@@ -138,10 +128,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 									{error.title}
 								</TitleError>
 								<LengthCounter
-									warning={inputVal.titleVal.length > 80}
+									warning={input.title.length > 80}
 								>
 									<span>
-										{inputVal.titleVal.length}/{80}
+										{input.title.length}/{80}
 									</span>
 								</LengthCounter>
 							</RowDiv>
@@ -160,10 +150,10 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 									{error.content}
 								</ContentError>
 								<LengthCounter
-									warning={inputVal.contentVal.length > 500}
+									warning={input.content.length > 500}
 								>
 									<span>
-										{inputVal.contentVal.length}/{500}
+										{input.content.length}/{500}
 									</span>
 								</LengthCounter>
 							</RowDiv>
@@ -171,7 +161,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 								<TextEditor
 									 error={!!error.content.length}
 									editable={true}
-									state={inputVal.contentVal}
+									state={input.content}
 									setState={handleContentChange}
 								/>
 							</ContentTextEditor>
