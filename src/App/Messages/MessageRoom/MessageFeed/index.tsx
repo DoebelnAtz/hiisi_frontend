@@ -42,11 +42,8 @@ const MessageFeed: React.FC<MessageFeedProps> = ({ messages, page, tid }) => {
 						<MessageInfo>
 							<MessageImg
 								src={
-									'https://cdn.intra.42.fr/users/small_' +
-									message.username +
-									(message.username === 'marvin'
-										? '.png'
-										: '.jpg')
+									message.profile_pic ? message.profile_pic :
+										'https://cdn.intra.42.fr/users/small_marvin.png'
 								}
 							/>
 							<MessageDate>

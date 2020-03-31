@@ -7,6 +7,7 @@ export interface ThreadType {
 export interface MessageType {
 	username: string,
 	m_id: number,
+	profile_pic: string
 	time_sent: string,
 	message: string
 }

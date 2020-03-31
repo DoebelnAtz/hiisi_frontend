@@ -31,6 +31,7 @@ import { SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
 import MessageFeed from './MessageFeed';
 import LoadingDots from '../../Components/Loading';
+import Login from '../../Auth/Login';
 
 type MessageRoomPropsTypes = {
 	tid: number;
@@ -67,16 +68,17 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 
 	useEffect(() => {
 		let user = getLocal('token');
-		let socket = socketIOClient('https://hivemind-42.com', {
-			transportOptions: {
-				polling: {
-					extraHeaders: {
-						Authorization: 'Bearer ' + user.token,
-						Room: 'Chat-room: ' + tid.toString(),
+
+			let socket = socketIOClient('https://hivemind-42.com', {
+				transportOptions: {
+					polling: {
+						extraHeaders: {
+							Authorization: 'Bearer ' + user.token,
+							Room: 'Chat-room: ' + tid.toString(),
+						},
 					},
 				},
-			},
-		});
+			});
 		setSocket(socket);
 		return () => {
 			socket && socket.disconnect();
@@ -92,6 +94,11 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				setConnected(false)
 			});
 			socket.on('joined-room', (user: User) => {
+				console.log('joined room', user);
+				if (user.u_id === getLocal('token').user.u_id) {
+					setConnected(true);
+					console.log('joined room');
+				}
 				addUser(user);
 			});
 			socket.on('left-room', (user: User) => {
@@ -145,6 +152,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		if (inputVal.length && socket) {
 			socket.emit('send-message', {
 				message: inputVal,
+				profile_pic: `https://cdn.intra.42.fr/users/small_${getLocal('token').user.username}.jpg`,
 				username: getLocal('token')?.user?.username,
 				time_sent: new Date().toISOString(),
 				t_id: tid,
@@ -159,6 +167,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			await handleClick(e);
 		} else {
 			let target = e.target as HTMLTextAreaElement;
+			target.style.height = 'inherit';
 			target.style.height = `${target.scrollHeight}px`;
 			target.style.height = `${Math.min(target.scrollHeight, 100)}px`;
 		}
@@ -184,7 +193,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 				);
 			});
 	};
-
 	return (
 		<MessageRoomDiv ref={inside}>
 			<MessageNavigation>
