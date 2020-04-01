@@ -101,7 +101,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 				title: project.title,
 				description: project.description,
 				link: project.link,
-				private: project.private,
+				privateProject: project.private,
 			});
 			if (resp.data) {
 				setProject({
