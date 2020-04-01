@@ -125,14 +125,11 @@ const CommentCard: React.FC<CommentProps> = ({
 						)}
 					</ReplyRow>
 				</ButtonRow>
-				{expanded && !!childThread && (
+				{expanded && childThread && (
 					<ChildComments>
 						<CommentFeed
 							commentThread={child.childthread}
-							comments={allComments.filter(
-								(comment) =>
-									comment.parentthread === child.childthread,
-							)}
+							comments={childThread}
 							allComments={allComments}
 							focusList={focusList}
 							page={2}

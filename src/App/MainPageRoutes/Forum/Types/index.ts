@@ -8,6 +8,7 @@ export interface CommentType {
     profile_pic: string | null,
     username: string | null,
     u_id: number | null,
+    author: number,
     commentcontent: string,
     childthread: number
 }
