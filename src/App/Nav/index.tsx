@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { SideNavDiv } from './Styles';
 import NavItem from './NavItem';
-import openHiveIcon from '../../Assets/OpenHive2.png';
+import openHiveIcon from '../../Assets/OHIcon.png';
 import codeIcon from '../../Assets/CodeIcon2.png';
 import profileIcon from '../../Assets/Profile2.png';
 import treeIcon from '../../Assets/Tree8.png';

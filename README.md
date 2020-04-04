@@ -1,5 +1,7 @@
 <h2>Hivemind</h2>
 
+<a href="https://hivemind-42.com">Site</a>
+
 <p>
     Hivemind is a website for Hive students where they can:
 </p>
@@ -19,7 +21,7 @@
     I also wanted to create a place where students could list and manage the projects they are currently working on.
 </p>
 <p>
-    If you would like to contribute to this project, please contact me at: aadlercr@student.hive.fi
+    If you would like to contribute to this project, please contact me at: axel.ej.adlercreutz@gmail.com
 </p>
 
 <h3>Demo Login:</h2>
@@ -27,58 +29,13 @@
     username: morko
     passowrd: demologin
 
-<h4>Setup:</h4>
-    
-    install homebrew
-    install npm with $brew install npm
 
-<h4>To run:</h4>
+<h4>Run locally:</h4>
 
     1. Clone the frontend repository
     2. Run npm install
     3. Run npm start
     4. Repeat for the backend repository
-
-<h3>NORM RULES:</h3>
-
-
-
-Style rules: Use prettier with the rules defined in the package.json file.
-
-<h4>Project Structure</h4>
-
-Every page or view has their own folder,
-Every component used only by that view should be a child directory of that folder.
-If a component is used in multiple Directories it should be in ./src/Components
-
-Each folder should have a index.tsx/ts/tsx file and a Styles.js file if necessary.
-
-This way style rules are easy to find. If a style is used in several component, it should be defined in
-.Styles/SharedStyles.js
-
-Every view should have one Types folder with a index.ts file that holds all the types used by that view.
-
-Example:
-
-    | Resources
-    |
-    |--| ResourcePage
-    |  |
-    |  |-- index.tsx
-    |  |-- Styles.js
-    |
-    |--| SubmitResource
-    |  |
-    |  |-- index.tsx
-    |  |-- Styles.js
-    |
-    |--| Types
-    |  |
-    |  |-- index.ts
-    |
-    |-- index.tsx
-    |-- Styles.js
-
 
 
 <h3>API documentation:</h3>
