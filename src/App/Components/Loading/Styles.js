@@ -15,7 +15,7 @@ export const LoadingDotsDiv = styled.div`
 	width: fit-content;
 	padding: ${props => props.height / 6}px;
 	height: ${props => props.height}px;
-	
+	margin: auto;
 	& ${LoadingDot}:nth-child(2n+2) {
 		margin: auto ${props => props.height / 6}px;
 	}

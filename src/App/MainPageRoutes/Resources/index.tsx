@@ -88,7 +88,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 						width={`${
 							isMobile ? `calc(${width}px / 3 - 13px)` : `160px`
 						}`}
-						text={'Sort: '}
+						text={`${reverse === 'false' ? '▼' : '▲'} Sort: `}
 						height={'32px'}
 						state={sortBy}
 						setSelect={onSortSelect}
