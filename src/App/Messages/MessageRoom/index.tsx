@@ -168,7 +168,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		} else {
 			let target = e.target as HTMLTextAreaElement;
 			target.style.height = 'inherit';
-			target.style.height = `${target.scrollHeight}px`;
 			target.style.height = `${Math.min(target.scrollHeight, 100)}px`;
 		}
 	};

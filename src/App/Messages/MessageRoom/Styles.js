@@ -83,7 +83,7 @@ export const MessageInputSend = styled.div`
 export const MessageInputTextArea = styled.textarea`
 	${components.textarea};
 	resize: vertical;
-	height: calc(38px - 12px);
+	height: calc(42px);
 	max-height: 10vh;
 	width: calc(70%);
 	font-size: 14px;

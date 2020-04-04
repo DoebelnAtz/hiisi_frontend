@@ -9,6 +9,7 @@ import {
 import { makeRequest } from '../../../Api';
 import { useHistory } from 'react-router';
 import { RowDiv } from '../../../Styles/LayoutStyles';
+import LoadingDots from '../../Components/Loading';
 
 const Signup: React.FC = () => {
 
@@ -23,18 +24,26 @@ const Signup: React.FC = () => {
 		password1Error: '',
 		password2Error: '',
 	});
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleSignup = async () => {
 		if (!!input.username.length && !!input.password2.length && !!input.password1.length) {
 			if (input.password1 === input.password2) {
 				if (input.password1.length > 7) {
-				let resp = await makeRequest('auth/signup', 'POST', {
-					username: input.username,
-					password: input.password1,
-				});
-				if (resp.data) {
+					setIsLoading(true);
+					try {
+						let resp = await makeRequest('auth/signup', 'POST', {
+						username: input.username,
+						password: input.password1,
+					});
+						if (resp.data) {
 					history.push('/login');
 				}
+						setIsLoading(false);
+					} catch (e) {
+						setIsLoading(false)
+					}
+
 				} else {
 					setErrors({
 						...errors,
@@ -102,7 +111,9 @@ const Signup: React.FC = () => {
 				</PasswordInput>
 				<RowDiv>
 					<BackToLoginButton onClick={() => history.push('/login')}>Login</BackToLoginButton>
-					<SignupButton onClick={handleSignup}>Submit</SignupButton>
+					<SignupButton onClick={handleSignup}>
+						{isLoading ? <LoadingDots height={14} color={'#323232'} cycleSpeed={200}/> : 'Signup'}
+					</SignupButton>
 				</RowDiv>
 			</InputDiv>
 		</BackgroundDiv>

@@ -18,20 +18,25 @@ import { useSpring, useChain, ReactSpringHook } from 'react-spring';
 import { makeRequest } from '../../../Api';
 import queryString from 'query-string';
 import { color } from '../../../Styles/SharedStyles';
+import LoadingDots from '../../Components/Loading';
 
 const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
 	const history = useHistory();
+	const [isLoading, setIsLoading] = useState(false);
 	const next: any = queryString.parse(history.location.search)?.next
-		? queryString.parse(history.location.search).next
+		? queryString.parse(history.location.search).next === 'login' ? '/resources'
+			: queryString.parse(history.location.search).next
 		: '/resources';
 	const requestLogin = async () => {
 		if (password.length && username.length) {
 			try {
+				setIsLoading(true);
 				let resp = await makeRequest('auth/login', 'post', {
 					username: username.toLowerCase(),
 					password: password,
 				});
+				setIsLoading(false);
 				if (resp.data.success) {
 					setLocal('token', resp.data);
 					setAnimate(false);
@@ -40,6 +45,7 @@ const Login: React.FC = () => {
 					setTimeout(() => history.push(next), 2000);
 				}
 			} catch (e) {
+				setIsLoading(false);
 				setLoginError(true);
 				setTimeout(() => {
 					setLoginError(false);
@@ -246,8 +252,8 @@ const Login: React.FC = () => {
 							</PasswordDiv>
 
 							<LoginButton style={expandButtons} loginError={loginError}>
-								<button onClick={handleLoginClick}>
-									Login
+								<button disabled={isLoading} onClick={handleLoginClick}>
+									{isLoading ? <LoadingDots height={14} color={'#323232'} cycleSpeed={200}/> : 'Login'}
 								</button>
 								<button onClick={() => history.push('/signup')}>Sign up</button>
 							</LoginButton>
