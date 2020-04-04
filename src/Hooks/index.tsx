@@ -177,6 +177,6 @@ export function useRequest<F>(
 			}
 		}
 		if (conditional && mounted.current) request();
-	}, [url, method]);
+	}, [url, method, conditional]);
 	return [data, setData, isLoading] as const;
 }
