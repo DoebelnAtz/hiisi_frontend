@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { MobileNavContainer, MobileNavItem} from './Styles';
-import ForumIcon from '../../Assets/OpenHive2.png';
+import ForumIcon from '../../Assets/OHIcon.png';
 import codeIcon from '../../Assets/CodeIcon2.png';
 import profileIcon from '../../Assets/Profile2.png';
 import MessageIcon from '../../Assets/MessagesLG2.png';
