@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React from 'react';
 import { useSpring } from 'react-spring';
 import { ButtonContainer, Slider } from './Styles';
 import { color, colorAdjust } from '../../../../Styles/SharedStyles';

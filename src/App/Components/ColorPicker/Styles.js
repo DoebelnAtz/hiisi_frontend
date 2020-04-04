@@ -4,10 +4,12 @@ import { color, length } from '../../../Styles/SharedStyles';
 export const ColorPickerDiv = styled.div`
 	display: flex;
 	width: 210px;
+	position: absolute;
 	flex-wrap: wrap;
 	padding: 5px 0 0 0;
 	border-radius: ${length.radius};
 	background-color: ${color.siteBG4};
+	box-shadow: 1px 1px 4px #222222;
 	&::before {
 		content: '  ';
 		position: absolute;

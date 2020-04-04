@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { useRequest, useWidth } from '../../../../Hooks';
 import { MixedFeedItem, Profile } from '../Types';
@@ -30,7 +30,7 @@ const UserProfile: React.FC = () => {
 	const [reverse, setReverse] = useState(
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
-	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
+	const [feed] = useRequest<MixedFeedItem[]>(
 		`users/all?page=1&filter=${filter}&user=${params.uid}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);

@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import {
 	ResourceRow,
 	ResourceThumbnail,
@@ -80,8 +79,7 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [saved, setSaved] = useState(resource.saved);
 	const [copied, setCopied] = useState(false);
-	const history = useHistory();
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	const voteResource = async (
 		vote: vote,
 		resourceId: number,
@@ -90,7 +88,6 @@ const ResourcesResourceCard: React.FC<ResourceCardPropTypes> = ({
 		if (!disabled) {
 			setDisabled(true); // prevent possible bugs caused by spamming
 			setVotes(Number(votes) + diff);
-			let backUp = voted;
 			setVoted(vote);
 			let resp = await makeRequest('resources/vote_resource', 'post', {
 				vote: vote,

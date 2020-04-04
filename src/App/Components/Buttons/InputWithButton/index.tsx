@@ -1,4 +1,4 @@
-import React, { Fragment, ReactNode } from 'react';
+import React, {  ReactNode } from 'react';
 import { InputSection, ButtonSection, InputButtonDiv } from './Styles';
 
 type InputProps = {

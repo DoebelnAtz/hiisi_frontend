@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { useRequest } from '../../../../Hooks';
-import { Project, ProjectCardType } from '../Types';
+import { ProjectCardType } from '../Types';
 import ProjectCard from './ProjectCard/index';
 import PlusIcon from '../../../../Assets/Plus.png';
 import { Feed, MoreButton } from '../../../../Styles/CardStyles';
@@ -18,7 +18,7 @@ const ProjectFeed: React.FC<ProjectFeedProps> = ({
 	sortBy,
 	reverse,
 }) => {
-	const [nextProjects, setNextProjects, isLoading] = useRequest<
+	const [nextProjects] = useRequest<
 		ProjectCardType[]
 	>(
 		`projects?page=${page}&order=${sortBy}&reverse=${reverse}`,

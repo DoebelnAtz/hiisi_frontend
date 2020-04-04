@@ -1,6 +1,5 @@
 import React, {
 	Dispatch,
-	Fragment,
 	SetStateAction,
 	useEffect,
 	useRef,
@@ -50,7 +49,7 @@ const ReplyButton: React.FC<ReplyProps> = ({
 			});
 			if (resp.data) {
 				setCommentText('');
-				console.log(commentThread, resp.data);
+
 				commentThread &&
 					setCommentThread([...commentThread, resp.data]);
 			}

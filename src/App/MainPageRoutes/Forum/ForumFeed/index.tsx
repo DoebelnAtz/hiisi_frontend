@@ -2,7 +2,6 @@ import React, {
 	Dispatch,
 	Fragment,
 	SetStateAction,
-	useRef,
 	useState,
 } from 'react';
 import Post from './Post/index';

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useRequest, useWidth } from '../../../Hooks';
 import { MixedFeedItem, Profile } from '../Profile/Types';
-import { getLocal, setLocal } from '../../../Utils/index';
+import { getLocal, setLocal } from '../../../Utils';
 import MixedFeed from '../Profile/MixedFeed';
 import DropDown from '../../Components/DropDown';
 import {
@@ -28,7 +28,7 @@ const ProfilePage: React.FC = () => {
 	const [reverse, setReverse] = useState(
 		getLocal('mixedSortPref')?.reverse || 'false',
 	);
-	const [feed, setFeed, isLoading] = useRequest<MixedFeedItem[]>(
+	const [feed] = useRequest<MixedFeedItem[]>(
 		`users/all?page=1&filter=${filter}&user=${
 			getLocal('token').user.u_id
 		}&order=${sortBy}&reverse=${reverse}`,

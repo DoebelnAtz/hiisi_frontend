@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import {
@@ -13,7 +13,6 @@ import {
 	AddUserToTask,
 	AddUserInput,
 	AddUser,
-	AddUserBtn,
 	TaskTitleEditable,
 	PriorityIcon,
 	TaskStatusInput,
@@ -22,7 +21,7 @@ import {
 	TaskColorRow,
 	TaskSetting,
 	PrioritySetting,
-	PriorityText,
+	PriorityText, RemoveCollaboratorBtn,
 } from './Styles';
 
 import Plus from '../../../../../../Assets/Dots.png';
@@ -34,7 +33,6 @@ import { RouteComponentProps, User } from '../../../../../../Types';
 import ColorPicker from '../../../../ColorPicker';
 import { TaskType } from '../../../Types';
 import DropDown from '../../../../DropDown';
-import { checkUserList } from '../../../../../../Utils';
 import Modal from '../../../../Modal';
 import CommentThread from '../../../../CommentThread/index';
 const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
@@ -84,6 +82,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	const [priority, setPriority] = useState(getPriorityText(0));
 	const [expandColorPicker, setExpandColorPicker] = useState(false);
 	const colorPickerDiv = useRef<HTMLDivElement>(null);
+	const colorTagDiv = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		if (task) {
@@ -97,7 +96,8 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 	};
 
 	useDismiss(inside, close);
-	useDismiss(colorPickerDiv, () => setExpandColorPicker(false));
+	useDismiss(colorPickerDiv, () => setExpandColorPicker(false), colorTagDiv);
+
 	const updateTask = async () => {
 		if (task) {
 			if (!task.description) {
@@ -131,6 +131,24 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			setTask(updatedTask);
 			setSearchInput('');
 			setSearchResult([]);
+		}
+	};
+
+	const removeUserFromTask = async (userId: number, taskId: number) => {
+		try {
+			await makeRequest('projects/boards/tasks/remove_user', 'DELETE', {
+				userId,
+				taskId
+			});
+			if (task?.collaborators) {
+				setTask({
+					...task, collaborators: task?.collaborators.filter((collaborator: User) => {
+						return (collaborator.u_id !== userId)
+					})
+				})
+			}
+		} catch (e) {
+			console.log('error removing user from task');
 		}
 	};
 
@@ -197,27 +215,34 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 						task.collaborators.length > maxDisplayedUsers + 1
 					) {
 						return (
-							<Collaborator
+							<Fragment
 								key={collaborator.u_id}
+							>
+							<Collaborator
 								src={Plus}
 								style={{ cursor: 'pointer' }}
 								onClick={() =>
 									setMaxDisplayedUsers(maxDisplayedUsers + 1)
 								}
 							/>
+							</Fragment>
 						);
 					} else if (index > maxDisplayedUsers) {
 						return <div key={collaborator.u_id} />;
 					} else {
 						return (
-							<Collaborator
-								key={collaborator.u_id}
-								src={collaborator.profile_pic}
-								alt={`${collaborator.username} profiled pic`}
-								onClick={() =>
-									history.push(`/user/${collaborator.u_id}`)
-								}
-							/>
+							<Fragment key={collaborator.u_id}>
+								<Collaborator
+									src={collaborator.profile_pic}
+									alt={`${collaborator.username} profiled pic`}
+									onClick={() =>
+										history.push(`/user/${collaborator.u_id}`)
+									}
+								/>
+								{task?.owner && task.collaborators.length > 1 &&
+								<RemoveCollaboratorBtn onClick={() => removeUserFromTask(collaborator.u_id, task?.task_id)}><span>✕</span></RemoveCollaboratorBtn>
+									}
+							</Fragment>
 						);
 					}
 				},
@@ -258,6 +283,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 			{task?.owner && (
 				<TaskColorRow>
 					<TaskColorTag
+						ref={colorTagDiv}
 						onClick={() => setExpandColorPicker(!expandColorPicker)}
 						tagColor={task?.color_tag}
 					/>
@@ -316,7 +342,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 								src={priorityIcon}
 								alt={`priority ${task?.priority}`}
 							/>
-							{(task && checkUserList(task.collaborators) && (
+							{(task && task.owner && (
 								<PriorityDropdown>
 									<DropDown
 										height={'34px'}
@@ -339,7 +365,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 					<TaskCollaborators>
 						{!isLoading && renderTaskCollaborators()}
 					</TaskCollaborators>
-					{task && checkUserList(task.collaborators) && (
+					{task && task.owner && (
 						<AddUserToTask>
 							<AddUserInput
 								style={{ width: '100%' }}
@@ -365,7 +391,7 @@ const BoardColumnTaskInfo: React.FC<RouteComponentProps<{
 							),
 							title: 'collaborator',
 						}}
-						OPAuthorId={task.collaborators[0].u_id}
+						OPAuthorId={task.collaborators[0]?.u_id}
 					/>
 				)}
 			</TaskComments>

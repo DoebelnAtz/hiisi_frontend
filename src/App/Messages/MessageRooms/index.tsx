@@ -10,7 +10,6 @@ import {
 import { makeRequest } from '../../../Api';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { ThreadType } from '../Types';
-import InputWithButton from '../../Components/Buttons/InputWithButton';
 import { useRequest } from '../../../Hooks';
 import { NotificationContext } from '../../../Context/NotificationContext';
 import { ChatContext } from '../../../Context/ChatContext';
@@ -23,14 +22,14 @@ const MessageRoomList: React.FC<RouteComponentProps & MessageRoomProps> = ({
 	history,
 }) => {
 	const [inputVal, setInputVal] = useState('');
-	const { state: currentChat, update: setCurrentChat } = useContext(
+	const {update: setCurrentChat } = useContext(
 		ChatContext,
 	);
 	const { state: notifications, update: setNotifications } = useContext(
 		NotificationContext,
 	);
 
-	const [threads, setThreads, isLoading] = useRequest<ThreadType[]>(
+	const [threads, setThreads, ] = useRequest<ThreadType[]>(
 		'messages/threads',
 		'get',
 	);

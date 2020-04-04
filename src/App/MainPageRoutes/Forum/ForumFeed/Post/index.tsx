@@ -43,7 +43,6 @@ import {
 	MobileCardInfo,
 	MobileCardTitle,
 	MobileCardTitleInfo,
-	MobileCardVotes,
 	MobileCopiedSpan,
 	MobileDeleteButton,
 	MobileShareButton,
@@ -59,16 +58,15 @@ const Post: React.FC<RouteComponentProps<{}> & PostProps> = ({
 	const [voted, setVoted] = useState<vote>(post.voted ? post.voted : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	const voteBlog = async (vote: vote, blogId: number, diff: number) => {
 		if (!disabled) {
 			setDisabled(true); // prevent possible bugs caused by spamming
 			setVotes(Number(votes) + diff);
-			let backUp = voted;
 			setVoted(vote);
 			try {
-				let resp = await makeRequest('blogs/vote_blog', 'post', {
+				await makeRequest('blogs/vote_blog', 'post', {
 					vote: vote,
 					blogId: blogId,
 				});

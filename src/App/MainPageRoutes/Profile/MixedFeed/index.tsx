@@ -22,7 +22,7 @@ const MixedFeed: React.FC<MixedFeedProps> = ({
 	sortBy,
 	reverse,
 }) => {
-	const [nextFeed, setNextFeed, isLoading] = useRequest<MixedFeedItem[]>(
+	const [nextFeed, setNextFeed ] = useRequest<MixedFeedItem[]>(
 		`users/all?page=${page}&filter=${filter}&user=${profile.u_id}&order=${sortBy}&reverse=${reverse}`,
 		'get',
 		{},

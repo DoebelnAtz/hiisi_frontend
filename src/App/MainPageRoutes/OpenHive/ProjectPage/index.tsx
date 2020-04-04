@@ -22,7 +22,6 @@ import { Project } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { ChatContext } from '../../../../Context/ChatContext';
 import ArrowLeft from '../../../../Assets/ArrowLeft.png';
-import giticon from '../../../../Assets/giticon.png';
 import ProjectSettings from './ProjectSettingsPage';
 import { makeRequest } from '../../../../Api';
 import SaveButton from '../../../Components/Buttons/SaveButton';
@@ -35,7 +34,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	history,
 }) => {
 	const [pid, setPid] = useState(match.params.pid);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	const [dashState, setDashState] = useState(
 		queryString.parse(history.location.search)?.comment
 			? 'comments'
@@ -47,7 +46,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 		'projects/' + pid,
 		'get',
 	);
-	const { state: currentChat, update: setCurrentChat } = useContext(
+	const { update: setCurrentChat } = useContext(
 		ChatContext,
 	);
 	useNav('Open Hive');

@@ -21,7 +21,6 @@ import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
 import { validateUrl } from '../../../../Utils';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
-import LoadingDots from '../../../Components/Loading';
 import SaveButton from '../../../Components/Buttons/SaveButton';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,
@@ -78,7 +77,7 @@ const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 					setResources([resp.data, ...resources]);
 					setPopup(false);
 				} catch (e) {
-					console.log(e.response, e);
+
 					if (e.response.status === 400) {
 						setError({ ...error, title: 'title exists' });
 					}

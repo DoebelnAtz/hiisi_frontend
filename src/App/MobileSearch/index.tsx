@@ -11,7 +11,7 @@ import { ResultItem, SearchDiv, SearchInput, SearchResults } from './Styles';
 
 const MobileSearch: React.FC = () => {
 	const [searchInput, setSearchInput] = useState('');
-	const [results, setResults, isLoading] = useRequest<ResultType[]>(
+	const [results, setResults] = useRequest<ResultType[]>(
 		`search?q=${searchInput.toLowerCase()}`,
 		'get',
 		{},

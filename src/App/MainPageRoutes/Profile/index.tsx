@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ProfilePage from '../ProfilePage';
 import { withRouter } from 'react-router-dom';
-import { useNav, useRequest } from '../../../Hooks';
+import { useNav } from '../../../Hooks';
 import UserProfile from './UserProfile';
 // this component is nearly identical to UserPage but we retrieve the profile
 // from users/me instead, this allows for further customization to your own page

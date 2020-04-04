@@ -52,7 +52,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 	const inside = useRef<HTMLDivElement>(null);
 
 	useDismiss(inside, () => setPopup(false));
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	const createPost = async () => {
 		if (!!input.title.length && !!input.content.length) {

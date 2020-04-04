@@ -6,7 +6,7 @@ import MessageRoomList from '../MessageRooms';
 import { MobileMessagesPageContainer } from './Styles';
 
 const MobileMessagePage: React.FC = () => {
-	const { state: currentChat, update: setCurrentChat } = useContext(
+	const { state: currentChat } = useContext(
 		ChatContext,
 	);
 	const handleChatState = () => {

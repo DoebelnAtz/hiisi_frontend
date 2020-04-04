@@ -10,7 +10,7 @@ type ChatWindowProps = {
 };
 
 const ChatWindow: React.FC<ChatWindowProps> = ({ setExpandRoomList }) => {
-	const { state: currentChat, update: setCurrentChat } = useContext(
+	const { state: currentChat } = useContext(
 		ChatContext,
 	);
 	const handleChatState = () => {

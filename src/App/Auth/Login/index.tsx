@@ -19,8 +19,6 @@ import { makeRequest } from '../../../Api';
 import queryString from 'query-string';
 import { color } from '../../../Styles/SharedStyles';
 
-type LoginProps = {};
-
 const Login: React.FC = () => {
 	const [loginError, setLoginError] = useState(false);
 	const history = useHistory();
@@ -39,7 +37,6 @@ const Login: React.FC = () => {
 					setAnimate(false);
 					// In a hurry? fuck you, now enjoy these animations
 					// I spent 6h creating
-					console.log(next);
 					setTimeout(() => history.push(next), 2000);
 				}
 			} catch (e) {

@@ -18,7 +18,7 @@ const MessageRoomModal: React.FC = () => {
 	);
 
 	const inside = useRef<HTMLDivElement>(null);
-	const { state: notifications, update: setNotifications } = useContext(
+	const { state: notifications } = useContext(
 		NotificationContext,
 	);
 

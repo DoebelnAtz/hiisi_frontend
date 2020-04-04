@@ -8,7 +8,7 @@ import {
 	OptionRow,
 	UserResult,
 	UserResultList,
-	DeleteProjectButton,
+	DeleteProjectButton, RemoveCollaboratorBtn,
 } from './Styles';
 import { makeRequest } from '../../../../../Api';
 import { useHistory } from 'react-router-dom';
@@ -36,11 +36,26 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 	);
 	const history = useHistory();
 
+	const removeCollaboratorFromProject = async (userId: number) => {
+		try {
+			await makeRequest('projects/remove_collaborator', 'DELETE', {
+				userId,
+				projectId: project.project_id
+			});
+			setProjectCollaborators(
+				projectCollaborators?.filter(collaborator => collaborator.u_id !== userId)
+			)
+		} catch (e) {
+
+		}
+	};
+
 	const mapCollaborators = () => {
 		if (projectCollaborators) {
 			return projectCollaborators.map((collaborator) => {
 				return (
 					<Collaborator key={collaborator.u_id}>
+						{project.creator !== collaborator.u_id && projectCollaborators.length > 1 && <RemoveCollaboratorBtn onClick={() => removeCollaboratorFromProject(collaborator.u_id)}><span>✕</span></RemoveCollaboratorBtn>}
 						<img
 							key={collaborator.u_id}
 							src={collaborator.profile_pic}
@@ -49,6 +64,7 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 					</Collaborator>
 				);
 			});
+
 		} else {
 			return <div style={{ marginBottom: '28px' }}>Loading...</div>;
 		}

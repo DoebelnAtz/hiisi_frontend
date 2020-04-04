@@ -45,7 +45,7 @@ export const TaskColorTag = styled.div`
 
 export const TaskColorPicker = styled.div`
 	position: absolute;
-	transform: translateY(30px);
+	transform: translateY(28px);
 `;
 
 export const TaskComments = styled.div`
@@ -148,6 +148,23 @@ export const Collaborator = styled.img`
 	border-radius: 50%;
 	${cursor.clickable};
 	border: 4px solid ${color.siteBG2};
+`;
+
+export const RemoveCollaboratorBtn = styled.div`
+	height: 20px;
+	width: 20px;
+	background-color: #cc6666;
+	border-radius: 10px;
+	display: flex;
+	${cursor.clickable};
+	transform: translate(-15px, -2px);
+	& span {
+		margin: auto;
+		color: white;
+	}
+	&:hover {
+		background-color: #aa5555;
+	}
 `;
 
 export const AddUserBtn = styled.div`

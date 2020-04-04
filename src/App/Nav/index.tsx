@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { SideNavDiv } from './Styles';
 import NavItem from './NavItem';
 import openHiveIcon from '../../Assets/OpenHive2.png';
@@ -6,18 +6,16 @@ import codeIcon from '../../Assets/CodeIcon2.png';
 import profileIcon from '../../Assets/Profile2.png';
 import treeIcon from '../../Assets/Tree8.png';
 import { makeRequest } from '../../Api';
-import { getLocal, setLocal } from '../../Utils';
+import { getLocal } from '../../Utils';
 
 const SideNav: React.FC = () => {
 	const checkAuth = async () => {
-		let resp = await makeRequest(`users/me`, 'get');
+		await makeRequest(`users/me`, 'get');
 	};
-
+	let token = JSON.stringify(getLocal('token'));
 	useEffect(() => {
 		checkAuth();
-	}, [
-		JSON.stringify(getLocal('token')),
-	]);
+	}, [token]);
 
 	return (
 		<SideNavDiv>

@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useNav, useRequest, useWidth } from '../../../Hooks';
 import { ProjectList, CreateProjectButton, ProjectButtonRow } from './Style';
 import ProjectFeed from './ProjectFeed';
-import { Project, ProjectCardType } from './Types';
+import { ProjectCardType } from './Types';
 import CreateProjectModal from './CreateProjectModal';
 import DropDown from '../../Components/DropDown';
 import PlaceHolderFeed from '../../Components/PlaceHolderFeed/index';
@@ -21,7 +21,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	const [width, isMobile] = useWidth();
 
 	useNav('Open Hive');
-	const [projects, setProjects, isLoading] = useRequest<ProjectCardType[]>(
+	const [projects, setProjects] = useRequest<ProjectCardType[]>(
 		`projects?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',
 	);

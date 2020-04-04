@@ -11,7 +11,6 @@ import TaskInfo from '../Components/Board/Column/Task/TaskInfo';
 import Resources from './Resources';
 import ResourcePage from './Resources/ResourcePage';
 import { getLocal } from '../../Utils';
-import { useNotifications } from '../../Hooks';
 import ErrorMessage from '../ErrorPages/ErrorModal/index';
 import { ErrorContext } from '../../Context/ErrorContext';
 import MobileMessagePage from '../Messages/MobileMessagePage';
@@ -25,7 +24,6 @@ const MainRoutes: React.FC = (prop) => {
 		localStorage.clear();
 		window.location.replace('/login');
 	}
-	const [notifications, connected] = useNotifications(userId);
 	const { state: error } = useContext(ErrorContext);
 
 	return (

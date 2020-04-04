@@ -30,7 +30,7 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	show,
 }) => {
 	const history = useHistory();
-	const [nextResources, setNextResources, isLoading] = useRequest<
+	const [nextResources, setNextResources, ] = useRequest<
 		ResourceListType[]
 	>(
 		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}}&show=${show}`,

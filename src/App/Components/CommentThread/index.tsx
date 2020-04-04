@@ -1,8 +1,8 @@
-import React, { Dispatch, Fragment, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 import Reply from './Reply';
 import { useRequest } from '../../../Hooks';
-import { CommentSection, Comments, ReplyToThread } from './Styles';
+import { CommentSection, Comments } from './Styles';
 import { CommentType } from '../../MainPageRoutes/Forum/Types';
 import { useLocation, useHistory } from 'react-router-dom';
 import queryString from 'query-string';
@@ -33,7 +33,7 @@ const ShowComments: React.FC<CommentThread> = ({
 			? Number(queryString.parse(location.search)?.comment)
 			: commentthread,
 	);
-	const [comments, setComments, isLoading] = useRequest<CommentType[]>(
+	const [comments, setComments, ] = useRequest<CommentType[]>(
 		`blogs/commentthread/${commentThread}?page=1`,
 		'get',
 	);
