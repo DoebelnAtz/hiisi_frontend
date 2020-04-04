@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import Reply from '../Reply';
 import { formatDate, getLocal } from '../../../../Utils';
-import { useRequest } from '../../../../Hooks';
 
 import {
 	ParentComment,

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { User } from '../../../../../Types';
 import { useHistory } from 'react-router-dom';
 import { ProjectCardType } from '../../Types';
 import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
@@ -35,20 +34,13 @@ import {
 	MobileCardContent,
 	MobileCardDate,
 	MobileCardInfo,
-	MobileCardThumbnail,
-	MobileCardThumbnailTitle,
 	MobileCardTitle,
 	MobileCardTitleInfo,
 	MobileCopiedSpan,
-	MobileDeleteButton,
 	MobileShareButton,
 	MobileVoteCount,
 } from '../../../../../Styles/MobileCardStyles';
-import {
-	ResourceType,
-	Tag,
-	Tags,
-} from '../../../Resources/ResourceFeed/ResourceCard/Styles';
+
 
 type ProjectCardProps = {
 	project: ProjectCardType;
@@ -60,13 +52,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 	const [voted, setVoted] = useState<vote>(project.vote ? project.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	const voteProject = async (vote: vote, projectId: number, diff: number) => {
 		if (!disabled) {
 			// prevent possible bugs caused by spamming
 			setDisabled(true);
 			setVotes(Number(votes) + diff);
-			let backUp = voted;
 			setVoted(vote);
 			let resp = await makeRequest('projects/vote_project', 'post', {
 				vote: vote,

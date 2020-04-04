@@ -17,8 +17,25 @@ export const ProjectCollaborators = styled.div`
 		height: 42px;
 		width: 42px;
 		border-radius: 50%;
-		margin-left: -8px;
-		border: 4px solid ${color.siteBG2};
+		margin-right: ${length.margin};
+	}
+`;
+
+export const RemoveCollaboratorBtn = styled.div`
+	height: 20px;
+	width: 20px;
+	background-color: #cc6666;
+	border-radius: 10px;
+	display: flex;
+	position: absolute;
+	${cursor.clickable};
+	transform: translate(30px, -5px);
+	& span {
+		margin: auto;
+		color: white;
+	}
+	&:hover {
+		background-color: #aa5555;
 	}
 `;
 

@@ -24,7 +24,7 @@ import MobileNav from './MobileNav';
 import Signup from './Auth/Signup/index';
 
 const App: React.FC = () => {
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	return (
 		<ErrorContextProvider>
 			<CurrentNavContextProvider>

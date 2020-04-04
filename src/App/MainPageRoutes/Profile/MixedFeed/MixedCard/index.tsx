@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { User } from '../../../../../Types';
 import { useHistory } from 'react-router-dom';
 import ArrowUpVoted from '../../../../../Assets/ArrowUpVoted.png';
 import ArrowUp from '../../../../../Assets/ArrowUp.png';
@@ -31,7 +30,6 @@ import {
 import { makeRequest } from '../../../../../Api';
 import { MixedFeedItem, Profile } from '../../Types';
 import {
-	ResourceThumbnail,
 	ResourceType,
 } from '../../../Resources/ResourceFeed/ResourceCard/Styles';
 import { RowDiv } from '../../../../../Styles/LayoutStyles';
@@ -63,7 +61,7 @@ const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 	const [voted, setVoted] = useState<vote>(item.vote ? item.vote : 0);
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [copied, setCopied] = useState(false);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	const voteProject = async (
 		vote: vote,
@@ -75,11 +73,10 @@ const MixedCard: React.FC<{ item: MixedFeedItem; profile: Profile }> = ({
 			// prevent possible bugs caused by spamming
 			setDisabled(true);
 			setVotes(Number(votes) + diff);
-			let backUp = voted;
 			setVoted(vote);
 			// endpoint expects projectId | blogId | resourceId, we give them all
 			try {
-				let resp = await makeRequest(voteUrl, 'post', {
+				await makeRequest(voteUrl, 'post', {
 					vote: vote,
 					projectId: id,
 					blogId: id,

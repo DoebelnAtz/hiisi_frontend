@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import {
 	PostComments,
@@ -30,7 +30,7 @@ const FeedPostModal: React.FC<RouteComponentProps<{ bid: number }>> = ({
 		history.push('/forum');
 	};
 
-	const [post, setPost, isLoading] = useRequest<PostType>(
+	const [post, setPost, ] = useRequest<PostType>(
 		`blogs/${match.params.bid}`,
 		'get',
 	);

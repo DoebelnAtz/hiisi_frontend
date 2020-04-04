@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
     "strict": true,
     "watch": true,
     "forceConsistentCasingInFileNames": true,

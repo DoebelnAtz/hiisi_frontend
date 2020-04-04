@@ -21,7 +21,6 @@ import { SubmitResourceProps } from '../Types';
 import DropDownComponent from '../../../Components/DropDown';
 import { validateUrl } from '../../../../Utils';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
-import LoadingDots from '../../../Components/Loading';
 import SaveButton from '../../../Components/Buttons/SaveButton';
 const ResourcesSubmitResource: React.FC<SubmitResourceProps> = ({
 	resources,

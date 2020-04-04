@@ -1,8 +1,6 @@
 import * as H from 'history';
 import React from 'react';
-interface MatchParams {
-	name: string;
-}
+
 
 export function createCtx<A>(defaultValue: A) {
 	type UpdateType = React.Dispatch<React.SetStateAction<typeof defaultValue>>;
@@ -18,7 +16,6 @@ export function createCtx<A>(defaultValue: A) {
 	return [ctx, Provider] as const;
 }
 
-interface Props extends RouteComponentProps<MatchParams> {}
 
 // from typings
 export interface RouteComponentProps<P> {

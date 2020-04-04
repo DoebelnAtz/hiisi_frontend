@@ -1,6 +1,5 @@
-import React, {
+import  {
 	RefObject,
-	SetStateAction,
 	useContext,
 	useEffect,
 	useRef,
@@ -33,7 +32,7 @@ export const useNotifications = (room: string) => {
 	const { state: currentChat } = useContext(ChatContext);
 	const [connected, setConnected] = useState(false);
 	const [newNotif, setNewNotif] = useState<Notification>();
-	const [socket, setSocket] = useState<SocketType>();
+	const [, setSocket] = useState<SocketType>();
 	const history = useHistory();
 	useEffect(() => {
 		let user = getLocal('token');

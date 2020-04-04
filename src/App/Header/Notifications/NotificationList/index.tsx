@@ -7,7 +7,7 @@ import {
 } from './Styles';
 import { ChatContext } from '../../../../Context/ChatContext';
 import { useHistory } from 'react-router-dom';
-import { useDismiss, useRequest } from '../../../../Hooks';
+import {  useRequest } from '../../../../Hooks';
 import { getLocal, formatDate } from '../../../../Utils';
 type NotificationListProps = {
 	notifications?: Notification[];
@@ -18,10 +18,10 @@ const NotificationList: React.FC<NotificationListProps> = ({
 	setExpandNotifications,
 }) => {
 	const history = useHistory();
-	const { state: currentChat, update: setCurrentChat } = useContext(
+	const { update: setCurrentChat } = useContext(
 		ChatContext,
 	);
-	const [notifications, setNotifications, isLoading] = useRequest<
+	const [notifications, , ] = useRequest<
 		Notification[]
 	>(`notifications/users/${getLocal('token').user.u_id}`, 'get');
 	const handleNotificationClick = async (notif: Notification) => {

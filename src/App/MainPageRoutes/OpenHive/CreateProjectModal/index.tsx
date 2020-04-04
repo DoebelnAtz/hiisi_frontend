@@ -6,13 +6,12 @@ import {
 	LinkInput,
 	Description,
 	ButtonRow,
-	SubmitButton,
 	TitleAndLinkRow,
 	ErrorSpan,
 	CancelButton,
 } from './Styles';
 import { useDismiss, useWidth } from '../../../../Hooks';
-import { Project, ProjectCardType } from '../Types';
+import { ProjectCardType } from '../Types';
 import TextEditor from '../../../Components/TextEditor';
 import { makeRequest } from '../../../../Api';
 import { validateUrl } from '../../../../Utils';
@@ -45,7 +44,7 @@ const CreateProjectModal: React.FC<CreateProjectModalProps> = ({
 	const close = () => {
 		setShowModal(false);
 	};
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	useDismiss(inside, close);
 

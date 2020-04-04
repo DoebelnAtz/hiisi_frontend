@@ -19,7 +19,7 @@ const AddUserToRoom: React.FC = () => {
 	const { state: currentChat, update: setCurrentChat } = useContext(
 		ChatContext,
 	);
-	const [connectedUsers, setConnectedUsers, isLoadingUsers] = useRequest<
+	const [connectedUsers, setConnectedUsers] = useRequest<
 		User[]
 	>(`messages/threads/${-currentChat.toString()}/users`, `GET`);
 	const [searchUserInputVal, setSearchUserInputVal] = useState('');
@@ -29,7 +29,7 @@ const AddUserToRoom: React.FC = () => {
 		{},
 		!!searchUserInputVal.length,
 	);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 
 	const renderConnectedUsers = () => {
 		if (connectedUsers)

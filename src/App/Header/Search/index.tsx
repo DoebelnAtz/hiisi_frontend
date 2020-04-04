@@ -9,7 +9,7 @@ import CodeIcon from '../../../Assets/CodeIconS.png';
 import ForumIcon from '../../../Assets/OH2S.png';
 const SearchBar: React.FC = () => {
 	const [searchInput, setSearchInput] = useState('');
-	const [results, setResults, isLoading] = useRequest<ResultType[]>(
+	const [results, setResults ] = useRequest<ResultType[]>(
 		`search?q=${searchInput.toLowerCase()}`,
 		'get',
 		{},

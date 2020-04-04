@@ -20,9 +20,8 @@ export const Columns = styled.div`
 `;
 
 export const ColorFilterPicker = styled.div`
-	position: absolute;
 	z-index: 4;
-	transform: translate(calc(100% + 10px), calc(100% - 8px));
+	transform: translate(calc(-74px), calc(100% - 4px));
 `;
 
 export const ResetColorFilterDiv = styled.div`

@@ -1,7 +1,4 @@
 import {User} from "../../../../Types";
-import * as H from 'history';
-
-import {BrowserRouterProps} from "react-router-dom";
 
 export interface TaskType {
     task_id: number,

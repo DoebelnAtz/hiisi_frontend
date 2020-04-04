@@ -1,10 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { CommentType } from '../../../MainPageRoutes/Forum/Types';
 import Comment from '../Comment';
 import { FocusList } from '../../../../Types';
-import { MoreButton } from './Styles';
-import { RowDiv } from '../../../../Styles/LayoutStyles';
-import PlusIcon from '../../../../Assets/Plus.png';
 type CommentFeedProps = {
 	commentThread: number;
 	allComments: CommentType[];
@@ -22,7 +19,6 @@ const CommentFeed: React.FC<CommentFeedProps> = ({
 	focusList,
 	odd = true,
 }) => {
-	const [showNext, setShowNext] = useState(false);
 	const renderComments = (comment = comments, isExpanded = true) => {
 		if (comment) {
 			return comment.map((child: CommentType) => {

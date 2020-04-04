@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({
 	inside,
 	close,
 }) => {
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	return (
 		<OutsideDiv>
 			<InsideDiv id={'modal-inside'} isMobile={isMobile} ref={inside}>

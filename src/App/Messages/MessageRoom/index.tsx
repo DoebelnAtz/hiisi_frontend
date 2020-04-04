@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { useDismiss, useRequest, useWidth } from '../../../Hooks';
+import { useRequest, useWidth } from '../../../Hooks';
 import { getLocal } from '../../../Utils';
 
 import socketIOClient from 'socket.io-client';
@@ -31,7 +31,6 @@ import { SocketType, User } from '../../../Types';
 import { MessageType, RoomType } from '../Types';
 import MessageFeed from './MessageFeed';
 import LoadingDots from '../../Components/Loading';
-import Login from '../../Auth/Login';
 
 type MessageRoomPropsTypes = {
 	tid: number;
@@ -45,7 +44,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 		`messages/threads/${tid.toString()}/users`,
 		`GET`,
 	);
-	const [width, isMobile] = useWidth();
+	const [, isMobile] = useWidth();
 	const [newMessage, setNewMessage] = useState<MessageType>();
 	const [connected, setConnected] = useState<boolean>(false);
 	const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -120,6 +119,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			appendMessage(newMessage);
 		}
 	}, [newMessage]);
+
 	const addUser = (user: User) => {
 		let currentUser = getLocal('token')?.user;
 		if (
@@ -143,6 +143,7 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			scrollDown?.current.scrollIntoView({ behavior: 'smooth' });
 	};
 	const appendMessage = (message: MessageType) => {
+		console.log(message);
 		room && setRoom({ ...room, messages: [...room.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
 	};

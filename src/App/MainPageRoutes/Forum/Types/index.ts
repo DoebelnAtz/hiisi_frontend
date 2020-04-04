@@ -1,4 +1,3 @@
-import {FocusList} from "../../../../Types";
 import { vote } from '../../Resources/Types';
 
 export interface CommentType {

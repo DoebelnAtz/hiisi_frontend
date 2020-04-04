@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, font, layout, length } from '../Styles/SharedStyles';
+import { color, colorAdjust, font, layout, length } from '../Styles/SharedStyles';
 
 export const MainContainer = styled.div`
 	max-width: 1900px;
@@ -31,7 +31,7 @@ export const MainPage = styled.div`
 `;
 
 export const ProductionStateLabel = styled.div`
-	background-color: ${color.secondary};
+	background-color: ${colorAdjust.darken(color.secondary,0.2)};
 	position: fixed;
 	display: flex;
 	flex-wrap: nowrap;

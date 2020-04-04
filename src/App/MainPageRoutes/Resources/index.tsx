@@ -6,10 +6,6 @@ import {
 	FilterButton,
 	ResourcePageHead,
 	ResourceFilters,
-	ResourceTabbedView,
-	ResourceTabs,
-	ResourceActiveTab,
-	ResourceTab,
 } from './Styles';
 
 import SubmitResource from './SubmitResource/index';
@@ -31,7 +27,7 @@ const ResourcesHome: React.FC<RouteComponentProps> = ({ history }) => {
 	const [show, setShow] = useState('all');
 	const [width, isMobile] = useWidth();
 	const [tags, ,] = useRequest<Tag[]>('resources/tags?q=&limit=100', 'get');
-	const [resources, setResources, isLoading] = useRequest<ResourceListType[]>(
+	const [resources, setResources, ] = useRequest<ResourceListType[]>(
 		`resources?page=1&filter=${filter}&order=${sortBy}&reverse=${reverse}&show=${show}`,
 		'get',
 	);

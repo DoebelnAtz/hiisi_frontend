@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../base.css';
 import logo from '../../Assets/Logo6.png';
@@ -20,7 +20,7 @@ import { color } from '../../Styles/SharedStyles';
 
 const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 	const { state } = useContext(CurrentNavContext);
-	const [width, isMobile] = useWidth();
+	const [ , isMobile] = useWidth();
 	const requestLogout = () => {
 		localStorage.clear();
 		history.push('/login');

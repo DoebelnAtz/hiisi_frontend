@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SaveBtn } from './Styles';
 import LoadingDots from '../../Loading';
 import { color } from '../../../../Styles/SharedStyles';

@@ -33,10 +33,10 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 		'get',
 		{},
 	);
-	const [description, setDescription] = useState(resource?.description);
+	const [, setDescription] = useState(resource?.description);
 	const [tagSearch, setTagSearch] = useState('');
-	const [width, isMobile] = useWidth();
-	const [results, setResults, isLoadingResults] = useRequest(
+	const [, isMobile] = useWidth();
+	const [results, , isLoadingResults] = useRequest(
 		`resources/tags?q=${tagSearch.toLowerCase()}&limit=${isMobile ? '7' : '9'}`,
 		'get',
 	);
@@ -76,7 +76,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 
 	const updateResource = async () => {
 		try {
-			let resp = await makeRequest('resources/update_resource', 'put', {
+			await makeRequest('resources/update_resource', 'put', {
 				resource: resource,
 			});
 		} catch (e) {
