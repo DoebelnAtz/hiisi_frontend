@@ -143,7 +143,6 @@ const MessageRoom: React.FC<RouteComponentProps<{}> &
 			scrollDown?.current.scrollIntoView({ behavior: 'smooth' });
 	};
 	const appendMessage = (message: MessageType) => {
-		console.log(message);
 		room && setRoom({ ...room, messages: [...room.messages, message] });
 		setTimeout(() => scrollToBottom(), 10);
 	};

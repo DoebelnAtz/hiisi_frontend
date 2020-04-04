@@ -49,7 +49,7 @@ const ReplyButton: React.FC<ReplyProps> = ({
 			});
 			if (resp.data) {
 				setCommentText('');
-				console.log(commentThread, resp.data);
+
 				commentThread &&
 					setCommentThread([...commentThread, resp.data]);
 			}

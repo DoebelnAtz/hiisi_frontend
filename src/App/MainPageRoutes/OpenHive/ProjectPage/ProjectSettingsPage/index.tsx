@@ -46,7 +46,7 @@ const ProjectSettings: React.FC<ProjectSettingsProps> = ({
 				projectCollaborators?.filter(collaborator => collaborator.u_id !== userId)
 			)
 		} catch (e) {
-			console.log('error removing user from task');
+
 		}
 	};
 
