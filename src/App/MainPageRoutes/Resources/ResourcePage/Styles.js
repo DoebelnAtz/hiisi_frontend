@@ -123,6 +123,9 @@ export const SearchResultTag = styled.div`
 			color: lightgray;
 		}
 	}
+	&:hover{
+		background-color: ${props => colorAdjust.darken(props.color, 0.1)};
+	}
 `;
 
 export const TagSearchResults = styled.div`

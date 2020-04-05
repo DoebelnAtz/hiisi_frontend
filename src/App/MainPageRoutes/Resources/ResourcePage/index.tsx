@@ -23,6 +23,7 @@ import { RouteComponentProps } from '../../../../Types';
 import { ResourceType, Tag } from '../Types';
 import Modal from '../../../Components/Modal';
 import { RowDiv } from '../../../../Styles/LayoutStyles';
+import { color } from '../../../../Styles/SharedStyles';
 
 const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	match,
@@ -36,7 +37,7 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 	const [, setDescription] = useState(resource?.description);
 	const [tagSearch, setTagSearch] = useState('');
 	const [, isMobile] = useWidth();
-	const [results, , isLoadingResults] = useRequest(
+	const [results, setResults, isLoadingResults] = useRequest(
 		`resources/tags?q=${tagSearch.toLowerCase()}&limit=${isMobile ? '7' : '9'}`,
 		'get',
 	);
@@ -110,6 +111,18 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 				...resource,
 				tags: resource.tags.filter((tag) => tag.tag_id !== tagId),
 			});
+		}
+	};
+
+	const handleTagCreation = async () => {
+		try {
+			let resp = await makeRequest('resources/create_tag', 'POST', {
+				tagTitle: tagSearch
+			});
+			let createdTag = resp.data;
+			setResults([createdTag, ...results]);
+		} catch (e) {
+			console.log('Failed to create tag');
 		}
 	};
 
@@ -196,6 +209,15 @@ const ResourceInfoPage: React.FC<RouteComponentProps<{ rid: number }>> = ({
 							}}
 							placeholder={'+ Add Tag'}
 						/>
+						{!!tagSearch.length &&
+						<SearchResultTag
+							style={{border: `1px solid ${color.primary}`}}
+							color={color.siteBG3}
+							onClick={() => handleTagCreation()}
+						>
+							<span>Create tag: '{tagSearch}'</span>
+						</SearchResultTag>
+						}
 						{!isLoadingResults && renderSearchResults()}
 					</TagSearchResults>
 				)}
