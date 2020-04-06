@@ -28,6 +28,8 @@ type DropDownProps = {
 	// the drop down list has to be fixed. the only use case for this is in the taskinfo modal
 	// but this causes problems in scrolling pages like resources / forum / projects
 	modalOverflow?: boolean;
+	// optional function for filter change takes in filter value as arg returning filtered options
+	onFilterChange?: (e: string) => string[]
 };
 
 const DropDownComponent: React.FC<DropDownProps> = ({
@@ -40,6 +42,7 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	text,
 	withFilter = false,
 	modalOverflow = false,
+	onFilterChange,
 }) => {
 	const [expanded, setExpanded] = useState(false);
 	const [options, setOptions] = useState(optionList);
@@ -88,7 +91,9 @@ const DropDownComponent: React.FC<DropDownProps> = ({
 	const handleFilterChange = (e: React.SyntheticEvent) => {
 		let target = e.target as HTMLInputElement;
 		setFilterInput(target.value);
-		setOptions(
+		onFilterChange
+			? setOptions(onFilterChange(target.value))
+			: setOptions(
 			optionList.filter((option) => {
 				return option
 					.toLowerCase()
