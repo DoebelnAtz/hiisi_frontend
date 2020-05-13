@@ -39,7 +39,7 @@ export const AddRoomInput = styled.input`
 
 export const AddRoomButton = styled.button`
 	${components.button};
-	width: 70px;
+	width: 69px;
 	border-left: none;
 	border-radius: 0 ${length.radius} ${length.radius} 0;
 `;
