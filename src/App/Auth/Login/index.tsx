@@ -25,7 +25,7 @@ const Login: React.FC = () => {
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
 	const next: any = queryString.parse(history.location.search)?.next
-		? queryString.parse(history.location.search).next === 'login' ? '/resources'
+		? queryString.parse(history.location.search).next === '/login' ? '/resources'
 			: queryString.parse(history.location.search).next
 		: '/resources';
 	const requestLogin = async () => {

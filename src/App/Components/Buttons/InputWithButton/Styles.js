@@ -23,6 +23,6 @@ export const ButtonSection = styled.button`
 	top: 1px;
 	line-height: 38px;
 	border-radius: 0 4px 4px 0;
-	width: 70px;
+	width: 69px;
 	height: 40px
 `;
