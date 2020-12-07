@@ -24,11 +24,11 @@ const MobileNav: React.FC = () => {
 				alt={'resources'}/>
 			</MobileNavItem>
 			<MobileNavItem
-				selected={history.location.pathname === '/openhive' || history.location.pathname.includes('/projects')}
-				onClick={() => handleNavClick('/openhive')}
+				selected={history.location.pathname === '/projects' || history.location.pathname.includes('/projects')}
+				onClick={() => handleNavClick('/projects')}
 			>
 				<img src={codeIcon}
-				alt={'Open Hive'}/>
+				alt={'Projects'}/>
 			</MobileNavItem>
 			<MobileNavItem
 
