@@ -95,7 +95,7 @@ const Signup: React.FC = () => {
 		<BackgroundDiv>
 			<InputDiv>
 				<TitleDiv>
-					Hivemind
+					Hiisi
 				</TitleDiv>
 				<UsernameInput>
 					<input value={input.username} onChange={(e: React.SyntheticEvent) => handleUsernameChange(e)} placeholder={'intra username'}/>

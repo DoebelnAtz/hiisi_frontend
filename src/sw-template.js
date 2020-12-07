@@ -26,7 +26,7 @@ if ('function' === typeof importScripts) {
 		);
 
 		workbox.routing.registerRoute(
-			new RegExp('^https://hivemind-42.com/api/.*'),
+			new RegExp('^https:/https://api-dot-hiisi-297910.ew.r.appspot.com/api/.*'),
 			new workbox.strategies.NetworkFirst({
 				cacheName: 'api-cache',
 			})

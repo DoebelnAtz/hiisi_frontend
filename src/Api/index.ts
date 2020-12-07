@@ -2,8 +2,7 @@ import axios from 'axios';
 import { getLocal, setLocal } from '../Utils';
 
 
-const backendUrl = 'https://hivemind-42.com';
-//const backendUrl = 'http://localhost:5000';
+const backendUrl = process.env.NODE_ENV === 'production' ? 'https://api-dot-hiisi-297910.ew.r.appspot.com' : 'http://localhost:5000';
 
 export const makeRequest = async (url: string, method: any, data: any = {}) => {
 	let resp;

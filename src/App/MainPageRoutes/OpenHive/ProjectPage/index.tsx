@@ -49,7 +49,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	const { update: setCurrentChat } = useContext(
 		ChatContext,
 	);
-	useNav('Open Hive');
+	useNav('Projects');
 
 	useEffect(() => {
 		setPid(match.params.pid);
@@ -117,7 +117,7 @@ const OpenHiveProjectPage: React.FC<RouteComponentProps<{ pid: number }>> = ({
 	return (
 		<ProjectPage>
 			<ProjectInfo>
-				<BackToProjectsButton onClick={() => history.push('/openhive')}>
+				<BackToProjectsButton onClick={() => history.push('/projects')}>
 					<RowDiv>
 						<img src={ArrowLeft} alt={'back to projects'} />
 						<span>Projects</span>
