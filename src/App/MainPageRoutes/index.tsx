@@ -2,7 +2,7 @@ import Feed from './Forum/index';
 import Profile from './Profile';
 import React, { Fragment, useContext } from 'react';
 
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
 
 import PostPage from './Forum/PostPage';
 import OpenHive from './OpenHive';
@@ -32,7 +32,14 @@ const MainRoutes: React.FC = (prop) => {
 			<Switch location={location}>
 				<Route
 					exact
-					path={'/openhive'}
+					path={'/'}
+
+				>
+					<Redirect to={'/resources'}/>
+				</Route>
+				<Route
+					exact
+					path={'/projects'}
 					render={(props) => <OpenHive {...props} />}
 				/>
 				<Route path={'/user'} render={(props) => <Profile />} />

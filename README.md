@@ -1,9 +1,9 @@
-<h2>Hivemind</h2>
+<h2>Hiisi</h2>
 
-<a href="https://hivemind-42.com">Site</a>
+<a href="https://hiisi.app">Site</a>
 
 <p>
-    Hivemind is a website for Hive students where they can:
+    Hiisi is a website for Hive students where they can:
 </p>
 <ul>
     <li>Share and find resources for learning.</li>

@@ -16,7 +16,7 @@
     }
   ],
   "start_url": "/resources",
-  "background_color": "#323232",
+  "background_color": "#AC7BC2",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#AC7BC2"

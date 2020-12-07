@@ -33,7 +33,7 @@ const ResourcesResourceFeed: React.FC<ResourceFeedPropTypes> = ({
 	const [nextResources, setNextResources, ] = useRequest<
 		ResourceListType[]
 	>(
-		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}}&show=${show}`,
+		`resources?page=${pagination}&filter=${filterBy}&order=${sortBy}&reverse=${reverse}&show=${show}`,
 		'get',
 		{},
 		resources.length >= 14,

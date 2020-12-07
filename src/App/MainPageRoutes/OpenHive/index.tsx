@@ -20,7 +20,7 @@ const Projects: React.FC<RouteComponentProps> = ({ history }) => {
 	);
 	const [width, isMobile] = useWidth();
 
-	useNav('Open Hive');
+	useNav('Projects');
 	const [projects, setProjects] = useRequest<ProjectCardType[]>(
 		`projects?page=1&order=${sortBy}&reverse=${reverse}`,
 		'get',

@@ -30,7 +30,7 @@ const Header: React.FC<RouteComponentProps<{}>> = ({ history }) => {
 		<HeaderDiv>
 			<LogoDiv>
 				<Logo src={logo} alt={'logo'} />
-				<SiteTitle>Hivemind</SiteTitle>
+				<SiteTitle>Hiisi</SiteTitle>
 			</LogoDiv>
 			<NavTitleDiv>{capitalizeFirst(state)}</NavTitleDiv>
 			{!isMobile && (

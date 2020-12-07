@@ -32,7 +32,7 @@ if ('function' === typeof importScripts) {
 			})
 		);
 		workbox.core.clientsClaim();
-    	workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+    	workbox.precaching.precacheAndRoute([{"revision":"c8921704de8a9f8ae2c6353332023d5f","url":"index.html"},{"revision":"4416b3f8cb133848cd743d95a99847cd","url":"ipad-icon.png"},{"revision":"374f92b4684cd4fc84cbe96ffdd95615","url":"ipad-retina-icon.png"},{"revision":"1d5f036aba5fbdf77add90253346808f","url":"iphone-retina-icon.png"},{"revision":"a418d84302dd2101f28932693919bd6b","url":"LogoLarge.png"},{"revision":"681a872a9f117fa6626c8d12b0826736","url":"static/css/main.f28a53e4.chunk.css"},{"revision":"34c43f1e8aa774cf542cff0d90e07c27","url":"static/js/2.70fbefe4.chunk.js"},{"revision":"00782e41c14e0757bf2f7a7e6acab390","url":"static/js/main.eea06581.chunk.js"},{"revision":"d0d61ad9ea2b7f6c014647a38b9f59cb","url":"static/js/runtime-main.70302f69.js"},{"revision":"ebc2274164ca513403873469571af1e8","url":"static/media/GuardsBGDark2.ebc22741.png"}]);
 		workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"), {
 			  blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 			});

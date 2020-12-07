@@ -14,7 +14,7 @@ export const formatDate = (date, event) => {
 			'.' +
 			year +
 			' at ' +
-			(parseInt(hour, 10) + 2) +
+			hour +
 			':' +
 			minute
 		);
@@ -95,7 +95,7 @@ export const calculateTimeSince = (isoString) => {
 		return 'a while ago'
 	}
 	let then = new Date(isoString);
-	var seconds = Math.floor((new Date() - then) / 1000); // remove two hours for timezone...
+	var seconds = Math.floor((new Date() - then) / 1000);
 
 	var interval = Math.floor(seconds / 31536000);
 

@@ -32,14 +32,14 @@ export const DeleteButton = styled.div`
 export const AddRoomInput = styled.input`
 	${components.input};
 	height: 32px;
-	width: calc(100% - 72px - ${length.margin});
+	width: calc(100% - 73px - ${length.margin});
 	border-radius: ${length.radius} 0 0 ${length.radius};
 
 `;
 
 export const AddRoomButton = styled.button`
 	${components.button};
-	width: 70px;
+	width: 69px;
 	border-left: none;
 	border-radius: 0 ${length.radius} ${length.radius} 0;
 `;
